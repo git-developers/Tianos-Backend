@@ -1,0 +1,282 @@
+{% extends "CoreBundle::template.html.twig" %}
+
+{% block bodyclass %}{% spaceless %}
+    {{ box.body_css }}
+{% endspaceless %}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    {% stylesheets
+        '@CoreBundle/Resources/public/common/css/tree.css'
+        '@CoreBundle/Resources/public/list-has-tree/css/tree.css'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+
+    <style>
+        span.{{ boxRight.box_li_id }} {
+            width:100%;
+            display: block;
+            padding-bottom: 4px;
+            overflow: hidden;
+            border-radius: 5px;
+        }
+        ul#{{ box.box_main_ul }} li{
+            padding: 3px 0 3px 0;
+        }
+        div.panel-collapse div.input-group{
+            margin-bottom: 5px;
+        }
+    </style>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    {% javascripts
+        '@CoreBundle/Resources/public/list-has-tree/js/boxInfo.js'
+        '@CoreBundle/Resources/public/list-has-tree/js/boxLeftSearch.js'
+        '@CoreBundle/Resources/public/list-has-tree/js/boxLeftSelectItem.js'
+        '@CoreBundle/Resources/public/list-has-tree/js/boxRightAssign.js'
+        '@CoreBundle/Resources/public/list-has-tree/js/boxRightAssignView.js'
+        '@CoreBundle/Resources/public/list-has-tree/js/boxRightAssignEdit.js'
+        '@CoreBundle/Resources/public/list-has-tree/js/boxRightAssignChild.js'
+        '@CoreBundle/Resources/public/list-has-tree/js/boxRightUnAssign.js'
+        '@CoreBundle/Resources/public/common/js/jquery.tmpl.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    <script type="application/javascript">
+
+        $(function() {
+
+            $(document).on({
+                mouseenter: function(){
+                    $(this).find('div.tools').toggle();
+                    $(this).toggleClass('bg-gray');
+                },
+                mouseleave: function(){
+                    $(this).find('div.tools').toggle();
+                    $(this).toggleClass('bg-gray');
+                },
+            }, 'span.{{ boxRight.box_li_id }}');
+
+            $('div#{{ boxRight.box_id }}').boxRightAssignChild({
+                box_left_id: '{{ boxLeft.box_id }}',
+                box_main_div: '{{ box.box_main_div }}',
+                box_main_ul: '{{ box.box_main_ul }}',
+                box_child_ul: '{{ box.box_child_ul }}',
+                form_name: '{{ box.form_name }}',
+                form_assign_child_name: '{{ boxRight.form_assign_child_name }}',
+                modal_assign_child_id: '{{ boxRight.modal_assign_child_id }}',
+                modal_assign_class: '{{ boxRight.modal_assign_class }}',
+                route_assign_child: '{{ boxRight.route_assign_child }}',
+            });
+
+            $('div#{{ boxRight.box_id }}').boxRightAssign({
+                box_left_id: '{{ boxLeft.box_id }}',
+                box_main_div: '{{ box.box_main_div }}',
+                box_main_ul: '{{ box.box_main_ul }}',
+                form_name: '{{ box.form_name }}',
+                form_assign_name: '{{ boxRight.form_assign_name }}',
+                modal_assign_id: '{{ boxRight.modal_assign_id }}',
+                modal_assign_class: '{{ boxRight.modal_assign_class }}',
+                route_assign: '{{ boxRight.route_assign }}',
+            });
+
+            $('div#{{ boxRight.box_id }}').boxRightAssignEdit({
+                box_left_id: '{{ boxLeft.box_id }}',
+                modal_assign_edit_id: '{{ boxRight.modal_assign_edit_id }}',
+                form_assign_edit_name: '{{ boxRight.form_assign_edit_name }}',
+                route_assign_edit: '{{ boxRight.route_assign_edit }}'
+            });
+
+            $('div#{{ boxRight.box_id }}').boxRightUnAssign({
+                modal_unassign_child_id: '{{ boxRight.modal_unassign_child_id }}',
+                route_unassign: '{{ boxRight.route_unassign }}',
+            });
+
+            $('div#{{ boxRight.box_id }}').boxRightAssignView({
+                box_main_ul: '{{ box.box_main_ul }}',
+                modal_assign_view_id: '{{ boxRight.modal_assign_view_id }}',
+                route_assign_view: '{{ boxRight.route_assign_view }}'
+            });
+
+            $('div#{{ boxLeft.box_id }}').boxLeftSearch({
+                form_name: '{{ box.form_name }}',
+                box_id: '{{ boxLeft.box_id }}',
+                box_search: '{{ boxLeft.box_search }}',
+                route_search: '{{ boxLeft.route_search }}',
+            });
+
+            $('div#{{ boxLeft.box_id }}').boxLeftSelectItem({
+                form_name: '{{ box.form_name }}',
+                box_left_id: '{{ boxLeft.box_id }}',
+                box_right_id: '{{ boxRight.box_id }}',
+                box_li_id: '{{ boxLeft.box_li_id }}',
+                box_li_class: '{{ boxLeft.box_li_class }}',
+                route_select_item: '{{ boxLeft.route_select_item }}',
+            });
+
+            $('body.{{ box.body_css }}').boxInfo({
+                modal_info_id: '{{ box.modal_info_id }}',
+                route_info: '{{ box.route_info }}',
+            });
+
+            {% for key, setting in box.settings %}
+                $(document).on('click', 'button.{{ key }}', function(event) {
+                    var body = $(this).parent('div').parent('div').parent('div').find('div.box-body');
+                    var tmpl = $('#tmpl_input_{{ key }}').tmpl();
+                    tmpl.appendTo(body);
+                    {#tmpl.prependTo(body);#}
+                });
+
+                $(document).on('click', 'span.{{ key }}', function(event) {
+                    $(this).parent('div').remove();
+                });
+            {% endfor %}
+
+        });
+    </script>
+
+{% endblock %}
+
+{% block content %}
+
+    <section class="content-header">
+        <h1>
+            <i class="fa fa-fw fa-exchange"></i>
+            Asignar <span>{{ boxLeft.box_title|trim }} <i class="fa fa-fw fa-arrow-right"></i> {{ boxRight.box_title|trim }}</span>
+            <small>lista</small>
+        </h1>
+        <ol class="breadcrumb">
+            {#<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>#}
+            {#<li class="active">Dashboard</li>#}
+
+            <li>
+                <button
+                        class="btn btn-info btn-xs modal-info"
+                        alt="Info"
+                        title="Info"
+                        data-toggle="modal"
+                        data-target="#modal-info">
+                    <i class="fa fa-fw fa-info-circle"></i> info
+                </button>
+            </li>
+        </ol>
+    </section>
+
+    <section class="content">
+        <form name="{{ box.form_name }}">
+            <div class="row">
+
+                {#LEFT#}
+                <div id="{{ boxLeft.box_id }}" class="col-md-6">
+                    <div class="box box-{{ boxLeft.box_class }}">
+                        <div class="box-header ui-sortable-handle">
+
+                            <i class="fa fa-fw fa-{{ boxLeft.box_icon|trim }}"></i>
+                            <h3 class="box-title">
+                                {{ boxLeft.box_title|trim }}
+                            </h3>
+
+                            <div class="box-tools pull-right">
+                                <div class="row">
+                                    <div class="col-md-offset-6 col-md-6">
+                                        <div class="input-group">
+                                            <input name="{{ boxLeft.box_search }}" type="search" class="form-control" maxlength="50">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-fw fa-search"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {#<ul class="pagination pagination-sm inline">#}
+                                {#<li><a href="#">«</a></li>#}
+                                {#<li><a href="#">1</a></li>#}
+                                {#</ul>#}
+                            </div>
+                        </div>
+                        <div class="box-body">
+
+                            <div class="callout callout-info">
+                                <p>
+                                    <i class="fa fa-fw fa-info"></i> Seleccione un item.
+                                </p>
+                            </div>
+
+                            <ul class="todo-list ui-sortable">
+                                {{ include('CoreBundle:ListHasTree:Li/box_left.html.twig') }}
+                            </ul>
+                        </div>
+                        {#<div class="box-footer clearfix no-border">#}
+                        {#<button type="button" class="btn btn-default pull-right">#}
+                        {#<i class="fa fa-plus"></i> Add item#}
+                        {#</button>#}
+                        {#</div>#}
+                    </div>
+                </div>
+                {#LEFT#}
+
+
+
+                {#RIGHT#}
+                <div id="{{ boxRight.box_id }}" class="col-md-6">
+                    <div class="box box-{{ boxRight.box_class }}">
+                        <div class="box-header with-border ui-sortable-handle">
+
+                            <i class="fa fa-fw fa-{{ boxRight.box_icon|trim }}"></i>
+                            <h3 class="box-title">
+                                {{ boxRight.box_title|trim }}
+                                &nbsp;
+                                <i class="fa fa-1x fa-refresh fa-spin" style="display: none"></i>
+                            </h3>
+
+                            <div class="box-tools pull-right">
+                                <button
+                                        type="button"
+                                        class="btn btn-default pull-right {{ boxRight.modal_assign_id }}"
+                                        alt="Assign item"
+                                        title="Assign item"
+                                        data-toggle="modal"
+                                        data-target="#{{ boxRight.modal_assign_id }}">
+                                    <i class="fa fa-plus"></i> Assign item
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="{{ box.box_main_div }} box-body">
+                            <ul id="{{ box.box_main_ul }}">
+                                <p class="empty">No hay items que mostrar</p>
+                            </ul>
+                        </div>
+
+                        {#<div class="box-footer clearfix no-border">#}
+                        {#<button type="button" class="btn btn-default pull-right">#}
+                        {#<i class="fa fa-plus"></i> Add item#}
+                        {#</button>#}
+                        {#</div>#}
+                    </div>
+                </div>
+                {#RIGHT#}
+
+            </div>
+        </form>
+    </section>
+
+    {{ include('CoreBundle:ListHasTree:Modal/info.html.twig') }}
+    {{ include('CoreBundle:ListHasTree:Modal/assign.html.twig') }}
+    {{ include('CoreBundle:ListHasTree:Modal/assign_view.html.twig') }}
+    {{ include('CoreBundle:ListHasTree:Modal/assign_edit.html.twig') }}
+    {{ include('CoreBundle:ListHasTree:Modal/assign_child.html.twig') }}
+    {{ include('CoreBundle:ListHasTree:Template/tmpl_jquery_1.html.twig') }}
+
+    {% for key, setting in box.settings %}
+        {{ include('CoreBundle:ListHasTree:Template/tmpl_input.html.twig', {key:key, setting:setting}) }}
+    {% endfor %}
+
+{% endblock %}

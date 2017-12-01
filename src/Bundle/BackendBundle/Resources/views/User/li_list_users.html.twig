@@ -1,0 +1,25 @@
+{% spaceless %}
+    {% for user in users %}
+        <li class="li-sortable x-move " data-id="{{ user.id_increment }}">
+
+            <span class="handle ">
+                <i class="fa fa-ellipsis-v"></i>
+                <i class="fa fa-ellipsis-v"></i>
+            </span>
+
+            {#<input type="checkbox" value="">#}
+
+            <small class="label label-default">
+                {{ user.id_increment }}
+            </small>
+
+            <span class="text">{{ user.name ~ ' ' ~ user.lastName }}</span>
+        </li>
+    {% else %}
+        <li class="">
+            <span class="text">
+                No hay resultados.
+            </span>
+        </li>
+    {% endfor %}
+{% endspaceless %}

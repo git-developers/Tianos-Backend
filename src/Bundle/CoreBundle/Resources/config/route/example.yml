@@ -1,0 +1,5 @@
+core_client_index:
+    path:  /example
+    defaults:
+        _controller: CoreBundle:Default:index
+    methods: [GET]

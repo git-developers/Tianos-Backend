@@ -1,0 +1,9 @@
+{% import "CoreBundle::Macro/tree_has_list.html.twig" as macro %}
+
+{% spaceless %}
+    {% if leftHasRight is not empty %}
+        {{ macro.tree_has_list(leftHasRight, box, boxRight, -1) }}
+    {% else %}
+        <p class="empty">No hay items que mostrar</p>
+    {% endif %}
+{% endspaceless %}

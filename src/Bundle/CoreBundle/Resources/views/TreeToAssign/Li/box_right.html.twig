@@ -1,0 +1,58 @@
+{% spaceless %}
+
+    {% for key, rightEntity_ in rightEntity %}
+
+        {% set idParent = rightEntity_.id_associative|default() %}
+        {% set entity = rightEntity_ %}
+        {% set id = entity.id_increment|default() %}
+
+        {% if attribute(rightEntity_, boxRight.group_name) is defined %}
+            {% set entity = attribute(rightEntity_, boxRight.group_name) %}
+            {% set id = entity.id_increment|default() %}
+        {% endif %}
+
+        {% if boxRightAssigned is defined %}
+            {% set isAssigned = id|in_array(boxRightAssigned.left_has_right) %}
+            {% set idParent = id|idParent(boxRightAssigned) %}
+        {% endif %}
+
+        <li
+            class="{{ boxRight.box_li_id }} {{ isAssigned ? 'bg-orange' : '' }} x-hand"
+            data-id="{{ id }}">
+
+            <span class="handle ui-sortable-handle">
+                <i class="fa fa-ellipsis-v"></i>
+                <i class="fa fa-ellipsis-v"></i>
+            </span>
+
+            <input
+                type="hidden"
+                name="{{ boxRight.box_value_hidden }}">
+
+            <input
+                {#name="{{ boxRight.box_value }}"#}
+                type="checkbox"
+                {{ isAssigned ? 'checked="checked"' : '' }}
+                value="{{ id }}">
+
+            <span class="badge {{ boxRight.badge_class }}">
+                {{ id }}
+            </span>
+
+            <span class="text">
+                {{ entity.name_box|default() }}
+            </span>
+
+            {#<div class="tools">#}
+            {#<i class="fa fa-edit"></i>#}
+            {#<i class="fa fa-trash-o"></i>#}
+            {#</div>#}
+        </li>
+    {% else %}
+        <li>
+            <span class="text">
+                No hay resultados.
+            </span>
+        </li>
+    {% endfor %}
+{% endspaceless %}

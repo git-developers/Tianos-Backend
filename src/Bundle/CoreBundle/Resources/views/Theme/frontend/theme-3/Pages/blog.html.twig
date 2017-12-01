@@ -1,0 +1,151 @@
+{% extends 'CoreBundle::TemplateFrontend/Template-3/base.html.twig' %}
+
+{% block title %}
+    Blog
+{% endblock %}
+
+{% block body_class %}
+    blog cat-1-id
+{% endblock %}
+
+{% block content %}
+    <div id="motopress-main" class="main-holder">
+
+        {#
+        <div class="offer-wrap only-on-main-page">
+            <div class="container">
+                <div class="row">
+                    <div class="span12" data-motopress-type="static" data-motopress-static-file="static/static-offer.php">
+                        <div class="offer">
+                            <div class="row">
+                                <div class="span12">
+
+                                    <script type="text/javascript">
+                                        jQuery(function() {
+                                            jQuery("#fixedparallax_599ee70e997a1").cherryFixedParallax({
+                                                offset: true,
+                                                bgfixed: true,
+                                                invert: true
+                                            });
+                                        });
+                                    </script>
+
+                                    <section id="fixedparallax_599ee70e997a1" class="fixed_parallax_section cherry_fixed_parallax" data-source-url="https://livedemo00.template-help.com/wordpress_52146/wp-content/uploads/2014/10/parallax.jpg" data-source-width="1920" data-source-height="1200" style="background-image: url(&quot;https://livedemo00.template-help.com/wordpress_52146/wp-content/uploads/2014/10/parallax.jpg&quot;); background-attachment: fixed; background-position: 50% 64.2857%; width: 1905px; margin-left: -953px; left: 50%;"><div class="container parallax_content">
+                                            <div class="row ">
+                                                <div class="span7">
+                                                    <p>
+                                                        <img src="https://livedemo00.template-help.com/wordpress_52146/wp-content/themes/theme52146/images/logo_2.png" alt="Logo" class="logo"></p>
+                                                    <h1>WayApp Theme is a really<br>
+                                                        best way to present your<br>
+                                                        beautiful mobile app</h1>
+                                                    <p>Available on App Store &amp; Google Play.</p>
+                                                    <a href="#" title="Download App" class="btn btn-default btn-normal btn-inline  btn-from-top" target="_self"><span data-hover="Download App"><i class="icon-cloud"></i>Download App</span></a><!-- .btn --> <a href="#" title="Learn more" class="btn btn-default btn-normal btn-inline clean btn-from-top" target="_self"><span data-hover="Learn more">Learn more</span></a><!-- .btn --></div>
+                                                <div class="span1 "></div>
+                                                <div class="span3 ">
+                                                    <p><img src="https://livedemo00.template-help.com/wordpress_52146/wp-content/themes/theme52146/images/iphone.png" alt="Logo"></p></div>
+                                            </div>
+                                        </div></section></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        #}
+
+        {{ include("CoreBundle::TemplateFrontend/Template-3/Pages/Header/header.html.twig") }}
+
+        <div class="motopress-wrapper content-holder clearfix">
+            <div class="container">
+                <div class="row">
+                    <div class="span12" data-motopress-wrapper-file="index.php" data-motopress-wrapper-type="content">
+                        <div class="row">
+                            <div class="span12" data-motopress-type="static" data-motopress-static-file="static/static-title.php">
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            {#LEFT#}
+                            <div class="span8 right" id="content">
+                            {#<div class="span8 right" id="content" data-motopress-type="loop" data-motopress-loop-file="loop/loop-blog.php">#}
+
+
+                                {% set posts = render_blog_post(templateHasModule) %}
+
+                                {% for key, post in posts %}
+                                    <div class="post_wrapper">
+                                        <article id="post-1910" class="post-1910 post type-post status-publish format-standard has-post-thumbnail hentry category-sequitur-mutationem tag-elit tag-ipsum-dolor tag-lorem post__holder cat-1-id">
+                                            <header class="post-header">
+                                                <h2 class="post-title">
+                                                    <a href="#" title="Aliquam erat volutpat">{{ post.title }}</a>
+                                                </h2>
+                                            </header>
+                                            <figure class="featured-thumbnail thumbnail large">
+                                                <a href="#" title="Aliquam erat volutpat">
+                                                    <img src="https://livedemo00.template-help.com/wordpress_52146/wp-content/uploads/2014/11/Depositphotos_11508133_original-900x444.jpg" alt="Aliquam erat volutpat">
+                                                </a>
+                                            </figure>
+
+                                            <div class="post_content">
+                                                <div class="excerpt">
+                                                    {{ post.excerpt }}
+                                                </div>
+                                                <a href="#" class="btn btn-primary btn-from-top">
+                                                    <span data-hover="Read more">Leer mas</span>
+                                                </a>
+                                                <div class="clear"></div>
+                                            </div>
+                                        </article>
+                                    </div>
+                                {% endfor %}
+
+                                <div class="pagination pagination__posts">
+                                    <ul>
+                                        <li class="prev">
+                                            <a href="https://livedemo00.template-help.com/wordpress_52146/blog/">Previous</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://livedemo00.template-help.com/wordpress_52146/blog/" class="inactive">1</a>
+                                        </li>
+                                        <li class="active">
+                                            <a href="#">2</a>
+                                        </li>
+                                        <li>
+                                            <a href="https://livedemo00.template-help.com/wordpress_52146/blog/page/3/" class="inactive">3</a>
+                                        </li>
+                                        <li class="next">
+                                            <a href="https://livedemo00.template-help.com/wordpress_52146/blog/page/3/">Next</a>
+                                        </li>
+                                        <li class="last">
+                                            <a href="https://livedemo00.template-help.com/wordpress_52146/blog/page/5/">Last</a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+
+                            </div>
+                            {#LEFT#}
+
+                            {#RIGHT#}
+                            <div class="sidebar span4" id="sidebar" data-motopress-type="static-sidebar" data-motopress-sidebar-file="sidebar.php">
+                                <div id="archives-3" class="visible-all-devices widget"><h3>Archives</h3>
+                                    <ul>
+                                        <li><a href="https://livedemo00.template-help.com/wordpress_52146/2014/05/">May 2014</a></li>
+                                        <li><a href="https://livedemo00.template-help.com/wordpress_52146/2013/03/">March 2013</a></li>
+                                        <li><a href="https://livedemo00.template-help.com/wordpress_52146/2013/02/">February 2013</a></li>
+                                        <li><a href="https://livedemo00.template-help.com/wordpress_52146/2013/01/">January 2013</a></li>
+                                        <li><a href="https://livedemo00.template-help.com/wordpress_52146/2012/12/">December 2012</a></li>
+                                        <li><a href="https://livedemo00.template-help.com/wordpress_52146/2012/05/">May 2012</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            {#RIGHT#}
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+

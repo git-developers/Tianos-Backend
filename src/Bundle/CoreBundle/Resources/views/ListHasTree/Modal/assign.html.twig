@@ -1,0 +1,56 @@
+{% spaceless %}
+    <div class="modal modal-success fade in" id="{{ boxRight.modal_assign_id }}">
+        <div class="modal-dialog {{ boxRight.modal_assign_size }}">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">
+                    <i class="fa fa-fw fa-plus"></i> Assign item
+                    <i class="fa fa-refresh fa-spin" style="color: white; margin-left: 10px; display:none"></i>
+                </h4>
+            </div>
+
+            <div class="modal-content">
+                <form name="{{ boxRight.form_assign_name }}" method="post" class="">
+                    <div class="modal-body">
+
+                        <div id="message" class="callout callout-danger" style="display: none;">
+                            <p></p>
+                        </div>
+
+                        <div class="api-content"></div>
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-outline">Guardar</button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+{% endspaceless %}
+
+
+
+
+
+
+
+
+
+
+
+{#
+
+
+
+#}
+
+
+
+

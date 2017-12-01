@@ -1,0 +1,54 @@
+<div class="row same-height">
+    <div class="span7 without-margins tofade">
+        <p>
+            <img
+                class="alignnone size-full wp-image-1965"
+                src="{{ asset('bundles/core/template-frontend/template-3/images/devices.jpg') }}"
+                alt="devices"
+                width="647"
+                height="644" />
+        </p>
+    </div>
+    <div class="span5 tofade">
+        <div class="spacer"></div>
+
+        {% block paragraph_1 %}
+            <h3>Complete compatibility</h3>
+            <p>This is yet anothelity maybe?<br />
+                Who knowsomething rendy indeed.</p>
+        {% endblock %}
+
+        <div class="spacer"></div>
+        <div class="row ">
+            <div class="span2 tofade">
+                <div class="service-box left-align">
+                    <figure class="icon">
+                        <img src="{{ asset('bundles/core/template-frontend/template-3/images/icon5.png') }}" alt="" />
+                    </figure>
+                    <div class="service-box_body">
+                        <div class="service-box_txt">
+                            {% block paragraph_2 %}
+                                Las epsum fac hic quarrels escoro.
+                            {% endblock %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="span2 tofade">
+                <div class="service-box left-align">
+                    <figure class="icon">
+                        <img src="{{ asset('bundles/core/template-frontend/template-3/images/icon6.png') }}" alt="" />
+                    </figure>
+                    <div class="service-box_body">
+                        <div class="service-box_txt">
+                            {% block paragraph_3 %}
+                                Las epsum fa quarrels escoro.
+                            {% endblock %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="spacer"></div>
+    </div>
+</div>

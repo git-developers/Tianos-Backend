@@ -1,0 +1,29 @@
+{% spaceless %}
+    {% for entity in leftEntity %}
+        <li class="{{ boxLeft.box_li_id }} x-hand" data-id="{{ entity.id_increment }}">
+
+            <span class="handle ui-sortable-handle">
+                <i class="fa fa-ellipsis-v"></i>
+                <i class="fa fa-ellipsis-v"></i>
+            </span>
+
+            <input type="radio" name="{{ boxLeft.box_value }}" value="{{ entity.id_increment }}">
+            &nbsp;
+            <span class="badge {{ boxLeft.badge_class }}">
+                {{ entity.id_increment }}
+            </span>
+
+            <span class="text">{{ entity.name_box }}</span>
+            {#<div class="tools">#}
+            {#<i class="fa fa-edit"></i>#}
+            {#<i class="fa fa-trash-o"></i>#}
+            {#</div>#}
+        </li>
+    {% else %}
+        <li>
+            <span class="text">
+                No hay resultados.
+            </span>
+        </li>
+    {% endfor %}
+{% endspaceless %}

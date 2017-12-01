@@ -1,0 +1,151 @@
+{% extends 'CoreBundle::TemplateFrontend/Template-3/base.html.twig' %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block body_class %}
+    home page page-id-203 page-template page-template-page-home-php
+{% endblock %}
+
+{% block content %}
+    <div id="motopress-main" class="main-holder">
+
+        {% embed 'CoreBundle::TemplateFrontend/Template-3/Block/1.html.twig' %}
+
+            {% block paragraph_1 %}
+                {{ render_paragraph(templateHasModule, 'paragraph/1') }}
+            {% endblock %}
+
+        {% endembed %}
+
+        {{ include("CoreBundle::TemplateFrontend/Template-3/Pages/Header/header.html.twig") }}
+
+        <div class="motopress-wrapper content-holder clearfix">
+            <div class="container">
+                <div class="row">
+                    <div class="span12" data-motopress-wrapper-file="page-home.php" data-motopress-wrapper-type="content">
+
+                        <div class="row">
+                            <div class="span12" data-motopress-type="static" data-motopress-static-file="static/static-slider.php">
+                                <div class="slider_off"></div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="span12" data-motopress-type="loop" data-motopress-loop-file="loop/loop-page.php">
+                                <div id="post-203" class="post-203 page type-page status-publish hentry">
+
+                                    {% embed 'CoreBundle::TemplateFrontend/Template-3/Block/3.html.twig' %}
+
+                                        {% block paragraph_1 %}
+                                            {{ render_paragraph(templateHasModule, 'paragraph/3', 1) }}
+                                        {% endblock %}
+
+                                        {% block paragraph_2 %}
+                                            {{ render_paragraph(templateHasModule, 'paragraph/3', 2) }}
+                                        {% endblock %}
+
+                                    {% endembed %}
+
+                                    {{ include('CoreBundle::TemplateFrontend/Template-3/Block/4.html.twig') }}
+
+                                    {% embed 'CoreBundle::TemplateFrontend/Template-3/Block/5.html.twig' %}
+
+                                        {% block paragraph_1 %}
+                                            {{ render_paragraph(templateHasModule, 'paragraph/5', 1) }}
+                                        {% endblock %}
+
+                                        {% block paragraph_2 %}
+                                            {{ render_paragraph(templateHasModule, 'paragraph/5', 2) }}
+                                        {% endblock %}
+
+                                        {% block paragraph_3 %}
+                                            {{ render_paragraph(templateHasModule, 'paragraph/5', 3) }}
+                                        {% endblock %}
+
+                                        {% block paragraph_4 %}
+                                            {{ render_paragraph(templateHasModule, 'paragraph/5', 4) }}
+                                        {% endblock %}
+
+                                        {% block paragraph_5 %}
+                                            {{ render_paragraph(templateHasModule, 'paragraph/5', 5) }}
+                                        {% endblock %}
+
+                                        {% block paragraph_6 %}
+                                            {{ render_paragraph(templateHasModule, 'paragraph/5', 6) }}
+                                        {% endblock %}
+
+                                        {% block paragraph_7 %}
+                                            {{ render_paragraph(templateHasModule, 'paragraph/5', 7) }}
+                                        {% endblock %}
+
+                                        {% block paragraph_8 %}
+                                            {{ render_paragraph(templateHasModule, 'paragraph/5', 8) }}
+                                        {% endblock %}
+
+                                    {% endembed %}
+
+                                    {% embed 'CoreBundle::TemplateFrontend/Template-3/Block/6.html.twig' %}
+
+                                        {% block paragraph_1 %}
+                                            {{ render_paragraph(templateHasModule, 'paragraph/6', 1) }}
+                                        {% endblock %}
+
+                                        {% block paragraph_2 %}
+                                            {{ render_paragraph(templateHasModule, 'paragraph/6', 2) }}
+                                        {% endblock %}
+
+                                        {% block paragraph_3 %}
+                                            {{ render_paragraph(templateHasModule, 'paragraph/6', 3) }}
+                                        {% endblock %}
+
+                                    {% endembed %}
+
+                                    {% embed 'CoreBundle::TemplateFrontend/Template-3/Block/7.html.twig' %}
+
+                                        {% block paragraph_1 %}
+                                            {{ render_paragraph(templateHasModule, 'paragraph/7') }}
+                                        {% endblock %}
+
+                                    {% endembed %}
+
+                                    {% embed 'CoreBundle::TemplateFrontend/Template-3/Block/8.html.twig' %}
+
+                                        {% block paragraph_1 %}
+                                            {{ render_paragraph(templateHasModule, 'paragraph/8') }}
+                                        {% endblock %}
+
+                                    {% endembed %}
+
+                                    {{ include('CoreBundle::TemplateFrontend/Template-3/Block/9.html.twig') }}
+
+                                    {% embed 'CoreBundle::TemplateFrontend/Template-3/Block/10.html.twig' %}
+
+                                        {% block paragraph_1 %}
+                                            {{ render_paragraph(templateHasModule, 'paragraph/10') }}
+                                        {% endblock %}
+
+                                    {% endembed %}
+
+                                    {% embed 'CoreBundle::TemplateFrontend/Template-3/Block/11.html.twig' %}
+
+                                        {% block paragraph_1 %}
+                                            {{ render_paragraph(templateHasModule, 'paragraph/11') }}
+                                        {% endblock %}
+
+                                    {% endembed %}
+
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}
+

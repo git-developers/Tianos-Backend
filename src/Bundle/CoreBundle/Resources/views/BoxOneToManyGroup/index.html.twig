@@ -1,0 +1,321 @@
+{% extends "CoreBundle::template.html.twig" %}
+
+{% block bodyclass %}{% spaceless %}
+    {{ box.body_css }}
+{% endspaceless %}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <style>
+        div#{{ boxMiddle.box_id }} ul {
+            border: 2px solid white;
+            color: white;
+        }
+        div#{{ boxMiddle.box_id }} ul.hover {
+            border: 2px dashed #008d4c;
+            color: #008d4c;
+        }
+    </style>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    {% javascripts
+    '@CoreBundle/Resources/public/box-one-to-many-group/js/boxInfo.js'
+    '@CoreBundle/Resources/public/box-one-to-many-group/js/boxLeftSearch.js'
+    '@CoreBundle/Resources/public/box-one-to-many-group/js/boxLeftSelectItem.js'
+    '@CoreBundle/Resources/public/box-one-to-many-group/js/boxRightSearch.js'
+    '@CoreBundle/Resources/public/box-one-to-many-group/js/boxMiddleUnAssign.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    <script type="application/javascript">
+
+        $(function() {
+
+            $('div#{{ boxLeft.box_id }}').boxLeftSearch({
+                form_name: '{{ box.form_name }}',
+                box_id: '{{ boxLeft.box_id }}',
+                box_search: '{{ boxLeft.box_search }}',
+                route_search: '{{ boxLeft.route_search }}'
+            });
+
+            $('div#{{ boxLeft.box_id }}').boxLeftSelectItem({
+                form_name: '{{ box.form_name }}',
+                box_left_id: '{{ boxLeft.box_id }}',
+                box_middle_id: '{{ boxMiddle.box_id }}',
+                box_li_id: '{{ boxLeft.box_li_id }}',
+                box_li_class: '{{ boxLeft.box_li_class }}',
+                route_select_item: '{{ boxLeft.route_select_item }}'
+            });
+
+            $('div#{{ boxRight.box_id }}').boxRightSearch({
+                form_name: '{{ box.form_name }}',
+                box_left_id: '{{ boxLeft.box_id }}',
+                box_right_id: '{{ boxRight.box_id }}',
+                box_search: '{{ boxRight.box_search }}',
+                route_search: '{{ boxRight.route_search }}'
+            });
+
+            $('body.{{ box.body_css }}').boxInfo({
+                modal_info_id: '{{ box.modal_info_id }}',
+                route_info: '{{ box.route_info }}'
+            });
+
+            $('div#{{ boxMiddle.box_id }}').boxMiddleUnAssign({
+                route_unassign_item: '{{ boxMiddle.route_unassign_item }}'
+            });
+
+        });
+
+        $(document).ready(function () {
+            doDraggable();
+        });
+
+        $(document).ajaxComplete(function () {
+            doDraggable();
+        });
+
+        function doDraggable() {
+            $('li.{{ boxRight.box_li_class }}').draggable({
+                helper:'clone',
+                containment: "window",
+                cursor: "move",
+                revert: "invalid",
+                scroll: false,
+                revert: true, // will cause the event to go back to its
+                revertDuration: 0,  //  original position after the drag
+                start: function(){
+
+                },
+                stop: function(){
+
+                }
+            });
+        }
+
+//        https://embed.plnkr.co/mJqkxSJhf1Umg7r2oLQN
+//        https://stackoverflow.com/questions/19289580/jquery-draggable-outside-of-overflow-hidden
+        $('div#{{ boxMiddle.box_id }} ul').droppable({ //set container droppable
+            over: function(event, ui) {
+                $(this).addClass('hover');
+
+                if (!$("input[name='{{ boxLeft.box_value }}']:checked").val()) {
+                    setMessageCallout('<i class="fa fa-fw fa-warning"></i> Tiene que seleccionar un item.');
+                    addClassCallout('danger');
+                }
+            },
+            out: function(event, ui) {
+                $(this).removeClass('hover');
+            },
+            drop: function(event, ui) {
+                $(this).removeClass('hover');
+
+                var id = ui.draggable.data('id');
+                setBoxrightSelectedValue(id);
+
+                var boxMiddle = $('div#{{ boxMiddle.box_id }}');
+
+                var fields = $("form[name='{{ box.form_name }}']").serializeArray();
+
+                $.ajax({
+                    url: '{{ boxMiddle.route_assign_item }}',
+                    type: 'POST',
+                    dataType: 'html',
+                    data: {fields:fields},
+                    beforeSend: function(jqXHR, settings) {
+                        boxMiddle.find('i.fa-refresh').show();
+                    },
+                    success: function(data, textStatus, jqXHR) {
+
+                        if(data != ''){
+                            boxMiddle.find('ul').prepend(data);
+                            boxMiddle.find('li.empty').remove();
+                        }
+
+                        boxMiddle.find('i.fa-refresh').hide();
+                    },
+                    error: function(jqXHR, exception) {
+                        boxMiddle.find('i.fa-refresh').hide();
+                        console.log('Assign error: ' + exception);
+                    }
+                });
+            }
+        });
+
+        function setBoxrightSelectedValue(value) {
+            $('input[name="{{ boxRight.box_value }}"]').val(value);
+        }
+
+        function setMessageCallout(message){
+            $('.callout').html(message);
+        };
+
+        function addClassCallout(addClass){
+            $('.callout').removeClass('callout-info').removeClass('callout-success').removeClass('callout-danger');
+            $('.callout').addClass('callout-' + addClass);
+        };
+
+    </script>
+
+
+{% endblock %}
+
+{% block content %}
+
+    <section class="content-header">
+        <h1>
+            <i class="fa fa-fw fa-exchange"></i>
+            Asignar <span>{{ boxLeft.box_title|trim }} <i class="fa fa-fw fa-arrow-right"></i> {{ boxRight.box_title|trim }}</span>
+            <small>lista</small>
+        </h1>
+        <ol class="breadcrumb">
+            {#<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>#}
+            {#<li class="active">Dashboard</li>#}
+
+            <li>
+                <button
+                    class="btn btn-info btn-xs modal-info"
+                    alt="Info"
+                    title="Info"
+                    data-toggle="modal"
+                    data-target="#modal-info">
+                    <i class="fa fa-fw fa-info-circle"></i> info
+                </button>
+            </li>
+        </ol>
+    </section>
+
+    <section class="content">
+        <form name="{{ box.form_name }}">
+            <div class="row">
+
+                {#LEFT#}
+                <div id="{{ boxLeft.box_id }}" class="col-md-4">
+                    <div class="box box-{{ boxLeft.box_class }}">
+                        <div class="box-header with-border ui-sortable-handle">
+
+                            <i class="fa fa-fw fa-{{ boxLeft.box_icon|trim }}"></i>
+                            <h3 class="box-title">
+                                {{ boxLeft.box_title|trim }}
+                            </h3>
+
+                            <div class="box-tools pull-right">
+                                <div class="row">
+                                    <div class="col-md-offset-6 col-md-6">
+                                        <div class="input-group">
+                                            <input
+                                                name="{{ boxLeft.box_search }}"
+                                                type="search"
+                                                class="form-control"
+                                                maxlength="50">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-fw fa-search"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                {#<ul class="pagination pagination-sm inline">#}
+                                {#<li><a href="#">«</a></li>#}
+                                {#<li><a href="#">1</a></li>#}
+                                {#</ul>#}
+                            </div>
+                        </div>
+                        <div class="box-body">
+
+                            <div class="callout callout-info">
+                                <p>
+                                    <i class="fa fa-fw fa-info"></i> Seleccione un item.
+                                </p>
+                            </div>
+
+                            <div class="box-content">
+                                {{ include('CoreBundle:BoxOneToManyGroup:Li/box_left.html.twig') }}
+                            </div>
+                        </div>
+                        {#<div class="box-footer clearfix no-border">#}
+                            {#<button type="button" class="btn btn-default pull-right">#}
+                            {#<i class="fa fa-plus"></i> Add item#}
+                            {#</button>#}
+                        {#</div>#}
+                    </div>
+                </div>
+                {#LEFT#}
+
+
+                {#MIDDLE#}
+                <div id="{{ boxMiddle.box_id }}" class="col-md-4">
+                    <div class="box box-{{ boxMiddle.box_class }}">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">
+                                <i class="fa fa-fw fa-{{ boxMiddle.box_icon|trim }}"></i> {{ boxMiddle.box_title|trim }} &nbsp;
+                                <i class="fa fa-1x fa-refresh fa-spin" style="display: none"></i>
+                            </h3>
+                        </div>
+                        <div class="box-body">
+                            <ul class="todo-list" style="min-height: 500px; "></ul>
+                        </div>
+                    </div>
+                </div>
+                {#MIDDLE#}
+
+
+                {#RIGHT#}
+                <div id="{{ boxRight.box_id }}" class="col-md-4">
+                    <div class="box box-{{ boxRight.box_class }}">
+                        <div class="box-header with-border ui-sortable-handle">
+
+                            <i class="fa fa-fw fa-{{ boxRight.box_icon|trim }}"></i>
+                            <h3 class="box-title">
+                                {{ boxRight.box_title|trim }}
+                                &nbsp;
+                                <i class="fa fa-1x fa-refresh fa-spin" style="display: none"></i>
+                            </h3>
+
+                            <div class="box-tools pull-right">
+                                <div class="row">
+                                    <div class="col-md-offset-6 col-md-6">
+                                        <div class="input-group">
+                                            <input
+                                                name="{{ boxRight.box_search }}"
+                                                type="search"
+                                                class="form-control"
+                                                maxlength="50">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-fw fa-search"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                {#<ul class="pagination pagination-sm inline">#}
+                                {#<li><a href="#">«</a></li>#}
+                                {#<li><a href="#">1</a></li>#}
+                                {#</ul>#}
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <input type="text" name="{{ boxRight.box_value }}" class="hide">
+                            <ul class="todo-list ui-sortable">
+                                {{ include('CoreBundle:BoxOneToManyGroup:Li/box_right.html.twig', {isAssigned:false}) }}
+                            </ul>
+                        </div>
+                        {#<div class="box-footer clearfix no-border">#}
+                            {#<button type="button" class="btn btn-default pull-right">#}
+                            {#<i class="fa fa-plus"></i> Add item#}
+                            {#</button>#}
+                        {#</div>#}
+                    </div>
+                </div>
+                {#RIGHT#}
+
+            </div>
+        </form>
+    </section>
+
+    {{ include('CoreBundle:BoxOneToManyGroup:Modal/info.html.twig') }}
+
+{% endblock %}

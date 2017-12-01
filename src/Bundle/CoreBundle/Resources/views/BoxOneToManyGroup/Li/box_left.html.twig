@@ -1,0 +1,64 @@
+{% spaceless %}
+
+    {% set index = 0 %}
+    {% for key, entity in leftEntity %}
+
+        {% set nameBox = entity.name_box|default() %}
+
+        {% if index == 2 %}
+            {% set index = 0 %}
+        {% endif %}
+
+        {% if index == 0 %}
+            <div class="row">
+        {% endif %}
+
+                <div
+                    class="col-md-6 x-hand {{ boxLeft.box_li_class }}"
+                    {#id="group-box-{{ entity.id_increment }}"#}
+                    data-id="{{ entity.id_increment }}"
+                    data-toggle="tooltip"
+                    data-original-title="{{ nameBox }}">
+
+                    <input type="radio" name="{{ boxLeft.box_value }}" value="{{ entity.id_increment }}" class="hide">
+
+                    <div class="group-selected hide">
+                        <span class="label label-default">
+                            {{ entity.id_increment }}
+                        </span>
+                        &nbsp;
+                        {{ nameBox|slice(0, 50) }}
+                    </div>
+
+                    <div class="small-box {{ randomBgColor() }}">
+                        <div class="inner">
+                            <h3>{{ entity.id_increment }}</h3>
+                            <p>{{ nameBox|slice(0, 28) }}</p>
+                        </div>
+                        <div class="icon">
+                            <i class="ion ion-person-add"></i>
+                        </div>
+                        <a href="#" class="small-box-footer">
+                            Asignar <i class="fa fa-arrow-circle-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+        {% set index = index + 1 %}
+
+        {% if index == 2 or loop.last %}
+            </div>
+        {% endif %}
+
+    {% else %}
+        <div class="row">
+            <div class="col-md-12 group-box">
+                <div class="small-box">
+                    <div class="inner bg-gray black-1">
+                        <span>No hay resultados.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% endspaceless %}

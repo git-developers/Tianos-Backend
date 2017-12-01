@@ -1,0 +1,43 @@
+{% spaceless %}
+    <span
+        class="{{ boxRight.box_li_id }}">
+
+        <span class="badge {{ badge_color }}">
+            {{ entity.id_increment }}
+        </span>
+
+        <span id="{{ boxRight.box_li_id }}-{{ entity.id_increment }}">
+            <span class="label label-default">
+                {{ entity[box.assign_group_name_key].id_increment }}
+            </span>
+
+            <span class="text">
+                {#{{ entity[box.assign_group_name_key].name_box }}#}
+                {{ entity.name }}
+            </span>
+        </span>
+
+        <div
+            class="tools"
+            data-toggle="tooltip"
+            data-original-title="Item {{ entity.id_increment }}"
+            style="display: none">
+            <i
+                class="fa fa-1x fa-fw fa-plus {{ boxRight.modal_assign_child_id }}"
+                alt="Agregar child"
+                title="Agregar child"
+                data-toggle="modal"
+                data-target="#{{ boxRight.modal_assign_child_id }}"></i>
+            <i
+                class="fa fa-1x fa-fw fa-pencil {{ boxRight.modal_assign_edit_id }}"
+                alt="Editar"
+                title="Editar"
+                data-toggle="modal"
+                data-target="#{{ boxRight.modal_assign_edit_id }}"></i>
+            <i
+                class="fa fa-1x fa-fw fa-trash-o {{ boxRight.modal_unassign_child_id }}"
+                alt="Eliminar"
+                title="Eliminar"></i>
+        </div>
+    </span>
+{% endspaceless %}

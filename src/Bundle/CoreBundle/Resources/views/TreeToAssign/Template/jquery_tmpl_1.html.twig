@@ -1,0 +1,56 @@
+{% spaceless %}
+    <script id="jquery_tmpl_1" class="template" type="text/x-jquery-tmpl">
+        <li class="x-hand" data-id="${id_increment}" id="li-${id_increment}">
+
+            <span class="{{ boxRight.box_li_id }}">
+                <span class="badge">
+                    ${id_increment}
+                </span>
+
+                <input type="radio" name="item-left" value="${id_increment}">
+
+                <span id="{{ boxRight.box_li_id }}-${id_increment}">
+
+                    <span class="label label-default">
+                        ${code}
+                    </span>
+
+                    <span class="text">
+                        ${name}
+                    </span>
+
+                </span>
+
+                <div
+                    class="tools"
+                    data-toggle="tooltip"
+                    data-original-title="Category ${id_increment}"
+                    style="display: none"
+                >
+                    <i
+                        class="fa fa-1x fa-fw fa-plus {{ boxLeft.modal_create_child_id }}"
+                        alt="Agregar categoria hijo"
+                        title="Agregar categoria hijo"
+                        data-toggle="modal"
+                        data-target="#{{ boxLeft.modal_create_child_id }}"></i>
+                    <i
+                        class="fa fa-1x fa-fw fa-pencil {{ boxLeft.modal_edit_id }}"
+                        alt="Editar"
+                        title="Editar"
+                        data-toggle="modal"
+                        data-target="#{{ boxLeft.modal_edit_id }}"></i>
+                    <i
+                        class="fa fa-1x fa-fw fa-trash-o {{ boxLeft.modal_delete_id }}"
+                        alt="Eliminar"
+                        title="Eliminar"
+                        data-toggle="modal"
+                        data-target="#{{ boxLeft.modal_delete_id }}"></i>
+                </div>
+
+            </span>
+
+            <ul class="{{ box.box_child_ul }}${id_increment}"></ul>
+
+        </li>
+    </script>
+{% endspaceless %}

@@ -1,0 +1,55 @@
+{% spaceless %}
+    <script id="jquery_tmpl_1" class="template" type="text/x-jquery-tmpl">
+        <li class="x-hand" data-id="${id_increment}" id="li-${id_increment}">
+            <span class="li-span">
+                <span class="badge">
+                    ${id_increment}
+                </span>
+
+                <input type="radio" name="item-left" value="${id_increment}">
+
+                <span id="li-span-${id_increment}">
+
+                    <span class="label label-default">
+                        ${code}
+                    </span>
+
+                    <span class="text">
+                        ${name}
+                    </span>
+
+                </span>
+
+                <div
+                    class="tools"
+                    data-toggle="tooltip"
+                    data-original-title="Category ${id_increment}"
+                    style="display: none"
+                >
+                    <i
+                        class="fa fa-1x fa-fw fa-plus {{ tree.modal_create_child_id }}"
+                        alt="Agregar categoria hijo"
+                        title="Agregar categoria hijo"
+                        data-toggle="modal"
+                        data-target="#{{ tree.modal_create_child_id }}"></i>
+                    <i
+                        class="fa fa-1x fa-fw fa-pencil {{ tree.modal_edit_id }}"
+                        alt="Editar"
+                        title="Editar"
+                        data-toggle="modal"
+                        data-target="#{{ tree.modal_edit_id }}"></i>
+                    <i
+                        class="fa fa-1x fa-fw fa-trash-o {{ tree.modal_delete_id }}"
+                        alt="Eliminar"
+                        title="Eliminar"
+                        data-toggle="modal"
+                        data-target="#{{ tree.modal_delete_id }}"></i>
+                </div>
+
+            </span>
+
+            <ul class="{{ tree.box_child_ul }}${id_increment}"></ul>
+
+        </li>
+    </script>
+{% endspaceless %}

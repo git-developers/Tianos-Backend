@@ -1,0 +1,103 @@
+{% spaceless %}
+    <script id="tmpl_jquery_1" class="template" type="text/x-jquery-tmpl">
+        <li class="x-hand" data-id="${id_increment}" id="li-${id_increment}">
+
+            <span
+                class="{{ boxRight.box_li_id }}">
+
+                <span class="badge">
+                    {#{{ entity.id_increment }}#}
+                    ${id_increment}
+                </span>
+
+                <span id="{{ boxRight.box_li_id }}-${id_increment}">
+                    <span class="label label-default">
+                        {{ '${' ~ box.assign_group_name_key ~ '.id_increment}' }}
+                    </span>
+
+                    <span class="text">
+                        ${name}
+                        {#{{ '${' ~ box.assign_group_name_key ~ '.name_box}' }}#}
+                    </span>
+                </span>
+
+                <div
+                    class="tools"
+                    data-toggle="tooltip"
+                    data-original-title="Item ${id_increment}"
+                    style="display: none">
+                    <i
+                        class="fa fa-1x fa-fw fa-plus {{ boxRight.modal_assign_child_id }}"
+                        alt="Agregar child"
+                        title="Agregar child"
+                        data-toggle="modal"
+                        data-target="#{{ boxRight.modal_assign_child_id }}"></i>
+                    <i
+                        class="fa fa-1x fa-fw fa-pencil {{ boxRight.modal_assign_edit_id }}"
+                        alt="Editar"
+                        title="Editar"
+                        data-toggle="modal"
+                        data-target="#{{ boxRight.modal_assign_edit_id }}"></i>
+                    <i
+                        class="fa fa-1x fa-fw fa-trash-o {{ boxRight.modal_unassign_child_id }}"
+                        alt="Eliminar"
+                        title="Eliminar"></i>
+                </div>
+            </span>
+
+            {#
+            <span class="li-span">
+                <span class="badge">
+                    ${id_increment}
+                </span>
+
+                <input type="radio" name="item-left" value="${id_increment}">
+
+                <span id="li-span-${id_increment}">
+
+                    <span class="label label-default">
+                        ${code}
+                    </span>
+
+                    <span class="text">
+                        ${name}
+                    </span>
+
+                </span>
+
+                <div
+                    class="tools"
+                    data-toggle="tooltip"
+                    data-original-title="Category ${id_increment}"
+                    style="display: none"
+                >
+                    <i
+                        class="fa fa-1x fa-fw fa-plus {{ tree.modal_create_child_id }}"
+                        alt="Agregar categoria hijo"
+                        title="Agregar categoria hijo"
+                        data-toggle="modal"
+                        data-target="#{{ tree.modal_create_child_id }}"></i>
+                    <i
+                        class="fa fa-1x fa-fw fa-pencil {{ tree.modal_edit_id }}"
+                        alt="Editar"
+                        title="Editar"
+                        data-toggle="modal"
+                        data-target="#{{ tree.modal_edit_id }}"></i>
+                    <i
+                        class="fa fa-1x fa-fw fa-trash-o {{ tree.modal_delete_id }}"
+                        alt="Eliminar"
+                        title="Eliminar"
+                        data-toggle="modal"
+                        data-target="#{{ tree.modal_delete_id }}"></i>
+                </div>
+
+            </span>
+            #}
+
+            <ul class="{{ box.box_child_ul }}${id_increment}"></ul>
+
+            {#<ul class="{{ tree.box_child_ul }}${id_increment}"></ul>#}
+
+        </li>
+    </script>
+{% endspaceless %}

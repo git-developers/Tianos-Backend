@@ -1,0 +1,25 @@
+# This file is part of the Sylius package.
+# (c) Paweł Jędrzejewski
+
+sylius:
+    form:
+        product:
+            name: Ad
+            description: Açıklama
+            attributes: Nitelikler
+            options: Ayarlar
+            meta_keywords: Meta anahtar kelimeleri
+            meta_description: Meta açıklama
+        product_variant:
+            name: Ad
+        association_type:
+            name: Ad
+            translations: Çeviriler
+        variant:
+            name: Ad
+        option:
+            name: Ad
+            values: Olası değerler
+        option_value:
+            add_value: Değer ekle
+            value: Değer

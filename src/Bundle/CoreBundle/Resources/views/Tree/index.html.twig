@@ -1,0 +1,163 @@
+{% extends "CoreBundle::template.html.twig" %}
+{% import "CoreBundle::Macro/tree.html.twig" as macro %}
+
+{% block bodyclass %}{% spaceless %}
+    {{ tree.body_css }}
+{% endspaceless %}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    {% stylesheets
+        '@CoreBundle/Resources/public/common/css/tree.css'
+        '@CoreBundle/Resources/public/tree/css/tree.css'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+
+    <style>
+
+    </style>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    {% javascripts
+    '@CoreBundle/Resources/public/tree/js/formCreate.js'
+    '@CoreBundle/Resources/public/tree/js/formCreateChild.js'
+    '@CoreBundle/Resources/public/tree/js/formEdit.js'
+    '@CoreBundle/Resources/public/tree/js/formDelete.js'
+    '@CoreBundle/Resources/public/tree/js/formView.js'
+    '@CoreBundle/Resources/public/common/js/jquery.tmpl.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    <script type="text/javascript">
+
+        $(document).on({
+            mouseenter: function(){
+                $(this).find('div.tools').toggle();
+                $(this).toggleClass('bg-gray');
+            },
+            mouseleave: function(){
+                $(this).find('div.tools').toggle();
+                $(this).toggleClass('bg-gray');
+            },
+        }, 'span.li-span');
+
+        $('body.{{ tree.body_css }}').formCreate({
+            box_main_div: '{{ tree.box_main_div }}',
+            box_main_ul: '{{ tree.box_main_ul }}',
+            form_create_name: '{{ tree.form_create_name }}',
+            modal_create_id: '{{ tree.modal_create_id }}',
+            route_create: '{{ tree.route_create }}'
+        });
+
+        $('body.{{ tree.body_css }}').formCreateChild({
+            box_main_div: '{{ tree.box_main_div }}',
+            box_child_ul: '{{ tree.box_child_ul }}',
+            form_create_child_name: '{{ tree.form_create_child_name }}',
+            modal_create_child_id: '{{ tree.modal_create_child_id }}',
+            route_create_child: '{{ tree.route_create_child }}'
+        });
+
+        $('body.{{ tree.body_css }}').formEdit({
+            {#form_input_id: '{{ tree.form_input_id }}',#}
+            form_edit_name: '{{ tree.form_edit_name }}',
+            modal_edit_id: '{{ tree.modal_edit_id }}',
+            route_edit: '{{ tree.route_edit }}'
+        });
+
+        $('body.{{ tree.body_css }}').formDelete({
+            box_main_div: '{{ tree.box_main_div }}',
+            {#form_input_id: '{{ tree.form_input_id }}',#}
+            form_delete_name: '{{ tree.form_delete_name }}',
+            modal_delete_id: '{{ tree.modal_delete_id }}',
+            route_delete: '{{ tree.route_delete }}'
+        });
+
+        $('body.{{ tree.body_css }}').formView({
+            box_main_ul: '{{ tree.box_main_ul }}',
+            modal_view_id: '{{ tree.modal_view_id }}',
+            route_view: '{{ tree.route_view }}'
+        });
+    </script>
+
+{% endblock %}
+
+{% block content %}
+
+    <section class="content-header">
+        <h1>
+            <i class="fa fa-fw fa-sitemap"></i> {{ tree.section_title }}
+            <small>panel</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Dashboard</li>
+        </ol>
+    </section>
+
+    <section class="content">
+        <form name="form-category-product">
+
+            <div class="row">
+                <section class="col-md-12 connectedSortable ui-sortable">
+                    <div class="box box-primary">
+
+                        <div class="box-header ui-sortable-handle" style="cursor: move;">
+                            <i class="ion ion-android-list"></i>
+                            <h3 class="box-title">items</h3>
+
+                            <div class="box-tools pull-right">
+                                <button
+                                        type="button"
+                                        class="btn btn-default pull-right {{ tree.modal_create_id }}"
+                                        alt="Crear item"
+                                        title="Crear item"
+                                        data-toggle="modal"
+                                        data-target="#{{ tree.modal_create_id }}">
+                                    <i class="fa fa-plus"></i> Crear item
+                                </button>
+                            </div>
+                        </div>
+
+                        {#<link rel="stylesheet" href="http://zgs225.github.io/easy-tree/dist/css/easyTree.min.css">#}
+                        {#https://two-wrongs.com/draw-a-tree-structure-with-only-css#}
+
+                        <div class="{{ tree.box_main_div }} box-body">
+
+                            <ul id="{{ tree.box_main_ul }}">
+                                {% if entity is not empty %}
+                                    {{ macro.tree(entity, tree, -1) }}
+                                {% else %}
+                                    <p>No hay items que mostrar</p>
+                                {% endif %}
+                            </ul>
+
+                        </div>
+                        {#
+                        <div class="box-footer clearfix no-border">
+                            <button type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add item</button>
+                        </div>#}
+
+                    </div>
+                </section>
+            </div>
+
+        </form>
+    </section>
+
+    {{ include('CoreBundle:Tree:Modal/create.html.twig') }}
+    {{ include('CoreBundle:Tree:Modal/create_child.html.twig') }}
+    {{ include('CoreBundle:Tree:Modal/edit.html.twig') }}
+    {{ include('CoreBundle:Tree:Modal/delete.html.twig') }}
+    {{ include('CoreBundle:Tree:Modal/view.html.twig') }}
+
+    {{ include('CoreBundle:Tree:Template/jquery_tmpl_1.html.twig') }}
+    {{ include('CoreBundle:Tree:Template/jquery_tmpl_2.html.twig') }}
+
+{% endblock %}

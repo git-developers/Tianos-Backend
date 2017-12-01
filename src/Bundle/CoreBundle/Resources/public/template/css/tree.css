@@ -1,0 +1,7 @@
+span.module-span {
+    width:100%;
+    display: block;
+    padding-bottom: 4px;
+    overflow: hidden;
+    border-radius: 5px;
+}

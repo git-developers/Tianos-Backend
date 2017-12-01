@@ -1,0 +1,13 @@
+#app:
+#    resource: '@AppBundle/Controller/'
+#    type: annotation
+
+frontend:
+    resource: "@FrontendBundle/Resources/config/routing.yml"
+    prefix:   /
+    #type:     annotation
+
+backend:
+    resource: "@BackendBundle/Resources/config/routing.yml"
+    prefix:   /backend
+    #type:     annotation

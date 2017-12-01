@@ -1,0 +1,146 @@
+{% import "CoreBundle::Macro/html.html.twig" as html %}
+{% import "CoreBundle::Macro/head.html.twig" as head %}
+{% import "CoreBundle::Macro/meta.html.twig" as meta %}
+{% import "CoreBundle::Macro/bi3d.html.twig" as bi3d %}
+{% import "CoreBundle::Macro/twitter.html.twig" as twitter %}
+{% import "CoreBundle::Macro/open_graph.html.twig" as og %}
+
+
+{% spaceless %}
+<!DOCTYPE html>
+<html>
+<head>
+
+    {{ head.meta_default() }}
+    {{ head.favicon() }}
+    {{ head.canonical() }}
+
+    {% block seo %}
+        {% block head %}
+
+            {#para copiar en otras paginas#}
+            {#{{ head.title() }}#}
+        {% endblock %}
+
+        {% block twitter %}
+            {{ twitter.card() }}
+
+            {#para copiar en otras paginas#}
+            {#{{ twitter.title() }}#}
+            {#{{ twitter.description() }}#}
+            {#{{ twitter.image() }}#}
+        {% endblock %}
+
+        {% block open_graph %}
+            {{ og.default() }}
+            {{ og.url() }}
+
+            {#para copiar en otras paginas#}
+            {#{{ og.title() }}#}
+            {#{{ og.description() }}#}
+            {#{{ og.image() }}#}
+        {% endblock %}
+
+        {% block bi3d %}
+            {#para copiar en otras paginas#}
+            {#{{ bi3d.art_id() }}#}
+            {#{{ bi3d.section() }}#}
+            {#{{ bi3d.art_title() }}#}
+            {#{{ bi3d.pub_date() }}#}
+        {% endblock %}
+    {% endblock %}
+
+    {{ head.dns_prefetch() }}
+    {{ head.apple_touch_icon() }}
+
+    {% block stylesheets %}
+
+        {% stylesheets
+            filter='cssrewrite'
+            'bundles/core/main-assets/thirdparty/font-awesome/css/font-awesome.min.css'
+            'bundles/core/main-assets/thirdparty/ionicons/css/ionicons.min.css'
+            'bundles/core/main-assets/plugins/iCheck/flat/orange.css'
+            'bundles/core/main-assets/plugins/iCheck/square/orange.css'
+            'bundles/core/main-assets/plugins/iCheck/square/green.css'
+            'bundles/core/main-assets/plugins/iCheck/square/pink.css'
+            'bundles/core/main-assets/bootstrap/css/bootstrap.min.css'
+            '@CoreBundle/Resources/public/main-assets/dist/css/AdminLTE.min.css'
+            '@CoreBundle/Resources/public/main-assets/plugins/morris/morris.css'
+            '@CoreBundle/Resources/public/main-assets/plugins/jvectormap/jquery-jvectormap-1.2.2.css'
+            '@CoreBundle/Resources/public/main-assets/plugins/datepicker/datepicker3.css'
+            '@CoreBundle/Resources/public/main-assets/plugins/daterangepicker/daterangepicker.css'
+            '@CoreBundle/Resources/public/main-assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css'
+            '@CoreBundle/Resources/public/main-assets/plugins/pace/pace.min.css'
+            '@CoreBundle/Resources/public/common/css/skin-tianos.css'
+            '@CoreBundle/Resources/public/common/css/tianos.css'
+        %}
+            <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+
+        <style>
+            .login-box, .register-box{
+                margin: 3% auto;
+            }
+            input[type=checkbox]{
+                height: 20px;
+                width: 20px;
+            }
+        </style>
+
+    {% endblock %}
+
+</head>
+
+<body class="{{ project_skin }} hold-transition sidebar-mini login-page {% block bodyclass %}{% endblock %}">
+
+{{ include('CoreBundle::TemplateMain/2_header_security.html.twig') }}
+
+{% block content %}
+{% endblock %}
+
+{% block javascripts %}
+
+    {% javascripts
+        '@CoreBundle/Resources/public/main-assets/plugins/jQuery/jquery-2.2.3.min.js'
+        '@CoreBundle/Resources/public/main-assets/bootstrap/js/bootstrap.min.js'
+        '@CoreBundle/Resources/public/common/js/background.cycle.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    {#HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries#}
+    <!--[if lt IE 9]>
+    <script src="{{ asset('bundles/backend/html5shiv/html5shiv.min.js')}}"></script>
+    <script src="{{ asset('bundles/backend/respond/respond.min.js')}}"></script>
+    <![endif]-->
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("body").backgroundCycle({
+                imageUrls: [
+                    '{{ asset('bundles/core/common/images/bg-image/bg-1.jpg')}}',
+                    '{{ asset('bundles/core/common/images/bg-image/bg-2.jpg')}}',
+                    '{{ asset('bundles/core/common/images/bg-image/bg-3.jpg')}}',
+                    '{{ asset('bundles/core/common/images/bg-image/bg-4.jpg')}}',
+                    '{{ asset('bundles/core/common/images/bg-image/bg-5.jpg')}}',
+                    '{{ asset('bundles/core/common/images/bg-image/bg-1.png')}}'
+                ],
+                fadeSpeed: 1500,
+                duration: 3000,
+                backgroundSize: SCALING_MODE_COVER
+            });
+        });
+    </script>
+
+    <script type="text/javascript">
+
+        {#To make Pace works on Ajax calls#}
+        $(document).ajaxStart(function() { Pace.restart(); });
+
+    </script>
+
+{% endblock %}
+
+</body>
+</html>
+{% endspaceless %}

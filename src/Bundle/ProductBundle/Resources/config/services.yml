@@ -1,0 +1,6 @@
+services:
+
+    tianos.controller.product:
+        class: Bundle\ProductBundle\Controller\ProductController
+        tags:
+            - { name: tianos.controller.product, alias: tianos.controller.product }

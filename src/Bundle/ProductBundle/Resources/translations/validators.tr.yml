@@ -1,0 +1,24 @@
+# This file is part of the Sylius package.
+# (c) Paweł Jędrzejewski
+
+sylius:
+    product:
+        sku:
+            not_blank: Lütfen ürün stok birimini girin.
+            unique: Ürün stok birimi benzersiz olmalıdır.
+        slug:
+            not_blank: Lütfen ürün bilgisi girin.
+        name:
+            not_blank: Lütfen ürün adı girin.
+            min_length: Ürün adı en az 1 karakter uzunluğunda olmalıdır.|Ürün adı en az {{ limit }} karakter uzunluğunda olmalıdır.
+            max_length: Ürün adı 1 karakterden uzun olmamalıdır.|Ürün adı {{ limit }} karakterden uzun olmamalıdır.
+    option:
+        name:
+            not_blank: Seçenek adı giriniz.
+            min_length: Seçenek adı en az 1 karakter uzunluğunda olmalıdır.|Seçenek adı en az {{ limit }} karakter uzunluğunda olmalıdır.
+            max_length: Seçenek adı 1 karakterden uzun olmamalıdır.|Seçenek adı {{ limit }} karakterden uzun olmamalıdır.
+        values:
+            min_count: Lütfen en az {{ limit }} seçenek ekleyin.|Lütfen en az {{ limit }} seçenek ekleyin.
+    option_value:
+        value:
+            not_blank: Lütfen seçenek değeri girin.

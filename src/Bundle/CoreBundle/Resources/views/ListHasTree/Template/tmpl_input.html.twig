@@ -1,0 +1,17 @@
+{% spaceless %}
+    <script id="tmpl_input_{{ key }}" class="template" type="text/x-jquery-tmpl">
+        <div class="input-group x-hand">
+
+            <span class="input-group-addon">
+                <i class="fa fa-{{ setting.icon }}"></i>
+            </span>
+
+            <input type="text" name="template_has_module[settings][{{ key }}][]" class="form-control" placeholder="nombre">
+
+            <span class="input-group-addon {{ key }}">
+                <i class="fa fa-trash-o"></i>
+            </span>
+
+        </div>
+    </script>
+{% endspaceless %}

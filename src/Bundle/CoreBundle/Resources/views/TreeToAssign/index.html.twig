@@ -1,0 +1,272 @@
+{% extends "CoreBundle::template.html.twig" %}
+{% import "CoreBundle::Macro/tree_to_assign.html.twig" as macro %}
+
+{% block bodyclass %}{% spaceless %}
+    {{ box.body_css }}
+{% endspaceless %}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    {% stylesheets
+        '@CoreBundle/Resources/public/common/css/tree.css'
+        '@CoreBundle/Resources/public/tree-to-assign/css/tree.css'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+
+    <style>
+        span.{{ boxRight.box_li_id }} {
+            width:100%;
+            display: block;
+            padding-bottom: 4px;
+            overflow: hidden;
+        }
+    </style>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    {% javascripts
+    '@CoreBundle/Resources/public/common/js/handleSubmitRightSearch.js'
+    '@CoreBundle/Resources/public/tree-to-assign/js/formCreate.js'
+    '@CoreBundle/Resources/public/tree-to-assign/js/formCreateChild.js'
+    '@CoreBundle/Resources/public/tree-to-assign/js/formEdit.js'
+    '@CoreBundle/Resources/public/tree-to-assign/js/formDelete.js'
+    '@CoreBundle/Resources/public/tree-to-assign/js/boxRightSearch.js'
+    '@CoreBundle/Resources/public/tree-to-assign/js/boxLeftSelectItem.js'
+    '@CoreBundle/Resources/public/tree-to-assign/js/boxRightSelectItem.js'
+    '@CoreBundle/Resources/public/common/js/jquery.tmpl.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    <script type="text/javascript">
+
+        $(function() {
+
+            $(document).on({
+                mouseenter: function(){
+                    $(this).find('div.tools').toggle();
+                    $(this).toggleClass('bg-gray');
+                },
+                mouseleave: function(){
+                    $(this).find('div.tools').toggle();
+                    $(this).toggleClass('bg-gray');
+                },
+            }, 'span.{{ boxRight.box_li_id }}');
+
+            $('div#{{ boxRight.box_id }}').handleSubmitRightSearch({
+                box_right_id: '{{ boxRight.box_id }}',
+                box_search: '{{ boxRight.box_search }}'
+            });
+
+            $('body.{{ box.body_css }}').formCreate({
+                box_main_div: '{{ box.box_main_div }}',
+                box_main_ul: '{{ box.box_main_ul }}',
+                form_create_name: '{{ boxLeft.form_create_name }}',
+                modal_create_id: '{{ boxLeft.modal_create_id }}',
+                route_create: '{{ boxLeft.route_create }}'
+            });
+
+            $('body.{{ box.body_css }}').formCreateChild({
+                box_main_div: '{{ box.box_main_div }}',
+                box_child_ul: '{{ box.box_child_ul }}',
+                form_create_child_name: '{{ boxLeft.form_create_child_name }}',
+                modal_create_child_id: '{{ boxLeft.modal_create_child_id }}',
+                route_create_child: '{{ boxLeft.route_create_child }}'
+            });
+
+            $('body.{{ box.body_css }}').formEdit({
+                {#form_input_id: '{{ boxLeft.form_input_id }}',#}
+                form_edit_name: '{{ boxLeft.form_edit_name }}',
+                modal_edit_id: '{{ boxLeft.modal_edit_id }}',
+                route_edit: '{{ boxLeft.route_edit }}'
+            });
+
+            $('body.{{ box.body_css }}').formDelete({
+                box_main_div: '{{ box.box_main_div }}',
+                {#form_input_id: '{{ boxLeft.form_input_id }}',#}
+                form_delete_name: '{{ boxLeft.form_delete_name }}',
+                modal_delete_id: '{{ boxLeft.modal_delete_id }}',
+                route_delete: '{{ boxLeft.route_delete }}',
+            });
+
+            $('div#{{ boxRight.box_id }}').boxRightSearch({
+                form_name: '{{ box.form_name }}',
+                box_left_id: '{{ boxLeft.box_id }}',
+                box_right_id: '{{ boxRight.box_id }}',
+                box_search: '{{ boxRight.box_search }}',
+                route_search: '{{ boxRight.route_search }}',
+            });
+
+            $('div#{{ boxRight.box_id }}').boxLeftSelectItem({
+                form_name: '{{ box.form_name }}',
+                box_left_id: '{{ boxLeft.box_id }}',
+                box_right_id: '{{ boxRight.box_id }}',
+                box_li_id: '{{ boxRight.box_li_id }}',
+                box_li_class: '{{ boxRight.box_li_class }}',
+                route_boxleft_has_boxright: '{{ boxLeft.route_boxleft_has_boxright }}',
+            });
+
+            $('div#{{ boxRight.box_id }}').boxRightSelectItem({
+                form_name: '{{ box.form_name }}',
+                box_separator: '{{ box.box_separator }}',
+                box_left_id: '{{ boxLeft.box_id }}',
+                box_right_id: '{{ boxRight.box_id }}',
+                box_li_id: '{{ boxRight.box_li_id }}',
+                box_li_class: '{{ boxRight.box_li_class }}',
+                box_value_hidden: '{{ boxRight.box_value_hidden }}',
+                route_assign: '{{ boxRight.route_assign }}',
+                action: {
+                    create:'{{ box.action_create }}',
+                    delete:'{{ box.action_delete }}'
+                },
+            });
+
+        });
+
+    </script>
+
+{% endblock %}
+
+{% block content %}
+
+    <section class="content-header">
+        <h1>
+            <i class="fa fa-fw fa-exchange"></i>
+            Asignar <span>{{ boxLeft.box_title|trim }} <i class="fa fa-fw fa-arrow-right"></i> {{ boxRight.box_title|trim }}</span>
+            <small>lista</small>
+        </h1>
+        <ol class="breadcrumb">
+            {#<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>#}
+            {#<li class="active">Dashboard</li>#}
+
+            <li>
+                <button
+                    class="btn btn-info btn-xs modal-info"
+                    alt="Info"
+                    title="Info"
+                    data-toggle="modal"
+                    data-target="#modal-info">
+                    <i class="fa fa-fw fa-info-circle"></i> info
+                </button>
+            </li>
+        </ol>
+    </section>
+
+    <section class="content">
+        <form name="{{ box.form_name }}">
+            <div class="row">
+
+                {#LEFT#}
+                <div id="{{ boxLeft.box_id }}" class="col-md-6">
+                    <div class="box box-{{ boxLeft.box_class }}">
+
+                        <div class="box-header ui-sortable-handle">
+                            <i class="fa fa-fw fa-{{ boxLeft.box_icon|trim }}"></i>
+                            <h3 class="box-title">
+                                {{ boxLeft.box_title|trim }}
+                            </h3>
+
+                            <div class="box-tools pull-right">
+                                <button
+                                    type="button"
+                                    class="btn btn-default pull-right {{ boxLeft.modal_create_id }}"
+                                    alt="Crear item"
+                                    title="Crear item"
+                                    data-toggle="modal"
+                                    data-target="#{{ boxLeft.modal_create_id }}">
+                                    <i class="fa fa-plus"></i> Crear item
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="{{ box.box_main_div }} box-body">
+
+                            <div class="callout callout-info">
+                                <p>
+                                    <i class="fa fa-fw fa-info"></i> Seleccione un item.
+                                </p>
+                            </div>
+
+                            <ul id="{{ box.box_main_ul }}">
+                                {% if leftEntity is not empty %}
+                                    {{ macro.tree(leftEntity, box, boxLeft, boxRight, -1) }}
+                                {% else %}
+                                    <p class="empty">No hay items que mostrar</p>
+                                {% endif %}
+                            </ul>
+                        </div>
+                        {#
+                        <div class="box-footer clearfix no-border">
+                            <button type="button" class="btn btn-default pull-right"><i class="fa fa-plus"></i> Add item</button>
+                        </div>#}
+
+                    </div>
+                </div>
+                {#LEFT#}
+
+                {#RIGHT#}
+                <div id="{{ boxRight.box_id }}" class="col-md-6">
+                    <div class="box box-{{ boxRight.box_class }}">
+                        <div class="box-header ui-sortable-handle">
+
+                            <i class="fa fa-fw fa-{{ boxRight.box_icon|trim }}"></i>
+                            <h3 class="box-title">
+                                {{ boxRight.box_title|trim }}
+                                &nbsp;
+                                <i class="fa fa-1x fa-refresh fa-spin" style="display: none"></i>
+                            </h3>
+
+                            <div class="box-tools pull-right">
+                                <div class="row">
+                                    <div class="col-md-offset-6 col-md-6">
+                                        <div class="input-group">
+                                            <input
+                                                name="{{ boxRight.box_search }}"
+                                                type="search"
+                                                class="form-control"
+                                                maxlength="50">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-fw fa-search"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {#<ul class="pagination pagination-sm inline">#}
+                                {#<li><a href="#">«</a></li>#}
+                                {#<li><a href="#">1</a></li>#}
+                                {#</ul>#}
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <ul class="todo-list ui-sortable">
+                                {{ include('CoreBundle:TreeToAssign:Li/box_right.html.twig', {isAssigned:false}) }}
+                            </ul>
+                        </div>
+                        {#<div class="box-footer clearfix no-border">#}
+                        {#<button type="button" class="btn btn-default pull-right">#}
+                        {#<i class="fa fa-plus"></i> Add item#}
+                        {#</button>#}
+                        {#</div>#}
+                    </div>
+                </div>
+                {#RIGHT#}
+
+            </div>
+        </form>
+    </section>
+
+    {{ include('CoreBundle:TreeToAssign:Modal/create.html.twig') }}
+    {{ include('CoreBundle:TreeToAssign:Modal/create_child.html.twig') }}
+    {{ include('CoreBundle:TreeToAssign:Modal/edit.html.twig') }}
+    {{ include('CoreBundle:TreeToAssign:Modal/delete.html.twig') }}
+
+    {{ include('CoreBundle:TreeToAssign:Template/jquery_tmpl_1.html.twig') }}
+    {{ include('CoreBundle:TreeToAssign:Template/jquery_tmpl_2.html.twig') }}
+
+{% endblock %}

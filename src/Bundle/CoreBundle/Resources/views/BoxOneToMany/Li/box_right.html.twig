@@ -1,0 +1,54 @@
+{% spaceless %}
+    {% for key, entity in rightEntity %}
+
+        {% set idIncrement = entity.id_increment|default() %}
+
+        {% if boxRightAssignedKeys is defined %}
+            {% set isAssigned = false %}
+
+            {% if idIncrement in boxRightAssignedKeys %}
+                {% set isAssigned = true %}
+            {% endif %}
+        {% endif %}
+
+        <li
+            class="{{ boxRight.box_li_id }} x-hand {{ isAssigned ? 'bg-orange' : '' }}"
+            data-id="{{ idIncrement }}">
+
+            <span class="handle ui-sortable-handle">
+                <i class="fa fa-ellipsis-v"></i>
+                <i class="fa fa-ellipsis-v"></i>
+            </span>
+
+            <input
+                type="hidden"
+                name="{{ boxRight.box_value_hidden }}">
+
+            <input
+                name="{{ boxRight.box_value }}"
+                type="checkbox"
+                {{ isAssigned ? 'checked="checked"' : '' }}
+                data-id="{{ idIncrement }}"
+                value="{{ idIncrement }}">
+
+            <span class="badge {{ boxRight.badge_class }}">
+                {{ idIncrement }}
+            </span>
+
+            <span class="text">
+                {{ entity.name_box|default() }}
+            </span>
+
+            {#<div class="tools">#}
+                {#<i class="fa fa-edit"></i>#}
+                {#<i class="fa fa-trash-o"></i>#}
+            {#</div>#}
+        </li>
+    {% else %}
+        <li>
+            <span class="text">
+                No hay resultados.
+            </span>
+        </li>
+    {% endfor %}
+{% endspaceless %}

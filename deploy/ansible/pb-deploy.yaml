@@ -1,0 +1,19 @@
+---
+
+- hosts: webservers
+#  sudo: yes
+  vars:
+    - app_name: PleaseDeployMe
+    - repo_url: git@gitlab.ec.pe:jafeth.bendezu/tianos.git
+    - repo_remote: origin
+    - repo_version: master
+    - webapps_dir: /deployed
+    - virtualenv_root: /deployed/PleaseDeployMe/mac
+    - welcomeMsg: "Pollo gordo 33333333333"
+
+  tasks:
+    - name: Git Pull Project
+      git: repo={{repo_url}} dest={{webapps_dir}}/{{app_name}} version=master
+
+
+#accept_hostkey=no

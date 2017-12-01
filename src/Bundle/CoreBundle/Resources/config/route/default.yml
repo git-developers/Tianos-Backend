@@ -1,0 +1,4 @@
+core_default_load_fixtures:
+    path: /load-fixtures
+    defaults: { _controller: CoreBundle:Default:loadFixtures }
+    methods: [GET, POST]

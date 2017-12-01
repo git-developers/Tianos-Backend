@@ -1,0 +1,256 @@
+{% extends "CoreBundle::template.html.twig" %}
+
+{% block bodyclass %}{% spaceless %}
+    {{ box.body_css }}
+{% endspaceless %}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    <style>
+        div#{{ boxLeft.box_id }} .callout{
+            min-height: 51px;
+        }
+    </style>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    {% javascripts
+    '@CoreBundle/Resources/public/box-one-to-many/js/boxInfo.js'
+    '@CoreBundle/Resources/public/box-one-to-many/js/boxLeftSearch.js'
+    '@CoreBundle/Resources/public/box-one-to-many/js/boxLeftSelectItem.js'
+    '@CoreBundle/Resources/public/box-one-to-many/js/boxRightSearch.js'
+    '@CoreBundle/Resources/public/box-one-to-many/js/boxRightSelectItem.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    <script type="application/javascript">
+
+        $(function() {
+
+            $('div#{{ boxLeft.box_id }}').boxLeftSearch({
+                form_name: '{{ box.form_name }}',
+                box_id: '{{ boxLeft.box_id }}',
+                box_search: '{{ boxLeft.box_search }}',
+                route_search: '{{ boxLeft.route_search }}',
+            });
+
+            $('div#{{ boxLeft.box_id }}').boxLeftSelectItem({
+                form_name: '{{ box.form_name }}',
+                box_left_id: '{{ boxLeft.box_id }}',
+                box_right_id: '{{ boxRight.box_id }}',
+                box_li_id: '{{ boxLeft.box_li_id }}',
+                box_li_class: '{{ boxLeft.box_li_class }}',
+                route_select_item: '{{ boxLeft.route_select_item }}',
+            });
+
+            $('div#{{ boxRight.box_id }}').boxRightSearch({
+                form_name: '{{ box.form_name }}',
+                box_left_id: '{{ boxLeft.box_id }}',
+                box_right_id: '{{ boxRight.box_id }}',
+                box_search: '{{ boxRight.box_search }}',
+                route_search: '{{ boxRight.route_search }}',
+            });
+
+            $('div#{{ boxRight.box_id }}').boxRightSelectItem({
+                form_name: '{{ box.form_name }}',
+                box_separator: '{{ box.box_separator }}',
+                box_left_id: '{{ boxLeft.box_id }}',
+                box_right_id: '{{ boxRight.box_id }}',
+                box_li_id: '{{ boxRight.box_li_id }}',
+                box_li_class: '{{ boxRight.box_li_class }}',
+                box_value_hidden: '{{ boxRight.box_value_hidden }}',
+                route_select_item: '{{ boxRight.route_select_item }}',
+                action: {
+                    create:'{{ box.action_create }}',
+                    delete:'{{ box.action_delete }}'
+                },
+            });
+
+            $('body.{{ box.body_css }}').boxInfo({
+                modal_info_id: '{{ box.modal_info_id }}',
+                route_info: '{{ box.route_info }}',
+            });
+
+        });
+
+
+        {#
+        $('input[name=search-user]').keyup(function() {
+            var q = $(this).val();
+            var object = $('#list-user span.text');
+            loop(object, q);
+        });
+
+        function loop(object, q) {
+
+            var globalTimeout = null;
+            var count = 0;
+
+            if(globalTimeout != null){
+                clearTimeout(globalTimeout);
+            }
+
+            globalTimeout = setTimeout(function() {
+
+                object.each(function(key, val){
+
+                    // If the list item does not contain the text phrase fade it out
+                    if ($(this).text().search(new RegExp(q, 'i')) < 0) {
+                        $(this).parent().hide();
+//                        $(this).parent().hide();
+                    // Show the list item if the phrase matches and increase the count by 1
+                    } else {
+//                        $(this).parent().show();
+                        $(this).parent().show();
+                        count++;
+                    }
+
+                    if(key > 5){
+                        $(this).parent().hide();
+                    }
+//                    console.log(key);
+
+                });
+            }, 200);
+        }
+        #}
+
+    </script>
+
+
+{% endblock %}
+
+{% block content %}
+
+    <section class="content-header">
+        <h1>
+            <i class="fa fa-fw fa-exchange"></i>
+            Asignar <span>{{ boxLeft.box_title|trim }} <i class="fa fa-fw fa-arrow-right"></i> {{ boxRight.box_title|trim }}</span>
+            <small>lista</small>
+        </h1>
+        <ol class="breadcrumb">
+            {#<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>#}
+            {#<li class="active">Dashboard</li>#}
+
+            <li>
+                <button
+                    class="btn btn-info btn-xs modal-info"
+                    alt="Info"
+                    title="Info"
+                    data-toggle="modal"
+                    data-target="#modal-info">
+                    <i class="fa fa-fw fa-info-circle"></i> info
+                </button>
+            </li>
+        </ol>
+    </section>
+
+    <section class="content">
+        <form name="{{ box.form_name }}">
+            <div class="row">
+
+                {#LEFT#}
+                <div id="{{ boxLeft.box_id }}" class="col-md-6">
+                    <div class="box box-{{ boxLeft.box_class }}">
+                        <div class="box-header ui-sortable-handle">
+
+                            <i class="fa fa-fw fa-{{ boxLeft.box_icon|trim }}"></i>
+                            <h3 class="box-title">
+                                {{ boxLeft.box_title|trim }}
+                            </h3>
+
+                            <div class="box-tools pull-right">
+                                <div class="row">
+                                    <div class="col-md-offset-6 col-md-6">
+                                        <div class="input-group">
+                                            <input name="{{ boxLeft.box_search }}" type="search" class="form-control" maxlength="50">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-fw fa-search"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {#<ul class="pagination pagination-sm inline">#}
+                                {#<li><a href="#">«</a></li>#}
+                                {#<li><a href="#">1</a></li>#}
+                                {#</ul>#}
+                            </div>
+                        </div>
+                        <div class="box-body">
+
+                            <div class="callout callout-info">
+                                <p>
+                                    <i class="fa fa-fw fa-info"></i> Seleccione un item.
+                                </p>
+                            </div>
+
+                            <ul class="todo-list ui-sortable">
+                                {{ include('CoreBundle:BoxOneToMany:Li/box_left.html.twig') }}
+                            </ul>
+                        </div>
+                        {#<div class="box-footer clearfix no-border">#}
+                            {#<button type="button" class="btn btn-default pull-right">#}
+                            {#<i class="fa fa-plus"></i> Add item#}
+                            {#</button>#}
+                        {#</div>#}
+                    </div>
+                </div>
+                {#LEFT#}
+
+                {#RIGHT#}
+                <div id="{{ boxRight.box_id }}" class="col-md-6">
+                    <div class="box box-{{ boxRight.box_class }}">
+                        <div class="box-header ui-sortable-handle">
+
+                            <i class="fa fa-fw fa-{{ boxRight.box_icon|trim }}"></i>
+                            <h3 class="box-title">
+                                {{ boxRight.box_title|trim }}
+                                &nbsp;
+                                <i class="fa fa-1x fa-refresh fa-spin" style="display: none"></i>
+                            </h3>
+
+                            <div class="box-tools pull-right">
+                                <div class="row">
+                                    <div class="col-md-offset-6 col-md-6">
+                                        <div class="input-group">
+                                            <input name="{{ boxRight.box_search }}" type="search" class="form-control" maxlength="50">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-fw fa-search"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {#<ul class="pagination pagination-sm inline">#}
+                                {#<li><a href="#">«</a></li>#}
+                                {#<li><a href="#">1</a></li>#}
+                                {#</ul>#}
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <ul class="todo-list ui-sortable">
+                                {{ include('CoreBundle:BoxOneToMany:Li/box_right.html.twig', {isAssigned:false,}) }}
+                            </ul>
+                        </div>
+                        {#<div class="box-footer clearfix no-border">#}
+                            {#<button type="button" class="btn btn-default pull-right">#}
+                            {#<i class="fa fa-plus"></i> Add item#}
+                            {#</button>#}
+                        {#</div>#}
+                    </div>
+                </div>
+                {#RIGHT#}
+
+            </div>
+        </form>
+    </section>
+
+    {{ include('CoreBundle:BoxOneToMany:Modal/info.html.twig') }}
+
+{% endblock %}

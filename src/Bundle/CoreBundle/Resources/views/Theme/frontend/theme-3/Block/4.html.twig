@@ -1,0 +1,19 @@
+<div class="row">
+
+    {% set items = render_items(templateHasModule, 'item/1') %}
+
+    {% for key, obj in items %}
+        <div class="span3 tofade">
+            <div class="service-box">
+                <figure class="icon">
+                    <img src="{{ asset('bundles/core/template-frontend/template-3/images/icon' ~ loop.index ~ '.png') }}" alt="" />
+                </figure>
+                <div class="service-box_body">
+                    <h2 class="title">{{ obj.name }}</h2>
+                    <div class="service-box_txt">{{ obj.excerpt }}</div>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+</div>

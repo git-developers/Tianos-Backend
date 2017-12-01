@@ -1,0 +1,255 @@
+{% extends "CoreBundle::template.html.twig" %}
+
+{% block bodyclass %}{% spaceless %}
+    {{ crud.body_css }}
+{% endspaceless %}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    {% stylesheets
+    filter='cssrewrite'
+    '@CoreBundle/Resources/public/main-assets/plugins/datatables/dataTables.bootstrap.css'
+    '@CoreBundle/Resources/public/main-assets/plugins/datatables/extensions/Editor/css/editor.dataTables.min.css'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+
+    <style>
+        table#{{ crud.table_name }} tr.{{ crud.table_tr_class }}:hover{
+            background-color: #d2d6de;
+            cursor: pointer;
+        }
+        input[type=checkbox] {
+            height: 16px;
+            width: 16px;
+        }
+    </style>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    {% javascripts
+    '@CoreBundle/Resources/public/main-assets/plugins/datatables/jquery.dataTables.min.js'
+    '@CoreBundle/Resources/public/main-assets/plugins/datatables/dataTables.bootstrap.min.js'
+    '@CoreBundle/Resources/public/crud-user/js/formCreate.js'
+    '@CoreBundle/Resources/public/crud-user/js/formEdit.js'
+    '@CoreBundle/Resources/public/crud-user/js/formDelete.js'
+    '@CoreBundle/Resources/public/crud-user/js/formView.js'
+    '@CoreBundle/Resources/public/crud-user/js/formInfo.js'
+    '@CoreBundle/Resources/public/crud-user/js/formChangePassword.js'
+    '@CoreBundle/Resources/public/crud-user/js/togglePassword.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    {#
+    "bLengthChange": false,
+    "bFilter": false,
+    "bSort": true,
+    "bInfo": true,
+    "bAutoWidth": false,
+    #}
+
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+
+            var tableJson = $('#{{ crud.table_name }}').DataTable({
+                {% for key, value in dataTable.options %}
+                    '{{ key }}': {{ value|raw }},
+                {% endfor %}
+                'data': {{ dataTable.data|raw }},
+                'language': {
+                    'url': '{{ asset('bundles/core/datatables/extensions/language/spanish.json') }}'
+                },
+                'columns': [
+
+                    {% for key, value in dataTable.columns %}
+                        {
+                            'data' : function (obj) {
+
+                                if({{ value.obj|raw }} != null){
+
+                                    {% set obj = value.obj %}
+                                    {% set property = value.options.property|default() %}
+
+                                    {% if property %}
+                                        {% set obj = property %}
+                                    {% endif %}
+
+                                    return {{ obj|raw }};
+                                }
+                                return '';
+                            },
+                        },
+                    {% else %}
+                        {},
+                    {% endfor %}
+
+                    {% if dataTable.buttonTable is not empty %}
+                        {
+                            'data' : function (obj) {
+                                return '{% spaceless %}
+                                {% for key, value in dataTable.buttonTable %}
+                                    {{ value|raw }}
+                                {% endfor %}
+                                {% endspaceless %}';
+                            }
+                        },
+                    {% endif %}
+                ],
+                'columnDefs': [
+                    {
+                        {#'targets': '_all',#}
+                        'targets': {{ dataTable.columnsTargets }},
+                        'createdCell':  function (td, cellData, rowData, row, col) {
+                            $(td).attr('data-toggle', 'modal');
+                            $(td).attr('data-target', '#{{ crud.modal_view_id }}');
+                            $(td).attr('class', '{{ crud.table_td_class }}');
+                        }
+                    }
+                ],
+                'fnRowCallback': function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+
+                    {% for key, value in dataTable.rowCallBack %}
+                        $(nRow).attr('{{ key|trim|raw }}', {{ value|trim|raw }});
+                    {% endfor %}
+
+                    $(nRow).attr('class', '{{ crud.table_tr_class }}');
+
+                    return nRow;
+                }
+            });
+
+            $('body.{{ crud.body_css }}').formCreate({
+                form_create_name: '{{ crud.form_create_name }}',
+                modal_create_id: '{{ crud.modal_create_id }}',
+                route_create: '{{ crud.route_create }}',
+                table_json: tableJson,
+            });
+
+            $('body.{{ crud.body_css }}').formEdit({
+                form_edit_name: '{{ crud.form_edit_name }}',
+                modal_edit_id: '{{ crud.modal_edit_id }}',
+                route_edit: '{{ crud.route_edit }}',
+                table_json: tableJson,
+            });
+
+            $('body.{{ crud.body_css }}').formDelete({
+                form_delete_name: '{{ crud.form_delete_name }}',
+                modal_delete_id: '{{ crud.modal_delete_id }}',
+                route_delete: '{{ crud.route_delete }}',
+                table_json: tableJson,
+            });
+
+            $('body.{{ crud.body_css }}').formView({
+                modal_view_id: '{{ crud.modal_view_id }}',
+                route_view: '{{ crud.route_view }}',
+                table_td_class: '{{ crud.table_td_class }}',
+            });
+
+            $('body.{{ crud.body_css }}').formInfo({
+                modal_info_id: '{{ crud.modal_info_id }}',
+                route_info: '{{ crud.route_info }}',
+            });
+
+            $('body.{{ crud.body_css }}').formChangePassword({
+                form_change_password_name: '{{ crud.form_change_password_name }}',
+                modal_change_password_id: '{{ crud.modal_change_password_id }}',
+                route_change_password: '{{ crud.route_change_password }}',
+            });
+
+        });
+
+    </script>
+
+{% endblock %}
+
+{% block content %}
+
+    <section class="content-header">
+        <h1>
+            <i class="fa fa-fw fa-{{ crud.section_icon }}"></i> {{ crud.section_title }}
+            <small>lista</small>
+        </h1>
+        <ol class="breadcrumb">
+            {#<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>#}
+            {#<li class="active">Dashboard</li>#}
+
+            {% for key, value in dataTable.buttonHeader %}
+                <li>
+                    {{ value|raw }}
+                </li>
+            {% endfor %}
+        </ol>
+    </section>
+
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-{{ crud.section_box_class }}">
+
+                    {#
+                    <div class="box-header">
+                        <h3 class="box-title">Data Table With Full Features</h3>
+                    </div>
+                    #}
+
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-sm-12 table-responsive">
+                                <table id="{{ crud.table_name }}" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                                    <thead>
+                                    <tr>
+                                        {% for key, value in dataTable.columns %}
+                                            <th>
+                                                {% if value.options.icon is defined %}
+                                                    <i class="fa fa-fw fa-{{ value.options.icon|raw }}"></i>
+                                                {% endif %}
+                                                {{ value.name|raw }}
+                                            </th>
+                                        {% endfor %}
+
+                                        {% if dataTable.buttonTable is not empty %}
+                                            <th>&nbsp</th>
+                                        {% endif %}
+                                    </tr>
+                                    </thead>
+
+                                    <tfoot>
+                                    <tr>
+                                        {% for key, value in dataTable.columns %}
+                                            <th>
+                                                {% if value.options.icon is defined %}
+                                                    <i class="fa fa-fw fa-{{ value.options.icon|raw }}"></i>
+                                                {% endif %}
+                                                {{ value.name|raw }}
+                                            </th>
+                                        {% endfor %}
+
+                                        {% if dataTable.buttonTable is not empty %}
+                                            <th>&nbsp</th>
+                                        {% endif %}
+                                    </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{ include('CoreBundle:CrudUser:Modal/create.html.twig') }}
+    {{ include('CoreBundle:CrudUser:Modal/edit.html.twig') }}
+    {{ include('CoreBundle:CrudUser:Modal/delete.html.twig') }}
+    {{ include('CoreBundle:CrudUser:Modal/view.html.twig') }}
+    {{ include('CoreBundle:CrudUser:Modal/info.html.twig') }}
+    {{ include('CoreBundle:CrudUser:Modal/change_password.html.twig') }}
+
+{% endblock %}

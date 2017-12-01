@@ -1,0 +1,61 @@
+<script type="text/javascript">
+    //<![CDATA[
+    if (typeof newsletter_check !== "function") {
+        window.newsletter_check = function (f) {
+            var re = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-]{1,})+\.)+([a-zA-Z0-9]{2,})+$/;
+            if (!re.test(f.elements["ne"].value)) {
+                alert("The email is not correct");
+                return false;
+            }
+            for (var i=1; i<20; i++) {
+                if (f.elements["np" + i] && f.elements["np" + i].required && f.elements["np" + i].value == "") {
+                    alert("");
+                    return false;
+                }
+            }
+            if (f.elements["ny"] && !f.elements["ny"].checked) {
+                alert("You must accept the privacy statement");
+                return false;
+            }
+            return true;
+        }
+    }
+    //]]&gt;
+</script>
+
+
+<div class="row">
+    <div class="span12 tofade">
+
+        {% block paragraph_1 %}
+            <div class="title-box clearfix ">
+                <h2 class="title-box_primary">Subscribe to our newsletter</h2>
+            </div>
+
+            <div class="newsletter newsletter-subscription">
+                {#<form method="post" action="https://livedemo00.template-help.com/wordpress_52146/?na=s" onsubmit="return newsletter_check(this)">#}
+                <form method="post" action="xxxx" onsubmit="return newsletter_check(this)">
+
+                    <table cellspacing="0" cellpadding="3" border="0">
+                        <tr>
+                            <th>Your email...</th>
+                            <td align="left">
+                                <input class="newsletter-email" type="email" name="ne" size="30" required>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="newsletter-td-submit">
+                                <input class="newsletter-submit" type="submit" value="Subscribe"/>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+            <p style="text-align: center;">
+                Epsum factorial non n quarrels et<br />
+                gorilla congoliut quid hic.
+            </p>
+        {% endblock %}
+
+    </div>
+</div>

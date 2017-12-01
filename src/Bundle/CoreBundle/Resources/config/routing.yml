@@ -1,0 +1,7 @@
+core_acl:
+    resource: "@CoreBundle/Resources/config/route/example.yml"
+    prefix: /example
+
+core_default:
+    resource: "@CoreBundle/Resources/config/route/default.yml"
+    prefix: /default

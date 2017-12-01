@@ -1,0 +1,12 @@
+{% spaceless %}
+    {% for key, rightEntity in leftHasRight %}
+        {{ include('CoreBundle:BoxOneToManyGroup:Li/box_middle.html.twig') }}
+    {% else %}
+        <li class="empty">
+            <span class="text">
+                No hay resultados.
+            </span>
+        </li>
+    {% endfor %}
+{% endspaceless %}
+

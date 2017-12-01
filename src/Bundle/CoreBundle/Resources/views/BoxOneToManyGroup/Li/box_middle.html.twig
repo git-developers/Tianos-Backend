@@ -1,0 +1,30 @@
+{% spaceless %}
+
+    <li id="li-{{ leftEntity.id_increment ~ '-' ~ rightEntity.id_increment }}">
+
+        <span class="handle ui-sortable-handle">
+            <i class="fa fa-ellipsis-v"></i>
+            <i class="fa fa-ellipsis-v"></i>
+        </span>
+
+        {#<input type="checkbox" value="">#}
+
+        <small class="label label-success">
+            {{ rightEntity.id_increment }}
+        </small>
+
+        <span class="text">{{ rightEntity.name_box }}</span>
+
+        <div class="tools">
+            <i
+                class="fa fa-trash-o"
+                data-toggle="tooltip"
+                data-original-title="Eliminar"
+                data-middle="{{ leftEntity.id_increment ~ '-' ~ rightEntity.id_increment }}">
+            </i>
+        </div>
+
+    </li>
+
+{% endspaceless %}
+

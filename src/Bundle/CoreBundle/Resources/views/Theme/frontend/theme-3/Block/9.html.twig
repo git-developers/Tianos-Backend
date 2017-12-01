@@ -1,0 +1,42 @@
+<div class="row">
+    <div class="span12 tofade">
+
+        <div id="flexslider_bmrhhfzhqd" class="flexslider no-bg testi-home">
+            <ul class="slides">
+
+                {% set items = render_items(templateHasModule, 'item/2', 10) %}
+
+                {% for key, obj in items %}
+                    <li class="list-item-{{ loop.index }}">
+                        <h5>
+                            <a href="xxxx" title="Testimonial #3">
+                                {{ obj.name }}
+                            </a>
+                        </h5>
+                        <p class="excerpt">{{ obj.excerpt }}</p>
+                        <div class="post_options">
+                            <a class="testi-url" href="{{ obj.name }}" target="_blank">
+                                {{ obj.name }}
+                            </a>
+
+                            {#
+                            <span class="user">Rick Hammer</span>
+                            <span class="info">Manager</span>
+                            <a class="testi-url" href="https://www.yourwebsite.net" target="_blank">
+                                https://www.yourwebsite.net
+                            </a>
+                            <br>
+                            #}
+                        </div>
+                        <a href="xxxx" class="btn btn-primary" title="{{ obj.name }}">
+                            Leer mas
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="spacer"></div>
+
+    </div>
+</div>
