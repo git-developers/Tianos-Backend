@@ -4,11 +4,28 @@
 
 namespace Bundle\ProductBundle\Doctrine\ORM;
 
-use Bundle\CoreBundle\Doctrine\ORM\EntityRepository;
+use Bundle\CoreBundle\Doctrine\ORM\EntityRepository as TianosEntityRepository;
 use Component\Product\Repository\ProductRepositoryInterface;
 
-class ProductRepository extends EntityRepository implements ProductRepositoryInterface
+class ProductRepository extends TianosEntityRepository implements ProductRepositoryInterface
 {
+    /**
+     * {@inheritdoc}
+     */
+    public function gatazo(): array
+    {
+
+        echo 7777;
+        exit;
+
+        return $this->createQueryBuilder('o')
+            ->andWhere('o.isActive = :active')
+            ->setParameter('active', 1)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     /**
      * {@inheritdoc}
      */

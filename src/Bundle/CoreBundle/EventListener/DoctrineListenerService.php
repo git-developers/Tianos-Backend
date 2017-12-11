@@ -17,7 +17,7 @@ use CoreBundle\Entity\Files;
 use CoreBundle\Entity\CategoryHasProduct;
 use CoreBundle\Entity\FileMimeType;
 use CoreBundle\Entity\GroupOfUsers;
-use CoreBundle\Entity\Product;
+//use CoreBundle\Entity\Product;
 use CoreBundle\Entity\Template;
 use CoreBundle\Entity\TemplateModule;
 use CoreBundle\Entity\TemplateHasModule;
@@ -184,12 +184,12 @@ class DoctrineListenerService implements EventSubscriber
             $entity->setCreatedAt($this->dateTime);
 
             return;
-        }else if ($entity instanceof Product){
-            $name = $entity->getName();
-            $entity->setSlug($this->slugify($name));
-            $entity->setCreatedAt($this->dateTime);
-
-            return;
+//        }else if ($entity instanceof Product){
+//            $name = $entity->getName();
+//            $entity->setSlug($this->slugify($name));
+//            $entity->setCreatedAt($this->dateTime);
+//
+//            return;
         }else if ($entity instanceof TemplateEPost){
             $entity->setCreatedAt($this->dateTime);
 

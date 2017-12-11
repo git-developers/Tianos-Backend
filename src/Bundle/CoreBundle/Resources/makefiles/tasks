@@ -130,9 +130,11 @@ ssh:
 restart_services:
 	@echo ---;
 	@echo ===========se reiniciara los servicios===========;
+	service --status-all
 	service nginx restart
-	service php7.1-fpm restart
 	service mysql restart
+	service php7.1-fpm stop
+	service php7.1-fpm start
 	@echo ---;
 
 step_1_mysql_permissions:

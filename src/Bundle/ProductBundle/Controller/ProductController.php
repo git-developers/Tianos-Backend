@@ -9,6 +9,8 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
+use Bundle\ProductBundle\Entity\Product;
+
 class ProductController extends Controller
 {
     /**
@@ -18,13 +20,21 @@ class ProductController extends Controller
      */
     public function indexAction(Request $request): Response
     {
+        $productRepository = $this->container->get('tianos.repository.product');
+        $product = $productRepository->gatazo();
 
 
 
-        echo '<pre> POLLO --- 555:: ';
-        print_r($request);
+//        $product = $this->getDoctrine()
+//            ->getRepository(Product::class)
+//            ->findAll();
+
+
+
+
+        echo '<pre> POLLO - 5555 -- $product:: ';
+        print_r($product);
         exit;
-
 
 
 

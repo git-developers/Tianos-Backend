@@ -4,3 +4,40 @@ services:
         class: Bundle\ProductBundle\Controller\ProductController
         tags:
             - { name: tianos.controller.product, alias: tianos.controller.product }
+
+    tianos.repository.product:
+        class: Bundle\ProductBundle\Doctrine\ORM\ProductRepository
+        factory: ['@doctrine.orm.entity_manager', getRepository]
+#        factory: 'Doctrine\ORM\EntityManagerInterface:getRepository'
+        arguments:
+            - Bundle\ProductBundle\Entity\Product
+#        factory: ["@doctrine.orm.entity_manager", getClassMetadata]
+#        factory: ["@doctrine.orm.default_entity_manager", "getRepository"]
+#        factory_service: doctrine.orm.entity_manager # this is an instance of Registry
+#        factory_method: getClassMetadata
+#        arguments: [ %mytest.entity% ]
+#        factory:
+#          - service: "doctrine.orm.entity_manager"
+#          - method: getClassMetadata
+#        arguments: ["", ""]
+#        tags:
+#            - { name: tianos.repository.product, alias: tianos.repository.product }
+
+
+
+#    service:
+#     argument:
+#      -
+#       _type: service
+#       _id: "doctrine.orm.default_entity_manager"
+#      -
+#       service:
+#        argument: "Sylius\\Component\\Core\\Model\\Product"
+#        factory:
+#         _service: "doctrine.orm.entity_manager"
+#         _method: getClassMetadata
+#        _class: "Doctrine\\ORM\\Mapping\\ClassMetadata"
+#        _public: false
+#       _type: service
+#     _id: "sylius.repository.product"
+#     _class: "Sylius\\Bundle\\CoreBundle\\Doctrine\\ORM\\ProductRepository"

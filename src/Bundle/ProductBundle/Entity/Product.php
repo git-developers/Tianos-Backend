@@ -1,12 +1,31 @@
 <?php
 
-namespace Component\Product\Model;
+namespace Bundle\ProductBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as JMSS;
+
+
+//* @ORM\Table(name="product")
+//* @ORM\Entity(repositoryClass="Bundle\ProductBundle\Doctrine\ORM\ProductRepository")
+
+
 
 /**
  * Product
+ *
  */
 class Product
 {
+
+    public function __construct()
+    {
+        echo 333;
+        exit;
+    }
+
+
+
     /**
      * @var integer
      */
@@ -15,6 +34,13 @@ class Product
     /**
      * @var string
      */
+
+//    /**
+//     * @var string
+//     *
+//     * @ORM\Column(name="code", type="string", length=45, nullable=true)
+//     * @JMSS\Groups({"product", "cat_has_prod", "pointofsales_has_product", "category_has_product"})
+//     */
     private $code;
 
     /**

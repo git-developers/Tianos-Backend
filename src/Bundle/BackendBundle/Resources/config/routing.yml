@@ -3,7 +3,7 @@ backend_default:
     prefix: /
 
 backend_product:
-    resource: '@BackendBundle/Resources/config/routing/product.yml'
+    resource: '@ProductBundle/Resources/config/routing.yml'
     prefix: /product
 
 #backend_user:

@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Component\Resource\Model;
+namespace Component\Core\Model;
 
 interface ResourceInterface
 {

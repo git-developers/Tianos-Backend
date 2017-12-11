@@ -8,7 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Doctrine\ORM\EntityManager;
-use CoreBundle\Entity\Product;
+//use CoreBundle\Entity\Product;
 
 
 class ProductType extends AbstractType
@@ -51,7 +51,7 @@ class ProductType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Product::class,
+//            'data_class' => Product::class,
         ]);
 
         $resolver->setRequired(['form_data']);
