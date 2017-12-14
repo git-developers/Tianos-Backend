@@ -2,14 +2,27 @@
 
 namespace Component\Product\Model;
 
+use Doctrine\ORM\Mapping as ORM;
+
+//* @ORM\Entity
+
 /**
  * Product
  */
 class Product
 {
+
     /**
      * @var integer
      */
+
+//    /**
+//     * @var integer
+//     *
+//     * @ORM\Column(name="id", type="integer")
+//     * @ORM\Id
+//     * @ORM\GeneratedValue(strategy="IDENTITY")
+//     */
     private $id;
 
     /**

@@ -2,7 +2,7 @@ NOW := $(shell /bin/date "+%Y-%m-%d . %H:%M:%S")
 AUTHOR_EMAIL := "jafeth.bendezu.a@gmail.com"
 AUTHOR_NAME := "Jafeth Bendezu"
 HOST_PROJECT := tianos.com
-DATABASE_NAME := tianos_db
+DATABASE_NAME := tianos
 
 delete:
 	@echo ---;

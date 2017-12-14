@@ -43,24 +43,24 @@ twig:
         timezone: America/Lima
     globals:
         locale: "%locale%"
-        project_name: '%project_name%'
-        project_name_html: '%project_name_html%'
-        project_version: '%project_version%'
-        project_url: '%project_url%'
-        project_url_canonical: '%project_url_canonical%'
-        project_description: '%project_description%'
-        project_theme_color: '%project_theme_color%'
-#        project_image: 'http://%project_url%/xxx.jpg'
-#        project_favicon: 'http://%project_url%/favicon.ico'
-        project_fb_app_id: '%project_fb_app_id%'
-        project_google_plus: '%project_google_plus%'
-        project_facebook: '%project_facebook%'
-        project_twitter: '%project_twitter%'
-#        project_skin: 'skin-yellow'
+        application_name: '%application_name%'
+        application_name_html: '%application_name_html%'
+        application_version: '%application_version%'
+        application_url: '%application_url%'
+        application_url_canonical: '%application_url_canonical%'
+        application_description: '%application_description%'
+        application_theme_color: '%application_theme_color%'
+#        application_image: 'http://%application_url%/xxx.jpg'
+#        application_favicon: 'http://%application_url%/favicon.ico'
+        application_fb_app_id: '%application_fb_app_id%'
+        application_google_plus: '%application_google_plus%'
+        application_facebook: '%application_facebook%'
+        application_twitter: '%application_twitter%'
+#        application_skin: 'skin-yellow'
 #        app_id: '%app_id%'
 
 #        websocket_port: '8080'
-#        websocket_host: '%project_url%'
+#        websocket_host: '%application_url%'
 #        uploads_directory: "%uploads_directory%"
 #        google_client_id: "%google_client_id%"
 #        google_client_secret: "%google_client_secret%"
@@ -86,6 +86,62 @@ doctrine:
         auto_generate_proxy_classes: '%kernel.debug%'
         naming_strategy: doctrine.orm.naming_strategy.underscore
         auto_mapping: true
+#        mappings:
+#            ComponentProduct:
+#                type: annotation
+#                dir: %kernel.root_dir%/../src/Component/Product/Model
+#                is_bundle: false
+#                prefix: Component\Product\Model
+#                alias: App
+
+
+
+#            ComponentProduct:
+##                mapping: true
+#                type: yml #xml, yml, annotation, php, staticphp
+#                dir: %kernel.root_dir%/../src/Component/Product/Model
+#                alias: AppBundle
+#                prefix: Component\Product\Model
+#                is_bundle: false
+
+#            ComponentProduct:
+#                type: annotation
+#                dir: "%kernel.root_dir%/../src/Component"
+#                is_bundle: false
+#                prefix: Component
+#                alias: App
+
+
+
+
+#        MyCustomDomain:
+#            mapping: true
+#            type: yml
+#            dir: %kernel.root_dir%/config/projecttest
+#            alias: ProjectTest
+#            prefix: Project\Test
+#            is_bundle: false
+
+
+#        auto_mapping: true
+
+
+#        mappings:
+#            SomeEntityNamespace:
+#                type: annotation
+#                dir: "%kernel.root_dir%/../src"
+#                is_bundle: false
+#                prefix: Component
+#                alias: App
+
+
+#        mappings:
+#            SomeEntityNamespace:
+#                type: annotation
+#                dir: "%kernel.root_dir%/../src"
+#                is_bundle: false
+#                prefix: Component\Product\Model
+#                alias: App
 
 # Swiftmailer Configuration
 swiftmailer:

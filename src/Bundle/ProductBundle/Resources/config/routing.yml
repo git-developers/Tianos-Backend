@@ -9,7 +9,8 @@ product_index:
     methods: [GET]
     defaults:
         _controller: tianos.controller.product:indexAction
-        _sylius:
+        _tianos:
+#        _sylius:
             section: admin
             permission: true
             grid: sylius_admin_product
@@ -20,6 +21,7 @@ product_index:
             form:
                 type: Bundle\ProductBundle\Form\Type\ProductType
             repository:
+                service: tianos.repository.product
                 method: findAll
                 arguments: [$productId]
 

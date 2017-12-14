@@ -18,14 +18,14 @@ parameters:
     # A secret key that's used to generate certain security-related tokens
     secret: ThisTokenIsNotSoSecretChangeIt
 
-    project_theme_color: '#FF9C00'
-    project_version: 2.4.1
-    project_url: tianos.com
-    project_url_canonical: http://tianos.com
-    project_name: 'Tianos'
-    project_name_html: '<b>TIA</b>NOS'
-    project_fb_app_id: '129906047219991'
-    project_google_plus: 'https://plus.google.com/u/0/101583248641629113892'
-    project_facebook: 'https://www.facebook.com/Apptianos'
-    project_twitter: 'https://twitter.com/tianosApp'
-    project_description: 'Aplicación que provee acceso a información almacenada digitalmente'
+    application_theme_color: '#FF9C00'
+    application_version: 2.4.1
+    application_url: tianos.com
+    application_url_canonical: http://tianos.com
+    application_name: 'Tianos'
+    application_name_html: '<b>TIA</b>NOS'
+    application_fb_app_id: '129906047219991'
+    application_google_plus: 'https://plus.google.com/u/0/101583248641629113892'
+    application_facebook: 'https://www.facebook.com/Apptianos'
+    application_twitter: 'https://twitter.com/tianosApp'
+    application_description: 'Aplicación que provee acceso a información almacenada digitalmente'

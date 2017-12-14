@@ -1,6 +1,6 @@
 <?php
 
-//declare(strict_types=1);
+declare(strict_types=1);
 
 namespace Bundle\ProductBundle\Doctrine\ORM;
 
@@ -9,22 +9,18 @@ use Component\Product\Repository\ProductRepositoryInterface;
 
 class ProductRepository extends TianosEntityRepository implements ProductRepositoryInterface
 {
-    /**
-     * {@inheritdoc}
-     */
-    public function gatazo(): array
-    {
 
-        echo 7777;
-        exit;
+//    public function __construct () {
+//
+//
+//        echo 33333;
+//        exit;
+//    }
+//
+//
+//
+//
 
-        return $this->createQueryBuilder('o')
-            ->andWhere('o.isActive = :active')
-            ->setParameter('active', 1)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
 
     /**
      * {@inheritdoc}
@@ -32,11 +28,12 @@ class ProductRepository extends TianosEntityRepository implements ProductReposit
     public function findAll(): array
     {
         return $this->createQueryBuilder('o')
+            ->select('o.id, o.name, o.createdAt')
             ->andWhere('o.isActive = :active')
             ->setParameter('active', 1)
             ->getQuery()
             ->getResult()
-        ;
+            ;
     }
 
     /**

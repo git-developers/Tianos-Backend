@@ -5,46 +5,36 @@ namespace Bundle\ProductBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as JMSS;
 
-
-//* @ORM\Table(name="product")
-//* @ORM\Entity(repositoryClass="Bundle\ProductBundle\Doctrine\ORM\ProductRepository")
-
-
+//* @ORM\Entity
 
 /**
  * Product
- *
  */
 class Product
 {
 
-    public function __construct()
-    {
-        echo 333;
-        exit;
-    }
-
-
-
     /**
      * @var integer
      */
+
+//    /**
+//     * @var integer
+//     *
+//     * @ORM\Column(name="id", type="integer")
+//     * @ORM\Id
+//     * @ORM\GeneratedValue(strategy="IDENTITY")
+//     */
     private $id;
 
     /**
      * @var string
      */
-
-//    /**
-//     * @var string
-//     *
-//     * @ORM\Column(name="code", type="string", length=45, nullable=true)
-//     * @JMSS\Groups({"product", "cat_has_prod", "pointofsales_has_product", "category_has_product"})
-//     */
     private $code;
 
     /**
      * @var string
+     *
+     * @JMSS\Groups({"product"})
      */
     private $name;
 
@@ -60,6 +50,7 @@ class Product
 
     /**
      * @var \DateTime
+     * @JMSS\Type("DateTime<'Y-m-d H:i'>")
      */
     private $createdAt;
 

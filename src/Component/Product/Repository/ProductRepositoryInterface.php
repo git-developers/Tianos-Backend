@@ -10,10 +10,10 @@ use Component\Core\Repository\RepositoryInterface;
 interface ProductRepositoryInterface extends RepositoryInterface
 {
 
-    /**
-     * @return array
-     */
-    public function gatazo(): array;
+//    /**
+//     * @return array
+//     */
+//    public function gatazo(): array;
 
     public function findAll(): array;
 

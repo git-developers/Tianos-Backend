@@ -11,9 +11,9 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\GridBundle\Twig;
+namespace Bundle\GridBundle\Twig;
 
-use Sylius\Bundle\GridBundle\Templating\Helper\GridHelper;
+use Bundle\GridBundle\Templating\Helper\GridHelper;
 
 final class GridExtension extends \Twig_Extension
 {

@@ -28,6 +28,8 @@ class AppKernel extends Kernel
             new \Bundle\BackendBundle\BackendBundle(),
             new \Bundle\FrontendBundle\FrontendBundle(),
             new \Bundle\ProductBundle\ProductBundle(),
+            new \Bundle\GridBundle\GridBundle(),
+            new \Bundle\ResourceBundle\ResourceBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

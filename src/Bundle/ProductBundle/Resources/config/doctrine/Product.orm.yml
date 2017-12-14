@@ -1,6 +1,12 @@
 Bundle\ProductBundle\Entity\Product:
     type: entity
+#    type: mappedSuperclass
     table: product
+    repositoryClass: Bundle\ProductBundle\Doctrine\ORM\ProductRepository
+#    mappedSuperclass: Component\Product\Model\Product
+
+#http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/reference/yaml-mapping.html
+
     id:
         id:
             type: integer
@@ -62,3 +68,6 @@ Bundle\ProductBundle\Entity\Product:
                 default: '1'
             column: is_active
     lifecycleCallbacks: {  }
+#    lifecycleCallbacks:
+#        prePersist: [ doStuffOnPrePersist, doOtherStuffOnPrePersistToo ]
+#        postPersist: [ doStuffOnPostPersist ]

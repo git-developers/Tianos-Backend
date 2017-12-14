@@ -11,13 +11,13 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\GridBundle\Templating\Helper;
+namespace Bundle\GridBundle\Templating\Helper;
 
-use Sylius\Component\Grid\Definition\Action;
-use Sylius\Component\Grid\Definition\Field;
-use Sylius\Component\Grid\Definition\Filter;
-use Sylius\Component\Grid\Renderer\GridRendererInterface;
-use Sylius\Component\Grid\View\GridView;
+use Component\Grid\Definition\Action;
+use Component\Grid\Definition\Field;
+use Component\Grid\Definition\Filter;
+use Component\Grid\Renderer\GridRendererInterface;
+use Component\Grid\View\GridView;
 use Symfony\Component\Templating\Helper\Helper;
 
 class GridHelper extends Helper

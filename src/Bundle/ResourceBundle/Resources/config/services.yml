@@ -1,0 +1,27 @@
+services:
+
+    tianos.expression.language:
+        class: Bundle\ResourceBundle\ExpressionLanguage\ExpressionLanguage
+#        arguments: [ '@service_container', '@tianos.expression.language' ]
+
+    tianos.resource.parameters.parser:
+        class: Bundle\ResourceBundle\Controller\ParametersParser
+        arguments: [ '@service_container', '@tianos.expression.language' ]
+
+    tianos.resource.configuration.factory:
+        class: Bundle\ResourceBundle\Controller\RequestConfigurationFactory
+        arguments: [ '@tianos.resource.parameters.parser', Bundle\ResourceBundle\Controller\RequestConfiguration ]
+        tags:
+            - { name: tianos.resource.configuration.factory, alias: tianos.resource.configuration.factory }
+
+
+
+#<service id="sylius.expression_language" class="Sylius\Bundle\ResourceBundle\ExpressionLanguage\ExpressionLanguage" public="false" />
+#sylius.expression_language
+
+
+#<service id="sylius.resource_controller.request_configuration_factory" class="Sylius\Bundle\ResourceBundle\Controller\RequestConfigurationFactory" public="false">
+#    <argument type="service" id="sylius.resource_controller.parameters_parser" />
+#    <argument>Sylius\Bundle\ResourceBundle\Controller\RequestConfiguration</argument>
+#    <argument>%sylius.resource.settings%</argument>
+#</service>
