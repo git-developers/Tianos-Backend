@@ -16,6 +16,7 @@ class Product
     /**
      * @var integer
      */
+    
 
 //    /**
 //     * @var integer
