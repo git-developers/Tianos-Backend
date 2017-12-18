@@ -1,20 +1,32 @@
 services:
 
-    tianos.controller.product:
-        class: Bundle\ProductBundle\Controller\ProductController
+    tianos.api.controller.product:
+        class: Bundle\ProductBundle\Controller\ApiProductController
         arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
         tags:
-            - { name: tianos.controller.product, alias: tianos.controller.product }
+            - { name: tianos.api.controller.product, alias: tianos.api.controller.product }
+
+    tianos.backend.controller.product:
+        class: Bundle\ProductBundle\Controller\BackendProductController
+        arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
+        tags:
+            - { name: tianos.backend.controller.product, alias: tianos.backend.controller.product }
+
+    tianos.frontend.controller.product:
+        class: Bundle\ProductBundle\Controller\FrontendProductController
+        arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
+        tags:
+            - { name: tianos.frontend.controller.product, alias: tianos.frontend.controller.product }
+
+    tianos.repository.product:
+        class: Dummy
+        factory: ['@doctrine.orm.entity_manager', getRepository]
+        arguments: [ Bundle\ProductBundle\Entity\Product ]
+
+
 
 #    tianos.controller.grid:
 #        class: Bundle\GridBundle\Controller\GridController
 #        arguments: [ Bundle\GridBundle\Controller\RequestConfigurationFactoryInterface ]
 #        tags:
 #            - { name: tianos.controller.grid, alias: tianos.controller.grid }
-
-    tianos.repository.product:
-        class: Dummy
-#        class: Bundle\ProductBundle\Doctrine\ORM\ProductRepository
-        factory: ['@doctrine.orm.entity_manager', getRepository]
-        arguments: [ Bundle\ProductBundle\Entity\Product ]
-#        arguments: [ Component\Product\Model\Product ]

@@ -24,13 +24,15 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
 
             //own bundles
+            new \Bundle\ApiBundle\ApiBundle(),
             new \Bundle\CoreBundle\CoreBundle(),
+            new \Bundle\GridBundle\GridBundle(),
+            new \Bundle\ThemeBundle\ThemeBundle(),
+            new \Bundle\ThemesBundle\ThemesBundle(),
+            new \Bundle\ProductBundle\ProductBundle(),
             new \Bundle\BackendBundle\BackendBundle(),
             new \Bundle\FrontendBundle\FrontendBundle(),
-            new \Bundle\ProductBundle\ProductBundle(),
-            new \Bundle\GridBundle\GridBundle(),
             new \Bundle\ResourceBundle\ResourceBundle(),
-            new \Bundle\ThemeBundle\ThemeBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

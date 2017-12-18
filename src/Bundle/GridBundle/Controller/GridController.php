@@ -5,15 +5,15 @@ declare(strict_types=1);
 namespace Bundle\GridBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Bundle\CoreBundle\Controller\BaseController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Bundle\ProductBundle\Entity\Product;
 use Component\Resource\Metadata\Metadata;
 use Bundle\ResourceBundle\ResourceBundle;
 use JMS\Serializer\SerializationContext;
 
-class GridController extends Controller
+class GridController extends BaseController
 {
 
     /**
@@ -56,7 +56,7 @@ class GridController extends Controller
 
         $objects = $this->getSerialize($objects, 'product');
 
-        echo '<pre> POLLO 555555 :: ';
+        echo '<pre> POLLO - BACKEND :: ';
         print_r($objects);
         exit;
 

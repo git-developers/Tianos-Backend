@@ -2,10 +2,6 @@ frontend_default:
     resource: '@FrontendBundle/Resources/config/routing/default.yml'
     prefix: /
 
-#backend_user:
-#    resource: '@BackendBundle/Resources/config/routing/user.yml'
-#    prefix: /user
-#
-#backend_session:
-#    resource: '@BackendBundle/Resources/config/routing/session.yml'
-#    prefix: /session
+frontend_product:
+    resource: '@ProductBundle/Resources/config/routing/frontend-product.yml'
+    prefix: /products

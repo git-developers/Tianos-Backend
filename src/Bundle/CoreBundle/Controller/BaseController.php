@@ -1,26 +1,29 @@
 <?php
 
-namespace CoreBundle\Controller;
+declare(strict_types=1);
+
+namespace Bundle\CoreBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use JMS\Serializer\Serializer;
 use JMS\Serializer\SerializerBuilder;
 use JMS\Serializer\SerializationContext;
 
-class BaseController extends Controller
+abstract class BaseController extends Controller
 {
 
-    const TEMPLATE_ERROR = 'CoreBundle:Default:template_error.html.twig';
+//    const TEMPLATE_ERROR = 'CoreBundle:Default:template_error.html.twig';
+//
+//    const ACCESS_DENIED_MSG = 'Tianos: Server Access Denied';
+//    const ACCESS_DENIED_ROLE_MSG = 'Tianos: no tiene permisos, contacte a su administrador.';
+//    const NOT_FOUND_MSG = 'Tianos Base controller: no se encontro el entity';
 
-    const ACCESS_DENIED_MSG = 'Tianos: Server Access Denied';
-    const ACCESS_DENIED_ROLE_MSG = 'Tianos: no tiene permisos, contacte a su administrador.';
-    const NOT_FOUND_MSG = 'Tianos Base controller: no se encontro el entity';
-
-    const AJAX_STATUS_SUCCESS = true;
-    const AJAX_STATUS_ERROR = false;
+    const STATUS_SUCCESS = true;
+    const STATUS_ERROR = false;
 
     const MAX_AGE_HOUR = 3600; #cache for 300 seconds
     const MAX_AGE_WEEK = 604800; #cache for 604800 seconds
@@ -54,6 +57,12 @@ class BaseController extends Controller
         $this->em()->flush();
     }
 
+    protected function getSerializeDecode($object, $groupName)
+    {
+        $objects = $this->getSerialize($object, $groupName);
+        return json_decode($objects, true);
+    }
+
     protected function getSerialize($object, $groupName)
     {
         $serializer = $this->container->get('jms_serializer');
@@ -63,12 +72,6 @@ class BaseController extends Controller
             'json',
             SerializationContext::create()->setSerializeNull(true)->setGroups([$groupName])
         );
-    }
-
-    protected function getSerializeDecode($object, $groupName)
-    {
-        $objects = $this->getSerialize($object, $groupName);
-        return json_decode($objects, true);
     }
 
     protected function redirectUrl($url, $day = 1)
@@ -106,27 +109,27 @@ class BaseController extends Controller
 //        return 'XMLHttpRequest' == $this->headers->get('X-Requested-With');
     }
 
-    protected function getBundleName()
-    {
-        $request = $this->container->get('request_stack')->getCurrentRequest();
-        $controller = $request->attributes->get('_controller');
-        list($bundle) = explode('\\', $controller);
+//    protected function getBundleName()
+//    {
+//        $request = $this->container->get('request_stack')->getCurrentRequest();
+//        $controller = $request->attributes->get('_controller');
+//        list($bundle) = explode('\\', $controller);
+//
+//        return $bundle;
+//    }
+//
+//    public function getControllerName()
+//    {
+//        $request = $this->container->get('request_stack')->getCurrentRequest();
+//        $controller = $request->attributes->get('_controller');
+//
+//        $pattern = "/Controller\\\\([a-zA-Z]*)Controller/";
+//        $matches = [];
+//        preg_match($pattern, $controller, $matches);
+//        return end($matches);
+//    }
 
-        return $bundle;
-    }
-
-    public function getControllerName()
-    {
-        $request = $this->container->get('request_stack')->getCurrentRequest();
-        $controller = $request->attributes->get('_controller');
-
-        $pattern = "/Controller\\\\([a-zA-Z]*)Controller/";
-        $matches = [];
-        preg_match($pattern, $controller, $matches);
-        return end($matches);
-    }
-
-    protected function validateTemplate($name)
+    protected function templateExists($name)
     {
         if($this->get('templating')->exists($name)){
             return $name;

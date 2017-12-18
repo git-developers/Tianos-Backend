@@ -11,3 +11,8 @@ backend:
     resource: "@BackendBundle/Resources/config/routing.yml"
     prefix:   /backend
     #type:     annotation
+
+api:
+    resource: "@ApiBundle/Resources/config/routing.yml"
+    prefix:   /api
+    #type:     annotation
