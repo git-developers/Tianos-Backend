@@ -94,55 +94,6 @@ doctrine:
 #                prefix: Component\Product\Model
 #                alias: App
 
-
-
-#            ComponentProduct:
-##                mapping: true
-#                type: yml #xml, yml, annotation, php, staticphp
-#                dir: %kernel.root_dir%/../src/Component/Product/Model
-#                alias: AppBundle
-#                prefix: Component\Product\Model
-#                is_bundle: false
-
-#            ComponentProduct:
-#                type: annotation
-#                dir: "%kernel.root_dir%/../src/Component"
-#                is_bundle: false
-#                prefix: Component
-#                alias: App
-
-
-
-
-#        MyCustomDomain:
-#            mapping: true
-#            type: yml
-#            dir: %kernel.root_dir%/config/projecttest
-#            alias: ProjectTest
-#            prefix: Project\Test
-#            is_bundle: false
-
-
-#        auto_mapping: true
-
-
-#        mappings:
-#            SomeEntityNamespace:
-#                type: annotation
-#                dir: "%kernel.root_dir%/../src"
-#                is_bundle: false
-#                prefix: Component
-#                alias: App
-
-
-#        mappings:
-#            SomeEntityNamespace:
-#                type: annotation
-#                dir: "%kernel.root_dir%/../src"
-#                is_bundle: false
-#                prefix: Component\Product\Model
-#                alias: App
-
 # Swiftmailer Configuration
 swiftmailer:
     transport: '%mailer_transport%'
@@ -151,4 +102,9 @@ swiftmailer:
     password: '%mailer_password%'
     spool: { type: memory }
 
+#sylius_theme:
+#    sources:
+#        filesystem:
+#            directories:
+#                - "%kernel.root_dir%/../../Fixtures/themes"
 

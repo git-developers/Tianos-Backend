@@ -2,7 +2,7 @@
 
 use Symfony\Component\HttpKernel\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
-//use Bundle\BackendBundle\BackendBundle;
+
 
 class AppKernel extends Kernel
 {
@@ -30,6 +30,7 @@ class AppKernel extends Kernel
             new \Bundle\ProductBundle\ProductBundle(),
             new \Bundle\GridBundle\GridBundle(),
             new \Bundle\ResourceBundle\ResourceBundle(),
+            new \Bundle\ThemeBundle\ThemeBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

@@ -3,11 +3,18 @@ backend_default:
     prefix: /
 
 backend_product:
-    resource: '@ProductBundle/Resources/config/routing.yml'
-    prefix: /product
+    resource: '@ProductBundle/Resources/config/routing/product-backend.yml'
+    prefix: /products
+
+
+
+
+
+
+
 
 #backend_user:
-#    resource: '@BackendBundle/Resources/config/routing/user.yml'
+#    resource: '@BackendBundle/Resources/config/routing/routing/user.yml'
 #    prefix: /user
 #
 #backend_session:
