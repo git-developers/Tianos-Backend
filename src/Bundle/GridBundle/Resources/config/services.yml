@@ -1,5 +1,11 @@
 services:
 
+    grid.crud:
+        class: Bundle\GridBundle\Services\Crud\Crud
+        arguments: [ "@router", "@request_stack" ]
+        tags:
+            - { name: grid.crud, alias: grid.crud }
+
 #    tianos.expression.language:
 #        class: Sylius\Bundle\ResourceBundle\ExpressionLanguage\ExpressionLanguage
 #        arguments: [ '@service_container', '@tianos.expression.language' ]

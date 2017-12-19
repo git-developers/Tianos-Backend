@@ -6,11 +6,17 @@ backend_product_bundle_index:
         _tianos:
             section: admin
             permission: true
-            grid: sylius_admin_product
-            template: ProductBundle:Product:index.html.twig
+            template: GridBundle:Grid:index.html.twig
             vars:
                 subheader: sylius.ui.manage_your_product_catalog
                 icon: cube
+#            grid: sylius_admin_product
+            grid:
+                icon: cube
+                box_class: primary
+                table_name: table-grid
+                title: Gestionar productos
+                table_tr_class: row-tr-class
             form:
                 type: Bundle\ProductBundle\Form\Type\ProductType
             repository:

@@ -13,14 +13,9 @@ use Bundle\GridBundle\Controller\GridController;
 class BackendProductController extends GridController
 {
 
-//    public function __construct(RequestConfigurationFactoryInterface $requestConfigurationFactory) {
-//        parent::__construct($requestConfigurationFactory);
-//    }
-
-
     public function indexAction(Request $request): Response
     {
-        parent::indexAction($request);
+        return parent::indexAction($request);
     }
 
 }

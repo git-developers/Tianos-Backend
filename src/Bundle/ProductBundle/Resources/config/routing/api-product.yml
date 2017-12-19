@@ -2,7 +2,7 @@ api_product_bundle_index:
     path: /
     methods: [GET]
     defaults:
-        _controller: tianos.controller.product:indexAction
+        _controller: tianos.api.controller.product:indexAction
         _tianos:
             section: admin
             permission: true

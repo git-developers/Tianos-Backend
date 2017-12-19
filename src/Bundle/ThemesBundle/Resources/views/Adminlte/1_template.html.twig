@@ -10,16 +10,16 @@
 {#{% if(app.user.image is defined and app.user.image is not null) %}#}
     {#{% set image_avatar = asset('../../uploads/user/' ~ app.user.image) | imagine_filter('filter_160') %} #}{# ~'?'~ random()#}
 {#{% else %}#}
-    {#{% set image_avatar = asset('bundles/core/common/images/no_avatar.jpg') %} #}{# | imagine_filter('filter_160')#}
+    {#{% set image_avatar = asset('bundles/themes/common/images/no_avatar.jpg') %} #}{# | imagine_filter('filter_160')#}
 {#{% endif %}#}
 
 {#{% if(app.user.image is defined and app.user.image is not null) %}#}
     {#{% set image_update = asset('../../uploads/user/' ~ app.user.image) | imagine_filter('filter_500') %}#}
 {#{% else %}#}
-    {#{% set image_update = asset('bundles/core/common/images/no_avatar.jpg') %}#}
+    {#{% set image_update = asset('bundles/themes/common/images/no_avatar.jpg') %}#}
 {#{% endif %}#}
 
-{% set image_avatar = asset('bundles/core/common/images/no_avatar.jpg') %} {# | imagine_filter('filter_160')#}
+{% set image_avatar = asset('bundles/themes/common/images/no_avatar.jpg') %} {# | imagine_filter('filter_160')#}
 
 {#https://almsaeedstudio.com/themes/AdminLTE/index2.html#}
 
@@ -77,13 +77,13 @@
 
         {% stylesheets
             filter='cssrewrite'
-            'bundles/core/adminlte/thirdparty/font-awesome/css/font-awesome.min.css'
-            'bundles/core/adminlte/thirdparty/ionicons/css/ionicons.min.css'
-            'bundles/core/adminlte/plugins/iCheck/flat/orange.css'
-            'bundles/core/adminlte/plugins/iCheck/square/orange.css'
-            'bundles/core/adminlte/plugins/iCheck/square/green.css'
-            'bundles/core/adminlte/plugins/iCheck/square/pink.css'
-            'bundles/core/adminlte/bootstrap/css/bootstrap.min.css'
+            'bundles/themes/adminlte/thirdparty/font-awesome/css/font-awesome.min.css'
+            'bundles/themes/adminlte/thirdparty/ionicons/css/ionicons.min.css'
+            'bundles/themes/adminlte/plugins/iCheck/flat/orange.css'
+            'bundles/themes/adminlte/plugins/iCheck/square/orange.css'
+            'bundles/themes/adminlte/plugins/iCheck/square/green.css'
+            'bundles/themes/adminlte/plugins/iCheck/square/pink.css'
+            'bundles/themes/adminlte/bootstrap/css/bootstrap.min.css'
             '@ThemesBundle/Resources/public/adminlte/dist/css/AdminLTE.min.css'
             '@ThemesBundle/Resources/public/adminlte/dist/css/skins/skin-yellow.min.css'
             '@ThemesBundle/Resources/public/adminlte/plugins/morris/morris.css'

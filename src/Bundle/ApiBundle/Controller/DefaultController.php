@@ -3,16 +3,16 @@
 namespace Bundle\ApiBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Bundle\CoreBundle\Controller\BaseController;
 
-class DefaultController extends Controller
+class DefaultController extends BaseController
 {
-    public function indexAction(Request $request)
+    public function indexAction(Request $request): Response
     {
         return $this->json([
-            'status' => true,
+            'status' => self::STATUS_SUCCESS,
             'msg' => 'mensaje ddd',
         ]);
     }

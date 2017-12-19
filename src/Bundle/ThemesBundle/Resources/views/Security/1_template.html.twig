@@ -1,9 +1,9 @@
-{% import "CoreBundle::Macro/html.html.twig" as html %}
-{% import "CoreBundle::Macro/head.html.twig" as head %}
-{% import "CoreBundle::Macro/meta.html.twig" as meta %}
-{% import "CoreBundle::Macro/bi3d.html.twig" as bi3d %}
-{% import "CoreBundle::Macro/twitter.html.twig" as twitter %}
-{% import "CoreBundle::Macro/open_graph.html.twig" as og %}
+{% import "ThemesBundle::Macro/html.html.twig" as html %}
+{% import "ThemesBundle::Macro/head.html.twig" as head %}
+{% import "ThemesBundle::Macro/meta.html.twig" as meta %}
+{% import "ThemesBundle::Macro/bi3d.html.twig" as bi3d %}
+{% import "ThemesBundle::Macro/twitter.html.twig" as twitter %}
+{% import "ThemesBundle::Macro/open_graph.html.twig" as og %}
 
 
 {% spaceless %}
@@ -64,15 +64,15 @@
             'bundles/core/theme/adminlte/plugins/iCheck/square/green.css'
             'bundles/core/theme/adminlte/plugins/iCheck/square/pink.css'
             'bundles/core/theme/adminlte/bootstrap/css/bootstrap.min.css'
-            '@CoreBundle/Resources/public/theme/adminlte/dist/css/AdminLTE.min.css'
-            '@CoreBundle/Resources/public/theme/adminlte/plugins/morris/morris.css'
-            '@CoreBundle/Resources/public/theme/adminlte/plugins/jvectormap/jquery-jvectormap-1.2.2.css'
-            '@CoreBundle/Resources/public/theme/adminlte/plugins/datepicker/datepicker3.css'
-            '@CoreBundle/Resources/public/theme/adminlte/plugins/daterangepicker/daterangepicker.css'
-            '@CoreBundle/Resources/public/theme/adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css'
-            '@CoreBundle/Resources/public/theme/adminlte/plugins/pace/pace.min.css'
-            '@CoreBundle/Resources/public/common/css/skin-tianos.css'
-            '@CoreBundle/Resources/public/common/css/tianos.css'
+            '@ThemesBundle/Resources/public/theme/adminlte/dist/css/AdminLTE.min.css'
+            '@ThemesBundle/Resources/public/theme/adminlte/plugins/morris/morris.css'
+            '@ThemesBundle/Resources/public/theme/adminlte/plugins/jvectormap/jquery-jvectormap-1.2.2.css'
+            '@ThemesBundle/Resources/public/theme/adminlte/plugins/datepicker/datepicker3.css'
+            '@ThemesBundle/Resources/public/theme/adminlte/plugins/daterangepicker/daterangepicker.css'
+            '@ThemesBundle/Resources/public/theme/adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css'
+            '@ThemesBundle/Resources/public/theme/adminlte/plugins/pace/pace.min.css'
+            '@ThemesBundle/Resources/public/common/css/skin-tianos.css'
+            '@ThemesBundle/Resources/public/common/css/tianos.css'
         %}
             <link rel="stylesheet" href="{{ asset_url }}" />
         {% endstylesheets %}
@@ -93,7 +93,7 @@
 
 <body class="{{ project_skin }} hold-transition sidebar-mini login-page {% block bodyclass %}{% endblock %}">
 
-{{ include('CoreBundle::TemplateMain/2_header_security.html.twig') }}
+{{ include('ThemesBundle::TemplateMain/2_header_security.html.twig') }}
 
 {% block content %}
 {% endblock %}
@@ -101,9 +101,9 @@
 {% block javascripts %}
 
     {% javascripts
-        '@CoreBundle/Resources/public/theme/adminlte/plugins/jQuery/jquery-2.2.3.min.js'
-        '@CoreBundle/Resources/public/theme/adminlte/bootstrap/js/bootstrap.min.js'
-        '@CoreBundle/Resources/public/common/js/background.cycle.js'
+        '@ThemesBundle/Resources/public/theme/adminlte/plugins/jQuery/jquery-2.2.3.min.js'
+        '@ThemesBundle/Resources/public/theme/adminlte/bootstrap/js/bootstrap.min.js'
+        '@ThemesBundle/Resources/public/common/js/background.cycle.js'
     %}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}

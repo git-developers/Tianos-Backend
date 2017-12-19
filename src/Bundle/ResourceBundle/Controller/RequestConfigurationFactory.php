@@ -45,15 +45,6 @@ final class RequestConfigurationFactory implements RequestConfigurationFactoryIn
     /**
      * {@inheritdoc}
      */
-//    public function create(Request $request): RequestConfiguration
-//    {
-//        $parameters = array_merge($this->defaultParameters, $this->parseApiParameters($request));
-//        $parameters = $this->parametersParser->parseRequestValues($parameters, $request);
-//
-//        return new $this->configurationClass($request, new Parameters($parameters));
-//    }
-
-
     public function create(MetadataInterface $metadata, Request $request): RequestConfiguration
     {
         $parameters = array_merge($this->defaultParameters, $this->parseApiParameters($request));

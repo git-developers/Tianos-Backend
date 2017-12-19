@@ -38,40 +38,49 @@ class GridController extends BaseController
      */
     public function indexAction(Request $request): Response
     {
-
         $parameters = [
             'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
         ];
         $applicationName = $this->container->getParameter('application_name');
         $this->metadata = new Metadata('tianos', $applicationName, $parameters);
-//        $this->metadata = new Metadata('product', $applicationName, $parameters);
 
+        //CONFIGURATION
         $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
         $service = $configuration->getRepositoryService();
         $method = $configuration->getRepositoryMethod();
+        $template = $configuration->getTemplate('');
+        $grid = $configuration->getGrid();
 
+        //REPOSITORY
         $repository = $this->get($service);
         $objects = $repository->$method();
-
-
         $objects = $this->getSerialize($objects, 'product');
 
-        echo '<pre> POLLO - BACKEND :: ';
-        print_r($objects);
+
+        //CRUD
+        $modal = $this->get('grid.crud')->getModalMapper()->getDefaults();
+        $form = $this->get('grid.crud')->getFormMapper()->getDefaults();
+        $dataTable = $this->get('grid.crud')->getButtonHeaderMapper()->addButtonHeader(['create', 'info']);
+
+
+        echo '<pre> POLLO $dataTable:: ';
+        print_r($dataTable);
         exit;
 
 
 
 
-//        $entity = $this->em()->getRepository($crud['class_path'])->findAll();
-//        $entity = $this->getSerialize($entity, $crud['group_name']);
+
+
 //        $dataTable->setData($entity);
 
         return $this->render(
-            'CoreBundle:Crud:index.html.twig',
+            $template,
             [
-//                'crud' => $crud,
-//                'dataTable' => $dataTable,
+                'grid' => $grid,
+                'form' => $form,
+                'modal' => $modal,
+                'objects' => $objects,
             ]
         );
 
@@ -84,28 +93,7 @@ class GridController extends BaseController
 //        ]);
     }
 
-    protected function getSerialize($object, $groupName)
-    {
-        $serializer = $this->get('jms_serializer');
-
-        return $serializer->serialize(
-            $object,
-            'json',
-            SerializationContext::create()->setSerializeNull(true)->setGroups([$groupName])
-        );
-    }
-
-
 }
-
-
-//        $tianos = $request->get('_tianos');
-//        $configuration = $this->requestConfigurationFactory->create($this->metadata, $request);
-//        $configuration = $this->requestConfigurationFactory->create($this->metadata, $request);
-
-
-//        echo 8888;
-//        exit;
 
 
 /*
