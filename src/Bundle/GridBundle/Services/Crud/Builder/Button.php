@@ -4,92 +4,154 @@ namespace Bundle\GridBundle\Services\Crud\Builder;
 
 class Button
 {
-    const TEST = 'test';
 
-    protected $options;
+    protected $class;
+
+    protected $alt;
+
+    protected $title;
+
+    protected $dataToggle;
+
+    protected $dataTarget;
+
+    protected $style;
+
+    protected $icon;
 
     public function __construct(array $options = [])
     {
-        $this->options = $options;
-    }
-
-    public function edit()
-    {
-        $attr = [
-            'class' => 'btn btn-warning btn-xs ' . CrudMapper::MODAL_EDIT_ID,
-            'alt' => 'Editar',
-            'title' => 'Editar',
+        $options = array_replace([
+            'class' => 'btn btn-xs ',
+            'alt' => '',
+            'title' => '',
+            'icon' => '<i class="fa fa-fw"></i>',
             'data-toggle' => 'modal',
-            'data-target' => '#' . CrudMapper::MODAL_EDIT_ID,
+            'data-target' => '#',
             'style' => 'margin-right: 5px',
-        ];
+        ], $options);
 
-        $out = '<button ';
-        foreach ($attr as $key => $value){
-            $out .= $key . '="' . $value . '"';
-        }
-        $out .= ' ><i class="fa fa-pencil"></i></button>';
 
-        return $out;
+        $this->alt = $options['alt'];
+        $this->icon = $options['icon'];
+        $this->title = $options['title'];
+        $this->style = $options['style'];
+        $this->class = $options['class'];
+        $this->dataToggle = $options['data-toggle'];
+        $this->dataTarget = $options['data-target'];
+
     }
 
-    public function delete()
+    /**
+     * @return mixed
+     */
+    public function getClass()
     {
-        $attr = [
-            'class' => 'btn btn-danger btn-xs ' . CrudMapper::MODAL_DELETE_ID,
-            'alt' => 'Eliminar',
-            'title' => 'Eliminar',
-            'data-toggle' => 'modal',
-            'data-target' => '#' . CrudMapper::MODAL_DELETE_ID,
-            'style' => 'margin-right: 5px',
-        ];
-
-        $out = '<button ';
-        foreach ($attr as $key => $value){
-            $out .= $key . '="' . $value . '"';
-        }
-        $out .= ' ><i class="fa fa-trash"></i></button>';
-
-        return $out;
+        return $this->class;
     }
 
-    public function create()
+    /**
+     * @param mixed $class
+     */
+    public function setClass($class)
     {
-        $attr = [
-            'class' => 'btn btn-success btn-xs ' . CrudMapper::MODAL_CREATE_ID,
-            'alt' => 'Crear item',
-            'title' => 'Crear item',
-            'data-toggle' => 'modal',
-            'data-target' => '#' . CrudMapper::MODAL_CREATE_ID,
-            'style' => 'margin-right: 5px',
-        ];
-
-        $out = '<button ';
-        foreach ($attr as $key => $value){
-            $out .= $key . '="' . $value . '"';
-        }
-        $out .= ' ><i class="fa fa-fw fa-plus"></i> crear item</button>';
-
-        return $out;
+        $this->class = $class;
     }
 
-    public function info()
+    /**
+     * @return mixed
+     */
+    public function getAlt()
     {
-        $attr = [
-            'class' => 'btn btn-info btn-xs ' . CrudMapper::MODAL_INFO_ID,
-            'alt' => 'Info',
-            'title' => 'Info',
-            'data-toggle' => 'modal',
-            'data-target' => '#' . CrudMapper::MODAL_INFO_ID,
-        ];
+        return $this->alt;
+    }
 
-        $out = '<button ';
-        foreach ($attr as $key => $value){
-            $out .= $key . '="' . $value . '"';
-        }
-        $out .= ' ><i class="fa fa-fw fa-info-circle"></i> info</button>';
+    /**
+     * @param mixed $alt
+     */
+    public function setAlt($alt)
+    {
+        $this->alt = $alt;
+    }
 
-        return $out;
+    /**
+     * @return mixed
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param mixed $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDataToggle()
+    {
+        return $this->dataToggle;
+    }
+
+    /**
+     * @param mixed $dataToggle
+     */
+    public function setDataToggle($dataToggle)
+    {
+        $this->dataToggle = $dataToggle;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDataTarget()
+    {
+        return $this->dataTarget;
+    }
+
+    /**
+     * @param mixed $dataTarget
+     */
+    public function setDataTarget($dataTarget)
+    {
+        $this->dataTarget = $dataTarget;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getStyle()
+    {
+        return $this->style;
+    }
+
+    /**
+     * @param mixed $style
+     */
+    public function setStyle($style)
+    {
+        $this->style = $style;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getIcon()
+    {
+        return $this->icon;
+    }
+
+    /**
+     * @param mixed $icon
+     */
+    public function setIcon($icon)
+    {
+        $this->icon = $icon;
     }
 
 }

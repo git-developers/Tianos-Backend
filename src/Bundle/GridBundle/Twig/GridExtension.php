@@ -1,14 +1,5 @@
 <?php
 
-/*
- * This file is part of the Sylius package.
- *
- * (c) Paweł Jędrzejewski
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 declare(strict_types=1);
 
 namespace Bundle\GridBundle\Twig;
@@ -36,6 +27,7 @@ final class GridExtension extends \Twig_Extension
     public function getFunctions(): array
     {
         return [
+            new \Twig_Function('tianos_grid_render_button', [$this->gridHelper, 'renderButton'], ['is_safe' => ['html']]),
             new \Twig_Function('sylius_grid_render', [$this->gridHelper, 'renderGrid'], ['is_safe' => ['html']]),
             new \Twig_Function('sylius_grid_render_field', [$this->gridHelper, 'renderField'], ['is_safe' => ['html']]),
             new \Twig_Function('sylius_grid_render_action', [$this->gridHelper, 'renderAction'], ['is_safe' => ['html']]),

@@ -60,12 +60,12 @@ class GridController extends BaseController
         //CRUD
         $modal = $this->get('grid.crud')->getModalMapper()->getDefaults();
         $form = $this->get('grid.crud')->getFormMapper()->getDefaults();
-        $dataTable = $this->get('grid.crud')->getButtonHeaderMapper()->addButtonHeader(['create', 'info']);
+        $buttonHeader = $this->get('grid.crud')->getButtonHeaderMapper(['create', 'info'])->getDefaults();
 
 
-        echo '<pre> POLLO $dataTable:: ';
-        print_r($dataTable);
-        exit;
+//        echo '<pre> POLLO $dataTable:: ';
+//        print_r($buttonHeader);
+//        exit;
 
 
 
@@ -81,6 +81,7 @@ class GridController extends BaseController
                 'form' => $form,
                 'modal' => $modal,
                 'objects' => $objects,
+                'buttonHeader' => $buttonHeader,
             ]
         );
 

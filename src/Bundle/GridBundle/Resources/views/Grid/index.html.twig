@@ -64,9 +64,11 @@
             {#<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>#}
             {#<li class="active">Dashboard</li>#}
 
-            {% for key, value in dataTable.buttonHeader %}
+            {% for key, button in buttonHeader %}
                 <li>
-                    {{ value|raw }}
+                    {#{{ value|raw }}#}
+                    {{ sylius_grid_render(button) }}
+                    {#{{ tianos_grid_render_button(button) }}#}
                 </li>
             {% endfor %}
         </ol>

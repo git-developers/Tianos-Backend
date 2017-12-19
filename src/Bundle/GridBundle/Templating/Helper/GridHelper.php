@@ -1,14 +1,5 @@
 <?php
 
-/*
- * This file is part of the Sylius package.
- *
- * (c) Paweł Jędrzejewski
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 declare(strict_types=1);
 
 namespace Bundle\GridBundle\Templating\Helper;
@@ -33,6 +24,20 @@ class GridHelper extends Helper
     public function __construct(GridRendererInterface $gridRenderer)
     {
         $this->gridRenderer = $gridRenderer;
+    }
+
+    public function renderButton( $button, ?string $template = null)
+    {
+
+//        ini_set('memory_limit', '-1');
+
+
+        echo '<pre> POLLO:: ';
+        print_r($button);
+        exit;
+
+
+        return $this->gridRenderer->render($gridView, $template);
     }
 
     /**
