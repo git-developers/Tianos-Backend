@@ -14,9 +14,26 @@ backend_product_bundle_index:
             grid:
                 icon: cube
                 box_class: primary
-                table_name: table-grid
                 title: Gestionar productos
-                table_tr_class: row-tr-class
+                data_table:
+                    button_header:
+                        - create
+                        - info
+                    columns:
+                        - name: '#'
+                          obj: " '<span class=\"badge bg-blue\">' + obj.id + '</span>' "
+#                        - name: code
+#                          obj: obj.code
+#                          options:
+#                              icon: map-marker
+                        - name: Name
+                          obj: obj.name
+#                        - name: slug
+#                          obj: obj.slug
+                        - name: Creado
+                          obj: obj.createdAt
+                          options:
+                              icon: calendar
             form:
                 type: Bundle\ProductBundle\Form\Type\ProductType
             repository:

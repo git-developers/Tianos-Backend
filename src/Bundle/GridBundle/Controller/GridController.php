@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Component\Resource\Metadata\Metadata;
 use Bundle\ResourceBundle\ResourceBundle;
 use JMS\Serializer\SerializationContext;
+use Bundle\GridBundle\Services\Crud\Builder\DataTableMapper;
 
 class GridController extends BaseController
 {
@@ -38,6 +39,9 @@ class GridController extends BaseController
      */
     public function indexAction(Request $request): Response
     {
+
+//        $configuration = $this->requestConfigurationFactory->create($this->metadata, $request);
+
         $parameters = [
             'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
         ];
@@ -56,23 +60,50 @@ class GridController extends BaseController
         $objects = $repository->$method();
         $objects = $this->getSerialize($objects, 'product');
 
-
         //CRUD
-        $modal = $this->get('grid.crud')->getModalMapper()->getDefaults();
-        $form = $this->get('grid.crud')->getFormMapper()->getDefaults();
-        $buttonHeader = $this->get('grid.crud')->getButtonHeaderMapper(['create', 'info'])->getDefaults();
+        $crud = $this->get('grid.crud');
+        $modal = $crud->getModalMapper()->getDefaults();
+        $form = $crud->getFormMapper()->getDefaults();
+        $buttonHeader = $crud->getButtonHeaderMapper($grid)->getDefaults();
+
+        //DATATABLE
+        $dataTable = $crud->getDataTableMapper($grid)
+                        ->setOptions()
+                        ->setTableOptions()
+                        ->setColumns($grid)
+                        ->setColumnsTargets()
+                        ->setData($objects)
+        ;
 
 
-//        echo '<pre> POLLO $dataTable:: ';
-//        print_r($buttonHeader);
+//        echo '<pre> POLLO --- 666 ---- $dataTable:: ';
+//        print_r($dataTable);
 //        exit;
 
 
 
 
 
+//                ->buildColumn($grid)
 
-//        $dataTable->setData($entity);
+//            ->addColumn('#', " '<span class=\"badge bg-blue\">' + obj.id_increment + '</span>' ")
+////            ->addColumn('category', 'obj.category', [
+////                'property' => 'obj.category.name',
+////                'icon' => 'sitemap',
+////            ])
+//            ->addColumn('code', 'obj.code', [
+//                'icon' => 'map-marker'
+//            ])
+//            ->addColumn('Name', 'obj.name')
+//            ->addColumn('Slug', 'obj.slug')
+//            ->addColumn('Creado', 'obj.created_at', [
+//                'icon' => 'calendar'
+//            ])
+//            ->addButtonTable(['edit', 'delete'], 'obj.id_increment')
+//            ->addRowCallBack('id', 'aData.id_increment')
+//            ->addRowCallBack('data-id', 'aData.id_increment')
+//            ->addRowCallBack('class', ' "alert" ')
+            ;
 
         return $this->render(
             $template,
@@ -81,6 +112,7 @@ class GridController extends BaseController
                 'form' => $form,
                 'modal' => $modal,
                 'objects' => $objects,
+                'dataTable' => $dataTable,
                 'buttonHeader' => $buttonHeader,
             ]
         );

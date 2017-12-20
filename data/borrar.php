@@ -2,8 +2,6 @@
 
 /*
 
-wine '/home/jafeth/Documents/JAFETH/PROGRAMS/PHOTOSHOP/adobe_photoshop_7.exe'
-
 git add wp-*; git commit -m "json modificacion"; git push origin master
 
 

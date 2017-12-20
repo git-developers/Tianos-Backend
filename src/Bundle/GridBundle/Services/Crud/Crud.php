@@ -2,12 +2,13 @@
 
 namespace Bundle\GridBundle\Services\Crud;
 
-use Bundle\GridBundle\Services\Crud\Builder\ModalMapper;
-use Bundle\GridBundle\Services\Crud\Builder\FormMapper;
-use Bundle\GridBundle\Services\Crud\Builder\ButtonHeaderMapper;
-use CoreBundle\Services\Crud\Builder\DataTableMapper;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
+use Bundle\GridBundle\Services\Crud\Builder\FormMapper;
+use Bundle\GridBundle\Services\Crud\Builder\ModalMapper;
+use Bundle\ResourceBundle\Controller\RequestConfiguration;
+use Bundle\GridBundle\Services\Crud\Builder\DataTableMapper;
+use Bundle\GridBundle\Services\Crud\Builder\ButtonHeaderMapper;
 
 class Crud
 {
@@ -31,14 +32,14 @@ class Crud
         return new FormMapper($this->router, $this->requestStack);
     }
 
-    public function getDataTableMapper()
+    public function getDataTableMapper(array $grid = [])
     {
-        return new DataTableMapper();
+        return new DataTableMapper($grid);
     }
 
-    public function getButtonHeaderMapper(array $buttons = [])
+    public function getButtonHeaderMapper(array $grid = [])
     {
-        return new ButtonHeaderMapper($buttons);
+        return new ButtonHeaderMapper($grid);
     }
 
 }

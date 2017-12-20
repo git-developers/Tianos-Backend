@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Bundle\ResourceBundle\Controller;
 
 use Component\Resource\Metadata\MetadataInterface;
+use Bundle\GridBundle\Services\Crud\Builder\DataTableMapper;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 
@@ -598,6 +599,22 @@ class RequestConfiguration
         }
 
         return $this->parameters->get('grid');
+    }
+
+    public function getGridDataTable(?string $key = null): array
+    {
+        if (!$this->hasGrid()) {
+            throw new \LogicException('Current action does not use grid.');
+        }
+
+        $grid = $this->parameters->get('grid');
+
+        if (!isset($grid[DataTableMapper::DATATABLE])) {
+            return [];
+        }
+
+        return is_array($grid[DataTableMapper::DATATABLE][$key]) ?
+            $grid[DataTableMapper::DATATABLE][$key] : [$grid[DataTableMapper::DATATABLE][$key]];
     }
 
     /**

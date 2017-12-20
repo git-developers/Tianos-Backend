@@ -7,10 +7,20 @@ class ButtonHeaderMapper
 
     protected $buttons;
 
-    public function __construct(array $buttons = [])
+    public function __construct(array $grid = [])
     {
-        $this->buttons = $buttons;
+        $this->buttons = $this->getButtons($grid);
 
+    }
+
+    public function getButtons(array $grid = [])
+    {
+
+        if (!isset($grid[DataTableMapper::DATATABLE][DataTableMapper::BUTTON_HEADER])) {
+            return [];
+        }
+
+        return $grid[DataTableMapper::DATATABLE][DataTableMapper::BUTTON_HEADER];
     }
 
     public function getDefaults()
@@ -30,7 +40,7 @@ class ButtonHeaderMapper
             'alt' => 'Crear item',
             'title' => 'Crear item',
             'icon' => '<i class="fa fa-fw fa-plus"></i>',
-            'data-target' => '#' . ModalMapper::MODAL_CREATE_ID,
+            'data-target' => ModalMapper::MODAL_CREATE_ID,
             'class' => 'btn btn-success btn-xs ' . ModalMapper::MODAL_CREATE_ID,
         ]);
     }
@@ -41,7 +51,7 @@ class ButtonHeaderMapper
             'alt' => 'Editar',
             'title' => 'Editar',
             'icon' => '<i class="fa fa-fw fa-pencil"></i>',
-            'data-target' => '#' . ModalMapper::MODAL_EDIT_ID,
+            'data-target' => ModalMapper::MODAL_EDIT_ID,
             'class' => 'btn btn-warning btn-xs ' . ModalMapper::MODAL_EDIT_ID,
         ]);
     }
@@ -52,7 +62,7 @@ class ButtonHeaderMapper
             'alt' => 'Eliminar',
             'title' => 'Eliminar',
             'icon' => '<i class="fa fa-fw fa-trash"></i>',
-            'data-target' => '#' . ModalMapper::MODAL_DELETE_ID,
+            'data-target' => ModalMapper::MODAL_DELETE_ID,
             'class' => 'btn btn-danger btn-xs ' . ModalMapper::MODAL_DELETE_ID,
         ]);
     }
@@ -62,7 +72,7 @@ class ButtonHeaderMapper
         return new Button([
             'alt' => 'Info',
             'title' => 'Info',
-            'data-target' => '#' . ModalMapper::MODAL_INFO_ID,
+            'data-target' => ModalMapper::MODAL_INFO_ID,
             'icon' => '<i class="fa fa-fw fa-info-circle"></i>',
             'class' => 'btn btn-info btn-xs ' . ModalMapper::MODAL_INFO_ID,
         ]);

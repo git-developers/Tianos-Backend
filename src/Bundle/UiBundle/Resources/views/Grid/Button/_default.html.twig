@@ -1,0 +1,11 @@
+{% spaceless %}
+<button class="{{ button.class }}"
+        alt="{{ button.alt }}"
+        title="{{ button.title }}"
+        data-toggle="{{ button.dataToggle }}"
+        data-target="#{{ button.dataTarget }}"
+        style="{{ button.style }}">
+    {{ button.icon|raw }}
+    {{ button.title }}
+</button>
+{% endspaceless %}

@@ -1,25 +1,44 @@
 <?php
 
-namespace CoreBundle\Services\Crud\Builder;
+namespace Bundle\GridBundle\Services\Crud\Builder;
 
+use Bundle\ResourceBundle\Controller\RequestConfiguration;
 
 class DataTableMapper
 {
-    private $i;
+
+    const COLUMN = 'columns';
+    const DATATABLE = 'data_table';
+    const BUTTON_HEADER = 'button_header';
+
+    const TABLE_NAME = 'table-grid';
+    const TABLE_TR_CLASS = 'row-tr-class';
+    const TABLE_TD_CLASS = 'row-td-class';
+
+//    private $i;
+//    private $configuration;
+    private $grid;
+
     protected $data;
+    protected $tableOptions;
+    protected $options;
+
     public $columns;
     public $columnsTargets;
     public $buttonTable;
     public $buttonHeader;
-    protected $options;
     public $rowCallBack;
 
-    public function __construct()
+    public function __construct(array $grid = [])
     {
-        $this->i = 0;
-        $this->options = $this->optionsDefault();
+//        $this->grid = $grid;
+
+//        $this->columns = $this->buildColumn();
+
+//        $this->i = 0;
+//        $this->options = $this->optionsDefault();
         $this->data = json_encode([]);
-        $this->columnsTargets = '';
+//        $this->columnsTargets = '';
     }
 
     public function addRowCallBack($key, $value)
@@ -29,58 +48,68 @@ class DataTableMapper
         return $this;
     }
 
-    public function addColumn($name, $obj = null, array $options = [])
-    {
+//    public function addColumn($name, $obj = null, array $options = [])
+//    {
+//
+////        $options = array_replace([
+////            'icon' => 10,
+////        ], $options);
+//
+//        $this->columns[$this->i]['name'] = $name;
+//        $this->columns[$this->i]['obj'] = $obj;
+//        $this->columns[$this->i]['options'] = $options;
+//        $this->i ++;
+//
+//        $this->setColumnsTargets($this->i);
+//
+//        return $this;
+//    }
 
-//        $options = array_replace([
-//            'icon' => 10,
-//        ], $options);
-
-        $this->columns[$this->i]['name'] = $name;
-        $this->columns[$this->i]['obj'] = $obj;
-        $this->columns[$this->i]['options'] = $options;
-        $this->i ++;
-
-        $this->setColumnsTargets($this->i);
-
-        return $this;
-    }
+//    public function buildColumn()
+//    {
+//        return $this->configuration->getGridDataTable(self::COLUMN);
+//
+//
+////        return $this->columns;
+//
+////        return $this;
+//    }
 
     public function addButtonTable(array $actions = [], $dataId = null)
     {
-        $button = new Button(['data-id' => $dataId]);
-
-        $buttons = [
-            'edit' => $button->edit(),
-            'delete' => $button->delete(),
-        ];
-
-        foreach ($actions as $key => $value){
-            if(array_key_exists($value, $buttons)){
-                $this->buttonTable[] = $buttons[$value];
-            }
-        }
-
-        return $this;
+//        $button = new Button(['data-id' => $dataId]);
+//
+//        $buttons = [
+//            'edit' => $button->edit(),
+//            'delete' => $button->delete(),
+//        ];
+//
+//        foreach ($actions as $key => $value){
+//            if(array_key_exists($value, $buttons)){
+//                $this->buttonTable[] = $buttons[$value];
+//            }
+//        }
+//
+//        return $this;
     }
 
-    public function addButtonHeader(array $actions = [])
-    {
-        $button = new Button();
-
-        $buttons = [
-            'create' => $button->create(),
-            'info' => $button->info(),
-        ];
-
-        foreach ($actions as $key => $value){
-            if(array_key_exists($value, $buttons)){
-                $this->buttonHeader[] = $buttons[$value];
-            }
-        }
-
-        return $this;
-    }
+//    public function addButtonHeader(array $actions = [])
+//    {
+//        $button = new Button();
+//
+//        $buttons = [
+//            'create' => $button->create(),
+//            'info' => $button->info(),
+//        ];
+//
+//        foreach ($actions as $key => $value){
+//            if(array_key_exists($value, $buttons)){
+//                $this->buttonHeader[] = $buttons[$value];
+//            }
+//        }
+//
+//        return $this;
+//    }
 
     /**
      * @return mixed
@@ -96,6 +125,8 @@ class DataTableMapper
     public function setData($data)
     {
         $this->data = $data;
+
+        return $this;
     }
 
     /**
@@ -112,6 +143,8 @@ class DataTableMapper
     public function setOptions(array $options = [])
     {
         $this->options = array_replace($this->optionsDefault(), $options);
+
+        return $this;
     }
 
     private function optionsDefault()
@@ -139,6 +172,52 @@ class DataTableMapper
     /**
      * @return mixed
      */
+    public function getColumns()
+    {
+        return $this->columns;
+    }
+
+    /**
+     * @param mixed $columns
+     */
+    public function setColumns(array $grid = [])
+    {
+        if (!isset($grid[DataTableMapper::DATATABLE][DataTableMapper::COLUMN])) {
+            $this->columns = [];
+
+            return $this;
+        }
+
+        $this->columns = $grid[DataTableMapper::DATATABLE][DataTableMapper::COLUMN];
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTableOptions()
+    {
+        return $this->tableOptions;
+    }
+
+    /**
+     * @param mixed $tableOptions
+     */
+    public function setTableOptions(array $tableOptions = [])
+    {
+        $this->tableOptions = array_replace([
+            'table_name' => self::TABLE_NAME,
+            'table_tr_class' => self::TABLE_TR_CLASS,
+            'table_td_class' => self::TABLE_TD_CLASS,
+        ], $tableOptions);
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getColumnsTargets()
     {
         return $this->columnsTargets;
@@ -147,13 +226,15 @@ class DataTableMapper
     /**
      * @param mixed $columnsTargets
      */
-    public function setColumnsTargets($columnsTargets)
+    public function setColumnsTargets()
     {
-        $columnsTargets = $columnsTargets - 1;
-        $columnsTargets = range(0, $columnsTargets);
-        $columnsTargets = json_encode($columnsTargets);
+        $columnsCount = count($this->columns) - 1;
+        $columnsCount = range(0, $columnsCount);
+        $columnsCount = json_encode($columnsCount);
 
-        $this->columnsTargets = $columnsTargets;
+        $this->columnsTargets = $columnsCount;
+
+        return $this;
     }
 
 }

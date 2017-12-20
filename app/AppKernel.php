@@ -24,6 +24,7 @@ class AppKernel extends Kernel
             new Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
 
             //own bundles
+            new \Bundle\UiBundle\UiBundle(),
             new \Bundle\ApiBundle\ApiBundle(),
             new \Bundle\CoreBundle\CoreBundle(),
             new \Bundle\GridBundle\GridBundle(),

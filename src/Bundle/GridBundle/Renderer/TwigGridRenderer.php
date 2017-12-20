@@ -1,26 +1,18 @@
 <?php
 
-/*
- * This file is part of the Sylius package.
- *
- * (c) Paweł Jędrzejewski
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 declare(strict_types=1);
 
-namespace Sylius\Bundle\GridBundle\Renderer;
+namespace Bundle\GridBundle\Renderer;
 
-use Sylius\Bundle\GridBundle\Form\Registry\FormTypeRegistryInterface;
-use Sylius\Component\Grid\Definition\Action;
-use Sylius\Component\Grid\Definition\Field;
-use Sylius\Component\Grid\Definition\Filter;
-use Sylius\Component\Grid\FieldTypes\FieldTypeInterface;
-use Sylius\Component\Grid\Renderer\GridRendererInterface;
-use Sylius\Component\Grid\View\GridViewInterface;
-use Sylius\Component\Registry\ServiceRegistryInterface;
+use Bundle\GridBundle\Form\Registry\FormTypeRegistryInterface;
+use Bundle\GridBundle\Services\Crud\Builder\Button;
+use Component\Grid\Definition\Action;
+use Component\Grid\Definition\Field;
+use Component\Grid\Definition\Filter;
+use Component\Grid\FieldTypes\FieldTypeInterface;
+use Component\Grid\Renderer\GridRendererInterface;
+use Component\Grid\View\GridViewInterface;
+use Component\Registry\ServiceRegistryInterface;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -87,6 +79,13 @@ final class TwigGridRenderer implements GridRendererInterface
         $this->defaultTemplate = $defaultTemplate;
         $this->actionTemplates = $actionTemplates;
         $this->filterTemplates = $filterTemplates;
+    }
+
+    public function renderButton(Button $button, ?string $template = null)
+    {
+//        JAFETH
+
+        return $this->twig->render($template ?: $this->defaultTemplate, ['grid' => $button]);
     }
 
     /**

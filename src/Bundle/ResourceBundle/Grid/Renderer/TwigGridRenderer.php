@@ -1,24 +1,16 @@
 <?php
 
-/*
- * This file is part of the Sylius package.
- *
- * (c) Paweł Jędrzejewski
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ResourceBundle\Grid\Renderer;
+namespace Bundle\ResourceBundle\Grid\Renderer;
 
-use Sylius\Bundle\ResourceBundle\Grid\Parser\OptionsParserInterface;
-use Sylius\Component\Grid\Definition\Action;
-use Sylius\Component\Grid\Definition\Field;
-use Sylius\Component\Grid\Definition\Filter;
-use Sylius\Component\Grid\Renderer\GridRendererInterface;
-use Sylius\Component\Grid\View\GridViewInterface;
+use Bundle\GridBundle\Services\Crud\Builder\Button;
+use Bundle\ResourceBundle\Grid\Parser\OptionsParserInterface;
+use Component\Grid\Definition\Action;
+use Component\Grid\Definition\Field;
+use Component\Grid\Definition\Filter;
+use Component\Grid\Renderer\GridRendererInterface;
+use Component\Grid\View\GridViewInterface;
 
 final class TwigGridRenderer implements GridRendererInterface
 {
@@ -58,6 +50,15 @@ final class TwigGridRenderer implements GridRendererInterface
         $this->twig = $twig;
         $this->optionsParser = $optionsParser;
         $this->actionTemplates = $actionTemplates;
+    }
+
+    public function renderButton(Button $button, ?string $template = null)
+    {
+
+        //JAFETH
+        return (string) $this->twig->render($template, [
+            'button' => $button,
+        ]);
     }
 
     /**

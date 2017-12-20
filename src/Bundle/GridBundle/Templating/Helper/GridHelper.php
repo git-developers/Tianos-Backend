@@ -9,6 +9,7 @@ use Component\Grid\Definition\Field;
 use Component\Grid\Definition\Filter;
 use Component\Grid\Renderer\GridRendererInterface;
 use Component\Grid\View\GridView;
+use Bundle\GridBundle\Services\Crud\Builder\Button;
 use Symfony\Component\Templating\Helper\Helper;
 
 class GridHelper extends Helper
@@ -26,18 +27,10 @@ class GridHelper extends Helper
         $this->gridRenderer = $gridRenderer;
     }
 
-    public function renderButton( $button, ?string $template = null)
+    public function renderButton(Button $button, ?string $template = null)
     {
-
-//        ini_set('memory_limit', '-1');
-
-
-        echo '<pre> POLLO:: ';
-        print_r($button);
-        exit;
-
-
-        return $this->gridRenderer->render($gridView, $template);
+//        JAFETH
+        return $this->gridRenderer->renderButton($button, $template);
     }
 
     /**
@@ -48,15 +41,7 @@ class GridHelper extends Helper
      */
     public function renderGrid(GridView $gridView, ?string $template = null)
     {
-
-//        ini_set('memory_limit', '-1');
-
-
-//        echo '<pre> POLLO:: ';
-//        print_r($template);
-//        exit;
-
-
+        //JAFETH
         return $this->gridRenderer->render($gridView, $template);
     }
 
