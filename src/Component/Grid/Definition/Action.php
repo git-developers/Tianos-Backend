@@ -1,20 +1,42 @@
 <?php
 
-/*
- * This file is part of the Sylius package.
- *
- * (c) Paweł Jędrzejewski
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 declare(strict_types=1);
 
 namespace Component\Grid\Definition;
 
 class Action
 {
+
+    const ACTION = 'Action';
+
+    const CREATE = 'create';
+    const CREATE_CHILD = 'createchild';
+    const EDIT = 'edit';
+    const VIEW = 'view';
+    const DELETE = 'delete';
+    const INFO = 'info';
+
+    const CHANGE_PASSWORD = 'changepassword';
+//
+//    const ASSIGN = 'assign';
+//    const UNASSIGN = 'unassign';
+//
+//    const BOXLEFT_SEARCH = 'boxleft_search';
+//    const BOXRIGHT_SEARCH = 'boxright_search';
+//    const BOXLEFT_HAS_BOXRIGHT = 'boxleft_has_boxright';
+//
+//    const BOXRIGHT_ASSIGN = 'boxright_assign';
+//    const BOXRIGHT_UNASSIGN = 'boxright_unassign';
+//
+//    const ASSOCIATIVE_EDIT = 'associative_edit';
+//
+//    const BOXRIGHT_ASSIGN_VIEW = 'boxright_assign_view';
+//    const BOXRIGHT_ASSIGN_EDIT = 'boxright_assign_edit';
+//    const BOXRIGHT_ASSIGN_CHILD = 'boxright_assign_child';
+//
+
+
+
     /**
      * @var string
      */

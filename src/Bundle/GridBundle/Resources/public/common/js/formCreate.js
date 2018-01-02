@@ -11,7 +11,7 @@
         var base = this;
         var modal = null;
 
-        var apiContent = null;
+        var modalContent = null;
         var modalMsgDiv = null;
         var modalMsgText = null;
         var modalRefresh = null;
@@ -27,8 +27,8 @@
             var totalButtons = 0;
             // base.$el.append('<button name="public" style="'+base.options.buttonStyle+'">Private</button>');
 
-            modal = $('#' + options.modal_create_id);
-            apiContent = modal.find('.api-content');
+            modal = $('#' + options.modal_id);
+            modalContent = modal.find('.crud-modal-content');
         };
 
         base.openModal = function(event) {
@@ -40,7 +40,7 @@
             modalRefresh = modal.find('i.fa-refresh');
 
             $.ajax({
-                url: options.route_create,
+                url: options.route,
                 type: 'POST',
                 dataType: 'html',
                 data: {
@@ -52,14 +52,14 @@
 
                     modalMsgDiv.hide();
                     modalMsgText.empty();
-                    apiContent.html(msg_loading);
+                    modalContent.html(msg_loading);
                 },
                 success: function(data, textStatus, jqXHR) {
                     $('button[type="submit"]').prop('disabled', false);
-                    apiContent.html(data);
+                    modalContent.html(data);
                 },
                 error: function(jqXHR, exception) {
-                    apiContent.html(msg_error);
+                    modalContent.html(msg_error);
                 }
             });
         };
@@ -74,7 +74,7 @@
             var fields = $("form[name='" + options.form_create_name + "']").serializeArray();
 
             $.ajax({
-                url: options.route_create,
+                url: options.route,
                 type: 'POST',
                 dataType: 'json',
                 data: fields,
@@ -137,7 +137,12 @@
 
             var bp = new $.formCreate(this, options);
 
-            $('button.' + options.modal_create_id).click(function(event) {
+            $('button.' + options.modal_id).click(function(event) {
+
+                console.log('111 --- openModal');
+                console.log(options);
+
+
                 bp.openModal(event);
             });
 

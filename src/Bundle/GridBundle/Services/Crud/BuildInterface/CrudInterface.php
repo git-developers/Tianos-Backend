@@ -1,6 +1,7 @@
 <?php
 
-namespace CoreBundle\Services\Crud\BuildInterface;
+namespace Bundle\CoreBundle\Services\Crud\BuildInterface;
+
 
 interface CrudInterface
 {

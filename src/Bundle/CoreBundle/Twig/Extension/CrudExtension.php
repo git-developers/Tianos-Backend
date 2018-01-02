@@ -85,7 +85,7 @@ class CrudExtension extends \Twig_Extension
 
     public function sliderBgColorFunction()
     {
-        $action = $this->getAction();
+        $action = null; //$this->getAction();
 
         switch ($action){
             case Action::CREATE:

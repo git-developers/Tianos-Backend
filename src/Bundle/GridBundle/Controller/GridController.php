@@ -54,6 +54,7 @@ class GridController extends BaseController
         $method = $configuration->getRepositoryMethod();
         $template = $configuration->getTemplate('');
         $grid = $configuration->getGrid();
+        $vars = $configuration->getVars();
 
         //REPOSITORY
         $repository = $this->get($service);
@@ -64,60 +65,37 @@ class GridController extends BaseController
         $crud = $this->get('grid.crud');
         $modal = $crud->getModalMapper()->getDefaults();
         $form = $crud->getFormMapper()->getDefaults();
-        $buttonHeader = $crud->getButtonHeaderMapper($grid)->getDefaults();
 
         //DATATABLE
         $dataTable = $crud->getDataTableMapper($grid)
-                        ->setOptions()
-                        ->setTableOptions()
-                        ->setColumns($grid)
-                        ->setColumnsTargets()
-                        ->setData($objects)
+            ->setRoute()
+            ->setColumns()
+            ->setOptions()
+            ->setRowCallBack()
+            ->setData($objects)
+            ->setTableOptions()
+            ->setTableButton()
+            ->setTableHeaderButton()
+            ->setColumnsTargets()
+            ->resetGridVariable()
         ;
 
 
-//        echo '<pre> POLLO --- 666 ---- $dataTable:: ';
-//        print_r($dataTable);
+//        echo '<pre> POLLO --- $grid:: ';
+//        print_r($request);
 //        exit;
 
-
-
-
-
-//                ->buildColumn($grid)
-
-//            ->addColumn('#', " '<span class=\"badge bg-blue\">' + obj.id_increment + '</span>' ")
-////            ->addColumn('category', 'obj.category', [
-////                'property' => 'obj.category.name',
-////                'icon' => 'sitemap',
-////            ])
-//            ->addColumn('code', 'obj.code', [
-//                'icon' => 'map-marker'
-//            ])
-//            ->addColumn('Name', 'obj.name')
-//            ->addColumn('Slug', 'obj.slug')
-//            ->addColumn('Creado', 'obj.created_at', [
-//                'icon' => 'calendar'
-//            ])
-//            ->addButtonTable(['edit', 'delete'], 'obj.id_increment')
-//            ->addRowCallBack('id', 'aData.id_increment')
-//            ->addRowCallBack('data-id', 'aData.id_increment')
-//            ->addRowCallBack('class', ' "alert" ')
-            ;
 
         return $this->render(
             $template,
             [
+                'vars' => $vars,
                 'grid' => $grid,
                 'form' => $form,
                 'modal' => $modal,
-                'objects' => $objects,
                 'dataTable' => $dataTable,
-                'buttonHeader' => $buttonHeader,
             ]
         );
-
-
 
 //        $name = $request->query->get('name');
 //
@@ -125,6 +103,174 @@ class GridController extends BaseController
 //            'slug' => $this->get('sylius.generator.slug')->generate($name),
 //        ]);
     }
+
+    public function infoAction(Request $request): Response
+    {
+        $parameters = [
+            'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
+        ];
+        $applicationName = $this->container->getParameter('application_name');
+        $this->metadata = new Metadata('tianos', $applicationName, $parameters);
+
+        //CONFIGURATION
+        $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
+//        $service = $configuration->getRepositoryService();
+//        $method = $configuration->getRepositoryMethod();
+        $template = $configuration->getTemplate('');
+//        $grid = $configuration->getGrid();
+//        $vars = $configuration->getVars();
+        $action = $configuration->getAction();
+
+        //CRUD
+        $crud = $this->get('grid.crud');
+        $modal = $crud->getModalMapper()->getDefaults();
+
+
+        return $this->render(
+            $template,
+            [
+//                'vars' => $vars,
+//                'grid' => $grid,
+                'action' => $action,
+//                'form' => $form,
+//                'modal' => $modal,
+//                'dataTable' => $dataTable,
+            ]
+        );
+
+
+
+
+
+/*        if (!$this->isXmlHttpRequest()) {
+            throw $this->createAccessDeniedException(self::ACCESS_DENIED_MSG);
+        }
+
+        $crudMapper
+            ->add('template_info', $crudMapper->getInfoTemplate())
+        ;
+
+        $crud = $crudMapper->getDefaults();
+
+        return $this->render(
+            $this->validateTemplate($crud['template_info']),
+            [
+                'xxx' => '',
+            ]
+        );*/
+    }
+
+
+
+    public function createAction(Request $request): Response
+    {
+        $parameters = [
+            'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
+        ];
+        $applicationName = $this->container->getParameter('application_name');
+        $this->metadata = new Metadata('tianos', $applicationName, $parameters);
+
+        //CONFIGURATION
+        $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
+//        $service = $configuration->getRepositoryService();
+//        $method = $configuration->getRepositoryMethod();
+        $template = $configuration->getTemplate('');
+//        $grid = $configuration->getGrid();
+//        $vars = $configuration->getVars();
+        $action = $configuration->getAction();
+
+
+        //CRUD
+        $crud = $this->get('grid.crud');
+        $modal = $crud->getModalMapper()->getDefaults();
+        $form = $crud->getFormMapper()->getDefaults();
+
+        return $this->render(
+            $template,
+            [
+                'modal' => $modal,
+                'form' => $form,
+                'action' => $action,
+//                'vars' => $vars,
+//                'grid' => $grid,
+            ]
+        );
+    }
+
+
+    public function editAction(Request $request): Response
+    {
+        $parameters = [
+            'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
+        ];
+        $applicationName = $this->container->getParameter('application_name');
+        $this->metadata = new Metadata('tianos', $applicationName, $parameters);
+
+        //CONFIGURATION
+        $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
+//        $service = $configuration->getRepositoryService();
+//        $method = $configuration->getRepositoryMethod();
+        $template = $configuration->getTemplate('');
+//        $grid = $configuration->getGrid();
+//        $vars = $configuration->getVars();
+        $action = $configuration->getAction();
+
+
+        //CRUD
+        $crud = $this->get('grid.crud');
+        $modal = $crud->getModalMapper()->getDefaults();
+        $form = $crud->getFormMapper()->getDefaults();
+
+        return $this->render(
+            $template,
+            [
+                'modal' => $modal,
+                'form' => $form,
+                'action' => $action,
+//                'vars' => $vars,
+//                'grid' => $grid,
+            ]
+        );
+    }
+
+
+
+    public function deleteAction(Request $request): Response
+    {
+        $parameters = [
+            'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
+        ];
+        $applicationName = $this->container->getParameter('application_name');
+        $this->metadata = new Metadata('tianos', $applicationName, $parameters);
+
+        //CONFIGURATION
+        $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
+//        $service = $configuration->getRepositoryService();
+//        $method = $configuration->getRepositoryMethod();
+        $template = $configuration->getTemplate('');
+//        $grid = $configuration->getGrid();
+//        $vars = $configuration->getVars();
+        $action = $configuration->getAction();
+
+
+        //CRUD
+        $crud = $this->get('grid.crud');
+        $modal = $crud->getModalMapper()->getDefaults();
+        $form = $crud->getFormMapper()->getDefaults();
+
+        return $this->render(
+            $template,
+            [
+                'modal' => $modal,
+                'form' => $form,
+                'action' => $action,
+//                'vars' => $vars,
+//                'grid' => $grid,
+            ]
+        );
+    }
+
+
 
 }
 

@@ -11,7 +11,7 @@
         var base = this;
         var modal = null;
 
-        var apiContent = null;
+        var modalContent = null;
         var modalMsgDiv = null;
         var modalMsgText = null;
         var modalRefresh = null;
@@ -27,8 +27,8 @@
             var totalButtons = 0;
             // base.$el.append('<button name="public" style="'+base.options.buttonStyle+'">Private</button>');
 
-            modal = $('#' + options.modal_delete_id);
-            apiContent = modal.find('.api-content');
+            modal = $('#' + options.modal_id);
+            modalContent = modal.find('.crud-modal-content');
         };
 
         base.openModal = function(event, context) {
@@ -43,7 +43,7 @@
             modal.find('small.label').html('Item ' + id);
 
             $.ajax({
-                url: options.route_delete,
+                url: options.route,
                 type: 'POST',
                 dataType: 'html',
                 data: {
@@ -56,14 +56,14 @@
 
                     modalMsgDiv.hide();
                     modalMsgText.empty();
-                    apiContent.html(msg_loading);
+                    modalContent.html(msg_loading);
                 },
                 success: function(data, textStatus, jqXHR) {
                     $('button[type="submit"]').prop('disabled', false);
-                    apiContent.html(data);
+                    modalContent.html(data);
                 },
                 error: function(jqXHR, exception) {
-                    apiContent.html(msg_error);
+                    modalContent.html(msg_error);
                 }
             });
 
@@ -79,7 +79,7 @@
             var fields = $("form[name='" + options.form_delete_name + "']").serializeArray();
 
             $.ajax({
-                url: options.route_delete,
+                url: options.route,
                 type: 'DELETE',
                 dataType: 'json',
                 data: fields,
@@ -132,7 +132,7 @@
 
             var bp = new $.formDelete(this, options);
 
-            $(document).on('click', 'button.' + options.modal_delete_id, function() {
+            $(document).on('click', 'button.' + options.modal_id, function() {
                 bp.openModal(event, this);
             });
 

@@ -439,6 +439,15 @@ class RequestConfiguration
         return is_array($factory) ? $factory['method'] : $factory;
     }
 
+    public function getAction()
+    {
+        if (!$this->parameters->has('action')) {
+            return null;
+        }
+
+        return $this->parameters->get('action');
+    }
+
     /**
      * @return array
      */

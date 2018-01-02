@@ -81,10 +81,16 @@ final class TwigGridRenderer implements GridRendererInterface
         $this->filterTemplates = $filterTemplates;
     }
 
+    public function renderModalFooter(?string $template = null) // Button $button,
+    {
+//        JAFETH
+        return $this->twig->render($template ?: $this->defaultTemplate, ['template' => $template]);
+    }
+
+
     public function renderButton(Button $button, ?string $template = null)
     {
 //        JAFETH
-
         return $this->twig->render($template ?: $this->defaultTemplate, ['grid' => $button]);
     }
 

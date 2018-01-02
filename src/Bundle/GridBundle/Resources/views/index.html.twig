@@ -1,5 +1,9 @@
 {% extends "ThemesBundle:Adminlte:1_template.html.twig" %}
 
+{% block bodyclass %}{% spaceless %}
+    {{ vars.body_css }}
+{% endspaceless %}{% endblock %}
+
 {% block stylesheets %}
     {{ parent() }}
 
@@ -82,12 +86,12 @@
                     },
                     {% endfor %}
 
-                    {% if dataTable.buttonTable is not empty %}
+                    {% if dataTable.tableButton is not empty %}
                     {
                         'data' : function (obj) {
                             return '{% spaceless %}
-                            {% for key, value in dataTable.buttonTable %}
-                            {{ value|raw }}
+                            {% for key, button in dataTable.tableButton %}
+                                {{ tianos_grid_render_button(button, '@Ui/Grid/Button/Header/_table_button.html.twig') }}
                             {% endfor %}
                             {% endspaceless %}';
                         }
@@ -107,8 +111,8 @@
                 ],
                 'fnRowCallback': function(nRow, aData, iDisplayIndex, iDisplayIndexFull) {
 
-                    {% for key, value in dataTable.rowCallBack %}
-                    $(nRow).attr('{{ key|trim|raw }}', {{ value|trim|raw }});
+                    {% for key, nRow in dataTable.rowCallBack %}
+                        $(nRow).attr('{{ nRow.key|trim|raw }}', {{ nRow.value|trim|raw }});
                     {% endfor %}
 
                     $(nRow).attr('class', '{{ dataTable.tableOptions.table_tr_class }}');
@@ -117,26 +121,36 @@
                 }
             });
 
-            {#$('body.{{ crud.body_css }}').formCreate({#}
+            $('body.{{ vars.body_css }}').formCreate({
+                modal_id: '{{ modal.modal_create_id }}',
+                route: '{{ path(dataTable.route.create) }}',
+
                 {#form_create_name: '{{ crud.form_create_name }}',#}
                 {#modal_create_id: '{{ crud.modal_create_id }}',#}
                 {#route_create: '{{ crud.route_create }}',#}
                 {#table_json: tableJson,#}
-            {#});#}
+            });
 
-            {#$('body.{{ crud.body_css }}').formEdit({#}
+            $('body.{{ vars.body_css }}').formEdit({
+                modal_id: '{{ modal.modal_edit_id }}',
+                route: '{{ path(dataTable.route.edit) }}',
+
                 {#form_edit_name: '{{ crud.form_edit_name }}',#}
                 {#modal_edit_id: '{{ crud.modal_edit_id }}',#}
                 {#route_edit: '{{ crud.route_edit }}',#}
                 {#table_json: tableJson,#}
-            {#});#}
+            });
 
-            {#$('body.{{ crud.body_css }}').formDelete({#}
+            $('body.{{ vars.body_css }}').formDelete({
+                modal_id: '{{ modal.modal_delete_id }}',
+                route: '{{ path(dataTable.route.delete) }}',
+
+
                 {#form_delete_name: '{{ crud.form_delete_name }}',#}
                 {#modal_delete_id: '{{ crud.modal_delete_id }}',#}
                 {#route_delete: '{{ crud.route_delete }}',#}
                 {#table_json: tableJson,#}
-            {#});#}
+            });
 
             {#$('body.{{ crud.body_css }}').formView({#}
                 {#modal_view_id: '{{ crud.modal_view_id }}',#}
@@ -144,10 +158,10 @@
                 {#table_td_class: '{{ crud.table_td_class }}',#}
             {#});#}
 
-            {#$('body.{{ crud.body_css }}').formInfo({#}
-                {#modal_info_id: '{{ crud.modal_info_id }}',#}
-                {#route_info: '{{ crud.route_info }}',#}
-            {#});#}
+            $('body.{{ vars.body_css }}').formInfo({
+                modal_id: '{{ modal.modal_info_id }}',
+                route: '{{ path(dataTable.route.info) }}',
+            });
 
         });
 
@@ -168,9 +182,9 @@
             {#<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>#}
             {#<li class="active">Dashboard</li>#}
 
-            {% for key, button in buttonHeader %}
+            {% for key, button in dataTable.tableHeaderButton %}
                 <li>
-                    {{ tianos_grid_render_button(button, '@Ui/Grid/Button/_default.html.twig') }}
+                    {{ tianos_grid_render_button(button, '@Ui/Grid/Button/Header/_table_header_button.html.twig') }}
                 </li>
             {% endfor %}
         </ol>
@@ -205,9 +219,9 @@
                                             </th>
                                         {% endfor %}
 
-                                        {#{% if dataTable.buttonTable is not empty %}#}
-                                            {#<th>&nbsp</th>#}
-                                        {#{% endif %}#}
+                                        {% if dataTable.tableButton is not empty %}
+                                            <th>&nbsp</th>
+                                        {% endif %}
                                     </tr>
                                     </thead>
 
@@ -222,9 +236,9 @@
                                             </th>
                                         {% endfor %}
 
-                                        {#{% if dataTable.buttonTable is not empty %}#}
-                                            {#<th>&nbsp</th>#}
-                                        {#{% endif %}#}
+                                        {% if dataTable.tableButton is not empty %}
+                                            <th>&nbsp</th>
+                                        {% endif %}
                                     </tr>
                                     </tfoot>
                                 </table>

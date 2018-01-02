@@ -27,9 +27,15 @@ class GridHelper extends Helper
         $this->gridRenderer = $gridRenderer;
     }
 
+    //        JAFETH
+    public function renderModalFooter(?string $template = null) // Button $button,
+    {
+        return $this->gridRenderer->renderModalFooter($template); // $button,
+    }
+
+    //        JAFETH
     public function renderButton(Button $button, ?string $template = null)
     {
-//        JAFETH
         return $this->gridRenderer->renderButton($button, $template);
     }
 

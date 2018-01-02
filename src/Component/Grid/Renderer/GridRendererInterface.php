@@ -13,7 +13,12 @@ use Bundle\GridBundle\Services\Crud\Builder\Button;
 interface GridRendererInterface
 {
 
+    // JAFETH
+    public function renderModalFooter(?string $template = null); // Button $button,
+
     public function renderButton(Button $button, ?string $template = null);
+    // JAFETH
+
 
     /**
      * @param GridViewInterface $gridView

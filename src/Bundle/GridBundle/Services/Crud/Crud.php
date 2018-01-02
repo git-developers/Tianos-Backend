@@ -37,9 +37,9 @@ class Crud
         return new DataTableMapper($grid);
     }
 
-    public function getButtonHeaderMapper(array $grid = [])
-    {
-        return new ButtonHeaderMapper($grid);
-    }
+//    public function getButtonHeaderMapper()
+//    {
+//        return new ButtonHeaderMapper();
+//    }
 
 }

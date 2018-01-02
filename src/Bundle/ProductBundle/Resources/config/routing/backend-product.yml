@@ -4,21 +4,39 @@ backend_product_bundle_index:
     defaults:
         _controller: tianos.backend.controller.product:indexAction
         _tianos:
+            action: index
             section: admin
             permission: true
-            template: GridBundle:Grid:index.html.twig
+            template: GridBundle::index.html.twig
+#            template: GridBundle:Grid:index.html.twig
             vars:
                 subheader: sylius.ui.manage_your_product_catalog
                 icon: cube
+                body_css: grid-body-css
 #            grid: sylius_admin_product
             grid:
                 icon: cube
                 box_class: primary
                 title: Gestionar productos
                 data_table:
-                    button_header:
+                    route:
+                        info: backend_product_bundle_info
+                        edit: backend_product_bundle_edit
+                        create: backend_product_bundle_create
+                        delete: backend_product_bundle_delete
+                    table_button:
+                        - edit
+                        - delete
+                    table_button_header:
                         - create
                         - info
+                    row_call_back:
+                        - key: id
+                          value: aData.id
+                        - key: data-id
+                          value: aData.id
+                        - key: class
+                          value: "'alert'"
                     columns:
                         - name: '#'
                           obj: " '<span class=\"badge bg-blue\">' + obj.id + '</span>' "
@@ -40,6 +58,55 @@ backend_product_bundle_index:
                 service: tianos.repository.product
                 method: findAll
                 arguments: [$productId]
+
+backend_product_bundle_info:
+    path: /info
+    methods: [POST]
+    defaults:
+        _controller: tianos.backend.controller.product:infoAction
+        _tianos:
+            action: info
+            template: ProductBundle:ProductBackend/Informative:info.html.twig
+            grid:
+                icon: cube
+                box_class: primary
+
+backend_product_bundle_create:
+    path: /create
+    methods: [POST]
+    defaults:
+        _controller: tianos.backend.controller.product:createAction
+        _tianos:
+            action: create
+            template: ProductBundle:ProductBackend/Form:form.html.twig
+            vars:
+#                body_css: grid-body-css
+
+backend_product_bundle_edit:
+    path: /edit
+    methods: [POST, PUT]
+    defaults:
+        _controller: tianos.backend.controller.product:editAction
+        _tianos:
+            action: edit
+            template: ProductBundle:ProductBackend/Form:form.html.twig
+            vars:
+#                body_css: grid-body-css
+
+backend_product_bundle_delete:
+    path: /delete
+    methods: [POST, DELETE]
+    defaults:
+        _controller: tianos.backend.controller.product:deleteAction
+        _tianos:
+            action: delete
+            template: ProductBundle:ProductBackend/Form:form.html.twig
+            vars:
+#                body_css: grid-body-css
+
+
+
+
 
 
 #/var/www/html/Sylius/sylius/vendor/sylius/sylius/docs/customization/factory.rst

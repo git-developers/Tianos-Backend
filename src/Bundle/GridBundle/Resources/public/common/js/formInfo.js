@@ -11,7 +11,7 @@
         var base = this;
         var modal = null;
 
-        var apiContent = null;
+        var modalContent = null;
 
         var msg_error = '<p>INFO: Oops!, no se completo el proceso. Contacte a su proveedor (code 3030)</p>';
         var msg_loading = '<div class="modal-body" align="center"><i class="fa fa-2x fa-refresh fa-spin"></i></div>';
@@ -24,8 +24,8 @@
             var totalButtons = 0;
             // base.$el.append('<button name="public" style="'+base.options.buttonStyle+'">Private</button>');
 
-            modal = $('#' + options.modal_info_id);
-            apiContent = modal.find('.api-content');
+            modal = $('#' + options.modal_id);
+            modalContent = modal.find('.crud-modal-content');
         };
 
         base.openModal = function(event) {
@@ -33,18 +33,18 @@
             // base.options.buttonPress.call( this );
 
             $.ajax({
-                url: options.route_info,
+                url: options.route,
                 type: 'POST',
                 dataType: 'html',
                 data: '',
                 beforeSend: function(jqXHR, settings) {
-                    apiContent.html(msg_loading);
+                    modalContent.html(msg_loading);
                 },
                 success: function(data, textStatus, jqXHR) {
-                    apiContent.html(data);
+                    modalContent.html(data);
                 },
                 error: function(jqXHR, exception) {
-                    apiContent.html(msg_error);
+                    modalContent.html(msg_error);
                 }
             });
         };
@@ -68,7 +68,7 @@
 
             var bp = new $.formInfo(this, options);
 
-            $('button.' + options.modal_info_id).click(function(event) {
+            $('button.' + options.modal_id).click(function(event) {
                 bp.openModal(event);
             });
 

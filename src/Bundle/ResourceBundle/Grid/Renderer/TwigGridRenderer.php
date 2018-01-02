@@ -52,14 +52,62 @@ final class TwigGridRenderer implements GridRendererInterface
         $this->actionTemplates = $actionTemplates;
     }
 
+
+    /*
+    const CLOSED_LEFT = '<button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Cerrar</button>';
+    const CLOSED_RIGHT_DEFAULT = '<button type="button" class="btn btn-default pull-right" data-dismiss="modal">Cerrar</button>';
+    const CLOSED_RIGHT_OUTLINE = '<button type="button" class="btn btn-outline pull-right" data-dismiss="modal">Cerrar</button>';
+    const SAVE = '<button type="submit" class="btn btn-outline">Guardar</button>';
+    const CHANGE_PASSWORD = '<button type="submit" class="btn btn-outline">Cambiar password</button>';
+    const DELETE = '<button type="submit" class="btn btn-outline">Eliminar</button>';
+     */
+
+    //JAFETH
+    public function renderModalFooter(?string $action = null)
+    {
+        switch ($action){
+            case Action::EDIT:
+            case Action::CREATE:
+            case Action::CREATE_CHILD:
+                $template = '@Ui/Grid/Button/Footer/_modal_button_1.html.twig';
+//                return self::CLOSED_LEFT . self::SAVE;
+                break;
+            case Action::CHANGE_PASSWORD:
+                $template = '@Ui/Grid/Button/Footer/_modal_button_2.html.twig';
+//                return self::CLOSED_LEFT . self::CHANGE_PASSWORD;
+                break;
+            case Action::DELETE:
+                $template = '@Ui/Grid/Button/Footer/_modal_button_3.html.twig';
+//                return self::CLOSED_LEFT . self::DELETE;
+                break;
+            case Action::VIEW:
+                $template = '@Ui/Grid/Button/Footer/_modal_button_4.html.twig';
+//                return self::CLOSED_RIGHT_DEFAULT;
+                break;
+            case Action::INFO:
+                $template = '@Ui/Grid/Button/Footer/_modal_button_5.html.twig';
+//                return self::CLOSED_RIGHT_OUTLINE;
+                break;
+            default:
+                $template = '@Ui/Grid/Button/Footer/_modal_button_0.html.twig';
+        }
+
+        return (string) $this->twig->render($template, [
+            'action' => $action,
+        ]);
+    }
+
     public function renderButton(Button $button, ?string $template = null)
     {
-
         //JAFETH
         return (string) $this->twig->render($template, [
             'button' => $button,
         ]);
     }
+    //JAFETH
+
+
+
 
     /**
      * {@inheritdoc}

@@ -18,4 +18,19 @@ class BackendProductController extends GridController
         return parent::indexAction($request);
     }
 
+    public function createAction(Request $request): Response
+    {
+        return parent::createAction($request);
+    }
+
+    public function editAction(Request $request): Response
+    {
+        return parent::editAction($request);
+    }
+
+    public function deleteAction(Request $request): Response
+    {
+        return parent::deleteAction($request);
+    }
+
 }
