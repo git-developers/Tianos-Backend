@@ -178,6 +178,22 @@ class GridController extends BaseController
 //        $grid = $configuration->getGrid();
 //        $vars = $configuration->getVars();
         $action = $configuration->getAction();
+        $formType = $configuration->getFormType();
+        $model = $configuration->getModel();
+
+
+        $entity = new $model();
+
+
+//        $form = $this->createForm($crud['form_type'], $entity, $options);
+//        $form->handleRequest($request);
+
+        echo '<pre> POLLO:: ';
+        print_r($entity);
+        exit;
+
+
+
 
 
         //CRUD
@@ -188,9 +204,10 @@ class GridController extends BaseController
         return $this->render(
             $template,
             [
-                'modal' => $modal,
                 'form' => $form,
+                'modal' => $modal,
                 'action' => $action,
+                'form_type' => $formType,
 //                'vars' => $vars,
 //                'grid' => $grid,
             ]

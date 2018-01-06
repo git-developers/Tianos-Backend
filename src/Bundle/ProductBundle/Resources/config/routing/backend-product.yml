@@ -79,6 +79,9 @@ backend_product_bundle_create:
         _tianos:
             action: create
             template: ProductBundle:ProductBackend/Form:form.html.twig
+            model: Component\Product\Model\Product
+            form:
+                type: Bundle\ProductBundle\Form\Type\ProductType
             vars:
 #                body_css: grid-body-css
 

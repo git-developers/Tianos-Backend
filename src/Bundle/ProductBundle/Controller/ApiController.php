@@ -9,14 +9,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Component\Resource\Metadata\Metadata;
 use Bundle\ResourceBundle\ResourceBundle;
 use Bundle\CoreBundle\Controller\BaseController;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class FrontendProductController extends BaseController
+class ApiController extends BaseController
 {
-
-//    public function __construct() {
-////        parent::__construct($requestConfigurationFactory);
-//    }
 
     public function indexAction(Request $request): Response
     {
@@ -36,12 +31,11 @@ class FrontendProductController extends BaseController
 
         $products = $this->getSerialize($products, 'product');
 
-        return $this->render(
-            'ProductBundle:FrontendProduct:index.html.twig',
-            [
-                'products' => $products,
-            ]
-        );
+        return $this->json([
+            'status' => self::STATUS_SUCCESS,
+            'msg' => 'mensaje ddd',
+            'products' => json_decode($products),
+        ]);
     }
 
 }

@@ -116,6 +116,17 @@ class RequestConfiguration
         return $template;
     }
 
+//    JAFETH
+    public function getModel()
+    {
+        if (!$this->parameters->has('model')) {
+            return null;
+        }
+
+        return $this->parameters->get('model');
+    }
+
+
     /**
      * @return string|null
      */

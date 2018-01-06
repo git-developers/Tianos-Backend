@@ -1,19 +1,19 @@
 services:
 
     tianos.api.controller.product:
-        class: Bundle\ProductBundle\Controller\ApiProductController
+        class: Bundle\ProductBundle\Controller\ApiController
         arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
         tags:
             - { name: tianos.api.controller.product, alias: tianos.api.controller.product }
 
     tianos.backend.controller.product:
-        class: Bundle\ProductBundle\Controller\BackendProductController
+        class: Bundle\ProductBundle\Controller\BackendController
         arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
         tags:
             - { name: tianos.backend.controller.product, alias: tianos.backend.controller.product }
 
     tianos.frontend.controller.product:
-        class: Bundle\ProductBundle\Controller\FrontendProductController
+        class: Bundle\ProductBundle\Controller\FrontendController
         arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
         tags:
             - { name: tianos.frontend.controller.product, alias: tianos.frontend.controller.product }

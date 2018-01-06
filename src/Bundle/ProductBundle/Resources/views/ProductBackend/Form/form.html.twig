@@ -2,27 +2,24 @@
 
 {% block crud_modal_content %}
 
+    {{ dump(form_type) }}
 
-    HOLAS
+    {% if id is defined %}
+        <input type="hidden" value="{{ id }}" name="id">
+    {% endif %}
 
+    {{ form_widget(formEntity._token) }}
 
-    {#{% if id is defined %}#}
-        {#<input type="hidden" value="{{ id }}" name="id">#}
-    {#{% endif %}#}
+    <div class="form-group">
+        <i class="fa fa-fw fa-industry"></i>
+        {{ form_label(formEntity.code) }}
+        {{ form_widget(formEntity.code) }}
+    </div>
 
-    {#{{ form_widget(formEntity._token) }}#}
-
-    {#<div class="form-group">#}
-        {#<i class="fa fa-fw fa-industry"></i>#}
-        {#{{ form_label(formEntity.code) }}#}
-        {#{{ form_widget(formEntity.code) }}#}
-    {#</div>#}
-
-    {#<div class="form-group">#}
-        {#<i class="fa fa-fw fa-industry"></i>#}
-        {#{{ form_label(formEntity.name) }}#}
-        {#{{ form_widget(formEntity.name) }}#}
-    {#</div>#}
-
+    <div class="form-group">
+        <i class="fa fa-fw fa-industry"></i>
+        {{ form_label(formEntity.name) }}
+        {{ form_widget(formEntity.name) }}
+    </div>
 
 {% endblock %}

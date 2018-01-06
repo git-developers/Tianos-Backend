@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Bundle\GridBundle\Controller\GridController;
 
-class BackendProductController extends GridController
+class BackendController extends GridController
 {
 
     public function indexAction(Request $request): Response
