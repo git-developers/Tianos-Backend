@@ -13,11 +13,11 @@ class FormMapper
 
     protected $defaults;
 
-    const FORM_CREATE_NAME = 'form-create';
-    const FORM_CREATE_CHILD_NAME = 'form-create-child';
-    const FORM_EDIT_NAME = 'form-edit';
-    const FORM_DELETE_NAME = 'form-delete';
-    const FORM_DELETE_INPUT_ID = 'input-role-id';
+    const CREATE_NAME = 'form-create';
+    const CREATE_CHILD_NAME = 'form-create-child';
+    const EDIT_NAME = 'form-edit';
+    const DELETE_NAME = 'form-delete';
+    const DELETE_INPUT_ID = 'input-role-id';
 
     public function __construct(Router $router, RequestStack $requestStack)
     {
@@ -26,13 +26,12 @@ class FormMapper
 
         $this->defaults = [
 
-            'form_create_name' => self::FORM_CREATE_NAME,
-            'form_create_child_name' => self::FORM_CREATE_CHILD_NAME,
-            'form_edit_name' => self::FORM_EDIT_NAME,
-            'form_delete_name' => self::FORM_DELETE_NAME,
-            'form_data' => [],
-            'form_type' => null,
-
+            'create_name' => self::CREATE_NAME,
+            'create_child_name' => self::CREATE_CHILD_NAME,
+            'edit_name' => self::EDIT_NAME,
+            'delete_name' => self::DELETE_NAME,
+            'data' => [],
+//            'type' => null,
         ];
     }
 

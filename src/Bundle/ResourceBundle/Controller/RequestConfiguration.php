@@ -117,13 +117,13 @@ class RequestConfiguration
     }
 
 //    JAFETH
-    public function getModel()
+    public function getEntity()
     {
-        if (!$this->parameters->has('model')) {
+        if (!$this->parameters->has('entity')) {
             return null;
         }
 
-        return $this->parameters->get('model');
+        return $this->parameters->get('entity');
     }
 
 

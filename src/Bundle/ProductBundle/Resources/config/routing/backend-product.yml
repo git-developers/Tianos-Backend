@@ -13,6 +13,7 @@ backend_product_bundle_index:
                 subheader: sylius.ui.manage_your_product_catalog
                 icon: cube
                 body_css: grid-body-css
+                serialize_group_name: crud
 #            grid: sylius_admin_product
             grid:
                 icon: cube
@@ -79,15 +80,16 @@ backend_product_bundle_create:
         _tianos:
             action: create
             template: ProductBundle:ProductBackend/Form:form.html.twig
-            model: Component\Product\Model\Product
+            entity: Bundle\ProductBundle\Entity\Product
+#            entity: Component\Product\Model\Product
             form:
                 type: Bundle\ProductBundle\Form\Type\ProductType
             vars:
-#                body_css: grid-body-css
+                serialize_group_name: crud
 
 backend_product_bundle_edit:
     path: /edit
-    methods: [POST, PUT]
+    methods: [PUT, POST]
     defaults:
         _controller: tianos.backend.controller.product:editAction
         _tianos:

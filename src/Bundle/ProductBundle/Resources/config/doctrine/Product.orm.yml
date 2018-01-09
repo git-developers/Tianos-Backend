@@ -45,6 +45,9 @@ Bundle\ProductBundle\Entity\Product:
             type: datetime
             nullable: false
             column: created_at
+#            gedmo:
+#                timestampable:
+#                    on: create
         userCreate:
             type: integer
             nullable: true

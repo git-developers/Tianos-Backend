@@ -2,24 +2,24 @@
 
 {% block crud_modal_content %}
 
-    {{ dump(form_type) }}
+    {#{{ dump(form) }}#}
 
     {% if id is defined %}
         <input type="hidden" value="{{ id }}" name="id">
     {% endif %}
 
-    {{ form_widget(formEntity._token) }}
+    {{ form_widget(form._token) }}
 
     <div class="form-group">
         <i class="fa fa-fw fa-industry"></i>
-        {{ form_label(formEntity.code) }}
-        {{ form_widget(formEntity.code) }}
+        {{ form_label(form.code) }}
+        {{ form_widget(form.code) }}
     </div>
 
     <div class="form-group">
         <i class="fa fa-fw fa-industry"></i>
-        {{ form_label(formEntity.name) }}
-        {{ form_widget(formEntity.name) }}
+        {{ form_label(form.name) }}
+        {{ form_widget(form.name) }}
     </div>
 
 {% endblock %}

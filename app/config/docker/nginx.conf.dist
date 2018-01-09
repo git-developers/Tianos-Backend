@@ -1,7 +1,7 @@
 server {
     listen 80;
     root /tianos/web/;
-    server_name tianos.com;
+    server_name tianos.dev;
 
     location / {
         try_files $uri /app_dev.php$is_args$args;

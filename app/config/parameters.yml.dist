@@ -20,8 +20,8 @@ parameters:
 
     application_theme_color: '#FF9C00'
     application_version: 2.4.1
-    application_url: tianos.com
-    application_url_canonical: http://tianos.com
+    application_url: tianos.dev
+    application_url_canonical: http://tianos.dev
     application_name: 'Tianos'
     application_name_html: '<b>TIA</b>NOS'
     application_fb_app_id: '129906047219991'

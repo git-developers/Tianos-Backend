@@ -4,6 +4,7 @@ namespace Bundle\ProductBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as JMSS;
+use JMS\Serializer\Annotation\Type as TypeJMS;
 
 //* @ORM\Entity
 
@@ -13,18 +14,19 @@ use JMS\Serializer\Annotation as JMSS;
 class Product
 {
 
-    /**
-     * @var integer
-     */
-    
-
-//    /**
+    //    /**
 //     * @var integer
 //     *
 //     * @ORM\Column(name="id", type="integer")
 //     * @ORM\Id
 //     * @ORM\GeneratedValue(strategy="IDENTITY")
 //     */
+
+    /**
+     * @var integer
+     *
+     * @JMSS\Groups({"crud"})
+     */
     private $id;
 
     /**
@@ -35,7 +37,7 @@ class Product
     /**
      * @var string
      *
-     * @JMSS\Groups({"product"})
+     * @JMSS\Groups({"crud"})
      */
     private $name;
 
@@ -51,6 +53,8 @@ class Product
 
     /**
      * @var \DateTime
+     *
+     * @JMSS\Groups({"crud"})
      * @JMSS\Type("DateTime<'Y-m-d H:i'>")
      */
     private $createdAt;

@@ -6,4 +6,4 @@ ff02::1	ip6-allnodes
 ff02::2	ip6-allrouters
 172.17.0.2	63ad5b28f8a8
 #127.0.0.1	tianos.lo
-172.18.0.22	tianos.com
+172.18.0.22	tianos.dev

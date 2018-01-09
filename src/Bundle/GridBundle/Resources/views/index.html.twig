@@ -124,8 +124,9 @@
             $('body.{{ vars.body_css }}').formCreate({
                 modal_id: '{{ modal.modal_create_id }}',
                 route: '{{ path(dataTable.route.create) }}',
+                form_create_name: '{{ form_mapper.create_name }}',
+                table_json: tableJson,
 
-                {#form_create_name: '{{ crud.form_create_name }}',#}
                 {#modal_create_id: '{{ crud.modal_create_id }}',#}
                 {#route_create: '{{ crud.route_create }}',#}
                 {#table_json: tableJson,#}
@@ -191,6 +192,10 @@
     </section>
 
     <section class="content">
+
+        {#{{ dump(form) }}#}
+
+
         <div class="row">
             <div class="col-md-12">
                 <div class="box box-{{ grid.box_class }}">

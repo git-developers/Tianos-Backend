@@ -50,21 +50,20 @@ class GridController extends BaseController
 
         //CONFIGURATION
         $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
-        $service = $configuration->getRepositoryService();
+        $repository = $configuration->getRepositoryService();
         $method = $configuration->getRepositoryMethod();
         $template = $configuration->getTemplate('');
         $grid = $configuration->getGrid();
         $vars = $configuration->getVars();
 
         //REPOSITORY
-        $repository = $this->get($service);
-        $objects = $repository->$method();
-        $objects = $this->getSerialize($objects, 'product');
+        $objects = $this->get($repository)->$method();
+        $objects = $this->getSerialize($objects, $vars['serialize_group_name']);
 
         //CRUD
         $crud = $this->get('grid.crud');
         $modal = $crud->getModalMapper()->getDefaults();
-        $form = $crud->getFormMapper()->getDefaults();
+        $formMapper = $crud->getFormMapper()->getDefaults();
 
         //DATATABLE
         $dataTable = $crud->getDataTableMapper($grid)
@@ -80,25 +79,17 @@ class GridController extends BaseController
             ->resetGridVariable()
         ;
 
-
-//        echo '<pre> POLLO --- $grid:: ';
-//        print_r($request);
-//        exit;
-
-
         return $this->render(
             $template,
             [
                 'vars' => $vars,
                 'grid' => $grid,
-                'form' => $form,
                 'modal' => $modal,
                 'dataTable' => $dataTable,
+                'form_mapper' => $formMapper,
             ]
         );
 
-//        $name = $request->query->get('name');
-//
 //        return new JsonResponse([
 //            'slug' => $this->get('sylius.generator.slug')->generate($name),
 //        ]);
@@ -160,8 +151,6 @@ class GridController extends BaseController
         );*/
     }
 
-
-
     public function createAction(Request $request): Response
     {
         $parameters = [
@@ -172,48 +161,58 @@ class GridController extends BaseController
 
         //CONFIGURATION
         $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
-//        $service = $configuration->getRepositoryService();
-//        $method = $configuration->getRepositoryMethod();
         $template = $configuration->getTemplate('');
-//        $grid = $configuration->getGrid();
-//        $vars = $configuration->getVars();
         $action = $configuration->getAction();
         $formType = $configuration->getFormType();
-        $model = $configuration->getModel();
+        $vars = $configuration->getVars();
+        $entity = $configuration->getEntity();
+        $entity = new $entity();
 
+        $form = $this->createForm($formType, $entity, ['form_data' => []]);
+        $form->handleRequest($request);
 
-        $entity = new $model();
+        if ($form->isSubmitted()) {
 
+            $errors = [];
+            $entityJson = null;
+            $status = self::STATUS_ERROR;
 
-//        $form = $this->createForm($crud['form_type'], $entity, $options);
-//        $form->handleRequest($request);
+            try{
 
-        echo '<pre> POLLO:: ';
-        print_r($entity);
-        exit;
+                if ($form->isValid()) {
+                    $this->persist($entity);
+                    $entity = $this->getSerializeDecode($entity, $vars['serialize_group_name']);
+                    $status = self::STATUS_SUCCESS;
+                }else{
+                    foreach ($form->getErrors(true) as $key => $error) {
+                        if ($form->isRoot()) {
+                            $errors[] = $error->getMessage();
+                        } else {
+                            $errors[] = $error->getMessage();
+                        }
+                    }
+                }
 
+            }catch (\Exception $e){
+                $errors[] = $e->getMessage();
+            }
 
-
-
-
-        //CRUD
-        $crud = $this->get('grid.crud');
-        $modal = $crud->getModalMapper()->getDefaults();
-        $form = $crud->getFormMapper()->getDefaults();
+            return $this->json([
+                'status' => $status,
+                'errors' => $errors,
+                'entity' => $entity,
+//                'entity' => $entityJson,
+            ]);
+        }
 
         return $this->render(
             $template,
             [
-                'form' => $form,
-                'modal' => $modal,
                 'action' => $action,
-                'form_type' => $formType,
-//                'vars' => $vars,
-//                'grid' => $grid,
+                'form' => $form->createView(),
             ]
         );
     }
-
 
     public function editAction(Request $request): Response
     {

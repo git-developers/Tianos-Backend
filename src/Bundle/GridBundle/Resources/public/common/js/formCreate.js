@@ -138,11 +138,6 @@
             var bp = new $.formCreate(this, options);
 
             $('button.' + options.modal_id).click(function(event) {
-
-                console.log('111 --- openModal');
-                console.log(options);
-
-
                 bp.openModal(event);
             });
 
