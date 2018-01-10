@@ -230,6 +230,7 @@ class GridController extends BaseController
         $vars = $configuration->getVars();
         $entity = $configuration->getEntity();
         $entity = new $entity();
+        
 
         $form = $this->createForm($formType, $entity, ['form_data' => []]);
         $form->handleRequest($request);
