@@ -95,8 +95,9 @@ backend_product_bundle_edit:
         _tianos:
             action: edit
             template: ProductBundle:ProductBackend/Form:form.html.twig
+            entity: Bundle\ProductBundle\Entity\Product
             vars:
-#                body_css: grid-body-css
+                serialize_group_name: crud
 
 backend_product_bundle_delete:
     path: /delete

@@ -4,9 +4,9 @@
 parameters:
     database_host: 127.0.0.1
     database_port: ~
-    database_name: symfony
+    database_name: tianos
     database_user: root
-    database_password: ~
+    database_password: root
     # You should uncomment this if you want to use pdo_sqlite
     #database_path: '%kernel.project_dir%/var/data/data.sqlite'
 
@@ -20,8 +20,8 @@ parameters:
 
     application_theme_color: '#FF9C00'
     application_version: 2.4.1
-    application_url: tianos.dev
-    application_url_canonical: http://tianos.dev
+    application_url: tianos.com
+    application_url_canonical: http://tianos.com
     application_name: 'Tianos'
     application_name_html: '<b>TIA</b>NOS'
     application_fb_app_id: '129906047219991'

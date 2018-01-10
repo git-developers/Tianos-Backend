@@ -224,27 +224,55 @@ class GridController extends BaseController
 
         //CONFIGURATION
         $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
-//        $service = $configuration->getRepositoryService();
-//        $method = $configuration->getRepositoryMethod();
         $template = $configuration->getTemplate('');
-//        $grid = $configuration->getGrid();
-//        $vars = $configuration->getVars();
         $action = $configuration->getAction();
+        $formType = $configuration->getFormType();
+        $vars = $configuration->getVars();
+        $entity = $configuration->getEntity();
+        $entity = new $entity();
 
+        $form = $this->createForm($formType, $entity, ['form_data' => []]);
+        $form->handleRequest($request);
 
-        //CRUD
-        $crud = $this->get('grid.crud');
-        $modal = $crud->getModalMapper()->getDefaults();
-        $form = $crud->getFormMapper()->getDefaults();
+        if ($form->isSubmitted()) {
+
+            $errors = [];
+            $entityJson = null;
+            $status = self::STATUS_ERROR;
+
+            try{
+
+                if ($form->isValid()) {
+                    $this->persist($entity);
+                    $entity = $this->getSerializeDecode($entity, $vars['serialize_group_name']);
+                    $status = self::STATUS_SUCCESS;
+                }else{
+                    foreach ($form->getErrors(true) as $key => $error) {
+                        if ($form->isRoot()) {
+                            $errors[] = $error->getMessage();
+                        } else {
+                            $errors[] = $error->getMessage();
+                        }
+                    }
+                }
+
+            }catch (\Exception $e){
+                $errors[] = $e->getMessage();
+            }
+
+            return $this->json([
+                'status' => $status,
+                'errors' => $errors,
+                'entity' => $entity,
+//                'entity' => $entityJson,
+            ]);
+        }
 
         return $this->render(
             $template,
             [
-                'modal' => $modal,
-                'form' => $form,
                 'action' => $action,
-//                'vars' => $vars,
-//                'grid' => $grid,
+                'form' => $form->createView(),
             ]
         );
     }
