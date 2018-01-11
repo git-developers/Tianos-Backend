@@ -1,20 +1,11 @@
 <?php
 
-/*
- * This file is part of the Sylius package.
- *
- * (c) Paweł Jędrzejewski
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ResourceBundle\Form\EventSubscriber;
+namespace Bundle\ResourceBundle\Form\EventSubscriber;
 
-use Sylius\Component\Resource\Exception\UnexpectedTypeException;
-use Sylius\Component\Resource\Model\CodeAwareInterface;
+use Component\Resource\Exception\UnexpectedTypeException;
+use Component\Resource\Model\CodeAwareInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormEvent;

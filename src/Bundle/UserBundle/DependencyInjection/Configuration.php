@@ -1,23 +1,14 @@
 <?php
 
-/*
- * This file is part of the Sylius package.
- *
- * (c) Paweł Jędrzejewski
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 declare(strict_types=1);
 
-namespace Sylius\Bundle\UserBundle\DependencyInjection;
+namespace Bundle\UserBundle\DependencyInjection;
 
-use Sylius\Bundle\ResourceBundle\SyliusResourceBundle;
-use Sylius\Bundle\UserBundle\Controller\UserController;
-use Sylius\Component\Resource\Factory\Factory;
-use Sylius\Component\User\Model\User;
-use Sylius\Component\User\Model\UserInterface;
+use Bundle\ResourceBundle\SyliusResourceBundle;
+use Bundle\UserBundle\Controller\UserController;
+use Component\Resource\Factory\Factory;
+use Component\User\Model\User;
+use Component\User\Model\UserInterface;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;

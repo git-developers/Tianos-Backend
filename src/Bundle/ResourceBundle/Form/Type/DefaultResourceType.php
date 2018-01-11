@@ -1,20 +1,11 @@
 <?php
 
-/*
- * This file is part of the Sylius package.
- *
- * (c) Paweł Jędrzejewski
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ResourceBundle\Form\Type;
+namespace Bundle\ResourceBundle\Form\Type;
 
-use Sylius\Component\Registry\ServiceRegistryInterface;
-use Sylius\Component\Resource\Metadata\RegistryInterface;
+use Component\Registry\ServiceRegistryInterface;
+use Component\Resource\Metadata\RegistryInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 
