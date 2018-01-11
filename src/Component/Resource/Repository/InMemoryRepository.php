@@ -1,25 +1,16 @@
 <?php
 
-/*
- * This file is part of the Sylius package.
- *
- * (c) Paweł Jędrzejewski
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 declare(strict_types=1);
 
-namespace Sylius\Component\Resource\Repository;
+namespace Component\Resource\Repository;
 
 use ArrayObject;
 use Pagerfanta\Adapter\ArrayAdapter;
 use Pagerfanta\Pagerfanta;
-use Sylius\Component\Resource\Exception\UnexpectedTypeException;
-use Sylius\Component\Resource\Exception\UnsupportedMethodException;
-use Sylius\Component\Resource\Model\ResourceInterface;
-use Sylius\Component\Resource\Repository\Exception\ExistingResourceException;
+use Component\Resource\Exception\UnexpectedTypeException;
+use Component\Resource\Exception\UnsupportedMethodException;
+use Component\Resource\Model\ResourceInterface;
+use Component\Resource\Repository\Exception\ExistingResourceException;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 use Symfony\Component\PropertyAccess\PropertyAccessor;
 

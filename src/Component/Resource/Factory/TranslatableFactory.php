@@ -1,21 +1,12 @@
 <?php
 
-/*
- * This file is part of the Sylius package.
- *
- * (c) Paweł Jędrzejewski
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 declare(strict_types=1);
 
-namespace Sylius\Component\Resource\Factory;
+namespace Component\Resource\Factory;
 
-use Sylius\Component\Resource\Exception\UnexpectedTypeException;
-use Sylius\Component\Resource\Model\TranslatableInterface;
-use Sylius\Component\Resource\Translation\Provider\TranslationLocaleProviderInterface;
+use Component\Resource\Exception\UnexpectedTypeException;
+use Component\Resource\Model\TranslatableInterface;
+use Component\Resource\Translation\Provider\TranslationLocaleProviderInterface;
 
 final class TranslatableFactory implements TranslatableFactoryInterface
 {

@@ -1,22 +1,13 @@
 <?php
 
-/*
- * This file is part of the Sylius package.
- *
- * (c) Paweł Jędrzejewski
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 declare(strict_types=1);
 
-namespace Sylius\Component\User\Model;
+namespace Component\User\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Sylius\Component\Resource\Model\TimestampableTrait;
-use Sylius\Component\Resource\Model\ToggleableTrait;
+use Component\Resource\Model\TimestampableTrait;
+use Component\Resource\Model\ToggleableTrait;
 
 class User implements UserInterface
 {
