@@ -71,7 +71,7 @@
             modalMsgText = modal.find('div#message p');
             modalRefresh = modal.find('i.fa-refresh');
 
-            var fields = $("form[name='" + options.form_create_name + "']").serializeArray();
+            var fields = $("form[name='" + options.form_name + "']").serializeArray();
 
             $.ajax({
                 url: options.route,
@@ -141,7 +141,7 @@
                 bp.openModal(event);
             });
 
-            $(document).on('submit', "form[name='" + options.form_create_name + "']" , function(event) {
+            $(document).on('submit', "form[name='" + options.form_name + "']" , function(event) {
                 bp.save(event);
             });
 

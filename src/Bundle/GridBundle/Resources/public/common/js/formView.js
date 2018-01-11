@@ -24,7 +24,7 @@
             var totalButtons = 0;
             // base.$el.append('<button name="public" style="'+base.options.buttonStyle+'">Private</button>');
 
-            modal = $('#' + options.modal_view_id);
+            modal = $('#' + options.modal_id);
             apiContent = modal.find('.crud-modal-content');
         };
 
@@ -35,7 +35,7 @@
             var id = $(context).parent().data('id');
 
             $.ajax({
-                url: options.route_view,
+                url: options.route,
                 type: 'POST',
                 dataType: 'html',
                 data: {

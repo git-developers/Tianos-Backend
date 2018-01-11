@@ -13,13 +13,13 @@ class ModalMapper
 
     protected $defaults;
 
-    const MODAL_SIZE_LARGE = 'modal-lg';
-    const MODAL_CREATE_ID = 'modal-create';
-    const MODAL_CREATE_CHILD_ID = 'modal-create-child';
-    const MODAL_EDIT_ID = 'modal-edit';
-    const MODAL_DELETE_ID = 'modal-delete';
-    const MODAL_VIEW_ID = 'modal-view';
-    const MODAL_INFO_ID = 'modal-info';
+    const SIZE_LARGE = 'modal-lg';
+    const CREATE_ID = 'modal-create';
+    const CREATE_CHILD_ID = 'modal-create-child';
+    const EDIT_ID = 'modal-edit';
+    const DELETE_ID = 'modal-delete';
+    const VIEW_ID = 'modal-view';
+    const INFO_ID = 'modal-info';
 
     public function __construct(Router $router, RequestStack $requestStack)
     {
@@ -28,23 +28,23 @@ class ModalMapper
 
         $this->defaults = [
 
-            'modal_info_size' => self::MODAL_SIZE_LARGE,
+            'info_size' => self::SIZE_LARGE,
 
-            'modal_edit_id' => self::MODAL_EDIT_ID,
-            'modal_edit_size' => null,
+            'edit_id' => self::EDIT_ID,
+            'edit_size' => null,
 
-            'modal_delete_id' => self::MODAL_DELETE_ID,
-            'modal_delete_size' => null,
+            'delete_id' => self::DELETE_ID,
+            'delete_size' => null,
 
-            'modal_create_id' => self::MODAL_CREATE_ID,
-            'modal_create_size' => null,
-            'modal_create_child_id' => self::MODAL_CREATE_CHILD_ID,
-            'modal_create_child_size' => null,
+            'create_id' => self::CREATE_ID,
+            'create_size' => null,
+            'create_child_id' => self::CREATE_CHILD_ID,
+            'create_child_size' => null,
 
-            'modal_view_id' => self::MODAL_VIEW_ID,
-            'modal_view_size' => null,
-            'modal_info_id' => self::MODAL_INFO_ID,
-            'modal_info_size' => null,
+            'view_id' => self::VIEW_ID,
+            'view_size' => null,
+            'info_id' => self::INFO_ID,
+            'info_size' => null,
         ];
 
     }

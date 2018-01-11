@@ -51,8 +51,8 @@ class ButtonMapper
             'alt' => 'Crear item',
             'title' => 'Crear item',
             'icon' => '<i class="fa fa-fw fa-plus"></i>',
-            'data-target' => ModalMapper::MODAL_CREATE_ID,
-            'class' => 'btn-success ' . ModalMapper::MODAL_CREATE_ID,
+            'data-target' => ModalMapper::CREATE_ID,
+            'class' => 'btn-success ' . ModalMapper::CREATE_ID,
         ]);
     }
 
@@ -62,8 +62,8 @@ class ButtonMapper
             'alt' => 'Editar',
             'title' => 'Editar',
             'icon' => '<i class="fa fa-fw fa-pencil"></i>',
-            'data-target' => ModalMapper::MODAL_EDIT_ID,
-            'class' => 'btn-warning ' . ModalMapper::MODAL_EDIT_ID,
+            'data-target' => ModalMapper::EDIT_ID,
+            'class' => 'btn-warning ' . ModalMapper::EDIT_ID,
         ]);
     }
 
@@ -73,8 +73,8 @@ class ButtonMapper
             'alt' => 'Eliminar',
             'title' => 'Eliminar',
             'icon' => '<i class="fa fa-fw fa-trash"></i>',
-            'data-target' => ModalMapper::MODAL_DELETE_ID,
-            'class' => 'btn-danger ' . ModalMapper::MODAL_DELETE_ID,
+            'data-target' => ModalMapper::DELETE_ID,
+            'class' => 'btn-danger ' . ModalMapper::DELETE_ID,
         ]);
     }
 
@@ -83,9 +83,9 @@ class ButtonMapper
         return new Button([
             'alt' => 'Info',
             'title' => 'Info',
-            'data-target' => ModalMapper::MODAL_INFO_ID,
+            'data-target' => ModalMapper::INFO_ID,
             'icon' => '<i class="fa fa-fw fa-info-circle"></i>',
-            'class' => 'btn-info ' . ModalMapper::MODAL_INFO_ID,
+            'class' => 'btn-info ' . ModalMapper::INFO_ID,
         ]);
     }
 

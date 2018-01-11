@@ -2,7 +2,7 @@
 
 {% block crud_modal_content %}
 
-    {#{{ dump(form) }}#}
+    {{ form_start(form) }}
 
     {% if id is defined %}
         <input type="hidden" value="{{ id }}" name="id">
@@ -21,5 +21,8 @@
         {{ form_label(form.name) }}
         {{ form_widget(form.name) }}
     </div>
+
+    {#{{ form_widget(form) }}#}
+    {{ form_end(form) }}
 
 {% endblock %}

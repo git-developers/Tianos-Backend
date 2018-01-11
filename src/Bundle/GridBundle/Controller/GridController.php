@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Bundle\GridBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Bundle\CoreBundle\Controller\BaseController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -12,7 +11,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Component\Resource\Metadata\Metadata;
 use Bundle\ResourceBundle\ResourceBundle;
 use JMS\Serializer\SerializationContext;
-use Bundle\GridBundle\Services\Crud\Builder\DataTableMapper;
 
 class GridController extends BaseController
 {
@@ -95,64 +93,16 @@ class GridController extends BaseController
 //        ]);
     }
 
-    public function infoAction(Request $request): Response
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function createAction(Request $request): Response
     {
-        $parameters = [
-            'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
-        ];
-        $applicationName = $this->container->getParameter('application_name');
-        $this->metadata = new Metadata('tianos', $applicationName, $parameters);
-
-        //CONFIGURATION
-        $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
-//        $service = $configuration->getRepositoryService();
-//        $method = $configuration->getRepositoryMethod();
-        $template = $configuration->getTemplate('');
-//        $grid = $configuration->getGrid();
-//        $vars = $configuration->getVars();
-        $action = $configuration->getAction();
-
-        //CRUD
-        $crud = $this->get('grid.crud');
-        $modal = $crud->getModalMapper()->getDefaults();
-
-
-        return $this->render(
-            $template,
-            [
-//                'vars' => $vars,
-//                'grid' => $grid,
-                'action' => $action,
-//                'form' => $form,
-//                'modal' => $modal,
-//                'dataTable' => $dataTable,
-            ]
-        );
-
-
-
-
-
-/*        if (!$this->isXmlHttpRequest()) {
+        if (!$this->isXmlHttpRequest()) {
             throw $this->createAccessDeniedException(self::ACCESS_DENIED_MSG);
         }
 
-        $crudMapper
-            ->add('template_info', $crudMapper->getInfoTemplate())
-        ;
-
-        $crud = $crudMapper->getDefaults();
-
-        return $this->render(
-            $this->validateTemplate($crud['template_info']),
-            [
-                'xxx' => '',
-            ]
-        );*/
-    }
-
-    public function createAction(Request $request): Response
-    {
         $parameters = [
             'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
         ];
@@ -201,7 +151,6 @@ class GridController extends BaseController
                 'status' => $status,
                 'errors' => $errors,
                 'entity' => $entity,
-//                'entity' => $entityJson,
             ]);
         }
 
@@ -214,8 +163,16 @@ class GridController extends BaseController
         );
     }
 
+    /**
+     * @param Request $request
+     * @return Response
+     */
     public function editAction(Request $request): Response
     {
+        if (!$this->isXmlHttpRequest()) {
+            throw $this->createAccessDeniedException(self::ACCESS_DENIED_MSG);
+        }
+
         $parameters = [
             'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
         ];
@@ -224,13 +181,20 @@ class GridController extends BaseController
 
         //CONFIGURATION
         $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
+        $repository = $configuration->getRepositoryService();
+        $method = $configuration->getRepositoryMethod();
         $template = $configuration->getTemplate('');
         $action = $configuration->getAction();
         $formType = $configuration->getFormType();
         $vars = $configuration->getVars();
-        $entity = $configuration->getEntity();
-        $entity = new $entity();
-        
+
+        //REPOSITORY
+        $id = $request->get('id');
+        $entity = $this->get($repository)->$method($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('CRUD: Unable to find  entity.');
+        }
 
         $form = $this->createForm($formType, $entity, ['form_data' => []]);
         $form->handleRequest($request);
@@ -238,7 +202,6 @@ class GridController extends BaseController
         if ($form->isSubmitted()) {
 
             $errors = [];
-            $entityJson = null;
             $status = self::STATUS_ERROR;
 
             try{
@@ -262,26 +225,33 @@ class GridController extends BaseController
             }
 
             return $this->json([
+                'id' => $id,
                 'status' => $status,
                 'errors' => $errors,
                 'entity' => $entity,
-//                'entity' => $entityJson,
             ]);
         }
 
         return $this->render(
             $template,
             [
+                'id' => $id,
                 'action' => $action,
                 'form' => $form->createView(),
             ]
         );
     }
 
-
-
+    /**
+     * @param Request $request
+     * @return Response
+     */
     public function deleteAction(Request $request): Response
     {
+        if (!$this->isXmlHttpRequest()) {
+            throw $this->createAccessDeniedException(self::ACCESS_DENIED_MSG);
+        }
+
         $parameters = [
             'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
         ];
@@ -290,32 +260,108 @@ class GridController extends BaseController
 
         //CONFIGURATION
         $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
-//        $service = $configuration->getRepositoryService();
-//        $method = $configuration->getRepositoryMethod();
         $template = $configuration->getTemplate('');
-//        $grid = $configuration->getGrid();
-//        $vars = $configuration->getVars();
         $action = $configuration->getAction();
 
+        $errors = [];
+        $status = self::STATUS_ERROR;
+        $id = $request->get('id');
 
-        //CRUD
-        $crud = $this->get('grid.crud');
-        $modal = $crud->getModalMapper()->getDefaults();
-        $form = $crud->getFormMapper()->getDefaults();
+        if ($request->isMethod('DELETE')) {
+
+            //REPOSITORY
+            $repository = $configuration->getRepositoryService();
+            $method = $configuration->getRepositoryMethod();
+            $entity = $this->get($repository)->$method($id);
+
+            try {
+                if($entity){
+                    $entity->setIsActive(false);
+                    //$this->remove($entity);
+                    $this->persist($entity);
+                    $status = self::STATUS_SUCCESS;
+                }
+            }catch (\Exception $e){
+                $errors[] = $e->getMessage();
+            }
+
+            return $this->json([
+                'id' => $id,
+                'status' => $status,
+                'errors' => $errors,
+            ]);
+        }
 
         return $this->render(
             $template,
             [
-                'modal' => $modal,
-                'form' => $form,
+                'id' => $id,
                 'action' => $action,
-//                'vars' => $vars,
-//                'grid' => $grid,
+            ]
+        );
+    }
+
+    public function viewAction(Request $request): Response
+    {
+        if (!$this->isXmlHttpRequest()) {
+            throw $this->createAccessDeniedException(self::ACCESS_DENIED_MSG);
+        }
+
+        $parameters = [
+            'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
+        ];
+        $applicationName = $this->container->getParameter('application_name');
+        $this->metadata = new Metadata('tianos', $applicationName, $parameters);
+
+        //CONFIGURATION
+        $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
+        $template = $configuration->getTemplate('');
+        $action = $configuration->getAction();
+
+        //REPOSITORY
+        $id = $request->get('id');
+        $repository = $configuration->getRepositoryService();
+        $method = $configuration->getRepositoryMethod();
+        $entity = $this->get($repository)->$method($id);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('CRUD: Unable to find  entity.');
+        }
+
+        return $this->render(
+            $template,
+            [
+                'action' => $action,
+                'entity' => $entity,
             ]
         );
     }
 
 
+    public function infoAction(Request $request): Response
+    {
+        if (!$this->isXmlHttpRequest()) {
+            throw $this->createAccessDeniedException(self::ACCESS_DENIED_MSG);
+        }
+
+        $parameters = [
+            'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
+        ];
+        $applicationName = $this->container->getParameter('application_name');
+        $this->metadata = new Metadata('tianos', $applicationName, $parameters);
+
+        //CONFIGURATION
+        $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
+        $template = $configuration->getTemplate('');
+        $action = $configuration->getAction();
+
+        return $this->render(
+            $template,
+            [
+                'action' => $action,
+            ]
+        );
+    }
 
 }
 

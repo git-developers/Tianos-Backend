@@ -10,17 +10,42 @@ use Component\Product\Repository\ProductRepositoryInterface;
 class ProductRepository extends TianosEntityRepository implements ProductRepositoryInterface
 {
 
-//    public function __construct () {
-//
-//
-//        echo 33333;
-//        exit;
-//    }
-//
-//
-//
-//
+    /**
+     * {@inheritdoc}
+     */
+    public function find($id)
+    {
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT product
+            FROM ProductBundle:Product product
+            WHERE
+            product.id = :id AND
+            product.isActive = :active
+            ";
 
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+        $query->setParameter('id', $id);
+
+        return $query->getOneOrNullResult();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+//    public function find($id)
+//    {
+//        return $this->createQueryBuilder('o')
+//            ->select('o.id, o.code, o.name, o.createdAt')
+//            ->andWhere('o.isActive = :active')
+//            ->andWhere('o.id = :id')
+//            ->setParameter('active', 1)
+//            ->setParameter('id', $id)
+//            ->getQuery()
+//            ->getOneOrNullResult()
+//            ;
+//    }
 
     /**
      * {@inheritdoc}
@@ -28,7 +53,7 @@ class ProductRepository extends TianosEntityRepository implements ProductReposit
     public function findAll(): array
     {
         return $this->createQueryBuilder('o')
-            ->select('o.id, o.name, o.createdAt')
+            ->select('o.id, o.code, o.name, o.createdAt')
             ->andWhere('o.isActive = :active')
             ->setParameter('active', 1)
             ->getQuery()

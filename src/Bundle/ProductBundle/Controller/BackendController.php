@@ -32,4 +32,9 @@ class BackendController extends GridController
         return parent::deleteAction($request);
     }
 
+    public function viewAction(Request $request): Response
+    {
+        return parent::viewAction($request);
+    }
+
 }

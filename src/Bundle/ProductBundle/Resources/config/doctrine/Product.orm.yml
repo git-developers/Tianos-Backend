@@ -1,12 +1,11 @@
+#http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/reference/yaml-mapping.html
+
 Bundle\ProductBundle\Entity\Product:
     type: entity
 #    type: mappedSuperclass
+#    mappedSuperclass: Component\Product\Model\Product
     table: product
     repositoryClass: Bundle\ProductBundle\Doctrine\ORM\ProductRepository
-#    mappedSuperclass: Component\Product\Model\Product
-
-#http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/reference/yaml-mapping.html
-
     id:
         id:
             type: integer

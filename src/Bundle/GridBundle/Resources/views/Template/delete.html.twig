@@ -1,6 +1,10 @@
-{% extends 'CoreBundle::Crud/Template/api_content.html.twig' %}
+{% extends 'GridBundle::Template/crud_modal_content.html.twig' %}
 
-{% block api_content %}
-    <input type="hidden" name="id" value="{{ id }}">
+{% block crud_modal_content %}
+
+    {% if id is defined %}
+        <input type="hidden" name="id" value="{{ id }}">
+    {% endif %}
+
     <p>Esta seguro ?</p>
 {% endblock %}

@@ -75,6 +75,7 @@ lift_up2:
 	sudo setenforce 0
 
 lift_up:
+	@echo Domain: $(HOST_PROJECT)
 	make ssh
 	make nginx
 	make hosts

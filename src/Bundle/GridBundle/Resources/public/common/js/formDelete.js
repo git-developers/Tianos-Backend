@@ -76,7 +76,7 @@
             modalMsgText = modal.find('div#message p');
             modalRefresh = modal.find('i.fa-refresh');
 
-            var fields = $("form[name='" + options.form_delete_name + "']").serializeArray();
+            var fields = $("form[name='" + options.form_name + "']").serializeArray();
 
             $.ajax({
                 url: options.route,
@@ -136,7 +136,7 @@
                 bp.openModal(event, this);
             });
 
-            $(document).on('submit', "form[name='" + options.form_delete_name + "']" , function(event) {
+            $(document).on('submit', "form[name='" + options.form_name + "']" , function(event) {
                 bp.delete(event);
             });
 

@@ -8,7 +8,6 @@ backend_product_bundle_index:
             section: admin
             permission: true
             template: GridBundle::index.html.twig
-#            template: GridBundle:Grid:index.html.twig
             vars:
                 subheader: sylius.ui.manage_your_product_catalog
                 icon: cube
@@ -22,6 +21,7 @@ backend_product_bundle_index:
                 data_table:
                     route:
                         info: backend_product_bundle_info
+                        view: backend_product_bundle_view
                         edit: backend_product_bundle_edit
                         create: backend_product_bundle_create
                         delete: backend_product_bundle_delete
@@ -60,18 +60,6 @@ backend_product_bundle_index:
                 method: findAll
                 arguments: [$productId]
 
-backend_product_bundle_info:
-    path: /info
-    methods: [POST]
-    defaults:
-        _controller: tianos.backend.controller.product:infoAction
-        _tianos:
-            action: info
-            template: ProductBundle:ProductBackend/Informative:info.html.twig
-            grid:
-                icon: cube
-                box_class: primary
-
 backend_product_bundle_create:
     path: /create
     methods: [POST]
@@ -81,7 +69,6 @@ backend_product_bundle_create:
             action: create
             template: ProductBundle:ProductBackend/Form:form.html.twig
             entity: Bundle\ProductBundle\Entity\Product
-#            entity: Component\Product\Model\Product
             form:
                 type: Bundle\ProductBundle\Form\Type\ProductType
             vars:
@@ -95,7 +82,12 @@ backend_product_bundle_edit:
         _tianos:
             action: edit
             template: ProductBundle:ProductBackend/Form:form.html.twig
-            entity: Bundle\ProductBundle\Entity\Product
+            repository:
+                service: tianos.repository.product
+                method: find
+                arguments: [$productId]
+            form:
+                type: Bundle\ProductBundle\Form\Type\ProductType
             vars:
                 serialize_group_name: crud
 
@@ -106,10 +98,35 @@ backend_product_bundle_delete:
         _controller: tianos.backend.controller.product:deleteAction
         _tianos:
             action: delete
-            template: ProductBundle:ProductBackend/Form:form.html.twig
+            template: GridBundle:Template:delete.html.twig
+            repository:
+                service: tianos.repository.product
+                method: find
+                arguments: [$productId]
             vars:
 #                body_css: grid-body-css
 
+backend_product_bundle_view:
+    path: /view
+    methods: [POST]
+    defaults:
+        _controller: tianos.backend.controller.product:viewAction
+        _tianos:
+            action: view
+            template: ProductBundle:ProductBackend/Informative:view.html.twig
+            repository:
+                service: tianos.repository.product
+                method: find
+                arguments: [$productId]
+
+backend_product_bundle_info:
+    path: /info
+    methods: [POST]
+    defaults:
+        _controller: tianos.backend.controller.product:infoAction
+        _tianos:
+            action: info
+            template: ProductBundle:ProductBackend/Informative:info.html.twig
 
 
 
@@ -150,9 +167,6 @@ backend_product_bundle_delete:
 #                arguments: [$productId]
 #            flash: sylius.product_variant.generate
 
-
-
-#
 #sylius_admin_product_index:
 #    path: /products/
 #    methods: [GET]
@@ -166,33 +180,3 @@ backend_product_bundle_delete:
 #            vars:
 #                subheader: sylius.ui.manage_your_product_catalog
 #                icon: cube
-
-#backend_product_index:
-#    path: /
-#    defaults: { _controller: ProductBundle:Product:index }
-#    methods: [GET]
-
-#backend_product_create:
-#    path: /create
-#    defaults: { _controller: 'BackendBundle:Product:create' }
-#    methods: [POST]
-#
-#backend_product_edit:
-#    path: /edit
-#    defaults: { _controller: 'BackendBundle:Product:edit' }
-#    methods: [POST, PUT]
-#
-#backend_product_delete:
-#    path: /delete
-#    defaults: { _controller: 'BackendBundle:Product:delete' }
-#    methods: [POST, DELETE]
-#
-#backend_product_view:
-#    path: /view
-#    defaults: { _controller: 'BackendBundle:Product:view' }
-#    methods: [POST]
-#
-#backend_product_info:
-#    path: /info
-#    defaults: { _controller: 'BackendBundle:Product:info' }
-#    methods: [POST]
