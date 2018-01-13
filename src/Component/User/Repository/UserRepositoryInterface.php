@@ -9,6 +9,9 @@ use Component\User\Model\UserInterface;
 
 interface UserRepositoryInterface extends RepositoryInterface
 {
+
+    public function findAll(): array;
+
     /**
      * @param string $email
      *

@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace Sylius\Bundle\ResourceBundle\DependencyInjection\Driver\Doctrine;
 
 use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
-use Sylius\Bundle\ResourceBundle\SyliusResourceBundle;
+use Sylius\Bundle\ResourceBundle\ResourceBundle;
 use Sylius\Component\Resource\Metadata\MetadataInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
@@ -27,7 +27,7 @@ final class DoctrineORMDriver extends AbstractDoctrineDriver
      */
     public function getType(): string
     {
-        return SyliusResourceBundle::DRIVER_DOCTRINE_ORM;
+        return ResourceBundle::DRIVER_DOCTRINE_ORM;
     }
 
     /**

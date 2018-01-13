@@ -1,22 +1,13 @@
 <?php
 
-/*
- * This file is part of the Sylius package.
- *
- * (c) Paweł Jędrzejewski
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ResourceBundle\Tests;
+namespace Bundle\ResourceBundle\Tests;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-class SyliusResourceBundleTest extends WebTestCase
+class ResourceBundleTest extends WebTestCase
 {
     /**
      * @test

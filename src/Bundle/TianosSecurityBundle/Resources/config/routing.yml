@@ -1,0 +1,29 @@
+#backend_product_bundle_create:
+#    path: /create
+#    methods: [POST]
+#    defaults:
+#        _controller: tianos.backend.controller.product:createAction
+#        _tianos:
+#            action: create
+#            template: ProductBundle:ProductBackend/Form:form.html.twig
+#            entity: Bundle\ProductBundle\Entity\Product
+#            form:
+#                type: Bundle\ProductBundle\Form\Type\ProductType
+#            vars:
+#                serialize_group_name: crud
+
+
+backend_security_bundle_login:
+    path: /login
+    defaults: { _controller: TianosSecurityBundle:Security:login }
+    methods: [GET, POST]
+
+backend_security_bundle_logout:
+    path: /logout
+    defaults: { _controller: TianosSecurityBundle:Security:logout }
+    methods: [GET, POST]
+
+backend_security_bundle_register:
+    path: /register
+    defaults: { _controller: TianosSecurityBundle:Security:register }
+    methods: [GET, POST]

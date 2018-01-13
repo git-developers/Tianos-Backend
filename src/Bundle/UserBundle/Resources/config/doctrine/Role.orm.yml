@@ -1,6 +1,6 @@
-Bundle\ProductBundle\Entity\Product:
+Bundle\UserBundle\Entity\Role:
     type: entity
-    table: product
+    table: role
     id:
         id:
             type: integer
@@ -11,30 +11,32 @@ Bundle\ProductBundle\Entity\Product:
             generator:
                 strategy: IDENTITY
     fields:
-        code:
-            type: string
-            nullable: true
-            length: 45
-            options:
-                fixed: false
         name:
             type: string
-            nullable: false
-            length: 150
+            nullable: true
+            length: 100
             options:
                 fixed: false
         slug:
             type: string
-            nullable: true
-            length: 150
+            nullable: false
+            length: 100
             options:
                 fixed: false
-        image:
+        groupRol:
             type: string
             nullable: true
-            length: 45
+            length: 100
             options:
                 fixed: false
+            column: group_rol
+        groupRolTag:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: group_rol_tag
         createdAt:
             type: datetime
             nullable: false
@@ -57,8 +59,15 @@ Bundle\ProductBundle\Entity\Product:
             column: user_update
         isActive:
             type: boolean
-            nullable: true
-            options:
-                default: '1'
+            nullable: false
             column: is_active
+    manyToMany:
+        profile:
+            targetEntity: Profile
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: role
+            inversedBy: null
+            joinTable: null
+            orderBy: null
     lifecycleCallbacks: {  }

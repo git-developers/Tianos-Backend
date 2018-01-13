@@ -10,6 +10,21 @@ use Component\User\Repository\UserRepositoryInterface;
 
 class UserRepository extends EntityRepository implements UserRepositoryInterface
 {
+
+    /**
+     * {@inheritdoc}
+     */
+    public function findAll(): array
+    {
+        return $this->createQueryBuilder('o')
+            ->select('o.id, o.name, o.createdAt')
+            ->andWhere('o.isActive = :active')
+            ->setParameter('active', 1)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     /**
      * {@inheritdoc}
      */

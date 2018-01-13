@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\UserBundle;
+namespace Bundle\UserBundle;
 
 use Bundle\ResourceBundle\AbstractResourceBundle;
 use Bundle\ResourceBundle\ResourceBundle;
 
-final class SyliusUserBundle extends AbstractResourceBundle
+final class UserBundle extends AbstractResourceBundle
 {
     /**
      * {@inheritdoc}

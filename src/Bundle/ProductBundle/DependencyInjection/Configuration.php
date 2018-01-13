@@ -25,7 +25,7 @@ use Sylius\Bundle\ProductBundle\Form\Type\Product2Type;
 use Sylius\Bundle\ProductBundle\Form\Type\ProductVariantTranslationType;
 use Sylius\Bundle\ProductBundle\Form\Type\ProductVariantType;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
-use Sylius\Bundle\ResourceBundle\SyliusResourceBundle;
+use Sylius\Bundle\ResourceBundle\ResourceBundle;
 use Sylius\Component\Product\Model\Product;
 use Sylius\Component\Product\Model\ProductAssociation;
 use Sylius\Component\Product\Model\ProductAssociationInterface;
@@ -67,7 +67,7 @@ final class Configuration implements ConfigurationInterface
         $rootNode
             ->addDefaultsIfNotSet()
             ->children()
-                ->scalarNode('driver')->defaultValue(SyliusResourceBundle::DRIVER_DOCTRINE_ORM)->end()
+                ->scalarNode('driver')->defaultValue(ResourceBundle::DRIVER_DOCTRINE_ORM)->end()
             ->end()
         ;
 

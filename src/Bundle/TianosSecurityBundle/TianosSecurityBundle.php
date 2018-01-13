@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Bundle\SecurityBundle;
+namespace Bundle\TianosSecurityBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class SecurityBundle extends Bundle
+class TianosSecurityBundle extends Bundle
 {
 
 }

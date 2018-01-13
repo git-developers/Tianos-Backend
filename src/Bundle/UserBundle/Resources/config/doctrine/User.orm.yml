@@ -1,7 +1,7 @@
 Bundle\UserBundle\Entity\User:
     type: entity
     table: user
-    repositoryClass: Bundle\UserBundle\Doctrine\ORM\ProductRepository
+    repositoryClass: Bundle\UserBundle\Doctrine\ORM\UserRepository
     indexes:
         FK_8D93D649CCFA12B8:
             columns:
@@ -147,40 +147,40 @@ Bundle\UserBundle\Entity\User:
                 profile_id:
                     referencedColumnName: id
             orphanRemoval: false
-        client:
-            targetEntity: Client
-            cascade: {  }
-            fetch: LAZY
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                client_id:
-                    referencedColumnName: id_increment
-            orphanRemoval: false
+#        client:
+#            targetEntity: Client
+#            cascade: {  }
+#            fetch: LAZY
+#            mappedBy: null
+#            inversedBy: null
+#            joinColumns:
+#                client_id:
+#                    referencedColumnName: id_increment
+#            orphanRemoval: false
     manyToMany:
-        groupOfUsers:
-            targetEntity: GroupOfUsers
-            cascade: {  }
-            fetch: LAZY
-            mappedBy: user
-            inversedBy: null
-            joinTable: null
-            orderBy: null
-        pointOfSale:
-            targetEntity: PointOfSale
-            cascade: {  }
-            fetch: LAZY
-            mappedBy: null
-            inversedBy: user
-            joinTable:
-                name: user_has_point_of_sale
-                joinColumns:
-                    -
-                        name: user_id
-                        referencedColumnName: id
-                inverseJoinColumns:
-                    -
-                        name: point_of_sale_id
-                        referencedColumnName: id
-            orderBy: null
+#        groupOfUsers:
+#            targetEntity: GroupOfUsers
+#            cascade: {  }
+#            fetch: LAZY
+#            mappedBy: user
+#            inversedBy: null
+#            joinTable: null
+#            orderBy: null
+#        pointOfSale:
+#            targetEntity: PointOfSale
+#            cascade: {  }
+#            fetch: LAZY
+#            mappedBy: null
+#            inversedBy: user
+#            joinTable:
+#                name: user_has_point_of_sale
+#                joinColumns:
+#                    -
+#                        name: user_id
+#                        referencedColumnName: id
+#                inverseJoinColumns:
+#                    -
+#                        name: point_of_sale_id
+#                        referencedColumnName: id
+#            orderBy: null
     lifecycleCallbacks: {  }

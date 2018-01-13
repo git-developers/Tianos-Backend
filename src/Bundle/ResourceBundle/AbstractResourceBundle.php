@@ -105,15 +105,15 @@ abstract class AbstractResourceBundle extends Bundle implements ResourceBundleIn
     protected function getMappingCompilerPassInfo(string $driverType): array
     {
         switch ($driverType) {
-            case SyliusResourceBundle::DRIVER_DOCTRINE_MONGODB_ODM:
+            case ResourceBundle::DRIVER_DOCTRINE_MONGODB_ODM:
                 $mappingsPassClassname = DoctrineMongoDBMappingsPass::class;
 
                 break;
-            case SyliusResourceBundle::DRIVER_DOCTRINE_ORM:
+            case ResourceBundle::DRIVER_DOCTRINE_ORM:
                 $mappingsPassClassname = DoctrineOrmMappingsPass::class;
 
                 break;
-            case SyliusResourceBundle::DRIVER_DOCTRINE_PHPCR_ODM:
+            case ResourceBundle::DRIVER_DOCTRINE_PHPCR_ODM:
                 $mappingsPassClassname = DoctrinePhpcrMappingsPass::class;
 
                 break;

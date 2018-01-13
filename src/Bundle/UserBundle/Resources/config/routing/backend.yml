@@ -1,8 +1,8 @@
-backend_product_bundle_index:
+backend_user_bundle_index:
     path: /
     methods: [GET]
     defaults:
-        _controller: tianos.backend.controller.product:indexAction
+        _controller: tianos.backend.controller.user:indexAction
         _tianos:
             action: index
             section: admin
@@ -17,14 +17,14 @@ backend_product_bundle_index:
             grid:
                 icon: cube
                 box_class: primary
-                title: Gestionar productos
+                title: Gestionar users
                 data_table:
                     route:
-                        info: backend_product_bundle_info
-                        view: backend_product_bundle_view
-                        edit: backend_product_bundle_edit
-                        create: backend_product_bundle_create
-                        delete: backend_product_bundle_delete
+                        info: backend_user_bundle_info
+                        view: backend_user_bundle_view
+                        edit: backend_user_bundle_edit
+                        create: backend_user_bundle_create
+                        delete: backend_user_bundle_delete
                     table_button:
                         - edit
                         - delete
@@ -54,79 +54,79 @@ backend_product_bundle_index:
                           options:
                               icon: calendar
             form:
-                type: Bundle\ProductBundle\Form\Type\ProductType
+                type: Bundle\UserBundle\Form\Type\ProductType
             repository:
-                service: tianos.repository.product
+                service: tianos.repository.user
                 method: findAll
                 arguments: [$productId]
 
-backend_product_bundle_create:
+backend_user_bundle_create:
     path: /create
     methods: [POST]
     defaults:
-        _controller: tianos.backend.controller.product:createAction
+        _controller: tianos.backend.controller.user:createAction
         _tianos:
             action: create
-            template: ProductBundle:ProductBackend/Form:form.html.twig
-            entity: Bundle\ProductBundle\Entity\Product
+            template: UserBundle:ProductBackend/Form:form.html.twig
+            entity: Bundle\UserBundle\Entity\Product
             form:
-                type: Bundle\ProductBundle\Form\Type\ProductType
+                type: Bundle\UserBundle\Form\Type\ProductType
             vars:
                 serialize_group_name: crud
 
-backend_product_bundle_edit:
+backend_user_bundle_edit:
     path: /edit
     methods: [PUT, POST]
     defaults:
-        _controller: tianos.backend.controller.product:editAction
+        _controller: tianos.backend.controller.user:editAction
         _tianos:
             action: edit
-            template: ProductBundle:ProductBackend/Form:form.html.twig
+            template: UserBundle:ProductBackend/Form:form.html.twig
             repository:
                 service: tianos.repository.product
                 method: find
                 arguments: [$productId]
             form:
-                type: Bundle\ProductBundle\Form\Type\ProductType
+                type: Bundle\UserBundle\Form\Type\ProductType
             vars:
                 serialize_group_name: crud
 
-backend_product_bundle_delete:
+backend_user_bundle_delete:
     path: /delete
     methods: [POST, DELETE]
     defaults:
-        _controller: tianos.backend.controller.product:deleteAction
+        _controller: tianos.backend.controller.user:deleteAction
         _tianos:
             action: delete
             template: GridBundle:Template:delete.html.twig
             repository:
-                service: tianos.repository.product
+                service: tianos.repository.user
                 method: find
                 arguments: [$productId]
             vars:
 #                body_css: grid-body-css
 
-backend_product_bundle_view:
+backend_user_bundle_view:
     path: /view
     methods: [POST]
     defaults:
-        _controller: tianos.backend.controller.product:viewAction
+        _controller: tianos.backend.controller.user:viewAction
         _tianos:
             action: view
-            template: ProductBundle:ProductBackend/Informative:view.html.twig
+            template: UserBundle:ProductBackend/Informative:view.html.twig
             repository:
-                service: tianos.repository.product
+                service: tianos.repository.user
                 method: find
                 arguments: [$productId]
 
-backend_product_bundle_info:
+backend_user_bundle_info:
     path: /info
     methods: [POST]
     defaults:
-        _controller: tianos.backend.controller.product:infoAction
+        _controller: tianos.backend.controller.user:infoAction
         _tianos:
             action: info
-            template: ProductBundle:ProductBackend/Informative:info.html.twig
+            template: UserBundle:ProductBackend/Informative:info.html.twig
 
 
 
@@ -161,7 +161,7 @@ backend_product_bundle_info:
 #                route: sylius_admin_product_variant_index
 #                parameters: { productId: $productId }
 #            form:
-#                type: Sylius\Bundle\ProductBundle\Form\Type\ProductGenerateVariantsType
+#                type: Sylius\Bundle\UserBundle\Form\Type\ProductGenerateVariantsType
 #            repository:
 #                method: find
 #                arguments: [$productId]

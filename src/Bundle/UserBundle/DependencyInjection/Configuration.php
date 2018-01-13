@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Bundle\UserBundle\DependencyInjection;
 
-use Bundle\ResourceBundle\SyliusResourceBundle;
+use Bundle\ResourceBundle\ResourceBundle;
 use Bundle\UserBundle\Controller\UserController;
 use Component\Resource\Factory\Factory;
 use Component\User\Model\User;
@@ -26,7 +26,7 @@ final class Configuration implements ConfigurationInterface
         $rootNode
             ->addDefaultsIfNotSet()
             ->children()
-                ->scalarNode('driver')->defaultValue(SyliusResourceBundle::DRIVER_DOCTRINE_ORM)->end()
+                ->scalarNode('driver')->defaultValue(ResourceBundle::DRIVER_DOCTRINE_ORM)->end()
             ->end()
         ;
 

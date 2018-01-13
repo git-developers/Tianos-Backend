@@ -16,7 +16,7 @@ class ProductBundle extends Bundle
 //namespace Bundle\ProductBundle;
 //
 //use Sylius\Bundle\ResourceBundle\AbstractResourceBundle;
-//use Sylius\Bundle\ResourceBundle\SyliusResourceBundle;
+//use Sylius\Bundle\ResourceBundle\ResourceBundle;
 //
 //final class ProductBundle extends AbstractResourceBundle
 //{

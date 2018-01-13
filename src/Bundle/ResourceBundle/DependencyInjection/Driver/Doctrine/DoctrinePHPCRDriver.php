@@ -16,7 +16,7 @@ namespace Sylius\Bundle\ResourceBundle\DependencyInjection\Driver\Doctrine;
 use Sylius\Bundle\ResourceBundle\Doctrine\ODM\PHPCR\EventListener\DefaultParentListener;
 use Sylius\Bundle\ResourceBundle\Doctrine\ODM\PHPCR\EventListener\NameFilterListener;
 use Sylius\Bundle\ResourceBundle\Doctrine\ODM\PHPCR\EventListener\NameResolverListener;
-use Sylius\Bundle\ResourceBundle\SyliusResourceBundle;
+use Sylius\Bundle\ResourceBundle\ResourceBundle;
 use Sylius\Component\Resource\Metadata\MetadataInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
@@ -152,7 +152,7 @@ final class DoctrinePHPCRDriver extends AbstractDoctrineDriver
      */
     public function getType(): string
     {
-        return SyliusResourceBundle::DRIVER_DOCTRINE_PHPCR_ODM;
+        return ResourceBundle::DRIVER_DOCTRINE_PHPCR_ODM;
     }
 
     /**

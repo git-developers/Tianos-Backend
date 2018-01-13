@@ -17,7 +17,7 @@ use Sylius\Bundle\ResourceBundle\DependencyInjection\Driver\Doctrine\DoctrineODM
 use Sylius\Bundle\ResourceBundle\DependencyInjection\Driver\Doctrine\DoctrineORMDriver;
 use Sylius\Bundle\ResourceBundle\DependencyInjection\Driver\Doctrine\DoctrinePHPCRDriver;
 use Sylius\Bundle\ResourceBundle\DependencyInjection\Driver\Exception\UnknownDriverException;
-use Sylius\Bundle\ResourceBundle\SyliusResourceBundle;
+use Sylius\Bundle\ResourceBundle\ResourceBundle;
 use Sylius\Component\Resource\Metadata\MetadataInterface;
 
 final class DriverProvider
@@ -43,11 +43,11 @@ final class DriverProvider
         }
 
         switch ($type) {
-            case SyliusResourceBundle::DRIVER_DOCTRINE_ORM:
+            case ResourceBundle::DRIVER_DOCTRINE_ORM:
                 return self::$drivers[$type] = new DoctrineORMDriver();
-            case SyliusResourceBundle::DRIVER_DOCTRINE_MONGODB_ODM:
+            case ResourceBundle::DRIVER_DOCTRINE_MONGODB_ODM:
                 return self::$drivers[$type] = new DoctrineODMDriver();
-            case SyliusResourceBundle::DRIVER_DOCTRINE_PHPCR_ODM:
+            case ResourceBundle::DRIVER_DOCTRINE_PHPCR_ODM:
                 return self::$drivers[$type] = new DoctrinePHPCRDriver();
         }
 

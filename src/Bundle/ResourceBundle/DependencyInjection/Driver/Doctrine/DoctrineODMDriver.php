@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace Sylius\Bundle\ResourceBundle\DependencyInjection\Driver\Doctrine;
 
 use Sylius\Bundle\ResourceBundle\Doctrine\ODM\MongoDB\TranslatableRepository;
-use Sylius\Bundle\ResourceBundle\SyliusResourceBundle;
+use Sylius\Bundle\ResourceBundle\ResourceBundle;
 use Sylius\Component\Resource\Metadata\MetadataInterface;
 use Sylius\Component\Resource\Model\TranslatableInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -29,7 +29,7 @@ final class DoctrineODMDriver extends AbstractDoctrineDriver
      */
     public function getType(): string
     {
-        return SyliusResourceBundle::DRIVER_DOCTRINE_MONGODB_ODM;
+        return ResourceBundle::DRIVER_DOCTRINE_MONGODB_ODM;
     }
 
     /**

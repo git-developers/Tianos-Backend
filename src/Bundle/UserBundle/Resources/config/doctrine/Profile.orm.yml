@@ -1,11 +1,6 @@
-#http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/reference/yaml-mapping.html
-
-Bundle\ProductBundle\Entity\Product:
+Bundle\UserBundle\Entity\Profile:
     type: entity
-#    type: mappedSuperclass
-#    mappedSuperclass: Component\Product\Model\Product
-    table: product
-    repositoryClass: Bundle\ProductBundle\Doctrine\ORM\ProductRepository
+    table: profile
     id:
         id:
             type: integer
@@ -16,37 +11,22 @@ Bundle\ProductBundle\Entity\Product:
             generator:
                 strategy: IDENTITY
     fields:
-        code:
-            type: string
-            nullable: true
-            length: 45
-            options:
-                fixed: false
         name:
             type: string
             nullable: false
-            length: 150
+            length: 100
             options:
                 fixed: false
         slug:
             type: string
-            nullable: true
-            length: 150
-            options:
-                fixed: false
-        image:
-            type: string
-            nullable: true
-            length: 45
+            nullable: false
+            length: 100
             options:
                 fixed: false
         createdAt:
             type: datetime
             nullable: false
             column: created_at
-#            gedmo:
-#                timestampable:
-#                    on: create
         userCreate:
             type: integer
             nullable: true
@@ -66,10 +46,23 @@ Bundle\ProductBundle\Entity\Product:
         isActive:
             type: boolean
             nullable: true
-            options:
-                default: '1'
             column: is_active
+    manyToMany:
+        role:
+            targetEntity: Role
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: profile
+            joinTable:
+                name: profile_has_role
+                joinColumns:
+                    -
+                        name: profile_id
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    -
+                        name: role_id
+                        referencedColumnName: id
+            orderBy: null
     lifecycleCallbacks: {  }
-#    lifecycleCallbacks:
-#        prePersist: [ doStuffOnPrePersist, doOtherStuffOnPrePersistToo ]
-#        postPersist: [ doStuffOnPostPersist ]

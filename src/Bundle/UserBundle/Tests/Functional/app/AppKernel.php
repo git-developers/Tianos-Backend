@@ -40,7 +40,7 @@ class AppKernel extends Kernel
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             new Sylius\Bundle\UserBundle\SyliusUserBundle(),
             new Sylius\Bundle\MailerBundle\SyliusMailerBundle(),
-            new Sylius\Bundle\ResourceBundle\SyliusResourceBundle(),
+            new Sylius\Bundle\ResourceBundle\ResourceBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Symfony\Bundle\TwigBundle\TwigBundle(),
         ];

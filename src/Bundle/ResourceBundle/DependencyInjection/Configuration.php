@@ -15,7 +15,7 @@ namespace Sylius\Bundle\ResourceBundle\DependencyInjection;
 
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Bundle\ResourceBundle\Form\Type\DefaultResourceType;
-use Sylius\Bundle\ResourceBundle\SyliusResourceBundle;
+use Sylius\Bundle\ResourceBundle\ResourceBundle;
 use Sylius\Component\Resource\Factory\Factory;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
@@ -59,7 +59,7 @@ final class Configuration implements ConfigurationInterface
                     ->useAttributeAsKey('name')
                     ->prototype('array')
                         ->children()
-                            ->scalarNode('driver')->defaultValue(SyliusResourceBundle::DRIVER_DOCTRINE_ORM)->end()
+                            ->scalarNode('driver')->defaultValue(ResourceBundle::DRIVER_DOCTRINE_ORM)->end()
                             ->variableNode('options')->end()
                             ->scalarNode('templates')->cannotBeEmpty()->end()
                             ->arrayNode('classes')
@@ -149,8 +149,8 @@ final class Configuration implements ConfigurationInterface
         $node
             ->children()
                 ->arrayNode('drivers')
-                    ->defaultValue([SyliusResourceBundle::DRIVER_DOCTRINE_ORM])
-                    ->prototype('enum')->values(SyliusResourceBundle::getAvailableDrivers())->end()
+                    ->defaultValue([ResourceBundle::DRIVER_DOCTRINE_ORM])
+                    ->prototype('enum')->values(ResourceBundle::getAvailableDrivers())->end()
                 ->end()
             ->end()
         ;

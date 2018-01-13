@@ -26,12 +26,14 @@ class AppKernel extends Kernel
             //own bundles
             new \Bundle\UiBundle\UiBundle(),
             new \Bundle\ApiBundle\ApiBundle(),
+            new \Bundle\UserBundle\UserBundle(),
             new \Bundle\CoreBundle\CoreBundle(),
             new \Bundle\GridBundle\GridBundle(),
             new \Bundle\ThemeBundle\ThemeBundle(),
             new \Bundle\ThemesBundle\ThemesBundle(),
             new \Bundle\ProductBundle\ProductBundle(),
             new \Bundle\BackendBundle\BackendBundle(),
+            new \Bundle\TianosSecurityBundle\TianosSecurityBundle(),
             new \Bundle\FrontendBundle\FrontendBundle(),
             new \Bundle\ResourceBundle\ResourceBundle(),
         ];
