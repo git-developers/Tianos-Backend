@@ -176,11 +176,6 @@ setfacl:
 	setfacl -dR -m u:"$$HTTPDUSER":rwX -m u:$(whoami):rwX var
 	setfacl -R -m u:"$$HTTPDUSER":rwX -m u:$(whoami):rwX var
 
-xxxx:
-	$(eval MODEL_UPPER := Product)
-	$(eval CRUD_DUMMY := CRUD_DUMMY)
-	find $$PWD/src/Bundle/$(MODEL_UPPER)Bundle/ -name \*.yml -exec sed -i "s/$(CRUD_DUMMY)/$(MODEL_UPPER)/g" {} \;
-
 crud:
 	@echo =========== CRUD: replace upper dummy ===========;
 	$(eval MODEL_UPPER := Product)
