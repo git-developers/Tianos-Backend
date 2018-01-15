@@ -11,26 +11,26 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ProductBundle\Form\EventSubscriber;
+namespace Sylius\Bundle\CRUD_DUMMYBundle\Form\EventSubscriber;
 
-use Sylius\Component\Product\Generator\ProductVariantGeneratorInterface;
-use Sylius\Component\Product\Model\ProductInterface;
+use Sylius\Component\CRUD_DUMMY\Generator\CRUD_DUMMYVariantGeneratorInterface;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Webmozart\Assert\Assert;
 
-final class GenerateProductVariantsSubscriber implements EventSubscriberInterface
+final class GenerateCRUD_DUMMYVariantsSubscriber implements EventSubscriberInterface
 {
     /**
-     * @var ProductVariantGeneratorInterface
+     * @var CRUD_DUMMYVariantGeneratorInterface
      */
     private $generator;
 
     /**
-     * @param ProductVariantGeneratorInterface $generator
+     * @param CRUD_DUMMYVariantGeneratorInterface $generator
      */
-    public function __construct(ProductVariantGeneratorInterface $generator)
+    public function __construct(CRUD_DUMMYVariantGeneratorInterface $generator)
     {
         $this->generator = $generator;
     }
@@ -50,10 +50,10 @@ final class GenerateProductVariantsSubscriber implements EventSubscriberInterfac
      */
     public function preSetData(FormEvent $event): void
     {
-        /** @var ProductInterface $product */
+        /** @var CRUD_DUMMYInterface $product */
         $product = $event->getData();
 
-        Assert::isInstanceOf($product, ProductInterface::class);
+        Assert::isInstanceOf($product, CRUD_DUMMYInterface::class);
 
         $this->generator->generate($product);
     }

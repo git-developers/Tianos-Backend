@@ -85,14 +85,14 @@ class BaseGoogle extends \Twig_Extension
         $cache = new FilesystemAdapter();
 
         // retrieve the cache item
-        $numProducts = $cache->getItem($key);
-        if (!$numProducts->isHit()) {
+        $numCRUD_DUMMYs = $cache->getItem($key);
+        if (!$numCRUD_DUMMYs->isHit()) {
             // ... item does not exists in the cache
             return '';
         }
 
         // retrieve the value stored by the item
-        $total = $numProducts->get();
+        $total = $numCRUD_DUMMYs->get();
 
 //        echo '<pre> POLLO::';
 //        print_r($total);
@@ -113,11 +113,11 @@ class BaseGoogle extends \Twig_Extension
         $cache = new FilesystemAdapter();
 
         // create a new item getting it from the cache
-        $numProducts = $cache->getItem($key);
+        $numCRUD_DUMMYs = $cache->getItem($key);
 
         // assign a value to the item and save it
-        $numProducts->set(serialize($value));
-        $cache->save($numProducts);
+        $numCRUD_DUMMYs->set(serialize($value));
+        $cache->save($numCRUD_DUMMYs);
 
     }
 

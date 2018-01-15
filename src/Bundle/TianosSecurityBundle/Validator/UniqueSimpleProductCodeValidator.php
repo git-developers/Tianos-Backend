@@ -11,25 +11,25 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ProductBundle\Validator;
+namespace Sylius\Bundle\CRUD_DUMMYBundle\Validator;
 
-use Sylius\Component\Product\Model\ProductInterface;
-use Sylius\Component\Product\Repository\ProductVariantRepositoryInterface;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYInterface;
+use Sylius\Component\CRUD_DUMMY\Repository\CRUD_DUMMYVariantRepositoryInterface;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 
-final class UniqueSimpleProductCodeValidator extends ConstraintValidator
+final class UniqueSimpleCRUD_DUMMYCodeValidator extends ConstraintValidator
 {
     /**
-     * @var ProductVariantRepositoryInterface
+     * @var CRUD_DUMMYVariantRepositoryInterface
      */
     private $productVariantRepository;
 
     /**
-     * @param ProductVariantRepositoryInterface $productVariantRepository
+     * @param CRUD_DUMMYVariantRepositoryInterface $productVariantRepository
      */
-    public function __construct(ProductVariantRepositoryInterface $productVariantRepository)
+    public function __construct(CRUD_DUMMYVariantRepositoryInterface $productVariantRepository)
     {
         $this->productVariantRepository = $productVariantRepository;
     }
@@ -39,17 +39,17 @@ final class UniqueSimpleProductCodeValidator extends ConstraintValidator
      */
     public function validate($value, Constraint $constraint): void
     {
-        if (!$value instanceof ProductInterface) {
-            throw new UnexpectedTypeException($value, ProductInterface::class);
+        if (!$value instanceof CRUD_DUMMYInterface) {
+            throw new UnexpectedTypeException($value, CRUD_DUMMYInterface::class);
         }
 
         if (!$value->isSimple()) {
             return;
         }
 
-        $existingProductVariant = $this->productVariantRepository->findOneBy(['code' => $value->getCode()]);
+        $existingCRUD_DUMMYVariant = $this->productVariantRepository->findOneBy(['code' => $value->getCode()]);
 
-        if (null !== $existingProductVariant && $existingProductVariant->getProduct()->getId() !== $value->getId()) {
+        if (null !== $existingCRUD_DUMMYVariant && $existingCRUD_DUMMYVariant->getCRUD_DUMMY()->getId() !== $value->getId()) {
             $this->context->buildViolation($constraint->message)
                 ->atPath('code')
                 ->addViolation()

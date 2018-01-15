@@ -11,12 +11,12 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ProductBundle\Tests;
+namespace Sylius\Bundle\CRUD_DUMMYBundle\Tests;
 
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
-final class SyliusProductBundleTest extends WebTestCase
+final class SyliusCRUD_DUMMYBundleTest extends WebTestCase
 {
     /**
      * @test

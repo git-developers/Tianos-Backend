@@ -5,10 +5,10 @@
 #        _controller: tianos.backend.controller.product:createAction
 #        _tianos:
 #            action: create
-#            template: ProductBundle:ProductBackend/Form:form.html.twig
-#            entity: Bundle\ProductBundle\Entity\Product
+#            template: CRUD_DUMMYBundle:CRUD_DUMMYBackend/Form:form.html.twig
+#            entity: Bundle\CRUD_DUMMYBundle\Entity\CRUD_DUMMY
 #            form:
-#                type: Bundle\ProductBundle\Form\Type\ProductType
+#                type: Bundle\CRUD_DUMMYBundle\Form\Type\CRUD_DUMMYType
 #            vars:
 #                serialize_group_name: crud
 

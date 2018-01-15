@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ProductBundle\EventListener;
+namespace Sylius\Bundle\CRUD_DUMMYBundle\EventListener;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Sylius\Component\Attribute\AttributeType\SelectAttributeType;
-use Sylius\Component\Product\Model\ProductAttributeInterface;
-use Sylius\Component\Product\Model\ProductAttributeValueInterface;
-use Sylius\Component\Product\Repository\ProductAttributeValueRepositoryInterface;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeInterface;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeValueInterface;
+use Sylius\Component\CRUD_DUMMY\Repository\CRUD_DUMMYAttributeValueRepositoryInterface;
 
-final class SelectProductAttributeChoiceRemoveListener
+final class SelectCRUD_DUMMYAttributeChoiceRemoveListener
 {
     /**
      * @var string
@@ -31,10 +31,10 @@ final class SelectProductAttributeChoiceRemoveListener
      */
     public function postUpdate(LifecycleEventArgs $event): void
     {
-        /** @var ProductAttributeInterface $productAttribute */
+        /** @var CRUD_DUMMYAttributeInterface $productAttribute */
         $productAttribute = $event->getEntity();
 
-        if (!($productAttribute instanceof ProductAttributeInterface)) {
+        if (!($productAttribute instanceof CRUD_DUMMYAttributeInterface)) {
             return;
         }
 
@@ -62,12 +62,12 @@ final class SelectProductAttributeChoiceRemoveListener
      */
     public function removeValues(ObjectManager $entityManager, array $choiceKeys): void
     {
-        /** @var ProductAttributeValueRepositoryInterface $productAttributeValueRepository */
+        /** @var CRUD_DUMMYAttributeValueRepositoryInterface $productAttributeValueRepository */
         $productAttributeValueRepository = $entityManager->getRepository($this->productAttributeValueClass);
         foreach ($choiceKeys as $choiceKey) {
             $productAttributeValues = $productAttributeValueRepository->findByJsonChoiceKey($choiceKey);
 
-            /** @var ProductAttributeValueInterface $productAttributeValue */
+            /** @var CRUD_DUMMYAttributeValueInterface $productAttributeValue */
             foreach ($productAttributeValues as $productAttributeValue) {
                 $newValue = array_diff($productAttributeValue->getValue(), [$choiceKey]);
                 if (!empty($newValue)) {

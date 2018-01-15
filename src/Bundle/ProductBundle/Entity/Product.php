@@ -6,21 +6,11 @@ use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as JMSS;
 use JMS\Serializer\Annotation\Type as TypeJMS;
 
-//* @ORM\Entity
-
 /**
  * Product
  */
 class Product
 {
-
-    //    /**
-//     * @var integer
-//     *
-//     * @ORM\Column(name="id", type="integer")
-//     * @ORM\Id
-//     * @ORM\GeneratedValue(strategy="IDENTITY")
-//     */
 
     /**
      * @var integer
@@ -45,11 +35,6 @@ class Product
      * @var string
      */
     private $slug;
-
-    /**
-     * @var string
-     */
-    private $image;
 
     /**
      * @var \DateTime
@@ -160,30 +145,6 @@ class Product
     public function getSlug()
     {
         return $this->slug;
-    }
-
-    /**
-     * Set image
-     *
-     * @param string $image
-     *
-     * @return Product
-     */
-    public function setImage($image)
-    {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    /**
-     * Get image
-     *
-     * @return string
-     */
-    public function getImage()
-    {
-        return $this->image;
     }
 
     /**

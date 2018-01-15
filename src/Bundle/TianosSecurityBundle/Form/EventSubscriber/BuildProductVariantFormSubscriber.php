@@ -11,16 +11,16 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ProductBundle\Form\EventSubscriber;
+namespace Sylius\Bundle\CRUD_DUMMYBundle\Form\EventSubscriber;
 
-use Sylius\Bundle\ProductBundle\Form\Type\ProductOptionValueCollectionType;
-use Sylius\Component\Product\Model\ProductVariantInterface;
+use Sylius\Bundle\CRUD_DUMMYBundle\Form\Type\CRUD_DUMMYOptionValueCollectionType;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYVariantInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\FormFactoryInterface;
 
-final class BuildProductVariantFormSubscriber implements EventSubscriberInterface
+final class BuildCRUD_DUMMYVariantFormSubscriber implements EventSubscriberInterface
 {
     /**
      * @var FormFactoryInterface
@@ -57,7 +57,7 @@ final class BuildProductVariantFormSubscriber implements EventSubscriberInterfac
      */
     public function preSetData(FormEvent $event): void
     {
-        /** @var ProductVariantInterface $productVariant */
+        /** @var CRUD_DUMMYVariantInterface $productVariant */
         $productVariant = $event->getData();
         $form = $event->getForm();
 
@@ -65,7 +65,7 @@ final class BuildProductVariantFormSubscriber implements EventSubscriberInterfac
             return;
         }
 
-        $product = $productVariant->getProduct();
+        $product = $productVariant->getCRUD_DUMMY();
 
         if (!$product->hasOptions()) {
             return;
@@ -73,7 +73,7 @@ final class BuildProductVariantFormSubscriber implements EventSubscriberInterfac
 
         $form->add($this->factory->createNamed(
             'optionValues',
-            ProductOptionValueCollectionType::class,
+            CRUD_DUMMYOptionValueCollectionType::class,
             $productVariant->getOptionValues(),
             [
                 'disabled' => $this->disabled,

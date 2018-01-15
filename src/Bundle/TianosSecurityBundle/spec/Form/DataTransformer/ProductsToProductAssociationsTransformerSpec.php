@@ -11,23 +11,23 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\ProductBundle\Form\DataTransformer;
+namespace spec\Sylius\Bundle\CRUD_DUMMYBundle\Form\DataTransformer;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use PhpSpec\ObjectBehavior;
-use Sylius\Component\Product\Model\ProductAssociationInterface;
-use Sylius\Component\Product\Model\ProductAssociationTypeInterface;
-use Sylius\Component\Product\Model\ProductInterface;
-use Sylius\Component\Product\Repository\ProductRepositoryInterface;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAssociationInterface;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAssociationTypeInterface;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYInterface;
+use Sylius\Component\CRUD_DUMMY\Repository\CRUD_DUMMYRepositoryInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Symfony\Component\Form\DataTransformerInterface;
 
-final class ProductsToProductAssociationsTransformerSpec extends ObjectBehavior
+final class CRUD_DUMMYsToCRUD_DUMMYAssociationsTransformerSpec extends ObjectBehavior
 {
     function let(
         FactoryInterface $productAssociationFactory,
-        ProductRepositoryInterface $productRepository,
+        CRUD_DUMMYRepositoryInterface $productRepository,
         RepositoryInterface $productAssociationTypeRepository
     ): void {
         $this->beConstructedWith(
@@ -48,21 +48,21 @@ final class ProductsToProductAssociationsTransformerSpec extends ObjectBehavior
     }
 
     function it_transforms_product_associations_to_array(
-        ProductAssociationInterface $productAssociation,
-        ProductAssociationTypeInterface $productAssociationType,
-        ProductInterface $firstAssociatedProduct,
-        ProductInterface $secondAssociatedProduct
+        CRUD_DUMMYAssociationInterface $productAssociation,
+        CRUD_DUMMYAssociationTypeInterface $productAssociationType,
+        CRUD_DUMMYInterface $firstAssociatedCRUD_DUMMY,
+        CRUD_DUMMYInterface $secondAssociatedCRUD_DUMMY
     ): void {
         $productAssociation->getType()->willReturn($productAssociationType);
-        $productAssociation->getAssociatedProducts()->willReturn(
+        $productAssociation->getAssociatedCRUD_DUMMYs()->willReturn(
             new ArrayCollection([
-                $firstAssociatedProduct->getWrappedObject(),
-                $secondAssociatedProduct->getWrappedObject(),
+                $firstAssociatedCRUD_DUMMY->getWrappedObject(),
+                $secondAssociatedCRUD_DUMMY->getWrappedObject(),
             ])
         );
 
-        $firstAssociatedProduct->getCode()->willReturn('FIRST');
-        $secondAssociatedProduct->getCode()->willReturn('SECOND');
+        $firstAssociatedCRUD_DUMMY->getCode()->willReturn('FIRST');
+        $secondAssociatedCRUD_DUMMY->getCode()->willReturn('SECOND');
 
         $productAssociationType->getCode()->willReturn('accessories');
 

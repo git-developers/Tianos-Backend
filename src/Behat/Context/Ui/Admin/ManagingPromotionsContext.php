@@ -557,7 +557,7 @@ final class ManagingPromotionsContext implements Context
     public function iAddTheRuleConfiguredWithTheProduct($productName)
     {
         $this->createPage->addRule('Contains product');
-        $this->createPage->selectAutocompleteRuleOption('Product code', $productName);
+        $this->createPage->selectAutocompleteRuleOption('CRUDDUMMY code', $productName);
     }
 
     /**

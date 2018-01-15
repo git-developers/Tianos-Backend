@@ -1,6 +1,7 @@
 <?php
 
-use Symfony\Component\HttpKernel\Kernel;
+//use Symfony\Component\HttpKernel\Kernel;
+use Bundle\CoreBundle\Application\Kernel;
 use Symfony\Component\Config\Loader\LoaderInterface;
 
 
@@ -26,7 +27,7 @@ class AppKernel extends Kernel
             //own bundles
             new \Bundle\UiBundle\UiBundle(),
             new \Bundle\ApiBundle\ApiBundle(),
-            new \Bundle\UserBundle\UserBundle(),
+//            new \Bundle\UserBundle\UserBundle(),
             new \Bundle\CoreBundle\CoreBundle(),
             new \Bundle\GridBundle\GridBundle(),
             new \Bundle\ThemeBundle\ThemeBundle(),
@@ -49,7 +50,8 @@ class AppKernel extends Kernel
             }
         }
 
-        return $bundles;
+        return array_merge(parent::registerBundles(), $bundles);
+//        return $bundles;
     }
 
     public function getRootDir()

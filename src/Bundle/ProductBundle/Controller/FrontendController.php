@@ -37,7 +37,7 @@ class FrontendController extends BaseController
         $products = $this->getSerialize($products, 'product');
 
         return $this->render(
-            'ProductBundle:FrontendProduct:index.html.twig',
+            'ProductBundle:ProductFrontend:index.html.twig',
             [
                 'products' => $products,
             ]

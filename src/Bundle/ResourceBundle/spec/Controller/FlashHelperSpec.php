@@ -61,7 +61,7 @@ final class FlashHelperSpec extends ObjectBehavior
             'success',
             [
                 'message' => 'sylius.resource.create',
-                'parameters' => ['%resource%' => 'Product'],
+                'parameters' => ['%resource%' => 'CRUD_DUMMY'],
             ]
         )->shouldBeCalled();
 
@@ -76,7 +76,7 @@ final class FlashHelperSpec extends ObjectBehavior
         RequestConfiguration $requestConfiguration,
         ResourceInterface $resource
     ): void {
-        $parameters = ['%resource%' => 'Product'];
+        $parameters = ['%resource%' => 'CRUD_DUMMY'];
 
         $metadata->getApplicationName()->willReturn('sylius');
         $metadata->getHumanizedName()->willReturn('product');
@@ -156,7 +156,7 @@ final class FlashHelperSpec extends ObjectBehavior
             'success',
             [
                 'message' => 'sylius.resource.create',
-                'parameters' => ['%resource%' => 'Product'],
+                'parameters' => ['%resource%' => 'CRUD_DUMMY'],
             ]
         )->shouldBeCalled();
 

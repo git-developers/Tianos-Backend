@@ -11,25 +11,25 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ProductBundle\Validator;
+namespace Sylius\Bundle\CRUD_DUMMYBundle\Validator;
 
-use Sylius\Component\Product\Checker\ProductVariantsParityCheckerInterface;
-use Sylius\Component\Product\Model\ProductVariantInterface;
+use Sylius\Component\CRUD_DUMMY\Checker\CRUD_DUMMYVariantsParityCheckerInterface;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYVariantInterface;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;
 
-final class ProductVariantCombinationValidator extends ConstraintValidator
+final class CRUD_DUMMYVariantCombinationValidator extends ConstraintValidator
 {
     /**
-     * @var ProductVariantsParityCheckerInterface
+     * @var CRUD_DUMMYVariantsParityCheckerInterface
      */
     private $variantsParityChecker;
 
     /**
-     * @param ProductVariantsParityCheckerInterface $variantsParityChecker
+     * @param CRUD_DUMMYVariantsParityCheckerInterface $variantsParityChecker
      */
-    public function __construct(ProductVariantsParityCheckerInterface $variantsParityChecker)
+    public function __construct(CRUD_DUMMYVariantsParityCheckerInterface $variantsParityChecker)
     {
         $this->variantsParityChecker = $variantsParityChecker;
     }
@@ -39,11 +39,11 @@ final class ProductVariantCombinationValidator extends ConstraintValidator
      */
     public function validate($value, Constraint $constraint): void
     {
-        if (!$value instanceof ProductVariantInterface) {
-            throw new UnexpectedTypeException($value, ProductVariantInterface::class);
+        if (!$value instanceof CRUD_DUMMYVariantInterface) {
+            throw new UnexpectedTypeException($value, CRUD_DUMMYVariantInterface::class);
         }
 
-        $product = $value->getProduct();
+        $product = $value->getCRUD_DUMMY();
         if (!$product->hasVariants() || !$product->hasOptions()) {
             return;
         }

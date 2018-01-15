@@ -11,26 +11,26 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ProductBundle\Form\DataTransformer;
+namespace Sylius\Bundle\CRUD_DUMMYBundle\Form\DataTransformer;
 
-use Sylius\Component\Product\Model\ProductInterface;
-use Sylius\Component\Product\Model\ProductOptionValueInterface;
-use Sylius\Component\Product\Model\ProductVariantInterface;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYInterface;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYOptionValueInterface;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYVariantInterface;
 use Symfony\Component\Form\DataTransformerInterface;
 use Symfony\Component\Form\Exception\TransformationFailedException;
 use Symfony\Component\Form\Exception\UnexpectedTypeException;
 
-final class ProductVariantToProductOptionsTransformer implements DataTransformerInterface
+final class CRUD_DUMMYVariantToCRUD_DUMMYOptionsTransformer implements DataTransformerInterface
 {
     /**
-     * @var ProductInterface
+     * @var CRUD_DUMMYInterface
      */
     private $product;
 
     /**
-     * @param ProductInterface $product
+     * @param CRUD_DUMMYInterface $product
      */
-    public function __construct(ProductInterface $product)
+    public function __construct(CRUD_DUMMYInterface $product)
     {
         $this->product = $product;
     }
@@ -46,12 +46,12 @@ final class ProductVariantToProductOptionsTransformer implements DataTransformer
             return [];
         }
 
-        if (!$value instanceof ProductVariantInterface) {
-            throw new UnexpectedTypeException($value, ProductVariantInterface::class);
+        if (!$value instanceof CRUD_DUMMYVariantInterface) {
+            throw new UnexpectedTypeException($value, CRUD_DUMMYVariantInterface::class);
         }
 
         return array_combine(
-            array_map(function (ProductOptionValueInterface $productOptionValue) {
+            array_map(function (CRUD_DUMMYOptionValueInterface $productOptionValue) {
                 return $productOptionValue->getOptionCode();
             }, $value->getOptionValues()->toArray()),
             $value->getOptionValues()->toArray()
@@ -61,7 +61,7 @@ final class ProductVariantToProductOptionsTransformer implements DataTransformer
     /**
      * {@inheritdoc}
      */
-    public function reverseTransform($value): ?ProductVariantInterface
+    public function reverseTransform($value): ?CRUD_DUMMYVariantInterface
     {
         if (null === $value || '' === $value) {
             return null;
@@ -75,13 +75,13 @@ final class ProductVariantToProductOptionsTransformer implements DataTransformer
     }
 
     /**
-     * @param ProductOptionValueInterface[] $optionValues
+     * @param CRUD_DUMMYOptionValueInterface[] $optionValues
      *
-     * @return ProductVariantInterface|null
+     * @return CRUD_DUMMYVariantInterface|null
      *
      * @throws TransformationFailedException
      */
-    private function matches(array $optionValues): ?ProductVariantInterface
+    private function matches(array $optionValues): ?CRUD_DUMMYVariantInterface
     {
         foreach ($this->product->getVariants() as $variant) {
             foreach ($optionValues as $optionValue) {

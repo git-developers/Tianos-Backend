@@ -58,7 +58,7 @@ final class ProductVariantContext implements Context
         $productVariants = $this->productVariantRepository->findByNameAndProduct($variantName, 'en_US', $products[0]);
         Assert::notEmpty(
             $productVariants,
-            sprintf('Product variant with name "%s" of product "%s" does not exist', $variantName, $productName)
+            sprintf('CRUDDUMMY variant with name "%s" of product "%s" does not exist', $variantName, $productName)
         );
 
         return $productVariants[0];

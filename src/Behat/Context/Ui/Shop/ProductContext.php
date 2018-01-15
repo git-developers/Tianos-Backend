@@ -426,7 +426,7 @@ final class ProductContext implements Context
         foreach ($reviews as $review) {
             Assert::true(
                 $this->showPage->hasReviewTitled($review),
-                sprintf('Product should have review titled "%s" but it does not.', $review)
+                sprintf('CRUDDUMMY should have review titled "%s" but it does not.', $review)
             );
         }
     }

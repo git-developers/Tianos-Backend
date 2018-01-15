@@ -292,7 +292,7 @@ final class CheckoutCompleteContext implements Context
         Assert::same(
             $this->completePage->getValidationErrors(),
             sprintf(
-                'Product does not fit requirements for %s shipping method. Please reselect your shipping method.',
+                'CRUDDUMMY does not fit requirements for %s shipping method. Please reselect your shipping method.',
                 $shippingMethod->getName()
             )
         );

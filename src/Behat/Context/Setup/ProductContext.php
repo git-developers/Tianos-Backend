@@ -656,7 +656,7 @@ final class ProductContext implements Context
             return $code === $variant->getCode();
         })->first();
 
-        Assert::notNull($productVariant, sprintf('Product variant with given code %s not exists!', $code));
+        Assert::notNull($productVariant, sprintf('CRUDDUMMY variant with given code %s not exists!', $code));
 
         $productVariant->setShippingCategory($shippingCategory);
         $this->objectManager->flush();

@@ -11,12 +11,12 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\ProductBundle\Validator\Constraint;
+namespace spec\Sylius\Bundle\CRUD_DUMMYBundle\Validator\Constraint;
 
 use PhpSpec\ObjectBehavior;
 use Symfony\Component\Validator\Constraint;
 
-final class ProductVariantCombinationSpec extends ObjectBehavior
+final class CRUD_DUMMYVariantCombinationSpec extends ObjectBehavior
 {
     function it_is_a_validation_constraint(): void
     {

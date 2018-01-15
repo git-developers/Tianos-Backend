@@ -11,26 +11,26 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ProductBundle\DependencyInjection;
+namespace Sylius\Bundle\CRUD_DUMMYBundle\DependencyInjection;
 
-use Sylius\Bundle\ProductBundle\Controller\ProductAttributeController;
-use Sylius\Bundle\ProductBundle\Doctrine\ORM\ProductAttributeValueRepository;
-use Sylius\Bundle\ProductBundle\Form\Type\ProductAttributeTranslationType;
-use Sylius\Bundle\ProductBundle\Form\Type\ProductAttributeType;
-use Sylius\Bundle\ProductBundle\Form\Type\ProductAttributeValueType;
+use Sylius\Bundle\CRUD_DUMMYBundle\Controller\CRUD_DUMMYAttributeController;
+use Sylius\Bundle\CRUD_DUMMYBundle\Doctrine\ORM\CRUD_DUMMYAttributeValueRepository;
+use Sylius\Bundle\CRUD_DUMMYBundle\Form\Type\CRUD_DUMMYAttributeTranslationType;
+use Sylius\Bundle\CRUD_DUMMYBundle\Form\Type\CRUD_DUMMYAttributeType;
+use Sylius\Bundle\CRUD_DUMMYBundle\Form\Type\CRUD_DUMMYAttributeValueType;
 use Sylius\Bundle\ResourceBundle\DependencyInjection\Extension\AbstractResourceExtension;
-use Sylius\Component\Product\Model\ProductAttribute;
-use Sylius\Component\Product\Model\ProductAttributeInterface;
-use Sylius\Component\Product\Model\ProductAttributeTranslation;
-use Sylius\Component\Product\Model\ProductAttributeTranslationInterface;
-use Sylius\Component\Product\Model\ProductAttributeValue;
-use Sylius\Component\Product\Model\ProductAttributeValueInterface;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAttribute;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeInterface;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeTranslation;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeTranslationInterface;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeValue;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeValueInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 
-final class SyliusProductExtension extends AbstractResourceExtension implements PrependExtensionInterface
+final class SyliusCRUD_DUMMYExtension extends AbstractResourceExtension implements PrependExtensionInterface
 {
     /**
      * {@inheritdoc}
@@ -73,25 +73,25 @@ final class SyliusProductExtension extends AbstractResourceExtension implements 
                     'subject' => $config['resources']['product']['classes']['model'],
                     'attribute' => [
                         'classes' => [
-                            'model' => ProductAttribute::class,
-                            'interface' => ProductAttributeInterface::class,
-                            'controller' => ProductAttributeController::class,
-                            'form' => ProductAttributeType::class,
+                            'model' => CRUD_DUMMYAttribute::class,
+                            'interface' => CRUD_DUMMYAttributeInterface::class,
+                            'controller' => CRUD_DUMMYAttributeController::class,
+                            'form' => CRUD_DUMMYAttributeType::class,
                         ],
                         'translation' => [
                             'classes' => [
-                                'model' => ProductAttributeTranslation::class,
-                                'interface' => ProductAttributeTranslationInterface::class,
-                                'form' => ProductAttributeTranslationType::class,
+                                'model' => CRUD_DUMMYAttributeTranslation::class,
+                                'interface' => CRUD_DUMMYAttributeTranslationInterface::class,
+                                'form' => CRUD_DUMMYAttributeTranslationType::class,
                             ],
                         ],
                     ],
                     'attribute_value' => [
                         'classes' => [
-                            'model' => ProductAttributeValue::class,
-                            'interface' => ProductAttributeValueInterface::class,
-                            'repository' => ProductAttributeValueRepository::class,
-                            'form' => ProductAttributeValueType::class,
+                            'model' => CRUD_DUMMYAttributeValue::class,
+                            'interface' => CRUD_DUMMYAttributeValueInterface::class,
+                            'repository' => CRUD_DUMMYAttributeValueRepository::class,
+                            'form' => CRUD_DUMMYAttributeValueType::class,
                         ],
                     ],
                 ],

@@ -197,7 +197,7 @@ class Builder implements ContainerAwareInterface
 
         <li class="treeview {% if app.request.get('_route') matches '(backend_product)' %}active{% endif %}">
             <a href="#">
-                <i class="fa fa-fw fa-cube"></i> <span>Productos</span>
+                <i class="fa fa-fw fa-cube"></i> <span>CRUD_DUMMYos</span>
                 <span class="pull-right-container">
                         <i class="fa fa-angle-left pull-right"></i>
                     </span>
@@ -220,13 +220,13 @@ class Builder implements ContainerAwareInterface
                 <li class="{% if app.request.get('_route') matches '(backend_categorytreetoassign_index)' %}active{% endif %}">
                     <a href="{{ path('backend_categorytreetoassign_index') }}">
                         <i class="fa fa-circle-o text-blue"></i>
-                        <span>Categoría <i class="fa fa-fw fa-arrow-right"></i> Producto</span>
+                        <span>Categoría <i class="fa fa-fw fa-arrow-right"></i> CRUD_DUMMYo</span>
                     </a>
                 </li>
                 <li class="{% if app.request.get('_route') matches '(backend_assignpointofsalehasproduct_index)' %}active{% endif %}">
                     <a href="{{ path('backend_assignpointofsalehasproduct_index') }}">
                         <i class="fa fa-circle-o text-orange"></i>
-                        <span>Punto de venta <i class="fa fa-fw fa-arrow-right"></i> Producto</span>
+                        <span>Punto de venta <i class="fa fa-fw fa-arrow-right"></i> CRUD_DUMMYo</span>
                     </a>
                 </li>
                 <li class="{% if app.request.get('_route') matches '(backend_assignuserhaspointofsale_index)' %}active{% endif %}">

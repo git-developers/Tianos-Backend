@@ -11,21 +11,21 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\ProductBundle\Form\DataTransformer;
+namespace spec\Sylius\Bundle\CRUD_DUMMYBundle\Form\DataTransformer;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use PhpSpec\ObjectBehavior;
-use Sylius\Component\Product\Model\ProductInterface;
-use Sylius\Component\Product\Model\ProductOptionValueInterface;
-use Sylius\Component\Product\Model\ProductVariantInterface;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYInterface;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYOptionValueInterface;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYVariantInterface;
 use Symfony\Component\Form\DataTransformerInterface;
 use Symfony\Component\Form\Exception\TransformationFailedException;
 use Symfony\Component\Form\Exception\UnexpectedTypeException;
 
-final class ProductVariantToProductOptionsTransformerSpec extends ObjectBehavior
+final class CRUD_DUMMYVariantToCRUD_DUMMYOptionsTransformerSpec extends ObjectBehavior
 {
-    function let(ProductInterface $variable): void
+    function let(CRUD_DUMMYInterface $variable): void
     {
         $this->beConstructedWith($variable);
     }
@@ -45,7 +45,7 @@ final class ProductVariantToProductOptionsTransformerSpec extends ObjectBehavior
         $this->shouldThrow(UnexpectedTypeException::class)->duringTransform([]);
     }
 
-    function it_transforms_variant_into_variant_options(ProductVariantInterface $variant, Collection $optionValues): void
+    function it_transforms_variant_into_variant_options(CRUD_DUMMYVariantInterface $variant, Collection $optionValues): void
     {
         $variant->getOptionValues()->willReturn($optionValues);
         $optionValues->toArray()->willReturn([]);
@@ -72,8 +72,8 @@ final class ProductVariantToProductOptionsTransformerSpec extends ObjectBehavior
     }
 
     function it_throws_exception_when_trying_to_reverse_transform_variable_without_variants(
-        ProductInterface $variable,
-        ProductOptionValueInterface $optionValue
+        CRUD_DUMMYInterface $variable,
+        CRUD_DUMMYOptionValueInterface $optionValue
     ): void {
         $variable->getVariants()->willReturn(new ArrayCollection([]));
         $variable->getCode()->willReturn('example');
@@ -84,9 +84,9 @@ final class ProductVariantToProductOptionsTransformerSpec extends ObjectBehavior
     }
 
     function it_reverse_transforms_variable_with_variants_if_options_match(
-        ProductInterface $variable,
-        ProductVariantInterface $variant,
-        ProductOptionValueInterface $optionValue
+        CRUD_DUMMYInterface $variable,
+        CRUD_DUMMYVariantInterface $variant,
+        CRUD_DUMMYOptionValueInterface $optionValue
     ): void {
         $variable->getVariants()->willReturn(new ArrayCollection([$variant->getWrappedObject()]));
 
@@ -96,9 +96,9 @@ final class ProductVariantToProductOptionsTransformerSpec extends ObjectBehavior
     }
 
     function it_throws_exception_when_trying_to_reverse_transform_variable_with_variants_if_options_not_match(
-        ProductInterface $variable,
-        ProductVariantInterface $variant,
-        ProductOptionValueInterface $optionValue
+        CRUD_DUMMYInterface $variable,
+        CRUD_DUMMYVariantInterface $variant,
+        CRUD_DUMMYOptionValueInterface $optionValue
     ): void {
         $variable->getVariants()->willReturn(new ArrayCollection([$variant->getWrappedObject()]));
         $variable->getCode()->willReturn('example');
@@ -111,8 +111,8 @@ final class ProductVariantToProductOptionsTransformerSpec extends ObjectBehavior
     }
 
     function it_throws_exception_when_trying_to_reverse_transform_variable_with_variants_if_options_are_missing(
-        ProductInterface $variable,
-        ProductVariantInterface $variant
+        CRUD_DUMMYInterface $variable,
+        CRUD_DUMMYVariantInterface $variant
     ): void {
         $variable->getVariants()->willReturn(new ArrayCollection([$variant->getWrappedObject()]));
         $variable->getCode()->willReturn('example');

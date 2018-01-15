@@ -2,6 +2,6 @@ api_default:
     resource: '@ApiBundle/Resources/config/routing/default.yml'
     prefix: /
 
-api_product:
-    resource: '@ProductBundle/Resources/config/routing/api.yml'
-    prefix: /products
+#api_product:
+#    resource: '@ProductBundle/Resources/config/routing/api.yml'
+#    prefix: /products

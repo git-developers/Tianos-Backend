@@ -3,7 +3,7 @@
 Bundle\ProductBundle\Entity\Product:
     type: entity
 #    type: mappedSuperclass
-#    mappedSuperclass: Component\Product\Model\Product
+#    mappedSuperclass: Component\CRUDDUMMY\Model\CRUDDUMMY
     table: product
     repositoryClass: Bundle\ProductBundle\Doctrine\ORM\ProductRepository
     id:
@@ -34,12 +34,12 @@ Bundle\ProductBundle\Entity\Product:
             length: 150
             options:
                 fixed: false
-        image:
-            type: string
-            nullable: true
-            length: 45
-            options:
-                fixed: false
+#        image:
+#            type: string
+#            nullable: true
+#            length: 45
+#            options:
+#                fixed: false
         createdAt:
             type: datetime
             nullable: false

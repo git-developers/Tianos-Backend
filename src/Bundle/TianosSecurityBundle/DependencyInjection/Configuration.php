@@ -11,43 +11,43 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ProductBundle\DependencyInjection;
+namespace Sylius\Bundle\CRUD_DUMMYBundle\DependencyInjection;
 
-use Sylius\Bundle\ProductBundle\Form\Type\ProductAssociationType;
-use Sylius\Bundle\ProductBundle\Form\Type\ProductAssociationTypeTranslationType;
-use Sylius\Bundle\ProductBundle\Form\Type\ProductAssociationTypeType;
-use Sylius\Bundle\ProductBundle\Form\Type\ProductOptionTranslationType;
-use Sylius\Bundle\ProductBundle\Form\Type\ProductOptionType;
-use Sylius\Bundle\ProductBundle\Form\Type\ProductOptionValueTranslationType;
-use Sylius\Bundle\ProductBundle\Form\Type\ProductOptionValueType;
-use Sylius\Bundle\ProductBundle\Form\Type\ProductTranslationType;
-use Sylius\Bundle\ProductBundle\Form\Type\Product2Type;
-use Sylius\Bundle\ProductBundle\Form\Type\ProductVariantTranslationType;
-use Sylius\Bundle\ProductBundle\Form\Type\ProductVariantType;
+use Sylius\Bundle\CRUD_DUMMYBundle\Form\Type\CRUD_DUMMYAssociationType;
+use Sylius\Bundle\CRUD_DUMMYBundle\Form\Type\CRUD_DUMMYAssociationTypeTranslationType;
+use Sylius\Bundle\CRUD_DUMMYBundle\Form\Type\CRUD_DUMMYAssociationTypeType;
+use Sylius\Bundle\CRUD_DUMMYBundle\Form\Type\CRUD_DUMMYOptionTranslationType;
+use Sylius\Bundle\CRUD_DUMMYBundle\Form\Type\CRUD_DUMMYOptionType;
+use Sylius\Bundle\CRUD_DUMMYBundle\Form\Type\CRUD_DUMMYOptionValueTranslationType;
+use Sylius\Bundle\CRUD_DUMMYBundle\Form\Type\CRUD_DUMMYOptionValueType;
+use Sylius\Bundle\CRUD_DUMMYBundle\Form\Type\CRUD_DUMMYTranslationType;
+use Sylius\Bundle\CRUD_DUMMYBundle\Form\Type\CRUD_DUMMY2Type;
+use Sylius\Bundle\CRUD_DUMMYBundle\Form\Type\CRUD_DUMMYVariantTranslationType;
+use Sylius\Bundle\CRUD_DUMMYBundle\Form\Type\CRUD_DUMMYVariantType;
 use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
 use Sylius\Bundle\ResourceBundle\ResourceBundle;
-use Sylius\Component\Product\Model\Product;
-use Sylius\Component\Product\Model\ProductAssociation;
-use Sylius\Component\Product\Model\ProductAssociationInterface;
-use Sylius\Component\Product\Model\ProductAssociationType as ProductAssociationTypeModel;
-use Sylius\Component\Product\Model\ProductAssociationTypeInterface as ProductAssociationTypeModelInterface;
-use Sylius\Component\Product\Model\ProductAssociationTypeTranslation;
-use Sylius\Component\Product\Model\ProductAssociationTypeTranslationInterface;
-use Sylius\Component\Product\Model\ProductInterface;
-use Sylius\Component\Product\Model\ProductOption;
-use Sylius\Component\Product\Model\ProductOptionInterface;
-use Sylius\Component\Product\Model\ProductOptionTranslation;
-use Sylius\Component\Product\Model\ProductOptionTranslationInterface;
-use Sylius\Component\Product\Model\ProductOptionValue;
-use Sylius\Component\Product\Model\ProductOptionValueInterface;
-use Sylius\Component\Product\Model\ProductOptionValueTranslation;
-use Sylius\Component\Product\Model\ProductOptionValueTranslationInterface;
-use Sylius\Component\Product\Model\ProductTranslation;
-use Sylius\Component\Product\Model\ProductTranslationInterface;
-use Sylius\Component\Product\Model\ProductVariant;
-use Sylius\Component\Product\Model\ProductVariantInterface;
-use Sylius\Component\Product\Model\ProductVariantTranslation;
-use Sylius\Component\Product\Model\ProductVariantTranslationInterface;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMY;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAssociation;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAssociationInterface;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAssociationType as CRUD_DUMMYAssociationTypeModel;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAssociationTypeInterface as CRUD_DUMMYAssociationTypeModelInterface;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAssociationTypeTranslation;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAssociationTypeTranslationInterface;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYInterface;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYOption;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYOptionInterface;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYOptionTranslation;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYOptionTranslationInterface;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYOptionValue;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYOptionValueInterface;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYOptionValueTranslation;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYOptionValueTranslationInterface;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYTranslation;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYTranslationInterface;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYVariant;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYVariantInterface;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYVariantTranslation;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYVariantTranslationInterface;
 use Sylius\Component\Resource\Factory\Factory;
 use Sylius\Component\Resource\Factory\TranslatableFactory;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
@@ -93,12 +93,12 @@ final class Configuration implements ConfigurationInterface
                                 ->arrayNode('classes')
                                     ->addDefaultsIfNotSet()
                                     ->children()
-                                        ->scalarNode('model')->defaultValue(Product::class)->cannotBeEmpty()->end()
-                                        ->scalarNode('interface')->defaultValue(ProductInterface::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('model')->defaultValue(CRUD_DUMMY::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('interface')->defaultValue(CRUD_DUMMYInterface::class)->cannotBeEmpty()->end()
                                         ->scalarNode('controller')->defaultValue(ResourceController::class)->cannotBeEmpty()->end()
                                         ->scalarNode('repository')->cannotBeEmpty()->end()
                                         ->scalarNode('factory')->defaultValue(TranslatableFactory::class)->end()
-                                        ->scalarNode('form')->defaultValue(Product2Type::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('form')->defaultValue(CRUD_DUMMY2Type::class)->cannotBeEmpty()->end()
                                     ->end()
                                 ->end()
                                 ->arrayNode('translation')
@@ -108,12 +108,12 @@ final class Configuration implements ConfigurationInterface
                                         ->arrayNode('classes')
                                             ->addDefaultsIfNotSet()
                                             ->children()
-                                                ->scalarNode('model')->defaultValue(ProductTranslation::class)->cannotBeEmpty()->end()
-                                                ->scalarNode('interface')->defaultValue(ProductTranslationInterface::class)->cannotBeEmpty()->end()
+                                                ->scalarNode('model')->defaultValue(CRUD_DUMMYTranslation::class)->cannotBeEmpty()->end()
+                                                ->scalarNode('interface')->defaultValue(CRUD_DUMMYTranslationInterface::class)->cannotBeEmpty()->end()
                                                 ->scalarNode('controller')->defaultValue(ResourceController::class)->cannotBeEmpty()->end()
                                                 ->scalarNode('repository')->cannotBeEmpty()->end()
                                                 ->scalarNode('factory')->defaultValue(Factory::class)->end()
-                                                ->scalarNode('form')->defaultValue(ProductTranslationType::class)->cannotBeEmpty()->end()
+                                                ->scalarNode('form')->defaultValue(CRUD_DUMMYTranslationType::class)->cannotBeEmpty()->end()
                                             ->end()
                                         ->end()
                                     ->end()
@@ -127,12 +127,12 @@ final class Configuration implements ConfigurationInterface
                                 ->arrayNode('classes')
                                     ->addDefaultsIfNotSet()
                                     ->children()
-                                        ->scalarNode('model')->defaultValue(ProductVariant::class)->cannotBeEmpty()->end()
-                                        ->scalarNode('interface')->defaultValue(ProductVariantInterface::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('model')->defaultValue(CRUD_DUMMYVariant::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('interface')->defaultValue(CRUD_DUMMYVariantInterface::class)->cannotBeEmpty()->end()
                                         ->scalarNode('controller')->defaultValue(ResourceController::class)->cannotBeEmpty()->end()
                                         ->scalarNode('repository')->cannotBeEmpty()->end()
                                         ->scalarNode('factory')->defaultValue(TranslatableFactory::class)->end()
-                                        ->scalarNode('form')->defaultValue(ProductVariantType::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('form')->defaultValue(CRUD_DUMMYVariantType::class)->cannotBeEmpty()->end()
                                     ->end()
                                 ->end()
                                 ->arrayNode('translation')
@@ -142,12 +142,12 @@ final class Configuration implements ConfigurationInterface
                                         ->arrayNode('classes')
                                             ->addDefaultsIfNotSet()
                                             ->children()
-                                                ->scalarNode('model')->defaultValue(ProductVariantTranslation::class)->cannotBeEmpty()->end()
-                                                ->scalarNode('interface')->defaultValue(ProductVariantTranslationInterface::class)->cannotBeEmpty()->end()
+                                                ->scalarNode('model')->defaultValue(CRUD_DUMMYVariantTranslation::class)->cannotBeEmpty()->end()
+                                                ->scalarNode('interface')->defaultValue(CRUD_DUMMYVariantTranslationInterface::class)->cannotBeEmpty()->end()
                                                 ->scalarNode('controller')->defaultValue(ResourceController::class)->cannotBeEmpty()->end()
                                                 ->scalarNode('repository')->cannotBeEmpty()->end()
                                                 ->scalarNode('factory')->defaultValue(Factory::class)->end()
-                                                ->scalarNode('form')->defaultValue(ProductVariantTranslationType::class)->cannotBeEmpty()->end()
+                                                ->scalarNode('form')->defaultValue(CRUD_DUMMYVariantTranslationType::class)->cannotBeEmpty()->end()
                                             ->end()
                                         ->end()
                                     ->end()
@@ -161,12 +161,12 @@ final class Configuration implements ConfigurationInterface
                                 ->arrayNode('classes')
                                     ->addDefaultsIfNotSet()
                                     ->children()
-                                        ->scalarNode('model')->defaultValue(ProductOption::class)->cannotBeEmpty()->end()
-                                        ->scalarNode('interface')->defaultValue(ProductOptionInterface::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('model')->defaultValue(CRUD_DUMMYOption::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('interface')->defaultValue(CRUD_DUMMYOptionInterface::class)->cannotBeEmpty()->end()
                                         ->scalarNode('controller')->defaultValue(ResourceController::class)->cannotBeEmpty()->end()
                                         ->scalarNode('repository')->cannotBeEmpty()->end()
                                         ->scalarNode('factory')->defaultValue(TranslatableFactory::class)->end()
-                                        ->scalarNode('form')->defaultValue(ProductOptionType::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('form')->defaultValue(CRUD_DUMMYOptionType::class)->cannotBeEmpty()->end()
                                     ->end()
                                 ->end()
                                 ->arrayNode('translation')
@@ -176,12 +176,12 @@ final class Configuration implements ConfigurationInterface
                                         ->arrayNode('classes')
                                             ->addDefaultsIfNotSet()
                                             ->children()
-                                                ->scalarNode('model')->defaultValue(ProductOptionTranslation::class)->cannotBeEmpty()->end()
-                                                ->scalarNode('interface')->defaultValue(ProductOptionTranslationInterface::class)->cannotBeEmpty()->end()
+                                                ->scalarNode('model')->defaultValue(CRUD_DUMMYOptionTranslation::class)->cannotBeEmpty()->end()
+                                                ->scalarNode('interface')->defaultValue(CRUD_DUMMYOptionTranslationInterface::class)->cannotBeEmpty()->end()
                                                 ->scalarNode('controller')->defaultValue(ResourceController::class)->cannotBeEmpty()->end()
                                                 ->scalarNode('repository')->cannotBeEmpty()->end()
                                                 ->scalarNode('factory')->defaultValue(Factory::class)->end()
-                                                ->scalarNode('form')->defaultValue(ProductOptionTranslationType::class)->cannotBeEmpty()->end()
+                                                ->scalarNode('form')->defaultValue(CRUD_DUMMYOptionTranslationType::class)->cannotBeEmpty()->end()
                                             ->end()
                                         ->end()
                                     ->end()
@@ -195,12 +195,12 @@ final class Configuration implements ConfigurationInterface
                                 ->arrayNode('classes')
                                     ->addDefaultsIfNotSet()
                                     ->children()
-                                        ->scalarNode('model')->defaultValue(ProductOptionValue::class)->cannotBeEmpty()->end()
-                                        ->scalarNode('interface')->defaultValue(ProductOptionValueInterface::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('model')->defaultValue(CRUD_DUMMYOptionValue::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('interface')->defaultValue(CRUD_DUMMYOptionValueInterface::class)->cannotBeEmpty()->end()
                                         ->scalarNode('controller')->defaultValue(ResourceController::class)->cannotBeEmpty()->end()
                                         ->scalarNode('repository')->cannotBeEmpty()->cannotBeEmpty()->end()
                                         ->scalarNode('factory')->defaultValue(TranslatableFactory::class)->cannotBeEmpty()->end()
-                                        ->scalarNode('form')->defaultValue(ProductOptionValueType::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('form')->defaultValue(CRUD_DUMMYOptionValueType::class)->cannotBeEmpty()->end()
                                     ->end()
                                 ->end()
                                 ->arrayNode('translation')
@@ -212,12 +212,12 @@ final class Configuration implements ConfigurationInterface
                                             ->isRequired()
                                             ->addDefaultsIfNotSet()
                                             ->children()
-                                                ->scalarNode('model')->defaultValue(ProductOptionValueTranslation::class)->cannotBeEmpty()->end()
-                                                ->scalarNode('interface')->defaultValue(ProductOptionValueTranslationInterface::class)->cannotBeEmpty()->end()
+                                                ->scalarNode('model')->defaultValue(CRUD_DUMMYOptionValueTranslation::class)->cannotBeEmpty()->end()
+                                                ->scalarNode('interface')->defaultValue(CRUD_DUMMYOptionValueTranslationInterface::class)->cannotBeEmpty()->end()
                                                 ->scalarNode('controller')->defaultValue(ResourceController::class)->cannotBeEmpty()->end()
                                                 ->scalarNode('repository')->cannotBeEmpty()->end()
                                                 ->scalarNode('factory')->defaultValue(Factory::class)->cannotBeEmpty()->end()
-                                                ->scalarNode('form')->defaultValue(ProductOptionValueTranslationType::class)->cannotBeEmpty()->end()
+                                                ->scalarNode('form')->defaultValue(CRUD_DUMMYOptionValueTranslationType::class)->cannotBeEmpty()->end()
                                             ->end()
                                         ->end()
                                     ->end()
@@ -231,12 +231,12 @@ final class Configuration implements ConfigurationInterface
                                 ->arrayNode('classes')
                                     ->addDefaultsIfNotSet()
                                     ->children()
-                                        ->scalarNode('model')->defaultValue(ProductAssociation::class)->cannotBeEmpty()->end()
-                                        ->scalarNode('interface')->defaultValue(ProductAssociationInterface::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('model')->defaultValue(CRUD_DUMMYAssociation::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('interface')->defaultValue(CRUD_DUMMYAssociationInterface::class)->cannotBeEmpty()->end()
                                         ->scalarNode('controller')->defaultValue(ResourceController::class)->cannotBeEmpty()->end()
                                         ->scalarNode('factory')->defaultValue(Factory::class)->cannotBeEmpty()->end()
                                         ->scalarNode('repository')->cannotBeEmpty()->end()
-                                        ->scalarNode('form')->defaultValue(ProductAssociationType::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('form')->defaultValue(CRUD_DUMMYAssociationType::class)->cannotBeEmpty()->end()
                                     ->end()
                                 ->end()
                             ->end()
@@ -248,12 +248,12 @@ final class Configuration implements ConfigurationInterface
                                 ->arrayNode('classes')
                                     ->addDefaultsIfNotSet()
                                     ->children()
-                                        ->scalarNode('model')->defaultValue(ProductAssociationTypeModel::class)->cannotBeEmpty()->end()
-                                        ->scalarNode('interface')->defaultValue(ProductAssociationTypeModelInterface::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('model')->defaultValue(CRUD_DUMMYAssociationTypeModel::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('interface')->defaultValue(CRUD_DUMMYAssociationTypeModelInterface::class)->cannotBeEmpty()->end()
                                         ->scalarNode('controller')->defaultValue(ResourceController::class)->cannotBeEmpty()->end()
                                         ->scalarNode('factory')->defaultValue(TranslatableFactory::class)->cannotBeEmpty()->end()
                                         ->scalarNode('repository')->cannotBeEmpty()->end()
-                                        ->scalarNode('form')->defaultValue(ProductAssociationTypeType::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('form')->defaultValue(CRUD_DUMMYAssociationTypeType::class)->cannotBeEmpty()->end()
                                     ->end()
                                 ->end()
                                 ->arrayNode('translation')
@@ -263,12 +263,12 @@ final class Configuration implements ConfigurationInterface
                                         ->arrayNode('classes')
                                             ->addDefaultsIfNotSet()
                                             ->children()
-                                                ->scalarNode('model')->defaultValue(ProductAssociationTypeTranslation::class)->cannotBeEmpty()->end()
-                                                ->scalarNode('interface')->defaultValue(ProductAssociationTypeTranslationInterface::class)->cannotBeEmpty()->end()
+                                                ->scalarNode('model')->defaultValue(CRUD_DUMMYAssociationTypeTranslation::class)->cannotBeEmpty()->end()
+                                                ->scalarNode('interface')->defaultValue(CRUD_DUMMYAssociationTypeTranslationInterface::class)->cannotBeEmpty()->end()
                                                 ->scalarNode('controller')->defaultValue(ResourceController::class)->cannotBeEmpty()->end()
                                                 ->scalarNode('repository')->cannotBeEmpty()->end()
                                                 ->scalarNode('factory')->defaultValue(Factory::class)->end()
-                                                ->scalarNode('form')->defaultValue(ProductAssociationTypeTranslationType::class)->cannotBeEmpty()->end()
+                                                ->scalarNode('form')->defaultValue(CRUD_DUMMYAssociationTypeTranslationType::class)->cannotBeEmpty()->end()
                                             ->end()
                                         ->end()
                                     ->end()

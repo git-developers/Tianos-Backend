@@ -11,12 +11,12 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ProductBundle\Form\EventSubscriber;
+namespace Sylius\Bundle\CRUD_DUMMYBundle\Form\EventSubscriber;
 
 use Sylius\Component\Attribute\Model\AttributeValueInterface;
-use Sylius\Component\Product\Model\ProductAttributeInterface;
-use Sylius\Component\Product\Model\ProductAttributeValueInterface;
-use Sylius\Component\Product\Model\ProductInterface;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeInterface;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeValueInterface;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Sylius\Component\Resource\Translation\Provider\TranslationLocaleProviderInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -66,15 +66,15 @@ final class BuildAttributesFormSubscriber implements EventSubscriberInterface
      */
     public function preSetData(FormEvent $event): void
     {
-        /** @var ProductInterface $product */
+        /** @var CRUD_DUMMYInterface $product */
         $product = $event->getData();
 
-        Assert::isInstanceOf($product, ProductInterface::class);
+        Assert::isInstanceOf($product, CRUD_DUMMYInterface::class);
 
         $defaultLocaleCode = $this->localeProvider->getDefaultLocaleCode();
 
         $attributes = $product->getAttributes()->filter(
-            function (ProductAttributeValueInterface $attribute) use ($defaultLocaleCode) {
+            function (CRUD_DUMMYAttributeValueInterface $attribute) use ($defaultLocaleCode) {
                 return $attribute->getLocaleCode() === $defaultLocaleCode;
             }
         );
@@ -91,10 +91,10 @@ final class BuildAttributesFormSubscriber implements EventSubscriberInterface
      */
     public function postSubmit(FormEvent $event): void
     {
-        /** @var ProductInterface $product */
+        /** @var CRUD_DUMMYInterface $product */
         $product = $event->getData();
 
-        Assert::isInstanceOf($product, ProductInterface::class);
+        Assert::isInstanceOf($product, CRUD_DUMMYInterface::class);
 
         /** @var AttributeValueInterface $attribute */
         foreach ($product->getAttributes() as $attribute) {
@@ -105,32 +105,32 @@ final class BuildAttributesFormSubscriber implements EventSubscriberInterface
     }
 
     /**
-     * @param ProductInterface $product
-     * @param ProductAttributeValueInterface $attribute
+     * @param CRUD_DUMMYInterface $product
+     * @param CRUD_DUMMYAttributeValueInterface $attribute
      */
-    private function resolveLocalizedAttributes(ProductInterface $product, ProductAttributeValueInterface $attribute): void
+    private function resolveLocalizedAttributes(CRUD_DUMMYInterface $product, CRUD_DUMMYAttributeValueInterface $attribute): void
     {
         $localeCodes = $this->localeProvider->getDefinedLocalesCodes();
 
         foreach ($localeCodes as $localeCode) {
             if (!$product->hasAttributeByCodeAndLocale($attribute->getCode(), $localeCode)) {
-                $attributeValue = $this->createProductAttributeValue($attribute->getAttribute(), $localeCode);
+                $attributeValue = $this->createCRUD_DUMMYAttributeValue($attribute->getAttribute(), $localeCode);
                 $product->addAttribute($attributeValue);
             }
         }
     }
 
     /**
-     * @param ProductAttributeInterface $attribute
+     * @param CRUD_DUMMYAttributeInterface $attribute
      * @param string $localeCode
      *
-     * @return ProductAttributeValueInterface
+     * @return CRUD_DUMMYAttributeValueInterface
      */
-    private function createProductAttributeValue(
-        ProductAttributeInterface $attribute,
+    private function createCRUD_DUMMYAttributeValue(
+        CRUD_DUMMYAttributeInterface $attribute,
         string $localeCode
-    ): ProductAttributeValueInterface {
-        /** @var ProductAttributeValueInterface $attributeValue */
+    ): CRUD_DUMMYAttributeValueInterface {
+        /** @var CRUD_DUMMYAttributeValueInterface $attributeValue */
         $attributeValue = $this->attributeValueFactory->createNew();
         $attributeValue->setAttribute($attribute);
         $attributeValue->setLocaleCode($localeCode);

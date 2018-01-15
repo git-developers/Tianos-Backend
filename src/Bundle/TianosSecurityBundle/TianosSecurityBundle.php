@@ -13,12 +13,12 @@ class TianosSecurityBundle extends Bundle
 
 
 //
-//namespace Bundle\ProductBundle;
+//namespace Bundle\CRUD_DUMMYBundle;
 //
 //use Sylius\Bundle\ResourceBundle\AbstractResourceBundle;
 //use Sylius\Bundle\ResourceBundle\SyliusResourceBundle;
 //
-//final class ProductBundle extends AbstractResourceBundle
+//final class CRUD_DUMMYBundle extends AbstractResourceBundle
 //{
 //    /**
 //     * {@inheritdoc}
@@ -35,6 +35,6 @@ class TianosSecurityBundle extends Bundle
 //     */
 //    protected function getModelNamespace(): string
 //    {
-//        return 'Sylius\Component\Product\Model';
+//        return 'Sylius\Component\CRUD_DUMMY\Model';
 //    }
 //}

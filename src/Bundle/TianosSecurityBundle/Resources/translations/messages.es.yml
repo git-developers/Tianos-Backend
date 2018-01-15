@@ -19,7 +19,7 @@ sylius:
             translations: Traducciones
         association:
             type: Tipos de asociación
-            product: Producto asociado
+            product: CRUD_DUMMYo asociado
         variant:
             name: Nombre
         option:

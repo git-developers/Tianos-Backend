@@ -11,20 +11,20 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\ProductBundle\Validator;
+namespace spec\Sylius\Bundle\CRUD_DUMMYBundle\Validator;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use Sylius\Bundle\ProductBundle\Validator\Constraint\ProductVariantCombination;
-use Sylius\Component\Product\Checker\ProductVariantsParityCheckerInterface;
-use Sylius\Component\Product\Model\ProductInterface;
-use Sylius\Component\Product\Model\ProductVariantInterface;
+use Sylius\Bundle\CRUD_DUMMYBundle\Validator\Constraint\CRUD_DUMMYVariantCombination;
+use Sylius\Component\CRUD_DUMMY\Checker\CRUD_DUMMYVariantsParityCheckerInterface;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYInterface;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYVariantInterface;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 
-final class ProductVariantCombinationValidatorSpec extends ObjectBehavior
+final class CRUD_DUMMYVariantCombinationValidatorSpec extends ObjectBehavior
 {
-    function let(ExecutionContextInterface $context, ProductVariantsParityCheckerInterface $variantsParityChecker): void
+    function let(ExecutionContextInterface $context, CRUD_DUMMYVariantsParityCheckerInterface $variantsParityChecker): void
     {
         $this->beConstructedWith($variantsParityChecker);
         $this->initialize($context);
@@ -37,15 +37,15 @@ final class ProductVariantCombinationValidatorSpec extends ObjectBehavior
 
     function it_does_not_add_violation_if_product_does_not_have_options(
         ExecutionContextInterface $context,
-        ProductInterface $product,
-        ProductVariantInterface $variant,
-        ProductVariantsParityCheckerInterface $variantsParityChecker
+        CRUD_DUMMYInterface $product,
+        CRUD_DUMMYVariantInterface $variant,
+        CRUD_DUMMYVariantsParityCheckerInterface $variantsParityChecker
     ): void {
-        $constraint = new ProductVariantCombination([
+        $constraint = new CRUD_DUMMYVariantCombination([
             'message' => 'Variant with given options already exists',
         ]);
 
-        $variant->getProduct()->willReturn($product);
+        $variant->getCRUD_DUMMY()->willReturn($product);
 
         $product->hasVariants()->willReturn(true);
         $product->hasOptions()->willReturn(false);
@@ -59,15 +59,15 @@ final class ProductVariantCombinationValidatorSpec extends ObjectBehavior
 
     function it_does_not_add_violation_if_product_does_not_have_variants(
         ExecutionContextInterface $context,
-        ProductInterface $product,
-        ProductVariantInterface $variant,
-        ProductVariantsParityCheckerInterface $variantsParityChecker
+        CRUD_DUMMYInterface $product,
+        CRUD_DUMMYVariantInterface $variant,
+        CRUD_DUMMYVariantsParityCheckerInterface $variantsParityChecker
     ): void {
-        $constraint = new ProductVariantCombination([
+        $constraint = new CRUD_DUMMYVariantCombination([
             'message' => 'Variant with given options already exists',
         ]);
 
-        $variant->getProduct()->willReturn($product);
+        $variant->getCRUD_DUMMY()->willReturn($product);
 
         $product->hasVariants()->willReturn(false);
         $product->hasOptions()->willReturn(true);
@@ -81,15 +81,15 @@ final class ProductVariantCombinationValidatorSpec extends ObjectBehavior
 
     function it_adds_violation_if_variant_with_given_same_options_already_exists(
         ExecutionContextInterface $context,
-        ProductInterface $product,
-        ProductVariantInterface $variant,
-        ProductVariantsParityCheckerInterface $variantsParityChecker
+        CRUD_DUMMYInterface $product,
+        CRUD_DUMMYVariantInterface $variant,
+        CRUD_DUMMYVariantsParityCheckerInterface $variantsParityChecker
     ): void {
-        $constraint = new ProductVariantCombination([
+        $constraint = new CRUD_DUMMYVariantCombination([
             'message' => 'Variant with given options already exists',
         ]);
 
-        $variant->getProduct()->willReturn($product);
+        $variant->getCRUD_DUMMY()->willReturn($product);
 
         $product->hasVariants()->willReturn(true);
         $product->hasOptions()->willReturn(true);

@@ -549,13 +549,13 @@ EOT;
         $configuration =
 <<<EOT
 alias: sylius.product
-templates: SyliusAdminBundle:Product
+templates: SyliusAdminBundle:CRUD_DUMMY
 EOT;
 
         $showDefaults = [
             '_controller' => 'sylius.controller.product:showAction',
             '_sylius' => [
-                'template' => 'SyliusAdminBundle:Product:show.html.twig',
+                'template' => 'SyliusAdminBundle:CRUD_DUMMY:show.html.twig',
                 'permission' => false,
             ],
         ];
@@ -565,7 +565,7 @@ EOT;
         $indexDefaults = [
             '_controller' => 'sylius.controller.product:indexAction',
             '_sylius' => [
-                'template' => 'SyliusAdminBundle:Product:index.html.twig',
+                'template' => 'SyliusAdminBundle:CRUD_DUMMY:index.html.twig',
                 'permission' => false,
             ],
         ];
@@ -575,7 +575,7 @@ EOT;
         $createDefaults = [
             '_controller' => 'sylius.controller.product:createAction',
             '_sylius' => [
-                'template' => 'SyliusAdminBundle:Product:create.html.twig',
+                'template' => 'SyliusAdminBundle:CRUD_DUMMY:create.html.twig',
                 'permission' => false,
             ],
         ];
@@ -585,7 +585,7 @@ EOT;
         $updateDefaults = [
             '_controller' => 'sylius.controller.product:updateAction',
             '_sylius' => [
-                'template' => 'SyliusAdminBundle:Product:update.html.twig',
+                'template' => 'SyliusAdminBundle:CRUD_DUMMY:update.html.twig',
                 'permission' => false,
             ],
         ];

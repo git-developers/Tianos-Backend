@@ -13,7 +13,7 @@ use BackendBundle\Controller\AclRoleController;
 use BackendBundle\Controller\ClientController;
 use BackendBundle\Controller\GroupOfUsersController;
 use BackendBundle\Controller\PointOfSaleController;
-use BackendBundle\Controller\ProductController;
+use BackendBundle\Controller\CRUD_DUMMYController;
 use BackendBundle\Controller\TemplateController;
 use BackendBundle\Controller\TemplateModuleController;
 
@@ -216,7 +216,7 @@ class CrudRoutingCommand extends ContainerAwareCommand
         $controllers[] = ClientController::class;
         $controllers[] = GroupOfUsersController::class;
         $controllers[] = PointOfSaleController::class;
-        $controllers[] = ProductController::class;
+        $controllers[] = CRUD_DUMMYController::class;
         $controllers[] = TemplateController::class;
         $controllers[] = TemplateModuleController::class;
 

@@ -378,23 +378,23 @@ Sylius\Component\Resource\Metadata\Metadata Object
     [driver] => doctrine/orm
     [classes] => Array
         (
-            [model] => Sylius\Component\Core\Model\Product
-            [repository] => Sylius\Bundle\CoreBundle\Doctrine\ORM\ProductRepository
-            [interface] => Sylius\Component\Product\Model\ProductInterface
+            [model] => Sylius\Component\Core\Model\CRUD_DUMMY
+            [repository] => Sylius\Bundle\CoreBundle\Doctrine\ORM\CRUD_DUMMYRepository
+            [interface] => Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYInterface
             [controller] => Sylius\Bundle\ResourceBundle\Controller\ResourceController
             [factory] => Sylius\Component\Resource\Factory\TranslatableFactory
-            [form] => Sylius\Bundle\ProductBundle\Form\Type\ProductType
+            [form] => Sylius\Bundle\CRUDDUMMYBundle\Form\Type\CRUD_DUMMYType
         )
 
     [translation] => Array
         (
             [classes] => Array
                 (
-                    [model] => Sylius\Component\Core\Model\ProductTranslation
-                    [interface] => Sylius\Component\Product\Model\ProductTranslationInterface
+                    [model] => Sylius\Component\Core\Model\CRUD_DUMMYTranslation
+                    [interface] => Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYTranslationInterface
                     [controller] => Sylius\Bundle\ResourceBundle\Controller\ResourceController
                     [factory] => Sylius\Component\Resource\Factory\Factory
-                    [form] => Sylius\Bundle\ProductBundle\Form\Type\ProductTranslationType
+                    [form] => Sylius\Bundle\CRUDDUMMYBundle\Form\Type\CRUD_DUMMYTranslationType
                 )
 
         )

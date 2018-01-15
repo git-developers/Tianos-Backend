@@ -39,7 +39,7 @@ class AppKernel extends Kernel
             new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
             new Sylius\Bundle\AttributeBundle\SyliusAttributeBundle(),
             new Sylius\Bundle\LocaleBundle\SyliusLocaleBundle(),
-            new Sylius\Bundle\ProductBundle\SyliusProductBundle(),
+            new Sylius\Bundle\CRUD_DUMMYBundle\SyliusCRUD_DUMMYBundle(),
             new Sylius\Bundle\ResourceBundle\ResourceBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Symfony\Bundle\TwigBundle\TwigBundle(),

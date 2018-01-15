@@ -11,13 +11,13 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\ProductBundle\Form\EventSubscriber;
+namespace spec\Sylius\Bundle\CRUD_DUMMYBundle\Form\EventSubscriber;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use PhpSpec\ObjectBehavior;
-use Sylius\Component\Product\Model\ProductAttributeInterface;
-use Sylius\Component\Product\Model\ProductAttributeValueInterface;
-use Sylius\Component\Product\Model\ProductInterface;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeInterface;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeValueInterface;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Sylius\Component\Resource\Translation\Provider\TranslationLocaleProviderInterface;
 use Symfony\Component\Form\FormEvent;
@@ -42,10 +42,10 @@ final class BuildAttributesFormSubscriberSpec extends ObjectBehavior
         FactoryInterface $attributeValueFactory,
         TranslationLocaleProviderInterface $localeProvider,
         FormEvent $event,
-        ProductInterface $product,
-        ProductAttributeInterface $attribute,
-        ProductAttributeValueInterface $attributeValue,
-        ProductAttributeValueInterface $newAttributeValue
+        CRUD_DUMMYInterface $product,
+        CRUD_DUMMYAttributeInterface $attribute,
+        CRUD_DUMMYAttributeValueInterface $attributeValue,
+        CRUD_DUMMYAttributeValueInterface $newAttributeValue
     ): void {
         $event->getData()->willReturn($product);
 
@@ -71,10 +71,10 @@ final class BuildAttributesFormSubscriberSpec extends ObjectBehavior
 
     function it_removes_empty_attribute_values_in_different_locales(
         FormEvent $event,
-        ProductInterface $product,
-        ProductAttributeInterface $attribute,
-        ProductAttributeValueInterface $attributeValue,
-        ProductAttributeValueInterface $attributeValue2
+        CRUD_DUMMYInterface $product,
+        CRUD_DUMMYAttributeInterface $attribute,
+        CRUD_DUMMYAttributeValueInterface $attributeValue,
+        CRUD_DUMMYAttributeValueInterface $attributeValue2
     ): void {
         $event->getData()->willReturn($product);
 

@@ -5,5 +5,5 @@ jms_serializer:
     metadata:
         directories:
             sylius-product:
-                namespace_prefix: "Sylius\\Component\\Product"
-                path: "@SyliusProductBundle/Resources/config/serializer"
+                namespace_prefix: "Sylius\\Component\\CRUD_DUMMY"
+                path: "@SyliusCRUD_DUMMYBundle/Resources/config/serializer"

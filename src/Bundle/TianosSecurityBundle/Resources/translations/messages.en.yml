@@ -16,7 +16,7 @@ sylius:
             translations: Translations
         association:
             type: Association Type
-            product: Associated Product
+            product: Associated CRUD_DUMMY
         variant:
             name: Name
         option:

@@ -305,7 +305,7 @@ final class ManagingProductVariantsContext implements Context
      */
     public function iShouldBeNotifiedThatCodeHasToBeUnique()
     {
-        $this->assertValidationMessage('code', 'Product variant code must be unique.');
+        $this->assertValidationMessage('code', 'CRUDDUMMY variant code must be unique.');
     }
 
     /**
@@ -485,7 +485,7 @@ final class ManagingProductVariantsContext implements Context
      */
     public function iShouldBeNotifiedThatItHasBeenSuccessfullyGenerated()
     {
-        $this->notificationChecker->checkNotification('Success Product variants have been successfully generated.', NotificationType::success());
+        $this->notificationChecker->checkNotification('Success CRUDDUMMY variants have been successfully generated.', NotificationType::success());
     }
 
     /**

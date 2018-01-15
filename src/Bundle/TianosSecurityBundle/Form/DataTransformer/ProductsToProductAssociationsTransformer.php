@@ -11,19 +11,19 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ProductBundle\Form\DataTransformer;
+namespace Sylius\Bundle\CRUD_DUMMYBundle\Form\DataTransformer;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Sylius\Component\Product\Model\ProductAssociationInterface;
-use Sylius\Component\Product\Model\ProductAssociationTypeInterface;
-use Sylius\Component\Product\Model\ProductInterface;
-use Sylius\Component\Product\Repository\ProductRepositoryInterface;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAssociationInterface;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAssociationTypeInterface;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYInterface;
+use Sylius\Component\CRUD_DUMMY\Repository\CRUD_DUMMYRepositoryInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Sylius\Component\Resource\Repository\RepositoryInterface;
 use Symfony\Component\Form\DataTransformerInterface;
 
-final class ProductsToProductAssociationsTransformer implements DataTransformerInterface
+final class CRUD_DUMMYsToCRUD_DUMMYAssociationsTransformer implements DataTransformerInterface
 {
     /**
      * @var FactoryInterface
@@ -31,7 +31,7 @@ final class ProductsToProductAssociationsTransformer implements DataTransformerI
     private $productAssociationFactory;
 
     /**
-     * @var ProductRepositoryInterface
+     * @var CRUD_DUMMYRepositoryInterface
      */
     private $productRepository;
 
@@ -47,12 +47,12 @@ final class ProductsToProductAssociationsTransformer implements DataTransformerI
 
     /**
      * @param FactoryInterface $productAssociationFactory
-     * @param ProductRepositoryInterface $productRepository
+     * @param CRUD_DUMMYRepositoryInterface $productRepository
      * @param RepositoryInterface $productAssociationTypeRepository
      */
     public function __construct(
         FactoryInterface $productAssociationFactory,
-        ProductRepositoryInterface $productRepository,
+        CRUD_DUMMYRepositoryInterface $productRepository,
         RepositoryInterface $productAssociationTypeRepository
     ) {
         $this->productAssociationFactory = $productAssociationFactory;
@@ -65,7 +65,7 @@ final class ProductsToProductAssociationsTransformer implements DataTransformerI
      */
     public function transform($productAssociations)
     {
-        $this->setProductAssociations($productAssociations);
+        $this->setCRUD_DUMMYAssociations($productAssociations);
 
         if (null === $productAssociations) {
             return '';
@@ -73,9 +73,9 @@ final class ProductsToProductAssociationsTransformer implements DataTransformerI
 
         $values = [];
 
-        /** @var ProductAssociationInterface $productAssociation */
+        /** @var CRUD_DUMMYAssociationInterface $productAssociation */
         foreach ($productAssociations as $productAssociation) {
-            $productCodesAsString = $this->getCodesAsStringFromProducts($productAssociation->getAssociatedProducts());
+            $productCodesAsString = $this->getCodesAsStringFromCRUD_DUMMYs($productAssociation->getAssociatedCRUD_DUMMYs());
 
             $values[$productAssociation->getType()->getCode()] = $productCodesAsString;
         }
@@ -98,13 +98,13 @@ final class ProductsToProductAssociationsTransformer implements DataTransformerI
                 continue;
             }
 
-            /** @var ProductAssociationInterface $productAssociation */
-            $productAssociation = $this->getProductAssociationByTypeCode($productAssociationTypeCode);
-            $this->setAssociatedProductsByProductCodes($productAssociation, $productCodes);
+            /** @var CRUD_DUMMYAssociationInterface $productAssociation */
+            $productAssociation = $this->getCRUD_DUMMYAssociationByTypeCode($productAssociationTypeCode);
+            $this->setAssociatedCRUD_DUMMYsByCRUD_DUMMYCodes($productAssociation, $productCodes);
             $productAssociations->add($productAssociation);
         }
 
-        $this->setProductAssociations(null);
+        $this->setCRUD_DUMMYAssociations(null);
 
         return $productAssociations;
     }
@@ -114,7 +114,7 @@ final class ProductsToProductAssociationsTransformer implements DataTransformerI
      *
      * @return string|null
      */
-    private function getCodesAsStringFromProducts(Collection $products): ?string
+    private function getCodesAsStringFromCRUD_DUMMYs(Collection $products): ?string
     {
         if ($products->isEmpty()) {
             return null;
@@ -122,7 +122,7 @@ final class ProductsToProductAssociationsTransformer implements DataTransformerI
 
         $codes = [];
 
-        /** @var ProductInterface $product */
+        /** @var CRUD_DUMMYInterface $product */
         foreach ($products as $product) {
             $codes[] = $product->getCode();
         }
@@ -133,9 +133,9 @@ final class ProductsToProductAssociationsTransformer implements DataTransformerI
     /**
      * @param string $productAssociationTypeCode
      *
-     * @return ProductAssociationInterface
+     * @return CRUD_DUMMYAssociationInterface
      */
-    private function getProductAssociationByTypeCode(string $productAssociationTypeCode): ProductAssociationInterface
+    private function getCRUD_DUMMYAssociationByTypeCode(string $productAssociationTypeCode): CRUD_DUMMYAssociationInterface
     {
         foreach ($this->productAssociations as $productAssociation) {
             if ($productAssociationTypeCode === $productAssociation->getType()->getCode()) {
@@ -143,12 +143,12 @@ final class ProductsToProductAssociationsTransformer implements DataTransformerI
             }
         }
 
-        /** @var ProductAssociationTypeInterface $productAssociationType */
+        /** @var CRUD_DUMMYAssociationTypeInterface $productAssociationType */
         $productAssociationType = $this->productAssociationTypeRepository->findOneBy([
             'code' => $productAssociationTypeCode,
         ]);
 
-        /** @var ProductAssociationInterface $productAssociation */
+        /** @var CRUD_DUMMYAssociationInterface $productAssociation */
         $productAssociation = $this->productAssociationFactory->createNew();
         $productAssociation->setType($productAssociationType);
 
@@ -156,25 +156,25 @@ final class ProductsToProductAssociationsTransformer implements DataTransformerI
     }
 
     /**
-     * @param ProductAssociationInterface $productAssociation
+     * @param CRUD_DUMMYAssociationInterface $productAssociation
      * @param string $productCodes
      */
-    private function setAssociatedProductsByProductCodes(
-        ProductAssociationInterface $productAssociation,
+    private function setAssociatedCRUD_DUMMYsByCRUD_DUMMYCodes(
+        CRUD_DUMMYAssociationInterface $productAssociation,
         string $productCodes
     ): void {
         $products = $this->productRepository->findBy(['code' => explode(',', $productCodes)]);
 
-        $productAssociation->clearAssociatedProducts();
+        $productAssociation->clearAssociatedCRUD_DUMMYs();
         foreach ($products as $product) {
-            $productAssociation->addAssociatedProduct($product);
+            $productAssociation->addAssociatedCRUD_DUMMY($product);
         }
     }
 
     /**
      * @param Collection|null $productAssociations
      */
-    private function setProductAssociations(?Collection $productAssociations): void
+    private function setCRUD_DUMMYAssociations(?Collection $productAssociations): void
     {
         $this->productAssociations = $productAssociations;
     }

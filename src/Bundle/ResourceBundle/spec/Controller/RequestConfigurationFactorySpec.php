@@ -45,10 +45,10 @@ final class RequestConfigurationFactorySpec extends ObjectBehavior
 
         $headersBag->get('Accept', null, false)->willReturn([]);
 
-        $attributesBag->get('_sylius', [])->willReturn(['template' => ':Product:show.html.twig']);
+        $attributesBag->get('_sylius', [])->willReturn(['template' => ':CRUD_DUMMY:show.html.twig']);
         $parametersParser
-            ->parseRequestValues(['template' => ':Product:show.html.twig'], $request)
-            ->willReturn(['template' => ':Product:list.html.twig'])
+            ->parseRequestValues(['template' => ':CRUD_DUMMY:show.html.twig'], $request)
+            ->willReturn(['template' => ':CRUD_DUMMY:list.html.twig'])
         ;
 
         $this->create($metadata, $request)->shouldHaveType(RequestConfiguration::class);
@@ -66,10 +66,10 @@ final class RequestConfigurationFactorySpec extends ObjectBehavior
 
         $headersBag->get('Accept', null, false)->willReturn([]);
 
-        $attributesBag->get('_sylius', [])->willReturn(['template' => ':Product:list.html.twig']);
+        $attributesBag->get('_sylius', [])->willReturn(['template' => ':CRUD_DUMMY:list.html.twig']);
         $parametersParser
-            ->parseRequestValues(['template' => ':Product:list.html.twig'], $request)
-            ->willReturn(['template' => ':Product:list.html.twig'])
+            ->parseRequestValues(['template' => ':CRUD_DUMMY:list.html.twig'], $request)
+            ->willReturn(['template' => ':CRUD_DUMMY:list.html.twig'])
         ;
 
         $this->create($metadata, $request)->isSortable()->shouldReturn(false);
@@ -90,7 +90,7 @@ final class RequestConfigurationFactorySpec extends ObjectBehavior
         $attributesBag->get('_sylius', [])->willReturn([]);
         $parametersParser
             ->parseRequestValues(['serialization_groups' => ['Default', 'Detailed']], $request)
-            ->willReturn(['template' => ':Product:list.html.twig'])
+            ->willReturn(['template' => ':CRUD_DUMMY:list.html.twig'])
         ;
 
         $this->create($metadata, $request)->isSortable()->shouldReturn(false);
@@ -111,7 +111,7 @@ final class RequestConfigurationFactorySpec extends ObjectBehavior
         $attributesBag->get('_sylius', [])->willReturn([]);
         $parametersParser
             ->parseRequestValues(['serialization_groups' => ['Default', 'Detailed']], $request)
-            ->willReturn(['template' => ':Product:list.html.twig'])
+            ->willReturn(['template' => ':CRUD_DUMMY:list.html.twig'])
         ;
 
         $this->create($metadata, $request)->isSortable()->shouldReturn(false);
@@ -133,7 +133,7 @@ final class RequestConfigurationFactorySpec extends ObjectBehavior
 
         $parametersParser
             ->parseRequestValues(['serialization_version' => '1.0.0'], $request)
-            ->willReturn(['template' => ':Product:list.html.twig'])
+            ->willReturn(['template' => ':CRUD_DUMMY:list.html.twig'])
         ;
 
         $this->create($metadata, $request)->isSortable()->shouldReturn(false);
@@ -155,7 +155,7 @@ final class RequestConfigurationFactorySpec extends ObjectBehavior
 
         $parametersParser
             ->parseRequestValues(['serialization_version' => '1.0.0'], $request)
-            ->willReturn(['template' => ':Product:list.html.twig'])
+            ->willReturn(['template' => ':CRUD_DUMMY:list.html.twig'])
         ;
 
         $this->create($metadata, $request)->isSortable()->shouldReturn(false);
@@ -175,11 +175,11 @@ final class RequestConfigurationFactorySpec extends ObjectBehavior
 
         $headersBag->get('Accept', null, false)->willReturn([]);
 
-        $attributesBag->get('_sylius', [])->willReturn(['template' => ':Product:list.html.twig']);
+        $attributesBag->get('_sylius', [])->willReturn(['template' => ':CRUD_DUMMY:list.html.twig']);
 
         $parametersParser
-            ->parseRequestValues(['template' => ':Product:list.html.twig', 'sortable' => true], $request)
-            ->willReturn(['template' => ':Product:list.html.twig', 'sortable' => true])
+            ->parseRequestValues(['template' => ':CRUD_DUMMY:list.html.twig', 'sortable' => true], $request)
+            ->willReturn(['template' => ':CRUD_DUMMY:list.html.twig', 'sortable' => true])
         ;
 
         $this->create($metadata, $request)->isSortable()->shouldReturn(true);

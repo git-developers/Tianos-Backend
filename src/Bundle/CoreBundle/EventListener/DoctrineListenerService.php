@@ -14,15 +14,15 @@ use CoreBundle\Entity\Category;
 use CoreBundle\Entity\Role;
 use CoreBundle\Entity\Profile;
 use CoreBundle\Entity\Files;
-use CoreBundle\Entity\CategoryHasProduct;
+use CoreBundle\Entity\CategoryHasCRUD_DUMMY;
 use CoreBundle\Entity\FileMimeType;
 use CoreBundle\Entity\GroupOfUsers;
-//use CoreBundle\Entity\Product;
+//use CoreBundle\Entity\CRUD_DUMMY;
 use CoreBundle\Entity\Template;
 use CoreBundle\Entity\TemplateModule;
 use CoreBundle\Entity\TemplateHasModule;
 use CoreBundle\Entity\TemplateEParagraph;
-use CoreBundle\Entity\PointOfSaleHasProduct;
+use CoreBundle\Entity\PointOfSaleHasCRUD_DUMMY;
 use CoreBundle\Entity\TemplateEPost;
 use CoreBundle\Entity\TemplateEItem;
 use Cocur\Slugify\Slugify;
@@ -153,7 +153,7 @@ class DoctrineListenerService implements EventSubscriber
             $entity->setCreatedAt($this->dateTime);
 
             return;
-        }else if ($entity instanceof CategoryHasProduct){
+        }else if ($entity instanceof CategoryHasCRUD_DUMMY){
             $entity->setCreatedAt($this->dateTime);
 
             return;
@@ -164,7 +164,7 @@ class DoctrineListenerService implements EventSubscriber
             $entity->setCreatedAt($this->dateTime);
 
             return;
-        }else if ($entity instanceof PointOfSaleHasProduct){
+        }else if ($entity instanceof PointOfSaleHasCRUD_DUMMY){
             $entity->setCreatedAt($this->dateTime);
 
             return;
@@ -184,7 +184,7 @@ class DoctrineListenerService implements EventSubscriber
             $entity->setCreatedAt($this->dateTime);
 
             return;
-//        }else if ($entity instanceof Product){
+//        }else if ($entity instanceof CRUD_DUMMY){
 //            $name = $entity->getName();
 //            $entity->setSlug($this->slugify($name));
 //            $entity->setCreatedAt($this->dateTime);
@@ -232,8 +232,8 @@ class DoctrineListenerService implements EventSubscriber
         }else if ($entity instanceof Category){
 
 //            $id = $entity->getIdIncrement();
-//            $repository = $entityManager->getRepository(CategoryHasProduct::class);
-//            $children = $repository->findProductsByCategory($id);
+//            $repository = $entityManager->getRepository(CategoryHasCRUD_DUMMY::class);
+//            $children = $repository->findCRUD_DUMMYsByCategory($id);
 //
 //            foreach ($children as $key => $category){
 ////                echo '<pre> POLLO 333:: ';
@@ -267,7 +267,7 @@ class DoctrineListenerService implements EventSubscriber
             $entity->setUpdatedAt($this->dateTime);
 
             return;
-        }else if ($entity instanceof PointOfSaleHasProduct){
+        }else if ($entity instanceof PointOfSaleHasCRUD_DUMMY){
             $entity->setUpdatedAt($this->dateTime);
 
             return;

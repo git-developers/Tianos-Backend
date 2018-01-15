@@ -17,7 +17,7 @@ backend_product_bundle_index:
             grid:
                 icon: cube
                 box_class: primary
-                title: Gestionar productos
+                title: Gestionar product
                 data_table:
                     route:
                         info: backend_product_bundle_info
@@ -148,7 +148,7 @@ backend_product_bundle_info:
 #                vars:
 #                    subheader: sylius.ui.manage_your_product_catalog
 #                    templates:
-#                        form: SyliusAdminBundle:Product:_form.html.twig
+#                        form: SyliusAdminBundle:CRUDDUMMY:_form.html.twig
 #                    route:
 #                        name: sylius_admin_product_create_simple
 
@@ -176,7 +176,7 @@ backend_product_bundle_info:
 #            section: admin
 #            permission: true
 #            grid: sylius_admin_product
-#            template: SyliusAdminBundle:Product:index.html.twig
+#            template: SyliusAdminBundle:CRUDDUMMY:index.html.twig
 #            vars:
 #                subheader: sylius.ui.manage_your_product_catalog
 #                icon: cube

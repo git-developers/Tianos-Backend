@@ -1,4 +1,4 @@
-Sylius\Component\Product\Model\ProductAttribute:
+Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAttribute:
     exclusion_policy: ALL
     xml_root_name: product-attribute
     properties:

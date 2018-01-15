@@ -49,20 +49,20 @@
                 },
                 onAdd: function(addedValue, addedText, $addedChoice) {
                     var inputAssociation = $addedChoice.parents('.product-select').find('input[name*="[associations]"]');
-                    var associatedProductCodes = 0 < inputAssociation.val().length ? inputAssociation.val().split(',') : [];
+                    var associatedCRUD_DUMMYCodes = 0 < inputAssociation.val().length ? inputAssociation.val().split(',') : [];
 
-                    associatedProductCodes.push(addedValue);
-                    $.unique(associatedProductCodes.sort());
+                    associatedCRUD_DUMMYCodes.push(addedValue);
+                    $.unique(associatedCRUD_DUMMYCodes.sort());
 
-                    inputAssociation.attr('value', associatedProductCodes.join());
+                    inputAssociation.attr('value', associatedCRUD_DUMMYCodes.join());
                 },
                 onRemove: function(removedValue, removedText, $removedChoice) {
                     var inputAssociation = $removedChoice.parents('.product-select').find('input[name*="[associations]"]');
-                    var associatedProductCodes = 0 < inputAssociation.val().length ? inputAssociation.val().split(',') : [];
+                    var associatedCRUD_DUMMYCodes = 0 < inputAssociation.val().length ? inputAssociation.val().split(',') : [];
 
-                    associatedProductCodes.splice($.inArray(removedValue, associatedProductCodes), 1);
+                    associatedCRUD_DUMMYCodes.splice($.inArray(removedValue, associatedCRUD_DUMMYCodes), 1);
 
-                    inputAssociation.attr('value', associatedProductCodes.join());
+                    inputAssociation.attr('value', associatedCRUD_DUMMYCodes.join());
                 }
             });
         }

@@ -11,21 +11,21 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\ProductBundle\Form\EventSubscriber;
+namespace spec\Sylius\Bundle\CRUD_DUMMYBundle\Form\EventSubscriber;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use PhpSpec\ObjectBehavior;
-use Sylius\Bundle\ProductBundle\Form\Type\ProductOptionValueCollectionType;
-use Sylius\Component\Product\Model\ProductInterface;
-use Sylius\Component\Product\Model\ProductOptionInterface;
-use Sylius\Component\Product\Model\ProductOptionValueInterface;
-use Sylius\Component\Product\Model\ProductVariantInterface;
+use Sylius\Bundle\CRUD_DUMMYBundle\Form\Type\CRUD_DUMMYOptionValueCollectionType;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYInterface;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYOptionInterface;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYOptionValueInterface;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYVariantInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\Form\FormInterface;
 
-final class BuildProductVariantFormSubscriberSpec extends ObjectBehavior
+final class BuildCRUD_DUMMYVariantFormSubscriberSpec extends ObjectBehavior
 {
     function let(FormFactoryInterface $factory): void
     {
@@ -44,22 +44,22 @@ final class BuildProductVariantFormSubscriberSpec extends ObjectBehavior
         FormFactoryInterface $factory,
         FormInterface $form,
         FormInterface $optionsForm,
-        ProductInterface $variable,
-        ProductOptionInterface $options,
-        ProductOptionValueInterface $optionValue,
-        ProductVariantInterface $variant
+        CRUD_DUMMYInterface $variable,
+        CRUD_DUMMYOptionInterface $options,
+        CRUD_DUMMYOptionValueInterface $optionValue,
+        CRUD_DUMMYVariantInterface $variant
     ): void {
         $event->getForm()->willReturn($form);
         $event->getData()->willReturn($variant);
 
-        $variant->getProduct()->willReturn($variable);
+        $variant->getCRUD_DUMMY()->willReturn($variable);
         $variant->getOptionValues()->willReturn(new ArrayCollection([$optionValue->getWrappedObject()]));
         $variable->getOptions()->willReturn(new ArrayCollection([$options->getWrappedObject()]));
         $variable->hasOptions()->willReturn(true);
 
         $factory->createNamed(
             'optionValues',
-            ProductOptionValueCollectionType::class,
+            CRUD_DUMMYOptionValueCollectionType::class,
             new ArrayCollection([$optionValue->getWrappedObject()]),
             [
                 'options' => new ArrayCollection([$options->getWrappedObject()]),
@@ -78,24 +78,24 @@ final class BuildProductVariantFormSubscriberSpec extends ObjectBehavior
         FormFactoryInterface $factory,
         FormInterface $form,
         FormInterface $optionsForm,
-        ProductInterface $variable,
-        ProductOptionInterface $options,
-        ProductOptionValueInterface $optionValue,
-        ProductVariantInterface $variant
+        CRUD_DUMMYInterface $variable,
+        CRUD_DUMMYOptionInterface $options,
+        CRUD_DUMMYOptionValueInterface $optionValue,
+        CRUD_DUMMYVariantInterface $variant
     ): void {
         $this->beConstructedWith($factory, true);
 
         $event->getForm()->willReturn($form);
         $event->getData()->willReturn($variant);
 
-        $variant->getProduct()->willReturn($variable);
+        $variant->getCRUD_DUMMY()->willReturn($variable);
         $variant->getOptionValues()->willReturn(new ArrayCollection([$optionValue->getWrappedObject()]));
         $variable->getOptions()->willReturn(new ArrayCollection([$options->getWrappedObject()]));
         $variable->hasOptions()->willReturn(true);
 
         $factory->createNamed(
             'optionValues',
-            ProductOptionValueCollectionType::class,
+            CRUD_DUMMYOptionValueCollectionType::class,
             new ArrayCollection([$optionValue->getWrappedObject()]),
             [
                 'options' => new ArrayCollection([$options->getWrappedObject()]),

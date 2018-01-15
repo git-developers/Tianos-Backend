@@ -2,25 +2,25 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ProductBundle\Form\Type;
+namespace Sylius\Bundle\CRUD_DUMMYBundle\Form\Type;
 
-use Sylius\Bundle\ProductBundle\Form\EventSubscriber\BuildAttributesFormSubscriber;
-use Sylius\Bundle\ProductBundle\Form\EventSubscriber\ProductOptionFieldSubscriber;
-use Sylius\Bundle\ProductBundle\Form\EventSubscriber\SimpleProductSubscriber;
+use Sylius\Bundle\CRUD_DUMMYBundle\Form\EventSubscriber\BuildAttributesFormSubscriber;
+use Sylius\Bundle\CRUD_DUMMYBundle\Form\EventSubscriber\CRUD_DUMMYOptionFieldSubscriber;
+use Sylius\Bundle\CRUD_DUMMYBundle\Form\EventSubscriber\SimpleCRUD_DUMMYSubscriber;
 use Sylius\Bundle\ResourceBundle\Form\EventSubscriber\AddCodeFormSubscriber;
 use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
 use Sylius\Bundle\ResourceBundle\Form\Type\ResourceTranslationsType;
-use Sylius\Component\Product\Resolver\ProductVariantResolverInterface;
+use Sylius\Component\CRUD_DUMMY\Resolver\CRUD_DUMMYVariantResolverInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Sylius\Component\Resource\Translation\Provider\TranslationLocaleProviderInterface;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 
-final class Product2Type extends AbstractResourceType
+final class CRUD_DUMMY2Type extends AbstractResourceType
 {
     /**
-     * @var ProductVariantResolverInterface
+     * @var CRUD_DUMMYVariantResolverInterface
      */
     private $variantResolver;
 
@@ -37,14 +37,14 @@ final class Product2Type extends AbstractResourceType
     /**
      * @param string $dataClass
      * @param array|string[] $validationGroups
-     * @param ProductVariantResolverInterface $variantResolver
+     * @param CRUD_DUMMYVariantResolverInterface $variantResolver
      * @param FactoryInterface $attributeValueFactory
      * @param TranslationLocaleProviderInterface $localeProvider
      */
     public function __construct(
         string $dataClass,
         array $validationGroups,
-        ProductVariantResolverInterface $variantResolver,
+        CRUD_DUMMYVariantResolverInterface $variantResolver,
         FactoryInterface $attributeValueFactory,
         TranslationLocaleProviderInterface $localeProvider
     ) {
@@ -62,19 +62,19 @@ final class Product2Type extends AbstractResourceType
     {
         $builder
             ->addEventSubscriber(new AddCodeFormSubscriber())
-            ->addEventSubscriber(new ProductOptionFieldSubscriber($this->variantResolver))
-            ->addEventSubscriber(new SimpleProductSubscriber())
+            ->addEventSubscriber(new CRUD_DUMMYOptionFieldSubscriber($this->variantResolver))
+            ->addEventSubscriber(new SimpleCRUD_DUMMYSubscriber())
             ->addEventSubscriber(new BuildAttributesFormSubscriber($this->attributeValueFactory, $this->localeProvider))
             ->add('enabled', CheckboxType::class, [
                 'required' => false,
                 'label' => 'sylius.form.product.enabled',
             ])
             ->add('translations', ResourceTranslationsType::class, [
-                'entry_type' => ProductTranslationType::class,
+                'entry_type' => CRUD_DUMMYTranslationType::class,
                 'label' => 'sylius.form.product.translations',
             ])
             ->add('attributes', CollectionType::class, [
-                'entry_type' => ProductAttributeValueType::class,
+                'entry_type' => CRUD_DUMMYAttributeValueType::class,
                 'required' => false,
                 'prototype' => true,
                 'allow_add' => true,
@@ -82,7 +82,7 @@ final class Product2Type extends AbstractResourceType
                 'by_reference' => false,
                 'label' => false,
             ])
-            ->add('associations', ProductAssociationsType::class, [
+            ->add('associations', CRUD_DUMMYAssociationsType::class, [
                 'label' => false,
             ])
         ;

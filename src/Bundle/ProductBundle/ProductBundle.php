@@ -13,12 +13,12 @@ class ProductBundle extends Bundle
 
 
 //
-//namespace Bundle\ProductBundle;
+//namespace Bundle\CRUDDUMMYBundle;
 //
 //use Sylius\Bundle\ResourceBundle\AbstractResourceBundle;
 //use Sylius\Bundle\ResourceBundle\ResourceBundle;
 //
-//final class ProductBundle extends AbstractResourceBundle
+//final class CRUDDUMMYBundle extends AbstractResourceBundle
 //{
 //    /**
 //     * {@inheritdoc}
@@ -35,6 +35,6 @@ class ProductBundle extends Bundle
 //     */
 //    protected function getModelNamespace(): string
 //    {
-//        return 'Sylius\Component\Product\Model';
+//        return 'Sylius\Component\CRUDDUMMY\Model';
 //    }
 //}

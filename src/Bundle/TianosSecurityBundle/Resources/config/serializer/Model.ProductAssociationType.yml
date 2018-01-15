@@ -1,4 +1,4 @@
-Sylius\Component\Product\Model\ProductAssociationType:
+Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAssociationType:
     exclusion_policy: ALL
     xml_root_name: product-association-type
     properties:

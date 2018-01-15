@@ -281,6 +281,6 @@ final class BrowsingProductVariantsContext implements Context
      */
     private function assertNumberOfVariantsOnProductPage($amount)
     {
-        Assert::same((int) $this->indexPage->countItems(), $amount, 'Product has %d variants, but should have %d');
+        Assert::same((int) $this->indexPage->countItems(), $amount, 'CRUDDUMMY has %d variants, but should have %d');
     }
 }

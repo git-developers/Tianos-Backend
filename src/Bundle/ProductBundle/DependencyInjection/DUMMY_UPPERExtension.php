@@ -1,36 +1,27 @@
 <?php
 
-/*
- * This file is part of the Sylius package.
- *
- * (c) Paweł Jędrzejewski
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 declare(strict_types=1);
 
 namespace Sylius\Bundle\ProductBundle\DependencyInjection;
 
-use Sylius\Bundle\ProductBundle\Controller\ProductAttributeController;
-use Sylius\Bundle\ProductBundle\Doctrine\ORM\ProductAttributeValueRepository;
-use Sylius\Bundle\ProductBundle\Form\Type\ProductAttributeTranslationType;
-use Sylius\Bundle\ProductBundle\Form\Type\ProductAttributeType;
-use Sylius\Bundle\ProductBundle\Form\Type\ProductAttributeValueType;
-use Sylius\Bundle\ResourceBundle\DependencyInjection\Extension\AbstractResourceExtension;
-use Sylius\Component\Product\Model\ProductAttribute;
-use Sylius\Component\Product\Model\ProductAttributeInterface;
-use Sylius\Component\Product\Model\ProductAttributeTranslation;
-use Sylius\Component\Product\Model\ProductAttributeTranslationInterface;
-use Sylius\Component\Product\Model\ProductAttributeValue;
-use Sylius\Component\Product\Model\ProductAttributeValueInterface;
+use Bundle\ProductBundle\Controller\ProductAttributeController;
+use Bundle\ProductBundle\Doctrine\ORM\ProductAttributeValueRepository;
+use Bundle\ProductBundle\Form\Type\ProductAttributeTranslationType;
+use Bundle\ProductBundle\Form\Type\ProductAttributeType;
+use Bundle\ProductBundle\Form\Type\ProductAttributeValueType;
+use Bundle\ResourceBundle\DependencyInjection\Extension\AbstractResourceExtension;
+use Component\Product\Model\ProductAttribute;
+use Component\Product\Model\ProductAttributeInterface;
+use Component\Product\Model\ProductAttributeTranslation;
+use Component\Product\Model\ProductAttributeTranslationInterface;
+use Component\Product\Model\ProductAttributeValue;
+use Component\Product\Model\ProductAttributeValueInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 
-final class SyliusProductExtension extends AbstractResourceExtension implements PrependExtensionInterface
+final class ProductExtension extends AbstractResourceExtension implements PrependExtensionInterface
 {
     /**
      * {@inheritdoc}

@@ -1,7 +1,7 @@
 services:
 
     tianos.listener.doctrine.product:
-        class: Bundle\ProductBundle\EventListener\DoctrineListenerService
+        class: Bundle\CRUD_DUMMYBundle\EventListener\DoctrineListenerService
         arguments: ["@security.token_storage"]
         tags:
           - { name: doctrine.event_listener, event: postUpdate }
@@ -11,19 +11,19 @@ services:
           - { name: doctrine.event_listener, event: postRemove }
 
     tianos.api.controller.product:
-        class: Bundle\ProductBundle\Controller\ApiController
+        class: Bundle\CRUD_DUMMYBundle\Controller\ApiController
         arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
         tags:
             - { name: tianos.api.controller.product, alias: tianos.api.controller.product }
 
     tianos.backend.controller.product:
-        class: Bundle\ProductBundle\Controller\BackendController
+        class: Bundle\CRUD_DUMMYBundle\Controller\BackendController
         arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
         tags:
             - { name: tianos.backend.controller.product, alias: tianos.backend.controller.product }
 
     tianos.frontend.controller.product:
-        class: Bundle\ProductBundle\Controller\FrontendController
+        class: Bundle\CRUD_DUMMYBundle\Controller\FrontendController
         arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
         tags:
             - { name: tianos.frontend.controller.product, alias: tianos.frontend.controller.product }
@@ -31,7 +31,7 @@ services:
     tianos.repository.product:
         class: Dummy
         factory: ['@doctrine.orm.entity_manager', getRepository]
-        arguments: [ Bundle\ProductBundle\Entity\Product ]
+        arguments: [ Bundle\CRUD_DUMMYBundle\Entity\CRUD_DUMMY ]
 
 
 

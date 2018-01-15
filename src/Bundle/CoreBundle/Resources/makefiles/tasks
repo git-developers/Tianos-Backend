@@ -16,7 +16,7 @@ delete:
 	rm -rf /tianos/data/google/credentials/*
 	@echo ---;
 
-permission_app:
+permission:
 	@echo ---;
 	@echo se dara permisos a los folderes cache y logs;
 	chmod 0777 -R var/cache var/logs var/sessions
@@ -175,3 +175,29 @@ setfacl:
 	HTTPDUSER=$$(ps axo user,comm | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | head -1 | cut -d\  -f1)
 	setfacl -dR -m u:"$$HTTPDUSER":rwX -m u:$(whoami):rwX var
 	setfacl -R -m u:"$$HTTPDUSER":rwX -m u:$(whoami):rwX var
+
+xxxx:
+	$(eval MODEL_UPPER := Product)
+	$(eval CRUD_DUMMY := CRUD_DUMMY)
+	find $$PWD/src/Bundle/$(MODEL_UPPER)Bundle/ -name \*.yml -exec sed -i "s/$(CRUD_DUMMY)/$(MODEL_UPPER)/g" {} \;
+
+crud:
+	@echo =========== CRUD: replace upper dummy ===========;
+	$(eval MODEL_UPPER := Product)
+	$(eval MODEL_LOWER := product)
+	$(eval DUMMY_UPPER := DUMMY_UPPER)
+	$(eval DUMMY_LOWER := DUMMY_LOWER)
+	mv $$PWD/src/Bundle/$(DUMMY_UPPER)Bundle $$PWD/src/Bundle/$(MODEL_UPPER)Bundle
+	mv $$PWD/src/Bundle/$(MODEL_UPPER)Bundle/$(DUMMY_UPPER)Bundle.php $$PWD/src/Bundle/$(MODEL_UPPER)Bundle/$(MODEL_UPPER)Bundle.php
+	mv $$PWD/src/Bundle/$(MODEL_UPPER)Bundle/Resources/config/doctrine/$(DUMMY_UPPER).orm.yml $$PWD/src/Bundle/$(MODEL_UPPER)Bundle/Resources/config/doctrine/$(MODEL_UPPER).orm.yml
+	mv $$PWD/src/Bundle/$(MODEL_UPPER)Bundle/Entity/$(DUMMY_UPPER).php $$PWD/src/Bundle/$(MODEL_UPPER)Bundle/Entity/$(MODEL_UPPER).php
+	mv $$PWD/src/Bundle/$(MODEL_UPPER)Bundle/Doctrine/ORM/$(DUMMY_UPPER)Repository.php $$PWD/src/Bundle/$(MODEL_UPPER)Bundle/Doctrine/ORM/$(MODEL_UPPER)Repository.php
+	mv $$PWD/src/Bundle/$(MODEL_UPPER)Bundle/Form/Type/$(DUMMY_UPPER)Type.php $$PWD/src/Bundle/$(MODEL_UPPER)Bundle/Form/Type/$(MODEL_UPPER)Type.php
+	mv $$PWD/src/Bundle/$(MODEL_UPPER)Bundle/Resources/views/$(DUMMY_UPPER)Backend $$PWD/src/Bundle/$(MODEL_UPPER)Bundle/Resources/views/$(MODEL_UPPER)Backend
+	mv $$PWD/src/Bundle/$(MODEL_UPPER)Bundle/Resources/views/$(DUMMY_UPPER)Frontend $$PWD/src/Bundle/$(MODEL_UPPER)Bundle/Resources/views/$(MODEL_UPPER)Frontend
+	@echo ;
+	@echo =========== CRUD: replace lower dummy ===========;
+	find $$PWD/src/Bundle/$(MODEL_UPPER)Bundle/ -name \*.php -exec sed -i "s/$(DUMMY_UPPER)/$(MODEL_UPPER)/g" {} \;
+	find $$PWD/src/Bundle/$(MODEL_UPPER)Bundle/ -name \*.php -exec sed -i "s/$(DUMMY_LOWER)/$(MODEL_LOWER)/g" {} \;
+	find $$PWD/src/Bundle/$(MODEL_UPPER)Bundle/ -name \*.yml -exec sed -i "s/$(DUMMY_UPPER)/$(MODEL_UPPER)/g" {} \;
+	find $$PWD/src/Bundle/$(MODEL_UPPER)Bundle/ -name \*.yml -exec sed -i "s/$(DUMMY_LOWER)/$(MODEL_LOWER)/g" {} \;

@@ -11,32 +11,32 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\ProductBundle\EventListener;
+namespace spec\Sylius\Bundle\CRUD_DUMMYBundle\EventListener;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\UnitOfWork;
 use PhpSpec\ObjectBehavior;
 use Sylius\Component\Attribute\AttributeType\SelectAttributeType;
-use Sylius\Component\Product\Model\ProductAttributeInterface;
-use Sylius\Component\Product\Model\ProductAttributeValue;
-use Sylius\Component\Product\Model\ProductAttributeValueInterface;
-use Sylius\Component\Product\Repository\ProductAttributeValueRepositoryInterface;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeInterface;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeValue;
+use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeValueInterface;
+use Sylius\Component\CRUD_DUMMY\Repository\CRUD_DUMMYAttributeValueRepositoryInterface;
 
-final class SelectProductAttributeChoiceRemoveListenerSpec extends ObjectBehavior
+final class SelectCRUD_DUMMYAttributeChoiceRemoveListenerSpec extends ObjectBehavior
 {
     function let(): void
     {
-        $this->beConstructedWith(ProductAttributeValue::class);
+        $this->beConstructedWith(CRUD_DUMMYAttributeValue::class);
     }
 
     function it_removes_select_product_attribute_choices(
         LifecycleEventArgs $event,
         EntityManagerInterface $entityManager,
         UnitOfWork $unitOfWork,
-        ProductAttributeValueRepositoryInterface $productAttributeValueRepository,
-        ProductAttributeInterface $productAttribute,
-        ProductAttributeValueInterface $productAttributeValue
+        CRUD_DUMMYAttributeValueRepositoryInterface $productAttributeValueRepository,
+        CRUD_DUMMYAttributeInterface $productAttribute,
+        CRUD_DUMMYAttributeValueInterface $productAttributeValue
     ): void {
         $event->getEntity()->willReturn($productAttribute);
         $event->getEntityManager()->willReturn($entityManager);
@@ -57,7 +57,7 @@ final class SelectProductAttributeChoiceRemoveListenerSpec extends ObjectBehavio
         ]);
 
         $entityManager
-            ->getRepository('Sylius\Component\Product\Model\ProductAttributeValue')
+            ->getRepository('Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeValue')
             ->willReturn($productAttributeValueRepository)
         ;
         $productAttributeValueRepository
@@ -80,7 +80,7 @@ final class SelectProductAttributeChoiceRemoveListenerSpec extends ObjectBehavio
         LifecycleEventArgs $event,
         EntityManagerInterface $entityManager,
         UnitOfWork $unitOfWork,
-        ProductAttributeInterface $productAttribute
+        CRUD_DUMMYAttributeInterface $productAttribute
     ): void {
         $event->getEntity()->willReturn($productAttribute);
         $event->getEntityManager()->willReturn($entityManager);
@@ -101,7 +101,7 @@ final class SelectProductAttributeChoiceRemoveListenerSpec extends ObjectBehavio
         ]);
 
         $entityManager
-            ->getRepository('Sylius\Component\Product\Model\ProductAttributeValue')
+            ->getRepository('Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeValue')
             ->shouldNotBeCalled()
         ;
         $entityManager->flush()->shouldNotBeCalled();
@@ -113,7 +113,7 @@ final class SelectProductAttributeChoiceRemoveListenerSpec extends ObjectBehavio
         LifecycleEventArgs $event,
         EntityManagerInterface $entityManager,
         UnitOfWork $unitOfWork,
-        ProductAttributeInterface $productAttribute
+        CRUD_DUMMYAttributeInterface $productAttribute
     ): void {
         $event->getEntity()->willReturn($productAttribute);
         $event->getEntityManager()->willReturn($entityManager);
@@ -135,7 +135,7 @@ final class SelectProductAttributeChoiceRemoveListenerSpec extends ObjectBehavio
         ]);
 
         $entityManager
-            ->getRepository('Sylius\Component\Product\Model\ProductAttributeValue')
+            ->getRepository('Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeValue')
             ->shouldNotBeCalled()
         ;
         $entityManager->flush()->shouldNotBeCalled();
@@ -150,7 +150,7 @@ final class SelectProductAttributeChoiceRemoveListenerSpec extends ObjectBehavio
         $event->getEntity()->willReturn('wrongObject');
 
         $entityManager
-            ->getRepository('Sylius\Component\Product\Model\ProductAttributeValue')
+            ->getRepository('Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeValue')
             ->shouldNotBeCalled()
         ;
         $entityManager->flush()->shouldNotBeCalled();
@@ -159,13 +159,13 @@ final class SelectProductAttributeChoiceRemoveListenerSpec extends ObjectBehavio
     function it_does_nothing_if_a_product_attribute_has_not_a_select_type(
         LifecycleEventArgs $event,
         EntityManagerInterface $entityManager,
-        ProductAttributeInterface $productAttribute
+        CRUD_DUMMYAttributeInterface $productAttribute
     ): void {
         $event->getEntity()->willReturn($productAttribute);
         $productAttribute->getType()->willReturn('wrongType');
 
         $entityManager
-            ->getRepository('Sylius\Component\Product\Model\ProductAttributeValue')
+            ->getRepository('Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeValue')
             ->shouldNotBeCalled()
         ;
         $entityManager->flush()->shouldNotBeCalled();

@@ -1,5 +1,5 @@
 imports:
-    - { resource: "@SyliusProductBundle/test/app/config/parameters.yml" }
+    - { resource: "@SyliusCRUD_DUMMYBundle/test/app/config/parameters.yml" }
 
 framework:
     assets: false

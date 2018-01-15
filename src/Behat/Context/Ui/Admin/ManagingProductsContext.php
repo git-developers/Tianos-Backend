@@ -794,7 +794,7 @@ final class ManagingProductsContext implements Context
      */
     public function iShouldBeNotifiedThatSlugHasToBeUnique()
     {
-        $this->assertValidationMessage('slug', 'Product slug must be unique.');
+        $this->assertValidationMessage('slug', 'CRUDDUMMY slug must be unique.');
     }
 
     /**
@@ -802,7 +802,7 @@ final class ManagingProductsContext implements Context
      */
     public function iShouldBeNotifiedThatCodeHasToBeUnique()
     {
-        $this->assertValidationMessage('code', 'Product code must be unique.');
+        $this->assertValidationMessage('code', 'CRUDDUMMY code must be unique.');
     }
 
     /**
@@ -891,7 +891,7 @@ final class ManagingProductsContext implements Context
         }
 
         throw new \Exception(
-            sprintf('Product "%s" should not have price defined for channel "%s".', $product->getName(), $channelName)
+            sprintf('CRUDDUMMY "%s" should not have price defined for channel "%s".', $product->getName(), $channelName)
         );
     }
 
@@ -951,7 +951,7 @@ final class ManagingProductsContext implements Context
 
         Assert::true(
             $currentPage->hasResourceValues([$element => $value]),
-            sprintf('Product should have %s with %s value.', $element, $value)
+            sprintf('CRUDDUMMY should have %s with %s value.', $element, $value)
         );
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Bundle\ProductBundle\Form\Type;
+namespace Bundle\DUMMY1Bundle\Form\Type;
 
 
 use Symfony\Component\Form\AbstractType;
@@ -10,7 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Doctrine\ORM\EntityManager;
 
 
-class ProductType extends AbstractType
+class CRUD_DUMMYType extends AbstractType
 {
 
     /**
@@ -49,7 +49,7 @@ class ProductType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-//            'data_class' => Product::class,
+//            'data_class' => CRUD_DUMMY::class,
         ]);
 
         $resolver->setRequired(['form_data']);

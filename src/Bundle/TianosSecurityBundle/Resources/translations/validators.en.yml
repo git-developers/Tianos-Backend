@@ -2,24 +2,24 @@ sylius:
     product:
         sku:
             not_blank: Please enter product SKU.
-            unique: Product SKU must be unique.
+            unique: CRUD_DUMMY SKU must be unique.
         slug:
             not_blank: Please enter product slug.
-            unique: Product slug must be unique.
+            unique: CRUD_DUMMY slug must be unique.
         code:
             not_blank: Please enter product code.
-            regex: Product code can only be comprised of letters, numbers, dashes and underscores.
-            unique: Product code must be unique.
+            regex: CRUD_DUMMY code can only be comprised of letters, numbers, dashes and underscores.
+            unique: CRUD_DUMMY code must be unique.
         name:
             not_blank: Please enter product name.
-            min_length: Product name must be at least 1 character long.|Product name must be at least {{ limit }} characters long.
-            max_length: Product name must not be longer than 1 character.|Product name must not be longer than {{ limit }} characters.
+            min_length: CRUD_DUMMY name must be at least 1 character long.|CRUD_DUMMY name must be at least {{ limit }} characters long.
+            max_length: CRUD_DUMMY name must not be longer than 1 character.|CRUD_DUMMY name must not be longer than {{ limit }} characters.
     product_variant:
         combination: Variant with this option set already exists.
         code:
             not_blank: Please enter the code.
-            regex: Product variant code can only be comprised of letters, numbers, dashes and underscores.
-            unique: Product variant code must be unique.
+            regex: CRUD_DUMMY variant code can only be comprised of letters, numbers, dashes and underscores.
+            unique: CRUD_DUMMY variant code must be unique.
             within_product_unique: This code must be unique within this product.
     simple_product:
         code:

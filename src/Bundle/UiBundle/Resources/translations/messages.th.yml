@@ -499,7 +499,7 @@ sylius:
         new_product_association_type: 'สร้างชนิดความสัมพันธ์ของสินค้า'
         new_product_attribute: 'เพิ่มคุณลักษณะ (Attribute) ของสินค้า'
         new_product_option: 'เพิ่มตัวเลือกสินค้า'
-        new_product_variant: 'เพิ่ม Product variant'
+        new_product_variant: 'เพิ่ม CRUD_DUMMY variant'
         new_promotion: 'เพิ่มโปรโมชั่น'
         new_promotion_coupon: 'คูปองโปรโมชั่นใหม่'
         new_review: 'เพิ่มรีวิว'

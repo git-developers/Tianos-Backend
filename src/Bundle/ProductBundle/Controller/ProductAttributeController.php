@@ -1,22 +1,13 @@
 <?php
 
-/*
- * This file is part of the Sylius package.
- *
- * (c) Paweł Jędrzejewski
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ProductBundle\Controller;
+namespace Bundle\ProductBundle\Controller;
 
 use FOS\RestBundle\View\View;
-use Sylius\Bundle\ProductBundle\Form\Type\ProductAttributeChoiceType;
-use Sylius\Bundle\ResourceBundle\Controller\ResourceController;
-use Sylius\Component\Attribute\Model\AttributeInterface;
+use Bundle\ProductBundle\Form\Type\ProductAttributeChoiceType;
+use Bundle\ResourceBundle\Controller\ResourceController;
+use Component\Attribute\Model\AttributeInterface;
 use Symfony\Component\Form\FormView;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

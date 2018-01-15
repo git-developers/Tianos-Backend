@@ -11,11 +11,11 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ProductBundle\Validator\Constraint;
+namespace Sylius\Bundle\CRUD_DUMMYBundle\Validator\Constraint;
 
 use Symfony\Component\Validator\Constraint;
 
-final class UniqueSimpleProductCode extends Constraint
+final class UniqueSimpleCRUD_DUMMYCode extends Constraint
 {
     /**
      * @var string

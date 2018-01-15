@@ -82,7 +82,7 @@ sylius:
         price: 'Preu'
         processing: 'Processant'
         product_association_type_index: 'Tipus d''Associació'
-        products: 'Productes'
+        products: 'CRUD_DUMMYes'
         promotions: 'Promocions'
         province: 'Província'
         provinces: 'Províncies'
