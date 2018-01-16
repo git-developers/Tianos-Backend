@@ -181,6 +181,11 @@ setfacl:
 crud_routing:
 	php bin/console tianos:crud:routing BackendBundle
 
+gato:
+	@echo =========== CRUD: replace dummy 2222 ===========;
+	$(eval MODEL := $(model) | tr '[:upper:]' '[:lower:]' | python -c "print raw_input().capitalize()" )
+	@echo $(MODEL)
+
 crud2:
 	@echo =========== CRUD: replace dummy ===========;
 	@echo ;
@@ -195,8 +200,10 @@ crud2:
 
 crud:
 	@echo =========== CRUD: replace dummy ===========;
-	$(eval MODEL_UPPER := $(upper))
-	$(eval MODEL_LOWER := $(lower))
+	$(eval MODEL_LOWERCASE := $(model) | tr '[:upper:]' '[:lower:]')
+	$(eval MODEL_CAPITALIZE := $(model) | tr '[:upper:]' '[:lower:]' | python -c "print raw_input().capitalize()" )
+	$(eval MODEL_UPPER := $(MODEL_LOWERCASE) )
+	$(eval MODEL_LOWER := $(MODEL_CAPITALIZE) )
 	$(eval DUMMY_UPPER := DUMMY_UPPER)
 	$(eval DUMMY_LOWER := DUMMY_LOWER)
 	mv $$PWD/src/Bundle/$(DUMMY_UPPER)Bundle $$PWD/src/Bundle/$(MODEL_UPPER)Bundle
