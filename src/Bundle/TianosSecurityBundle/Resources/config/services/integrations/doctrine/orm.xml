@@ -13,9 +13,9 @@
 
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <parameters>
-        <parameter key="sylius.repository.product.class">Sylius\Bundle\CRUD_DUMMYBundle\Doctrine\ORM\CRUD_DUMMYRepository</parameter>
-        <parameter key="sylius.repository.product_variant.class">Sylius\Bundle\CRUD_DUMMYBundle\Doctrine\ORM\CRUD_DUMMYVariantRepository</parameter>
-        <parameter key="sylius.repository.product_attribute.class">Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository</parameter>
-        <parameter key="sylius.repository.product_option.class">Sylius\Bundle\CRUD_DUMMYBundle\Doctrine\ORM\CRUD_DUMMYOptionRepository</parameter>
+        <parameter key="sylius.repository.product.class">Bundle\CRUD_DUMMYBundle\Doctrine\ORM\CRUD_DUMMYRepository</parameter>
+        <parameter key="sylius.repository.product_variant.class">Bundle\CRUD_DUMMYBundle\Doctrine\ORM\CRUD_DUMMYVariantRepository</parameter>
+        <parameter key="sylius.repository.product_attribute.class">Bundle\ResourceBundle\Doctrine\ORM\EntityRepository</parameter>
+        <parameter key="sylius.repository.product_option.class">Bundle\CRUD_DUMMYBundle\Doctrine\ORM\CRUD_DUMMYOptionRepository</parameter>
     </parameters>
 </container>

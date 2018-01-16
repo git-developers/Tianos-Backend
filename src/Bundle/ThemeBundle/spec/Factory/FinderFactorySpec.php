@@ -11,10 +11,10 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\ThemeBundle\Factory;
+namespace spec\Bundle\ThemeBundle\Factory;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Bundle\ThemeBundle\Factory\FinderFactoryInterface;
+use Bundle\ThemeBundle\Factory\FinderFactoryInterface;
 use Symfony\Component\Finder\Finder;
 
 final class FinderFactorySpec extends ObjectBehavior

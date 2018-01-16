@@ -11,9 +11,9 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ThemeBundle\Translation\Finder;
+namespace Bundle\ThemeBundle\Translation\Finder;
 
-use Sylius\Bundle\ThemeBundle\Factory\FinderFactoryInterface;
+use Bundle\ThemeBundle\Factory\FinderFactoryInterface;
 use Symfony\Component\Finder\SplFileInfo;
 
 final class TranslationFilesFinder implements TranslationFilesFinderInterface

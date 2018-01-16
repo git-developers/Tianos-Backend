@@ -11,14 +11,14 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ThemeBundle\Translation\Provider\Resource;
+namespace Bundle\ThemeBundle\Translation\Provider\Resource;
 
-use Sylius\Bundle\ThemeBundle\HierarchyProvider\ThemeHierarchyProviderInterface;
-use Sylius\Bundle\ThemeBundle\Model\ThemeInterface;
-use Sylius\Bundle\ThemeBundle\Repository\ThemeRepositoryInterface;
-use Sylius\Bundle\ThemeBundle\Translation\Finder\TranslationFilesFinderInterface;
-use Sylius\Bundle\ThemeBundle\Translation\Resource\ThemeTranslationResource;
-use Sylius\Bundle\ThemeBundle\Translation\Resource\TranslationResourceInterface;
+use Bundle\ThemeBundle\HierarchyProvider\ThemeHierarchyProviderInterface;
+use Bundle\ThemeBundle\Model\ThemeInterface;
+use Bundle\ThemeBundle\Repository\ThemeRepositoryInterface;
+use Bundle\ThemeBundle\Translation\Finder\TranslationFilesFinderInterface;
+use Bundle\ThemeBundle\Translation\Resource\ThemeTranslationResource;
+use Bundle\ThemeBundle\Translation\Resource\TranslationResourceInterface;
 
 final class ThemeTranslatorResourceProvider implements TranslatorResourceProviderInterface
 {

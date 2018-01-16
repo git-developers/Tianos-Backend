@@ -11,13 +11,13 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\ResourceBundle\Controller;
+namespace spec\Bundle\ResourceBundle\Controller;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Bundle\ResourceBundle\Controller\NewResourceFactoryInterface;
-use Sylius\Bundle\ResourceBundle\Controller\RequestConfiguration;
-use Sylius\Component\Resource\Factory\FactoryInterface;
-use Sylius\Component\Resource\Model\ResourceInterface;
+use Bundle\ResourceBundle\Controller\NewResourceFactoryInterface;
+use Bundle\ResourceBundle\Controller\RequestConfiguration;
+use Component\Resource\Factory\FactoryInterface;
+use Component\Resource\Model\ResourceInterface;
 
 final class NewResourceFactorySpec extends ObjectBehavior
 {

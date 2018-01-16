@@ -11,9 +11,9 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ThemeBundle\Tests\Functional;
+namespace Bundle\ThemeBundle\Tests\Functional;
 
-use Sylius\Bundle\ThemeBundle\Asset\Installer\AssetsInstallerInterface;
+use Bundle\ThemeBundle\Asset\Installer\AssetsInstallerInterface;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 final class AssetTest extends WebTestCase

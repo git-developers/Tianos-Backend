@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\CRUD_DUMMYBundle\Form\Type;
+namespace Bundle\CRUD_DUMMYBundle\Form\Type;
 
-use Sylius\Bundle\CRUD_DUMMYBundle\Form\EventSubscriber\BuildAttributesFormSubscriber;
-use Sylius\Bundle\CRUD_DUMMYBundle\Form\EventSubscriber\CRUD_DUMMYOptionFieldSubscriber;
-use Sylius\Bundle\CRUD_DUMMYBundle\Form\EventSubscriber\SimpleCRUD_DUMMYSubscriber;
-use Sylius\Bundle\ResourceBundle\Form\EventSubscriber\AddCodeFormSubscriber;
-use Sylius\Bundle\ResourceBundle\Form\Type\AbstractResourceType;
-use Sylius\Bundle\ResourceBundle\Form\Type\ResourceTranslationsType;
-use Sylius\Component\CRUD_DUMMY\Resolver\CRUD_DUMMYVariantResolverInterface;
-use Sylius\Component\Resource\Factory\FactoryInterface;
-use Sylius\Component\Resource\Translation\Provider\TranslationLocaleProviderInterface;
+use Bundle\CRUD_DUMMYBundle\Form\EventSubscriber\BuildAttributesFormSubscriber;
+use Bundle\CRUD_DUMMYBundle\Form\EventSubscriber\CRUD_DUMMYOptionFieldSubscriber;
+use Bundle\CRUD_DUMMYBundle\Form\EventSubscriber\SimpleCRUD_DUMMYSubscriber;
+use Bundle\ResourceBundle\Form\EventSubscriber\AddCodeFormSubscriber;
+use Bundle\ResourceBundle\Form\Type\AbstractResourceType;
+use Bundle\ResourceBundle\Form\Type\ResourceTranslationsType;
+use Component\CRUD_DUMMY\Resolver\CRUD_DUMMYVariantResolverInterface;
+use Component\Resource\Factory\FactoryInterface;
+use Component\Resource\Translation\Provider\TranslationLocaleProviderInterface;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;

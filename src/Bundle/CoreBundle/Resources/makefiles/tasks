@@ -1,3 +1,5 @@
+#!/bin/bash
+
 NOW := $(shell /bin/date "+%Y-%m-%d . %H:%M:%S")
 AUTHOR_EMAIL := "jafeth.bendezu.a@gmail.com"
 AUTHOR_NAME := "Jafeth Bendezu"
@@ -176,10 +178,25 @@ setfacl:
 	setfacl -dR -m u:"$$HTTPDUSER":rwX -m u:$(whoami):rwX var
 	setfacl -R -m u:"$$HTTPDUSER":rwX -m u:$(whoami):rwX var
 
+crud_routing:
+	php bin/console tianos:crud:routing BackendBundle
+
+crud2:
+	@echo =========== CRUD: replace dummy ===========;
+	@echo ;
+	read -r -p "Are you sure? [y/N] " response;
+	if [ -s ${response} == "y" ];
+	then
+	    @echo =========== 11111111111 ===========;
+	else
+	    @echo =========== 2222222222 ===========;
+	fi
+
+
 crud:
-	@echo =========== CRUD: replace upper dummy ===========;
-	$(eval MODEL_UPPER := Product)
-	$(eval MODEL_LOWER := product)
+	@echo =========== CRUD: replace dummy ===========;
+	$(eval MODEL_UPPER := $(upper))
+	$(eval MODEL_LOWER := $(lower))
 	$(eval DUMMY_UPPER := DUMMY_UPPER)
 	$(eval DUMMY_LOWER := DUMMY_LOWER)
 	mv $$PWD/src/Bundle/$(DUMMY_UPPER)Bundle $$PWD/src/Bundle/$(MODEL_UPPER)Bundle
@@ -191,8 +208,13 @@ crud:
 	mv $$PWD/src/Bundle/$(MODEL_UPPER)Bundle/Resources/views/$(DUMMY_UPPER)Backend $$PWD/src/Bundle/$(MODEL_UPPER)Bundle/Resources/views/$(MODEL_UPPER)Backend
 	mv $$PWD/src/Bundle/$(MODEL_UPPER)Bundle/Resources/views/$(DUMMY_UPPER)Frontend $$PWD/src/Bundle/$(MODEL_UPPER)Bundle/Resources/views/$(MODEL_UPPER)Frontend
 	@echo ;
-	@echo =========== CRUD: replace lower dummy ===========;
+	@echo =========== CRUD: replace files dummy ===========;
 	find $$PWD/src/Bundle/$(MODEL_UPPER)Bundle/ -name \*.php -exec sed -i "s/$(DUMMY_UPPER)/$(MODEL_UPPER)/g" {} \;
 	find $$PWD/src/Bundle/$(MODEL_UPPER)Bundle/ -name \*.php -exec sed -i "s/$(DUMMY_LOWER)/$(MODEL_LOWER)/g" {} \;
 	find $$PWD/src/Bundle/$(MODEL_UPPER)Bundle/ -name \*.yml -exec sed -i "s/$(DUMMY_UPPER)/$(MODEL_UPPER)/g" {} \;
 	find $$PWD/src/Bundle/$(MODEL_UPPER)Bundle/ -name \*.yml -exec sed -i "s/$(DUMMY_LOWER)/$(MODEL_LOWER)/g" {} \;
+	@echo ;
+	@echo =========== CRUD: componente ===========;
+	mv $$PWD/src/Component/$(DUMMY_UPPER) $$PWD/src/Component/$(MODEL_UPPER)
+	mv $$PWD/src/Component/$(MODEL_UPPER)/Repository/$(DUMMY_UPPER)RepositoryInterface.php $$PWD/src/Component/$(MODEL_UPPER)/Repository/$(MODEL_UPPER)RepositoryInterface.php
+	find $$PWD/src/Component/$(MODEL_UPPER)/ -name \*.php -exec sed -i "s/$(DUMMY_UPPER)/$(MODEL_UPPER)/g" {} \;

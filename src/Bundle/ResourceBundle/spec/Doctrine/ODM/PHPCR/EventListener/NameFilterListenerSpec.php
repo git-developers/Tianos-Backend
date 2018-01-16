@@ -11,12 +11,12 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\ResourceBundle\Doctrine\ODM\PHPCR\EventListener;
+namespace spec\Bundle\ResourceBundle\Doctrine\ODM\PHPCR\EventListener;
 
 use Doctrine\ODM\PHPCR\DocumentManagerInterface;
 use Doctrine\ODM\PHPCR\Mapping\ClassMetadata;
 use PhpSpec\ObjectBehavior;
-use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
+use Bundle\ResourceBundle\Event\ResourceControllerEvent;
 
 /**
  * @require Doctrine\ODM\PHPCR\DocumentManagerInterface

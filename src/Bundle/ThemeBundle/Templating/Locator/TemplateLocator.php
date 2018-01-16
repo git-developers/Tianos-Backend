@@ -11,10 +11,10 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ThemeBundle\Templating\Locator;
+namespace Bundle\ThemeBundle\Templating\Locator;
 
-use Sylius\Bundle\ThemeBundle\Locator\ResourceLocatorInterface;
-use Sylius\Bundle\ThemeBundle\Model\ThemeInterface;
+use Bundle\ThemeBundle\Locator\ResourceLocatorInterface;
+use Bundle\ThemeBundle\Model\ThemeInterface;
 use Symfony\Component\Templating\TemplateReferenceInterface;
 
 final class TemplateLocator implements TemplateLocatorInterface

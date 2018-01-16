@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\ThemeBundle\Templating\Cache\Clearer;
+namespace spec\Bundle\ThemeBundle\Templating\Cache\Clearer;
 
 use Doctrine\Common\Cache\Cache;
 use Doctrine\Common\Cache\ClearableCache;

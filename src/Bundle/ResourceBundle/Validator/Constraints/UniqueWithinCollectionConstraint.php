@@ -11,9 +11,9 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ResourceBundle\Validator\Constraints;
+namespace Bundle\ResourceBundle\Validator\Constraints;
 
-use Sylius\Bundle\ResourceBundle\Validator\UniqueWithinCollectionConstraintValidator;
+use Bundle\ResourceBundle\Validator\UniqueWithinCollectionConstraintValidator;
 use Symfony\Component\Validator\Constraint;
 
 final class UniqueWithinCollectionConstraint extends Constraint

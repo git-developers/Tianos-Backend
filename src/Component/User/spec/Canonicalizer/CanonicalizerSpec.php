@@ -11,10 +11,10 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Component\User\Canonicalizer;
+namespace spec\Component\User\Canonicalizer;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Component\User\Canonicalizer\CanonicalizerInterface;
+use Component\User\Canonicalizer\CanonicalizerInterface;
 
 final class CanonicalizerSpec extends ObjectBehavior
 {

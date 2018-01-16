@@ -11,9 +11,9 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ThemeBundle\Translation;
+namespace Bundle\ThemeBundle\Translation;
 
-use Sylius\Bundle\ThemeBundle\Context\ThemeContextInterface;
+use Bundle\ThemeBundle\Context\ThemeContextInterface;
 use Symfony\Component\HttpKernel\CacheWarmer\WarmableInterface;
 use Symfony\Component\Translation\MessageCatalogueInterface;
 use Symfony\Component\Translation\TranslatorBagInterface;

@@ -11,14 +11,14 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\ResourceBundle\Controller;
+namespace spec\Bundle\ResourceBundle\Controller;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use PhpSpec\ObjectBehavior;
-use Sylius\Bundle\ResourceBundle\Controller\RequestConfiguration;
-use Sylius\Bundle\ResourceBundle\Controller\ResourceUpdateHandlerInterface;
-use Sylius\Bundle\ResourceBundle\Controller\StateMachineInterface;
-use Sylius\Component\Resource\Model\ResourceInterface;
+use Bundle\ResourceBundle\Controller\RequestConfiguration;
+use Bundle\ResourceBundle\Controller\ResourceUpdateHandlerInterface;
+use Bundle\ResourceBundle\Controller\StateMachineInterface;
+use Component\Resource\Model\ResourceInterface;
 
 final class ResourceUpdateHandlerSpec extends ObjectBehavior
 {

@@ -11,9 +11,9 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ThemeBundle\Configuration\Filesystem;
+namespace Bundle\ThemeBundle\Configuration\Filesystem;
 
-use Sylius\Bundle\ThemeBundle\Configuration\ConfigurationProcessorInterface;
+use Bundle\ThemeBundle\Configuration\ConfigurationProcessorInterface;
 
 final class ProcessingConfigurationLoader implements ConfigurationLoaderInterface
 {

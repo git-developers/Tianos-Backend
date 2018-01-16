@@ -11,13 +11,13 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\ThemeBundle\Templating\Locator;
+namespace spec\Bundle\ThemeBundle\Templating\Locator;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Bundle\ThemeBundle\Locator\ResourceLocatorInterface;
-use Sylius\Bundle\ThemeBundle\Locator\ResourceNotFoundException;
-use Sylius\Bundle\ThemeBundle\Model\ThemeInterface;
-use Sylius\Bundle\ThemeBundle\Templating\Locator\TemplateLocatorInterface;
+use Bundle\ThemeBundle\Locator\ResourceLocatorInterface;
+use Bundle\ThemeBundle\Locator\ResourceNotFoundException;
+use Bundle\ThemeBundle\Model\ThemeInterface;
+use Bundle\ThemeBundle\Templating\Locator\TemplateLocatorInterface;
 use Symfony\Component\Templating\TemplateReferenceInterface;
 
 final class TemplateLocatorSpec extends ObjectBehavior

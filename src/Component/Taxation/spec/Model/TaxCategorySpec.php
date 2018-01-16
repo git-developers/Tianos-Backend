@@ -11,10 +11,10 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Component\Taxation\Model;
+namespace spec\Component\Taxation\Model;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Component\Taxation\Model\TaxCategoryInterface;
+use Component\Taxation\Model\TaxCategoryInterface;
 
 final class TaxCategorySpec extends ObjectBehavior
 {

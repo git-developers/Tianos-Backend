@@ -11,13 +11,13 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Component\Grid\Filtering;
+namespace spec\Component\Grid\Filtering;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Component\Grid\Definition\Filter;
-use Sylius\Component\Grid\Definition\Grid;
-use Sylius\Component\Grid\Filtering\FiltersCriteriaResolverInterface;
-use Sylius\Component\Grid\Parameters;
+use Component\Grid\Definition\Filter;
+use Component\Grid\Definition\Grid;
+use Component\Grid\Filtering\FiltersCriteriaResolverInterface;
+use Component\Grid\Parameters;
 
 final class FiltersCriteriaResolverSpec extends ObjectBehavior
 {

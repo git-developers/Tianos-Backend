@@ -11,10 +11,10 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\ThemeBundle\Translation\Finder;
+namespace spec\Bundle\ThemeBundle\Translation\Finder;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Bundle\ThemeBundle\Translation\Finder\TranslationFilesFinderInterface;
+use Bundle\ThemeBundle\Translation\Finder\TranslationFilesFinderInterface;
 
 final class OrderingTranslationFilesFinderSpec extends ObjectBehavior
 {

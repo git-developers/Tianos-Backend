@@ -11,10 +11,10 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\GridBundle\Tests\DependencyInjection;
+namespace Bundle\GridBundle\Tests\DependencyInjection;
 
 use Matthias\SymfonyDependencyInjectionTest\PhpUnit\AbstractExtensionTestCase;
-use Sylius\Bundle\GridBundle\DependencyInjection\SyliusGridExtension;
+use Bundle\GridBundle\DependencyInjection\SyliusGridExtension;
 
 final class SyliusGridExtensionTest extends AbstractExtensionTestCase
 {
@@ -29,7 +29,7 @@ final class SyliusGridExtensionTest extends AbstractExtensionTestCase
                     'driver' => [
                         'name' => 'doctrine/orm',
                         'options' => [
-                            'class' => 'Sylius\Component\Taxation\Model\TaxCategory',
+                            'class' => 'Component\Taxation\Model\TaxCategory',
                         ],
                     ],
                 ],
@@ -41,7 +41,7 @@ final class SyliusGridExtensionTest extends AbstractExtensionTestCase
                 'driver' => [
                     'name' => 'doctrine/orm',
                     'options' => [
-                        'class' => 'Sylius\Component\Taxation\Model\TaxCategory',
+                        'class' => 'Component\Taxation\Model\TaxCategory',
                     ],
                 ],
                 'sorting' => [],

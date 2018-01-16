@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ResourceBundle\Tests\Command;
+namespace Bundle\ResourceBundle\Tests\Command;
 
 use Bundle\ResourceBundle\Command\DebugResourceCommand;
 use Component\Resource\Metadata\Metadata;

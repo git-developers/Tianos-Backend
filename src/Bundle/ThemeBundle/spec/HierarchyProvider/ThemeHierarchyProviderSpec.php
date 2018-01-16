@@ -11,11 +11,11 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\ThemeBundle\HierarchyProvider;
+namespace spec\Bundle\ThemeBundle\HierarchyProvider;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Bundle\ThemeBundle\HierarchyProvider\ThemeHierarchyProviderInterface;
-use Sylius\Bundle\ThemeBundle\Model\ThemeInterface;
+use Bundle\ThemeBundle\HierarchyProvider\ThemeHierarchyProviderInterface;
+use Bundle\ThemeBundle\Model\ThemeInterface;
 
 final class ThemeHierarchyProviderSpec extends ObjectBehavior
 {

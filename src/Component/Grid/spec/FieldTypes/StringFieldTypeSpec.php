@@ -11,12 +11,12 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Component\Grid\FieldTypes;
+namespace spec\Component\Grid\FieldTypes;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Component\Grid\DataExtractor\DataExtractorInterface;
-use Sylius\Component\Grid\Definition\Field;
-use Sylius\Component\Grid\FieldTypes\FieldTypeInterface;
+use Component\Grid\DataExtractor\DataExtractorInterface;
+use Component\Grid\Definition\Field;
+use Component\Grid\FieldTypes\FieldTypeInterface;
 
 final class StringFieldTypeSpec extends ObjectBehavior
 {

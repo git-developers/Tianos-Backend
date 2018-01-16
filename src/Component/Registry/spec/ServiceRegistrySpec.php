@@ -11,15 +11,15 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Component\Registry;
+namespace spec\Component\Registry;
 
 require_once __DIR__ . '/Fixture/SampleServiceInterface.php';
 
 use PhpSpec\ObjectBehavior;
-use spec\Sylius\Component\Registry\Fixture\SampleServiceInterface;
-use Sylius\Component\Registry\ExistingServiceException;
-use Sylius\Component\Registry\NonExistingServiceException;
-use Sylius\Component\Registry\ServiceRegistryInterface;
+use spec\Component\Registry\Fixture\SampleServiceInterface;
+use Component\Registry\ExistingServiceException;
+use Component\Registry\NonExistingServiceException;
+use Component\Registry\ServiceRegistryInterface;
 
 final class ServiceRegistrySpec extends ObjectBehavior
 {

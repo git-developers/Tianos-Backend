@@ -11,11 +11,11 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ThemeBundle\Tests\Translation;
+namespace Bundle\ThemeBundle\Tests\Translation;
 
-use Sylius\Bundle\ThemeBundle\Translation\Provider\Loader\TranslatorLoaderProvider;
-use Sylius\Bundle\ThemeBundle\Translation\Provider\Resource\TranslatorResourceProvider;
-use Sylius\Bundle\ThemeBundle\Translation\Translator;
+use Bundle\ThemeBundle\Translation\Provider\Loader\TranslatorLoaderProvider;
+use Bundle\ThemeBundle\Translation\Provider\Resource\TranslatorResourceProvider;
+use Bundle\ThemeBundle\Translation\Translator;
 use Symfony\Component\Translation\Loader\ArrayLoader;
 use Symfony\Component\Translation\MessageCatalogue;
 use Symfony\Component\Translation\MessageSelector;

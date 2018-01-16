@@ -11,11 +11,11 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Component\Mailer\Factory;
+namespace spec\Component\Mailer\Factory;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Component\Mailer\Factory\EmailFactoryInterface;
-use Sylius\Component\Mailer\Model\Email;
+use Component\Mailer\Factory\EmailFactoryInterface;
+use Component\Mailer\Model\Email;
 
 final class EmailFactorySpec extends ObjectBehavior
 {

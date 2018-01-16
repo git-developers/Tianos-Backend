@@ -11,10 +11,10 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\CRUD_DUMMYBundle\Validator;
+namespace Bundle\CRUD_DUMMYBundle\Validator;
 
-use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYInterface;
-use Sylius\Component\CRUD_DUMMY\Repository\CRUD_DUMMYVariantRepositoryInterface;
+use Component\CRUD_DUMMY\Model\CRUD_DUMMYInterface;
+use Component\CRUD_DUMMY\Repository\CRUD_DUMMYVariantRepositoryInterface;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Exception\UnexpectedTypeException;

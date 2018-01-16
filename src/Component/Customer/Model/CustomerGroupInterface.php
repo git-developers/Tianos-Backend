@@ -11,10 +11,10 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Component\Customer\Model;
+namespace Component\Customer\Model;
 
-use Sylius\Component\Resource\Model\CodeAwareInterface;
-use Sylius\Component\Resource\Model\ResourceInterface;
+use Component\Resource\Model\CodeAwareInterface;
+use Component\Resource\Model\ResourceInterface;
 
 interface CustomerGroupInterface extends ResourceInterface, CodeAwareInterface
 {

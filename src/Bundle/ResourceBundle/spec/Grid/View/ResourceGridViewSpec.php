@@ -11,14 +11,14 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\ResourceBundle\Grid\View;
+namespace spec\Bundle\ResourceBundle\Grid\View;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Bundle\ResourceBundle\Controller\RequestConfiguration;
-use Sylius\Component\Grid\Definition\Grid;
-use Sylius\Component\Grid\Parameters;
-use Sylius\Component\Grid\View\GridView;
-use Sylius\Component\Resource\Metadata\MetadataInterface;
+use Bundle\ResourceBundle\Controller\RequestConfiguration;
+use Component\Grid\Definition\Grid;
+use Component\Grid\Parameters;
+use Component\Grid\View\GridView;
+use Component\Resource\Metadata\MetadataInterface;
 
 final class ResourceGridViewSpec extends ObjectBehavior
 {

@@ -11,11 +11,11 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\ThemeBundle\Translation\Finder;
+namespace spec\Bundle\ThemeBundle\Translation\Finder;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Bundle\ThemeBundle\Factory\FinderFactoryInterface;
-use Sylius\Bundle\ThemeBundle\Translation\Finder\TranslationFilesFinderInterface;
+use Bundle\ThemeBundle\Factory\FinderFactoryInterface;
+use Bundle\ThemeBundle\Translation\Finder\TranslationFilesFinderInterface;
 use Symfony\Component\Finder\Finder;
 
 final class TranslationFilesFinderSpec extends ObjectBehavior

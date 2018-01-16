@@ -15,8 +15,8 @@ class TianosSecurityBundle extends Bundle
 //
 //namespace Bundle\CRUD_DUMMYBundle;
 //
-//use Sylius\Bundle\ResourceBundle\AbstractResourceBundle;
-//use Sylius\Bundle\ResourceBundle\SyliusResourceBundle;
+//use Bundle\ResourceBundle\AbstractResourceBundle;
+//use Bundle\ResourceBundle\SyliusResourceBundle;
 //
 //final class CRUD_DUMMYBundle extends AbstractResourceBundle
 //{
@@ -35,6 +35,6 @@ class TianosSecurityBundle extends Bundle
 //     */
 //    protected function getModelNamespace(): string
 //    {
-//        return 'Sylius\Component\CRUD_DUMMY\Model';
+//        return 'Component\CRUD_DUMMY\Model';
 //    }
 //}

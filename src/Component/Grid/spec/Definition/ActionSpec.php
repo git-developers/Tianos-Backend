@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Component\Grid\Definition;
+namespace spec\Component\Grid\Definition;
 
 use PhpSpec\ObjectBehavior;
 

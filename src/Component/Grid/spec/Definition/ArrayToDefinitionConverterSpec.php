@@ -11,17 +11,17 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Component\Grid\Definition;
+namespace spec\Component\Grid\Definition;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use Sylius\Component\Grid\Definition\Action;
-use Sylius\Component\Grid\Definition\ActionGroup;
-use Sylius\Component\Grid\Definition\ArrayToDefinitionConverterInterface;
-use Sylius\Component\Grid\Definition\Field;
-use Sylius\Component\Grid\Definition\Filter;
-use Sylius\Component\Grid\Definition\Grid;
-use Sylius\Component\Grid\Event\GridDefinitionConverterEvent;
+use Component\Grid\Definition\Action;
+use Component\Grid\Definition\ActionGroup;
+use Component\Grid\Definition\ArrayToDefinitionConverterInterface;
+use Component\Grid\Definition\Field;
+use Component\Grid\Definition\Filter;
+use Component\Grid\Definition\Grid;
+use Component\Grid\Event\GridDefinitionConverterEvent;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 final class ArrayToDefinitionConverterSpec extends ObjectBehavior

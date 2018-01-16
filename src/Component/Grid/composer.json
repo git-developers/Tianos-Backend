@@ -33,10 +33,10 @@
         "bin-dir": "bin"
     },
     "autoload": {
-        "psr-4": { "Sylius\\Component\\Grid\\": "" }
+        "psr-4": { "\Component\\Grid\\": "" }
     },
     "autoload-dev": {
-        "psr-4": { "Sylius\\Component\\Grid\\spec\\": "spec/" }
+        "psr-4": { "\Component\\Grid\\spec\\": "spec/" }
     },
     "minimum-stability": "dev",
     "prefer-stable": true,

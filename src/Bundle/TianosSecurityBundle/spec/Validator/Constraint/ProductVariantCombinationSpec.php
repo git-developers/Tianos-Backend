@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\CRUD_DUMMYBundle\Validator\Constraint;
+namespace spec\Bundle\CRUD_DUMMYBundle\Validator\Constraint;
 
 use PhpSpec\ObjectBehavior;
 use Symfony\Component\Validator\Constraint;

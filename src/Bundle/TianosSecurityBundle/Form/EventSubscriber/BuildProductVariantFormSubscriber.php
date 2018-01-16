@@ -11,10 +11,10 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\CRUD_DUMMYBundle\Form\EventSubscriber;
+namespace Bundle\CRUD_DUMMYBundle\Form\EventSubscriber;
 
-use Sylius\Bundle\CRUD_DUMMYBundle\Form\Type\CRUD_DUMMYOptionValueCollectionType;
-use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYVariantInterface;
+use Bundle\CRUD_DUMMYBundle\Form\Type\CRUD_DUMMYOptionValueCollectionType;
+use Component\CRUD_DUMMY\Model\CRUD_DUMMYVariantInterface;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;

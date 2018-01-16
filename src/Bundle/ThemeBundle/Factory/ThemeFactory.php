@@ -11,10 +11,10 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ThemeBundle\Factory;
+namespace Bundle\ThemeBundle\Factory;
 
-use Sylius\Bundle\ThemeBundle\Model\Theme;
-use Sylius\Bundle\ThemeBundle\Model\ThemeInterface;
+use Bundle\ThemeBundle\Model\Theme;
+use Bundle\ThemeBundle\Model\ThemeInterface;
 
 final class ThemeFactory implements ThemeFactoryInterface
 {

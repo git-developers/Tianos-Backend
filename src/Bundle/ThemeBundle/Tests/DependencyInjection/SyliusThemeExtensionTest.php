@@ -11,10 +11,10 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ThemeBundle\Tests\DependencyInjection;
+namespace Bundle\ThemeBundle\Tests\DependencyInjection;
 
 use Matthias\SymfonyDependencyInjectionTest\PhpUnit\AbstractExtensionTestCase;
-use Sylius\Bundle\ThemeBundle\DependencyInjection\SyliusThemeExtension;
+use Bundle\ThemeBundle\DependencyInjection\SyliusThemeExtension;
 
 final class SyliusThemeExtensionTest extends AbstractExtensionTestCase
 {

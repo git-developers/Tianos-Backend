@@ -11,11 +11,11 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\ThemeBundle\Configuration\Test;
+namespace spec\Bundle\ThemeBundle\Configuration\Test;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Bundle\ThemeBundle\Configuration\ConfigurationProviderInterface;
-use Sylius\Bundle\ThemeBundle\Configuration\Test\TestThemeConfigurationManagerInterface;
+use Bundle\ThemeBundle\Configuration\ConfigurationProviderInterface;
+use Bundle\ThemeBundle\Configuration\Test\TestThemeConfigurationManagerInterface;
 
 final class TestConfigurationProviderSpec extends ObjectBehavior
 {

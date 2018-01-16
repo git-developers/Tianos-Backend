@@ -11,9 +11,9 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ResourceBundle\DependencyInjection\Driver;
+namespace Bundle\ResourceBundle\DependencyInjection\Driver;
 
-use Sylius\Component\Resource\Metadata\MetadataInterface;
+use Component\Resource\Metadata\MetadataInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 interface DriverInterface

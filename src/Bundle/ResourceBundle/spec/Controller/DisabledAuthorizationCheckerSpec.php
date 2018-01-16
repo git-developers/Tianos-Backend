@@ -11,11 +11,11 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\ResourceBundle\Controller;
+namespace spec\Bundle\ResourceBundle\Controller;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Bundle\ResourceBundle\Controller\AuthorizationCheckerInterface;
-use Sylius\Bundle\ResourceBundle\Controller\RequestConfiguration;
+use Bundle\ResourceBundle\Controller\AuthorizationCheckerInterface;
+use Bundle\ResourceBundle\Controller\RequestConfiguration;
 
 final class DisabledAuthorizationCheckerSpec extends ObjectBehavior
 {

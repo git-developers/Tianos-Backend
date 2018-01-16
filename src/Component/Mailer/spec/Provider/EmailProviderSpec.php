@@ -11,12 +11,12 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Component\Mailer\Provider;
+namespace spec\Component\Mailer\Provider;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Component\Mailer\Factory\EmailFactoryInterface;
-use Sylius\Component\Mailer\Model\EmailInterface;
-use Sylius\Component\Mailer\Provider\EmailProviderInterface;
+use Component\Mailer\Factory\EmailFactoryInterface;
+use Component\Mailer\Model\EmailInterface;
+use Component\Mailer\Provider\EmailProviderInterface;
 
 final class EmailProviderSpec extends ObjectBehavior
 {

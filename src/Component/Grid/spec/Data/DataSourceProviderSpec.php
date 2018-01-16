@@ -11,16 +11,16 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Component\Grid\Data;
+namespace spec\Component\Grid\Data;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Component\Grid\Data\DataSourceInterface;
-use Sylius\Component\Grid\Data\DataSourceProviderInterface;
-use Sylius\Component\Grid\Data\DriverInterface;
-use Sylius\Component\Grid\Data\UnsupportedDriverException;
-use Sylius\Component\Grid\Definition\Grid;
-use Sylius\Component\Grid\Parameters;
-use Sylius\Component\Registry\ServiceRegistryInterface;
+use Component\Grid\Data\DataSourceInterface;
+use Component\Grid\Data\DataSourceProviderInterface;
+use Component\Grid\Data\DriverInterface;
+use Component\Grid\Data\UnsupportedDriverException;
+use Component\Grid\Definition\Grid;
+use Component\Grid\Parameters;
+use Component\Registry\ServiceRegistryInterface;
 
 final class DataSourceProviderSpec extends ObjectBehavior
 {

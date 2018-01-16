@@ -11,9 +11,9 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Component\Customer\Model;
+namespace Component\Customer\Model;
 
-use Sylius\Component\Resource\Model\TimestampableTrait;
+use Component\Resource\Model\TimestampableTrait;
 
 class Customer implements CustomerInterface
 {

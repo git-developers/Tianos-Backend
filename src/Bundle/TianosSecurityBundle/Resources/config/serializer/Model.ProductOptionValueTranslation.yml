@@ -1,4 +1,4 @@
-Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYOptionValueTranslation:
+Component\CRUD_DUMMY\Model\CRUD_DUMMYOptionValueTranslation:
     exclusion_policy: ALL
     xml_root_name: option-value
     properties:

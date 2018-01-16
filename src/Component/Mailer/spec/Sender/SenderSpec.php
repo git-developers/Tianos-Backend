@@ -11,15 +11,15 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Component\Mailer\Sender;
+namespace spec\Component\Mailer\Sender;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Component\Mailer\Model\EmailInterface;
-use Sylius\Component\Mailer\Provider\DefaultSettingsProviderInterface;
-use Sylius\Component\Mailer\Provider\EmailProviderInterface;
-use Sylius\Component\Mailer\Renderer\Adapter\AdapterInterface as RendererAdapterInterface;
-use Sylius\Component\Mailer\Renderer\RenderedEmail;
-use Sylius\Component\Mailer\Sender\Adapter\AdapterInterface as SenderAdapterInterface;
+use Component\Mailer\Model\EmailInterface;
+use Component\Mailer\Provider\DefaultSettingsProviderInterface;
+use Component\Mailer\Provider\EmailProviderInterface;
+use Component\Mailer\Renderer\Adapter\AdapterInterface as RendererAdapterInterface;
+use Component\Mailer\Renderer\RenderedEmail;
+use Component\Mailer\Sender\Adapter\AdapterInterface as SenderAdapterInterface;
 
 final class SenderSpec extends ObjectBehavior
 {

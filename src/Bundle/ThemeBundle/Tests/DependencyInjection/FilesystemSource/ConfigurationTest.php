@@ -11,11 +11,11 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ThemeBundle\Tests\DependencyInjection\FilesystemSource;
+namespace Bundle\ThemeBundle\Tests\DependencyInjection\FilesystemSource;
 
 use Matthias\SymfonyConfigTest\PhpUnit\ConfigurationTestCaseTrait;
-use Sylius\Bundle\ThemeBundle\Configuration\Filesystem\FilesystemConfigurationSourceFactory;
-use Sylius\Bundle\ThemeBundle\DependencyInjection\Configuration;
+use Bundle\ThemeBundle\Configuration\Filesystem\FilesystemConfigurationSourceFactory;
+use Bundle\ThemeBundle\DependencyInjection\Configuration;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 final class ConfigurationTest extends \PHPUnit_Framework_TestCase

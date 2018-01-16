@@ -11,11 +11,11 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ThemeBundle\Tests\DependencyInjection\FilesystemSource;
+namespace Bundle\ThemeBundle\Tests\DependencyInjection\FilesystemSource;
 
 use Matthias\SymfonyDependencyInjectionTest\PhpUnit\AbstractExtensionTestCase;
-use Sylius\Bundle\ThemeBundle\Configuration\Filesystem\FilesystemConfigurationSourceFactory;
-use Sylius\Bundle\ThemeBundle\DependencyInjection\SyliusThemeExtension;
+use Bundle\ThemeBundle\Configuration\Filesystem\FilesystemConfigurationSourceFactory;
+use Bundle\ThemeBundle\DependencyInjection\SyliusThemeExtension;
 
 final class SyliusThemeExtensionTest extends AbstractExtensionTestCase
 {

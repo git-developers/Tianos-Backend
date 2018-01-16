@@ -21,9 +21,9 @@ declare(strict_types=1);
 
 namespace AppBundle\Entity;
 
-use Sylius\Component\Resource\Model\ResourceInterface;
-use Sylius\Component\Resource\Model\TranslatableInterface;
-use Sylius\Component\Resource\Model\TranslatableTrait;
+use Component\Resource\Model\ResourceInterface;
+use Component\Resource\Model\TranslatableInterface;
+use Component\Resource\Model\TranslatableTrait;
 
 class Book implements ResourceInterface, TranslatableInterface
 {

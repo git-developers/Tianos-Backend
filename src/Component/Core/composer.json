@@ -41,10 +41,10 @@
         "bin-dir": "bin"
     },
     "autoload": {
-        "psr-4": { "Sylius\\Component\\Resource\\": "" }
+        "psr-4": { "\Component\\Resource\\": "" }
     },
     "autoload-dev": {
-        "psr-4": { "Sylius\\Component\\Resource\\spec\\": "spec/" }
+        "psr-4": { "\Component\\Resource\\spec\\": "spec/" }
     },
     "minimum-stability": "dev",
     "prefer-stable": true,

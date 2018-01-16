@@ -11,13 +11,13 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Component\User\Security;
+namespace spec\Component\User\Security;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use Sylius\Component\User\Model\UserInterface;
-use Sylius\Component\User\Security\PasswordUpdaterInterface;
-use Sylius\Component\User\Security\UserPasswordEncoderInterface;
+use Component\User\Model\UserInterface;
+use Component\User\Security\PasswordUpdaterInterface;
+use Component\User\Security\UserPasswordEncoderInterface;
 
 final class PasswordUpdaterSpec extends ObjectBehavior
 {

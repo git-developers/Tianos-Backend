@@ -11,10 +11,10 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ResourceBundle\Doctrine\ODM\MongoDB;
+namespace Bundle\ResourceBundle\Doctrine\ODM\MongoDB;
 
 use Doctrine\MongoDB\Query\Builder as QueryBuilder;
-use Sylius\Component\Resource\Repository\TranslatableRepositoryInterface;
+use Component\Resource\Repository\TranslatableRepositoryInterface;
 
 /**
  * Doctrine ORM driver translatable entity repository.

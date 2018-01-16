@@ -21,35 +21,35 @@
     </imports>
 
     <parameters>
-        <parameter key="sylius.state_machine.class">Sylius\Component\Resource\StateMachine\StateMachine</parameter>
+        <parameter key="sylius.state_machine.class">Component\Resource\StateMachine\StateMachine</parameter>
     </parameters>
 
     <services>
-        <service id="sylius.random_generator" class="Sylius\Component\Resource\Generator\RandomnessGenerator" />
+        <service id="sylius.random_generator" class="Component\Resource\Generator\RandomnessGenerator" />
         <service id="sylius.form.type_extension.form.request_handler"
-                 class="Sylius\Bundle\ResourceBundle\Form\Extension\HttpFoundation\HttpFoundationRequestHandler"
+                 class="Bundle\ResourceBundle\Form\Extension\HttpFoundation\HttpFoundationRequestHandler"
                  decorates="form.type_extension.form.request_handler" decoration-priority="256" public="false" />
 
-        <service id="sylius.resource_registry" class="Sylius\Component\Resource\Metadata\Registry" public="false" />
+        <service id="sylius.resource_registry" class="Component\Resource\Metadata\Registry" public="false" />
 
-        <service id="sylius.expression_language" class="Sylius\Bundle\ResourceBundle\ExpressionLanguage\ExpressionLanguage" public="false" />
+        <service id="sylius.expression_language" class="Bundle\ResourceBundle\ExpressionLanguage\ExpressionLanguage" public="false" />
 
-        <service id="sylius.form.extension.type.collection" class="Sylius\Bundle\ResourceBundle\Form\Extension\CollectionTypeExtension">
+        <service id="sylius.form.extension.type.collection" class="Bundle\ResourceBundle\Form\Extension\CollectionTypeExtension">
             <tag name="form.type_extension" extended-type="Symfony\Component\Form\Extension\Core\Type\CollectionType" />
         </service>
 
-        <service id="sylius.form.type.default" class="Sylius\Bundle\ResourceBundle\Form\Type\DefaultResourceType">
+        <service id="sylius.form.type.default" class="Bundle\ResourceBundle\Form\Type\DefaultResourceType">
             <argument type="service" id="sylius.resource_registry" />
             <argument type="service" id="sylius.registry.form_builder" />
             <tag name="form.type" />
         </service>
 
-        <service id="sylius.registry.resource_repository" class="Sylius\Component\Registry\ServiceRegistry" public="false">
-            <argument>Sylius\Component\Resource\Repository\RepositoryInterface</argument>
+        <service id="sylius.registry.resource_repository" class="Component\Registry\ServiceRegistry" public="false">
+            <argument>Component\Resource\Repository\RepositoryInterface</argument>
             <argument>resource repository</argument>
         </service>
-        <service id="sylius.registry.form_builder" class="Sylius\Component\Registry\ServiceRegistry" public="false">
-            <argument>Sylius\Bundle\ResourceBundle\Form\Builder\DefaultFormBuilderInterface</argument>
+        <service id="sylius.registry.form_builder" class="Component\Registry\ServiceRegistry" public="false">
+            <argument>Bundle\ResourceBundle\Form\Builder\DefaultFormBuilderInterface</argument>
             <argument>form builder</argument>
         </service>
     </services>

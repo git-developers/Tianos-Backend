@@ -11,10 +11,10 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ResourceBundle\Controller;
+namespace Bundle\ResourceBundle\Controller;
 
-use Sylius\Component\Resource\Factory\FactoryInterface;
-use Sylius\Component\Resource\Model\ResourceInterface;
+use Component\Resource\Factory\FactoryInterface;
+use Component\Resource\Model\ResourceInterface;
 
 final class NewResourceFactory implements NewResourceFactoryInterface
 {

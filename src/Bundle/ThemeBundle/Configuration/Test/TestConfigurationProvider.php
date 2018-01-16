@@ -11,9 +11,9 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ThemeBundle\Configuration\Test;
+namespace Bundle\ThemeBundle\Configuration\Test;
 
-use Sylius\Bundle\ThemeBundle\Configuration\ConfigurationProviderInterface;
+use Bundle\ThemeBundle\Configuration\ConfigurationProviderInterface;
 
 final class TestConfigurationProvider implements ConfigurationProviderInterface
 {

@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\CRUD_DUMMYBundle\EventListener;
+namespace Bundle\CRUD_DUMMYBundle\EventListener;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\Event\LifecycleEventArgs;
-use Sylius\Component\Attribute\AttributeType\SelectAttributeType;
-use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeInterface;
-use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeValueInterface;
-use Sylius\Component\CRUD_DUMMY\Repository\CRUD_DUMMYAttributeValueRepositoryInterface;
+use Component\Attribute\AttributeType\SelectAttributeType;
+use Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeInterface;
+use Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeValueInterface;
+use Component\CRUD_DUMMY\Repository\CRUD_DUMMYAttributeValueRepositoryInterface;
 
 final class SelectCRUD_DUMMYAttributeChoiceRemoveListener
 {

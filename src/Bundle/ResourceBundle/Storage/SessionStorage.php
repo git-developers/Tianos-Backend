@@ -11,9 +11,9 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ResourceBundle\Storage;
+namespace Bundle\ResourceBundle\Storage;
 
-use Sylius\Component\Resource\Storage\StorageInterface;
+use Component\Resource\Storage\StorageInterface;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 final class SessionStorage implements StorageInterface

@@ -11,11 +11,11 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\GridBundle\Tests\DependencyInjection;
+namespace Bundle\GridBundle\Tests\DependencyInjection;
 
 use Matthias\SymfonyConfigTest\PhpUnit\ConfigurationTestCaseTrait;
-use Sylius\Bundle\GridBundle\DependencyInjection\Configuration;
-use Sylius\Bundle\GridBundle\Doctrine\ORM\Driver;
+use Bundle\GridBundle\DependencyInjection\Configuration;
+use Bundle\GridBundle\Doctrine\ORM\Driver;
 
 final class ConfigurationTest extends \PHPUnit_Framework_TestCase
 {

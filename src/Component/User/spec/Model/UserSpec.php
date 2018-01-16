@@ -11,11 +11,11 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Component\User\Model;
+namespace spec\Component\User\Model;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Component\User\Model\User;
-use Sylius\Component\User\Model\UserInterface;
+use Component\User\Model\User;
+use Component\User\Model\UserInterface;
 
 final class UserSpec extends ObjectBehavior
 {

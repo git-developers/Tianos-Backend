@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ThemeBundle\Translation\Finder;
+namespace Bundle\ThemeBundle\Translation\Finder;
 
 interface TranslationFilesFinderInterface
 {

@@ -11,14 +11,14 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\ThemeBundle\Templating\Cache\Warmer;
+namespace spec\Bundle\ThemeBundle\Templating\Cache\Warmer;
 
 use Doctrine\Common\Cache\Cache;
 use PhpSpec\ObjectBehavior;
-use Sylius\Bundle\ThemeBundle\Locator\ResourceNotFoundException;
-use Sylius\Bundle\ThemeBundle\Model\ThemeInterface;
-use Sylius\Bundle\ThemeBundle\Repository\ThemeRepositoryInterface;
-use Sylius\Bundle\ThemeBundle\Templating\Locator\TemplateLocatorInterface;
+use Bundle\ThemeBundle\Locator\ResourceNotFoundException;
+use Bundle\ThemeBundle\Model\ThemeInterface;
+use Bundle\ThemeBundle\Repository\ThemeRepositoryInterface;
+use Bundle\ThemeBundle\Templating\Locator\TemplateLocatorInterface;
 use Symfony\Bundle\FrameworkBundle\CacheWarmer\TemplateFinderInterface;
 use Symfony\Component\HttpKernel\CacheWarmer\CacheWarmerInterface;
 use Symfony\Component\Templating\TemplateReferenceInterface;

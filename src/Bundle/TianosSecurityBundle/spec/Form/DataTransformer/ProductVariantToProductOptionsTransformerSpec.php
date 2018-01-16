@@ -11,14 +11,14 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\CRUD_DUMMYBundle\Form\DataTransformer;
+namespace spec\Bundle\CRUD_DUMMYBundle\Form\DataTransformer;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use PhpSpec\ObjectBehavior;
-use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYInterface;
-use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYOptionValueInterface;
-use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYVariantInterface;
+use Component\CRUD_DUMMY\Model\CRUD_DUMMYInterface;
+use Component\CRUD_DUMMY\Model\CRUD_DUMMYOptionValueInterface;
+use Component\CRUD_DUMMY\Model\CRUD_DUMMYVariantInterface;
 use Symfony\Component\Form\DataTransformerInterface;
 use Symfony\Component\Form\Exception\TransformationFailedException;
 use Symfony\Component\Form\Exception\UnexpectedTypeException;

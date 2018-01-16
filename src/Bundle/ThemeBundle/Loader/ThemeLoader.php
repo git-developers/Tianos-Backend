@@ -11,15 +11,15 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ThemeBundle\Loader;
+namespace Bundle\ThemeBundle\Loader;
 
-use Sylius\Bundle\ThemeBundle\Configuration\ConfigurationProviderInterface;
-use Sylius\Bundle\ThemeBundle\Factory\ThemeAuthorFactoryInterface;
-use Sylius\Bundle\ThemeBundle\Factory\ThemeFactoryInterface;
-use Sylius\Bundle\ThemeBundle\Factory\ThemeScreenshotFactoryInterface;
-use Sylius\Bundle\ThemeBundle\Model\ThemeAuthor;
-use Sylius\Bundle\ThemeBundle\Model\ThemeInterface;
-use Sylius\Bundle\ThemeBundle\Model\ThemeScreenshot;
+use Bundle\ThemeBundle\Configuration\ConfigurationProviderInterface;
+use Bundle\ThemeBundle\Factory\ThemeAuthorFactoryInterface;
+use Bundle\ThemeBundle\Factory\ThemeFactoryInterface;
+use Bundle\ThemeBundle\Factory\ThemeScreenshotFactoryInterface;
+use Bundle\ThemeBundle\Model\ThemeAuthor;
+use Bundle\ThemeBundle\Model\ThemeInterface;
+use Bundle\ThemeBundle\Model\ThemeScreenshot;
 use Zend\Hydrator\HydrationInterface;
 
 final class ThemeLoader implements ThemeLoaderInterface

@@ -11,14 +11,14 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ResourceBundle\DependencyInjection\Driver;
+namespace Bundle\ResourceBundle\DependencyInjection\Driver;
 
-use Sylius\Bundle\ResourceBundle\DependencyInjection\Driver\Doctrine\DoctrineODMDriver;
-use Sylius\Bundle\ResourceBundle\DependencyInjection\Driver\Doctrine\DoctrineORMDriver;
-use Sylius\Bundle\ResourceBundle\DependencyInjection\Driver\Doctrine\DoctrinePHPCRDriver;
-use Sylius\Bundle\ResourceBundle\DependencyInjection\Driver\Exception\UnknownDriverException;
-use Sylius\Bundle\ResourceBundle\ResourceBundle;
-use Sylius\Component\Resource\Metadata\MetadataInterface;
+use Bundle\ResourceBundle\DependencyInjection\Driver\Doctrine\DoctrineODMDriver;
+use Bundle\ResourceBundle\DependencyInjection\Driver\Doctrine\DoctrineORMDriver;
+use Bundle\ResourceBundle\DependencyInjection\Driver\Doctrine\DoctrinePHPCRDriver;
+use Bundle\ResourceBundle\DependencyInjection\Driver\Exception\UnknownDriverException;
+use Bundle\ResourceBundle\ResourceBundle;
+use Component\Resource\Metadata\MetadataInterface;
 
 final class DriverProvider
 {

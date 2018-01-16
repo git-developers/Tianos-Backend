@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ThemeBundle\Filesystem;
+namespace Bundle\ThemeBundle\Filesystem;
 
 use Symfony\Component\Filesystem\Filesystem as BaseFilesystem;
 

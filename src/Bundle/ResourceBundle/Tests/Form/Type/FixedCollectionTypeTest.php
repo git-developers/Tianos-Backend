@@ -11,9 +11,9 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ResourceBundle\Tests\Form\Type;
+namespace Bundle\ResourceBundle\Tests\Form\Type;
 
-use Sylius\Bundle\ResourceBundle\Form\Type\FixedCollectionType;
+use Bundle\ResourceBundle\Form\Type\FixedCollectionType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Test\TypeTestCase;
 

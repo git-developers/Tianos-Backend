@@ -11,10 +11,10 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Component\Grid\Data;
+namespace Component\Grid\Data;
 
-use Sylius\Component\Grid\Definition\Grid;
-use Sylius\Component\Grid\Parameters;
+use Component\Grid\Definition\Grid;
+use Component\Grid\Parameters;
 
 interface DataSourceProviderInterface
 {

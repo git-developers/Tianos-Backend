@@ -11,9 +11,9 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ThemeBundle\Context;
+namespace Bundle\ThemeBundle\Context;
 
-use Sylius\Bundle\ThemeBundle\Model\ThemeInterface;
+use Bundle\ThemeBundle\Model\ThemeInterface;
 
 interface ThemeContextInterface
 {

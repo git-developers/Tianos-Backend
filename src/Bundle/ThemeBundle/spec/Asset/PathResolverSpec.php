@@ -11,11 +11,11 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\ThemeBundle\Asset;
+namespace spec\Bundle\ThemeBundle\Asset;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Bundle\ThemeBundle\Asset\PathResolverInterface;
-use Sylius\Bundle\ThemeBundle\Model\ThemeInterface;
+use Bundle\ThemeBundle\Asset\PathResolverInterface;
+use Bundle\ThemeBundle\Model\ThemeInterface;
 
 final class PathResolverSpec extends ObjectBehavior
 {

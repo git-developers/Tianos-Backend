@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Component\Registry;
+namespace spec\Component\Registry;
 
 use PhpSpec\ObjectBehavior;
 

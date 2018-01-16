@@ -7,6 +7,7 @@ imports:
     - { resource: "@CoreBundle/Resources/config/services.yml" }
     - { resource: "@GridBundle/Resources/config/services.yml" }
     - { resource: "@ProductBundle/Resources/config/services.yml" }
+    - { resource: "@ClientBundle/Resources/config/services.yml" }
     - { resource: "@BackendBundle/Resources/config/services.yml" }
     - { resource: "@FrontendBundle/Resources/config/services.yml" }
     - { resource: "@ResourceBundle/Resources/config/services.yml" }

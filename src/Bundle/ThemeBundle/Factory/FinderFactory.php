@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ThemeBundle\Factory;
+namespace Bundle\ThemeBundle\Factory;
 
 use Symfony\Component\Finder\Finder;
 

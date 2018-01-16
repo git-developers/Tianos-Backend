@@ -11,13 +11,13 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Component\Grid\Definition;
+namespace spec\Component\Grid\Definition;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Component\Grid\Definition\Action;
-use Sylius\Component\Grid\Definition\ActionGroup;
-use Sylius\Component\Grid\Definition\Field;
-use Sylius\Component\Grid\Definition\Filter;
+use Component\Grid\Definition\Action;
+use Component\Grid\Definition\ActionGroup;
+use Component\Grid\Definition\Field;
+use Component\Grid\Definition\Filter;
 
 final class GridSpec extends ObjectBehavior
 {

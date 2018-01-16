@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Component\Customer\Model;
+namespace Component\Customer\Model;
 
 interface CustomerAwareInterface
 {

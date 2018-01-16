@@ -11,10 +11,10 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ThemeBundle\Tests\DependencyInjection;
+namespace Bundle\ThemeBundle\Tests\DependencyInjection;
 
 use Matthias\SymfonyConfigTest\PhpUnit\ConfigurationTestCaseTrait;
-use Sylius\Bundle\ThemeBundle\DependencyInjection\Configuration;
+use Bundle\ThemeBundle\DependencyInjection\Configuration;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
 final class ConfigurationTest extends \PHPUnit_Framework_TestCase

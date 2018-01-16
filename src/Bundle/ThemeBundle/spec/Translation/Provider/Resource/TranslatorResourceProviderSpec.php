@@ -11,11 +11,11 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\ThemeBundle\Translation\Provider;
+namespace spec\Bundle\ThemeBundle\Translation\Provider;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Bundle\ThemeBundle\Translation\Provider\Resource\TranslatorResourceProviderInterface;
-use Sylius\Bundle\ThemeBundle\Translation\Resource\TranslationResource;
+use Bundle\ThemeBundle\Translation\Provider\Resource\TranslatorResourceProviderInterface;
+use Bundle\ThemeBundle\Translation\Resource\TranslationResource;
 
 final class TranslatorResourceProviderSpec extends ObjectBehavior
 {

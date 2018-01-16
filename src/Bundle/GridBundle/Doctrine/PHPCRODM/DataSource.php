@@ -11,14 +11,14 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\GridBundle\Doctrine\PHPCRODM;
+namespace Bundle\GridBundle\Doctrine\PHPCRODM;
 
 use Doctrine\ODM\PHPCR\Query\Builder\QueryBuilder;
 use Pagerfanta\Adapter\DoctrineODMPhpcrAdapter;
 use Pagerfanta\Pagerfanta;
-use Sylius\Component\Grid\Data\DataSourceInterface;
-use Sylius\Component\Grid\Data\ExpressionBuilderInterface;
-use Sylius\Component\Grid\Parameters;
+use Component\Grid\Data\DataSourceInterface;
+use Component\Grid\Data\ExpressionBuilderInterface;
+use Component\Grid\Parameters;
 
 final class DataSource implements DataSourceInterface
 {

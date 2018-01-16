@@ -11,11 +11,11 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\UiBundle\Twig;
+namespace spec\Bundle\UiBundle\Twig;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use PhpSpec\ObjectBehavior;
-use Sylius\Bundle\UiBundle\spec\Fixtures\SampleInterface;
+use Bundle\UiBundle\spec\Fixtures\SampleInterface;
 use Symfony\Component\PropertyAccess\Exception\NoSuchPropertyException;
 
 final class SortByExtensionSpec extends ObjectBehavior

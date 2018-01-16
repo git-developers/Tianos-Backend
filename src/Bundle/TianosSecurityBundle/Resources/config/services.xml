@@ -17,41 +17,41 @@
     </imports>
 
     <services>
-        <service id="sylius.controller.product_slug" class="Sylius\Bundle\CRUD_DUMMYBundle\Controller\CRUD_DUMMYSlugController">
+        <service id="sylius.controller.product_slug" class="Bundle\CRUD_DUMMYBundle\Controller\CRUD_DUMMYSlugController">
             <call method="setContainer">
                 <argument type="service" id="service_container" />
             </call>
         </service>
 
-        <service id="sylius.custom_factory.product_variant" class="Sylius\Component\CRUD_DUMMY\Factory\CRUD_DUMMYVariantFactory" decorates="sylius.factory.product_variant" decoration-priority="256" public="false">
+        <service id="sylius.custom_factory.product_variant" class="Component\CRUD_DUMMY\Factory\CRUD_DUMMYVariantFactory" decorates="sylius.factory.product_variant" decoration-priority="256" public="false">
             <argument type="service" id="sylius.custom_factory.product_variant.inner" />
         </service>
-        <service id="sylius.custom_factory.product" class="Sylius\Component\CRUD_DUMMY\Factory\CRUD_DUMMYFactory" decorates="sylius.factory.product" decoration-priority="256" public="false">
+        <service id="sylius.custom_factory.product" class="Component\CRUD_DUMMY\Factory\CRUD_DUMMYFactory" decorates="sylius.factory.product" decoration-priority="256" public="false">
             <argument type="service" id="sylius.custom_factory.product.inner" />
             <argument type="service" id="sylius.factory.product_variant" />
         </service>
 
-        <service id="sylius.validator.product_variant_combination" class="Sylius\Bundle\CRUD_DUMMYBundle\Validator\CRUD_DUMMYVariantCombinationValidator">
+        <service id="sylius.validator.product_variant_combination" class="Bundle\CRUD_DUMMYBundle\Validator\CRUD_DUMMYVariantCombinationValidator">
             <argument type="service" id="sylius.checker.product_variants_parity" />
             <tag name="validator.constraint_validator" alias="sylius.validator.product_variant_combination" />
         </service>
-        <service id="sylius.validator.product_code_uniqueness" class="Sylius\Bundle\CRUD_DUMMYBundle\Validator\UniqueSimpleCRUD_DUMMYCodeValidator">
+        <service id="sylius.validator.product_code_uniqueness" class="Bundle\CRUD_DUMMYBundle\Validator\UniqueSimpleCRUD_DUMMYCodeValidator">
             <argument type="service" id="sylius.repository.product_variant" />
             <tag name="validator.constraint_validator" alias="sylius.validator.unique_simple_product_code" />
         </service>
 
-        <service id="sylius.generator.product_variant" class="Sylius\Component\CRUD_DUMMY\Generator\CRUD_DUMMYVariantGenerator">
+        <service id="sylius.generator.product_variant" class="Component\CRUD_DUMMY\Generator\CRUD_DUMMYVariantGenerator">
             <argument type="service" id="sylius.factory.product_variant" />
             <argument type="service" id="sylius.checker.product_variants_parity" />
         </service>
-        <service id="sylius.checker.product_variants_parity" class="Sylius\Component\CRUD_DUMMY\Checker\CRUD_DUMMYVariantsParityChecker" />
-        <service id="sylius.generator.slug" class="Sylius\Component\CRUD_DUMMY\Generator\SlugGenerator" />
+        <service id="sylius.checker.product_variants_parity" class="Component\CRUD_DUMMY\Checker\CRUD_DUMMYVariantsParityChecker" />
+        <service id="sylius.generator.slug" class="Component\CRUD_DUMMY\Generator\SlugGenerator" />
 
-        <service id="sylius.product_variant_resolver.default" class="Sylius\Component\CRUD_DUMMY\Resolver\DefaultCRUD_DUMMYVariantResolver">
+        <service id="sylius.product_variant_resolver.default" class="Component\CRUD_DUMMY\Resolver\DefaultCRUD_DUMMYVariantResolver">
             <tag name="sylius.product_variant_resolver.default" type="default" />
         </service>
 
-        <service id="sylius.listener.select_product_attribute_choice_remove" class="Sylius\Bundle\CRUD_DUMMYBundle\EventListener\SelectCRUD_DUMMYAttributeChoiceRemoveListener">
+        <service id="sylius.listener.select_product_attribute_choice_remove" class="Bundle\CRUD_DUMMYBundle\EventListener\SelectCRUD_DUMMYAttributeChoiceRemoveListener">
             <argument>%sylius.model.product_attribute_value.class%</argument>
             <tag name="doctrine.event_listener" event="postUpdate" />
         </service>

@@ -11,11 +11,11 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ResourceBundle\Tests\Form\Type;
+namespace Bundle\ResourceBundle\Tests\Form\Type;
 
 use Prophecy\Prophecy\ObjectProphecy;
-use Sylius\Bundle\ResourceBundle\Form\Type\ResourceTranslationsType;
-use Sylius\Component\Resource\Translation\Provider\TranslationLocaleProviderInterface;
+use Bundle\ResourceBundle\Form\Type\ResourceTranslationsType;
+use Component\Resource\Translation\Provider\TranslationLocaleProviderInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\PreloadedExtension;
 use Symfony\Component\Form\Test\TypeTestCase;

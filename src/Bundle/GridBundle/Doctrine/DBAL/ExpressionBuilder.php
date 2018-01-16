@@ -11,10 +11,10 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\GridBundle\Doctrine\DBAL;
+namespace Bundle\GridBundle\Doctrine\DBAL;
 
 use Doctrine\DBAL\Query\QueryBuilder;
-use Sylius\Component\Grid\Data\ExpressionBuilderInterface;
+use Component\Grid\Data\ExpressionBuilderInterface;
 
 final class ExpressionBuilder implements ExpressionBuilderInterface
 {

@@ -11,10 +11,10 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\ThemeBundle\Loader;
+namespace spec\Bundle\ThemeBundle\Loader;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Bundle\ThemeBundle\Model\ThemeInterface;
+use Bundle\ThemeBundle\Model\ThemeInterface;
 
 final class CircularDependencyFoundExceptionSpec extends ObjectBehavior
 {

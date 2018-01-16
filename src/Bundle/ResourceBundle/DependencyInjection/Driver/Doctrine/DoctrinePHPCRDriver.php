@@ -11,13 +11,13 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ResourceBundle\DependencyInjection\Driver\Doctrine;
+namespace Bundle\ResourceBundle\DependencyInjection\Driver\Doctrine;
 
-use Sylius\Bundle\ResourceBundle\Doctrine\ODM\PHPCR\EventListener\DefaultParentListener;
-use Sylius\Bundle\ResourceBundle\Doctrine\ODM\PHPCR\EventListener\NameFilterListener;
-use Sylius\Bundle\ResourceBundle\Doctrine\ODM\PHPCR\EventListener\NameResolverListener;
-use Sylius\Bundle\ResourceBundle\ResourceBundle;
-use Sylius\Component\Resource\Metadata\MetadataInterface;
+use Bundle\ResourceBundle\Doctrine\ODM\PHPCR\EventListener\DefaultParentListener;
+use Bundle\ResourceBundle\Doctrine\ODM\PHPCR\EventListener\NameFilterListener;
+use Bundle\ResourceBundle\Doctrine\ODM\PHPCR\EventListener\NameResolverListener;
+use Bundle\ResourceBundle\ResourceBundle;
+use Component\Resource\Metadata\MetadataInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Exception\InvalidArgumentException;

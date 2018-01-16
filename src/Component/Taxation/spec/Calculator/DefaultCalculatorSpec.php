@@ -11,11 +11,11 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Component\Taxation\Calculator;
+namespace spec\Component\Taxation\Calculator;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Component\Taxation\Calculator\CalculatorInterface;
-use Sylius\Component\Taxation\Model\TaxRateInterface;
+use Component\Taxation\Calculator\CalculatorInterface;
+use Component\Taxation\Model\TaxRateInterface;
 
 final class DefaultCalculatorSpec extends ObjectBehavior
 {

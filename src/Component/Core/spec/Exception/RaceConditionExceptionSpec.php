@@ -11,10 +11,10 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Component\Resource\Exception;
+namespace spec\Component\Resource\Exception;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Component\Resource\Exception\UpdateHandlingException;
+use Component\Resource\Exception\UpdateHandlingException;
 
 final class RaceConditionExceptionSpec extends ObjectBehavior
 {

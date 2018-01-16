@@ -21,8 +21,8 @@ declare(strict_types=1);
 
 namespace AppBundle\Entity;
 
-use Sylius\Component\Resource\Model\AbstractTranslation;
-use Sylius\Component\Resource\Model\ResourceInterface;
+use Component\Resource\Model\AbstractTranslation;
+use Component\Resource\Model\ResourceInterface;
 
 class BookTranslation extends AbstractTranslation implements ResourceInterface
 {

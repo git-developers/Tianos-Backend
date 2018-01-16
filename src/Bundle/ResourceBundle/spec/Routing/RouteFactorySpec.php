@@ -11,10 +11,10 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\ResourceBundle\Routing;
+namespace spec\Bundle\ResourceBundle\Routing;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Bundle\ResourceBundle\Routing\RouteFactoryInterface;
+use Bundle\ResourceBundle\Routing\RouteFactoryInterface;
 use Symfony\Component\Routing\Route;
 use Symfony\Component\Routing\RouteCollection;
 

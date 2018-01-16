@@ -11,12 +11,12 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\ResourceBundle\Validator;
+namespace spec\Bundle\ResourceBundle\Validator;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use Sylius\Bundle\ResourceBundle\Validator\Constraints\Disabled;
-use Sylius\Component\Resource\Model\ToggleableInterface;
+use Bundle\ResourceBundle\Validator\Constraints\Disabled;
+use Component\Resource\Model\ToggleableInterface;
 use Symfony\Component\Validator\ConstraintValidatorInterface;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 

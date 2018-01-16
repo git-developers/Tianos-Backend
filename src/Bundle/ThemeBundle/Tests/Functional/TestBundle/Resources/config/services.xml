@@ -13,7 +13,7 @@ file that was distributed with this source code.
 
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-        <service id="test.sylius_theme.request_listener" class="Sylius\Bundle\ThemeBundle\Tests\Functional\TestBundle\Listener\RequestListener">
+        <service id="test.sylius_theme.request_listener" class="Bundle\ThemeBundle\Tests\Functional\TestBundle\Listener\RequestListener">
             <argument type="service" id="sylius.repository.theme" />
             <argument type="service" id="sylius.theme.context.settable" />
             <tag name="kernel.event_listener" event="kernel.request" method="onKernelRequest" />

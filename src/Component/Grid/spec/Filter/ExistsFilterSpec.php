@@ -11,14 +11,14 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Component\Grid\Filter;
+namespace spec\Component\Grid\Filter;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use Sylius\Component\Grid\Data\DataSourceInterface;
-use Sylius\Component\Grid\Data\ExpressionBuilderInterface;
-use Sylius\Component\Grid\Filter\ExistsFilter;
-use Sylius\Component\Grid\Filtering\FilterInterface;
+use Component\Grid\Data\DataSourceInterface;
+use Component\Grid\Data\ExpressionBuilderInterface;
+use Component\Grid\Filter\ExistsFilter;
+use Component\Grid\Filtering\FilterInterface;
 
 final class ExistsFilterSpec extends ObjectBehavior
 {

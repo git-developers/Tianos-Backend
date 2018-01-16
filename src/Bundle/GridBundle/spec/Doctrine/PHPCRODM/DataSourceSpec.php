@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\GridBundle\Doctrine\PHPCRODM;
+namespace spec\Bundle\GridBundle\Doctrine\PHPCRODM;
 
 use Doctrine\Common\Collections\Expr\Comparison;
 use Doctrine\Common\Collections\Expr\Value;
@@ -24,9 +24,9 @@ use Doctrine\ODM\PHPCR\Query\Query;
 use Pagerfanta\Pagerfanta;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use Sylius\Bundle\GridBundle\Doctrine\PHPCRODM\ExpressionBuilderInterface;
-use Sylius\Component\Grid\Data\DataSourceInterface;
-use Sylius\Component\Grid\Parameters;
+use Bundle\GridBundle\Doctrine\PHPCRODM\ExpressionBuilderInterface;
+use Component\Grid\Data\DataSourceInterface;
+use Component\Grid\Parameters;
 
 /**
  * @require Doctrine\ODM\PHPCR\DocumentManagerInterface

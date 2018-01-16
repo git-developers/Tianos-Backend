@@ -11,11 +11,11 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\ThemeBundle\Factory;
+namespace spec\Bundle\ThemeBundle\Factory;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Bundle\ThemeBundle\Factory\ThemeFactoryInterface;
-use Sylius\Bundle\ThemeBundle\Model\ThemeInterface;
+use Bundle\ThemeBundle\Factory\ThemeFactoryInterface;
+use Bundle\ThemeBundle\Model\ThemeInterface;
 
 final class ThemeFactorySpec extends ObjectBehavior
 {

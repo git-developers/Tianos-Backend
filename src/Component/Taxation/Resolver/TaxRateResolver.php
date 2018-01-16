@@ -11,11 +11,11 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Component\Taxation\Resolver;
+namespace Component\Taxation\Resolver;
 
-use Sylius\Component\Resource\Repository\RepositoryInterface;
-use Sylius\Component\Taxation\Model\TaxableInterface;
-use Sylius\Component\Taxation\Model\TaxRateInterface;
+use Component\Resource\Repository\RepositoryInterface;
+use Component\Taxation\Model\TaxableInterface;
+use Component\Taxation\Model\TaxRateInterface;
 
 class TaxRateResolver implements TaxRateResolverInterface
 {

@@ -11,12 +11,12 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\ResourceBundle\Routing;
+namespace spec\Bundle\ResourceBundle\Routing;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Bundle\ResourceBundle\Routing\RouteFactoryInterface;
-use Sylius\Component\Resource\Metadata\MetadataInterface;
-use Sylius\Component\Resource\Metadata\RegistryInterface;
+use Bundle\ResourceBundle\Routing\RouteFactoryInterface;
+use Component\Resource\Metadata\MetadataInterface;
+use Component\Resource\Metadata\RegistryInterface;
 use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\Routing\Route;

@@ -11,14 +11,14 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\ResourceBundle\Controller;
+namespace spec\Bundle\ResourceBundle\Controller;
 
 use PhpSpec\ObjectBehavior;
 use SM\Factory\FactoryInterface;
 use SM\StateMachine\StateMachineInterface;
-use Sylius\Bundle\ResourceBundle\Controller\RequestConfiguration;
-use Sylius\Bundle\ResourceBundle\Controller\StateMachineInterface as ResourceStateMachineInterface;
-use Sylius\Component\Resource\Model\ResourceInterface;
+use Bundle\ResourceBundle\Controller\RequestConfiguration;
+use Bundle\ResourceBundle\Controller\StateMachineInterface as ResourceStateMachineInterface;
+use Component\Resource\Model\ResourceInterface;
 
 final class StateMachineSpec extends ObjectBehavior
 {

@@ -11,11 +11,11 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ResourceBundle\Tests\DependencyInjection\Compiler;
+namespace Bundle\ResourceBundle\Tests\DependencyInjection\Compiler;
 
 use Matthias\SymfonyDependencyInjectionTest\PhpUnit\AbstractCompilerPassTestCase;
-use Sylius\Bundle\ResourceBundle\DependencyInjection\Compiler\RegisterResourcesPass;
-use Sylius\Component\Resource\Model\ResourceInterface;
+use Bundle\ResourceBundle\DependencyInjection\Compiler\RegisterResourcesPass;
+use Component\Resource\Model\ResourceInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 

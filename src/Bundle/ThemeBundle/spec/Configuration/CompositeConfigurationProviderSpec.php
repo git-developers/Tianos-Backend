@@ -11,10 +11,10 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\ThemeBundle\Configuration;
+namespace spec\Bundle\ThemeBundle\Configuration;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Bundle\ThemeBundle\Configuration\ConfigurationProviderInterface;
+use Bundle\ThemeBundle\Configuration\ConfigurationProviderInterface;
 
 final class CompositeConfigurationProviderSpec extends ObjectBehavior
 {

@@ -11,11 +11,11 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\ThemeBundle\Configuration\Filesystem;
+namespace spec\Bundle\ThemeBundle\Configuration\Filesystem;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Bundle\ThemeBundle\Configuration\Filesystem\ConfigurationLoaderInterface;
-use Sylius\Bundle\ThemeBundle\Filesystem\FilesystemInterface;
+use Bundle\ThemeBundle\Configuration\Filesystem\ConfigurationLoaderInterface;
+use Bundle\ThemeBundle\Filesystem\FilesystemInterface;
 
 final class JsonFileConfigurationLoaderSpec extends ObjectBehavior
 {

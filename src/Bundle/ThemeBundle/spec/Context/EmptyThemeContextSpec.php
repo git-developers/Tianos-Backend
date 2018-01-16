@@ -11,10 +11,10 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\ThemeBundle\Context;
+namespace spec\Bundle\ThemeBundle\Context;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Bundle\ThemeBundle\Context\ThemeContextInterface;
+use Bundle\ThemeBundle\Context\ThemeContextInterface;
 
 final class EmptyThemeContextSpec extends ObjectBehavior
 {

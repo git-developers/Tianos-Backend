@@ -11,15 +11,15 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Component\Resource\Repository;
+namespace spec\Component\Resource\Repository;
 
 use Pagerfanta\Pagerfanta;
 use PhpSpec\ObjectBehavior;
-use spec\Sylius\Component\Resource\Fixtures\SampleBookResourceInterface;
-use Sylius\Component\Resource\Exception\UnexpectedTypeException;
-use Sylius\Component\Resource\Model\ResourceInterface;
-use Sylius\Component\Resource\Repository\Exception\ExistingResourceException;
-use Sylius\Component\Resource\Repository\RepositoryInterface;
+use spec\Component\Resource\Fixtures\SampleBookResourceInterface;
+use Component\Resource\Exception\UnexpectedTypeException;
+use Component\Resource\Model\ResourceInterface;
+use Component\Resource\Repository\Exception\ExistingResourceException;
+use Component\Resource\Repository\RepositoryInterface;
 
 require_once __DIR__ . '/../Fixtures/SampleBookResourceInterface.php';
 

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Component\Taxation\Model;
+namespace spec\Component\Taxation\Model;
 
 use PhpSpec\ObjectBehavior;
 use Component\Taxation\Model\TaxCategoryInterface;

@@ -11,10 +11,10 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ResourceBundle\Controller;
+namespace Bundle\ResourceBundle\Controller;
 
-use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
-use Sylius\Component\Resource\Model\ResourceInterface;
+use Bundle\ResourceBundle\Event\ResourceControllerEvent;
+use Component\Resource\Model\ResourceInterface;
 
 interface FlashHelperInterface
 {

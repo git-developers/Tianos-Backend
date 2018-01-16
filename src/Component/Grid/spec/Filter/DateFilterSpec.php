@@ -11,12 +11,12 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Component\Grid\Filter;
+namespace spec\Component\Grid\Filter;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Component\Grid\Data\DataSourceInterface;
-use Sylius\Component\Grid\Data\ExpressionBuilderInterface;
-use Sylius\Component\Grid\Filtering\FilterInterface;
+use Component\Grid\Data\DataSourceInterface;
+use Component\Grid\Data\ExpressionBuilderInterface;
+use Component\Grid\Filtering\FilterInterface;
 
 final class DateFilterSpec extends ObjectBehavior
 {

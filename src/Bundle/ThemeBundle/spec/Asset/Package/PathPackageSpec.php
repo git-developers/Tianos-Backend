@@ -11,12 +11,12 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\ThemeBundle\Asset\Package;
+namespace spec\Bundle\ThemeBundle\Asset\Package;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Bundle\ThemeBundle\Asset\PathResolverInterface;
-use Sylius\Bundle\ThemeBundle\Context\ThemeContextInterface;
-use Sylius\Bundle\ThemeBundle\Model\ThemeInterface;
+use Bundle\ThemeBundle\Asset\PathResolverInterface;
+use Bundle\ThemeBundle\Context\ThemeContextInterface;
+use Bundle\ThemeBundle\Model\ThemeInterface;
 use Symfony\Component\Asset\PackageInterface;
 use Symfony\Component\Asset\VersionStrategy\VersionStrategyInterface;
 

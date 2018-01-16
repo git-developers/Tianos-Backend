@@ -12,7 +12,7 @@
 -->
 
 <constraint-mapping xmlns="http://symfony.com/schema/dic/constraint-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping http://symfony.com/schema/dic/services/constraint-mapping-1.0.xsd">
-    <class name="Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYVariant">
+    <class name="Component\CRUD_DUMMY\Model\CRUD_DUMMYVariant">
         <constraint name="Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity">
             <option name="fields">code</option>
             <option name="message">sylius.product_variant.code.unique</option>
@@ -29,7 +29,7 @@
                 <option name="groups">sylius</option>
             </constraint>
         </property>
-        <constraint name="Sylius\Bundle\CRUD_DUMMYBundle\Validator\Constraint\CRUD_DUMMYVariantCombination">
+        <constraint name="Bundle\CRUD_DUMMYBundle\Validator\Constraint\CRUD_DUMMYVariantCombination">
             <option name="groups">sylius</option>
         </constraint>
     </class>

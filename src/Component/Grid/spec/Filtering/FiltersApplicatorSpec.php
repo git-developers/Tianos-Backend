@@ -11,18 +11,18 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Component\Grid\Filtering;
+namespace spec\Component\Grid\Filtering;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use Sylius\Component\Grid\Data\DataSourceInterface;
-use Sylius\Component\Grid\Definition\Filter;
-use Sylius\Component\Grid\Definition\Grid;
-use Sylius\Component\Grid\Filtering\FilterInterface;
-use Sylius\Component\Grid\Filtering\FiltersApplicatorInterface;
-use Sylius\Component\Grid\Filtering\FiltersCriteriaResolverInterface;
-use Sylius\Component\Grid\Parameters;
-use Sylius\Component\Registry\ServiceRegistryInterface;
+use Component\Grid\Data\DataSourceInterface;
+use Component\Grid\Definition\Filter;
+use Component\Grid\Definition\Grid;
+use Component\Grid\Filtering\FilterInterface;
+use Component\Grid\Filtering\FiltersApplicatorInterface;
+use Component\Grid\Filtering\FiltersCriteriaResolverInterface;
+use Component\Grid\Parameters;
+use Component\Registry\ServiceRegistryInterface;
 
 final class FiltersApplicatorSpec extends ObjectBehavior
 {

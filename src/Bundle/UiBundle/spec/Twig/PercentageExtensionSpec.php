@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\UiBundle\Twig;
+namespace spec\Bundle\UiBundle\Twig;
 
 use PhpSpec\ObjectBehavior;
 

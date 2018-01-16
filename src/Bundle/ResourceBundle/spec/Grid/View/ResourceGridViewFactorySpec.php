@@ -11,17 +11,17 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\ResourceBundle\Grid\View;
+namespace spec\Bundle\ResourceBundle\Grid\View;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Bundle\ResourceBundle\Controller\ParametersParserInterface;
-use Sylius\Bundle\ResourceBundle\Controller\RequestConfiguration;
-use Sylius\Bundle\ResourceBundle\Grid\View\ResourceGridView;
-use Sylius\Bundle\ResourceBundle\Grid\View\ResourceGridViewFactoryInterface;
-use Sylius\Component\Grid\Data\DataProviderInterface;
-use Sylius\Component\Grid\Definition\Grid;
-use Sylius\Component\Grid\Parameters;
-use Sylius\Component\Resource\Metadata\MetadataInterface;
+use Bundle\ResourceBundle\Controller\ParametersParserInterface;
+use Bundle\ResourceBundle\Controller\RequestConfiguration;
+use Bundle\ResourceBundle\Grid\View\ResourceGridView;
+use Bundle\ResourceBundle\Grid\View\ResourceGridViewFactoryInterface;
+use Component\Grid\Data\DataProviderInterface;
+use Component\Grid\Definition\Grid;
+use Component\Grid\Parameters;
+use Component\Resource\Metadata\MetadataInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 final class ResourceGridViewFactorySpec extends ObjectBehavior

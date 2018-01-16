@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\CRUD_DUMMYBundle\Validator\Constraint;
+namespace Bundle\CRUD_DUMMYBundle\Validator\Constraint;
 
 use Symfony\Component\Validator\Constraint;
 

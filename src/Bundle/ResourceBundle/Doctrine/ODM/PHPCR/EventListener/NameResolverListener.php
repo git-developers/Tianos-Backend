@@ -11,11 +11,11 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ResourceBundle\Doctrine\ODM\PHPCR\EventListener;
+namespace Bundle\ResourceBundle\Doctrine\ODM\PHPCR\EventListener;
 
 use Doctrine\ODM\PHPCR\DocumentManagerInterface;
 use Doctrine\ODM\PHPCR\Mapping\ClassMetadata;
-use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
+use Bundle\ResourceBundle\Event\ResourceControllerEvent;
 
 /**
  * Handles the resolution of the PHPCR node name field.

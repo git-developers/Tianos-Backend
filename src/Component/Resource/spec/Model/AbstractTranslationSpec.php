@@ -11,19 +11,19 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Component\Resource\Model;
+namespace spec\Component\Resource\Model;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use Sylius\Component\Resource\Model\AbstractTranslation;
-use Sylius\Component\Resource\Model\TranslatableInterface;
-use Sylius\Component\Resource\Model\TranslationInterface;
+use Component\Resource\Model\AbstractTranslation;
+use Component\Resource\Model\TranslatableInterface;
+use Component\Resource\Model\TranslationInterface;
 
 final class AbstractTranslationSpec extends ObjectBehavior
 {
     function let(): void
     {
-        $this->beAnInstanceOf('spec\Sylius\Component\Resource\Model\ConcreteTranslation');
+        $this->beAnInstanceOf('spec\Component\Resource\Model\ConcreteTranslation');
     }
 
     function it_is_a_translation(): void

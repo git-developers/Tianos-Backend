@@ -13,9 +13,9 @@ declare(strict_types=1);
 
 namespace Bundle\GridBundle;
 
-use Sylius\Bundle\GridBundle\DependencyInjection\Compiler\RegisterDriversPass;
-use Sylius\Bundle\GridBundle\DependencyInjection\Compiler\RegisterFieldTypesPass;
-use Sylius\Bundle\GridBundle\DependencyInjection\Compiler\RegisterFiltersPass;
+use Bundle\GridBundle\DependencyInjection\Compiler\RegisterDriversPass;
+use Bundle\GridBundle\DependencyInjection\Compiler\RegisterFieldTypesPass;
+use Bundle\GridBundle\DependencyInjection\Compiler\RegisterFiltersPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 

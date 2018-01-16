@@ -11,15 +11,15 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\ThemeBundle\Templating\Locator;
+namespace spec\Bundle\ThemeBundle\Templating\Locator;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use Sylius\Bundle\ThemeBundle\Context\ThemeContextInterface;
-use Sylius\Bundle\ThemeBundle\HierarchyProvider\ThemeHierarchyProviderInterface;
-use Sylius\Bundle\ThemeBundle\Locator\ResourceNotFoundException;
-use Sylius\Bundle\ThemeBundle\Model\ThemeInterface;
-use Sylius\Bundle\ThemeBundle\Templating\Locator\TemplateLocatorInterface;
+use Bundle\ThemeBundle\Context\ThemeContextInterface;
+use Bundle\ThemeBundle\HierarchyProvider\ThemeHierarchyProviderInterface;
+use Bundle\ThemeBundle\Locator\ResourceNotFoundException;
+use Bundle\ThemeBundle\Model\ThemeInterface;
+use Bundle\ThemeBundle\Templating\Locator\TemplateLocatorInterface;
 use Symfony\Component\Config\FileLocatorInterface;
 use Symfony\Component\Templating\TemplateReferenceInterface;
 

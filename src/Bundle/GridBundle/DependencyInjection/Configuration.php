@@ -11,10 +11,10 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\GridBundle\DependencyInjection;
+namespace Bundle\GridBundle\DependencyInjection;
 
-use Sylius\Bundle\GridBundle\Doctrine\ORM\Driver as DoctrineORMDriver;
-use Sylius\Bundle\GridBundle\SyliusGridBundle;
+use Bundle\GridBundle\Doctrine\ORM\Driver as DoctrineORMDriver;
+use Bundle\GridBundle\SyliusGridBundle;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;

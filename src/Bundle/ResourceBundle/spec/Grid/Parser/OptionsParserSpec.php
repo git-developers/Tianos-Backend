@@ -11,11 +11,11 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\ResourceBundle\Grid\Parser;
+namespace spec\Bundle\ResourceBundle\Grid\Parser;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Bundle\ResourceBundle\Grid\Parser\OptionsParserInterface;
-use Sylius\Component\Resource\Model\ResourceInterface;
+use Bundle\ResourceBundle\Grid\Parser\OptionsParserInterface;
+use Component\Resource\Model\ResourceInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 use Symfony\Component\HttpFoundation\Request;

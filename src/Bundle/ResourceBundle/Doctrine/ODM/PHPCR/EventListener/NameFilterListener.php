@@ -11,10 +11,10 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ResourceBundle\Doctrine\ODM\PHPCR\EventListener;
+namespace Bundle\ResourceBundle\Doctrine\ODM\PHPCR\EventListener;
 
 use Doctrine\ODM\PHPCR\DocumentManagerInterface;
-use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
+use Bundle\ResourceBundle\Event\ResourceControllerEvent;
 
 /**
  * Filter the node name field, replacing invalid characters with a substitute

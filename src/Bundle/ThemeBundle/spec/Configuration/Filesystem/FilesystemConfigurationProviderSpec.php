@@ -11,12 +11,12 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\ThemeBundle\Configuration\Filesystem;
+namespace spec\Bundle\ThemeBundle\Configuration\Filesystem;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Bundle\ThemeBundle\Configuration\ConfigurationProviderInterface;
-use Sylius\Bundle\ThemeBundle\Configuration\Filesystem\ConfigurationLoaderInterface;
-use Sylius\Bundle\ThemeBundle\Locator\FileLocatorInterface;
+use Bundle\ThemeBundle\Configuration\ConfigurationProviderInterface;
+use Bundle\ThemeBundle\Configuration\Filesystem\ConfigurationLoaderInterface;
+use Bundle\ThemeBundle\Locator\FileLocatorInterface;
 
 final class FilesystemConfigurationProviderSpec extends ObjectBehavior
 {

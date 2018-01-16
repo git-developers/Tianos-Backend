@@ -367,34 +367,34 @@ class GridController extends BaseController
 
 
 /*
-Sylius\Component\Resource\Metadata\Metadata Object
+Component\Resource\Metadata\Metadata Object
 (
-[name:Sylius\Component\Resource\Metadata\Metadata:private] => product
-[applicationName:Sylius\Component\Resource\Metadata\Metadata:private] => sylius
-[driver:Sylius\Component\Resource\Metadata\Metadata:private] => doctrine/orm
-[templatesNamespace:Sylius\Component\Resource\Metadata\Metadata:private] =>
-[parameters:Sylius\Component\Resource\Metadata\Metadata:private] => Array
+[name:Component\Resource\Metadata\Metadata:private] => product
+[applicationName:Component\Resource\Metadata\Metadata:private] => sylius
+[driver:Component\Resource\Metadata\Metadata:private] => doctrine/orm
+[templatesNamespace:Component\Resource\Metadata\Metadata:private] =>
+[parameters:Component\Resource\Metadata\Metadata:private] => Array
 (
     [driver] => doctrine/orm
     [classes] => Array
         (
-            [model] => Sylius\Component\Core\Model\CRUD_DUMMY
-            [repository] => Sylius\Bundle\CoreBundle\Doctrine\ORM\CRUD_DUMMYRepository
-            [interface] => Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYInterface
-            [controller] => Sylius\Bundle\ResourceBundle\Controller\ResourceController
-            [factory] => Sylius\Component\Resource\Factory\TranslatableFactory
-            [form] => Sylius\Bundle\CRUDDUMMYBundle\Form\Type\CRUD_DUMMYType
+            [model] => Component\Core\Model\CRUD_DUMMY
+            [repository] => Bundle\CoreBundle\Doctrine\ORM\CRUD_DUMMYRepository
+            [interface] => Component\CRUD_DUMMY\Model\CRUD_DUMMYInterface
+            [controller] => Bundle\ResourceBundle\Controller\ResourceController
+            [factory] => Component\Resource\Factory\TranslatableFactory
+            [form] => Bundle\CRUDDUMMYBundle\Form\Type\CRUD_DUMMYType
         )
 
     [translation] => Array
         (
             [classes] => Array
                 (
-                    [model] => Sylius\Component\Core\Model\CRUD_DUMMYTranslation
-                    [interface] => Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYTranslationInterface
-                    [controller] => Sylius\Bundle\ResourceBundle\Controller\ResourceController
-                    [factory] => Sylius\Component\Resource\Factory\Factory
-                    [form] => Sylius\Bundle\CRUDDUMMYBundle\Form\Type\CRUD_DUMMYTranslationType
+                    [model] => Component\Core\Model\CRUD_DUMMYTranslation
+                    [interface] => Component\CRUD_DUMMY\Model\CRUD_DUMMYTranslationInterface
+                    [controller] => Bundle\ResourceBundle\Controller\ResourceController
+                    [factory] => Component\Resource\Factory\Factory
+                    [form] => Bundle\CRUDDUMMYBundle\Form\Type\CRUD_DUMMYTranslationType
                 )
 
         )

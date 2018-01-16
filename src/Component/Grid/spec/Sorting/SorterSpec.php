@@ -11,15 +11,15 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Component\Grid\Sorting;
+namespace spec\Component\Grid\Sorting;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Component\Grid\Data\DataSourceInterface;
-use Sylius\Component\Grid\Data\ExpressionBuilderInterface;
-use Sylius\Component\Grid\Definition\Field;
-use Sylius\Component\Grid\Definition\Grid;
-use Sylius\Component\Grid\Parameters;
-use Sylius\Component\Grid\Sorting\SorterInterface;
+use Component\Grid\Data\DataSourceInterface;
+use Component\Grid\Data\ExpressionBuilderInterface;
+use Component\Grid\Definition\Field;
+use Component\Grid\Definition\Grid;
+use Component\Grid\Parameters;
+use Component\Grid\Sorting\SorterInterface;
 
 final class SorterSpec extends ObjectBehavior
 {

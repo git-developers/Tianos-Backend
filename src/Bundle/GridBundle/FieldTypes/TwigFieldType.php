@@ -11,11 +11,11 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\GridBundle\FieldTypes;
+namespace Bundle\GridBundle\FieldTypes;
 
-use Sylius\Component\Grid\DataExtractor\DataExtractorInterface;
-use Sylius\Component\Grid\Definition\Field;
-use Sylius\Component\Grid\FieldTypes\FieldTypeInterface;
+use Component\Grid\DataExtractor\DataExtractorInterface;
+use Component\Grid\Definition\Field;
+use Component\Grid\FieldTypes\FieldTypeInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 final class TwigFieldType implements FieldTypeInterface

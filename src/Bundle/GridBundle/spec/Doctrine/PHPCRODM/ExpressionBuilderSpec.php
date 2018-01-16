@@ -11,12 +11,12 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\GridBundle\Doctrine\PHPCRODM;
+namespace spec\Bundle\GridBundle\Doctrine\PHPCRODM;
 
 use Doctrine\Common\Collections\Expr\Comparison;
 use Doctrine\Common\Collections\ExpressionBuilder as CollectionsExpressionBuilder;
 use PhpSpec\ObjectBehavior;
-use Sylius\Bundle\GridBundle\Doctrine\PHPCRODM\ExtraComparison;
+use Bundle\GridBundle\Doctrine\PHPCRODM\ExtraComparison;
 
 /**
  * @require Doctrine\ODM\PHPCR\DocumentManagerInterface

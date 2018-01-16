@@ -11,12 +11,12 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ResourceBundle\Tests\DependencyInjection;
+namespace Bundle\ResourceBundle\Tests\DependencyInjection;
 
 use AppBundle\Entity\Book;
 use AppBundle\Entity\BookTranslation;
 use Matthias\SymfonyDependencyInjectionTest\PhpUnit\AbstractExtensionTestCase;
-use Sylius\Bundle\ResourceBundle\DependencyInjection\SyliusResourceExtension;
+use Bundle\ResourceBundle\DependencyInjection\SyliusResourceExtension;
 
 class SyliusResourceExtensionTest extends AbstractExtensionTestCase
 {

@@ -11,10 +11,10 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\ThemeBundle\Locator;
+namespace spec\Bundle\ThemeBundle\Locator;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Bundle\ThemeBundle\Model\ThemeInterface;
+use Bundle\ThemeBundle\Model\ThemeInterface;
 
 final class ResourceNotFoundExceptionSpec extends ObjectBehavior
 {

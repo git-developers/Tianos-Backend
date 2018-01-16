@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Component\User\Canonicalizer;
+namespace Component\User\Canonicalizer;
 
 interface CanonicalizerInterface
 {

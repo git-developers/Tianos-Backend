@@ -11,16 +11,16 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\GridBundle\Doctrine\ORM;
+namespace spec\Bundle\GridBundle\Doctrine\ORM;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
 use PhpSpec\ObjectBehavior;
-use Sylius\Bundle\GridBundle\Doctrine\ORM\DataSource;
-use Sylius\Component\Grid\Data\DriverInterface;
-use Sylius\Component\Grid\Parameters;
+use Bundle\GridBundle\Doctrine\ORM\DataSource;
+use Component\Grid\Data\DriverInterface;
+use Component\Grid\Parameters;
 
 final class DriverSpec extends ObjectBehavior
 {

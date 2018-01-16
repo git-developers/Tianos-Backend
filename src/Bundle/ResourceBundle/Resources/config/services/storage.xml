@@ -13,11 +13,11 @@
 
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-        <service id="sylius.storage.session" class="Sylius\Bundle\ResourceBundle\Storage\SessionStorage">
+        <service id="sylius.storage.session" class="Bundle\ResourceBundle\Storage\SessionStorage">
             <argument type="service" id="session" />
         </service>
 
-        <service id="sylius.storage.cookie" class="Sylius\Bundle\ResourceBundle\Storage\CookieStorage">
+        <service id="sylius.storage.cookie" class="Bundle\ResourceBundle\Storage\CookieStorage">
             <tag name="kernel.event_subscriber" />
         </service>
     </services>

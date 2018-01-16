@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ResourceBundle\Controller;
+namespace Bundle\ResourceBundle\Controller;
 
 use FOS\RestBundle\View\View;
 use Symfony\Component\HttpFoundation\Response;

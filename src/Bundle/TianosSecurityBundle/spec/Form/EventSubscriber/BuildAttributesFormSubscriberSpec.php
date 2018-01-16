@@ -11,15 +11,15 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\CRUD_DUMMYBundle\Form\EventSubscriber;
+namespace spec\Bundle\CRUD_DUMMYBundle\Form\EventSubscriber;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use PhpSpec\ObjectBehavior;
-use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeInterface;
-use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeValueInterface;
-use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYInterface;
-use Sylius\Component\Resource\Factory\FactoryInterface;
-use Sylius\Component\Resource\Translation\Provider\TranslationLocaleProviderInterface;
+use Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeInterface;
+use Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeValueInterface;
+use Component\CRUD_DUMMY\Model\CRUD_DUMMYInterface;
+use Component\Resource\Factory\FactoryInterface;
+use Component\Resource\Translation\Provider\TranslationLocaleProviderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 

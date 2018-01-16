@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Bundle\ResourceBundle\Form\Type;
 
-use Sylius\Component\Resource\Model\ArchivableInterface;
+use Component\Resource\Model\ArchivableInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\FormBuilderInterface;

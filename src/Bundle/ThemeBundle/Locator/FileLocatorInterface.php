@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ThemeBundle\Locator;
+namespace Bundle\ThemeBundle\Locator;
 
 interface FileLocatorInterface
 {

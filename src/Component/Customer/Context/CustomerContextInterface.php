@@ -11,9 +11,9 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Component\Customer\Context;
+namespace Component\Customer\Context;
 
-use Sylius\Component\Customer\Model\CustomerInterface;
+use Component\Customer\Model\CustomerInterface;
 
 interface CustomerContextInterface
 {

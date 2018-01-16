@@ -11,10 +11,10 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\ResourceBundle\Storage;
+namespace spec\Bundle\ResourceBundle\Storage;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Component\Resource\Storage\StorageInterface;
+use Component\Resource\Storage\StorageInterface;
 
 final class CookieStorageSpec extends ObjectBehavior
 {

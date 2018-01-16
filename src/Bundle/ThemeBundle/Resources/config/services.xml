@@ -13,23 +13,23 @@
 
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-        <service id="sylius.theme.context.settable" class="Sylius\Bundle\ThemeBundle\Context\SettableThemeContext" public="false">
+        <service id="sylius.theme.context.settable" class="Bundle\ThemeBundle\Context\SettableThemeContext" public="false">
             <argument type="service" id="sylius.theme.hierarchy_provider" />
         </service>
 
-        <service id="sylius.factory.theme" class="Sylius\Bundle\ThemeBundle\Factory\ThemeFactory" />
-        <service id="sylius.factory.theme_author" class="Sylius\Bundle\ThemeBundle\Factory\ThemeAuthorFactory" public="false" />
-        <service id="sylius.factory.theme_screenshot" class="Sylius\Bundle\ThemeBundle\Factory\ThemeScreenshotFactory" public="false" />
+        <service id="sylius.factory.theme" class="Bundle\ThemeBundle\Factory\ThemeFactory" />
+        <service id="sylius.factory.theme_author" class="Bundle\ThemeBundle\Factory\ThemeAuthorFactory" public="false" />
+        <service id="sylius.factory.theme_screenshot" class="Bundle\ThemeBundle\Factory\ThemeScreenshotFactory" public="false" />
 
-        <service id="sylius.repository.theme" class="Sylius\Bundle\ThemeBundle\Repository\InMemoryThemeRepository">
+        <service id="sylius.repository.theme" class="Bundle\ThemeBundle\Repository\InMemoryThemeRepository">
             <argument type="service" id="sylius.theme.loader" />
         </service>
 
         <service id="sylius.theme.hydrator" class="Zend\Hydrator\Reflection" public="false" />
 
-        <service id="sylius.theme.circular_dependency_checker" class="Sylius\Bundle\ThemeBundle\Loader\CircularDependencyChecker" public="false" />
+        <service id="sylius.theme.circular_dependency_checker" class="Bundle\ThemeBundle\Loader\CircularDependencyChecker" public="false" />
 
-        <service id="sylius.theme.loader" class="Sylius\Bundle\ThemeBundle\Loader\ThemeLoader" public="false">
+        <service id="sylius.theme.loader" class="Bundle\ThemeBundle\Loader\ThemeLoader" public="false">
             <argument type="service" id="sylius.theme.configuration.provider" />
             <argument type="service" id="sylius.factory.theme" />
             <argument type="service" id="sylius.factory.theme_author" />
@@ -38,39 +38,39 @@
             <argument type="service" id="sylius.theme.circular_dependency_checker" />
         </service>
 
-        <service id="sylius.collector.theme" class="Sylius\Bundle\ThemeBundle\Collector\ThemeCollector" public="false">
+        <service id="sylius.collector.theme" class="Bundle\ThemeBundle\Collector\ThemeCollector" public="false">
             <argument type="service" id="sylius.repository.theme" />
             <argument type="service" id="sylius.context.theme" />
             <argument type="service" id="sylius.theme.hierarchy_provider" />
             <tag name="data_collector" template="SyliusThemeBundle:Collector:theme" id="sylius_theme" />
         </service>
 
-        <service id="sylius.theme.hierarchy_provider" class="Sylius\Bundle\ThemeBundle\HierarchyProvider\ThemeHierarchyProvider" public="false" />
+        <service id="sylius.theme.hierarchy_provider" class="Bundle\ThemeBundle\HierarchyProvider\ThemeHierarchyProvider" public="false" />
 
-        <service id="sylius.theme.filesystem" class="Sylius\Bundle\ThemeBundle\Filesystem\Filesystem" public="false" />
+        <service id="sylius.theme.filesystem" class="Bundle\ThemeBundle\Filesystem\Filesystem" public="false" />
 
-        <service id="sylius.theme.finder_factory" class="Sylius\Bundle\ThemeBundle\Factory\FinderFactory" public="false" />
+        <service id="sylius.theme.finder_factory" class="Bundle\ThemeBundle\Factory\FinderFactory" public="false" />
 
-        <service id="sylius.theme.form.type.theme_choice" class="Sylius\Bundle\ThemeBundle\Form\Type\ThemeChoiceType">
+        <service id="sylius.theme.form.type.theme_choice" class="Bundle\ThemeBundle\Form\Type\ThemeChoiceType">
             <argument type="service" id="sylius.repository.theme" />
             <tag name="form.type" />
         </service>
 
-        <service id="sylius.theme.form.type.theme_name_choice" class="Sylius\Bundle\ThemeBundle\Form\Type\ThemeNameChoiceType">
+        <service id="sylius.theme.form.type.theme_name_choice" class="Bundle\ThemeBundle\Form\Type\ThemeNameChoiceType">
             <argument type="service" id="sylius.repository.theme" />
             <tag name="form.type" />
         </service>
 
-        <service id="sylius.theme.configuration" class="Sylius\Bundle\ThemeBundle\Configuration\ThemeConfiguration" public="false" />
+        <service id="sylius.theme.configuration" class="Bundle\ThemeBundle\Configuration\ThemeConfiguration" public="false" />
 
-        <service id="sylius.theme.configuration.processor" class="Sylius\Bundle\ThemeBundle\Configuration\SymfonyConfigurationProcessor" public="false">
+        <service id="sylius.theme.configuration.processor" class="Bundle\ThemeBundle\Configuration\SymfonyConfigurationProcessor" public="false">
             <argument type="service" id="sylius.theme.configuration" />
             <argument type="service">
                 <service class="Symfony\Component\Config\Definition\Processor" />
             </argument>
         </service>
 
-        <service id="sylius.theme.configuration.provider" class="Sylius\Bundle\ThemeBundle\Configuration\CompositeConfigurationProvider">
+        <service id="sylius.theme.configuration.provider" class="Bundle\ThemeBundle\Configuration\CompositeConfigurationProvider">
             <argument type="collection" /> <!-- an array of configuration providers -->
         </service>
     </services>

@@ -11,13 +11,13 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ResourceBundle\Controller;
+namespace Bundle\ResourceBundle\Controller;
 
 use Hateoas\Configuration\Route;
 use Hateoas\Representation\Factory\PagerfantaFactory;
 use Pagerfanta\Pagerfanta;
-use Sylius\Bundle\ResourceBundle\Grid\View\ResourceGridView;
-use Sylius\Component\Resource\Repository\RepositoryInterface;
+use Bundle\ResourceBundle\Grid\View\ResourceGridView;
+use Component\Resource\Repository\RepositoryInterface;
 
 final class ResourcesCollectionProvider implements ResourcesCollectionProviderInterface
 {

@@ -11,14 +11,14 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Component\Taxation\Resolver;
+namespace spec\Component\Taxation\Resolver;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Component\Resource\Repository\RepositoryInterface;
-use Sylius\Component\Taxation\Model\TaxableInterface;
-use Sylius\Component\Taxation\Model\TaxCategoryInterface;
-use Sylius\Component\Taxation\Model\TaxRateInterface;
-use Sylius\Component\Taxation\Resolver\TaxRateResolverInterface;
+use Component\Resource\Repository\RepositoryInterface;
+use Component\Taxation\Model\TaxableInterface;
+use Component\Taxation\Model\TaxCategoryInterface;
+use Component\Taxation\Model\TaxRateInterface;
+use Component\Taxation\Resolver\TaxRateResolverInterface;
 
 final class TaxRateResolverSpec extends ObjectBehavior
 {

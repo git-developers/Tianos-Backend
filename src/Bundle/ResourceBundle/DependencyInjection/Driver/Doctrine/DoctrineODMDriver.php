@@ -11,12 +11,12 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ResourceBundle\DependencyInjection\Driver\Doctrine;
+namespace Bundle\ResourceBundle\DependencyInjection\Driver\Doctrine;
 
-use Sylius\Bundle\ResourceBundle\Doctrine\ODM\MongoDB\TranslatableRepository;
-use Sylius\Bundle\ResourceBundle\ResourceBundle;
-use Sylius\Component\Resource\Metadata\MetadataInterface;
-use Sylius\Component\Resource\Model\TranslatableInterface;
+use Bundle\ResourceBundle\Doctrine\ODM\MongoDB\TranslatableRepository;
+use Bundle\ResourceBundle\ResourceBundle;
+use Component\Resource\Metadata\MetadataInterface;
+use Component\Resource\Model\TranslatableInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Parameter;

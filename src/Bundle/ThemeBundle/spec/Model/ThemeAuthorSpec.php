@@ -11,10 +11,10 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\ThemeBundle\Model;
+namespace spec\Bundle\ThemeBundle\Model;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Bundle\ThemeBundle\Model\ThemeAuthor;
+use Bundle\ThemeBundle\Model\ThemeAuthor;
 
 final class ThemeAuthorSpec extends ObjectBehavior
 {

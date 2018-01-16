@@ -11,13 +11,13 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\GridBundle\Templating\Helper;
+namespace spec\Bundle\GridBundle\Templating\Helper;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Component\Grid\Definition\Action;
-use Sylius\Component\Grid\Definition\Field;
-use Sylius\Component\Grid\Renderer\GridRendererInterface;
-use Sylius\Component\Grid\View\GridView;
+use Component\Grid\Definition\Action;
+use Component\Grid\Definition\Field;
+use Component\Grid\Renderer\GridRendererInterface;
+use Component\Grid\View\GridView;
 use Symfony\Component\Templating\Helper\Helper;
 use Symfony\Component\Templating\Helper\HelperInterface;
 

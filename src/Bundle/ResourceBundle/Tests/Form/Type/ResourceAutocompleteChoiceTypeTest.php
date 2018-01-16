@@ -11,13 +11,13 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ResourceBundle\Tests\Form\Type;
+namespace Bundle\ResourceBundle\Tests\Form\Type;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Sylius\Bundle\ResourceBundle\Form\Type\ResourceAutocompleteChoiceType;
-use Sylius\Component\Registry\ServiceRegistryInterface;
-use Sylius\Component\Resource\Model\ResourceInterface;
-use Sylius\Component\Resource\Repository\RepositoryInterface;
+use Bundle\ResourceBundle\Form\Type\ResourceAutocompleteChoiceType;
+use Component\Registry\ServiceRegistryInterface;
+use Component\Resource\Model\ResourceInterface;
+use Component\Resource\Repository\RepositoryInterface;
 use Symfony\Component\Form\PreloadedExtension;
 use Symfony\Component\Form\Test\TypeTestCase;
 use Symfony\Component\OptionsResolver\Exception\InvalidOptionsException;

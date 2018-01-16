@@ -11,10 +11,10 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\GridBundle\Form\Type\Filter;
+namespace Bundle\GridBundle\Form\Type\Filter;
 
-use Sylius\Bundle\CurrencyBundle\Form\Type\CurrencyChoiceType;
-use Sylius\Component\Grid\Filter\MoneyFilter;
+use Bundle\CurrencyBundle\Form\Type\CurrencyChoiceType;
+use Component\Grid\Filter\MoneyFilter;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;

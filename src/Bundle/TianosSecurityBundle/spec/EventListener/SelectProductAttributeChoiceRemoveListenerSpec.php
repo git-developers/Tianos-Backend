@@ -11,17 +11,17 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\CRUD_DUMMYBundle\EventListener;
+namespace spec\Bundle\CRUD_DUMMYBundle\EventListener;
 
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\UnitOfWork;
 use PhpSpec\ObjectBehavior;
-use Sylius\Component\Attribute\AttributeType\SelectAttributeType;
-use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeInterface;
-use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeValue;
-use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeValueInterface;
-use Sylius\Component\CRUD_DUMMY\Repository\CRUD_DUMMYAttributeValueRepositoryInterface;
+use Component\Attribute\AttributeType\SelectAttributeType;
+use Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeInterface;
+use Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeValue;
+use Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeValueInterface;
+use Component\CRUD_DUMMY\Repository\CRUD_DUMMYAttributeValueRepositoryInterface;
 
 final class SelectCRUD_DUMMYAttributeChoiceRemoveListenerSpec extends ObjectBehavior
 {
@@ -57,7 +57,7 @@ final class SelectCRUD_DUMMYAttributeChoiceRemoveListenerSpec extends ObjectBeha
         ]);
 
         $entityManager
-            ->getRepository('Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeValue')
+            ->getRepository('Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeValue')
             ->willReturn($productAttributeValueRepository)
         ;
         $productAttributeValueRepository
@@ -101,7 +101,7 @@ final class SelectCRUD_DUMMYAttributeChoiceRemoveListenerSpec extends ObjectBeha
         ]);
 
         $entityManager
-            ->getRepository('Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeValue')
+            ->getRepository('Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeValue')
             ->shouldNotBeCalled()
         ;
         $entityManager->flush()->shouldNotBeCalled();
@@ -135,7 +135,7 @@ final class SelectCRUD_DUMMYAttributeChoiceRemoveListenerSpec extends ObjectBeha
         ]);
 
         $entityManager
-            ->getRepository('Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeValue')
+            ->getRepository('Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeValue')
             ->shouldNotBeCalled()
         ;
         $entityManager->flush()->shouldNotBeCalled();
@@ -150,7 +150,7 @@ final class SelectCRUD_DUMMYAttributeChoiceRemoveListenerSpec extends ObjectBeha
         $event->getEntity()->willReturn('wrongObject');
 
         $entityManager
-            ->getRepository('Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeValue')
+            ->getRepository('Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeValue')
             ->shouldNotBeCalled()
         ;
         $entityManager->flush()->shouldNotBeCalled();
@@ -165,7 +165,7 @@ final class SelectCRUD_DUMMYAttributeChoiceRemoveListenerSpec extends ObjectBeha
         $productAttribute->getType()->willReturn('wrongType');
 
         $entityManager
-            ->getRepository('Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeValue')
+            ->getRepository('Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeValue')
             ->shouldNotBeCalled()
         ;
         $entityManager->flush()->shouldNotBeCalled();

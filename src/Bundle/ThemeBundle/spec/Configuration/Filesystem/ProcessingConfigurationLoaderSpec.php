@@ -11,11 +11,11 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\ThemeBundle\Configuration\Filesystem;
+namespace spec\Bundle\ThemeBundle\Configuration\Filesystem;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Bundle\ThemeBundle\Configuration\ConfigurationProcessorInterface;
-use Sylius\Bundle\ThemeBundle\Configuration\Filesystem\ConfigurationLoaderInterface;
+use Bundle\ThemeBundle\Configuration\ConfigurationProcessorInterface;
+use Bundle\ThemeBundle\Configuration\Filesystem\ConfigurationLoaderInterface;
 
 final class ProcessingConfigurationLoaderSpec extends ObjectBehavior
 {

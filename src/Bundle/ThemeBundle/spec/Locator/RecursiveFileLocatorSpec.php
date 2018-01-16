@@ -11,11 +11,11 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\ThemeBundle\Locator;
+namespace spec\Bundle\ThemeBundle\Locator;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Bundle\ThemeBundle\Factory\FinderFactoryInterface;
-use Sylius\Bundle\ThemeBundle\Locator\FileLocatorInterface;
+use Bundle\ThemeBundle\Factory\FinderFactoryInterface;
+use Bundle\ThemeBundle\Locator\FileLocatorInterface;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
 

@@ -11,11 +11,11 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\CRUD_DUMMYBundle\Form\DataTransformer;
+namespace Bundle\CRUD_DUMMYBundle\Form\DataTransformer;
 
-use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYInterface;
-use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYOptionValueInterface;
-use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYVariantInterface;
+use Component\CRUD_DUMMY\Model\CRUD_DUMMYInterface;
+use Component\CRUD_DUMMY\Model\CRUD_DUMMYOptionValueInterface;
+use Component\CRUD_DUMMY\Model\CRUD_DUMMYVariantInterface;
 use Symfony\Component\Form\DataTransformerInterface;
 use Symfony\Component\Form\Exception\TransformationFailedException;
 use Symfony\Component\Form\Exception\UnexpectedTypeException;

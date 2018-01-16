@@ -11,14 +11,14 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\ResourceBundle\Grid\Renderer;
+namespace spec\Bundle\ResourceBundle\Grid\Renderer;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Bundle\ResourceBundle\Controller\RequestConfiguration;
-use Sylius\Bundle\ResourceBundle\Grid\Parser\OptionsParserInterface;
-use Sylius\Bundle\ResourceBundle\Grid\View\ResourceGridView;
-use Sylius\Component\Grid\Definition\Action;
-use Sylius\Component\Grid\Renderer\GridRendererInterface;
+use Bundle\ResourceBundle\Controller\RequestConfiguration;
+use Bundle\ResourceBundle\Grid\Parser\OptionsParserInterface;
+use Bundle\ResourceBundle\Grid\View\ResourceGridView;
+use Component\Grid\Definition\Action;
+use Component\Grid\Renderer\GridRendererInterface;
 use Symfony\Component\HttpFoundation\Request;
 
 final class TwigGridRendererSpec extends ObjectBehavior

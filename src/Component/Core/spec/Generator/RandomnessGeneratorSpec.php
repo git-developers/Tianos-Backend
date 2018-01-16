@@ -11,10 +11,10 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Component\Resource\Generator;
+namespace spec\Component\Resource\Generator;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Component\Resource\Generator\RandomnessGeneratorInterface;
+use Component\Resource\Generator\RandomnessGeneratorInterface;
 
 final class RandomnessGeneratorSpec extends ObjectBehavior
 {

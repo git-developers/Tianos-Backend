@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\UiBundle\spec\Fixtures;
+namespace Bundle\UiBundle\spec\Fixtures;
 
 interface SampleInterface
 {

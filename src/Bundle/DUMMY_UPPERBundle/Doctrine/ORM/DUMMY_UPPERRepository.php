@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Bundle\DUMMY_UPPERBundle\Doctrine\ORM;
 
 use Bundle\CoreBundle\Doctrine\ORM\EntityRepository as TianosEntityRepository;
-use Component\Product\Repository\DUMMY_UPPERRepositoryInterface;
+use Component\DUMMY_UPPER\Repository\DUMMY_UPPERRepositoryInterface;
 
-class DUMMY_UPPERRepository extends TianosEntityRepository implements ProductRepositoryInterface
+class DUMMY_UPPERRepository extends TianosEntityRepository implements DUMMY_UPPERRepositoryInterface
 {
 
     /**

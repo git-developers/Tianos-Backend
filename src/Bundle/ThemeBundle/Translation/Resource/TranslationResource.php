@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ThemeBundle\Translation\Resource;
+namespace Bundle\ThemeBundle\Translation\Resource;
 
 final class TranslationResource implements TranslationResourceInterface
 {

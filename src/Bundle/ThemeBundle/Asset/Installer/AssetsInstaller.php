@@ -11,12 +11,12 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ThemeBundle\Asset\Installer;
+namespace Bundle\ThemeBundle\Asset\Installer;
 
-use Sylius\Bundle\ThemeBundle\Asset\PathResolverInterface;
-use Sylius\Bundle\ThemeBundle\HierarchyProvider\ThemeHierarchyProviderInterface;
-use Sylius\Bundle\ThemeBundle\Model\ThemeInterface;
-use Sylius\Bundle\ThemeBundle\Repository\ThemeRepositoryInterface;
+use Bundle\ThemeBundle\Asset\PathResolverInterface;
+use Bundle\ThemeBundle\HierarchyProvider\ThemeHierarchyProviderInterface;
+use Bundle\ThemeBundle\Model\ThemeInterface;
+use Bundle\ThemeBundle\Repository\ThemeRepositoryInterface;
 use Symfony\Component\Filesystem\Exception\IOException;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Finder\Finder;

@@ -11,20 +11,20 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\CRUD_DUMMYBundle\DependencyInjection;
+namespace Bundle\CRUD_DUMMYBundle\DependencyInjection;
 
-use Sylius\Bundle\CRUD_DUMMYBundle\Controller\CRUD_DUMMYAttributeController;
-use Sylius\Bundle\CRUD_DUMMYBundle\Doctrine\ORM\CRUD_DUMMYAttributeValueRepository;
-use Sylius\Bundle\CRUD_DUMMYBundle\Form\Type\CRUD_DUMMYAttributeTranslationType;
-use Sylius\Bundle\CRUD_DUMMYBundle\Form\Type\CRUD_DUMMYAttributeType;
-use Sylius\Bundle\CRUD_DUMMYBundle\Form\Type\CRUD_DUMMYAttributeValueType;
-use Sylius\Bundle\ResourceBundle\DependencyInjection\Extension\AbstractResourceExtension;
-use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAttribute;
-use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeInterface;
-use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeTranslation;
-use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeTranslationInterface;
-use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeValue;
-use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeValueInterface;
+use Bundle\CRUD_DUMMYBundle\Controller\CRUD_DUMMYAttributeController;
+use Bundle\CRUD_DUMMYBundle\Doctrine\ORM\CRUD_DUMMYAttributeValueRepository;
+use Bundle\CRUD_DUMMYBundle\Form\Type\CRUD_DUMMYAttributeTranslationType;
+use Bundle\CRUD_DUMMYBundle\Form\Type\CRUD_DUMMYAttributeType;
+use Bundle\CRUD_DUMMYBundle\Form\Type\CRUD_DUMMYAttributeValueType;
+use Bundle\ResourceBundle\DependencyInjection\Extension\AbstractResourceExtension;
+use Component\CRUD_DUMMY\Model\CRUD_DUMMYAttribute;
+use Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeInterface;
+use Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeTranslation;
+use Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeTranslationInterface;
+use Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeValue;
+use Component\CRUD_DUMMY\Model\CRUD_DUMMYAttributeValueInterface;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;

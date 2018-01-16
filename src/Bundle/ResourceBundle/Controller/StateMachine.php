@@ -11,10 +11,10 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ResourceBundle\Controller;
+namespace Bundle\ResourceBundle\Controller;
 
 use SM\Factory\FactoryInterface;
-use Sylius\Component\Resource\Model\ResourceInterface;
+use Component\Resource\Model\ResourceInterface;
 
 final class StateMachine implements StateMachineInterface
 {

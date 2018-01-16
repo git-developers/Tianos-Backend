@@ -11,12 +11,12 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\ResourceBundle\Controller;
+namespace spec\Bundle\ResourceBundle\Controller;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Bundle\ResourceBundle\Controller\ResourceDeleteHandlerInterface;
-use Sylius\Component\Resource\Model\ResourceInterface;
-use Sylius\Component\Resource\Repository\RepositoryInterface;
+use Bundle\ResourceBundle\Controller\ResourceDeleteHandlerInterface;
+use Component\Resource\Model\ResourceInterface;
+use Component\Resource\Repository\RepositoryInterface;
 
 final class ResourceDeleteHandlerSpec extends ObjectBehavior
 {

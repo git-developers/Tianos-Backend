@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ThemeBundle\Translation\Provider\Loader;
+namespace Bundle\ThemeBundle\Translation\Provider\Loader;
 
 use Symfony\Component\Translation\Loader\LoaderInterface;
 

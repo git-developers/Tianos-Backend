@@ -11,10 +11,10 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Component\Resource\Factory;
+namespace spec\Component\Resource\Factory;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Component\Resource\Factory\FactoryInterface;
+use Component\Resource\Factory\FactoryInterface;
 
 final class FactorySpec extends ObjectBehavior
 {

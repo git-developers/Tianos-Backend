@@ -11,15 +11,15 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\ThemeBundle\Translation\Provider;
+namespace spec\Bundle\ThemeBundle\Translation\Provider;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Bundle\ThemeBundle\HierarchyProvider\ThemeHierarchyProviderInterface;
-use Sylius\Bundle\ThemeBundle\Model\ThemeInterface;
-use Sylius\Bundle\ThemeBundle\Repository\ThemeRepositoryInterface;
-use Sylius\Bundle\ThemeBundle\Translation\Finder\TranslationFilesFinderInterface;
-use Sylius\Bundle\ThemeBundle\Translation\Provider\Resource\TranslatorResourceProviderInterface;
-use Sylius\Bundle\ThemeBundle\Translation\Resource\ThemeTranslationResource;
+use Bundle\ThemeBundle\HierarchyProvider\ThemeHierarchyProviderInterface;
+use Bundle\ThemeBundle\Model\ThemeInterface;
+use Bundle\ThemeBundle\Repository\ThemeRepositoryInterface;
+use Bundle\ThemeBundle\Translation\Finder\TranslationFilesFinderInterface;
+use Bundle\ThemeBundle\Translation\Provider\Resource\TranslatorResourceProviderInterface;
+use Bundle\ThemeBundle\Translation\Resource\ThemeTranslationResource;
 
 final class ThemeTranslatorResourceProviderSpec extends ObjectBehavior
 {

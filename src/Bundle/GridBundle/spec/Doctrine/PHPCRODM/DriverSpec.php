@@ -11,15 +11,15 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\GridBundle\Doctrine\PHPCRODM;
+namespace spec\Bundle\GridBundle\Doctrine\PHPCRODM;
 
 use Doctrine\ODM\PHPCR\DocumentManagerInterface;
 use Doctrine\ODM\PHPCR\DocumentRepository;
 use Doctrine\ODM\PHPCR\Query\Builder\QueryBuilder;
 use PhpSpec\ObjectBehavior;
-use Sylius\Bundle\GridBundle\Doctrine\PHPCRODM\DataSource;
-use Sylius\Component\Grid\Data\DriverInterface;
-use Sylius\Component\Grid\Parameters;
+use Bundle\GridBundle\Doctrine\PHPCRODM\DataSource;
+use Component\Grid\Data\DriverInterface;
+use Component\Grid\Parameters;
 
 /**
  * @require Doctrine\ODM\PHPCR\DocumentManagerInterface

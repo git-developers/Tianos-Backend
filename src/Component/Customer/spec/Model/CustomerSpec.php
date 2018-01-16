@@ -11,12 +11,12 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Component\Customer\Model;
+namespace spec\Component\Customer\Model;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Component\Customer\Model\Customer;
-use Sylius\Component\Customer\Model\CustomerGroupInterface;
-use Sylius\Component\Customer\Model\CustomerInterface;
+use Component\Customer\Model\Customer;
+use Component\Customer\Model\CustomerGroupInterface;
+use Component\Customer\Model\CustomerInterface;
 
 final class CustomerSpec extends ObjectBehavior
 {

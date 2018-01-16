@@ -1,5 +1,5 @@
 suites:
     main:
-        namespace: Sylius\Bundle\ThemeBundle
-        psr4_prefix: Sylius\Bundle\ThemeBundle
+        namespace: Bundle\ThemeBundle
+        psr4_prefix: Bundle\ThemeBundle
         src_path: .

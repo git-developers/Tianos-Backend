@@ -11,11 +11,11 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Component\Grid\DataExtractor;
+namespace spec\Component\Grid\DataExtractor;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Component\Grid\DataExtractor\DataExtractorInterface;
-use Sylius\Component\Grid\Definition\Field;
+use Component\Grid\DataExtractor\DataExtractorInterface;
+use Component\Grid\Definition\Field;
 use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
 
 final class PropertyAccessDataExtractorSpec extends ObjectBehavior

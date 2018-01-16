@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ThemeBundle\Translation\Provider\Resource;
+namespace Bundle\ThemeBundle\Translation\Provider\Resource;
 
 final class CompositeTranslatorResourceProvider implements TranslatorResourceProviderInterface
 {

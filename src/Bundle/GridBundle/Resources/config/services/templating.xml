@@ -13,7 +13,7 @@
 
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
-        <service id="sylius.templating.helper.grid" class="Sylius\Bundle\GridBundle\Templating\Helper\GridHelper" lazy="true">
+        <service id="sylius.templating.helper.grid" class="Bundle\GridBundle\Templating\Helper\GridHelper" lazy="true">
             <argument type="service" id="sylius.grid.renderer" />
             <tag name="templating.helper" alias="sylius_grid" />
         </service>

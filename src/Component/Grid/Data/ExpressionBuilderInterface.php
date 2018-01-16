@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Component\Grid\Data;
+namespace Component\Grid\Data;
 
 interface ExpressionBuilderInterface
 {

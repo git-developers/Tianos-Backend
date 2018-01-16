@@ -11,13 +11,13 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Component\Grid\View;
+namespace spec\Component\Grid\View;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Component\Grid\Definition\Field;
-use Sylius\Component\Grid\Definition\Grid;
-use Sylius\Component\Grid\Parameters;
-use Sylius\Component\Grid\View\GridViewInterface;
+use Component\Grid\Definition\Field;
+use Component\Grid\Definition\Grid;
+use Component\Grid\Parameters;
+use Component\Grid\View\GridViewInterface;
 
 final class GridViewSpec extends ObjectBehavior
 {

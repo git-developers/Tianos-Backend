@@ -11,10 +11,10 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Component\Grid\Event;
+namespace spec\Component\Grid\Event;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Component\Grid\Definition\Grid;
+use Component\Grid\Definition\Grid;
 
 final class GridDefinitionConverterEventSpec extends ObjectBehavior
 {

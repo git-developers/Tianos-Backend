@@ -11,9 +11,9 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ThemeBundle\Locator;
+namespace Bundle\ThemeBundle\Locator;
 
-use Sylius\Bundle\ThemeBundle\Model\ThemeInterface;
+use Bundle\ThemeBundle\Model\ThemeInterface;
 
 interface ResourceLocatorInterface
 {

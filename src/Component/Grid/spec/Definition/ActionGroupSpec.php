@@ -11,10 +11,10 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Component\Grid\Definition;
+namespace spec\Component\Grid\Definition;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Component\Grid\Definition\Action;
+use Component\Grid\Definition\Action;
 
 final class ActionGroupSpec extends ObjectBehavior
 {

@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ThemeBundle\Configuration\Filesystem;
+namespace Bundle\ThemeBundle\Configuration\Filesystem;
 
 interface ConfigurationLoaderInterface
 {

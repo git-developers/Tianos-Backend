@@ -11,9 +11,9 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Component\Taxation\Model;
+namespace Component\Taxation\Model;
 
-use Sylius\Component\Resource\Model\TimestampableTrait;
+use Component\Resource\Model\TimestampableTrait;
 
 class TaxRate implements TaxRateInterface
 {

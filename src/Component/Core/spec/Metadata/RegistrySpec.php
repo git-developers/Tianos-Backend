@@ -11,11 +11,11 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Component\Resource\Metadata;
+namespace spec\Component\Resource\Metadata;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Component\Resource\Metadata\MetadataInterface;
-use Sylius\Component\Resource\Metadata\RegistryInterface;
+use Component\Resource\Metadata\MetadataInterface;
+use Component\Resource\Metadata\RegistryInterface;
 
 final class RegistrySpec extends ObjectBehavior
 {

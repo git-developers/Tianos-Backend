@@ -11,18 +11,18 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ResourceBundle\Controller;
+namespace Bundle\ResourceBundle\Controller;
 
 use Doctrine\Common\Persistence\ObjectManager;
 use FOS\RestBundle\View\View;
-use Sylius\Bundle\ResourceBundle\Event\ResourceControllerEvent;
-use Sylius\Component\Resource\Exception\DeleteHandlingException;
-use Sylius\Component\Resource\Exception\UpdateHandlingException;
-use Sylius\Component\Resource\Factory\FactoryInterface;
-use Sylius\Component\Resource\Metadata\MetadataInterface;
-use Sylius\Component\Resource\Model\ResourceInterface;
-use Sylius\Component\Resource\Repository\RepositoryInterface;
-use Sylius\Component\Resource\ResourceActions;
+use Bundle\ResourceBundle\Event\ResourceControllerEvent;
+use Component\Resource\Exception\DeleteHandlingException;
+use Component\Resource\Exception\UpdateHandlingException;
+use Component\Resource\Factory\FactoryInterface;
+use Component\Resource\Metadata\MetadataInterface;
+use Component\Resource\Model\ResourceInterface;
+use Component\Resource\Repository\RepositoryInterface;
+use Component\Resource\ResourceActions;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

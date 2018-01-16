@@ -98,6 +98,7 @@ class Kernel extends HttpKernel
      */
     public function registerContainerConfiguration(LoaderInterface $loader): void
     {
+//        $loader->load($this->getRootDir().'/config/config_'.$this->getEnvironment().'.yml');
         $loader->load($this->getRootDir() . '/config/config_' . $this->getEnvironment() . '.yml');
 
         $file = $this->getRootDir() . '/config/config_' . $this->getEnvironment() . '.local.yml';
@@ -116,6 +117,7 @@ class Kernel extends HttpKernel
         }
 
         return dirname($this->getRootDir()) . '/var/cache/' . $this->getEnvironment();
+//        return dirname(__DIR__).'/var/cache/'.$this->getEnvironment();
     }
 
     /**
@@ -128,6 +130,7 @@ class Kernel extends HttpKernel
         }
 
         return dirname($this->getRootDir()) . '/var/logs';
+//        return dirname(__DIR__).'/var/logs';
     }
 
     /**
@@ -137,4 +140,9 @@ class Kernel extends HttpKernel
     {
         return (getenv('HOME') === '/home/vagrant' || getenv('VAGRANT') === 'VAGRANT') && is_dir('/dev/shm');
     }
+
+//    public function getRootDir()
+//    {
+//        return __DIR__;
+//    }
 }

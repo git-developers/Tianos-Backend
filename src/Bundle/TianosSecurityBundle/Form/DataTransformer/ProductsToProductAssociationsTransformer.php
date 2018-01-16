@@ -11,16 +11,16 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\CRUD_DUMMYBundle\Form\DataTransformer;
+namespace Bundle\CRUD_DUMMYBundle\Form\DataTransformer;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAssociationInterface;
-use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYAssociationTypeInterface;
-use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYInterface;
-use Sylius\Component\CRUD_DUMMY\Repository\CRUD_DUMMYRepositoryInterface;
-use Sylius\Component\Resource\Factory\FactoryInterface;
-use Sylius\Component\Resource\Repository\RepositoryInterface;
+use Component\CRUD_DUMMY\Model\CRUD_DUMMYAssociationInterface;
+use Component\CRUD_DUMMY\Model\CRUD_DUMMYAssociationTypeInterface;
+use Component\CRUD_DUMMY\Model\CRUD_DUMMYInterface;
+use Component\CRUD_DUMMY\Repository\CRUD_DUMMYRepositoryInterface;
+use Component\Resource\Factory\FactoryInterface;
+use Component\Resource\Repository\RepositoryInterface;
 use Symfony\Component\Form\DataTransformerInterface;
 
 final class CRUD_DUMMYsToCRUD_DUMMYAssociationsTransformer implements DataTransformerInterface

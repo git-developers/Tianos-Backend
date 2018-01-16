@@ -11,21 +11,21 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\ThemeBundle\Loader;
+namespace spec\Bundle\ThemeBundle\Loader;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use Sylius\Bundle\ThemeBundle\Configuration\ConfigurationProviderInterface;
-use Sylius\Bundle\ThemeBundle\Factory\ThemeAuthorFactoryInterface;
-use Sylius\Bundle\ThemeBundle\Factory\ThemeFactoryInterface;
-use Sylius\Bundle\ThemeBundle\Factory\ThemeScreenshotFactoryInterface;
-use Sylius\Bundle\ThemeBundle\Loader\CircularDependencyCheckerInterface;
-use Sylius\Bundle\ThemeBundle\Loader\CircularDependencyFoundException;
-use Sylius\Bundle\ThemeBundle\Loader\ThemeLoaderInterface;
-use Sylius\Bundle\ThemeBundle\Loader\ThemeLoadingFailedException;
-use Sylius\Bundle\ThemeBundle\Model\ThemeAuthor;
-use Sylius\Bundle\ThemeBundle\Model\ThemeInterface;
-use Sylius\Bundle\ThemeBundle\Model\ThemeScreenshot;
+use Bundle\ThemeBundle\Configuration\ConfigurationProviderInterface;
+use Bundle\ThemeBundle\Factory\ThemeAuthorFactoryInterface;
+use Bundle\ThemeBundle\Factory\ThemeFactoryInterface;
+use Bundle\ThemeBundle\Factory\ThemeScreenshotFactoryInterface;
+use Bundle\ThemeBundle\Loader\CircularDependencyCheckerInterface;
+use Bundle\ThemeBundle\Loader\CircularDependencyFoundException;
+use Bundle\ThemeBundle\Loader\ThemeLoaderInterface;
+use Bundle\ThemeBundle\Loader\ThemeLoadingFailedException;
+use Bundle\ThemeBundle\Model\ThemeAuthor;
+use Bundle\ThemeBundle\Model\ThemeInterface;
+use Bundle\ThemeBundle\Model\ThemeScreenshot;
 use Zend\Hydrator\HydrationInterface;
 
 final class ThemeLoaderSpec extends ObjectBehavior

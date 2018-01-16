@@ -11,10 +11,10 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ThemeBundle\Asset\Package;
+namespace Bundle\ThemeBundle\Asset\Package;
 
-use Sylius\Bundle\ThemeBundle\Asset\PathResolverInterface;
-use Sylius\Bundle\ThemeBundle\Context\ThemeContextInterface;
+use Bundle\ThemeBundle\Asset\PathResolverInterface;
+use Bundle\ThemeBundle\Context\ThemeContextInterface;
 use Symfony\Component\Asset\Context\ContextInterface;
 use Symfony\Component\Asset\PathPackage as BasePathPackage;
 use Symfony\Component\Asset\VersionStrategy\VersionStrategyInterface;

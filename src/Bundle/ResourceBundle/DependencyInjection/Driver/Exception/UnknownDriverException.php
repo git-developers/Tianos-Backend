@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ResourceBundle\DependencyInjection\Driver\Exception;
+namespace Bundle\ResourceBundle\DependencyInjection\Driver\Exception;
 
 class UnknownDriverException extends \Exception
 {

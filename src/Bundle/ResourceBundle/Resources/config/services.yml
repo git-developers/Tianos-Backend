@@ -16,12 +16,12 @@ services:
 
 
 
-#<service id="sylius.expression_language" class="Sylius\Bundle\ResourceBundle\ExpressionLanguage\ExpressionLanguage" public="false" />
+#<service id="sylius.expression_language" class="Bundle\ResourceBundle\ExpressionLanguage\ExpressionLanguage" public="false" />
 #sylius.expression_language
 
 
-#<service id="sylius.resource_controller.request_configuration_factory" class="Sylius\Bundle\ResourceBundle\Controller\RequestConfigurationFactory" public="false">
+#<service id="sylius.resource_controller.request_configuration_factory" class="Bundle\ResourceBundle\Controller\RequestConfigurationFactory" public="false">
 #    <argument type="service" id="sylius.resource_controller.parameters_parser" />
-#    <argument>Sylius\Bundle\ResourceBundle\Controller\RequestConfiguration</argument>
+#    <argument>Bundle\ResourceBundle\Controller\RequestConfiguration</argument>
 #    <argument>%sylius.resource.settings%</argument>
 #</service>

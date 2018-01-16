@@ -11,11 +11,11 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Component\User\Security;
+namespace spec\Component\User\Security;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Component\User\Model\CredentialsHolderInterface;
-use Sylius\Component\User\Security\UserPasswordEncoderInterface;
+use Component\User\Model\CredentialsHolderInterface;
+use Component\User\Security\UserPasswordEncoderInterface;
 
 final class UserPbkdf2PasswordEncoderSpec extends ObjectBehavior
 {

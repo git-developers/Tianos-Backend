@@ -11,21 +11,21 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\ResourceBundle\Grid\Controller;
+namespace spec\Bundle\ResourceBundle\Grid\Controller;
 
 use Pagerfanta\Pagerfanta;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use Sylius\Bundle\ResourceBundle\Controller\RequestConfiguration;
-use Sylius\Bundle\ResourceBundle\Controller\ResourcesResolverInterface;
-use Sylius\Bundle\ResourceBundle\Grid\View\ResourceGridView;
-use Sylius\Bundle\ResourceBundle\Grid\View\ResourceGridViewFactoryInterface;
-use Sylius\Component\Grid\Definition\Grid;
-use Sylius\Component\Grid\Parameters;
-use Sylius\Component\Grid\Provider\GridProviderInterface;
-use Sylius\Component\Resource\Metadata\MetadataInterface;
-use Sylius\Component\Resource\Model\ResourceInterface;
-use Sylius\Component\Resource\Repository\RepositoryInterface;
+use Bundle\ResourceBundle\Controller\RequestConfiguration;
+use Bundle\ResourceBundle\Controller\ResourcesResolverInterface;
+use Bundle\ResourceBundle\Grid\View\ResourceGridView;
+use Bundle\ResourceBundle\Grid\View\ResourceGridViewFactoryInterface;
+use Component\Grid\Definition\Grid;
+use Component\Grid\Parameters;
+use Component\Grid\Provider\GridProviderInterface;
+use Component\Resource\Metadata\MetadataInterface;
+use Component\Resource\Model\ResourceInterface;
+use Component\Resource\Repository\RepositoryInterface;
 use Symfony\Component\HttpFoundation\ParameterBag;
 use Symfony\Component\HttpFoundation\Request;
 

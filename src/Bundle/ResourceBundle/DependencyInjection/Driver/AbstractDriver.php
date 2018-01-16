@@ -11,12 +11,12 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ResourceBundle\DependencyInjection\Driver;
+namespace Bundle\ResourceBundle\DependencyInjection\Driver;
 
-use Sylius\Component\Resource\Factory\Factory;
-use Sylius\Component\Resource\Factory\TranslatableFactoryInterface;
-use Sylius\Component\Resource\Metadata\Metadata;
-use Sylius\Component\Resource\Metadata\MetadataInterface;
+use Component\Resource\Factory\Factory;
+use Component\Resource\Factory\TranslatableFactoryInterface;
+use Component\Resource\Metadata\Metadata;
+use Component\Resource\Metadata\MetadataInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;

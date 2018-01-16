@@ -11,13 +11,13 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\ThemeBundle\Configuration\Test;
+namespace spec\Bundle\ThemeBundle\Configuration\Test;
 
 use org\bovigo\vfs\vfsStreamDirectory as VfsStreamDirectory;
 use org\bovigo\vfs\vfsStreamWrapper as VfsStreamWrapper;
 use PhpSpec\ObjectBehavior;
-use Sylius\Bundle\ThemeBundle\Configuration\ConfigurationProcessorInterface;
-use Sylius\Bundle\ThemeBundle\Configuration\Test\TestThemeConfigurationManagerInterface;
+use Bundle\ThemeBundle\Configuration\ConfigurationProcessorInterface;
+use Bundle\ThemeBundle\Configuration\Test\TestThemeConfigurationManagerInterface;
 
 final class TestThemeConfigurationManagerSpec extends ObjectBehavior
 {

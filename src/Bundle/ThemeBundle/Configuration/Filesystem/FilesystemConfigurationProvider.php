@@ -11,10 +11,10 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ThemeBundle\Configuration\Filesystem;
+namespace Bundle\ThemeBundle\Configuration\Filesystem;
 
-use Sylius\Bundle\ThemeBundle\Configuration\ConfigurationProviderInterface;
-use Sylius\Bundle\ThemeBundle\Locator\FileLocatorInterface;
+use Bundle\ThemeBundle\Configuration\ConfigurationProviderInterface;
+use Bundle\ThemeBundle\Locator\FileLocatorInterface;
 
 final class FilesystemConfigurationProvider implements ConfigurationProviderInterface
 {

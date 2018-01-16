@@ -11,9 +11,9 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ThemeBundle\Translation\Provider\Resource;
+namespace Bundle\ThemeBundle\Translation\Provider\Resource;
 
-use Sylius\Bundle\ThemeBundle\Translation\Resource\TranslationResourceInterface;
+use Bundle\ThemeBundle\Translation\Resource\TranslationResourceInterface;
 
 interface TranslatorResourceProviderInterface
 {

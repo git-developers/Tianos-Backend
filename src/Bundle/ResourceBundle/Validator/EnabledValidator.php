@@ -11,9 +11,9 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ResourceBundle\Validator;
+namespace Bundle\ResourceBundle\Validator;
 
-use Sylius\Component\Resource\Model\ToggleableInterface;
+use Component\Resource\Model\ToggleableInterface;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 

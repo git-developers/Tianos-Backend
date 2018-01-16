@@ -11,10 +11,10 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ResourceBundle\DependencyInjection\Driver\Doctrine;
+namespace Bundle\ResourceBundle\DependencyInjection\Driver\Doctrine;
 
-use Sylius\Bundle\ResourceBundle\DependencyInjection\Driver\AbstractDriver;
-use Sylius\Component\Resource\Metadata\MetadataInterface;
+use Bundle\ResourceBundle\DependencyInjection\Driver\AbstractDriver;
+use Component\Resource\Metadata\MetadataInterface;
 use Symfony\Component\DependencyInjection\Alias;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;

@@ -11,9 +11,9 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ResourceBundle\Validator\Constraints;
+namespace Bundle\ResourceBundle\Validator\Constraints;
 
-use Sylius\Bundle\ResourceBundle\Validator\DisabledValidator;
+use Bundle\ResourceBundle\Validator\DisabledValidator;
 use Symfony\Component\Validator\Constraint;
 
 final class Disabled extends Constraint

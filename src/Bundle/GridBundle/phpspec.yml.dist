@@ -1,7 +1,7 @@
 suites:
     main:
-        namespace: Sylius\Bundle\GridBundle
-        psr4_prefix: Sylius\Bundle\GridBundle
+        namespace: Bundle\GridBundle
+        psr4_prefix: Bundle\GridBundle
         src_path: .
 
 extensions:

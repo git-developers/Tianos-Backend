@@ -32,10 +32,10 @@
         "bin-dir": "bin"
     },
     "autoload": {
-        "psr-4": { "Sylius\\Component\\Taxation\\": "" }
+        "psr-4": { "\Component\\Taxation\\": "" }
     },
     "autoload-dev": {
-        "psr-4": { "Sylius\\Component\\Taxation\\spec\\": "spec/" }
+        "psr-4": { "\Component\\Taxation\\spec\\": "spec/" }
     },
     "minimum-stability": "dev",
     "prefer-stable": true,

@@ -11,12 +11,12 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\GridBundle\Doctrine\PHPCRODM;
+namespace Bundle\GridBundle\Doctrine\PHPCRODM;
 
 use Doctrine\ODM\PHPCR\DocumentManagerInterface;
-use Sylius\Component\Grid\Data\DataSourceInterface;
-use Sylius\Component\Grid\Data\DriverInterface;
-use Sylius\Component\Grid\Parameters;
+use Component\Grid\Data\DataSourceInterface;
+use Component\Grid\Data\DriverInterface;
+use Component\Grid\Parameters;
 
 final class Driver implements DriverInterface
 {

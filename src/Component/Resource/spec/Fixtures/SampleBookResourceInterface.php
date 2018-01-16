@@ -11,9 +11,9 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Component\Resource\Fixtures;
+namespace spec\Component\Resource\Fixtures;
 
-use Sylius\Component\Resource\Model\ResourceInterface;
+use Component\Resource\Model\ResourceInterface;
 
 interface SampleBookResourceInterface extends ResourceInterface
 {

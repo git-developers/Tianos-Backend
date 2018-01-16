@@ -11,12 +11,12 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Component\User\Security\Checker;
+namespace spec\Component\User\Security\Checker;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use Sylius\Component\Resource\Repository\RepositoryInterface;
-use Sylius\Component\User\Security\Checker\UniquenessCheckerInterface;
+use Component\Resource\Repository\RepositoryInterface;
+use Component\User\Security\Checker\UniquenessCheckerInterface;
 
 final class TokenUniquenessCheckerSpec extends ObjectBehavior
 {

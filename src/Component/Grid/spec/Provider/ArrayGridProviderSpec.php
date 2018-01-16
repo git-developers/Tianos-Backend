@@ -11,13 +11,13 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Component\Grid\Provider;
+namespace spec\Component\Grid\Provider;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Component\Grid\Definition\ArrayToDefinitionConverterInterface;
-use Sylius\Component\Grid\Definition\Grid;
-use Sylius\Component\Grid\Exception\UndefinedGridException;
-use Sylius\Component\Grid\Provider\GridProviderInterface;
+use Component\Grid\Definition\ArrayToDefinitionConverterInterface;
+use Component\Grid\Definition\Grid;
+use Component\Grid\Exception\UndefinedGridException;
+use Component\Grid\Provider\GridProviderInterface;
 
 final class ArrayGridProviderSpec extends ObjectBehavior
 {

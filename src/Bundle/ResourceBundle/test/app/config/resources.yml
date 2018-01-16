@@ -6,7 +6,7 @@ sylius_resource:
         app.book:
             classes:
                 model: AppBundle\Entity\Book
-                factory: Sylius\Component\Resource\Factory\TranslatableFactory
+                factory: Component\Resource\Factory\TranslatableFactory
                 form: AppBundle\Form\Type\BookType
             translation:
                 classes:

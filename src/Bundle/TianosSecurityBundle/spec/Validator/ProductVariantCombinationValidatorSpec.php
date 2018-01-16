@@ -11,14 +11,14 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\CRUD_DUMMYBundle\Validator;
+namespace spec\Bundle\CRUD_DUMMYBundle\Validator;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use Sylius\Bundle\CRUD_DUMMYBundle\Validator\Constraint\CRUD_DUMMYVariantCombination;
-use Sylius\Component\CRUD_DUMMY\Checker\CRUD_DUMMYVariantsParityCheckerInterface;
-use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYInterface;
-use Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYVariantInterface;
+use Bundle\CRUD_DUMMYBundle\Validator\Constraint\CRUD_DUMMYVariantCombination;
+use Component\CRUD_DUMMY\Checker\CRUD_DUMMYVariantsParityCheckerInterface;
+use Component\CRUD_DUMMY\Model\CRUD_DUMMYInterface;
+use Component\CRUD_DUMMY\Model\CRUD_DUMMYVariantInterface;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Context\ExecutionContextInterface;
 

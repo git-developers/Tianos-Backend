@@ -40,10 +40,10 @@
         "bin-dir": "bin"
     },
     "autoload": {
-        "psr-4": { "Sylius\\Component\\Customer\\": "" }
+        "psr-4": { "\Component\\Customer\\": "" }
     },
     "autoload-dev": {
-        "psr-4": { "Sylius\\Component\\Customer\\spec\\": "spec/" }
+        "psr-4": { "\Component\\Customer\\spec\\": "spec/" }
     },
     "minimum-stability": "dev",
     "prefer-stable": true,

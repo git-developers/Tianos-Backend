@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ThemeBundle\Loader;
+namespace Bundle\ThemeBundle\Loader;
 
 final class ThemeLoadingFailedException extends \DomainException
 {

@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\GridBundle\Doctrine\PHPCRODM;
+namespace Bundle\GridBundle\Doctrine\PHPCRODM;
 
 /**
  * Contains constants values for comparisons which are not supported

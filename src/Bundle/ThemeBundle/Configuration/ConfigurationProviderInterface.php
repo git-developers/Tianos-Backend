@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ThemeBundle\Configuration;
+namespace Bundle\ThemeBundle\Configuration;
 
 interface ConfigurationProviderInterface
 {

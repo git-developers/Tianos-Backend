@@ -11,11 +11,11 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Bundle\ThemeBundle\Factory;
+namespace spec\Bundle\ThemeBundle\Factory;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Bundle\ThemeBundle\Factory\ThemeScreenshotFactoryInterface;
-use Sylius\Bundle\ThemeBundle\Model\ThemeScreenshot;
+use Bundle\ThemeBundle\Factory\ThemeScreenshotFactoryInterface;
+use Bundle\ThemeBundle\Model\ThemeScreenshot;
 
 final class ThemeScreenshotFactorySpec extends ObjectBehavior
 {

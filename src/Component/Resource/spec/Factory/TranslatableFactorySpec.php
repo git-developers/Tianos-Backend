@@ -11,14 +11,14 @@
 
 declare(strict_types=1);
 
-namespace spec\Sylius\Component\Resource\Factory;
+namespace spec\Component\Resource\Factory;
 
 use PhpSpec\ObjectBehavior;
-use Sylius\Component\Resource\Exception\UnexpectedTypeException;
-use Sylius\Component\Resource\Factory\FactoryInterface;
-use Sylius\Component\Resource\Factory\TranslatableFactoryInterface;
-use Sylius\Component\Resource\Model\TranslatableInterface;
-use Sylius\Component\Resource\Translation\Provider\TranslationLocaleProviderInterface;
+use Component\Resource\Exception\UnexpectedTypeException;
+use Component\Resource\Factory\FactoryInterface;
+use Component\Resource\Factory\TranslatableFactoryInterface;
+use Component\Resource\Model\TranslatableInterface;
+use Component\Resource\Translation\Provider\TranslationLocaleProviderInterface;
 
 final class TranslatableFactorySpec extends ObjectBehavior
 {

@@ -1,21 +1,12 @@
 <?php
 
-/*
- * This file is part of the Sylius package.
- *
- * (c) Paweł Jędrzejewski
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 declare(strict_types=1);
 
-namespace Sylius\Component\Grid\Provider;
+namespace Component\Grid\Provider;
 
-use Sylius\Component\Grid\Definition\ArrayToDefinitionConverterInterface;
-use Sylius\Component\Grid\Definition\Grid;
-use Sylius\Component\Grid\Exception\UndefinedGridException;
+use Component\Grid\Definition\ArrayToDefinitionConverterInterface;
+use Component\Grid\Definition\Grid;
+use Component\Grid\Exception\UndefinedGridException;
 
 final class ArrayGridProvider implements GridProviderInterface
 {

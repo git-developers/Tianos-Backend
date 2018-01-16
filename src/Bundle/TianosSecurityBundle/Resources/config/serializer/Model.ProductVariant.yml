@@ -1,4 +1,4 @@
-Sylius\Component\CRUD_DUMMY\Model\CRUD_DUMMYVariant:
+Component\CRUD_DUMMY\Model\CRUD_DUMMYVariant:
     exclusion_policy: ALL
     xml_root_name: variant
     properties:

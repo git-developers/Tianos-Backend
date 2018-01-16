@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Component\Registry;
+namespace Component\Registry;
 
 use Webmozart\Assert\Assert;
 use Zend\Stdlib\PriorityQueue;

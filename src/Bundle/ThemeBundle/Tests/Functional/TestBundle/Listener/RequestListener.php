@@ -11,11 +11,11 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\ThemeBundle\Tests\Functional\TestBundle\Listener;
+namespace Bundle\ThemeBundle\Tests\Functional\TestBundle\Listener;
 
-use Sylius\Bundle\ThemeBundle\Context\SettableThemeContext;
-use Sylius\Bundle\ThemeBundle\Context\ThemeContextInterface;
-use Sylius\Bundle\ThemeBundle\Repository\ThemeRepositoryInterface;
+use Bundle\ThemeBundle\Context\SettableThemeContext;
+use Bundle\ThemeBundle\Context\ThemeContextInterface;
+use Bundle\ThemeBundle\Repository\ThemeRepositoryInterface;
 use Symfony\Component\HttpKernel\Event\GetResponseEvent;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 
