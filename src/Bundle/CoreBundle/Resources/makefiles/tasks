@@ -225,3 +225,6 @@ crud:
 	mv $$PWD/src/Component/$(DUMMY_UPPER) $$PWD/src/Component/$(MODEL_UPPER)
 	mv $$PWD/src/Component/$(MODEL_UPPER)/Repository/$(DUMMY_UPPER)RepositoryInterface.php $$PWD/src/Component/$(MODEL_UPPER)/Repository/$(MODEL_UPPER)RepositoryInterface.php
 	find $$PWD/src/Component/$(MODEL_UPPER)/ -name \*.php -exec sed -i "s/$(DUMMY_UPPER)/$(MODEL_UPPER)/g" {} \;
+	@echo ;
+	@echo =========== CRUD: services YML ===========;
+	php bin/console tianos:crud:services $(MODEL_LOWERCASE)
