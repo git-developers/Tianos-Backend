@@ -2,6 +2,6 @@ frontend_default:
     resource: '@FrontendBundle/Resources/config/routing/default.yml'
     prefix: /
 
-frontend_product:
-    resource: '@ProductBundle/Resources/config/routing/frontend.yml'
-    prefix: /products
+#frontend_product:
+#    resource: '@ProductBundle/Resources/config/routing/frontend.yml'
+#    prefix: /products

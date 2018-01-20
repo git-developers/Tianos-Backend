@@ -46,26 +46,36 @@ class CrudServicesCommand extends ContainerAwareCommand
 
         # https://symfony.com/doc/current/service_container.html
         $ymlPath = __DIR__ . '/../../../../app/config/services.yml';
-        $model = '@' . ucfirst(strtolower($component)) . 'Bundle/Resources/config/services.yml';
-        $yamls = Yaml::parseFile($ymlPath);
-        $yamls = array_shift($yamls);
 
         $out = [];
-        $out['imports'] = $yamls;
+        $bundles = $this->defaultBundles($component);
 
-        foreach ($yamls as $key => $yaml){
-            if($yaml['resource'] != $model){
-                $out['imports'][]['resource'] = $model;
-                break;
-            }
+        foreach ($bundles as $key => $bundle){
+            $out['imports'][]['resource'] = '@' . ucfirst(strtolower($bundle)) . 'Bundle/Resources/config/services.yml';;
         }
 
+
+        //COPIAR YML
         file_put_contents($ymlPath, Yaml::dump($out));
 
         $output->writeln('--');
         $output->writeln('<info>* Services YML</info>');
         $output->writeln('--');
 
+    }
+
+    protected function defaultBundles($component)
+    {
+        $out = [];
+        $out[] = 'api';
+        $out[] = 'core';
+        $out[] = 'grid';
+        $out[] = 'backend';
+        $out[] = 'frontend';
+        $out[] = 'resource';
+        $out[] = $component;
+
+        return $out;
     }
 
 }

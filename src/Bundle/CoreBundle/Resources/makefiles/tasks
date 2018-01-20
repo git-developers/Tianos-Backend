@@ -1,4 +1,3 @@
-#!/bin/bash
 
 NOW := $(shell /bin/date "+%Y-%m-%d . %H:%M:%S")
 AUTHOR_EMAIL := "jafeth.bendezu.a@gmail.com"
@@ -186,6 +185,12 @@ gato:
 	$(eval MODEL := $(model) | tr '[:upper:]' '[:lower:]' | python -c "print raw_input().capitalize()" )
 	@echo $(MODEL)
 
+xxxx:
+	$(eval MODEL_UPPER := php bin/console tianos:capitalized $(model))
+	$(eval DUMMY_UPPER := DUMMY_UPPER)
+
+	mv $$PWD/src/Bundle/$(DUMMY_UPPER)Bundle $$PWD/src/Bundle/$(MODEL_UPPER)Bundle
+
 crud2:
 	@echo =========== CRUD: replace dummy ===========;
 	@echo ;
@@ -197,34 +202,8 @@ crud2:
 	    @echo =========== 2222222222 ===========;
 	fi
 
-
 crud:
 	@echo =========== CRUD: replace dummy ===========;
-	$(eval MODEL_LOWERCASE := $(model) | tr '[:upper:]' '[:lower:]')
-	$(eval MODEL_CAPITALIZE := $(model) | tr '[:upper:]' '[:lower:]' | python -c "print raw_input().capitalize()" )
-	$(eval MODEL_UPPER := $(MODEL_LOWERCASE) )
-	$(eval MODEL_LOWER := $(MODEL_CAPITALIZE) )
-	$(eval DUMMY_UPPER := DUMMY_UPPER)
-	$(eval DUMMY_LOWER := DUMMY_LOWER)
-	mv $$PWD/src/Bundle/$(DUMMY_UPPER)Bundle $$PWD/src/Bundle/$(MODEL_UPPER)Bundle
-	mv $$PWD/src/Bundle/$(MODEL_UPPER)Bundle/$(DUMMY_UPPER)Bundle.php $$PWD/src/Bundle/$(MODEL_UPPER)Bundle/$(MODEL_UPPER)Bundle.php
-	mv $$PWD/src/Bundle/$(MODEL_UPPER)Bundle/Resources/config/doctrine/$(DUMMY_UPPER).orm.yml $$PWD/src/Bundle/$(MODEL_UPPER)Bundle/Resources/config/doctrine/$(MODEL_UPPER).orm.yml
-	mv $$PWD/src/Bundle/$(MODEL_UPPER)Bundle/Entity/$(DUMMY_UPPER).php $$PWD/src/Bundle/$(MODEL_UPPER)Bundle/Entity/$(MODEL_UPPER).php
-	mv $$PWD/src/Bundle/$(MODEL_UPPER)Bundle/Doctrine/ORM/$(DUMMY_UPPER)Repository.php $$PWD/src/Bundle/$(MODEL_UPPER)Bundle/Doctrine/ORM/$(MODEL_UPPER)Repository.php
-	mv $$PWD/src/Bundle/$(MODEL_UPPER)Bundle/Form/Type/$(DUMMY_UPPER)Type.php $$PWD/src/Bundle/$(MODEL_UPPER)Bundle/Form/Type/$(MODEL_UPPER)Type.php
-	mv $$PWD/src/Bundle/$(MODEL_UPPER)Bundle/Resources/views/$(DUMMY_UPPER)Backend $$PWD/src/Bundle/$(MODEL_UPPER)Bundle/Resources/views/$(MODEL_UPPER)Backend
-	mv $$PWD/src/Bundle/$(MODEL_UPPER)Bundle/Resources/views/$(DUMMY_UPPER)Frontend $$PWD/src/Bundle/$(MODEL_UPPER)Bundle/Resources/views/$(MODEL_UPPER)Frontend
-	@echo ;
-	@echo =========== CRUD: replace files dummy ===========;
-	find $$PWD/src/Bundle/$(MODEL_UPPER)Bundle/ -name \*.php -exec sed -i "s/$(DUMMY_UPPER)/$(MODEL_UPPER)/g" {} \;
-	find $$PWD/src/Bundle/$(MODEL_UPPER)Bundle/ -name \*.php -exec sed -i "s/$(DUMMY_LOWER)/$(MODEL_LOWER)/g" {} \;
-	find $$PWD/src/Bundle/$(MODEL_UPPER)Bundle/ -name \*.yml -exec sed -i "s/$(DUMMY_UPPER)/$(MODEL_UPPER)/g" {} \;
-	find $$PWD/src/Bundle/$(MODEL_UPPER)Bundle/ -name \*.yml -exec sed -i "s/$(DUMMY_LOWER)/$(MODEL_LOWER)/g" {} \;
-	@echo ;
-	@echo =========== CRUD: componente ===========;
-	mv $$PWD/src/Component/$(DUMMY_UPPER) $$PWD/src/Component/$(MODEL_UPPER)
-	mv $$PWD/src/Component/$(MODEL_UPPER)/Repository/$(DUMMY_UPPER)RepositoryInterface.php $$PWD/src/Component/$(MODEL_UPPER)/Repository/$(MODEL_UPPER)RepositoryInterface.php
-	find $$PWD/src/Component/$(MODEL_UPPER)/ -name \*.php -exec sed -i "s/$(DUMMY_UPPER)/$(MODEL_UPPER)/g" {} \;
-	@echo ;
-	@echo =========== CRUD: services YML ===========;
-	php bin/console tianos:crud:services $(MODEL_LOWERCASE)
+	php bin/console tianos:create:crud $(model)
+
+
