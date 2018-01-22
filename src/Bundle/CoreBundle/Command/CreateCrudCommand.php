@@ -44,23 +44,25 @@ class CreateCrudCommand extends ContainerAwareCommand
         $bundle = ucfirst($bundle);
 
         $output->writeln([
-            '<comment>=========== <question>Directory Copy:</question> proceso ... ===========</comment>',
+            '<comment>=========== <question>Crud Directory Copy:</question> proceso ... ===========</comment>',
             '--',
         ]);
 
         $src = getcwd() . '/src/Bundle/DUMMY_UPPERBundle';
         $dest = getcwd() . '/src/Bundle/' . $bundle . 'Bundle';
 
-        $this->recurseCopy($src, $dest);
-        $this->linuxCommand('chown -R 1000:1000 ' . getcwd() . '/src/Bundle/' . $bundle . 'Bundle');
-        $this->recurseRenameDirectory($dest, $bundle);
-//        $this->recurseRenameFiles($dest, $bundle);
-//        $this->recursiveChownAndChgrp($dest);
+        $result = $this->linuxCommand('cp -R '.getcwd().'/src/Bundle/'.self::DUMMY_UPPER.'Bundle '.getcwd().'/src/Bundle/'.$bundle.'Bundle');
+        $output->writeln('<info>* Copiar bundle: '.$result.'</info>');
+        $result = $this->linuxCommand('chown -R 1000:1000 '.getcwd().'/src/Bundle/'.$bundle.'Bundle');
+        $output->writeln('<info>* Dar permisos bundle: '.$result.'</info>');
+        $result = $this->recurseRenameDirectory($dest, $bundle);
+        $output->writeln('<info>* Cambiar nombre a folderes: '.$result.'</info>');
+        $result = $this->recurseRenameFiles($dest, $bundle);
+        $output->writeln('<info>* Cambiar nombre a files: '.$result.'</info>');
 
         $output->writeln('--');
-        $output->writeln('<info>* Se termino de crear:</info>');
+        $output->writeln('<info>* Se termino el proceso</info>');
         $output->writeln('--');
-
     }
 
     private function linuxCommand($command) {
@@ -73,25 +75,7 @@ class CreateCrudCommand extends ContainerAwareCommand
             throw new ProcessFailedException($process);
         }
 
-        echo $process->getOutput();
-    }
-
-    private function recurseCopy($src, $dest) {
-        $dir = opendir($src);
-        @mkdir($dest);
-
-        while(false !== ( $file = readdir($dir)) ) {
-            if (( $file != '.' ) && ( $file != '..' )) {
-                if ( is_dir($src . '/' . $file) ) {
-                    $this->recurseCopy($src . '/' . $file,$dest . '/' . $file);
-                }
-                else {
-                    copy($src . '/' . $file,$dest . '/' . $file);
-                }
-            }
-        }
-
-        closedir($dir);
+        return $process->getOutput();
     }
 
     private function recurseRenameDirectory($src, $bundle) {
@@ -116,7 +100,6 @@ class CreateCrudCommand extends ContainerAwareCommand
 
                         rename($path, $newname);
                     }
-
                 }
             }
         }
@@ -129,22 +112,62 @@ class CreateCrudCommand extends ContainerAwareCommand
         $dir = opendir($src);
 
         while(false !== ( $file = readdir($dir)) ) {
+
             if (( $file != '.' ) && ( $file != '..' )) {
-                if ( is_dir($src . '/' . $file) ) {
-                    $this->recurseRenameFiles($src . '/' . $file, $bundle);
+
+                $path = $src . '/' . $file;
+
+                if ( is_dir($path) ) {
+                    $this->recurseRenameFiles($path, $bundle);
                 }
                 else {
 
-                    $oldname = $src . '/' . $file;
-                    $newname = str_replace(self::DUMMY_UPPER, $bundle, $oldname);
+                    $explode = explode(DIRECTORY_SEPARATOR, $path);
+                    $end = end($explode);
 
-                    rename($oldname, $newname);
+                    if (strpos($end, self::DUMMY_UPPER) !== false) {
+                        $newname = str_replace(self::DUMMY_UPPER, $bundle, $path);
+
+                        rename($path, $newname);
+                    }
                 }
             }
         }
 
         closedir($dir);
     }
+
+
+    /*
+        //        $this->recurseCopy($src, $dest);
+//        $this->recurseRenameDirectory($dest, $bundle);
+//        $this->recurseRenameFiles($dest, $bundle);
+//        $this->recursiveChownAndChgrp($dest);
+     *
+     *
+     *
+    private function recurseCopy($src, $dest) {
+        $dir = opendir($src);
+        @mkdir($dest);
+
+        while(false !== ( $file = readdir($dir)) ) {
+            if (( $file != '.' ) && ( $file != '..' )) {
+                if ( is_dir($src . '/' . $file) ) {
+                    $this->recurseCopy($src . '/' . $file,$dest . '/' . $file);
+                }
+                else {
+                    copy($src . '/' . $file,$dest . '/' . $file);
+                }
+            }
+        }
+
+        closedir($dir);
+    }
+
+
+
+
+    */
 
 /*    private function recursiveChmod ($path, $filePerm = 0644, $dirPerm = 0755)
     {
