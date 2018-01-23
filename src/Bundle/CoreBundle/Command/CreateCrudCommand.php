@@ -21,6 +21,8 @@ class CreateCrudCommand extends ContainerAwareCommand
 {
 
     const DUMMY_UPPER = 'DUMMY_UPPER';
+    const DUMMY_LOWER = 'DUMMY_LOWER';
+    const MODEL_UPPER = 'MODEL_UPPER';
 
     protected function configure()
     {
@@ -44,24 +46,64 @@ class CreateCrudCommand extends ContainerAwareCommand
         $bundle = ucfirst($bundle);
 
         $output->writeln([
-            '<comment>=========== <question>Crud Directory Copy:</question> proceso ... ===========</comment>',
+            '<comment>=========== <question>CRUD creator:</question> proceso ... ===========</comment>',
             '--',
         ]);
 
-        $src = getcwd() . '/src/Bundle/DUMMY_UPPERBundle';
-        $dest = getcwd() . '/src/Bundle/' . $bundle . 'Bundle';
+        $cwd = getcwd();
+        $src = $cwd . '/src/Bundle/'.self::DUMMY_UPPER.'Bundle';
+        $dest = $cwd . '/src/Bundle/' . $bundle . 'Bundle';
+        $srcComponent = $cwd.'/src/Component/'.self::DUMMY_UPPER;
+        $destComponent = $cwd.'/src/Component/'.$bundle;
 
-        $result = $this->linuxCommand('cp -R '.getcwd().'/src/Bundle/'.self::DUMMY_UPPER.'Bundle '.getcwd().'/src/Bundle/'.$bundle.'Bundle');
+        //        =============================================
+
+        $output->writeln('');
+        $output->writeln('<question>CRUD: bundle</question>');
+
+        $result = $this->linuxCommand('cp -R '.$src.' '. $dest);
         $output->writeln('<info>* Copiar bundle: '.$result.'</info>');
-        $result = $this->linuxCommand('chown -R 1000:1000 '.getcwd().'/src/Bundle/'.$bundle.'Bundle');
+
+        $result = $this->linuxCommand('chown -R 1000:1000 '. $dest);
         $output->writeln('<info>* Dar permisos bundle: '.$result.'</info>');
-        $result = $this->recurseRenameDirectory($dest, $bundle);
+
+        $result = $this->recurseRenameDirectory($dest, self::DUMMY_UPPER, $bundle);
         $output->writeln('<info>* Cambiar nombre a folderes: '.$result.'</info>');
-        $result = $this->recurseRenameFiles($dest, $bundle);
+
+        $result = $this->recurseRenameFiles($dest, self::DUMMY_UPPER, $bundle);
         $output->writeln('<info>* Cambiar nombre a files: '.$result.'</info>');
 
+        $result = $this->linuxCommand('find '.$dest.' -name \*.php -exec sed -i "s/'.self::DUMMY_LOWER.'/'.$bundle.'/g" {} \;');
+        $result = $this->linuxCommand('find '.$dest.' -name \*.php -exec sed -i "s/'.self::DUMMY_UPPER.'/'.$bundle.'/g" {} \;');
+        $output->writeln('<info>* Cambiar texto PHP dentro del bundle: '.$result.'</info>');
+
+        $result = $this->linuxCommand('find '.$dest.' -name \*.yml -exec sed -i "s/'.self::DUMMY_LOWER.'/'.$bundle.'/g" {} \;');
+        $result = $this->linuxCommand('find '.$dest.' -name \*.yml -exec sed -i "s/'.self::DUMMY_UPPER.'/'.$bundle.'/g" {} \;');
+        $output->writeln('<info>* Cambiar texto YML dentro del bundle: '.$result.'</info>');
+
+//        =============================================
+
+        $output->writeln('');
+        $output->writeln('<question>CRUD: component</question>');
+        $result = $this->linuxCommand('cp -R '.$srcComponent.' '. $destComponent);
+        $output->writeln('<info>* Copiar bundle: '.$result.'</info>');
+
+        $result = $this->linuxCommand('chown -R 1000:1000 '. $destComponent);
+        $output->writeln('<info>* Dar permisos bundle: '.$result.'</info>');
+
+        $result = $this->recurseRenameDirectory($destComponent, self::DUMMY_UPPER, $bundle);
+        $output->writeln('<info>* Cambiar nombre a folderes: '.$result.'</info>');
+
+        $result = $this->recurseRenameFiles($destComponent, self::DUMMY_UPPER, $bundle);
+        $output->writeln('<info>* Cambiar nombre a files: '.$result.'</info>');
+
+        $result = $this->linuxCommand('find '.$destComponent.' -name \*.php -exec sed -i "s/'.self::DUMMY_UPPER.'/'.$bundle.'/g" {} \;');
+        $output->writeln('<info>* Cambiar texto PHP dentro del bundle: '.$result.'</info>');
+
+//        =============================================
+
         $output->writeln('--');
-        $output->writeln('<info>* Se termino el proceso</info>');
+        $output->writeln('<comment>=== Se termino el proceso ===</comment>');
         $output->writeln('--');
     }
 
@@ -78,7 +120,7 @@ class CreateCrudCommand extends ContainerAwareCommand
         return $process->getOutput();
     }
 
-    private function recurseRenameDirectory($src, $bundle) {
+    private function recurseRenameDirectory($src, $needle, $bundle) {
 
         $dir = opendir($src);
 
@@ -89,14 +131,14 @@ class CreateCrudCommand extends ContainerAwareCommand
 
                 if ( is_dir($path) ) {
 
-                    $this->recurseRenameDirectory($path, $bundle);
+                    $this->recurseRenameDirectory($path, $needle, $bundle);
 
                     $explode = explode(DIRECTORY_SEPARATOR, $path);
                     $end = end($explode);
 
-                    if (strpos($end, self::DUMMY_UPPER) !== false) {
+                    if (strpos($end, $needle) !== false) {
 
-                        $newname = str_replace(self::DUMMY_UPPER, $bundle, $path);
+                        $newname = str_replace($needle, $bundle, $path);
 
                         rename($path, $newname);
                     }
@@ -107,7 +149,7 @@ class CreateCrudCommand extends ContainerAwareCommand
         closedir($dir);
     }
 
-    private function recurseRenameFiles($src, $bundle) {
+    private function recurseRenameFiles($src, $needle, $bundle) {
 
         $dir = opendir($src);
 
@@ -118,15 +160,15 @@ class CreateCrudCommand extends ContainerAwareCommand
                 $path = $src . '/' . $file;
 
                 if ( is_dir($path) ) {
-                    $this->recurseRenameFiles($path, $bundle);
+                    $this->recurseRenameFiles($path, $needle, $bundle);
                 }
                 else {
 
                     $explode = explode(DIRECTORY_SEPARATOR, $path);
                     $end = end($explode);
 
-                    if (strpos($end, self::DUMMY_UPPER) !== false) {
-                        $newname = str_replace(self::DUMMY_UPPER, $bundle, $path);
+                    if (strpos($end, $needle) !== false) {
+                        $newname = str_replace($needle, $bundle, $path);
 
                         rename($path, $newname);
                     }
@@ -136,73 +178,6 @@ class CreateCrudCommand extends ContainerAwareCommand
 
         closedir($dir);
     }
-
-
-    /*
-        //        $this->recurseCopy($src, $dest);
-//        $this->recurseRenameDirectory($dest, $bundle);
-//        $this->recurseRenameFiles($dest, $bundle);
-//        $this->recursiveChownAndChgrp($dest);
-     *
-     *
-     *
-    private function recurseCopy($src, $dest) {
-        $dir = opendir($src);
-        @mkdir($dest);
-
-        while(false !== ( $file = readdir($dir)) ) {
-            if (( $file != '.' ) && ( $file != '..' )) {
-                if ( is_dir($src . '/' . $file) ) {
-                    $this->recurseCopy($src . '/' . $file,$dest . '/' . $file);
-                }
-                else {
-                    copy($src . '/' . $file,$dest . '/' . $file);
-                }
-            }
-        }
-
-        closedir($dir);
-    }
-
-
-
-
-    */
-
-/*    private function recursiveChmod ($path, $filePerm = 0644, $dirPerm = 0755)
-    {
-        // Check if the path exists
-        if (!file_exists($path)) {
-            return(false);
-        }
-
-        // See whether this is a file
-        if (is_file($path)) {
-            // Chmod the file with our given filepermissions
-            chmod($path, $filePerm);
-
-            // If this is a directory...
-        } elseif (is_dir($path)) {
-            // Then get an array of the contents
-            $foldersAndFiles = scandir($path);
-
-            // Remove "." and ".." from the list
-            $entries = array_slice($foldersAndFiles, 2);
-
-            // Parse every result...
-            foreach ($entries as $entry) {
-                // And call this function again recursively, with the same permissions
-                $this->recursiveChmod($path."/".$entry, $filePerm, $dirPerm);
-            }
-
-            // When we are done with the contents of the directory, we chmod the directory itself
-            chmod($path, $dirPerm);
-        }
-
-        // Everything seemed to work out well, return true
-        return(true);
-    }*/
-
 
 }
 

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Sylius\Bundle\DUMMY_UPPERBundle\DependencyInjection;
+namespace Bundle\DUMMY_UPPERBundle\DependencyInjection;
 
 use Bundle\DUMMY_UPPERBundle\Controller\ProductAttributeController;
 use Bundle\DUMMY_UPPERBundle\Doctrine\ORM\ProductAttributeValueRepository;

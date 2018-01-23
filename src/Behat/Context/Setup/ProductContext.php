@@ -23,7 +23,7 @@ use Sylius\Component\Core\Model\ChannelInterface;
 use Sylius\Component\Core\Model\ChannelPricingInterface;
 use Sylius\Component\Core\Model\ImageInterface;
 use Sylius\Component\Core\Model\ProductInterface;
-use Sylius\Component\Core\Model\ProductTranslationInterface;
+use Sylius\Component\Core\Model\DUMMYUPPERTranslationInterface;
 use Sylius\Component\Core\Model\ProductVariantInterface;
 use Sylius\Component\Core\Repository\ProductRepositoryInterface;
 use Sylius\Component\Core\Uploader\ImageUploaderInterface;
@@ -32,7 +32,7 @@ use Sylius\Component\Product\Generator\ProductVariantGeneratorInterface;
 use Sylius\Component\Product\Generator\SlugGeneratorInterface;
 use Sylius\Component\Product\Model\ProductOptionInterface;
 use Sylius\Component\Product\Model\ProductOptionValueInterface;
-use Sylius\Component\Product\Model\ProductVariantTranslationInterface;
+use Sylius\Component\Product\Model\DUMMYUPPERVariantTranslationInterface;
 use Sylius\Component\Product\Resolver\ProductVariantResolverInterface;
 use Sylius\Component\Resource\Factory\FactoryInterface;
 use Sylius\Component\Resource\Model\TranslationInterface;
@@ -924,7 +924,7 @@ final class ProductContext implements Context
      */
     private function addProductTranslation(ProductInterface $product, $name, $locale)
     {
-        /** @var ProductTranslationInterface|TranslationInterface $translation */
+        /** @var DUMMYUPPERTranslationInterface|TranslationInterface $translation */
         $translation = $product->getTranslation($locale);
         if ($translation->getLocale() !== $locale) {
             $translation = $this->productTranslationFactory->createNew();
@@ -944,7 +944,7 @@ final class ProductContext implements Context
      */
     private function addProductVariantTranslation(ProductVariantInterface $productVariant, $name, $locale)
     {
-        /** @var ProductVariantTranslationInterface|TranslationInterface $translation */
+        /** @var DUMMYUPPERVariantTranslationInterface|TranslationInterface $translation */
         $translation = $this->productVariantTranslationFactory->createNew();
         $translation->setLocale($locale);
         $translation->setName($name);

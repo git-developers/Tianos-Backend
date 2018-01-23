@@ -4,10 +4,8 @@ namespace Component\DUMMY_UPPER\Model;
 
 use Doctrine\ORM\Mapping as ORM;
 
-//* @ORM\Entity
-
 /**
- * Product
+ * DUMMY_UPPER
  */
 class DUMMY_UPPER
 {
@@ -86,7 +84,7 @@ class DUMMY_UPPER
      *
      * @param string $code
      *
-     * @return Product
+     * @return DUMMY_UPPER
      */
     public function setCode($code)
     {
@@ -110,7 +108,7 @@ class DUMMY_UPPER
      *
      * @param string $name
      *
-     * @return Product
+     * @return DUMMY_UPPER
      */
     public function setName($name)
     {
@@ -134,7 +132,7 @@ class DUMMY_UPPER
      *
      * @param string $slug
      *
-     * @return Product
+     * @return DUMMY_UPPER
      */
     public function setSlug($slug)
     {
@@ -158,7 +156,7 @@ class DUMMY_UPPER
      *
      * @param string $image
      *
-     * @return Product
+     * @return DUMMY_UPPER
      */
     public function setImage($image)
     {
@@ -182,7 +180,7 @@ class DUMMY_UPPER
      *
      * @param \DateTime $createdAt
      *
-     * @return Product
+     * @return DUMMY_UPPER
      */
     public function setCreatedAt($createdAt)
     {
@@ -206,7 +204,7 @@ class DUMMY_UPPER
      *
      * @param integer $userCreate
      *
-     * @return Product
+     * @return DUMMY_UPPER
      */
     public function setUserCreate($userCreate)
     {
@@ -230,7 +228,7 @@ class DUMMY_UPPER
      *
      * @param \DateTime $updatedAt
      *
-     * @return Product
+     * @return DUMMY_UPPER
      */
     public function setUpdatedAt($updatedAt)
     {
@@ -254,7 +252,7 @@ class DUMMY_UPPER
      *
      * @param integer $userUpdate
      *
-     * @return Product
+     * @return DUMMY_UPPER
      */
     public function setUserUpdate($userUpdate)
     {
@@ -278,7 +276,7 @@ class DUMMY_UPPER
      *
      * @param boolean $isActive
      *
-     * @return Product
+     * @return DUMMY_UPPER
      */
     public function setIsActive($isActive)
     {
