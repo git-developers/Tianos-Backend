@@ -128,7 +128,9 @@ abstract class AbstractDriver implements DriverInterface
     {
         $definition = new Definition(Metadata::class);
         $definition
-            ->setFactory([new Reference('sylius.resource_registry'), 'get'])
+            //JAFETH
+            ->setFactory([new Reference('tianos.resource_registry'), 'get'])
+//            ->setFactory([new Reference('sylius.resource_registry'), 'get'])
             ->setArguments([$metadata->getAlias()])
         ;
 

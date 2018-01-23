@@ -29,3 +29,5 @@ parameters:
     application_facebook: 'https://www.facebook.com/Apptianos'
     application_twitter: 'https://twitter.com/tianosApp'
     application_description: 'Aplicación que provee acceso a información almacenada digitalmente'
+
+    sylius.resource.settings: 5555

@@ -1,7 +1,8 @@
 imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
-    - { resource: services.yml }
+    - { resource: services/services.yml }
+    - { resource: services/controller.yml }
     - { resource: third-party/assetic.yml }
     - { resource: third-party/doctrine-migrations.yml }
 

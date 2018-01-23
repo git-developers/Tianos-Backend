@@ -36,7 +36,10 @@
         <service id="sylius.resource_controller.redirect_handler" class="Bundle\ResourceBundle\Controller\RedirectHandler" public="false">
             <argument type="service" id="router" />
         </service>
+
         <service id="sylius.resource_controller.authorization_checker.disabled" class="Bundle\ResourceBundle\Controller\DisabledAuthorizationChecker" public="false" />
+
+
         <service id="sylius.resource_controller.flash_helper" class="Bundle\ResourceBundle\Controller\FlashHelper" public="false">
             <argument type="service" id="session" />
             <argument type="service" id="translator" />

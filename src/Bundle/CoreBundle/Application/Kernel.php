@@ -43,10 +43,23 @@ class Kernel extends HttpKernel
             new \Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
 
             //third-party bundles
+            new \FOS\RestBundle\FOSRestBundle(),
+            new \Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new \JMS\SerializerBundle\JMSSerializerBundle(),
             new \Symfony\Bundle\AsseticBundle\AsseticBundle(),
-            new \Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new \Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),
+
+            //tianos bundle
+            new \Bundle\UiBundle\UiBundle(),
+            new \Bundle\ApiBundle\ApiBundle(),
+            new \Bundle\CoreBundle\CoreBundle(),
+            new \Bundle\GridBundle\GridBundle(),
+            new \Bundle\ThemeBundle\ThemeBundle(),
+            new \Bundle\ThemesBundle\ThemesBundle(),
+            new \Bundle\BackendBundle\BackendBundle(),
+            new \Bundle\FrontendBundle\FrontendBundle(),
+            new \Bundle\ResourceBundle\ResourceBundle(),
+            new \Bundle\TianosSecurityBundle\TianosSecurityBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
