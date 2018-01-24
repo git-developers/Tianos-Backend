@@ -6,9 +6,17 @@ backend_product:
     resource: '@ProductBundle/Resources/config/routing/backend.yml'
     prefix: /product
 
-#backend_client:
-#    resource: '@ClientBundle/Resources/config/routing/backend.yml'
-#    prefix: /client
+backend_client:
+    resource: '@ClientBundle/Resources/config/routing/backend.yml'
+    prefix: /client
+
+backend_role:
+    resource: '@RoleBundle/Resources/config/routing/backend.yml'
+    prefix: /role
+
+backend_profile:
+    resource: '@ProfileBundle/Resources/config/routing/backend.yml'
+    prefix: /profile
 
 #backend_user:
 #    resource: '@UserBundle/Resources/config/routing/backend.yml'

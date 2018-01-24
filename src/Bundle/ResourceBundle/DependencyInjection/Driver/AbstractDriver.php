@@ -1,13 +1,6 @@
 <?php
 
-/*
- * This file is part of the Sylius package.
- *
- * (c) Paweł Jędrzejewski
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
+//JAFETH
 
 declare(strict_types=1);
 
@@ -83,11 +76,14 @@ abstract class AbstractDriver implements DriverInterface
                 new Reference('sylius.resource_controller.form_factory'),
                 new Reference('sylius.resource_controller.redirect_handler'),
                 new Reference('sylius.resource_controller.flash_helper'),
-                new Reference('sylius.resource_controller.authorization_checker'),
-                new Reference('sylius.resource_controller.event_dispatcher'),
-                new Reference('sylius.resource_controller.state_machine'),
-                new Reference('sylius.resource_controller.resource_update_handler'),
-                new Reference('sylius.resource_controller.resource_delete_handler'),
+
+
+//JAFETH COMENTADO
+//                new Reference('sylius.resource_controller.authorization_checker'),
+//                new Reference('sylius.resource_controller.event_dispatcher'),
+//                new Reference('sylius.resource_controller.state_machine'),
+//                new Reference('sylius.resource_controller.resource_update_handler'),
+//                new Reference('sylius.resource_controller.resource_delete_handler'),
             ])
             ->addMethodCall('setContainer', [new Reference('service_container')])
         ;
@@ -111,7 +107,8 @@ abstract class AbstractDriver implements DriverInterface
             $decoratedDefinition = new Definition(Factory::class);
             $decoratedDefinition->setArguments($definitionArgs);
 
-            $definitionArgs = [$decoratedDefinition, new Reference('sylius.translation_locale_provider')];
+//            JAFETH COMENTADO
+//            $definitionArgs = [$decoratedDefinition, new Reference('sylius.translation_locale_provider')];
         }
 
         $definition->setArguments($definitionArgs);

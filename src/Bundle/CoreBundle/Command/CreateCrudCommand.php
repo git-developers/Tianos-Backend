@@ -42,8 +42,8 @@ class CreateCrudCommand extends ContainerAwareCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $bundle = $input->getArgument('bundle');
-        $bundle = strtolower($bundle);
-        $bundle = ucfirst($bundle);
+        $bundleLower = strtolower($bundle);
+        $bundle = ucfirst($bundleLower);
 
         $output->writeln([
             '<comment>=========== <question>CRUD creator:</question> proceso ... ===========</comment>',
@@ -56,8 +56,9 @@ class CreateCrudCommand extends ContainerAwareCommand
         $srcComponent = $cwd.'/src/Component/'.self::DUMMY_UPPER;
         $destComponent = $cwd.'/src/Component/'.$bundle;
 
-        //        =============================================
 
+
+        //=============================================
         $output->writeln('');
         $output->writeln('<question>CRUD: bundle</question>');
 
@@ -73,16 +74,17 @@ class CreateCrudCommand extends ContainerAwareCommand
         $result = $this->recurseRenameFiles($dest, self::DUMMY_UPPER, $bundle);
         $output->writeln('<info>* Cambiar nombre a files: '.$result.'</info>');
 
-        $result = $this->linuxCommand('find '.$dest.' -name \*.php -exec sed -i "s/'.self::DUMMY_LOWER.'/'.$bundle.'/g" {} \;');
+        $result = $this->linuxCommand('find '.$dest.' -name \*.php -exec sed -i "s/'.self::DUMMY_LOWER.'/'.$bundleLower.'/g" {} \;');
         $result = $this->linuxCommand('find '.$dest.' -name \*.php -exec sed -i "s/'.self::DUMMY_UPPER.'/'.$bundle.'/g" {} \;');
         $output->writeln('<info>* Cambiar texto PHP dentro del bundle: '.$result.'</info>');
 
-        $result = $this->linuxCommand('find '.$dest.' -name \*.yml -exec sed -i "s/'.self::DUMMY_LOWER.'/'.$bundle.'/g" {} \;');
+        $result = $this->linuxCommand('find '.$dest.' -name \*.yml -exec sed -i "s/'.self::DUMMY_LOWER.'/'.$bundleLower.'/g" {} \;');
         $result = $this->linuxCommand('find '.$dest.' -name \*.yml -exec sed -i "s/'.self::DUMMY_UPPER.'/'.$bundle.'/g" {} \;');
         $output->writeln('<info>* Cambiar texto YML dentro del bundle: '.$result.'</info>');
 
-//        =============================================
 
+
+        //=============================================
         $output->writeln('');
         $output->writeln('<question>CRUD: component</question>');
         $result = $this->linuxCommand('cp -R '.$srcComponent.' '. $destComponent);
@@ -100,8 +102,17 @@ class CreateCrudCommand extends ContainerAwareCommand
         $result = $this->linuxCommand('find '.$destComponent.' -name \*.php -exec sed -i "s/'.self::DUMMY_UPPER.'/'.$bundle.'/g" {} \;');
         $output->writeln('<info>* Cambiar texto PHP dentro del bundle: '.$result.'</info>');
 
-//        =============================================
 
+
+        //=============================================
+        $output->writeln('');
+        $output->writeln('<question>CRUD: services</question>');
+        $result = $this->crudServices($bundle);
+        $output->writeln('<info>* services YML bundle: '.$result.'</info>');
+
+
+
+        //=============================================
         $output->writeln('--');
         $output->writeln('<comment>=== Se termino el proceso ===</comment>');
         $output->writeln('--');
@@ -179,8 +190,34 @@ class CreateCrudCommand extends ContainerAwareCommand
         closedir($dir);
     }
 
+    private function crudServices($bundle)
+    {
+        # https://symfony.com/doc/current/service_container.html
+        $exist = false;
+        $servicesSubfix = 'Bundle/Resources/config/services.yml';
+        $ymlPath = __DIR__ . '/../../../../app/config/services/services.yml';
+
+        $ymlValues = Yaml::parseFile($ymlPath);
+
+        foreach ($ymlValues['imports'] as $key => $ymlValue){
+
+            $ymlValue = array_shift($ymlValue);
+            $ymlValue = substr($ymlValue, 1);
+            $ymlValue = str_replace($servicesSubfix, '', $ymlValue);
+
+            if($ymlValue == $bundle){
+                $exist = true;
+            }
+        }
+
+        if(!$exist){
+            $ymlValues['imports'][]['resource'] = '@'.$bundle.$servicesSubfix;
+        }
+
+        //COPIAR YML
+        file_put_contents($ymlPath, Yaml::dump($ymlValues));
+    }
+
 }
-
-
 
 

@@ -205,5 +205,6 @@ crud2:
 crud:
 	@echo =========== CRUD: replace dummy ===========;
 	php bin/console tianos:create:crud $(model)
+	make permission
 
 

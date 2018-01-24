@@ -1,5 +1,15 @@
 services:
 
+    twig.extension.user:
+        class: Bundle\CoreBundle\Twig\Extension\UserExtension
+        public: false
+        tags:
+           - { name: twig.extension }
+
+
+
+
+
 #    core.listener.doctrine:
 #        class: Bundle\CoreBundle\EventListener\DoctrineListenerService
 #        arguments: ["@service_container", "@security.token_storage"]

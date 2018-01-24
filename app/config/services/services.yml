@@ -5,5 +5,7 @@ imports:
     - { resource: '@BackendBundle/Resources/config/services.yml' }
     - { resource: '@FrontendBundle/Resources/config/services.yml' }
     - { resource: '@ResourceBundle/Resources/config/services.yml' }
-#    - { resource: '@ProductBundle/Resources/config/services.yml' }
-    - { resource: '@DUMMY_UPPERBundle/Resources/config/services.yml' }
+    - { resource: '@ProductBundle/Resources/config/services.yml' }
+    - { resource: '@ClientBundle/Resources/config/services.yml' }
+    - { resource: '@RoleBundle/Resources/config/services.yml' }
+    - { resource: '@ProfileBundle/Resources/config/services.yml' }

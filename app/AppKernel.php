@@ -13,8 +13,10 @@ class AppKernel extends Kernel
 
 //            new \Bundle\ClientBundle\ClientBundle(),
 //            new \Bundle\UserBundle\UserBundle(),
-//            new \Bundle\ProductBundle\ProductBundle(),
-            new \Bundle\DUMMY_UPPERBundle\DUMMY_UPPERBundle(),
+            new \Bundle\RoleBundle\RoleBundle(),
+            new \Bundle\ProfileBundle\ProfileBundle(),
+            new \Bundle\ClientBundle\ClientBundle(),
+            new \Bundle\ProductBundle\ProductBundle(),
         ];
 
         return array_merge(parent::registerBundles(), $bundles);
