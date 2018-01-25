@@ -11,11 +11,9 @@ use JMS\Serializer\Annotation\Type as TypeJMS;
  */
 class Role
 {
-
     /**
      * @var integer
      *
-     * @JMSS\Groups({"crud"})
      */
     private $id;
 
@@ -27,42 +25,71 @@ class Role
     /**
      * @var string
      *
-     * @JMSS\Groups({"crud"})
      */
     private $name;
 
     /**
      * @var string
+     *
      */
     private $slug;
 
     /**
+     * @var string
+     *
+     */
+    private $groupRol;
+
+    /**
+     * @var string
+     *
+     */
+    private $groupRolTag;
+
+    /**
      * @var \DateTime
      *
-     * @JMSS\Groups({"crud"})
-     * @JMSS\Type("DateTime<'Y-m-d H:i'>")
      */
     private $createdAt;
 
     /**
      * @var integer
+     *
      */
     private $userCreate;
 
     /**
      * @var \DateTime
+     *
      */
     private $updatedAt;
 
     /**
      * @var integer
+     *
      */
     private $userUpdate;
 
     /**
      * @var boolean
+     *
      */
-    private $isActive = '1';
+    private $isActive;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="\Bundle\ProfileBundle\Entity\Profile", mappedBy="role")
+     */
+    private $profile;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->profile = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
 
     /**
@@ -145,6 +172,54 @@ class Role
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * Set groupRol
+     *
+     * @param string $groupRol
+     *
+     * @return Role
+     */
+    public function setGroupRol($groupRol)
+    {
+        $this->groupRol = $groupRol;
+
+        return $this;
+    }
+
+    /**
+     * Get groupRol
+     *
+     * @return string
+     */
+    public function getGroupRol()
+    {
+        return $this->groupRol;
+    }
+
+    /**
+     * Set groupRolTag
+     *
+     * @param string $groupRolTag
+     *
+     * @return Role
+     */
+    public function setGroupRolTag($groupRolTag)
+    {
+        $this->groupRolTag = $groupRolTag;
+
+        return $this;
+    }
+
+    /**
+     * Get groupRolTag
+     *
+     * @return string
+     */
+    public function getGroupRolTag()
+    {
+        return $this->groupRolTag;
     }
 
     /**
@@ -265,6 +340,40 @@ class Role
     public function getIsActive()
     {
         return $this->isActive;
+    }
+
+    /**
+     * Add profile
+     *
+     * @param \Bundle\ProfileBundle\Entity\Profile $profile
+     *
+     * @return Role
+     */
+    public function addProfile(\Bundle\ProfileBundle\Entity\Profile $profile)
+    {
+        $this->profile[] = $profile;
+
+        return $this;
+    }
+
+    /**
+     * Remove profile
+     *
+     * @param \Bundle\ProfileBundle\Entity\Profile $profile
+     */
+    public function removeProfile(\Bundle\ProfileBundle\Entity\Profile $profile)
+    {
+        $this->profile->removeElement($profile);
+    }
+
+    /**
+     * Get profile
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getProfile()
+    {
+        return $this->profile;
     }
 }
 

@@ -20,7 +20,7 @@ delete:
 permission:
 	@echo ---;
 	@echo se dara permisos a los folderes cache y logs;
-	chmod 0777 -R var/cache var/logs var/sessions
+	chmod 0777 -R var/cache var/logs var/sessions $$PWD/app/DoctrineMigrations
 	@echo ---;
 
 assets:
@@ -206,5 +206,9 @@ crud:
 	@echo =========== CRUD: replace dummy ===========;
 	php bin/console tianos:create:crud $(model)
 	make permission
+
+migrate_delete:
+	@echo =========== Migrations: delete all ===========;
+	rm -rf $$PWD/app/DoctrineMigrations
 
 

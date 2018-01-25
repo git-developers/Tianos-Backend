@@ -11,11 +11,9 @@ use JMS\Serializer\Annotation\Type as TypeJMS;
  */
 class Profile
 {
-
     /**
      * @var integer
      *
-     * @JMSS\Groups({"crud"})
      */
     private $id;
 
@@ -27,42 +25,67 @@ class Profile
     /**
      * @var string
      *
-     * @JMSS\Groups({"crud"})
      */
     private $name;
 
     /**
      * @var string
+     *
      */
     private $slug;
 
     /**
      * @var \DateTime
      *
-     * @JMSS\Groups({"crud"})
-     * @JMSS\Type("DateTime<'Y-m-d H:i'>")
      */
     private $createdAt;
 
     /**
      * @var integer
+     *
      */
     private $userCreate;
 
     /**
      * @var \DateTime
+     *
      */
     private $updatedAt;
 
     /**
      * @var integer
+     *
      */
     private $userUpdate;
 
     /**
      * @var boolean
+     *
      */
-    private $isActive = '1';
+    private $isActive;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="\Bundle\RoleBundle\Entity\Role", inversedBy="profile")
+     * @ORM\JoinTable(name="profile_has_role",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="profile_id", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="role_id", referencedColumnName="id")
+     *   }
+     * )
+     */
+    private $role;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->role = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
 
     /**
@@ -265,6 +288,40 @@ class Profile
     public function getIsActive()
     {
         return $this->isActive;
+    }
+
+    /**
+     * Add role
+     *
+     * @param \Bundle\RoleBundle\Entity\Role $role
+     *
+     * @return Profile
+     */
+    public function addRole(\Bundle\RoleBundle\Entity\Role $role)
+    {
+        $this->role[] = $role;
+
+        return $this;
+    }
+
+    /**
+     * Remove role
+     *
+     * @param \Bundle\RoleBundle\Entity\Role $role
+     */
+    public function removeRole(\Bundle\RoleBundle\Entity\Role $role)
+    {
+        $this->role->removeElement($role);
+    }
+
+    /**
+     * Get role
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRole()
+    {
+        return $this->role;
     }
 }
 
