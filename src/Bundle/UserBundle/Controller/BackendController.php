@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Bundle\ProductBundle\Controller;
+namespace Bundle\UserBundle\Controller;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Bundle\ProductBundle\Controller;
+namespace Bundle\UserBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -37,7 +37,7 @@ class FrontendController extends BaseController
         $products = $this->getSerialize($products, 'product');
 
         return $this->render(
-            'ProductBundle:ProductFrontend:index.html.twig',
+            'UserBundle:ProductFrontend:index.html.twig',
             [
                 'products' => $products,
             ]

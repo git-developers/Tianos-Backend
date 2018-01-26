@@ -11,3 +11,4 @@ imports:
     - { resource: '@ProfileBundle/Resources/config/services.yml' }
     - { resource: '@GroupofusersBundle/Resources/config/services.yml' }
     - { resource: '@PointofsaleBundle/Resources/config/services.yml' }
+    - { resource: '@UserBundle/Resources/config/services.yml' }

@@ -18,6 +18,10 @@ backend_profile:
     resource: '@ProfileBundle/Resources/config/routing/backend.yml'
     prefix: /profile
 
+backend_user:
+    resource: '@UserBundle/Resources/config/routing/backend.yml'
+    prefix: /user
+
 #backend_user:
 #    resource: '@UserBundle/Resources/config/routing/backend.yml'
 #    prefix: /user

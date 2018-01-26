@@ -652,11 +652,11 @@ class User
     /**
      * Set profile
      *
-     * @param \Bundle\RoleBundle\Entity\Profile $profile
+     * @param \Bundle\ProfileBundle\Entity\Profile $profile
      *
      * @return User
      */
-    public function setProfile(\Bundle\RoleBundle\Entity\Profile $profile = null)
+    public function setProfile(\Bundle\ProfileBundle\Entity\Profile $profile = null)
     {
         $this->profile = $profile;
 
@@ -666,7 +666,7 @@ class User
     /**
      * Get profile
      *
-     * @return \Bundle\RoleBundle\Entity\Profile
+     * @return \Bundle\ProfileBundle\Entity\Profile
      */
     public function getProfile()
     {
@@ -676,11 +676,11 @@ class User
     /**
      * Set client
      *
-     * @param \Bundle\RoleBundle\Entity\Client $client
+     * @param \Bundle\ClientBundle\Entity\Client $client
      *
      * @return User
      */
-    public function setClient(\Bundle\RoleBundle\Entity\Client $client = null)
+    public function setClient(\Bundle\ClientBundle\Entity\Client $client = null)
     {
         $this->client = $client;
 
@@ -690,7 +690,7 @@ class User
     /**
      * Get client
      *
-     * @return \Bundle\RoleBundle\Entity\Client
+     * @return \Bundle\ClientBundle\Entity\Client
      */
     public function getClient()
     {
@@ -700,11 +700,11 @@ class User
     /**
      * Add groupOfUser
      *
-     * @param \Bundle\RoleBundle\Entity\GroupOfUsers $groupOfUser
+     * @param \Bundle\GroupofusersBundle\Entity\Groupofusers $groupOfUser
      *
      * @return User
      */
-    public function addGroupOfUser(\Bundle\RoleBundle\Entity\GroupOfUsers $groupOfUser)
+    public function addGroupOfUser(\Bundle\GroupofusersBundle\Entity\Groupofusers $groupOfUser)
     {
         $this->groupOfUsers[] = $groupOfUser;
 
@@ -714,9 +714,9 @@ class User
     /**
      * Remove groupOfUser
      *
-     * @param \Bundle\RoleBundle\Entity\GroupOfUsers $groupOfUser
+     * @param \Bundle\GroupofusersBundle\Entity\Groupofusers $groupOfUser
      */
-    public function removeGroupOfUser(\Bundle\RoleBundle\Entity\GroupOfUsers $groupOfUser)
+    public function removeGroupOfUser(\Bundle\GroupofusersBundle\Entity\Groupofusers $groupOfUser)
     {
         $this->groupOfUsers->removeElement($groupOfUser);
     }
@@ -734,11 +734,11 @@ class User
     /**
      * Add pointOfSale
      *
-     * @param \Bundle\RoleBundle\Entity\PointOfSale $pointOfSale
+     * @param \Bundle\PointofsaleBundle\Entity\Pointofsale $pointOfSale
      *
      * @return User
      */
-    public function addPointOfSale(\Bundle\RoleBundle\Entity\PointOfSale $pointOfSale)
+    public function addPointOfSale(\Bundle\PointofsaleBundle\Entity\Pointofsale $pointOfSale)
     {
         $this->pointOfSale[] = $pointOfSale;
 
@@ -748,9 +748,9 @@ class User
     /**
      * Remove pointOfSale
      *
-     * @param \Bundle\RoleBundle\Entity\PointOfSale $pointOfSale
+     * @param \Bundle\PointofsaleBundle\Entity\Pointofsale $pointOfSale
      */
-    public function removePointOfSale(\Bundle\RoleBundle\Entity\PointOfSale $pointOfSale)
+    public function removePointOfSale(\Bundle\PointofsaleBundle\Entity\Pointofsale $pointOfSale)
     {
         $this->pointOfSale->removeElement($pointOfSale);
     }
