@@ -53,6 +53,7 @@ class Kernel extends HttpKernel
             new \Bundle\UiBundle\UiBundle(),
             new \Bundle\ApiBundle\ApiBundle(),
             new \Bundle\CoreBundle\CoreBundle(),
+            new \Bundle\UserBundle\UserBundle(),
             new \Bundle\GridBundle\GridBundle(),
             new \Bundle\ThemeBundle\ThemeBundle(),
             new \Bundle\ThemesBundle\ThemesBundle(),

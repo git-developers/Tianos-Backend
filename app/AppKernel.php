@@ -17,6 +17,7 @@ class AppKernel extends Kernel
             new \Bundle\ProfileBundle\ProfileBundle(),
             new \Bundle\ClientBundle\ClientBundle(),
             new \Bundle\ProductBundle\ProductBundle(),
+            new \Bundle\GroupofusersBundle\GroupofusersBundle(),
         ];
 
         return array_merge(parent::registerBundles(), $bundles);

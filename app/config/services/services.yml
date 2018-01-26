@@ -9,3 +9,5 @@ imports:
     - { resource: '@ClientBundle/Resources/config/services.yml' }
     - { resource: '@RoleBundle/Resources/config/services.yml' }
     - { resource: '@ProfileBundle/Resources/config/services.yml' }
+    - { resource: '@GroupofusersBundle/Resources/config/services.yml' }
+    - { resource: '@PointofsaleBundle/Resources/config/services.yml' }

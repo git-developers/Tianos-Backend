@@ -1,0 +1,19 @@
+frontend_groupofusers_bundle_index:
+    path: /
+    methods: [GET]
+    defaults:
+        _controller: tianos.frontend.controller.groupofusers:indexAction
+        _tianos:
+            section: admin
+            permission: true
+            grid: sylius_admin_groupofusers
+            template: GroupofusersBundle:Groupofusers:index.html.twig
+            vars:
+                subheader: sylius.ui.manage_your_groupofusers_catalog
+                icon: cube
+            form:
+                type: Bundle\GroupofusersBundle\Form\Type\GroupofusersType
+            repository:
+                service: tianos.repository.groupofusers
+                method: findAll
+                arguments: [$groupofusersId]

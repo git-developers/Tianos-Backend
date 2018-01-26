@@ -1,0 +1,42 @@
+services:
+
+    tianos.listener.doctrine.pointofsale:
+        class: Bundle\PointofsaleBundle\EventListener\DoctrineListenerService
+        arguments: ["@security.token_storage"]
+        tags:
+          - { name: doctrine.event_listener, event: postUpdate }
+          - { name: doctrine.event_listener, event: preUpdate }
+          - { name: doctrine.event_listener, event: prePersist }
+          - { name: doctrine.event_listener, event: postLoad }
+          - { name: doctrine.event_listener, event: postRemove }
+
+    tianos.api.controller.pointofsale:
+        class: Bundle\PointofsaleBundle\Controller\ApiController
+        arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
+        tags:
+            - { name: tianos.api.controller.pointofsale, alias: tianos.api.controller.pointofsale }
+
+    tianos.backend.controller.pointofsale:
+        class: Bundle\PointofsaleBundle\Controller\BackendController
+        arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
+        tags:
+            - { name: tianos.backend.controller.pointofsale, alias: tianos.backend.controller.pointofsale }
+
+    tianos.frontend.controller.pointofsale:
+        class: Bundle\PointofsaleBundle\Controller\FrontendController
+        arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
+        tags:
+            - { name: tianos.frontend.controller.pointofsale, alias: tianos.frontend.controller.pointofsale }
+
+    tianos.repository.pointofsale:
+        class: Dummy
+        factory: ['@doctrine.orm.entity_manager', getRepository]
+        arguments: [ Bundle\PointofsaleBundle\Entity\Pointofsale ]
+
+
+
+#    tianos.controller.grid:
+#        class: Bundle\GridBundle\Controller\GridController
+#        arguments: [ Bundle\GridBundle\Controller\RequestConfigurationFactoryInterface ]
+#        tags:
+#            - { name: tianos.controller.grid, alias: tianos.controller.grid }
