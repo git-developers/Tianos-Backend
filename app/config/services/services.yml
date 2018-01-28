@@ -7,8 +7,8 @@ imports:
     - { resource: '@ResourceBundle/Resources/config/services.yml' }
     - { resource: '@ProductBundle/Resources/config/services.yml' }
     - { resource: '@ClientBundle/Resources/config/services.yml' }
-    - { resource: '@RoleBundle/Resources/config/services.yml' }
-    - { resource: '@ProfileBundle/Resources/config/services.yml' }
     - { resource: '@GroupofusersBundle/Resources/config/services.yml' }
-    - { resource: '@PointofsaleBundle/Resources/config/services.yml' }
     - { resource: '@UserBundle/Resources/config/services.yml' }
+    - { resource: '@PointofsaleBundle/Resources/config/services.yml' }
+    - { resource: '@ProfileBundle/Resources/config/services.yml' }
+    - { resource: '@RoleBundle/Resources/config/services.yml' }

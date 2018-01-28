@@ -1,5 +1,9 @@
+#http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/reference/yaml-mapping.html
+
 Bundle\ProfileBundle\Entity\Profile:
     type: entity
+#    type: mappedSuperclass
+#    mappedSuperclass: Component\CRUDDUMMY\Model\CRUDDUMMY
     table: profile
     repositoryClass: Bundle\ProfileBundle\Doctrine\ORM\ProfileRepository
     id:
@@ -21,19 +25,28 @@ Bundle\ProfileBundle\Entity\Profile:
         name:
             type: string
             nullable: false
-            length: 100
+            length: 150
             options:
                 fixed: false
         slug:
             type: string
-            nullable: false
-            length: 100
+            nullable: true
+            length: 150
             options:
                 fixed: false
+#        image:
+#            type: string
+#            nullable: true
+#            length: 45
+#            options:
+#                fixed: false
         createdAt:
             type: datetime
             nullable: false
             column: created_at
+#            gedmo:
+#                timestampable:
+#                    on: create
         userCreate:
             type: integer
             nullable: true
@@ -53,23 +66,10 @@ Bundle\ProfileBundle\Entity\Profile:
         isActive:
             type: boolean
             nullable: true
+            options:
+                default: '1'
             column: is_active
-    manyToMany:
-        role:
-            targetEntity: Bundle\RoleBundle\Entity\Role
-            cascade: {  }
-            fetch: LAZY
-            mappedBy: null
-            inversedBy: profile
-            joinTable:
-                name: profile_has_role
-                joinColumns:
-                    -
-                        name: profile_id
-                        referencedColumnName: id
-                inverseJoinColumns:
-                    -
-                        name: role_id
-                        referencedColumnName: id
-            orderBy: null
     lifecycleCallbacks: {  }
+#    lifecycleCallbacks:
+#        prePersist: [ doStuffOnPrePersist, doOtherStuffOnPrePersistToo ]
+#        postPersist: [ doStuffOnPostPersist ]

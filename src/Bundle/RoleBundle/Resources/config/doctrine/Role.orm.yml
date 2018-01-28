@@ -1,5 +1,9 @@
+#http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/reference/yaml-mapping.html
+
 Bundle\RoleBundle\Entity\Role:
     type: entity
+#    type: mappedSuperclass
+#    mappedSuperclass: Component\CRUDDUMMY\Model\CRUDDUMMY
     table: role
     repositoryClass: Bundle\RoleBundle\Doctrine\ORM\RoleRepository
     id:
@@ -20,34 +24,29 @@ Bundle\RoleBundle\Entity\Role:
                 fixed: false
         name:
             type: string
-            nullable: true
-            length: 100
+            nullable: false
+            length: 150
             options:
                 fixed: false
         slug:
             type: string
-            nullable: false
-            length: 100
-            options:
-                fixed: false
-        groupRol:
-            type: string
             nullable: true
-            length: 100
+            length: 150
             options:
                 fixed: false
-            column: group_rol
-        groupRolTag:
-            type: string
-            nullable: true
-            length: 100
-            options:
-                fixed: false
-            column: group_rol_tag
+#        image:
+#            type: string
+#            nullable: true
+#            length: 45
+#            options:
+#                fixed: false
         createdAt:
             type: datetime
             nullable: false
             column: created_at
+#            gedmo:
+#                timestampable:
+#                    on: create
         userCreate:
             type: integer
             nullable: true
@@ -66,15 +65,11 @@ Bundle\RoleBundle\Entity\Role:
             column: user_update
         isActive:
             type: boolean
-            nullable: false
+            nullable: true
+            options:
+                default: '1'
             column: is_active
-    manyToMany:
-        profile:
-            targetEntity: Bundle\ProfileBundle\Entity\Profile
-            cascade: {  }
-            fetch: LAZY
-            mappedBy: role
-            inversedBy: null
-            joinTable: null
-            orderBy: null
     lifecycleCallbacks: {  }
+#    lifecycleCallbacks:
+#        prePersist: [ doStuffOnPrePersist, doOtherStuffOnPrePersistToo ]
+#        postPersist: [ doStuffOnPostPersist ]
