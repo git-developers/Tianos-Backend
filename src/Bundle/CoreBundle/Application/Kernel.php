@@ -43,6 +43,7 @@ class Kernel extends HttpKernel
             new \Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
 
             //third-party bundles
+            new \FOS\UserBundle\FOSUserBundle(),
             new \FOS\RestBundle\FOSRestBundle(),
             new \Knp\Bundle\MenuBundle\KnpMenuBundle(),
             new \JMS\SerializerBundle\JMSSerializerBundle(),

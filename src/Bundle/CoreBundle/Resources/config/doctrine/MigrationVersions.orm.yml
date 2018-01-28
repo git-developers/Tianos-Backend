@@ -1,0 +1,14 @@
+Bundle\CoreBundle\Entity\MigrationVersions:
+    type: entity
+    table: migration_versions
+    id:
+        version:
+            type: string
+            nullable: false
+            length: 255
+            options:
+                fixed: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    lifecycleCallbacks: {  }

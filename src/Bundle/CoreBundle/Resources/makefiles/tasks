@@ -59,7 +59,7 @@ doctrine_update:
 	php bin/console doctrine:migration:status
 	php bin/console doctrine:migration:diff
 
-entity_update:
+#entity_update:
 	php bin/console doctrine:mapping:import --force CoreBundle yml --filter="$(entity)"
 	php bin/console doctrine:mapping:convert annotation ./src --force
 	php bin/console doctrine:generate:entities CoreBundle:$(entity) --no-backup

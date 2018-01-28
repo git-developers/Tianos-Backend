@@ -30,12 +30,12 @@ Bundle\UserBundle\Entity\User:
             generator:
                 strategy: IDENTITY
     fields:
-        username:
-            type: string
-            nullable: false
-            length: 45
-            options:
-                fixed: false
+#        username:
+#            type: string
+#            nullable: false
+#            length: 45
+#            options:
+#                fixed: false
         slug:
             type: string
             nullable: true
@@ -49,18 +49,18 @@ Bundle\UserBundle\Entity\User:
             options:
                 fixed: false
             column: device_code
-        password:
-            type: string
-            nullable: true
-            length: 100
-            options:
-                fixed: false
-        salt:
-            type: string
-            nullable: true
-            length: 45
-            options:
-                fixed: false
+#        password:
+#            type: string
+#            nullable: true
+#            length: 100
+#            options:
+#                fixed: false
+#        salt:
+#            type: string
+#            nullable: true
+#            length: 45
+#            options:
+#                fixed: false
         dni:
             type: string
             nullable: true
@@ -89,12 +89,12 @@ Bundle\UserBundle\Entity\User:
             length: 100
             options:
                 fixed: false
-        email:
-            type: string
-            nullable: false
-            length: 255
-            options:
-                fixed: false
+#        email:
+#            type: string
+#            nullable: false
+#            length: 255
+#            options:
+#                fixed: false
         phone:
             type: string
             nullable: true

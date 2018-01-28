@@ -3,83 +3,98 @@
 namespace Bundle\RoleBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use JMS\Serializer\Annotation as JMSS;
-use JMS\Serializer\Annotation\Type as TypeJMS;
 
 /**
  * Role
+ *
+ * @ORM\Table(name="role")
+ * @ORM\Entity(repositoryClass="Bundle\RoleBundle\Doctrine\ORM\RoleRepository")
  */
 class Role
 {
     /**
-     * @var integer
+     * @var int
      *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
-     * @var string
+     * @var string|null
+     *
+     * @ORM\Column(name="code", type="string", length=45, nullable=true)
      */
     private $code;
 
     /**
-     * @var string
+     * @var string|null
      *
+     * @ORM\Column(name="name", type="string", length=100, nullable=true)
      */
     private $name;
 
     /**
      * @var string
      *
+     * @ORM\Column(name="slug", type="string", length=100, nullable=false)
      */
     private $slug;
 
     /**
-     * @var string
+     * @var string|null
      *
+     * @ORM\Column(name="group_rol", type="string", length=100, nullable=true)
      */
     private $groupRol;
 
     /**
-     * @var string
+     * @var string|null
      *
+     * @ORM\Column(name="group_rol_tag", type="string", length=100, nullable=true)
      */
     private $groupRolTag;
 
     /**
      * @var \DateTime
      *
+     * @ORM\Column(name="created_at", type="datetime", nullable=false)
      */
     private $createdAt;
 
     /**
-     * @var integer
+     * @var int|null
      *
+     * @ORM\Column(name="user_create", type="integer", nullable=true)
      */
     private $userCreate;
 
     /**
-     * @var \DateTime
+     * @var \DateTime|null
      *
+     * @ORM\Column(name="updated_at", type="datetime", nullable=true)
      */
     private $updatedAt;
 
     /**
-     * @var integer
+     * @var int|null
      *
+     * @ORM\Column(name="user_update", type="integer", nullable=true)
      */
     private $userUpdate;
 
     /**
-     * @var boolean
+     * @var bool
      *
+     * @ORM\Column(name="is_active", type="boolean", nullable=false)
      */
     private $isActive;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="\Bundle\ProfileBundle\Entity\Profile", mappedBy="role")
+     * @ORM\ManyToMany(targetEntity="Bundle\ProfileBundle\Entity\Profile", mappedBy="role")
      */
     private $profile;
 
@@ -91,289 +106,4 @@ class Role
         $this->profile = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set code
-     *
-     * @param string $code
-     *
-     * @return Role
-     */
-    public function setCode($code)
-    {
-        $this->code = $code;
-
-        return $this;
-    }
-
-    /**
-     * Get code
-     *
-     * @return string
-     */
-    public function getCode()
-    {
-        return $this->code;
-    }
-
-    /**
-     * Set name
-     *
-     * @param string $name
-     *
-     * @return Role
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
-     * Set slug
-     *
-     * @param string $slug
-     *
-     * @return Role
-     */
-    public function setSlug($slug)
-    {
-        $this->slug = $slug;
-
-        return $this;
-    }
-
-    /**
-     * Get slug
-     *
-     * @return string
-     */
-    public function getSlug()
-    {
-        return $this->slug;
-    }
-
-    /**
-     * Set groupRol
-     *
-     * @param string $groupRol
-     *
-     * @return Role
-     */
-    public function setGroupRol($groupRol)
-    {
-        $this->groupRol = $groupRol;
-
-        return $this;
-    }
-
-    /**
-     * Get groupRol
-     *
-     * @return string
-     */
-    public function getGroupRol()
-    {
-        return $this->groupRol;
-    }
-
-    /**
-     * Set groupRolTag
-     *
-     * @param string $groupRolTag
-     *
-     * @return Role
-     */
-    public function setGroupRolTag($groupRolTag)
-    {
-        $this->groupRolTag = $groupRolTag;
-
-        return $this;
-    }
-
-    /**
-     * Get groupRolTag
-     *
-     * @return string
-     */
-    public function getGroupRolTag()
-    {
-        return $this->groupRolTag;
-    }
-
-    /**
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     *
-     * @return Role
-     */
-    public function setCreatedAt($createdAt)
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    /**
-     * Get createdAt
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
-    }
-
-    /**
-     * Set userCreate
-     *
-     * @param integer $userCreate
-     *
-     * @return Role
-     */
-    public function setUserCreate($userCreate)
-    {
-        $this->userCreate = $userCreate;
-
-        return $this;
-    }
-
-    /**
-     * Get userCreate
-     *
-     * @return integer
-     */
-    public function getUserCreate()
-    {
-        return $this->userCreate;
-    }
-
-    /**
-     * Set updatedAt
-     *
-     * @param \DateTime $updatedAt
-     *
-     * @return Role
-     */
-    public function setUpdatedAt($updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get updatedAt
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
-    }
-
-    /**
-     * Set userUpdate
-     *
-     * @param integer $userUpdate
-     *
-     * @return Role
-     */
-    public function setUserUpdate($userUpdate)
-    {
-        $this->userUpdate = $userUpdate;
-
-        return $this;
-    }
-
-    /**
-     * Get userUpdate
-     *
-     * @return integer
-     */
-    public function getUserUpdate()
-    {
-        return $this->userUpdate;
-    }
-
-    /**
-     * Set isActive
-     *
-     * @param boolean $isActive
-     *
-     * @return Role
-     */
-    public function setIsActive($isActive)
-    {
-        $this->isActive = $isActive;
-
-        return $this;
-    }
-
-    /**
-     * Get isActive
-     *
-     * @return boolean
-     */
-    public function getIsActive()
-    {
-        return $this->isActive;
-    }
-
-    /**
-     * Add profile
-     *
-     * @param \Bundle\ProfileBundle\Entity\Profile $profile
-     *
-     * @return Role
-     */
-    public function addProfile(\Bundle\ProfileBundle\Entity\Profile $profile)
-    {
-        $this->profile[] = $profile;
-
-        return $this;
-    }
-
-    /**
-     * Remove profile
-     *
-     * @param \Bundle\ProfileBundle\Entity\Profile $profile
-     */
-    public function removeProfile(\Bundle\ProfileBundle\Entity\Profile $profile)
-    {
-        $this->profile->removeElement($profile);
-    }
-
-    /**
-     * Get profile
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getProfile()
-    {
-        return $this->profile;
-    }
 }
-
