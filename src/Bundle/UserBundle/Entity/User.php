@@ -15,7 +15,7 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
      * @var int
      *
      */
-    private $id;
+    protected $id;
 
     /**
      * @var string|null
