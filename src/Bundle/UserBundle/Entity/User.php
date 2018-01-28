@@ -3,126 +3,107 @@
 namespace Bundle\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use FOS\UserBundle\Model\User as BaseUser;
 
 /**
  * User
  *
- * @ORM\Table(name="user", uniqueConstraints={@ORM\UniqueConstraint(name="email_UNIQUE", columns={"email"}), @ORM\UniqueConstraint(name="username_UNIQUE", columns={"username"}), @ORM\UniqueConstraint(name="dni_UNIQUE", columns={"dni"})}, indexes={@ORM\Index(name="FK_8D93D649CCFA12B8", columns={"profile_id"}), @ORM\Index(name="fk_user_client1_idx", columns={"client_id"})})
- * @ORM\Entity
  */
-class User
+class User extends BaseUser // implements UserInterface, DomainObjectInterface, \Serializable
 {
     /**
      * @var int
      *
-     * @ORM\Column(name="id", type="integer")
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="slug", type="string", length=255, nullable=true)
      */
     private $slug;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="device_code", type="string", length=100, nullable=true)
      */
     private $deviceCode;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="dni", type="string", length=8, nullable=true)
      */
     private $dni;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="name", type="string", length=100, nullable=false)
      */
     private $name;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="last_name", type="string", length=100, nullable=true)
      */
     private $lastName;
 
     /**
      * @var \DateTime|null
      *
-     * @ORM\Column(name="dob", type="date", nullable=true)
      */
     private $dob;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="address", type="string", length=100, nullable=true)
      */
     private $address;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="phone", type="string", length=45, nullable=true)
      */
     private $phone;
 
     /**
      * @var string|null
      *
-     * @ORM\Column(name="image", type="string", length=255, nullable=true)
      */
     private $image;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="created_at", type="datetime", nullable=false)
      */
     private $createdAt;
 
     /**
      * @var int|null
      *
-     * @ORM\Column(name="user_create", type="integer", nullable=true)
      */
     private $userCreate;
 
     /**
      * @var \DateTime|null
      *
-     * @ORM\Column(name="updated_at", type="datetime", nullable=true)
      */
     private $updatedAt;
 
     /**
      * @var int|null
      *
-     * @ORM\Column(name="user_update", type="integer", nullable=true)
      */
     private $userUpdate;
 
     /**
      * @var bool
      *
-     * @ORM\Column(name="is_active", type="boolean", nullable=false, options={"default"="1"})
      */
     private $isActive = '1';
 
     /**
      * @var \DateTime|null
      *
-     * @ORM\Column(name="last_access", type="datetime", nullable=true)
      */
     private $lastAccess;
 
@@ -176,5 +157,537 @@ class User
         $this->groupOfUsers = new \Doctrine\Common\Collections\ArrayCollection();
         $this->pointOfSale = new \Doctrine\Common\Collections\ArrayCollection();
     }
+
+    /**
+     * Get id
+     *
+     * @return integer
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return User
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
+    /**
+     * Set deviceCode
+     *
+     * @param string $deviceCode
+     *
+     * @return User
+     */
+    public function setDeviceCode($deviceCode)
+    {
+        $this->deviceCode = $deviceCode;
+
+        return $this;
+    }
+
+    /**
+     * Get deviceCode
+     *
+     * @return string
+     */
+    public function getDeviceCode()
+    {
+        return $this->deviceCode;
+    }
+
+
+    /**
+     * Set dni
+     *
+     * @param string $dni
+     *
+     * @return User
+     */
+    public function setDni($dni)
+    {
+        $this->dni = $dni;
+
+        return $this;
+    }
+
+    /**
+     * Get dni
+     *
+     * @return string
+     */
+    public function getDni()
+    {
+        return $this->dni;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return User
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set lastName
+     *
+     * @param string $lastName
+     *
+     * @return User
+     */
+    public function setLastName($lastName)
+    {
+        $this->lastName = $lastName;
+
+        return $this;
+    }
+
+    /**
+     * Get lastName
+     *
+     * @return string
+     */
+    public function getLastName()
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * Set dob
+     *
+     * @param \DateTime $dob
+     *
+     * @return User
+     */
+    public function setDob($dob)
+    {
+        $this->dob = $dob;
+
+        return $this;
+    }
+
+    /**
+     * Get dob
+     *
+     * @return \DateTime
+     */
+    public function getDob()
+    {
+        return $this->dob;
+    }
+
+    /**
+     * Set address
+     *
+     * @param string $address
+     *
+     * @return User
+     */
+    public function setAddress($address)
+    {
+        $this->address = $address;
+
+        return $this;
+    }
+
+    /**
+     * Get address
+     *
+     * @return string
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+
+    /**
+     * Set phone
+     *
+     * @param string $phone
+     *
+     * @return User
+     */
+    public function setPhone($phone)
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    /**
+     * Get phone
+     *
+     * @return string
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     *
+     * @return User
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     *
+     * @return User
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Set isActive
+     *
+     * @param boolean $isActive
+     *
+     * @return User
+     */
+    public function setIsActive($isActive)
+    {
+        $this->isActive = $isActive;
+
+        return $this;
+    }
+
+    /**
+     * Get isActive
+     *
+     * @return boolean
+     */
+    public function getIsActive()
+    {
+        return $this->isActive;
+    }
+
+    /**
+     * Set lastAccess
+     *
+     * @param \DateTime $lastAccess
+     *
+     * @return User
+     */
+    public function setLastAccess($lastAccess)
+    {
+        $this->lastAccess = $lastAccess;
+
+        return $this;
+    }
+
+    /**
+     * Get lastAccess
+     *
+     * @return \DateTime
+     */
+    public function getLastAccess()
+    {
+        return $this->lastAccess;
+    }
+
+    /**
+     * Set profile
+     *
+     * @param \CoreBundle\Entity\Profile $profile
+     *
+     * @return User
+     */
+    public function setProfile(\CoreBundle\Entity\Profile $profile = null)
+    {
+        $this->profile = $profile;
+
+        return $this;
+    }
+
+    /**
+     * Get profile
+     *
+     * @return \CoreBundle\Entity\Profile
+     */
+    public function getProfile()
+    {
+        return $this->profile;
+    }
+
+    /**
+     * Set client
+     *
+     * @param \CoreBundle\Entity\Client $client
+     *
+     * @return User
+     */
+    public function setClient(\CoreBundle\Entity\Client $client = null)
+    {
+        $this->client = $client;
+
+        return $this;
+    }
+
+    /**
+     * Get client
+     *
+     * @return \CoreBundle\Entity\Client
+     */
+    public function getClient()
+    {
+        return $this->client;
+    }
+
+    /**
+     * Add groupOfUser
+     *
+     * @param \CoreBundle\Entity\GroupOfUsers $groupOfUser
+     *
+     * @return User
+     */
+    public function addGroupOfUser(\CoreBundle\Entity\GroupOfUsers $groupOfUser)
+    {
+        $this->groupOfUsers[] = $groupOfUser;
+
+        return $this;
+    }
+
+    /**
+     * Remove groupOfUser
+     *
+     * @param \CoreBundle\Entity\GroupOfUsers $groupOfUser
+     */
+    public function removeGroupOfUser(\CoreBundle\Entity\GroupOfUsers $groupOfUser)
+    {
+        $this->groupOfUsers->removeElement($groupOfUser);
+    }
+
+    /**
+     * Get groupOfUsers
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getGroupOfUsers()
+    {
+        return $this->groupOfUsers;
+    }
+
+    /**
+     * Add file
+     *
+     * @param \CoreBundle\Entity\Files $file
+     *
+     * @return User
+     */
+    public function addFile(\CoreBundle\Entity\Files $file)
+    {
+        $this->files[] = $file;
+
+        return $this;
+    }
+
+    /**
+     * Remove file
+     *
+     * @param \CoreBundle\Entity\Files $file
+     */
+    public function removeFile(\CoreBundle\Entity\Files $file)
+    {
+        $this->files->removeElement($file);
+    }
+
+    /**
+     * Get files
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getFiles()
+    {
+        return $this->files;
+    }
+
+    /**
+     * Add pointOfSale
+     *
+     * @param \CoreBundle\Entity\PointOfSale $pointOfSale
+     *
+     * @return User
+     */
+    public function addPointOfSale(\CoreBundle\Entity\PointOfSale $pointOfSale)
+    {
+        $this->pointOfSale[] = $pointOfSale;
+
+        return $this;
+    }
+
+    /**
+     * Remove pointOfSale
+     *
+     * @param \CoreBundle\Entity\PointOfSale $pointOfSale
+     */
+    public function removePointOfSale(\CoreBundle\Entity\PointOfSale $pointOfSale)
+    {
+        $this->pointOfSale->removeElement($pointOfSale);
+    }
+
+    /**
+     * Get pointOfSale
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPointOfSale()
+    {
+        return $this->pointOfSale;
+    }
+
+    /**
+     * Returns the roles granted to the user.
+     *
+     * <code>
+     * public function getRoles()
+     * {
+     *     return array('ROLE_USER');
+     * }
+     * </code>
+     *
+     * Alternatively, the roles might be stored on a ``roles`` property,
+     * and populated in any number of different ways when the user object
+     * is created.
+     *
+     * @return (Role|string)[] The user roles
+     */
+    public function getRoles() {
+        $roles = [];
+
+        if(is_object($this->getProfile())){
+            foreach ($this->getProfile()->getRole() as $key => $role) {
+                $roles[] = $role->getSlug();
+            }
+        }
+
+        $roles[] = 'ROLE_USER';
+
+        return $roles;
+    }
+
+    /**
+     * Removes sensitive data from the user.
+     *
+     * This is important if, at any given point, sensitive information like
+     * the plain-text password is stored on this object.
+     */
+    public function eraseCredentials()
+    {
+        // TODO: Implement eraseCredentials() method.
+    }
+
+    public function getAvatarFileName()
+    {
+        if(is_object($this->image)){
+            return $this->image->getFileName();
+        }
+
+        return;
+    }
+
+    public function getObjectIdentifier()
+    {
+        return 'usuario-210'; //$this->username;
+    }
+
+    /** @see \Serializable::serialize() */
+//    public function serialize()
+//    {
+//        return serialize(array(
+//            $this->id,
+//            $this->username,
+//            $this->password,
+//            // see section on salt below
+//            // $this->salt,
+//        ));
+//    }
+//
+//    /** @see \Serializable::unserialize() */
+//    public function unserialize($serialized)
+//    {
+//        list (
+//            $this->id,
+//            $this->username,
+//            $this->password,
+//            // see section on salt below
+//            // $this->salt
+//            ) = unserialize($serialized);
+//    }
+
 
 }
