@@ -92,7 +92,7 @@ Bundle\UserBundle\Entity\User:
 #        email:
 #            type: string
 #            nullable: false
-#            length: 255  
+#            length: 255
 #            options:
 #                fixed: false
         phone:
