@@ -9,3 +9,8 @@ COLOR TIANOS
 
 ORANGE: #ff9d01
 BLACK: #343434 
+
+
+GIT
+====
+$ git config --global --unset-all user.name
