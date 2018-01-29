@@ -38,7 +38,7 @@ class AppKernel extends Kernel
             new Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle(),
             new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
-            new Bundle\UserBundle\UserBundle(),
+            new Bundle\UserBundle\UserTianosBundle(),
             new Bundle\MailerBundle\SyliusMailerBundle(),
             new Bundle\ResourceBundle\SyliusResourceBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),

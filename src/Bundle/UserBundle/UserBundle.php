@@ -26,4 +26,5 @@ final class UserBundle extends AbstractResourceBundle
     {
         return 'Component\User\Model';
     }
+
 }
