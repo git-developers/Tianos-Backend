@@ -1,0 +1,13 @@
+backend_security_login:
+    path: /login
+    methods: [GET, POST]
+    defaults:
+        _controller: tianos.security.controller.user:loginAction
+        _tianos:
+            action: create
+            template: UserBundle:UserBackend/Security:login.html.twig
+#            entity: Bundle\ProductBundle\Entity\Product
+#            form:
+#                type: Bundle\ProductBundle\Form\Type\ProductType
+#            vars:
+#                serialize_group_name: crud

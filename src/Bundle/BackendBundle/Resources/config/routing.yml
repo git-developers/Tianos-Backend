@@ -22,6 +22,10 @@ backend_user:
     resource: '@UserBundle/Resources/config/routing/backend.yml'
     prefix: /user
 
+backend_security:
+    resource: '@UserBundle/Resources/config/routing/security.yml'
+    prefix: /security
+
 #backend_user:
 #    resource: '@UserBundle/Resources/config/routing/backend.yml'
 #    prefix: /user

@@ -58,7 +58,7 @@ twig:
         application_google_plus: '%application_google_plus%'
         application_facebook: '%application_facebook%'
         application_twitter: '%application_twitter%'
-#        application_skin: 'skin-yellow'
+        application_skin: '%application_skin%'
 #        app_id: '%app_id%'
 
 #        websocket_port: '8080'

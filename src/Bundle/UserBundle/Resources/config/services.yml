@@ -28,6 +28,12 @@ services:
         tags:
             - { name: tianos.frontend.controller.user, alias: tianos.frontend.controller.user }
 
+    tianos.security.controller.user:
+        class: Bundle\UserBundle\Controller\SecurityController
+        arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
+        tags:
+            - { name: tianos.security.controller.user, alias: tianos.security.controller.user }
+
     tianos.repository.user:
         class: Dummy
         factory: ['@doctrine.orm.entity_manager', getRepository]

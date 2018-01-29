@@ -1,14 +1,5 @@
 <?php
 
-/*
- * This file is part of the Sylius package.
- *
- * (c) Paweł Jędrzejewski
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 declare(strict_types=1);
 
 namespace Bundle\UserBundle\Controller;
@@ -26,6 +17,35 @@ class SecurityController extends Controller
      */
     public function loginAction(Request $request): Response
     {
+//        /var/www/html/Sylius/src/Sylius/Bundle/ShopBundle/Resources/views/login.html.twig
+//        /var/www/html/Sylius/src/Sylius/Bundle/UiBundle/Resources/views/Form/theme.html.twig
+
+        $authenticationUtils = $this->get('security.authentication_utils');
+
+
+        $authenticationUtils = $this->get('security.authentication_utils');
+        $error = $authenticationUtils->getLastAuthenticationError();
+        $lastUsername = $authenticationUtils->getLastUsername();
+
+        $options = $request->attributes->get('_tianos');
+
+        $template = $options['template'] ?? null;
+        Assert::notNull($template, 'Template is not configured.');
+
+        $formType = $options['form'] ?? UserLoginType::class;
+        $form = $this->get('form.factory')->createNamed('', $formType);
+
+        return $this->render($template, [
+            'form' => $form->createView(),
+            'last_username' => $lastUsername,
+            'error' => $error,
+        ]);
+
+
+
+
+
+        /*
         $authenticationUtils = $this->get('security.authentication_utils');
         $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();
@@ -43,6 +63,7 @@ class SecurityController extends Controller
             'last_username' => $lastUsername,
             'error' => $error,
         ]);
+        */
     }
 
     /**
