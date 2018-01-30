@@ -1,4 +1,18 @@
 frontend_default_index:
     path: /
-    defaults: { _controller: FrontendBundle:Default:index }
     methods: [GET]
+    defaults:
+        _controller: tianos.frontend.controller.default:indexAction
+        _tianos:
+#            action: create
+            template: FrontendBundle:Default:index.html.twig
+#            entity: Bundle\ProductBundle\Entity\Product
+#            form:
+#                type: Bundle\ProductBundle\Form\Type\ProductType
+#            vars:
+#                serialize_group_name: crud
+
+#frontend_default_index:
+#    path: /
+#    defaults: { _controller: FrontendBundle:Default:index }
+#    methods: [GET]

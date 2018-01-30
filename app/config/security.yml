@@ -18,19 +18,23 @@ security:
 #        in_memory:
 #            memory: ~
 
+#/var/www/html/Tianos/vendor/friendsofsymfony/user-bundle/Resources/config/routing/security.xml
+
     firewalls:
         main:
             pattern: ^/
             form_login:
                 provider: fos_userbundle
                 csrf_token_generator: security.csrf.token_manager
-                login_path: frontend_security_login
-                default_target_path: backend_default_index
+                login_path: backend_security_login
+                check_path: fos_user_security_check
+#                check_path: backend_security_check_path
+                default_target_path: backend_default_dashboard
                 # if you are using Symfony < 2.8, use the following config instead:
                 # csrf_provider: form.csrf_provider
             logout:
-                path: frontend_security_logout
-                target: frontend_security_login
+                path: backend_security_logout
+                target: backend_security_login
             remember_me:
 #                token_provider: name
                 secret: "%secret%"
@@ -43,8 +47,8 @@ security:
             anonymous:    true
 
     access_control:
-        - { path: ^/security/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/security/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/backend/security/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/backend/security/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
 #        - { path: ^/backend/, role: ROLE_ADMIN }
 

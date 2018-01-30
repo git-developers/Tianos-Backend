@@ -29,9 +29,9 @@
         <div class="login-box-body">
             {#<p class="login-box-msg">Sign in to start your session</p>#}
 
-            {#{{ path('fos_user_security_check') }}#}
+            {##}
 
-            <form action="" method="post">
+            <form action="{{ path('fos_user_security_check') }}" method="post">
 
                 <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 

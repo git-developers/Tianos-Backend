@@ -40,30 +40,6 @@ class SecurityController extends Controller
             'last_username' => $lastUsername,
             'error' => $error,
         ]);
-
-
-
-
-
-        /*
-        $authenticationUtils = $this->get('security.authentication_utils');
-        $error = $authenticationUtils->getLastAuthenticationError();
-        $lastUsername = $authenticationUtils->getLastUsername();
-
-        $options = $request->attributes->get('_sylius');
-
-        $template = $options['template'] ?? null;
-        Assert::notNull($template, 'Template is not configured.');
-
-        $formType = $options['form'] ?? UserLoginType::class;
-        $form = $this->get('form.factory')->createNamed('', $formType);
-
-        return $this->render($template, [
-            'form' => $form->createView(),
-            'last_username' => $lastUsername,
-            'error' => $error,
-        ]);
-        */
     }
 
     /**

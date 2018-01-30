@@ -17,6 +17,6 @@ api:
     prefix:   /api
     #type:     annotation
 
-security:
-    resource: "@TianosSecurityBundle/Resources/config/routing.yml"
-    prefix:   /security
+#security:
+#    resource: "@TianosSecurityBundle/Resources/config/routing.yml"
+#    prefix:   /security
