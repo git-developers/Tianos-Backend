@@ -20,6 +20,7 @@ security:
 
 #/var/www/html/Tianos/vendor/friendsofsymfony/user-bundle/Resources/config/routing/security.xml
 
+
     firewalls:
         main:
             pattern: ^/
