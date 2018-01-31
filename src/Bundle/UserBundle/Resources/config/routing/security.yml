@@ -12,19 +12,13 @@ backend_security_login:
 #            vars:
 #                serialize_group_name: crud
 
-backend_security_check_path:
-    path: /login_check
-    methods: [GET, POST]
-    defaults:
-        _controller: tianos.security.controller.user:checkAction
-        _tianos:
-#            action: create
-#            template: UserBundle:UserBackend/Security:login.html.twig
-#            entity: Bundle\ProductBundle\Entity\Product
-#            form:
-#                type: Bundle\ProductBundle\Form\Type\ProductType
-#            vars:
-#                serialize_group_name: crud
+#backend_security_check_path:
+#    path: /login_check
+#    methods: [GET, POST]
+#    defaults:
+#        _controller: tianos.security.controller.user:checkAction
+#        _tianos:
+
 
 
 fos_user_security:

@@ -31,6 +31,7 @@ services:
     tianos.security.controller.user:
         class: Bundle\UserBundle\Controller\SecurityController
         arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
+        public: true
         tags:
             - { name: tianos.security.controller.user, alias: tianos.security.controller.user }
 

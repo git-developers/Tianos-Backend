@@ -12,3 +12,7 @@ imports:
     - { resource: '@PointofsaleBundle/Resources/config/services.yml' }
     - { resource: '@ProfileBundle/Resources/config/services.yml' }
     - { resource: '@RoleBundle/Resources/config/services.yml' }
+
+
+#Bundle\UserBundle\Entity\User:
+#    alias: Symfony\Component\Security\Core\User\UserInterface

@@ -35,6 +35,7 @@ endif
 	php bin/console cache:clear --env=$(ENV) $(DEBUG);
 	php bin/console assets:install --symlink --env=$(ENV) $(DEBUG);
 	php bin/console assetic:dump --env=$(ENV) $(DEBUG);
+	make permission
 
 save:
 	git add .
