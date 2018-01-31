@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Component\DUMMY_UPPER\Model;
 
 use Doctrine\ORM\Mapping as ORM;

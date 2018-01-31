@@ -6,8 +6,21 @@ services:
         tags:
            - { name: twig.extension }
 
+    sylius.form.type.admin_user:
+        class: Bundle\UserBundle\Form\Type\UserType
+        arguments: [ "%sylius.model.admin_user.class%" ]
+        tags:
+            - { name: sylius.form.type.admin_user, alias: sylius.form.type.admin_user }
 
 
+
+
+
+#        <service id="sylius.form.type.admin_user" class="Sylius\Bundle\CoreBundle\Form\Type\User\AdminUserType">
+#            <argument>%sylius.model.admin_user.class%</argument>
+#            <argument>%sylius.form.type.admin_user.validation_groups%</argument>
+#            <tag name="form.type" />
+#        </service>
 
 
 #    core.listener.doctrine:

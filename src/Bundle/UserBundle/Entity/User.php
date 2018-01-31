@@ -102,6 +102,11 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     private $isActive = '1';
 
     /**
+     * @var bool
+     */
+    protected $enabled = '1';
+
+    /**
      * @var \DateTime|null
      *
      */
@@ -389,6 +394,30 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     }
 
     /**
+     * Set userCreate
+     *
+     * @param integer $userCreate
+     *
+     * @return Product
+     */
+    public function setUserCreate($userCreate)
+    {
+        $this->userCreate = $userCreate;
+
+        return $this;
+    }
+
+    /**
+     * Get userCreate
+     *
+     * @return integer
+     */
+    public function getUserCreate()
+    {
+        return $this->userCreate;
+    }
+
+    /**
      * Set updatedAt
      *
      * @param \DateTime $updatedAt
@@ -410,6 +439,30 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     public function getUpdatedAt()
     {
         return $this->updatedAt;
+    }
+
+    /**
+     * Set userUpdate
+     *
+     * @param integer $userUpdate
+     *
+     * @return Product
+     */
+    public function setUserUpdate($userUpdate)
+    {
+        $this->userUpdate = $userUpdate;
+
+        return $this;
+    }
+
+    /**
+     * Get userUpdate
+     *
+     * @return integer
+     */
+    public function getUserUpdate()
+    {
+        return $this->userUpdate;
     }
 
     /**
@@ -463,11 +516,11 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     /**
      * Set profile
      *
-     * @param \CoreBundle\Entity\Profile $profile
+     * @param \Bundle\ProfileBundle\Entity\Profile $profile
      *
      * @return User
      */
-    public function setProfile(\CoreBundle\Entity\Profile $profile = null)
+    public function setProfile(\Bundle\ProfileBundle\Entity\Profile $profile = null)
     {
         $this->profile = $profile;
 
@@ -477,7 +530,7 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     /**
      * Get profile
      *
-     * @return \CoreBundle\Entity\Profile
+     * @return \Bundle\ProfileBundle\Entity\Profile
      */
     public function getProfile()
     {
@@ -487,11 +540,11 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     /**
      * Set client
      *
-     * @param \CoreBundle\Entity\Client $client
+     * @param \Bundle\ClientBundle\Entity\Client $client
      *
      * @return User
      */
-    public function setClient(\CoreBundle\Entity\Client $client = null)
+    public function setClient(\Bundle\ClientBundle\Entity\Client $client = null)
     {
         $this->client = $client;
 
@@ -501,7 +554,7 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     /**
      * Get client
      *
-     * @return \CoreBundle\Entity\Client
+     * @return \Bundle\ClientBundle\Entity\Client
      */
     public function getClient()
     {
@@ -511,11 +564,11 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     /**
      * Add groupOfUser
      *
-     * @param \CoreBundle\Entity\GroupOfUsers $groupOfUser
+     * @param \Bundle\GroupofusersBundle\Entity\Groupofusers $groupOfUser
      *
      * @return User
      */
-    public function addGroupOfUser(\CoreBundle\Entity\GroupOfUsers $groupOfUser)
+    public function addGroupOfUser(\Bundle\GroupofusersBundle\Entity\Groupofusers $groupOfUser)
     {
         $this->groupOfUsers[] = $groupOfUser;
 
@@ -525,9 +578,9 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     /**
      * Remove groupOfUser
      *
-     * @param \CoreBundle\Entity\GroupOfUsers $groupOfUser
+     * @param \Bundle\GroupofusersBundle\Entity\Groupofusers $groupOfUser
      */
-    public function removeGroupOfUser(\CoreBundle\Entity\GroupOfUsers $groupOfUser)
+    public function removeGroupOfUser(\Bundle\GroupofusersBundle\Entity\Groupofusers $groupOfUser)
     {
         $this->groupOfUsers->removeElement($groupOfUser);
     }
@@ -543,47 +596,13 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     }
 
     /**
-     * Add file
-     *
-     * @param \CoreBundle\Entity\Files $file
-     *
-     * @return User
-     */
-    public function addFile(\CoreBundle\Entity\Files $file)
-    {
-        $this->files[] = $file;
-
-        return $this;
-    }
-
-    /**
-     * Remove file
-     *
-     * @param \CoreBundle\Entity\Files $file
-     */
-    public function removeFile(\CoreBundle\Entity\Files $file)
-    {
-        $this->files->removeElement($file);
-    }
-
-    /**
-     * Get files
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getFiles()
-    {
-        return $this->files;
-    }
-
-    /**
      * Add pointOfSale
      *
-     * @param \CoreBundle\Entity\PointOfSale $pointOfSale
+     * @param \Bundle\PointofsaleBundle\Entity\Pointofsale $pointOfSale
      *
      * @return User
      */
-    public function addPointOfSale(\CoreBundle\Entity\PointOfSale $pointOfSale)
+    public function addPointOfSale(\Bundle\PointofsaleBundle\Entity\Pointofsale $pointOfSale)
     {
         $this->pointOfSale[] = $pointOfSale;
 
@@ -593,9 +612,9 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     /**
      * Remove pointOfSale
      *
-     * @param \CoreBundle\Entity\PointOfSale $pointOfSale
+     * @param \Bundle\PointofsaleBundle\Entity\Pointofsale $pointOfSale
      */
-    public function removePointOfSale(\CoreBundle\Entity\PointOfSale $pointOfSale)
+    public function removePointOfSale(\Bundle\PointofsaleBundle\Entity\Pointofsale $pointOfSale)
     {
         $this->pointOfSale->removeElement($pointOfSale);
     }

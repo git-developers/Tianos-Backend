@@ -32,3 +32,4 @@ parameters:
     application_description: 'Aplicación que provee acceso a información almacenada digitalmente'
 
     sylius.resource.settings: 5555
+    sylius.model.admin_user.class: 6666

@@ -2,7 +2,7 @@ services:
 
     tianos.listener.doctrine.user:
         class: Bundle\UserBundle\EventListener\DoctrineListenerService
-        arguments: ["@security.token_storage"]
+        arguments: ["@security.token_storage", "@security.password_encoder"]
         tags:
           - { name: doctrine.event_listener, event: postUpdate }
           - { name: doctrine.event_listener, event: preUpdate }

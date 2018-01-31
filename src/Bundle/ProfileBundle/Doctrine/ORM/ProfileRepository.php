@@ -20,8 +20,8 @@ class ProfileRepository extends TianosEntityRepository implements ProfileReposit
             SELECT profile
             FROM ProfileBundle:Profile profile
             WHERE
-            product.id = :id AND
-            product.isActive = :active
+            profile.id = :id AND
+            profile.isActive = :active
             ";
 
         $query = $em->createQuery($dql);

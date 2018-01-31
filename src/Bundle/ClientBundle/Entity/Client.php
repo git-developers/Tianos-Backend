@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Bundle\ClientBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -64,6 +66,9 @@ class Client
      */
     private $isActive = '1';
 
+    public function __toString() {
+        return sprintf('%s - %s', $this->id, $this->name);
+    }
 
     /**
      * Get id

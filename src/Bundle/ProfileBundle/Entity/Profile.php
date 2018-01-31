@@ -12,6 +12,9 @@ use JMS\Serializer\Annotation\Type as TypeJMS;
 class Profile
 {
 
+    const ADMIN = 'administrator';
+    const GUEST = 'guest';
+
     /**
      * @var integer
      *
@@ -64,6 +67,9 @@ class Profile
      */
     private $isActive = '1';
 
+    public function __toString() {
+        return sprintf('%s - %s', $this->id, $this->name);
+    }
 
     /**
      * Get id

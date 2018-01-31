@@ -13,7 +13,7 @@ backend_security_login:
 #                serialize_group_name: crud
 
 backend_security_check_path:
-    path: /login-check
+    path: /login_check
     methods: [GET, POST]
     defaults:
         _controller: tianos.security.controller.user:checkAction
@@ -29,6 +29,7 @@ backend_security_check_path:
 
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+    prefix: /
 
 fos_user_profile:
     resource: "@FOSUserBundle/Resources/config/routing/profile.xml"

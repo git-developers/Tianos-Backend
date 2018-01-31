@@ -20,8 +20,8 @@ class DUMMY_UPPERRepository extends TianosEntityRepository implements DUMMY_UPPE
             SELECT DUMMY_LOWER
             FROM DUMMY_UPPERBundle:DUMMY_UPPER DUMMY_LOWER
             WHERE
-            product.id = :id AND
-            product.isActive = :active
+            DUMMY_LOWER.id = :id AND
+            DUMMY_LOWER.isActive = :active
             ";
 
         $query = $em->createQuery($dql);

@@ -8,6 +8,7 @@ use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Bundle\UserBundle\Entity\User;
 use Cocur\Slugify\Slugify;
@@ -17,10 +18,12 @@ use Cocur\Slugify\Slugify;
 class DoctrineListenerService implements EventSubscriber
 {
     protected $dateTime;
+    protected $encoder;
     protected $tokenStorage;
 
-    public function __construct(TokenStorage $tokenStorage)
+    public function __construct(TokenStorage $tokenStorage, UserPasswordEncoderInterface $encoder)
     {
+        $this->encoder = $encoder;
         $this->dateTime = new \DateTime();
         $this->tokenStorage = $tokenStorage;
     }
@@ -61,9 +64,18 @@ class DoctrineListenerService implements EventSubscriber
 //        $className = $entityManager->getClassMetadata(get_class($entity))->getName();
 
         if ($entity instanceof User){
+            $uniqid = uniqid();
             $name = $entity->getName();
             $entity->setSlug($this->slugify($name));
             $entity->setCreatedAt($this->dateTime);
+            $entity->setUsername($uniqid);
+            $entity->setUsernameCanonical($uniqid);
+
+
+            //password
+            $plainPassword = $entity->getPassword();
+            $encoded = $this->encoder->encodePassword($entity, $plainPassword);
+            $entity->setPassword($encoded);
 
             return;
         }

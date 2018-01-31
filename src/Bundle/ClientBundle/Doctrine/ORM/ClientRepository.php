@@ -20,8 +20,8 @@ class ClientRepository extends TianosEntityRepository implements ClientRepositor
             SELECT client
             FROM ClientBundle:Client client
             WHERE
-            product.id = :id AND
-            product.isActive = :active
+            client.id = :id AND
+            client.isActive = :active
             ";
 
         $query = $em->createQuery($dql);
