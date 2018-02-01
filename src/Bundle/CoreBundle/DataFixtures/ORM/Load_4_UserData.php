@@ -11,8 +11,17 @@ use Bundle\UserBundle\Entity\User;
 
 class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
 {
+
+    protected $applicationUrl;
+
+    public function __construct($applicationUrl)
+    {
+        $this->applicationUrl = $applicationUrl;
+    }
+
     public function load(ObjectManager $manager)
     {
+
         $client1 = $this->getReference('client-1');
         $client2 = $this->getReference('client-2');
 
@@ -23,7 +32,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setPassword('123');
         $entity->setName('Alan');
         $entity->setLastName('Garcia');
-        $entity->setEmail('abringas@tianos.xyz');
+        $entity->setEmail('abringas@' . $this->applicationUrl);
         $entity->setIsActive(true);
         $entity->setClient($client1);
         $entity->setProfile($profileAdmin);
@@ -34,7 +43,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setPassword('123');
         $entity->setName('Alan');
         $entity->setLastName('Garcia');
-        $entity->setEmail('agarcia-' . uniqid() . '@gmail.com');
+        $entity->setEmail('agarcia-' . uniqid() . '@' . $this->applicationUrl);
         $entity->setIsActive(true);
         $entity->setClient($client1);
         $entity->setProfile($profileAdmin);
@@ -45,7 +54,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setPassword('123');
         $entity->setName('Albert');
         $entity->setLastName('Einstein');
-        $entity->setEmail('aeinstein-' . uniqid() . '@gmail.com');
+        $entity->setEmail('aeinstein-' . uniqid() . '@' . $this->applicationUrl);
         $entity->setClient($client1);
         $entity->setProfile($profileAdmin);
         $entity->setIsActive(true);
@@ -56,7 +65,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setPassword('123');
         $entity->setName('Steve');
         $entity->setLastName('Jobs');
-        $entity->setEmail('sjobs-' . uniqid() . '@gmail.com');
+        $entity->setEmail('sjobs-' . uniqid() . '@' . $this->applicationUrl);
         $entity->setClient($client2);
         $entity->setProfile($profileAdmin);
         $entity->setIsActive(true);
@@ -67,7 +76,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setPassword('123');
         $entity->setName('Bill');
         $entity->setLastName('Gates');
-        $entity->setEmail('bgates-' . uniqid() . '@gmail.com');
+        $entity->setEmail('bgates-' . uniqid() . '@' . $this->applicationUrl);
         $entity->setClient($client2);
         $entity->setProfile($profileAdmin);
         $entity->setIsActive(true);
@@ -78,7 +87,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setPassword('123');
         $entity->setName('Isaac');
         $entity->setLastName('Newton');
-        $entity->setEmail('inewton-' . uniqid() . '@gmail.com');
+        $entity->setEmail('inewton-' . uniqid() . '@' . $this->applicationUrl);
         $entity->setClient($client2);
         $entity->setProfile($profileAdmin);
         $entity->setIsActive(true);
