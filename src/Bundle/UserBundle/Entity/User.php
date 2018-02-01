@@ -650,11 +650,11 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     public function getRoles() {
         $roles = [];
 
-        if(is_object($this->getProfile())){
-            foreach ($this->getProfile()->getRole() as $key => $role) {
-                $roles[] = $role->getSlug();
-            }
-        }
+//        if(is_object($this->getProfile())){
+//            foreach ($this->getProfile()->getRole() as $key => $role) {
+//                $roles[] = $role->getSlug();
+//            }
+//        }
 
         $roles[] = 'ROLE_USER';
 

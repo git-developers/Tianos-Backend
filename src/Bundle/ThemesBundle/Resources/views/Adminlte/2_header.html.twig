@@ -48,7 +48,7 @@
                     {#{{ include("CoreBundle::Template/dropdown_menu_messages.html.twig") }}#}
 
                     {#Notifications: style can be found in dropdown.less#}
-                    {{ include("CoreBundle::TemplateMain/dropdown_menu_notifications.html.twig") }}
+                    {{ include("ThemesBundle::Adminlte/dropdown/dropdown_menu_notifications.html.twig") }}
 
                     {#Tasks: style can be found in dropdown.less#}
                     {#{{ include("CoreBundle::Template/dropdown_menu_tasks.html.twig") }}#}
@@ -71,7 +71,7 @@
 
                 {#User Account: style can be found in dropdown.less#}
                 {% if app.user is not null %}
-                    {{ include("CoreBundle::TemplateMain/dropdown_menu_user.html.twig") }}
+                    {{ include("ThemesBundle::Adminlte/dropdown/dropdown_menu_user.html.twig") }}
                 {% endif %}
 
             </ul>

@@ -1,8 +1,11 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Bundle\CoreBundle\Twig\Extension;
 
-use CoreBundle\Entity\User;
+use Bundle\UserBundle\Entity\User;
+use Twig_Environment;
 
 class UserExtension extends \Twig_Extension
 {
@@ -35,5 +38,14 @@ class UserExtension extends \Twig_Extension
         return 'user_extension';
     }
 
+    public function getGlobals()
+    {
+        // TODO: Implement getGlobals() method.
+    }
+
+    public function initRuntime(Twig_Environment $environment)
+    {
+        // TODO: Implement initRuntime() method.
+    }
 }
 

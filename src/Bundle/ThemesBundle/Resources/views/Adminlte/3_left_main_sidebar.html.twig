@@ -12,7 +12,12 @@
                         src="{{ image_avatar }}"
                         class="img-circle x-hand"
                         alt="{{ app.user.name }} {{ app.user.lastName }}"
-                        onclick="location.href='{{ path('frontend_profile_index', {slug:app.user.slug}) }}';">
+                        onclick="location.href='';">
+
+
+                    {#{{ path('frontend_profile_index', {slug:app.user.slug}) }}#}
+
+
                 </div>
                 <div class="pull-left info">
                     <p>{{ app_user_name(app.user, 0, 10) }}</p>
