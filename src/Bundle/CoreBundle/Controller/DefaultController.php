@@ -1,32 +1,20 @@
 <?php
 
-namespace CoreBundle\Controller;
+namespace Bundle\CoreBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use CoreBundle\Command\TruncateTablesCommand;
-
+use Bundle\CoreBundle\Command\TruncateTablesCommand;
 use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Output\BufferedOutput;
-
 use Symfony\Bundle\FrameworkBundle\Console\Application;
+use Webmozart\Assert\Assert;
 
 
-class DefaultController extends Controller
+class DefaultController extends BaseController
 {
-//    /**
-//     * @Route("/", name="homepage")
-//     */
-//    public function indexAction(Request $request)
-//    {
-//        // replace this example code with whatever you need
-//        return $this->render('default/index.html.twig', [
-//            'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
-//        ]);
-//    }
 
-    public function loadFixturesAction(Request $request)
+    public function loadFixturesAction(Request $request): Response
     {
 
         if ($request->isMethod('POST')) {
@@ -38,7 +26,6 @@ class DefaultController extends Controller
             $output = new BufferedOutput();
             $resultCode = $command->run($input, $output);
             //truncate tables
-
 
 
             //load fixtures
@@ -62,10 +49,15 @@ class DefaultController extends Controller
             ]);
         }
 
+        $options = $request->attributes->get('_tianos');
+
+        $template = $options['template'] ?? null;
+        Assert::notNull($template, 'Template is not configured.');
+
         return $this->render(
-            'CoreBundle:Default:load_fixtures.html.twig',
+            $template,
             [
-                'tree' => '',
+                'value' => null,
             ]
         );
     }

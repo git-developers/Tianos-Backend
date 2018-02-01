@@ -1,4 +1,4 @@
-{% extends "CoreBundle::template.html.twig" %}
+{% extends "ThemesBundle:Adminlte:1_template.html.twig" %}
 
 {% block bodyclass %}{% endblock %}
 
@@ -23,7 +23,7 @@
             }
 
             $.ajax({
-                url: '{{ path('core_default_load_fixtures') }}',
+                url: '{{ path('core_default_loadfixtures') }}',
                 type: 'POST',
                 dataType: 'json',
                 data: {},
@@ -35,7 +35,7 @@
                     $('code').html('exito!');
                 },
                 error: function(jqXHR, exception) {
-                    $('code').html('terminado');
+                    $('code').html('terminado - error');
                 }
             });
         });
@@ -44,8 +44,6 @@
 {% endblock %}
 
 {% block content %}
-
-    {{ dump(app.user.slug) }}
 
     <section class="content-header">
         <h1>

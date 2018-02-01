@@ -6,18 +6,11 @@ backend_default_index:
         _tianos:
             template: BackendBundle:Default:index.html.twig
 
-
 backend_default_dashboard:
     path: /dashboard
     methods: [GET]
     defaults:
         _controller: tianos.backend.controller.default:dashboardAction
         _tianos:
-#            action: create
             template: BackendBundle:Default:dashboard.html.twig
-#            entity: Bundle\ProductBundle\Entity\Product
-#            form:
-#                type: Bundle\ProductBundle\Form\Type\ProductType
-#            vars:
-#                serialize_group_name: crud
 

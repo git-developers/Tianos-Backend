@@ -7,6 +7,11 @@ frontend:
     prefix:   /
     #type:     annotation
 
+core:
+    resource: "@CoreBundle/Resources/config/routing.yml"
+    prefix:   /core
+    #type:     annotation
+
 backend:
     resource: "@BackendBundle/Resources/config/routing.yml"
     prefix:   /backend

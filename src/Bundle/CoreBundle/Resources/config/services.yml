@@ -25,6 +25,21 @@ services:
         arguments: [ '%application_url%' ]
         tags: [doctrine.fixture.orm]
 
+    tianos.core.controller.default:
+        class: Bundle\CoreBundle\Controller\DefaultController
+        tags:
+            - { name: tianos.core.controller.default, alias: tianos.core.controller.default }
+
+
+
+
+
+
+
+
+
+
+
 
 #        <service id="sylius.form.type.admin_user" class="Sylius\Bundle\CoreBundle\Form\Type\User\AdminUserType">
 #            <argument>%sylius.model.admin_user.class%</argument>

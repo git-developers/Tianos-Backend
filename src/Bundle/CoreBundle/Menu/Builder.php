@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Bundle\CoreBundle\Menu;
 
 use Knp\Menu\FactoryInterface;
@@ -28,8 +30,6 @@ class Builder implements ContainerAwareInterface
 //            exit;
 //        }
 
-
-
         $menu = $factory->createItem('root', [
             'childrenAttributes' => [
             'class' => 'sidebar-menu',
@@ -37,6 +37,36 @@ class Builder implements ContainerAwareInterface
         ])
         ;
 
+        /**
+         * SETTINGS
+         */
+        $child = 'Settings';
+        $loadFixture = true; //$this->isGranted('ROLE_CLIENT_VIEW');
+        $menu->addChild($child, [
+            'route' => 'backend_default_dashboard',
+            'extras' => ['safe_label' => true],
+            'childrenAttributes' => [
+                'class' => 'treeview-menu',
+            ],
+        ])
+            ->setAttribute('class', 'treeview')
+            ->setAttribute('icon', 'fa-fw fa-cog')
+            ->setDisplay($loadFixture)
+        ;
+
+        $menu[$child]->addChild('Load Fixtures', [
+            'route' => 'core_default_loadfixtures'
+        ])
+            ->setAttribute('icon', self::CIRCLE_1_YELLOW)
+            ->setDisplay($loadFixture)
+        ;
+
+        $menu[$child]->addChild('GoogleDrive mimetype', [
+            'route' => 'backend_default_dashboard'
+        ])
+            ->setAttribute('icon', self::CIRCLE_2_AQUA)
+            ->setDisplay($loadFixture)
+        ;
 
         return $menu;
     }
