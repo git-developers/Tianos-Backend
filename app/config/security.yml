@@ -28,9 +28,7 @@ security:
                 provider: fos_userbundle
                 csrf_token_generator: security.csrf.token_manager
                 login_path: backend_security_login
-#                check_path: /login_check
                 check_path: fos_user_security_check
-#                check_path: backend_security_check_path
                 default_target_path: backend_default_dashboard
                 # if you are using Symfony < 2.8, use the following config instead:
                 # csrf_provider: form.csrf_provider

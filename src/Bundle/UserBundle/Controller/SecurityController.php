@@ -47,14 +47,6 @@ class SecurityController extends Controller
      */
     public function checkAction(Request $request): Response
     {
-
-
-//        echo '<pre> POLLO:: ';
-//        print_r(3333333333);
-//        exit;
-
-
-
         throw new \RuntimeException('You must configure the check path to be handled by the firewall.');
     }
 

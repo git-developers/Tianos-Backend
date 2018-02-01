@@ -19,16 +19,6 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request): Response
     {
-
-
-//        $user = $this->getUser();
-//        echo 'GATO:::<pre>';
-//        print_r($user->getRoles());
-//        exit;
-
-
-
-
         $options = $request->attributes->get('_tianos');
 
         $template = $options['template'] ?? null;
