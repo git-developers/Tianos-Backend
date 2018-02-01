@@ -51,6 +51,7 @@ security:
         - { path: ^/backend/security/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/backend/security/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/backend/, role: ROLE_USER }
 #        - { path: ^/backend/, role: ROLE_ADMIN }
 
 

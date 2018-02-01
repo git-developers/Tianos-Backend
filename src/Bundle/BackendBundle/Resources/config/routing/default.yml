@@ -1,16 +1,11 @@
-#backend_default_index:
-#    path: /
-#    methods: [GET]
-#    defaults:
-#        _controller: tianos.backend.controller.default:indexAction
-#        _tianos:
-##            action: create
-#            template: BackendBundle:Default:index.html.twig
-##            entity: Bundle\ProductBundle\Entity\Product
-##            form:
-##                type: Bundle\ProductBundle\Form\Type\ProductType
-##            vars:
-##                serialize_group_name: crud
+backend_default_index:
+    path: /
+    methods: [GET]
+    defaults:
+        _controller: tianos.backend.controller.default:indexAction
+        _tianos:
+            template: BackendBundle:Default:index.html.twig
+
 
 backend_default_dashboard:
     path: /dashboard

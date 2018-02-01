@@ -135,7 +135,7 @@ abstract class BaseController extends Controller
             return $name;
         }
 
-        return self::TEMPLATE_ERROR;
+//        return self::TEMPLATE_ERROR;
     }
 
 }
