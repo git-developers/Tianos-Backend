@@ -12,8 +12,17 @@ services:
         tags:
             - { name: sylius.form.type.admin_user, alias: sylius.form.type.admin_user }
 
+    Bundle\CoreBundle\DataFixtures\ORM\Load_1_ClientData:
+        tags: [doctrine.fixture.orm]
 
+    Bundle\CoreBundle\DataFixtures\ORM\Load_2_RoleData:
+        tags: [doctrine.fixture.orm]
 
+    Bundle\CoreBundle\DataFixtures\ORM\Load_3_ProfileData:
+        tags: [doctrine.fixture.orm]
+
+    Bundle\CoreBundle\DataFixtures\ORM\Load_4_UserData:
+        tags: [doctrine.fixture.orm]
 
 
 #        <service id="sylius.form.type.admin_user" class="Sylius\Bundle\CoreBundle\Form\Type\User\AdminUserType">
