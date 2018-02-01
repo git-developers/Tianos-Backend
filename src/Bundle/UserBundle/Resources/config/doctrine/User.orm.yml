@@ -3,6 +3,7 @@
 Bundle\UserBundle\Entity\User:
     type: entity
     table: user
+    repositoryClass: Bundle\UserBundle\Doctrine\ORM\UserRepository
     indexes:
         FK_8D93D649CCFA12B8:
             columns:

@@ -17,7 +17,7 @@ class UserRepository extends EntityRepository implements UserRepositoryInterface
     public function findAll(): array
     {
         return $this->createQueryBuilder('o')
-            ->select('o.id, o.code, o.name, o.createdAt')
+            ->select('o.id, o.username, o.email, o.name, o.lastName, o.createdAt')
             ->andWhere('o.isActive = :active')
             ->setParameter('active', 1)
             ->getQuery()

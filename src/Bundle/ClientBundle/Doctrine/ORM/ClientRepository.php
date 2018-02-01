@@ -13,6 +13,22 @@ class ClientRepository extends TianosEntityRepository implements ClientRepositor
     /**
      * {@inheritdoc}
      */
+//    public function find($id)
+//    {
+//        return $this->createQueryBuilder('o')
+//            ->select('o.id, o.code, o.name, o.createdAt')
+//            ->andWhere('o.isActive = :active')
+//            ->andWhere('o.id = :id')
+//            ->setParameter('active', 1)
+//            ->setParameter('id', $id)
+//            ->getQuery()
+//            ->getOneOrNullResult()
+//            ;
+//    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function find($id)
     {
         $em = $this->getEntityManager();
@@ -30,22 +46,6 @@ class ClientRepository extends TianosEntityRepository implements ClientRepositor
 
         return $query->getOneOrNullResult();
     }
-
-    /**
-     * {@inheritdoc}
-     */
-//    public function find($id)
-//    {
-//        return $this->createQueryBuilder('o')
-//            ->select('o.id, o.code, o.name, o.createdAt')
-//            ->andWhere('o.isActive = :active')
-//            ->andWhere('o.id = :id')
-//            ->setParameter('active', 1)
-//            ->setParameter('id', $id)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//            ;
-//    }
 
     /**
      * {@inheritdoc}

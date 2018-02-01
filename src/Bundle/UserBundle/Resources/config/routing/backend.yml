@@ -41,12 +41,12 @@ backend_user_bundle_index:
                     columns:
                         - name: '#'
                           obj: " '<span class=\"badge bg-blue\">' + obj.id + '</span>' "
-#                        - name: code
-#                          obj: obj.code
+                        - name: Email
+                          obj: obj.email
 #                          options:
 #                              icon: map-marker
                         - name: Name
-                          obj: obj.name
+                          obj: " obj.name + ' ' + obj.lastName "
 #                        - name: slug
 #                          obj: obj.slug
                         - name: Creado
