@@ -10,10 +10,11 @@ class AppKernel extends Kernel
         $bundles = [
 
             //own bundles
-            new \Bundle\RoleBundle\RoleBundle(),  
-            new \Bundle\ProfileBundle\ProfileBundle(),
+            new \Bundle\RoleBundle\RoleBundle(),
             new \Bundle\ClientBundle\ClientBundle(),
+            new \Bundle\ProfileBundle\ProfileBundle(),
             new \Bundle\ProductBundle\ProductBundle(),
+            new \Bundle\CategoryBundle\CategoryBundle(),
             new \Bundle\PointofsaleBundle\PointofsaleBundle(),
             new \Bundle\GroupofusersBundle\GroupofusersBundle(),
         ];

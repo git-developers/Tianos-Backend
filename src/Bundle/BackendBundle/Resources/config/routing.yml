@@ -10,6 +10,14 @@ backend_product:
     resource: '@ProductBundle/Resources/config/routing/backend.yml'
     prefix: /product
 
+backend_category:
+    resource: '@CategoryBundle/Resources/config/routing/backend.yml'
+    prefix: /category
+
+backend_groupofusers:
+    resource: '@GroupofusersBundle/Resources/config/routing/backend.yml'
+    prefix: /group-of-users
+
 backend_client:
     resource: '@ClientBundle/Resources/config/routing/backend.yml'
     prefix: /client

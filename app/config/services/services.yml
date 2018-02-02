@@ -12,3 +12,4 @@ imports:
     - { resource: '@ProfileBundle/Resources/config/services.yml' }
     - { resource: '@RoleBundle/Resources/config/services.yml' }
     - { resource: '@PointofsaleBundle/Resources/config/services.yml' }
+    - { resource: '@CategoryBundle/Resources/config/services.yml' }

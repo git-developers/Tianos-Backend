@@ -46,7 +46,7 @@ class CreateCrudCommand extends ContainerAwareCommand
         $bundle = ucfirst($bundleLower);
 
         $output->writeln([
-            '<comment>=========== <question>CRUD creator:</question> proceso ... ===========</comment>',
+            '<comment>=========== <question>CRUD creator:</question> bundle name ' . $bundle . ' ===========</comment>',
             '--',
         ]);
 

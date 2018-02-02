@@ -91,10 +91,13 @@ ifeq ($(db), false)
 endif
 	mysql -h localhost -u root -proot $(DB)
 
-create_populate_db:
+db_load:
+	make migrate_delete
+	php bin/console doctrine:database:drop --force --if-exists
 	php bin/console doctrine:database:create --if-not-exists
-	#php bin/console doctrine:migration:diff
+	php bin/console doctrine:migration:diff
 	php bin/console doctrine:migration:migrate
+	make load_fixture
 
 log_nginx:
 ifeq ($(clean), 1)

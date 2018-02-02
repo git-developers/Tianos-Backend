@@ -1,0 +1,19 @@
+api_category_bundle_index:
+    path: /
+    methods: [GET]
+    defaults:
+        _controller: tianos.api.controller.category:indexAction
+        _tianos:
+            section: admin
+            permission: true
+            grid: sylius_admin_category
+            template: CategoryBundle:Category:index.html.twig
+            vars:
+                subheader: sylius.ui.manage_your_product_catalog
+                icon: cube
+            form:
+                type: Bundle\CategoryBundle\Form\Type\CategoryType
+            repository:
+                service: tianos.repository.category
+                method: findAll
+                arguments: [$categoryId]

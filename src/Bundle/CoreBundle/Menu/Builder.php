@@ -45,7 +45,7 @@ class Builder implements ContainerAwareInterface
         ])
         ->setAttribute('allow_angle', true)
         ->setAttribute('class', 'treeview')
-        ->setAttribute('icon', 'fa-fw fa-sitemap')
+        ->setAttribute('icon', 'fa-fw fa-code-fork')
         ->setDisplay($clasesView)
         ;
 
@@ -103,6 +103,24 @@ class Builder implements ContainerAwareInterface
         ->setDisplay($clasesView)
         ;
 
+        $menu['Master']->addChild('Category', [
+            'route' => 'backend_category_bundle_index',
+            'extras' => ['safe_label' => true],
+            'childrenAttributes' => [
+                'class' => 'treeview-menu',
+            ],
+        ])
+        ->setAttribute('icon', 'fa-fw fa-sitemap')
+        ->setDisplay($clasesView)
+        ;
+
+        $menu['Master']['Category']->addChild('Gestionar', [
+            'route' => 'backend_category_bundle_index'
+        ])
+        ->setAttribute('icon', self::CIRCLE_1_YELLOW)
+        ->setDisplay($clasesView)
+        ;
+
 
 
         /**
@@ -138,6 +156,24 @@ class Builder implements ContainerAwareInterface
         ])
         ->setAttribute('icon', self::CIRCLE_1_YELLOW)
         ->setDisplay($clasesView)
+        ;
+
+        $menu['Cuentas']->addChild('Group of users', [
+            'route' => 'backend_groupofusers_bundle_index',
+            'extras' => ['safe_label' => true],
+            'childrenAttributes' => [
+                'class' => 'treeview-menu',
+            ],
+        ])
+            ->setAttribute('icon', 'fa-fw fa-users')
+            ->setDisplay($clasesView)
+        ;
+
+        $menu['Cuentas']['Group of users']->addChild('Gestionar', [
+            'route' => 'backend_groupofusers_bundle_index'
+        ])
+            ->setAttribute('icon', self::CIRCLE_1_YELLOW)
+            ->setDisplay($clasesView)
         ;
 
         $menu['Cuentas']->addChild('Profile', [
