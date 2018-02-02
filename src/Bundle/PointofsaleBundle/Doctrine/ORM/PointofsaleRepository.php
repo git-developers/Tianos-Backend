@@ -20,8 +20,8 @@ class PointofsaleRepository extends TianosEntityRepository implements Pointofsal
             SELECT pointofsale
             FROM PointofsaleBundle:Pointofsale pointofsale
             WHERE
-            product.id = :id AND
-            product.isActive = :active
+            pointofsale.id = :id AND
+            pointofsale.isActive = :active
             ";
 
         $query = $em->createQuery($dql);

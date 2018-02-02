@@ -1,4 +1,4 @@
-core_default_loadfixtures:
+backend_core_loadfixtures:
     path: /load-fixtures
     methods: [GET, POST]
     defaults:

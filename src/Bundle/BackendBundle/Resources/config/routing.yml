@@ -2,6 +2,10 @@ backend_default:
     resource: '@BackendBundle/Resources/config/routing/default.yml'
     prefix: /
 
+backend_pointofsale:
+    resource: '@PointofsaleBundle/Resources/config/routing/backend.yml'
+    prefix: /point-of-sale
+
 backend_product:
     resource: '@ProductBundle/Resources/config/routing/backend.yml'
     prefix: /product
@@ -25,6 +29,11 @@ backend_user:
 backend_security:
     resource: '@UserBundle/Resources/config/routing/security.yml'
     prefix: /security
+
+backend_core:
+    resource: "@CoreBundle/Resources/config/routing/backend.yml"
+    prefix: /core
+
 
 #backend_user:
 #    resource: '@UserBundle/Resources/config/routing/backend.yml'

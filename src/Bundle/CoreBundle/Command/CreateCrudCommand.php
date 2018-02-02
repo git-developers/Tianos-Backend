@@ -71,8 +71,12 @@ class CreateCrudCommand extends ContainerAwareCommand
         $result = $this->recurseRenameDirectory($dest, self::DUMMY_UPPER, $bundle);
         $output->writeln('<info>* Cambiar nombre a folderes: '.$result.'</info>');
 
+        sleep(1);
+
         $result = $this->recurseRenameFiles($dest, self::DUMMY_UPPER, $bundle);
         $output->writeln('<info>* Cambiar nombre a files: '.$result.'</info>');
+
+        sleep(1);
 
         $result = $this->linuxCommand('find '.$dest.' -name \*.php -exec sed -i "s/'.self::DUMMY_LOWER.'/'.$bundleLower.'/g" {} \;');
         $result = $this->linuxCommand('find '.$dest.' -name \*.php -exec sed -i "s/'.self::DUMMY_UPPER.'/'.$bundle.'/g" {} \;');
@@ -96,8 +100,12 @@ class CreateCrudCommand extends ContainerAwareCommand
         $result = $this->recurseRenameDirectory($destComponent, self::DUMMY_UPPER, $bundle);
         $output->writeln('<info>* Cambiar nombre a folderes: '.$result.'</info>');
 
+        sleep(1);
+
         $result = $this->recurseRenameFiles($destComponent, self::DUMMY_UPPER, $bundle);
         $output->writeln('<info>* Cambiar nombre a files: '.$result.'</info>');
+
+        sleep(1);
 
         $result = $this->linuxCommand('find '.$destComponent.' -name \*.php -exec sed -i "s/'.self::DUMMY_UPPER.'/'.$bundle.'/g" {} \;');
         $output->writeln('<info>* Cambiar texto PHP dentro del bundle: '.$result.'</info>');
@@ -127,6 +135,8 @@ class CreateCrudCommand extends ContainerAwareCommand
         if (!$process->isSuccessful()) {
             throw new ProcessFailedException($process);
         }
+
+        sleep(1);
 
         return $process->getOutput();
     }

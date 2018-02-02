@@ -21,21 +21,163 @@ class Builder implements ContainerAwareInterface
 
     public function mainMenu(FactoryInterface $factory, array $options)
     {
-//
-//        $user = $this->getUser();
-//
-//        if($user){
-//            echo '<pre>';
-//            print_r($user->getRoles());
-//            exit;
-//        }
 
         $menu = $factory->createItem('root', [
             'childrenAttributes' => [
-            'class' => 'sidebar-menu',
+                'class' => 'sidebar-menu tree',
+                'data-widget' => 'tree',
             ],
         ])
         ;
+
+
+
+        /**
+         * CRUD
+         */
+        $clasesView = true; //$this->isGranted('ROLE_CLIENT_VIEW');
+        $menu->addChild('Master', [
+            'route' => 'backend_default_dashboard',
+            'extras' => ['safe_label' => true],
+            'childrenAttributes' => [
+                'class' => 'treeview-menu',
+            ],
+        ])
+        ->setAttribute('allow_angle', true)
+        ->setAttribute('class', 'treeview')
+        ->setAttribute('icon', 'fa-fw fa-sitemap')
+        ->setDisplay($clasesView)
+        ;
+
+        $menu['Master']->addChild('Client', [
+            'route' => 'backend_client_bundle_index',
+            'extras' => ['safe_label' => true],
+            'childrenAttributes' => [
+                'class' => 'treeview-menu',
+            ],
+        ])
+        ->setAttribute('icon', 'fa-fw fa-odnoklassniki')
+        ->setDisplay($clasesView)
+        ;
+
+        $menu['Master']['Client']->addChild('Gestionar', [
+            'route' => 'backend_client_bundle_index'
+        ])
+        ->setAttribute('icon', self::CIRCLE_1_YELLOW)
+        ->setDisplay($clasesView)
+        ;
+
+        $menu['Master']->addChild('Product', [
+            'route' => 'backend_product_bundle_index',
+            'extras' => ['safe_label' => true],
+            'childrenAttributes' => [
+                'class' => 'treeview-menu',
+            ],
+        ])
+        ->setAttribute('icon', 'fa-fw fa-cube')
+        ->setDisplay($clasesView)
+        ;
+
+        $menu['Master']['Product']->addChild('Gestionar', [
+            'route' => 'backend_product_bundle_index'
+        ])
+        ->setAttribute('icon', self::CIRCLE_1_YELLOW)
+        ->setDisplay($clasesView)
+        ;
+
+        $menu['Master']->addChild('Punto de venta', [
+            'route' => 'backend_pointofsale_bundle_index',
+            'extras' => ['safe_label' => true],
+            'childrenAttributes' => [
+                'class' => 'treeview-menu',
+            ],
+        ])
+        ->setAttribute('icon', 'fa-fw fa-map-marker')
+        ->setDisplay($clasesView)
+        ;
+
+        $menu['Master']['Punto de venta']->addChild('Gestionar', [
+            'route' => 'backend_pointofsale_bundle_index'
+        ])
+        ->setAttribute('icon', self::CIRCLE_1_YELLOW)
+        ->setDisplay($clasesView)
+        ;
+
+
+
+        /**
+         * USER
+         */
+        $clasesView = true; //$this->isGranted('ROLE_CLIENT_VIEW');
+        $menu->addChild('Cuentas', [
+            'route' => 'backend_default_dashboard',
+            'extras' => ['safe_label' => true],
+            'childrenAttributes' => [
+                'class' => 'treeview-menu',
+            ],
+        ])
+        ->setAttribute('allow_angle', true)
+        ->setAttribute('class', 'treeview')
+        ->setAttribute('icon', 'fa-fw fa-users')
+        ->setDisplay($clasesView)
+        ;
+
+        $menu['Cuentas']->addChild('User', [
+            'route' => 'backend_user_bundle_index',
+            'extras' => ['safe_label' => true],
+            'childrenAttributes' => [
+                'class' => 'treeview-menu',
+            ],
+        ])
+        ->setAttribute('icon', 'fa-fw fa-user')
+        ->setDisplay($clasesView)
+        ;
+
+        $menu['Cuentas']['User']->addChild('Gestionar', [
+            'route' => 'backend_user_bundle_index'
+        ])
+        ->setAttribute('icon', self::CIRCLE_1_YELLOW)
+        ->setDisplay($clasesView)
+        ;
+
+        $menu['Cuentas']->addChild('Profile', [
+            'route' => 'backend_profile_bundle_index',
+            'extras' => ['safe_label' => true],
+            'childrenAttributes' => [
+                'class' => 'treeview-menu',
+            ],
+        ])
+        ->setAttribute('icon', 'fa-fw fa-user-secret')
+        ->setDisplay($clasesView)
+        ;
+
+        $menu['Cuentas']['Profile']->addChild('Gestionar', [
+            'route' => 'backend_profile_bundle_index'
+        ])
+        ->setAttribute('icon', self::CIRCLE_1_YELLOW)
+        ->setDisplay($clasesView)
+        ;
+
+        $menu['Cuentas']->addChild('Role', [
+            'route' => 'backend_role_bundle_index',
+            'extras' => ['safe_label' => true],
+            'childrenAttributes' => [
+                'class' => 'treeview-menu',
+            ],
+        ])
+        ->setAttribute('icon', 'fa-fw fa-expeditedssl')
+        ->setDisplay($clasesView)
+        ;
+
+        $menu['Cuentas']['Role']->addChild('Gestionar', [
+            'route' => 'backend_role_bundle_index'
+        ])
+        ->setAttribute('icon', self::CIRCLE_1_YELLOW)
+        ->setDisplay($clasesView)
+        ;
+
+
+
 
         /**
          * SETTINGS
@@ -55,7 +197,7 @@ class Builder implements ContainerAwareInterface
         ;
 
         $menu[$child]->addChild('Load Fixtures', [
-            'route' => 'core_default_loadfixtures'
+            'route' => 'backend_core_loadfixtures'
         ])
             ->setAttribute('icon', self::CIRCLE_1_YELLOW)
             ->setDisplay($loadFixture)
@@ -69,6 +211,10 @@ class Builder implements ContainerAwareInterface
         ;
 
         return $menu;
+
+
+
+
     }
 
     protected function getUser()
