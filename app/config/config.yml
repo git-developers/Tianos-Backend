@@ -56,6 +56,7 @@ twig:
 #        application_image: 'http://%application_url%/xxx.jpg'
 #        application_favicon: 'http://%application_url%/favicon.ico'
         application_fb_app_id: '%application_fb_app_id%'
+        application_google_api_key: '%application_google_api_key%'
         application_google_plus: '%application_google_plus%'
         application_facebook: '%application_facebook%'
         application_twitter: '%application_twitter%'

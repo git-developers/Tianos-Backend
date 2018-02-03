@@ -28,6 +28,12 @@ services:
         tags:
             - { name: tianos.frontend.controller.pointofsale, alias: tianos.frontend.controller.pointofsale }
 
+    tianos.map.controller.pointofsale:
+        class: Bundle\PointofsaleBundle\Controller\MapController
+        arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
+        tags:
+            - { name: tianos.map.controller.pointofsale, alias: tianos.map.controller.pointofsale }
+
     tianos.repository.pointofsale:
         class: Dummy
         factory: ['@doctrine.orm.entity_manager', getRepository]

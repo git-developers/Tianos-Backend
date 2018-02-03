@@ -32,6 +32,8 @@ class Builder implements ContainerAwareInterface
 
 
 
+
+
         /**
          * CRUD
          */
@@ -44,7 +46,7 @@ class Builder implements ContainerAwareInterface
             ],
         ])
         ->setAttribute('allow_angle', true)
-        ->setAttribute('class', 'treeview')
+        ->setAttribute('class', 'treeview ') //active
         ->setAttribute('icon', 'fa-fw fa-code-fork')
         ->setDisplay($clasesView)
         ;
@@ -93,6 +95,7 @@ class Builder implements ContainerAwareInterface
             ],
         ])
         ->setAttribute('icon', 'fa-fw fa-map-marker')
+//        ->setAttribute('class', 'active')
         ->setDisplay($clasesView)
         ;
 
@@ -100,6 +103,17 @@ class Builder implements ContainerAwareInterface
             'route' => 'backend_pointofsale_bundle_index'
         ])
         ->setAttribute('icon', self::CIRCLE_1_YELLOW)
+        ->setDisplay($clasesView)
+        ;
+
+        $menu['Master']['Punto de venta']->addChild('Mapa', [
+            'route' => 'backend_pointofsale_map_bundle_index',
+            'childrenAttributes' => [
+                'class' => '',
+            ],
+        ])
+        ->setAttribute('icon', self::CIRCLE_2_AQUA)
+//        ->setAttribute('class', 'active')
         ->setDisplay($clasesView)
         ;
 
@@ -278,6 +292,13 @@ class Builder implements ContainerAwareInterface
         }
 
         return $this->container->get('security.authorization_checker')->isGranted($attributes, $object);
+    }
+
+    protected function isCurrentRoute($attributes, $object = null)
+    {
+        $request = $this->container->get('request_stack')->getCurrentRequest();
+        $_route = $request->attributes->get('_route');
+
     }
 
 }

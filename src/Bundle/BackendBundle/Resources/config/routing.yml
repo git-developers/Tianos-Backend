@@ -6,6 +6,10 @@ backend_pointofsale:
     resource: '@PointofsaleBundle/Resources/config/routing/backend.yml'
     prefix: /point-of-sale
 
+backend_pointofsale_map:
+    resource: '@PointofsaleBundle/Resources/config/routing/map.yml'
+    prefix: /point-of-sale/map
+
 backend_product:
     resource: '@ProductBundle/Resources/config/routing/backend.yml'
     prefix: /product

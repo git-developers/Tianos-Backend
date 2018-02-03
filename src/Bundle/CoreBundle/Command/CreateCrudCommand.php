@@ -114,9 +114,17 @@ class CreateCrudCommand extends ContainerAwareCommand
 
         //=============================================
         $output->writeln('');
-        $output->writeln('<question>CRUD: services</question>');
-        $result = $this->crudServices($bundle);
+        $output->writeln('<question>CRUD YML: services.yml</question>');
+        $result = $this->crudServicesYml($bundle);
         $output->writeln('<info>* services YML bundle: '.$result.'</info>');
+
+
+
+        //=============================================
+        $output->writeln('');
+        $output->writeln('<question>CRUD YML: routing.yml</question>');
+        $result = $this->crudRoutingYml($bundle);
+        $output->writeln('<info>* routing YML bundle: '.$result.'</info>');
 
 
 
@@ -200,12 +208,41 @@ class CreateCrudCommand extends ContainerAwareCommand
         closedir($dir);
     }
 
-    private function crudServices($bundle)
+    private function crudServicesYml($bundle)
     {
         # https://symfony.com/doc/current/service_container.html
         $exist = false;
         $servicesSubfix = 'Bundle/Resources/config/services.yml';
         $ymlPath = __DIR__ . '/../../../../app/config/services/services.yml';
+
+        $ymlValues = Yaml::parseFile($ymlPath);
+
+        foreach ($ymlValues['imports'] as $key => $ymlValue){
+
+            $ymlValue = array_shift($ymlValue);
+            $ymlValue = substr($ymlValue, 1);
+            $ymlValue = str_replace($servicesSubfix, '', $ymlValue);
+
+            if($ymlValue == $bundle){
+                $exist = true;
+            }
+        }
+
+        if(!$exist){
+            $ymlValues['imports'][]['resource'] = '@'.$bundle.$servicesSubfix;
+        }
+
+        //COPIAR YML
+        file_put_contents($ymlPath, Yaml::dump($ymlValues));
+    }
+
+    private function crudRoutingYml($bundle)
+    {
+        # https://symfony.com/doc/current/service_container.html
+        $exist = false;
+        $servicesSubfix = 'Bundle/Resources/config/services.yml';
+        $ymlPath = __DIR__ . '/../../../../app/config/services/services.yml';
+//        /var/www/html/Tianos/src/Bundle/BackendBundle/Resources/config/routing.yml
 
         $ymlValues = Yaml::parseFile($ymlPath);
 
