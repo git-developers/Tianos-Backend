@@ -123,14 +123,20 @@ class CreateCrudCommand extends ContainerAwareCommand
         //=============================================
         $output->writeln('');
         $output->writeln('<question>CRUD YML: routing.yml</question>');
-        $result = $this->crudRoutingYml($bundle);
+        $result = $this->crudRoutingYml($bundleLower);
         $output->writeln('<info>* routing YML bundle: '.$result.'</info>');
 
 
 
         //=============================================
         $output->writeln('--');
-        $output->writeln('<comment>=== Se termino el proceso ===</comment>');
+        $output->writeln('<comment>=== Se termino el proceso, pon el Kernel ===</comment>');
+        $output->writeln('<comment>* Para eliminar, borrar files:</comment>');
+        $output->writeln('* BUNDLE: Tianos/src/Bundle/'.$bundle.'Bundle');
+        $output->writeln('* COMPONENT: Tianos/src/Component/'.$bundle);
+        $output->writeln('* KERNEL: Tianos/app/AppKernel.php');
+        $output->writeln('* ROUTING: Tianos/src/Bundle/BackendBundle/Resources/config/routing.yml');
+        $output->writeln('* SERVICES: Tianos/app/config/services/services.yml');
         $output->writeln('--');
     }
 
@@ -240,17 +246,13 @@ class CreateCrudCommand extends ContainerAwareCommand
     {
         # https://symfony.com/doc/current/service_container.html
         $exist = false;
-        $servicesSubfix = 'Bundle/Resources/config/services.yml';
-        $ymlPath = __DIR__ . '/../../../../app/config/services/services.yml';
-//        /var/www/html/Tianos/src/Bundle/BackendBundle/Resources/config/routing.yml
+        $ymlPath = __DIR__ . '/../../../../src/Bundle/BackendBundle/Resources/config/routing.yml';
 
         $ymlValues = Yaml::parseFile($ymlPath);
 
-        foreach ($ymlValues['imports'] as $key => $ymlValue){
+        foreach ($ymlValues as $key => $ymlValue){
 
-            $ymlValue = array_shift($ymlValue);
-            $ymlValue = substr($ymlValue, 1);
-            $ymlValue = str_replace($servicesSubfix, '', $ymlValue);
+            $ymlValue = str_replace('backend_', '', $ymlValue);
 
             if($ymlValue == $bundle){
                 $exist = true;
@@ -258,7 +260,10 @@ class CreateCrudCommand extends ContainerAwareCommand
         }
 
         if(!$exist){
-            $ymlValues['imports'][]['resource'] = '@'.$bundle.$servicesSubfix;
+            $ymlValues['backend_' . $bundle] = [
+                'resource' => '@' . ucfirst($bundle) . 'Bundle/Resources/config/routing/backend.yml',
+                'prefix' => '/' . $bundle,
+            ];
         }
 
         //COPIAR YML

@@ -1,52 +1,36 @@
 backend_default:
     resource: '@BackendBundle/Resources/config/routing/default.yml'
     prefix: /
-
 backend_pointofsale:
     resource: '@PointofsaleBundle/Resources/config/routing/backend.yml'
     prefix: /point-of-sale
-
 backend_pointofsale_map:
     resource: '@PointofsaleBundle/Resources/config/routing/map.yml'
     prefix: /point-of-sale/map
-
 backend_product:
     resource: '@ProductBundle/Resources/config/routing/backend.yml'
     prefix: /product
-
 backend_category:
     resource: '@CategoryBundle/Resources/config/routing/backend.yml'
     prefix: /category
-
 backend_groupofusers:
     resource: '@GroupofusersBundle/Resources/config/routing/backend.yml'
     prefix: /group-of-users
-
 backend_client:
     resource: '@ClientBundle/Resources/config/routing/backend.yml'
     prefix: /client
-
 backend_role:
     resource: '@RoleBundle/Resources/config/routing/backend.yml'
     prefix: /role
-
 backend_profile:
     resource: '@ProfileBundle/Resources/config/routing/backend.yml'
     prefix: /profile
-
 backend_user:
     resource: '@UserBundle/Resources/config/routing/backend.yml'
     prefix: /user
-
 backend_security:
     resource: '@UserBundle/Resources/config/routing/security.yml'
     prefix: /security
-
 backend_core:
-    resource: "@CoreBundle/Resources/config/routing/backend.yml"
+    resource: '@CoreBundle/Resources/config/routing/backend.yml'
     prefix: /core
-
-
-#backend_user:
-#    resource: '@UserBundle/Resources/config/routing/backend.yml'
-#    prefix: /user
