@@ -17,55 +17,103 @@ class Pointofsale
     /**
      * @var integer
      *
-     * @JMSS\Groups({"crud"})
      */
     private $id;
 
     /**
      * @var string
+     *
      */
     private $code;
 
     /**
      * @var string
      *
-     * @JMSS\Groups({"crud"})
      */
     private $name;
 
     /**
      * @var string
+     *
      */
     private $slug;
 
     /**
+     * @var string
+     *
+     */
+    private $latitude;
+
+    /**
+     * @var string
+     *
+     */
+    private $longitude;
+
+    /**
+     * @var string
+     *
+     */
+    private $description;
+
+    /**
      * @var \DateTime
      *
-     * @JMSS\Groups({"crud"})
-     * @JMSS\Type("DateTime<'Y-m-d H:i'>")
      */
     private $createdAt;
 
     /**
      * @var integer
+     *
      */
     private $userCreate;
 
     /**
      * @var \DateTime
+     *
      */
     private $updatedAt;
 
     /**
      * @var integer
+     *
      */
     private $userUpdate;
 
     /**
      * @var boolean
+     *
      */
     private $isActive = '1';
 
+    /**
+     * @var \AppBundle\Entity\PointOfSale
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\PointOfSale")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="point_of_sale_id", referencedColumnName="id")
+     * })
+     */
+    private $pointOfSale;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\User", mappedBy="pointOfSale")
+     */
+    private $user;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->user = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    public function __toString() {
+        return sprintf('%s - %s', $this->id, $this->name);
+    }
 
     /**
      * Get id
@@ -82,7 +130,7 @@ class Pointofsale
      *
      * @param string $code
      *
-     * @return Pointofsale
+     * @return PointOfSale
      */
     public function setCode($code)
     {
@@ -106,7 +154,7 @@ class Pointofsale
      *
      * @param string $name
      *
-     * @return Pointofsale
+     * @return PointOfSale
      */
     public function setName($name)
     {
@@ -130,7 +178,7 @@ class Pointofsale
      *
      * @param string $slug
      *
-     * @return Pointofsale
+     * @return PointOfSale
      */
     public function setSlug($slug)
     {
@@ -150,11 +198,83 @@ class Pointofsale
     }
 
     /**
+     * Set latitude
+     *
+     * @param string $latitude
+     *
+     * @return PointOfSale
+     */
+    public function setLatitude($latitude)
+    {
+        $this->latitude = $latitude;
+
+        return $this;
+    }
+
+    /**
+     * Get latitude
+     *
+     * @return string
+     */
+    public function getLatitude()
+    {
+        return $this->latitude;
+    }
+
+    /**
+     * Set longitude
+     *
+     * @param string $longitude
+     *
+     * @return PointOfSale
+     */
+    public function setLongitude($longitude)
+    {
+        $this->longitude = $longitude;
+
+        return $this;
+    }
+
+    /**
+     * Get longitude
+     *
+     * @return string
+     */
+    public function getLongitude()
+    {
+        return $this->longitude;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return PointOfSale
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
      * Set createdAt
      *
      * @param \DateTime $createdAt
      *
-     * @return Pointofsale
+     * @return PointOfSale
      */
     public function setCreatedAt($createdAt)
     {
@@ -178,7 +298,7 @@ class Pointofsale
      *
      * @param integer $userCreate
      *
-     * @return Pointofsale
+     * @return PointOfSale
      */
     public function setUserCreate($userCreate)
     {
@@ -202,7 +322,7 @@ class Pointofsale
      *
      * @param \DateTime $updatedAt
      *
-     * @return Pointofsale
+     * @return PointOfSale
      */
     public function setUpdatedAt($updatedAt)
     {
@@ -226,7 +346,7 @@ class Pointofsale
      *
      * @param integer $userUpdate
      *
-     * @return Pointofsale
+     * @return PointOfSale
      */
     public function setUserUpdate($userUpdate)
     {
@@ -250,7 +370,7 @@ class Pointofsale
      *
      * @param boolean $isActive
      *
-     * @return Pointofsale
+     * @return PointOfSale
      */
     public function setIsActive($isActive)
     {
@@ -267,6 +387,64 @@ class Pointofsale
     public function getIsActive()
     {
         return $this->isActive;
+    }
+
+    /**
+     * Set pointOfSale
+     *
+     * @param \AppBundle\Entity\PointOfSale $pointOfSale
+     *
+     * @return PointOfSale
+     */
+    public function setPointOfSale(\AppBundle\Entity\PointOfSale $pointOfSale = null)
+    {
+        $this->pointOfSale = $pointOfSale;
+
+        return $this;
+    }
+
+    /**
+     * Get pointOfSale
+     *
+     * @return \AppBundle\Entity\PointOfSale
+     */
+    public function getPointOfSale()
+    {
+        return $this->pointOfSale;
+    }
+
+    /**
+     * Add user
+     *
+     * @param \AppBundle\Entity\User $user
+     *
+     * @return PointOfSale
+     */
+    public function addUser(\AppBundle\Entity\User $user)
+    {
+        $this->user[] = $user;
+
+        return $this;
+    }
+
+    /**
+     * Remove user
+     *
+     * @param \AppBundle\Entity\User $user
+     */
+    public function removeUser(\AppBundle\Entity\User $user)
+    {
+        $this->user->removeElement($user);
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }
 

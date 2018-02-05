@@ -10,6 +10,15 @@ use Component\Pointofsale\Repository\PointofsaleRepositoryInterface;
 class PointofsaleRepository extends TianosEntityRepository implements PointofsaleRepositoryInterface
 {
 
+    public function findAllObjects()
+    {
+        return $this->createQueryBuilder('a')
+            ->where('a.isActive = :active')
+            ->orderBy('a.id', 'ASC')
+            ->setParameter('active', true)
+            ;
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -30,22 +39,6 @@ class PointofsaleRepository extends TianosEntityRepository implements Pointofsal
 
         return $query->getOneOrNullResult();
     }
-
-    /**
-     * {@inheritdoc}
-     */
-//    public function find($id)
-//    {
-//        return $this->createQueryBuilder('o')
-//            ->select('o.id, o.code, o.name, o.createdAt')
-//            ->andWhere('o.isActive = :active')
-//            ->andWhere('o.id = :id')
-//            ->setParameter('active', 1)
-//            ->setParameter('id', $id)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//            ;
-//    }
 
     /**
      * {@inheritdoc}
@@ -90,4 +83,19 @@ class PointofsaleRepository extends TianosEntityRepository implements Pointofsal
             ->getResult()
         ;
     }
+
+
+//    public function find($id)
+//    {
+//        return $this->createQueryBuilder('o')
+//            ->select('o.id, o.code, o.name, o.createdAt')
+//            ->andWhere('o.isActive = :active')
+//            ->andWhere('o.id = :id')
+//            ->setParameter('active', 1)
+//            ->setParameter('id', $id)
+//            ->getQuery()
+//            ->getOneOrNullResult()
+//            ;
+//    }
+
 }
