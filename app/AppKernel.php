@@ -10,6 +10,7 @@ class AppKernel extends Kernel
         $bundles = [
 
             //own bundles
+            new \Bundle\SessionBundle\SessionBundle(),
             new \Bundle\RoleBundle\RoleBundle(),
             new \Bundle\ClientBundle\ClientBundle(),
             new \Bundle\ProfileBundle\ProfileBundle(),

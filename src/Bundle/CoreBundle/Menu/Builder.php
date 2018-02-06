@@ -135,6 +135,29 @@ class Builder implements ContainerAwareInterface
         ->setDisplay($clasesView)
         ;
 
+        $menu['Master']->addChild('Session', [
+            'route' => 'backend_session_bundle_index',
+            'extras' => ['safe_label' => true],
+            'childrenAttributes' => [
+                'class' => 'treeview-menu',
+            ],
+        ])
+        ->setAttribute('icon', 'fa-fw fa-history')
+        ->setDisplay($clasesView)
+        ;
+
+        $menu['Master']['Category']->addChild('Gestionar', [
+            'route' => 'backend_session_bundle_index'
+        ])
+        ->setAttribute('icon', self::CIRCLE_1_YELLOW)
+        ->setDisplay($clasesView)
+        ;
+        /**
+         * CRUD
+         */
+
+
+
 
 
         /**

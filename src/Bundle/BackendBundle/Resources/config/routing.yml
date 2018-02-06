@@ -34,3 +34,6 @@ backend_security:
 backend_core:
     resource: '@CoreBundle/Resources/config/routing/backend.yml'
     prefix: /core
+backend_session:
+    resource: '@SessionBundle/Resources/config/routing/backend.yml'
+    prefix: /session
