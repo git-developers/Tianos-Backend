@@ -31,13 +31,11 @@ class Builder implements ContainerAwareInterface
         ;
 
 
-
-
-
         /**
          * CRUD
          */
         $clasesView = true; //$this->isGranted('ROLE_CLIENT_VIEW');
+        $activeRoute = $this->activeRoute(['backend_session_bundle_index']);
         $menu->addChild('Master', [
             'route' => 'backend_default_dashboard',
             'extras' => ['safe_label' => true],
@@ -46,7 +44,7 @@ class Builder implements ContainerAwareInterface
             ],
         ])
         ->setAttribute('allow_angle', true)
-        ->setAttribute('class', 'treeview ') //active
+        ->setAttribute('class', 'treeview active') //active
         ->setAttribute('icon', 'fa-fw fa-code-fork')
         ->setDisplay($clasesView)
         ;
@@ -135,6 +133,7 @@ class Builder implements ContainerAwareInterface
         ->setDisplay($clasesView)
         ;
 
+        $activeRoute = $this->activeRoute(['backend_session_bundle_index']);
         $menu['Master']->addChild('Session', [
             'route' => 'backend_session_bundle_index',
             'extras' => ['safe_label' => true],
@@ -143,13 +142,15 @@ class Builder implements ContainerAwareInterface
             ],
         ])
         ->setAttribute('icon', 'fa-fw fa-history')
+        ->setAttribute('class', $activeRoute)
         ->setDisplay($clasesView)
         ;
 
-        $menu['Master']['Category']->addChild('Gestionar', [
+        $menu['Master']['Session']->addChild('Gestionar', [
             'route' => 'backend_session_bundle_index'
         ])
         ->setAttribute('icon', self::CIRCLE_1_YELLOW)
+        ->setAttribute('class', $activeRoute)
         ->setDisplay($clasesView)
         ;
         /**
@@ -317,11 +318,16 @@ class Builder implements ContainerAwareInterface
         return $this->container->get('security.authorization_checker')->isGranted($attributes, $object);
     }
 
-    protected function isCurrentRoute($attributes, $object = null)
+    protected function activeRoute($routes = [])
     {
         $request = $this->container->get('request_stack')->getCurrentRequest();
-        $_route = $request->attributes->get('_route');
 
+        foreach ($routes as $key => $route){
+            if($route === $request->attributes->get('_route')){
+                return 'active';
+            }
+        }
+        return false;
     }
 
 }

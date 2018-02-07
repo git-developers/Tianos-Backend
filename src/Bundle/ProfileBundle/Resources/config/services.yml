@@ -28,6 +28,12 @@ services:
         tags:
             - { name: tianos.frontend.controller.profile, alias: tianos.frontend.controller.profile }
 
+    tianos.profilehasrole.controller.profile:
+        class: Bundle\ProfileBundle\Controller\ProfileHasRoleController
+        arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
+        tags:
+            - { name: tianos.profilehasrole.controller.profile, alias: tianos.profilehasrole.controller.profile }
+
     tianos.repository.profile:
         class: Dummy
         factory: ['@doctrine.orm.entity_manager', getRepository]

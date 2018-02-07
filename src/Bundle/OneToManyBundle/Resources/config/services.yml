@@ -1,0 +1,44 @@
+services:
+
+    grid.crud:
+        class: Bundle\OneToManyBundle\Services\Crud\Crud
+        arguments: [ "@router", "@request_stack" ]
+        tags:
+            - { name: grid.crud, alias: grid.crud }
+
+    tianos.form_registry.grid_filter:
+        class: Bundle\OneToManyBundle\Form\Registry\FormTypeRegistry
+        public: false
+
+    tianos.registry.grid_field:
+        class: Component\Registry\ServiceRegistry
+        arguments: [ Component\OneToMany\FieldTypes\FieldTypeInterface, "grid field" ]
+
+    tianos.expression_language:
+        class: Bundle\ResourceBundle\ExpressionLanguage\ExpressionLanguage
+        public: false
+
+    tianos.grid_options_parser:
+        class: Bundle\ResourceBundle\OneToMany\Parser\OptionsParser
+        arguments: [ "@service_container", "@tianos.expression_language", "@property_accessor" ]
+        public: false
+
+    tianos.custom_grid_renderer.twig.inner:
+        class: Bundle\OneToManyBundle\Renderer\TwigOneToManyRenderer
+        arguments: [ "@twig", "@tianos.registry.grid_field", "@form.factory", "@tianos.form_registry.grid_filter", SyliusOneToManyBundle::_grid.html.twig ]
+        public: false
+
+    tianos.custom_grid_renderer.twig:
+        class: Bundle\ResourceBundle\OneToMany\Renderer\TwigOneToManyRenderer
+        arguments: [ "@tianos.custom_grid_renderer.twig.inner", "@twig", "@tianos.grid_options_parser" ]
+
+    tianos.templating.helper.grid:
+        class: Bundle\OneToManyBundle\Templating\Helper\OneToManyHelper
+        arguments: [ "@tianos.custom_grid_renderer.twig" ]
+
+    twig.extension.grid:
+        class: Bundle\OneToManyBundle\Twig\OneToManyExtension
+        arguments: ['@tianos.templating.helper.grid']
+        public: false
+        tags:
+         - { name: twig.extension }

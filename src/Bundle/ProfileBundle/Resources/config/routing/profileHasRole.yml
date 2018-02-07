@@ -1,0 +1,89 @@
+backend_profile_has_role_bundle_index:
+    path: /
+    methods: [GET]
+    defaults:
+        _controller: tianos.profilehasrole.controller.profile:indexAction
+        _tianos:
+            action: index
+            section: admin
+            permission: true
+            template: GridBundle::index.html.twig
+            vars:
+                subheader: sylius.ui.manage_your_profile_catalog
+                icon: cube
+                body_css: grid-body-css
+                serialize_group_name: crud
+            form:
+                type: Bundle\ProfileBundle\Form\Type\ProfileType
+            repository:
+                service: tianos.repository.profile
+                method: findAll
+                arguments: [$profileId]
+
+backend_profile_has_role_bundle_create:
+    path: /create
+    methods: [POST]
+    defaults:
+        _controller: tianos.backend.controller.profile:createAction
+        _tianos:
+            action: create
+            template: ProfileBundle:ProfileBackend/Form:form.html.twig
+            entity: Bundle\ProfileBundle\Entity\Profile
+            form:
+                type: Bundle\ProfileBundle\Form\Type\ProfileType
+            vars:
+                serialize_group_name: crud
+
+backend_profile_has_role_bundle_edit:
+    path: /edit
+    methods: [PUT, POST]
+    defaults:
+        _controller: tianos.backend.controller.profile:editAction
+        _tianos:
+            action: edit
+            template: ProfileBundle:ProfileBackend/Form:form.html.twig
+            repository:
+                service: tianos.repository.profile
+                method: find
+                arguments: [$profileId]
+            form:
+                type: Bundle\ProfileBundle\Form\Type\ProfileType
+            vars:
+                serialize_group_name: crud
+
+backend_profile_has_role_bundle_delete:
+    path: /delete
+    methods: [POST, DELETE]
+    defaults:
+        _controller: tianos.backend.controller.profile:deleteAction
+        _tianos:
+            action: delete
+            template: GridBundle:Template:delete.html.twig
+            repository:
+                service: tianos.repository.profile
+                method: find
+                arguments: [$profileId]
+            vars:
+#                body_css: grid-body-css
+
+backend_profile_has_role_bundle_view:
+    path: /view
+    methods: [POST]
+    defaults:
+        _controller: tianos.backend.controller.profile:viewAction
+        _tianos:
+            action: view
+            template: ProfileBundle:ProfileBackend/Informative:view.html.twig
+            repository:
+                service: tianos.repository.profile
+                method: find
+                arguments: [$profileId]
+
+backend_profile_has_role_bundle_info:
+    path: /info
+    methods: [POST]
+    defaults:
+        _controller: tianos.backend.controller.profile:infoAction
+        _tianos:
+            action: info
+            template: ProfileBundle:ProfileBackend/Informative:info.html.twig

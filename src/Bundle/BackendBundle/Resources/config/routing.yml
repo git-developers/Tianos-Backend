@@ -25,6 +25,9 @@ backend_role:
 backend_profile:
     resource: '@ProfileBundle/Resources/config/routing/backend.yml'
     prefix: /profile
+backend_profile_has_role:
+    resource: '@ProfileBundle/Resources/config/routing/profileHasRole.yml'
+    prefix: /profile-has-role
 backend_user:
     resource: '@UserBundle/Resources/config/routing/backend.yml'
     prefix: /user

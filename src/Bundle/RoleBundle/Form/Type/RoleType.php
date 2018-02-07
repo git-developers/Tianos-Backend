@@ -19,24 +19,44 @@ class RoleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('code', TextType::class, [
-                'label' =>' code',
+            ->add('groupRol', TextType::class, [
+                'label' => 'Group rol name',
                 'label_attr' => [
                     'class' => ''
                 ],
                 'attr' => [
                     'class' => 'form-control',
-                    'placeholder' => 'code',
+                    'placeholder' => 'Nombre del rol (category, user)',
+                ],
+            ])
+            ->add('groupRolTag', TextType::class, [
+                'label' => 'Group rol tag',
+                'label_attr' => [
+                    'class' => ''
+                ],
+                'attr' => [
+                    'class' => 'form-control',
+                    'placeholder' => 'group-xxxx',
                 ],
             ])
             ->add('name', TextType::class, [
-                'label' =>' Nombre',
+                'label' => 'Action name',
                 'label_attr' => [
                     'class' => ''
                 ],
                 'attr' => [
                     'class' => 'form-control',
-                    'placeholder' => 'nombre',
+                    'placeholder' => 'create : edit : delete : view',
+                ],
+            ])
+            ->add('slug', TextType::class, [
+                'label' => 'Role',
+                'label_attr' => [
+                    'class' => ''
+                ],
+                'attr' => [
+                    'class' => 'form-control',
+                    'placeholder' => 'ROLE_XXXX_EDIT',
                 ],
             ])
         ;

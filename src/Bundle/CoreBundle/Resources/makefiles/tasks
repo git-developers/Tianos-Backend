@@ -96,7 +96,7 @@ db_load:
 	php bin/console doctrine:database:drop --force --if-exists
 	php bin/console doctrine:database:create --if-not-exists
 	php bin/console doctrine:migration:diff
-	php bin/console doctrine:migration:migrate
+	php bin/console doctrine:migration:migrate --no-interaction
 	make load_fixture
 
 log_nginx:
@@ -174,7 +174,7 @@ step_2_init_msql:
 
 load_fixture:
 	#php bin/console tianos:truncate:tables
-	php bin/console doctrine:fixtures:load
+	php bin/console doctrine:fixtures:load --no-interaction
 
 setfacl:
 	HTTPDUSER=$$(ps axo user,comm | grep -E '[a]pache|[h]ttpd|[_]www|[w]ww-data|[n]ginx' | grep -v root | head -1 | cut -d\  -f1)
