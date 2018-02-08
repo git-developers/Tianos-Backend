@@ -1,4 +1,4 @@
-frontend_groupofusers_bundle_index:
+frontend_groupofusers_index:
     path: /
     methods: [GET]
     defaults:

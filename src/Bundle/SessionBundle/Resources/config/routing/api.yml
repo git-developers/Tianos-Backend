@@ -1,4 +1,4 @@
-api_session_bundle_index:
+api_session_index:
     path: /
     methods: [GET]
     defaults:

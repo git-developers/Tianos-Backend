@@ -1,4 +1,4 @@
-api_pointofsale_bundle_index:
+api_pointofsale_index:
     path: /
     methods: [GET]
     defaults:

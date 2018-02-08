@@ -1,4 +1,4 @@
-api_role_bundle_index:
+api_role_index:
     path: /
     methods: [GET]
     defaults:

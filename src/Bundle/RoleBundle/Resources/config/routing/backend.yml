@@ -1,4 +1,4 @@
-backend_role_bundle_index:
+backend_role_index:
     path: /
     methods: [GET]
     defaults:
@@ -20,11 +20,11 @@ backend_role_bundle_index:
                 title: Gestionar role
                 data_table:
                     route:
-                        info: backend_role_bundle_info
-                        view: backend_role_bundle_view
-                        edit: backend_role_bundle_edit
-                        create: backend_role_bundle_create
-                        delete: backend_role_bundle_delete
+                        info: backend_role_info
+                        view: backend_role_view
+                        edit: backend_role_edit
+                        create: backend_role_create
+                        delete: backend_role_delete
                     table_button:
                         - edit
                         - delete
@@ -60,7 +60,7 @@ backend_role_bundle_index:
                 method: findAll
                 arguments: [$roleId]
 
-backend_role_bundle_create:
+backend_role_create:
     path: /create
     methods: [POST]
     defaults:
@@ -74,7 +74,7 @@ backend_role_bundle_create:
             vars:
                 serialize_group_name: crud
 
-backend_role_bundle_edit:
+backend_role_edit:
     path: /edit
     methods: [PUT, POST]
     defaults:
@@ -91,7 +91,7 @@ backend_role_bundle_edit:
             vars:
                 serialize_group_name: crud
 
-backend_role_bundle_delete:
+backend_role_delete:
     path: /delete
     methods: [POST, DELETE]
     defaults:
@@ -106,7 +106,7 @@ backend_role_bundle_delete:
             vars:
 #                body_css: grid-body-css
 
-backend_role_bundle_view:
+backend_role_view:
     path: /view
     methods: [POST]
     defaults:
@@ -119,7 +119,7 @@ backend_role_bundle_view:
                 method: find
                 arguments: [$roleId]
 
-backend_role_bundle_info:
+backend_role_info:
     path: /info
     methods: [POST]
     defaults:

@@ -1,4 +1,4 @@
-frontend_profile_bundle_index:
+frontend_profile_index:
     path: /
     methods: [GET]
     defaults:

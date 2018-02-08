@@ -1,4 +1,4 @@
-frontend_role_bundle_index:
+frontend_role_index:
     path: /
     methods: [GET]
     defaults:

@@ -1,4 +1,4 @@
-api_category_bundle_index:
+api_category_index:
     path: /
     methods: [GET]
     defaults:

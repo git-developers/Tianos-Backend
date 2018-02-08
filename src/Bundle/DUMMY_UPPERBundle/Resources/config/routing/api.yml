@@ -1,4 +1,4 @@
-api_DUMMY_LOWER_bundle_index:
+api_DUMMY_LOWER_index:
     path: /
     methods: [GET]
     defaults:

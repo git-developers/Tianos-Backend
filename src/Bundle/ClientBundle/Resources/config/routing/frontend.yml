@@ -1,4 +1,4 @@
-frontend_client_bundle_index:
+frontend_client_index:
     path: /
     methods: [GET]
     defaults:

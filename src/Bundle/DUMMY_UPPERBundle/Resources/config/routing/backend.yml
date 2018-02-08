@@ -1,4 +1,4 @@
-backend_DUMMY_LOWER_bundle_index:
+backend_DUMMY_LOWER_index:
     path: /
     methods: [GET]
     defaults:
@@ -20,11 +20,11 @@ backend_DUMMY_LOWER_bundle_index:
                 title: Gestionar DUMMY_LOWER
                 data_table:
                     route:
-                        info: backend_DUMMY_LOWER_bundle_info
-                        view: backend_DUMMY_LOWER_bundle_view
-                        edit: backend_DUMMY_LOWER_bundle_edit
-                        create: backend_DUMMY_LOWER_bundle_create
-                        delete: backend_DUMMY_LOWER_bundle_delete
+                        info: backend_DUMMY_LOWER_info
+                        view: backend_DUMMY_LOWER_view
+                        edit: backend_DUMMY_LOWER_edit
+                        create: backend_DUMMY_LOWER_create
+                        delete: backend_DUMMY_LOWER_delete
                     table_button:
                         - edit
                         - delete
@@ -60,7 +60,7 @@ backend_DUMMY_LOWER_bundle_index:
                 method: findAll
                 arguments: [$DUMMY_LOWERId]
 
-backend_DUMMY_LOWER_bundle_create:
+backend_DUMMY_LOWER_create:
     path: /create
     methods: [POST]
     defaults:
@@ -74,7 +74,7 @@ backend_DUMMY_LOWER_bundle_create:
             vars:
                 serialize_group_name: crud
 
-backend_DUMMY_LOWER_bundle_edit:
+backend_DUMMY_LOWER_edit:
     path: /edit
     methods: [PUT, POST]
     defaults:
@@ -91,7 +91,7 @@ backend_DUMMY_LOWER_bundle_edit:
             vars:
                 serialize_group_name: crud
 
-backend_DUMMY_LOWER_bundle_delete:
+backend_DUMMY_LOWER_delete:
     path: /delete
     methods: [POST, DELETE]
     defaults:
@@ -106,7 +106,7 @@ backend_DUMMY_LOWER_bundle_delete:
             vars:
 #                body_css: grid-body-css
 
-backend_DUMMY_LOWER_bundle_view:
+backend_DUMMY_LOWER_view:
     path: /view
     methods: [POST]
     defaults:
@@ -119,7 +119,7 @@ backend_DUMMY_LOWER_bundle_view:
                 method: find
                 arguments: [$DUMMY_LOWERId]
 
-backend_DUMMY_LOWER_bundle_info:
+backend_DUMMY_LOWER_info:
     path: /info
     methods: [POST]
     defaults:

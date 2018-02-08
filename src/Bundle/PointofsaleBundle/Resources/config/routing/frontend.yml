@@ -1,4 +1,4 @@
-frontend_pointofsale_bundle_index:
+frontend_pointofsale_index:
     path: /
     methods: [GET]
     defaults:

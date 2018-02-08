@@ -1,4 +1,4 @@
-frontend_session_bundle_index:
+frontend_session_index:
     path: /
     methods: [GET]
     defaults:

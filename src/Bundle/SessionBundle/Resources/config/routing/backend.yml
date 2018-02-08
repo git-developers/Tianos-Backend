@@ -1,4 +1,4 @@
-backend_session_bundle_index:
+backend_session_index:
     path: /
     methods: [GET]
     defaults:
@@ -20,11 +20,11 @@ backend_session_bundle_index:
                 title: Gestionar session
                 data_table:
                     route:
-                        info: backend_session_bundle_info
-                        view: backend_session_bundle_view
-                        edit: backend_session_bundle_edit
-                        create: backend_session_bundle_create
-                        delete: backend_session_bundle_delete
+                        info: backend_session_info
+                        view: backend_session_view
+                        edit: backend_session_edit
+                        create: backend_session_create
+                        delete: backend_session_delete
                     table_button:
                         - edit
                         - delete
@@ -60,7 +60,7 @@ backend_session_bundle_index:
                 method: findAll
                 arguments: [$sessionId]
 
-backend_session_bundle_create:
+backend_session_create:
     path: /create
     methods: [POST]
     defaults:
@@ -74,7 +74,7 @@ backend_session_bundle_create:
             vars:
                 serialize_group_name: crud
 
-backend_session_bundle_edit:
+backend_session_edit:
     path: /edit
     methods: [PUT, POST]
     defaults:
@@ -91,7 +91,7 @@ backend_session_bundle_edit:
             vars:
                 serialize_group_name: crud
 
-backend_session_bundle_delete:
+backend_session_delete:
     path: /delete
     methods: [POST, DELETE]
     defaults:
@@ -106,7 +106,7 @@ backend_session_bundle_delete:
             vars:
 #                body_css: grid-body-css
 
-backend_session_bundle_view:
+backend_session_view:
     path: /view
     methods: [POST]
     defaults:
@@ -119,7 +119,7 @@ backend_session_bundle_view:
                 method: find
                 arguments: [$sessionId]
 
-backend_session_bundle_info:
+backend_session_info:
     path: /info
     methods: [POST]
     defaults:

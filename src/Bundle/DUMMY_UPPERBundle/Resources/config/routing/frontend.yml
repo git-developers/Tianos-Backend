@@ -1,4 +1,4 @@
-frontend_DUMMY_LOWER_bundle_index:
+frontend_DUMMY_LOWER_index:
     path: /
     methods: [GET]
     defaults:

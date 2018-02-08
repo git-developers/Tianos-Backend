@@ -98,6 +98,7 @@ db_load:
 	php bin/console doctrine:migration:diff
 	php bin/console doctrine:migration:migrate --no-interaction
 	make load_fixture
+	make permission
 
 log_nginx:
 ifeq ($(clean), 1)

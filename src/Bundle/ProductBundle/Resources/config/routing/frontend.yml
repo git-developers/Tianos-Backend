@@ -1,4 +1,4 @@
-frontend_product_bundle_index:
+frontend_product_index:
     path: /
     methods: [GET]
     defaults:

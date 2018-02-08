@@ -1,4 +1,4 @@
-api_client_bundle_index:
+api_client_index:
     path: /
     methods: [GET]
     defaults:

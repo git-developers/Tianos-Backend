@@ -1,4 +1,4 @@
-backend_category_bundle_index:
+backend_category_index:
     path: /
     methods: [GET]
     defaults:
@@ -20,11 +20,11 @@ backend_category_bundle_index:
                 title: Gestionar category
                 data_table:
                     route:
-                        info: backend_category_bundle_info
-                        view: backend_category_bundle_view
-                        edit: backend_category_bundle_edit
-                        create: backend_category_bundle_create
-                        delete: backend_category_bundle_delete
+                        info: backend_category_info
+                        view: backend_category_view
+                        edit: backend_category_edit
+                        create: backend_category_create
+                        delete: backend_category_delete
                     table_button:
                         - edit
                         - delete
@@ -60,7 +60,7 @@ backend_category_bundle_index:
                 method: findAll
                 arguments: [$categoryId]
 
-backend_category_bundle_create:
+backend_category_create:
     path: /create
     methods: [POST]
     defaults:
@@ -74,7 +74,7 @@ backend_category_bundle_create:
             vars:
                 serialize_group_name: crud
 
-backend_category_bundle_edit:
+backend_category_edit:
     path: /edit
     methods: [PUT, POST]
     defaults:
@@ -91,7 +91,7 @@ backend_category_bundle_edit:
             vars:
                 serialize_group_name: crud
 
-backend_category_bundle_delete:
+backend_category_delete:
     path: /delete
     methods: [POST, DELETE]
     defaults:
@@ -106,7 +106,7 @@ backend_category_bundle_delete:
             vars:
 #                body_css: grid-body-css
 
-backend_category_bundle_view:
+backend_category_view:
     path: /view
     methods: [POST]
     defaults:
@@ -119,7 +119,7 @@ backend_category_bundle_view:
                 method: find
                 arguments: [$categoryId]
 
-backend_category_bundle_info:
+backend_category_info:
     path: /info
     methods: [POST]
     defaults:

@@ -1,4 +1,4 @@
-api_profile_bundle_index:
+api_profile_index:
     path: /
     methods: [GET]
     defaults:
