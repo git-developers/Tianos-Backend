@@ -7,9 +7,9 @@ namespace Bundle\ProfileBundle\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Bundle\GridBundle\Controller\GridController;
+use Bundle\OneToManyBundle\Controller\OneToManyController;
 
-class ProfileHasRoleController extends GridController
+class ProfileHasRoleController extends OneToManyController
 {
 
     public function indexAction(Request $request): Response

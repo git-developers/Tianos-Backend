@@ -21,4 +21,18 @@ class Parameters extends ParameterBag
 
         return $result;
     }
+
+    //FALTA - TO DO
+    public function getChild($path, $key, $default = null)
+    {
+//        $result = parent::get($path, $default);
+
+        $result = array_key_exists($path, $this->parameters) && array_key_exists($key, $this->parameters[$path]) ? $this->parameters[$path][$key] : $default;
+
+        if (null === $result && $default !== null) {
+            $result = $default;
+        }
+
+        return $result;
+    }
 }

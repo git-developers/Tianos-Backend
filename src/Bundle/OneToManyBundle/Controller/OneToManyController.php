@@ -51,8 +51,19 @@ class OneToManyController extends BaseController
         $repository = $configuration->getRepositoryService();
         $method = $configuration->getRepositoryMethod();
         $template = $configuration->getTemplate('');
-        $grid = $configuration->getOneToMany();
+        $oneToManyBox = $configuration->oneToManyBox();
+        $oneToManyBoxLeft = $configuration->oneToManyBoxLeft();
         $vars = $configuration->getVars();
+
+
+//        echo "POLLO:: <pre>";
+//        print_r($oneToManyBox);
+//        exit;
+
+
+
+
+
 
         //REPOSITORY
         $objects = $this->get($repository)->$method();
@@ -64,26 +75,27 @@ class OneToManyController extends BaseController
         $formMapper = $crud->getFormMapper()->getDefaults();
 
         //DATATABLE
-        $dataTable = $crud->getDataTableMapper($grid)
-            ->setRoute()
-            ->setColumns()
-            ->setOptions()
-            ->setRowCallBack()
-            ->setData($objects)
-            ->setTableOptions()
-            ->setTableButton()
-            ->setTableHeaderButton()
-            ->setColumnsTargets()
-            ->resetOneToManyVariable()
-        ;
+//        $dataTable = $crud->getDataTableMapper($grid)
+//            ->setRoute()
+//            ->setColumns()
+//            ->setOptions()
+//            ->setRowCallBack()
+//            ->setData($objects)
+//            ->setTableOptions()
+//            ->setTableButton()
+//            ->setTableHeaderButton()
+//            ->setColumnsTargets()
+//            ->resetOneToManyVariable()
+//        ;
 
         return $this->render(
             $template,
             [
                 'vars' => $vars,
-                'grid' => $grid,
+                'one_to_many_box' => $oneToManyBox,
+                'one_to_many_box_left' => $oneToManyBoxLeft,
                 'modal' => $modal,
-                'dataTable' => $dataTable,
+//                'dataTable' => $dataTable,
                 'form_mapper' => $formMapper,
             ]
         );

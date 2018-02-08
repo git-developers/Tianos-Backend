@@ -608,6 +608,17 @@ class RequestConfiguration
     }
 
     /**
+     * @return bool
+     */
+    public function hasOneToMany($key)
+    {
+        if($this->parameters->has('one_to_many')){
+            $oneToMany = $this->parameters->get('one_to_many');
+            return array_key_exists($key, $oneToMany);
+        }
+    }
+
+    /**
      * @return string
      *
      * @throws \LogicException
@@ -619,6 +630,24 @@ class RequestConfiguration
         }
 
         return $this->parameters->get('grid');
+    }
+
+    public function oneToManyBox()
+    {
+        if (!$this->hasOneToMany('box')) {
+            throw new \LogicException('Current action does not use: oneToManyBox.');
+        }
+
+        return $this->parameters->getChild('one_to_many', 'box');
+    }
+
+    public function oneToManyBoxLeft()
+    {
+        if (!$this->hasOneToMany('box_left')) {
+            throw new \LogicException('Current action does not use: oneToManyBoxLeft.');
+        }
+
+        return $this->parameters->getChild('one_to_many', 'box_left');
     }
 
     public function getGridDataTable(?string $key = null): array
