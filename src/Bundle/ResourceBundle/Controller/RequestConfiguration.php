@@ -407,6 +407,28 @@ class RequestConfiguration
         return is_array($repository) ? $repository['method'] : $repository;
     }
 
+    public function getRepositoryMethodLeft()
+    {
+        if (!$this->parameters->has('repository')) {
+            return null;
+        }
+
+        $repository = $this->parameters->get('repository');
+
+        return is_array($repository) ? $repository['box_left']['method'] : $repository;
+    }
+
+    public function getRepositoryMethodRight()
+    {
+        if (!$this->parameters->has('repository')) {
+            return null;
+        }
+
+        $repository = $this->parameters->get('repository');
+
+        return is_array($repository) ? $repository['box_right']['method'] : $repository;
+    }
+
     public function getRepositoryService()
     {
         if (!$this->parameters->has('repository')) {
@@ -417,6 +439,36 @@ class RequestConfiguration
 
         return is_array($repository) ? $repository['service'] : $repository;
     }
+
+    public function getRepositoryServiceLeft()
+    {
+        if (!$this->parameters->has('repository')) {
+            return null;
+        }
+
+        $repository = $this->parameters->get('repository');
+
+        return is_array($repository) ? $repository['box_left']['service'] : $repository;
+    }
+
+    public function getRepositoryServiceRight()
+    {
+        if (!$this->parameters->has('repository')) {
+            return null;
+        }
+
+        $repository = $this->parameters->get('repository');
+
+        return is_array($repository) ? $repository['box_right']['service'] : $repository;
+    }
+
+//    public function hasOneToMany($key)
+//    {
+//        if($this->parameters->has('one_to_many')){
+//            $oneToMany = $this->parameters->get('one_to_many');
+//            return array_key_exists($key, $oneToMany);
+//        }
+//    }
 
     /**
      * @return array
@@ -648,6 +700,16 @@ class RequestConfiguration
         }
 
         return $this->parameters->getChild('one_to_many', 'box_left');
+    }
+
+
+    public function oneToManyBoxRight()
+    {
+        if (!$this->hasOneToMany('box_right')) {
+            throw new \LogicException('Current action does not use: oneToManyBoxRight.');
+        }
+
+        return $this->parameters->getChild('one_to_many', 'box_right');
     }
 
     public function getGridDataTable(?string $key = null): array

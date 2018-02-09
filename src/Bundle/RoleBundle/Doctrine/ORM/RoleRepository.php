@@ -64,6 +64,24 @@ class RoleRepository extends TianosEntityRepository implements RoleRepositoryInt
     /**
      * {@inheritdoc}
      */
+    public function findAllOffsetLimit($offset = 0, $limit = 50): array
+    {
+        $qb = $this->createQueryBuilder('o')
+            ->select('o.id, o.code, o.name, o.createdAt')
+            ->andWhere('o.isActive = :active')
+            ->setParameter('active', 1)
+            ->getQuery()
+        ;
+
+        $qb->setFirstResult($offset);
+        $qb->setMaxResults($limit);
+
+        return $qb->getResult();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function findByName(string $name, string $locale): array
     {
         return $this->createQueryBuilder('o')

@@ -55,25 +55,25 @@
         $(function() {
 
             {#
-            $('div#{{ boxLeft.box_id }}').boxLeftSearch({
+            $('div#{{ box_left.box_id }}').box_leftSearch({
                 form_name: '{{ box.form_name }}',
-                box_id: '{{ boxLeft.box_id }}',
-                box_search: '{{ boxLeft.box_search }}',
-                route_search: '{{ boxLeft.route_search }}',
+                box_id: '{{ box_left.box_id }}',
+                box_search: '{{ box_left.box_search }}',
+                route_search: '{{ box_left.route_search }}',
             });
 
-            $('div#{{ boxLeft.box_id }}').boxLeftSelectItem({
+            $('div#{{ box_left.box_id }}').box_leftSelectItem({
                 form_name: '{{ box.form_name }}',
-                box_left_id: '{{ boxLeft.box_id }}',
+                box_left_id: '{{ box_left.box_id }}',
                 box_right_id: '{{ boxRight.box_id }}',
-                box_li_id: '{{ boxLeft.box_li_id }}',
-                box_li_class: '{{ boxLeft.box_li_class }}',
-                route_select_item: '{{ boxLeft.route_select_item }}',
+                box_li_id: '{{ box_left.box_li_id }}',
+                box_li_class: '{{ box_left.box_li_class }}',
+                route_select_item: '{{ box_left.route_select_item }}',
             });
 
             $('div#{{ boxRight.box_id }}').boxRightSearch({
                 form_name: '{{ box.form_name }}',
-                box_left_id: '{{ boxLeft.box_id }}',
+                box_left_id: '{{ box_left.box_id }}',
                 box_right_id: '{{ boxRight.box_id }}',
                 box_search: '{{ boxRight.box_search }}',
                 route_search: '{{ boxRight.route_search }}',
@@ -82,7 +82,7 @@
             $('div#{{ boxRight.box_id }}').boxRightSelectItem({
                 form_name: '{{ box.form_name }}',
                 box_separator: '{{ box.box_separator }}',
-                box_left_id: '{{ boxLeft.box_id }}',
+                box_left_id: '{{ box_left.box_id }}',
                 box_right_id: '{{ boxRight.box_id }}',
                 box_li_id: '{{ boxRight.box_li_id }}',
                 box_li_class: '{{ boxRight.box_li_class }}',
@@ -154,18 +154,23 @@
 
     <section class="content-header">
         <h1>
-            <i class="fa fa-fw fa-{{ one_to_many.icon }}"></i> {{ one_to_many.title }}
+            <i class="fa fa-fw fa-{{ box.icon }}"></i> Asociación: {{ box.title }}
             <small>lista</small>
         </h1>
         <ol class="breadcrumb">
             {#<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>#}
             {#<li class="active">Dashboard</li>#}
 
-            {#{% for key, button in dataTable.tableHeaderButton %}#}
-                {#<li>#}
-                    {#{{ tianos_grid_render_button(button, '@Ui/OneToMany/Button/Header/_table_header_button.html.twig') }}#}
-                {#</li>#}
-            {#{% endfor %}#}
+            <li>
+                <button
+                        class="btn btn-info btn-xs modal-info"
+                        alt="Info"
+                        title="Info"
+                        data-toggle="modal"
+                        data-target="#modal-info">
+                    <i class="fa fa-fw fa-info-circle"></i> info
+                </button>
+            </li>
         </ol>
     </section>
 
@@ -174,27 +179,26 @@
             <div class="row">
 
                 {#LEFT#}
-                <div id="{{ boxLeft.box_id }}" class="col-md-6">
-                    <div class="box box-{{ boxLeft.box_class }}">
+                <div id="{{ box_left.id }}" class="col-md-6">
+                    <div class="box box-{{ box_left.class }}">
                         <div class="box-header ui-sortable-handle">
 
-                            <i class="fa fa-fw fa-{{ boxLeft.box_icon|trim }}"></i>
+                            <i class="fa fa-fw fa-{{ box_left.icon|trim }}"></i>
                             <h3 class="box-title">
-                                {{ boxLeft.box_title|trim }}
+                                {{ box_left.title|trim }}
                             </h3>
 
                             <div class="box-tools pull-right">
                                 <div class="row">
                                     <div class="col-md-offset-6 col-md-6">
                                         <div class="input-group">
-                                            <input name="{{ boxLeft.box_search }}" type="search" class="form-control" maxlength="50">
+                                            <input name="{{ box_left.search_name }}" type="search" class="form-control" maxlength="50">
                                             <span class="input-group-addon">
                                                 <i class="fa fa-fw fa-search"></i>
                                             </span>
                                         </div>
                                     </div>
                                 </div>
-
                                 {#<ul class="pagination pagination-sm inline">#}
                                 {#<li><a href="#">«</a></li>#}
                                 {#<li><a href="#">1</a></li>#}
@@ -210,7 +214,7 @@
                             </div>
 
                             <ul class="todo-list ui-sortable">
-                                {{ include('CoreBundle:BoxOneToMany:Li/box_left.html.twig') }}
+                                {{ include('OneToManyBundle:Li:box_left.html.twig') }}
                             </ul>
                         </div>
                         {#<div class="box-footer clearfix no-border">#}
@@ -222,14 +226,15 @@
                 </div>
                 {#LEFT#}
 
+
                 {#RIGHT#}
-                <div id="{{ boxRight.box_id }}" class="col-md-6">
-                    <div class="box box-{{ boxRight.box_class }}">
+                <div id="{{ box_right.id }}" class="col-md-6">
+                    <div class="box box-{{ box_right.class }}">
                         <div class="box-header ui-sortable-handle">
 
-                            <i class="fa fa-fw fa-{{ boxRight.box_icon|trim }}"></i>
+                            <i class="fa fa-fw fa-{{ box_right.icon|trim }}"></i>
                             <h3 class="box-title">
-                                {{ boxRight.box_title|trim }}
+                                {{ box_right.title|trim }}
                                 &nbsp;
                                 <i class="fa fa-1x fa-refresh fa-spin" style="display: none"></i>
                             </h3>
@@ -238,7 +243,7 @@
                                 <div class="row">
                                     <div class="col-md-offset-6 col-md-6">
                                         <div class="input-group">
-                                            <input name="{{ boxRight.box_search }}" type="search" class="form-control" maxlength="50">
+                                            <input name="{{ box_right.search_name }}" type="search" class="form-control" maxlength="50">
                                             <span class="input-group-addon">
                                                 <i class="fa fa-fw fa-search"></i>
                                             </span>
@@ -254,7 +259,8 @@
                         </div>
                         <div class="box-body">
                             <ul class="todo-list ui-sortable">
-                                {{ include('CoreBundle:BoxOneToMany:Li/box_right.html.twig', {isAssigned:false,}) }}
+                                {{ include('OneToManyBundle:Li:box_right.html.twig', {isAssigned:false,}) }}
+                                {#{{ include('CoreBundle:BoxOneToMany:Li/box_right.html.twig', {isAssigned:false,}) }}#}
                             </ul>
                         </div>
                         {#<div class="box-footer clearfix no-border">#}
@@ -266,14 +272,11 @@
                 </div>
                 {#RIGHT#}
 
+
             </div>
         </form>
     </section>
 
-    {#{{ include('OneToManyBundle:Modal:create.html.twig') }}#}
-    {#{{ include('OneToManyBundle:Modal:edit.html.twig') }}#}
-    {#{{ include('OneToManyBundle:Modal:delete.html.twig') }}#}
-    {#{{ include('OneToManyBundle:Modal:view.html.twig') }}#}
     {{ include('OneToManyBundle:Modal:info.html.twig') }}
 
 {% endblock %}

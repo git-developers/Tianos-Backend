@@ -48,26 +48,53 @@ class OneToManyController extends BaseController
 
         //CONFIGURATION
         $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
-        $repository = $configuration->getRepositoryService();
-        $method = $configuration->getRepositoryMethod();
+//        $repository = $configuration->getRepositoryService();
+
+        $repositoryLeft = $configuration->getRepositoryServiceLeft();
+        $methodLeft = $configuration->getRepositoryMethodLeft();
+
+        $repositoryRight = $configuration->getRepositoryServiceRight();
+        $methodRight = $configuration->getRepositoryMethodRight();
+
         $template = $configuration->getTemplate('');
-        $oneToManyBox = $configuration->oneToManyBox();
-        $oneToManyBoxLeft = $configuration->oneToManyBoxLeft();
+
+        $box = $configuration->oneToManyBox();
+        $boxLeft = $configuration->oneToManyBoxLeft();
+        $boxRight = $configuration->oneToManyBoxRight();
         $vars = $configuration->getVars();
-
-
-//        echo "POLLO:: <pre>";
-//        print_r($oneToManyBox);
-//        exit;
-
-
-
 
 
 
         //REPOSITORY
-        $objects = $this->get($repository)->$method();
-        $objects = $this->getSerialize($objects, $vars['serialize_group_name']);
+        $objectsLeft = $this->get($repositoryLeft)->$methodLeft();
+        $objectsLeft = $this->getSerializeDecode($objectsLeft, $vars['serialize_group_name']);
+        $objectsRight = $this->get($repositoryRight)->$methodRight();
+        $objectsRight = $this->getSerializeDecode($objectsRight, $vars['serialize_group_name']);
+
+
+//        echo "POLLO:: <pre>";
+//        print_r($objectsLeft);
+//        exit;
+
+
+/*
+        $leftEntity = $this->em()->getRepository($boxLeft['class_path'])->findAll($boxLeft['limit']);
+        $leftEntity = $this->getSerializeDecode($leftEntity, $boxLeft['group_name']);
+
+        $rightEntity = $this->em()->getRepository($boxRight['class_path'])->findAll($boxRight['limit']);
+        $rightEntity = $this->getSerializeDecode($rightEntity, $boxRight['group_name']);*/
+
+
+
+
+
+
+
+
+
+
+
+
 
         //CRUD
         $crud = $this->get('grid.crud');
@@ -91,10 +118,13 @@ class OneToManyController extends BaseController
         return $this->render(
             $template,
             [
+                'box' => $box,
                 'vars' => $vars,
-                'one_to_many_box' => $oneToManyBox,
-                'one_to_many_box_left' => $oneToManyBoxLeft,
                 'modal' => $modal,
+                'box_left' => $boxLeft,
+                'box_right' => $boxRight,
+                'objects_left' => $objectsLeft,
+                'objects_right' => $objectsRight,
 //                'dataTable' => $dataTable,
                 'form_mapper' => $formMapper,
             ]

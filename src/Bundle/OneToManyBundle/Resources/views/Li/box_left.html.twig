@@ -1,0 +1,29 @@
+{% spaceless %}
+    {% for entity in objects_left %}
+        <li class="{{ box_left.li_id }} x-hand" data-id="{{ entity.id }}">
+
+            <span class="handle ui-sortable-handle">
+                <i class="fa fa-ellipsis-v"></i>
+                <i class="fa fa-ellipsis-v"></i>
+            </span>
+
+            <input type="radio" name="{{ box_left.li_input_name }}" value="{{ entity.id }}">
+            &nbsp;
+            <span class="badge {{ box_left.li_badge_class }}">
+                {{ entity.id }}
+            </span>
+
+            <span class="text">{{ entity.name }}</span>
+            {#<div class="tools">#}
+            {#<i class="fa fa-edit"></i>#}
+            {#<i class="fa fa-trash-o"></i>#}
+            {#</div>#}
+        </li>
+    {% else %}
+        <li>
+            <span class="text">
+                No hay resultados.
+            </span>
+        </li>
+    {% endfor %}
+{% endspaceless %}

@@ -34,22 +34,6 @@ class ProfileRepository extends TianosEntityRepository implements ProfileReposit
     /**
      * {@inheritdoc}
      */
-//    public function find($id)
-//    {
-//        return $this->createQueryBuilder('o')
-//            ->select('o.id, o.code, o.name, o.createdAt')
-//            ->andWhere('o.isActive = :active')
-//            ->andWhere('o.id = :id')
-//            ->setParameter('active', 1)
-//            ->setParameter('id', $id)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//            ;
-//    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function findAll(): array
     {
         return $this->createQueryBuilder('o')
@@ -59,6 +43,24 @@ class ProfileRepository extends TianosEntityRepository implements ProfileReposit
             ->getQuery()
             ->getResult()
             ;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function findAllOffsetLimit($offset = 0, $limit = 50): array
+    {
+        $qb = $this->createQueryBuilder('o')
+            ->select('o.id, o.code, o.name, o.createdAt')
+            ->andWhere('o.isActive = :active')
+            ->setParameter('active', 1)
+            ->getQuery()
+            ;
+
+        $qb->setFirstResult($offset);
+        $qb->setMaxResults($limit);
+
+        return $qb->getResult();
     }
 
     /**
@@ -90,4 +92,20 @@ class ProfileRepository extends TianosEntityRepository implements ProfileReposit
             ->getResult()
         ;
     }
+
+    /**
+     * {@inheritdoc}
+     */
+//    public function find($id)
+//    {
+//        return $this->createQueryBuilder('o')
+//            ->select('o.id, o.code, o.name, o.createdAt')
+//            ->andWhere('o.isActive = :active')
+//            ->andWhere('o.id = :id')
+//            ->setParameter('active', 1)
+//            ->setParameter('id', $id)
+//            ->getQuery()
+//            ->getOneOrNullResult()
+//            ;
+//    }
 }

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Component\Profile\Model;
 
 use Doctrine\ORM\Mapping as ORM;

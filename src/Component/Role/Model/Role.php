@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Component\Role\Model;
 
 use Doctrine\ORM\Mapping as ORM;

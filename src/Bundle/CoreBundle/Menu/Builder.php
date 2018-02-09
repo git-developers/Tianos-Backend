@@ -35,7 +35,7 @@ class Builder implements ContainerAwareInterface
          * CRUD
          */
         $clasesView = true; //$this->isGranted('ROLE_CLIENT_VIEW');
-        $activeRoute = $this->activeRoute(['backend_session_bundle_index']);
+        $activeRoute = $this->activeRoute(['backend_session_index']);
         $menu->addChild('Master', [
             'route' => 'backend_default_dashboard',
             'extras' => ['safe_label' => true],
@@ -50,7 +50,7 @@ class Builder implements ContainerAwareInterface
         ;
 
         $menu['Master']->addChild('Client', [
-            'route' => 'backend_client_bundle_index',
+            'route' => 'backend_client_index',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
                 'class' => 'treeview-menu',
@@ -61,14 +61,14 @@ class Builder implements ContainerAwareInterface
         ;
 
         $menu['Master']['Client']->addChild('Gestionar', [
-            'route' => 'backend_client_bundle_index'
+            'route' => 'backend_client_index'
         ])
         ->setAttribute('icon', self::CIRCLE_1_YELLOW)
         ->setDisplay($clasesView)
         ;
 
         $menu['Master']->addChild('Product', [
-            'route' => 'backend_product_bundle_index',
+            'route' => 'backend_product_index',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
                 'class' => 'treeview-menu',
@@ -79,14 +79,14 @@ class Builder implements ContainerAwareInterface
         ;
 
         $menu['Master']['Product']->addChild('Gestionar', [
-            'route' => 'backend_product_bundle_index'
+            'route' => 'backend_product_index'
         ])
         ->setAttribute('icon', self::CIRCLE_1_YELLOW)
         ->setDisplay($clasesView)
         ;
 
         $menu['Master']->addChild('Punto de venta', [
-            'route' => 'backend_pointofsale_bundle_index',
+            'route' => 'backend_pointofsale_index',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
                 'class' => 'treeview-menu',
@@ -98,14 +98,14 @@ class Builder implements ContainerAwareInterface
         ;
 
         $menu['Master']['Punto de venta']->addChild('Gestionar', [
-            'route' => 'backend_pointofsale_bundle_index'
+            'route' => 'backend_pointofsale_index'
         ])
         ->setAttribute('icon', self::CIRCLE_1_YELLOW)
         ->setDisplay($clasesView)
         ;
 
         $menu['Master']['Punto de venta']->addChild('Mapa', [
-            'route' => 'backend_pointofsale_map_bundle_index',
+            'route' => 'backend_pointofsale_map_index',
             'childrenAttributes' => [
                 'class' => '',
             ],
@@ -116,7 +116,7 @@ class Builder implements ContainerAwareInterface
         ;
 
         $menu['Master']->addChild('Category', [
-            'route' => 'backend_category_bundle_index',
+            'route' => 'backend_category_index',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
                 'class' => 'treeview-menu',
@@ -127,15 +127,15 @@ class Builder implements ContainerAwareInterface
         ;
 
         $menu['Master']['Category']->addChild('Gestionar', [
-            'route' => 'backend_category_bundle_index'
+            'route' => 'backend_category_index'
         ])
         ->setAttribute('icon', self::CIRCLE_1_YELLOW)
         ->setDisplay($clasesView)
         ;
 
-        $activeRoute = $this->activeRoute(['backend_session_bundle_index']);
+        $activeRoute = $this->activeRoute(['backend_session_index']);
         $menu['Master']->addChild('Session', [
-            'route' => 'backend_session_bundle_index',
+            'route' => 'backend_session_index',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
                 'class' => 'treeview-menu',
@@ -147,7 +147,7 @@ class Builder implements ContainerAwareInterface
         ;
 
         $menu['Master']['Session']->addChild('Gestionar', [
-            'route' => 'backend_session_bundle_index'
+            'route' => 'backend_session_index'
         ])
         ->setAttribute('icon', self::CIRCLE_1_YELLOW)
         ->setAttribute('class', $activeRoute)
@@ -179,7 +179,7 @@ class Builder implements ContainerAwareInterface
         ;
 
         $menu['Cuentas']->addChild('User', [
-            'route' => 'backend_user_bundle_index',
+            'route' => 'backend_user_index',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
                 'class' => 'treeview-menu',
@@ -190,14 +190,14 @@ class Builder implements ContainerAwareInterface
         ;
 
         $menu['Cuentas']['User']->addChild('Gestionar', [
-            'route' => 'backend_user_bundle_index'
+            'route' => 'backend_user_index'
         ])
         ->setAttribute('icon', self::CIRCLE_1_YELLOW)
         ->setDisplay($clasesView)
         ;
 
         $menu['Cuentas']->addChild('Group of users', [
-            'route' => 'backend_groupofusers_bundle_index',
+            'route' => 'backend_groupofusers_index',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
                 'class' => 'treeview-menu',
@@ -208,14 +208,14 @@ class Builder implements ContainerAwareInterface
         ;
 
         $menu['Cuentas']['Group of users']->addChild('Gestionar', [
-            'route' => 'backend_groupofusers_bundle_index'
+            'route' => 'backend_groupofusers_index'
         ])
             ->setAttribute('icon', self::CIRCLE_1_YELLOW)
             ->setDisplay($clasesView)
         ;
 
         $menu['Cuentas']->addChild('Profile', [
-            'route' => 'backend_profile_bundle_index',
+            'route' => 'backend_profile_index',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
                 'class' => 'treeview-menu',
@@ -226,14 +226,14 @@ class Builder implements ContainerAwareInterface
         ;
 
         $menu['Cuentas']['Profile']->addChild('Gestionar', [
-            'route' => 'backend_profile_bundle_index'
+            'route' => 'backend_profile_index'
         ])
         ->setAttribute('icon', self::CIRCLE_1_YELLOW)
         ->setDisplay($clasesView)
         ;
 
         $menu['Cuentas']->addChild('Role', [
-            'route' => 'backend_role_bundle_index',
+            'route' => 'backend_role_index',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
                 'class' => 'treeview-menu',
@@ -244,7 +244,7 @@ class Builder implements ContainerAwareInterface
         ;
 
         $menu['Cuentas']['Role']->addChild('Gestionar', [
-            'route' => 'backend_role_bundle_index'
+            'route' => 'backend_role_index'
         ])
         ->setAttribute('icon', self::CIRCLE_1_YELLOW)
         ->setDisplay($clasesView)
