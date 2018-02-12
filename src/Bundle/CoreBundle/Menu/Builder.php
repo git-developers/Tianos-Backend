@@ -249,6 +249,47 @@ class Builder implements ContainerAwareInterface
         ->setAttribute('icon', self::CIRCLE_1_YELLOW)
         ->setDisplay($clasesView)
         ;
+        /**
+         * USER
+         */
+
+
+
+
+
+
+        /**
+         * ASSOCIATION
+         */
+        $clasesView = true; //$this->isGranted('ROLE_CLIENT_VIEW');
+        $menu->addChild('Asociacion', [
+            'route' => 'backend_default_dashboard',
+            'extras' => ['safe_label' => true],
+            'childrenAttributes' => [
+                'class' => 'treeview-menu',
+            ],
+        ])
+            ->setAttribute('allow_angle', true)
+            ->setAttribute('class', 'treeview')
+            ->setAttribute('icon', 'fa-fw fa-exchange')
+            ->setDisplay($clasesView)
+        ;
+
+        $menu['Asociacion']->addChild('Profile <i class="fa fa-fw fa-arrow-right"></i> Role', [
+            'route' => 'backend_profile_has_role_index',
+            'extras' => ['safe_label' => true],
+            'childrenAttributes' => [
+                'class' => 'treeview-menu',
+            ],
+        ])
+            ->setAttribute('icon', 'fa-fw fa-user-secret')
+            ->setDisplay($clasesView)
+        ;
+        /**
+         * ASSOCIATION
+         */
+
+
 
 
 

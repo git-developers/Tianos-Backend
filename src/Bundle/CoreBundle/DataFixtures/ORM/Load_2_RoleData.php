@@ -19,12 +19,28 @@ class Load_2_RoleData extends AbstractFixture implements OrderedFixtureInterface
          * ROLE_ADMIN
          */
         $entity = new Role();
-        $entity->setName('backend');
+        $entity->setName('administrator');
         $entity->setSlug('ROLE_ADMIN');
 //        $entity->setGroupRol('backend');
 //        $entity->setGroupRolTag('group-backend');
         $manager->persist($entity);
         $this->addReference('role-backend', $entity);
+
+        $entity = new Role();
+        $entity->setName('vendedor');
+        $entity->setSlug('ROLE_USER');
+//        $entity->setGroupRol('backend');
+//        $entity->setGroupRolTag('group-backend');
+        $manager->persist($entity);
+        $this->addReference('role-vendedor', $entity);
+
+        $entity = new Role();
+        $entity->setName('editor');
+        $entity->setSlug('ROLE_USER');
+//        $entity->setGroupRol('backend');
+//        $entity->setGroupRolTag('group-backend');
+        $manager->persist($entity);
+        $this->addReference('role-editor', $entity);
 
         $manager->flush();
 

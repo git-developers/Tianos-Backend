@@ -48,6 +48,26 @@ class ProfileRepository extends TianosEntityRepository implements ProfileReposit
     /**
      * {@inheritdoc}
      */
+    public function searchBoxLeft($q, $offset = 0, $limit = 50): array
+    {
+        $qb = $this->createQueryBuilder('o')
+            ->select('o.id, o.code, o.name, o.createdAt')
+            ->andWhere('o.isActive = :active')
+            ->andWhere('o.name LIKE :q')
+            ->setParameter('active', 1)
+            ->setParameter('q', '%' . $q . '%')
+            ->getQuery()
+            ;
+
+        $qb->setFirstResult($offset);
+        $qb->setMaxResults($limit);
+
+        return $qb->getResult();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function findAllOffsetLimit($offset = 0, $limit = 50): array
     {
         $qb = $this->createQueryBuilder('o')

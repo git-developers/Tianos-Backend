@@ -17,24 +17,29 @@ class ProfileHasRoleController extends OneToManyController
         return parent::indexAction($request);
     }
 
-    public function createAction(Request $request): Response
+    public function boxLeftSearchAction(Request $request): Response
     {
-        return parent::createAction($request);
+        return parent::boxLeftSearchAction($request);
     }
 
-    public function editAction(Request $request): Response
-    {
-        return parent::editAction($request);
-    }
-
-    public function deleteAction(Request $request): Response
-    {
-        return parent::deleteAction($request);
-    }
-
-    public function viewAction(Request $request): Response
-    {
-        return parent::viewAction($request);
-    }
+//    public function createAction(Request $request): Response
+//    {
+//        return parent::createAction($request);
+//    }
+//
+//    public function editAction(Request $request): Response
+//    {
+//        return parent::editAction($request);
+//    }
+//
+//    public function deleteAction(Request $request): Response
+//    {
+//        return parent::deleteAction($request);
+//    }
+//
+//    public function viewAction(Request $request): Response
+//    {
+//        return parent::viewAction($request);
+//    }
 
 }

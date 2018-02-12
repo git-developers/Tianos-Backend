@@ -4,47 +4,46 @@
     // Global Variables
     var MAX_HEIGHT = 100;
 
-    $.formInfo = function(el, options) {
+    $.boxInfo = function(el, options) {
 
         // Global Private Variables
         var MAX_WIDTH = 200;
         var base = this;
         var modal = null;
-
-        var modalContent = null;
-
-        var msg_error = '<p>INFO: Oops!, no se completo el proceso. Contacte a su proveedor (code 3030)</p>';
-        var msg_loading = '<div class="modal-body" align="center"><i class="fa fa-2x fa-refresh fa-spin"></i></div>';
+        var msg_loading = '<div align="center"><i class="fa fa-2x fa-refresh fa-spin"></i></div>';
+        var msg_error = 'INFO: Oops!, no se completo el proceso. Contacte a su proveedor';
 
         base.$el = $(el);
         base.el = el;
-        base.$el.data('formInfo', base);
+        base.$el.data('boxInfo', base);
 
         base.init = function(){
             var totalButtons = 0;
-            // base.$el.append('<button name="public" style="'+base.options.buttonStyle+'">Private</button>');
+            modal = $('#' + options.modal_info_id);
 
-            modal = $('#' + options.modal_id);
-            modalContent = modal.find('.crud-modal-content');
+            // base.$el.append('<button name="public" style="'+base.options.buttonStyle+'">Private</button>');
         };
 
         base.openModal = function(event) {
             // debug(e);
             // base.options.buttonPress.call( this );
 
+            var modalBody = modal.find('.modal-body');
+
             $.ajax({
-                url: options.route,
+                url: options.route_info,
                 type: 'POST',
                 dataType: 'html',
                 data: '',
+                cache: true,
                 beforeSend: function(jqXHR, settings) {
-                    modalContent.html(msg_loading);
+                    modalBody.html(msg_loading);
                 },
                 success: function(data, textStatus, jqXHR) {
-                    modalContent.html(data);
+                    modalBody.html(data);
                 },
                 error: function(jqXHR, exception) {
-                    modalContent.html(msg_error);
+                    modalBody.html('<p>' + msg_error + '(code 7070)</p>');
                 }
             });
         };
@@ -57,22 +56,23 @@
         base.init();
     };
 
-    // $.formInfo.defaultOptions = {
+    // $.boxInfo.defaultOptions = {
     //     buttonStyle: "border: 1px solid #fff; background-color:#000; color:#fff; padding:20px 50px",
     //     buttonPress: function () {}
     // };
 
-    $.fn.formInfo = function(options){
+    $.fn.boxInfo = function(options){
 
         return this.each(function(){
 
-            var bp = new $.formInfo(this, options);
+            var bp = new $.boxInfo(this, options);
 
-            $('button.' + options.modal_id).click(function(event) {
+            $('button.' + options.modal_info_id).click(function(event) {
                 bp.openModal(event);
             });
 
         });
+
     };
 
 })(jQuery);

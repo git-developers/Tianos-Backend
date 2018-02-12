@@ -38,13 +38,8 @@
     {{ parent() }}
 
     {% javascripts
-        '@OneToManyBundle/Resources/public/plugins/datatables/jquery.dataTables.min.js'
-        '@OneToManyBundle/Resources/public/plugins/datatables/dataTables.bootstrap.min.js'
-        '@OneToManyBundle/Resources/public/common/js/formCreate.js'
-        '@OneToManyBundle/Resources/public/common/js/formEdit.js'
-        '@OneToManyBundle/Resources/public/common/js/formDelete.js'
-        '@OneToManyBundle/Resources/public/common/js/formView.js'
-        '@OneToManyBundle/Resources/public/common/js/formInfo.js'
+        '@OneToManyBundle/Resources/public/common/js/boxInfo.js'
+        '@OneToManyBundle/Resources/public/common/js/boxLeftSearch.js'
     %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
@@ -54,13 +49,18 @@
 
         $(function() {
 
-            {#
-            $('div#{{ box_left.box_id }}').box_leftSearch({
+            $('div#{{ box_left.id }}').boxLeftSearch({
                 form_name: '{{ box.form_name }}',
-                box_id: '{{ box_left.box_id }}',
-                box_search: '{{ box_left.box_search }}',
-                route_search: '{{ box_left.route_search }}',
+                box_id: '{{ box_left.id }}',
+                search_input_name: '{{ box_left.search_input_name }}',
+                {#box_search: '{{ box_left.box_search }}',#}
+                route_search: '{{ path(box_left.route_search) }}',
             });
+
+
+
+            {#
+
 
             $('div#{{ box_left.box_id }}').box_leftSelectItem({
                 form_name: '{{ box.form_name }}',
@@ -192,7 +192,7 @@
                                 <div class="row">
                                     <div class="col-md-offset-6 col-md-6">
                                         <div class="input-group">
-                                            <input name="{{ box_left.search_name }}" type="search" class="form-control" maxlength="50">
+                                            <input name="{{ box_left.search_input_name }}" type="search" class="form-control" maxlength="50">
                                             <span class="input-group-addon">
                                                 <i class="fa fa-fw fa-search"></i>
                                             </span>
@@ -243,7 +243,7 @@
                                 <div class="row">
                                     <div class="col-md-offset-6 col-md-6">
                                         <div class="input-group">
-                                            <input name="{{ box_right.search_name }}" type="search" class="form-control" maxlength="50">
+                                            <input name="{{ box_right.search_input_name }}" type="search" class="form-control" maxlength="50">
                                             <span class="input-group-addon">
                                                 <i class="fa fa-fw fa-search"></i>
                                             </span>
