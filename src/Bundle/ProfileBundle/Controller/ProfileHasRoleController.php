@@ -22,6 +22,11 @@ class ProfileHasRoleController extends OneToManyController
         return parent::boxLeftSearchAction($request);
     }
 
+    public function boxRightSearchAction(Request $request): Response
+    {
+        return parent::boxRightSearchAction($request);
+    }
+
 //    public function createAction(Request $request): Response
 //    {
 //        return parent::createAction($request);

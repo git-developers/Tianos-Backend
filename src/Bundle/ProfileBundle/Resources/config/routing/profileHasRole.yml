@@ -38,6 +38,7 @@ backend_profile_has_role_index:
                     li_badge_class: bg-orange-active
                     li_input_name: box-right-selected-value
                     search_input_name: search-input-name-right
+                    route_search: backend_profile_has_role_boxright_search
             form:
                 type: Bundle\ProfileBundle\Form\Type\ProfileType
             repository:
@@ -64,15 +65,15 @@ backend_profile_has_role_boxleft_search:
                 serialize_group_name: crud
             one_to_many:
                 box_left:
-                    icon: user-secret
-                    class: primary
-                    id: box-left-id
-                    title: Profile
+#                    icon: user-secret
+#                    class: primary
+#                    id: box-left-id
+#                    title: Profile
                     li_id: box-left-li
                     li_badge_class: bg-blue
                     li_input_name: box-lefts-selected-value
                     search_input_name: search-input-name-left
-                    route_search: backend_profile_has_role_boxleft_search
+#                    route_search: backend_profile_has_role_boxleft_search
             repository:
                 box_left:
                     service: tianos.repository.profile
@@ -82,6 +83,43 @@ backend_profile_has_role_boxleft_search:
 #            entity: Bundle\ProfileBundle\Entity\Profile
 #            form:
 #                type: Bundle\ProfileBundle\Form\Type\ProfileType
+
+backend_profile_has_role_boxright_search:
+    path: /box-right-search
+    methods: [POST]
+    defaults:
+        _controller: tianos.profilehasrole.controller.profile:boxRightSearchAction
+        _tianos:
+            action: right_search
+            template: OneToManyBundle:Li:box_right.html.twig
+            vars:
+                serialize_group_name: crud
+            one_to_many:
+                box_right:
+#                    icon: user-secret
+#                    class: primary
+#                    id: box-right-id
+#                    title: Profile
+                    li_id: box-right-li
+                    li_badge_class: bg-blue
+                    li_input_name: box-lefts-selected-value
+                    search_input_name: search-input-name-left
+#                    route_search: backend_profile_has_role_boxleft_search
+            repository:
+                box_right:
+                    service: tianos.repository.role
+                    method: searchBoxRight
+                    arguments:
+                        limit: 20
+#            entity: Bundle\ProfileBundle\Entity\Profile
+#            form:
+#                type: Bundle\ProfileBundle\Form\Type\ProfileType
+
+
+
+
+
+
 
 backend_profile_has_role_edit:
     path: /edit

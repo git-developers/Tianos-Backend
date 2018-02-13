@@ -23,7 +23,7 @@
         base.init = function(){
             var totalButtons = 0;
             boxLeft = $('div#' + options.box_left_id);
-            boxRight = $('div#' + options.box_right_id);
+            boxRight = $('div#' + options.box_id);
             // base.$el.append('<button name="public" style="'+base.options.buttonStyle+'">Private</button>');
         };
 
@@ -38,12 +38,13 @@
             div.addClass('callout-' + addClass);
         };
 
-        base.searchBox = function() {
+        base.searchBox = function(context) {
             // debug(e);
             // base.options.buttonPress.call( this );
 
             var boxUl = boxRight.find('ul');
-            var fields = $("form[name='" + options.form_name + "']").serializeArray();
+            var q = $(context).val();
+            // var fields = $("form[name='" + options.form_name + "']").serializeArray();
 
             if(globalTimeout != null){
                 clearTimeout(globalTimeout);
@@ -56,7 +57,7 @@
                     type: 'POST',
                     dataType: 'html',
                     data: {
-                        fields:fields
+                        q:q
                     },
                     cache: true,
                     beforeSend: function(jqXHR, settings) {
@@ -96,8 +97,8 @@
 
             var bp = new $.boxRightSearch(this, options);
 
-            $('div#' + options.box_right_id + ' input[name=' + options.box_search + ']').keyup(function() {
-                bp.searchBox();
+            $('div#' + options.box_id + ' input[name=' + options.search_input_name + ']').keyup(function() {
+                bp.searchBox(this);
             });
 
         });

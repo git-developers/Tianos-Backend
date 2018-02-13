@@ -12,7 +12,7 @@
         {#{% endif %}#}
 
         <li
-            class="{{ box_right.li_id }} x-hand {{ isAssigned ? 'bg-orange' : '' }}"
+            class="{{ box_right.li_id }} x-hand {{ is_assigned ? 'bg-orange' : '' }}"
             data-id="{{ id }}">
 
             <span class="handle ui-sortable-handle">
@@ -27,7 +27,7 @@
             <input
                 name="{{ box_right.li_input_name }}"
                 type="checkbox"
-                {{ isAssigned ? 'checked="checked"' : '' }}
+                {{ is_assigned ? 'checked="checked"' : '' }}
                 data-id="{{ id }}"
                 value="{{ id }}">
 
