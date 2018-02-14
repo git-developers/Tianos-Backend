@@ -44,11 +44,15 @@
             // debug(e);
             // base.options.buttonPress.call( this );
 
-            var checkbox = $(context).find('input[type=checkbox]');
+            // var checkbox = $(context).find('input[type=checkbox]');
+            var checkboxAll = boxRight.find('input[type=checkbox]');
+            var boxLeftValue = $('#' + options.boxLeftId + ' input[name=' + options.boxLeftLiInputName + ']:checked').val();
+            var boxRightValues = $('#' + options.boxRightId + ' input:checkbox:checked').map(function() {
+                return this.value;
+            }).get();
 
             // var id = checkbox.data('id');
-
-            console.log('ID:: ' + id);
+            // console.log('ID:: ' + id);
 
 
             if(globalTimeout != null){
@@ -62,7 +66,8 @@
                     type: 'POST',
                     dataType: 'json',
                     data: {
-                        // fields:fields
+                        boxLeftValue:boxLeftValue,
+                        boxRightValues:boxRightValues
                     },
                     cache: true,
                     beforeSend: function(jqXHR, settings) {
@@ -75,7 +80,7 @@
 
                             base.addClassCallout('danger');
                             checkboxAll.prop('checked', false);
-                            boxRight.find('li').removeClass(options.liClass);
+                            // boxRight.find('li').removeClass(options.liClass);
 
                             // if(jQuery.inArray(error_boxleft_not_value, data.errors) > -1){
                             //     base.setMessageCallout(msgBoxleftNotValue);

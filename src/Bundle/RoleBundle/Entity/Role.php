@@ -79,7 +79,7 @@ class Role
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Profile", mappedBy="role")
+     * @ORM\ManyToMany(targetEntity="Bundle\ProfileBundle\Entity\Profile", mappedBy="role")
      */
     private $profile;
 

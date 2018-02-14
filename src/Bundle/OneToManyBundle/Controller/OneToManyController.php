@@ -164,15 +164,41 @@ class OneToManyController extends BaseController
         );
     }
 
-    public function boxRightSelectItemAction(Request $request)
+    public function boxRightSelectItemAction(Request $request): Response
     {
         if (!$this->isXmlHttpRequest()) {
             throw $this->createAccessDeniedException(self::ACCESS_DENIED_MSG);
         }
 
-        echo "POLLO:: <pre>";
-        print_r($request);
-        exit;
+        $boxLeftValue = $request->get('boxLeftValue');
+        $boxRightValues = $request->get('boxRightValues');
+
+        $parameters = [
+            'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
+        ];
+        $applicationName = $this->container->getParameter('application_name');
+        $this->metadata = new Metadata('tianos', $applicationName, $parameters);
+
+        //CONFIGURATION
+        $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
+        $repositoryRight = $configuration->getRepositoryServiceRight();
+        $methodRight = $configuration->getRepositoryMethodRight();
+        $repositoryLeft = $configuration->getRepositoryServiceLeft();
+        $methodLeft = $configuration->getRepositoryMethodLeft();
+        $vars = $configuration->getVars();
+
+        //REPOSITORY
+        $objectsLeft = $this->get($repositoryLeft)->$methodLeft($boxLeftValue);
+
+        foreach ($boxRightValues as $key => $boxRightValue){
+
+            //REPOSITORY
+            $objectsRight = $this->get($repositoryRight)->$methodRight($boxRightValue);
+            
+            $objectsLeft->addRole($objectsRight);
+            $this->persist($objectsLeft);
+        }
+
 
 
 

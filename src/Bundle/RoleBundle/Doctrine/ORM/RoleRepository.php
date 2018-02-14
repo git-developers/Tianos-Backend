@@ -40,8 +40,8 @@ class RoleRepository extends TianosEntityRepository implements RoleRepositoryInt
             SELECT role
             FROM RoleBundle:Role role
             WHERE
-            product.id = :id AND
-            product.isActive = :active
+            role.id = :id AND
+            role.isActive = :active
             ";
 
         $query = $em->createQuery($dql);

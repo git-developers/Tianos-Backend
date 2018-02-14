@@ -67,6 +67,29 @@ class Profile
      */
     private $isActive = '1';
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Bundle\RoleBundle\Entity\Role", inversedBy="profile")
+     * @ORM\JoinTable(name="profile_has_role",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="profile_id", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="role_id", referencedColumnName="id")
+     *   }
+     * )
+     */
+    private $role;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->role = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
     public function __toString() {
         return sprintf('%s - %s', $this->id, $this->name);
     }
@@ -271,6 +294,40 @@ class Profile
     public function getIsActive()
     {
         return $this->isActive;
+    }
+
+    /**
+     * Add role
+     *
+     * @param \Bundle\RoleBundle\Entity\Role $role
+     *
+     * @return Profile
+     */
+    public function addRole(\Bundle\RoleBundle\Entity\Role $role)
+    {
+        $this->role[] = $role;
+
+        return $this;
+    }
+
+    /**
+     * Remove role
+     *
+     * @param \Bundle\RoleBundle\Entity\Role $role
+     */
+    public function removeRole(\Bundle\RoleBundle\Entity\Role $role)
+    {
+        $this->role->removeElement($role);
+    }
+
+    /**
+     * Get role
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRole()
+    {
+        return $this->role;
     }
 }
 

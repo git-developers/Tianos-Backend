@@ -132,6 +132,15 @@ backend_profile_has_role_boxright_select_item:
     defaults:
         _controller: tianos.profilehasrole.controller.profile:boxRightSelectItemAction
         _tianos:
+            repository:
+                box_left:
+                    service: tianos.repository.profile
+                    method: find
+                box_right:
+                    service: tianos.repository.role
+                    method: find
+#                    arguments:
+#                        limit: 20
 #            action: info
 #            template: ProfileBundle:ProfileBackend/Informative:infoProfileHasRole.html.twig
 
