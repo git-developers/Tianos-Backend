@@ -24,7 +24,7 @@
             var totalButtons = 0;
             // base.$el.append('<button name="public" style="'+base.options.buttonStyle+'">Private</button>');
 
-            modal = $('#' + options.modal_id);
+            modal = $('#' + options.modalId);
             modalContent = modal.find('.crud-modal-content');
         };
 
@@ -68,7 +68,7 @@
 
             var bp = new $.formInfo(this, options);
 
-            $('button.' + options.modal_id).click(function(event) {
+            $('button.' + options.modalId).click(function(event) {
                 bp.openModal(event);
             });
 

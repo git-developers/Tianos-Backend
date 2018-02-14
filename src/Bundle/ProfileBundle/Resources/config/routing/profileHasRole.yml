@@ -19,12 +19,13 @@ backend_profile_has_role_index:
                     class: primary
                     form_name: main-form
                     title: Profile has Role
+                    route_info: backend_profile_has_role_info
                 box_left:
                     icon: user-secret
                     class: primary
                     id: box-left-id
                     title: Profile
-                    li_id: box-left-li
+                    li_class: box-left-li
                     li_badge_class: bg-blue
                     li_input_name: box-lefts-selected-value
                     search_input_name: search-input-name-left
@@ -34,11 +35,12 @@ backend_profile_has_role_index:
                     class: primary
                     id: box-right-id
                     title: Role
-                    li_id: box-right-li
+                    li_class: box-right-li
                     li_badge_class: bg-orange-active
                     li_input_name: box-right-selected-value
                     search_input_name: search-input-name-right
                     route_search: backend_profile_has_role_boxright_search
+                    route_select_item: backend_profile_has_role_boxright_select_item
             form:
                 type: Bundle\ProfileBundle\Form\Type\ProfileType
             repository:
@@ -69,7 +71,7 @@ backend_profile_has_role_boxleft_search:
 #                    class: primary
 #                    id: box-left-id
 #                    title: Profile
-                    li_id: box-left-li
+                    li_class: box-left-li
                     li_badge_class: bg-blue
                     li_input_name: box-lefts-selected-value
                     search_input_name: search-input-name-left
@@ -100,7 +102,7 @@ backend_profile_has_role_boxright_search:
 #                    class: primary
 #                    id: box-right-id
 #                    title: Profile
-                    li_id: box-right-li
+                    li_class: box-right-li
                     li_badge_class: bg-blue
                     li_input_name: box-lefts-selected-value
                     search_input_name: search-input-name-left
@@ -115,57 +117,6 @@ backend_profile_has_role_boxright_search:
 #            form:
 #                type: Bundle\ProfileBundle\Form\Type\ProfileType
 
-
-
-
-
-
-
-backend_profile_has_role_edit:
-    path: /edit
-    methods: [PUT, POST]
-    defaults:
-        _controller: tianos.profilehasrole.controller.profile:editAction
-        _tianos:
-            action: edit
-            template: ProfileBundle:ProfileBackend/Form:form.html.twig
-            repository:
-                service: tianos.repository.profile
-                method: find
-                arguments: [$profileId]
-            form:
-                type: Bundle\ProfileBundle\Form\Type\ProfileType
-            vars:
-                serialize_group_name: crud
-
-backend_profile_has_role_delete:
-    path: /delete
-    methods: [POST, DELETE]
-    defaults:
-        _controller: tianos.profilehasrole.controller.profile:deleteAction
-        _tianos:
-            action: delete
-            template: GridBundle:Template:delete.html.twig
-            repository:
-                service: tianos.repository.profile
-                method: find
-                arguments: [$profileId]
-            vars:
-#                body_css: grid-body-css
-
-backend_profile_has_role_view:
-    path: /view
-    methods: [POST]
-    defaults:
-        _controller: tianos.profilehasrole.controller.profile:viewAction
-        _tianos:
-            action: view
-            template: ProfileBundle:ProfileBackend/Informative:view.html.twig
-            repository:
-                service: tianos.repository.profile
-                method: find
-                arguments: [$profileId]
-
 backend_profile_has_role_info:
     path: /info
     methods: [POST]
@@ -173,4 +124,72 @@ backend_profile_has_role_info:
         _controller: tianos.profilehasrole.controller.profile:infoAction
         _tianos:
             action: info
-            template: ProfileBundle:ProfileBackend/Informative:info.html.twig
+            template: ProfileBundle:ProfileBackend/Informative:infoProfileHasRole.html.twig
+
+backend_profile_has_role_boxright_select_item:
+    path: /boxright-select-item
+    methods: [POST]
+    defaults:
+        _controller: tianos.profilehasrole.controller.profile:boxRightSelectItemAction
+        _tianos:
+#            action: info
+#            template: ProfileBundle:ProfileBackend/Informative:infoProfileHasRole.html.twig
+
+
+
+
+
+
+
+
+
+
+
+
+
+#backend_profile_has_role_edit:
+#    path: /edit
+#    methods: [PUT, POST]
+#    defaults:
+#        _controller: tianos.profilehasrole.controller.profile:editAction
+#        _tianos:
+#            action: edit
+#            template: ProfileBundle:ProfileBackend/Form:form.html.twig
+#            repository:
+#                service: tianos.repository.profile
+#                method: find
+#                arguments: [$profileId]
+#            form:
+#                type: Bundle\ProfileBundle\Form\Type\ProfileType
+#            vars:
+#                serialize_group_name: crud
+#
+#backend_profile_has_role_delete:
+#    path: /delete
+#    methods: [POST, DELETE]
+#    defaults:
+#        _controller: tianos.profilehasrole.controller.profile:deleteAction
+#        _tianos:
+#            action: delete
+#            template: GridBundle:Template:delete.html.twig
+#            repository:
+#                service: tianos.repository.profile
+#                method: find
+#                arguments: [$profileId]
+#            vars:
+##                body_css: grid-body-css
+#
+#backend_profile_has_role_view:
+#    path: /view
+#    methods: [POST]
+#    defaults:
+#        _controller: tianos.profilehasrole.controller.profile:viewAction
+#        _tianos:
+#            action: view
+#            template: ProfileBundle:ProfileBackend/Informative:view.html.twig
+#            repository:
+#                service: tianos.repository.profile
+#                method: find
+#                arguments: [$profileId]
+
+

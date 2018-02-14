@@ -1,15 +1,15 @@
 {% spaceless %}
-    {% for entity in objects_left %}
-        <li class="{{ box_left.li_id }} x-hand" data-id="{{ entity.id }}">
+    {% for entity in objectsLeft %}
+        <li class="{{ boxLeft.li_class }} x-hand" data-id="{{ entity.id }}">
 
             <span class="handle ui-sortable-handle">
                 <i class="fa fa-ellipsis-v"></i>
                 <i class="fa fa-ellipsis-v"></i>
             </span>
 
-            <input type="radio" name="{{ box_left.li_input_name }}" value="{{ entity.id }}">
+            <input type="radio" name="{{ boxLeft.li_input_name }}" value="{{ entity.id }}">
             &nbsp;
-            <span class="badge {{ box_left.li_badge_class }}">
+            <span class="badge {{ boxLeft.li_badge_class }}">
                 {{ entity.id }}
             </span>
 

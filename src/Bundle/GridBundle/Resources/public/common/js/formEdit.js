@@ -27,7 +27,7 @@
             var totalButtons = 0;
             // base.$el.append('<button name="public" style="'+base.options.buttonStyle+'">Private</button>');
 
-            modal = $('#' + options.modal_id);
+            modal = $('#' + options.modalId);
             modalContent = modal.find('.crud-modal-content');
         };
 
@@ -75,7 +75,7 @@
             modalMsgText = modal.find('div#message p');
             modalRefresh = modal.find('i.fa-refresh');
 
-            var fields = $("form[name='" + options.form_name + "']").serializeArray();
+            var fields = $("form[name='" + options.formName + "']").serializeArray();
 
             $.ajax({
                 url: options.route,
@@ -94,7 +94,7 @@
                     modalRefresh.hide();
 
                     if(data.status){
-                        var row = options.table_json.row('[data-id="' + data.id + '"]');
+                        var row = options.tableJson.row('[data-id="' + data.id + '"]');
                         row.data(data.entity).draw();
                         modal.modal('hide');
                     }else{
@@ -138,11 +138,11 @@
 
             var bp = new $.formEdit(this, options);
 
-            $(document).on('click', 'button.' + options.modal_id, function() {
+            $(document).on('click', 'button.' + options.modalId, function() {
                 bp.openModal(event, this);
             });
 
-            $(document).on('submit', "form[name='" + options.form_name + "']" , function(event) {
+            $(document).on('submit', "form[name='" + options.formName + "']" , function(event) {
                 bp.edit(event);
             });
 

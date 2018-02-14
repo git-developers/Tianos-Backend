@@ -12,39 +12,4 @@ use Bundle\OneToManyBundle\Controller\OneToManyController;
 class ProfileHasRoleController extends OneToManyController
 {
 
-    public function indexAction(Request $request): Response
-    {
-        return parent::indexAction($request);
-    }
-
-    public function boxLeftSearchAction(Request $request): Response
-    {
-        return parent::boxLeftSearchAction($request);
-    }
-
-    public function boxRightSearchAction(Request $request): Response
-    {
-        return parent::boxRightSearchAction($request);
-    }
-
-//    public function createAction(Request $request): Response
-//    {
-//        return parent::createAction($request);
-//    }
-//
-//    public function editAction(Request $request): Response
-//    {
-//        return parent::editAction($request);
-//    }
-//
-//    public function deleteAction(Request $request): Response
-//    {
-//        return parent::deleteAction($request);
-//    }
-//
-//    public function viewAction(Request $request): Response
-//    {
-//        return parent::viewAction($request);
-//    }
-
 }

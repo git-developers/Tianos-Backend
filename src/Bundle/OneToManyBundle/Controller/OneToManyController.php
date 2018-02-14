@@ -64,7 +64,6 @@ class OneToManyController extends BaseController
         $vars = $configuration->getVars();
 
 
-
         //REPOSITORY
         $objectsLeft = $this->get($repositoryLeft)->$methodLeft();
         $objectsLeft = $this->getSerializeDecode($objectsLeft, $vars['serialize_group_name']);
@@ -83,11 +82,11 @@ class OneToManyController extends BaseController
                 'box' => $box,
                 'vars' => $vars,
                 'modal' => $modal,
-                'box_left' => $boxLeft,
-                'box_right' => $boxRight,
-                'objects_left' => $objectsLeft,
-                'objects_right' => $objectsRight,
-                'form_mapper' => $formMapper,
+                'boxLeft' => $boxLeft,
+                'boxRight' => $boxRight,
+                'objectsLeft' => $objectsLeft,
+                'objectsRight' => $objectsRight,
+                'formMapper' => $formMapper,
             ]
         );
 
@@ -124,12 +123,11 @@ class OneToManyController extends BaseController
         return $this->render(
             $template,
             [
-                'box_left' => $boxLeft,
-                'objects_left' => $objectsLeft,
+                'boxLeft' => $boxLeft,
+                'objectsLeft' => $objectsLeft,
             ]
         );
     }
-
 
     public function boxRightSearchAction(Request $request)
     {
@@ -159,15 +157,81 @@ class OneToManyController extends BaseController
         return $this->render(
             $template,
             [
-                'box_right' => $boxRight,
-                'objects_right' => $objectsRight,
-                'is_assigned' => true,
+                'boxRight' => $boxRight,
+                'objectsRight' => $objectsRight,
+                'isAssigned' => true,
             ]
         );
     }
 
+    public function boxRightSelectItemAction(Request $request)
+    {
+        if (!$this->isXmlHttpRequest()) {
+            throw $this->createAccessDeniedException(self::ACCESS_DENIED_MSG);
+        }
+
+        echo "POLLO:: <pre>";
+        print_r($request);
+        exit;
 
 
+
+
+
+/*        $parameters = [
+            'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
+        ];
+        $applicationName = $this->container->getParameter('application_name');
+        $this->metadata = new Metadata('tianos', $applicationName, $parameters);
+
+        //CONFIGURATION
+        $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
+        $template = $configuration->getTemplate('');
+        $boxRight = $configuration->oneToManyBoxRight();
+
+        $repositoryRight = $configuration->getRepositoryServiceRight();
+        $methodRight = $configuration->getRepositoryMethodRight();
+        $vars = $configuration->getVars();
+
+        //REPOSITORY
+        $objectsRight = $this->get($repositoryRight)->$methodRight($request->get('q'));
+        $objectsRight = $this->getSerializeDecode($objectsRight, $vars['serialize_group_name']);
+
+        return $this->render(
+            $template,
+            [
+                'boxRight' => $boxRight,
+                'objectsRight' => $objectsRight,
+                'isAssigned' => true,
+            ]
+        );*/
+    }
+
+
+    public function infoAction(Request $request): Response
+    {
+        if (!$this->isXmlHttpRequest()) {
+            throw $this->createAccessDeniedException(self::ACCESS_DENIED_MSG);
+        }
+
+        $parameters = [
+            'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
+        ];
+        $applicationName = $this->container->getParameter('application_name');
+        $this->metadata = new Metadata('tianos', $applicationName, $parameters);
+
+        //CONFIGURATION
+        $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
+        $template = $configuration->getTemplate('');
+        $action = $configuration->getAction();
+
+        return $this->render(
+            $template,
+            [
+                'action' => $action,
+            ]
+        );
+    }
 
 
 
@@ -422,30 +486,7 @@ class OneToManyController extends BaseController
 
 
 
-    public function infoAction(Request $request): Response
-    {
-        if (!$this->isXmlHttpRequest()) {
-            throw $this->createAccessDeniedException(self::ACCESS_DENIED_MSG);
-        }
 
-        $parameters = [
-            'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
-        ];
-        $applicationName = $this->container->getParameter('application_name');
-        $this->metadata = new Metadata('tianos', $applicationName, $parameters);
-
-        //CONFIGURATION
-        $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
-        $template = $configuration->getTemplate('');
-        $action = $configuration->getAction();
-
-        return $this->render(
-            $template,
-            [
-                'action' => $action,
-            ]
-        );
-    }
 
 }
 

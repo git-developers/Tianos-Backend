@@ -15,7 +15,7 @@
         var globalTimeout = null;
         var msg_error = '<i class="fa fa-fw fa-warning"></i> Seleccion derecha Error: reintentar';
         var msg_assign_error = '<i class="fa fa-fw fa-warning"></i> Error al asignar items.';
-        var msg_boxleft_not_value = '<i class="fa fa-fw fa-warning"></i> Tiene que seleccionar un item de la izquierda.';
+        var msgBoxleftNotValue = '<i class="fa fa-fw fa-warning"></i> Tiene que seleccionar un item de la izquierda.';
         var error_boxleft_not_value = 'box_left_no_value';
 
         base.$el = $(el);
@@ -24,8 +24,8 @@
 
         base.init = function(){
             var totalButtons = 0;
-            boxLeft = $('div#' + options.box_left_id);
-            boxRight = $('div#' + options.box_right_id);
+            boxLeft = $('div#' + options.boxLeftId);
+            boxRight = $('div#' + options.boxRightId);
             // base.$el.append('<button name="public" style="'+base.options.buttonStyle+'">Private</button>');
         };
 
@@ -45,23 +45,11 @@
             // base.options.buttonPress.call( this );
 
             var checkbox = $(context).find('input[type=checkbox]');
-            var checkboxHidden = $(context).find('input[name=' + options.box_value_hidden + ']');
-            var checkboxAll = boxRight.find('input[type=checkbox]');
 
-            var id = checkbox.data('id');
+            // var id = checkbox.data('id');
 
-            if (checkbox.is(':checked')) {
-                checkbox.prop('checked', false);
-                $(context).removeClass(options.box_li_class);
-                checkboxHidden.val(id + options.box_separator + options.action.delete);
-            }else{
-                checkbox.prop('checked', true);
-                $(context).addClass(options.box_li_class);
-                checkboxHidden.val(id + options.box_separator + options.action.create);
-            }
+            console.log('ID:: ' + id);
 
-            var id = $(context).data('id');
-            var fields = $("form[name='" + options.form_name + "']").serializeArray();
 
             if(globalTimeout != null){
                 clearTimeout(globalTimeout);
@@ -70,7 +58,80 @@
             globalTimeout = setTimeout(function() {
 
                 $.ajax({
-                    url: options.route_select_item,
+                    url: options.routeSelectItem,
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                        // fields:fields
+                    },
+                    cache: true,
+                    beforeSend: function(jqXHR, settings) {
+                        boxRight.find('i.fa-refresh').show();
+                    },
+                    success: function(data, textStatus, jqXHR) {
+                        boxRight.find('i.fa-refresh').hide();
+
+                        if(!data.status){
+
+                            base.addClassCallout('danger');
+                            checkboxAll.prop('checked', false);
+                            boxRight.find('li').removeClass(options.liClass);
+
+                            // if(jQuery.inArray(error_boxleft_not_value, data.errors) > -1){
+                            //     base.setMessageCallout(msgBoxleftNotValue);
+                            // }else{
+                            //     base.setMessageCallout(msg_assign_error);
+                            // }
+                        }
+                    },
+                    error: function(jqXHR, exception) {
+                        base.addClassCallout('danger');
+                        base.setMessageCallout(msg_error);
+                        boxRight.find('i.fa-refresh').hide();
+                    }
+                });
+
+            }, DELAY);
+
+
+
+
+
+
+
+
+
+
+
+            /*
+
+            var checkbox = $(context).find('input[type=checkbox]');
+            var checkboxHidden = $(context).find('input[name=' + options.box_value_hidden + ']');
+            var checkboxAll = boxRight.find('input[type=checkbox]');
+
+            var id = checkbox.data('id');
+
+            if (checkbox.is(':checked')) {
+                checkbox.prop('checked', false);
+                $(context).removeClass(options.liClass);
+                checkboxHidden.val(id + options.box_separator + options.action.delete);
+            }else{
+                checkbox.prop('checked', true);
+                $(context).addClass(options.liClass);
+                checkboxHidden.val(id + options.box_separator + options.action.create);
+            }
+
+            var id = $(context).data('id');
+            var fields = $("form[name='" + options.formName + "']").serializeArray();
+
+            if(globalTimeout != null){
+                clearTimeout(globalTimeout);
+            }
+
+            globalTimeout = setTimeout(function() {
+
+                $.ajax({
+                    url: options.routeSelectItem,
                     type: 'POST',
                     dataType: 'json',
                     data: {
@@ -87,13 +148,13 @@
 
                             base.addClassCallout('danger');
                             checkboxAll.prop('checked', false);
-                            boxRight.find('li').removeClass(options.box_li_class);
+                            boxRight.find('li').removeClass(options.liClass);
 
-/*                            if(jQuery.inArray(error_boxleft_not_value, data.errors) > -1){
-                                base.setMessageCallout(msg_boxleft_not_value);
-                            }else{
-                                base.setMessageCallout(msg_assign_error);
-                            }*/
+                            // if(jQuery.inArray(error_boxleft_not_value, data.errors) > -1){
+                            //     base.setMessageCallout(msgBoxleftNotValue);
+                            // }else{
+                            //     base.setMessageCallout(msg_assign_error);
+                            // }
                         }
                     },
                     error: function(jqXHR, exception) {
@@ -105,18 +166,22 @@
 
             }, DELAY);
 
+            */
+
         };
 
         base.isValid = function(event) {
 
             if (!$('input[type=radio]:checked').val()) {
                 base.addClassCallout('danger');
-                base.setMessageCallout(msg_boxleft_not_value);
+                base.setMessageCallout(msgBoxleftNotValue);
 
                 event.preventDefault();
 
-                return;
+                return false;
             }
+
+            return true;
         };
 
         // Private Functions
@@ -147,10 +212,13 @@
 
             var bp = new $.boxRightSelectItem(this, options);
 
-            $(document).on('click', 'li.' + options.box_li_id, function(event) {
+            $(document).on('click', 'li.' + options.liClass, function(event) {
 
-                bp.isValid(event);
-                bp.selectItem(this);
+                var isValid = bp.isValid(event);
+
+                if(isValid){
+                    bp.selectItem(this);
+                }
             });
 
         });

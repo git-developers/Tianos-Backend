@@ -19,7 +19,7 @@
 
         base.init = function(){
             var totalButtons = 0;
-            modal = $('#' + options.modal_info_id);
+            modal = $('#' + options.modalInfoId);
 
             // base.$el.append('<button name="public" style="'+base.options.buttonStyle+'">Private</button>');
         };
@@ -28,22 +28,22 @@
             // debug(e);
             // base.options.buttonPress.call( this );
 
-            var modalBody = modal.find('.modal-body');
+            var modalContent = modal.find('.crud-modal-content');
 
             $.ajax({
-                url: options.route_info,
+                url: options.routeInfo,
                 type: 'POST',
                 dataType: 'html',
                 data: '',
                 cache: true,
                 beforeSend: function(jqXHR, settings) {
-                    modalBody.html(msg_loading);
+                    modalContent.html(msg_loading);
                 },
                 success: function(data, textStatus, jqXHR) {
-                    modalBody.html(data);
+                    modalContent.html(data);
                 },
                 error: function(jqXHR, exception) {
-                    modalBody.html('<p>' + msg_error + '(code 7070)</p>');
+                    modalContent.html('<p>' + msg_error + '(code 7070)</p>');
                 }
             });
         };
@@ -67,7 +67,7 @@
 
             var bp = new $.boxInfo(this, options);
 
-            $('button.' + options.modal_info_id).click(function(event) {
+            $('button.' + options.modalInfoId).click(function(event) {
                 bp.openModal(event);
             });
 

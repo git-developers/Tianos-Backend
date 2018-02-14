@@ -22,8 +22,8 @@
 
         base.init = function(){
             var totalButtons = 0;
-            boxLeft = $('div#' + options.box_left_id);
-            boxRight = $('div#' + options.box_id);
+            boxLeft = $('div#' + options.boxLeftId);
+            boxRight = $('div#' + options.boxRightId);
             // base.$el.append('<button name="public" style="'+base.options.buttonStyle+'">Private</button>');
         };
 
@@ -53,7 +53,7 @@
             globalTimeout = setTimeout(function() {
 
                 $.ajax({
-                    url: options.route_search,
+                    url: options.routeSearch,
                     type: 'POST',
                     dataType: 'html',
                     data: {
@@ -97,7 +97,7 @@
 
             var bp = new $.boxRightSearch(this, options);
 
-            $('div#' + options.box_id + ' input[name=' + options.search_input_name + ']').keyup(function() {
+            $('div#' + options.boxRightId + ' input[name=' + options.searchInputName + ']').keyup(function() {
                 bp.searchBox(this);
             });
 

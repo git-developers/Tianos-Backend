@@ -122,34 +122,34 @@
             });
 
             $('body.{{ vars.body_css }}').formCreate({
-                modal_id: '{{ modal.create_id }}',
+                modalId: '{{ modal.create_id }}',
                 route: '{{ path(dataTable.route.create) }}',
-                form_name: '{{ form_mapper.create_name }}',
-                table_json: tableJson
+                formName: '{{ form_mapper.create_name }}',
+                tableJson: tableJson
             });
 
             $('body.{{ vars.body_css }}').formEdit({
-                modal_id: '{{ modal.edit_id }}',
+                modalId: '{{ modal.edit_id }}',
                 route: '{{ path(dataTable.route.edit) }}',
-                form_name: '{{ form_mapper.edit_name }}',
-                table_json: tableJson
+                formName: '{{ form_mapper.edit_name }}',
+                tableJson: tableJson
             });
 
             $('body.{{ vars.body_css }}').formDelete({
-                modal_id: '{{ modal.delete_id }}',
+                modalId: '{{ modal.delete_id }}',
                 route: '{{ path(dataTable.route.delete) }}',
-                form_name: '{{ form_mapper.delete_name }}',
-                table_json: tableJson
+                formName: '{{ form_mapper.delete_name }}',
+                tableJson: tableJson
             });
 
             $('body.{{ vars.body_css }}').formView({
-                modal_id: '{{ modal.view_id }}',
+                modalId: '{{ modal.view_id }}',
                 route: '{{ path(dataTable.route.view) }}',
-                table_td_class: '{{ dataTable.tableOptions.table_td_class }}'
+                tableTdClass: '{{ dataTable.tableOptions.table_td_class }}'
             });
 
             $('body.{{ vars.body_css }}').formInfo({
-                modal_id: '{{ modal.info_id }}',
+                modalId: '{{ modal.info_id }}',
                 route: '{{ path(dataTable.route.info) }}'
             });
 
