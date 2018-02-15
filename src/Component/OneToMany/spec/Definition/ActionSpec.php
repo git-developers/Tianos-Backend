@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace spec\Component\Grid\Definition;
+namespace spec\Component\OneToMany\Definition;
 
 use PhpSpec\ObjectBehavior;
 

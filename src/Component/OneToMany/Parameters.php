@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Component\Grid;
+namespace Component\OneToMany;
 
 final class Parameters
 {

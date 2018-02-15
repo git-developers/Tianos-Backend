@@ -11,13 +11,13 @@
 
 declare(strict_types=1);
 
-namespace spec\Component\Grid\Filtering;
+namespace spec\Component\OneToMany\Filtering;
 
 use PhpSpec\ObjectBehavior;
-use Component\Grid\Definition\Filter;
-use Component\Grid\Definition\Grid;
-use Component\Grid\Filtering\FiltersCriteriaResolverInterface;
-use Component\Grid\Parameters;
+use Component\OneToMany\Definition\Filter;
+use Component\OneToMany\Definition\OneToMany;
+use Component\OneToMany\Filtering\FiltersCriteriaResolverInterface;
+use Component\OneToMany\Parameters;
 
 final class FiltersCriteriaResolverSpec extends ObjectBehavior
 {
@@ -26,7 +26,7 @@ final class FiltersCriteriaResolverSpec extends ObjectBehavior
         $this->shouldImplement(FiltersCriteriaResolverInterface::class);
     }
 
-    function it_checks_whether_any_criteria_are_available(Grid $grid, Filter $filter): void
+    function it_checks_whether_any_criteria_are_available(OneToMany $grid, Filter $filter): void
     {
         $emptyParameters = new Parameters();
         $criteriaParameters = new Parameters(['criteria' => ['czapla']]);
@@ -58,7 +58,7 @@ final class FiltersCriteriaResolverSpec extends ObjectBehavior
         $this->hasCriteria($grid, $criteriaParameters)->shouldReturn(true);
     }
 
-    function it_gets_default_criteria_from_grid_filters(Grid $grid, Filter $firstFilter, Filter $secondFilter): void
+    function it_gets_default_criteria_from_grid_filters(OneToMany $grid, Filter $firstFilter, Filter $secondFilter): void
     {
         $startDate = new \DateTime();
         $endDate = new \DateTime();
@@ -74,7 +74,7 @@ final class FiltersCriteriaResolverSpec extends ObjectBehavior
         ]);
     }
 
-    function it_gets_criteria_from_parameters(Grid $grid, Filter $firstFilter, Filter $secondFilter): void
+    function it_gets_criteria_from_parameters(OneToMany $grid, Filter $firstFilter, Filter $secondFilter): void
     {
         $startDate = new \DateTime();
         $endDate = new \DateTime();
@@ -98,7 +98,7 @@ final class FiltersCriteriaResolverSpec extends ObjectBehavior
     }
 
     function it_prioritizes_parameters_criteria_over_filters_default(
-        Grid $grid,
+        OneToMany $grid,
         Filter $firstFilter,
         Filter $secondFilter
     ): void {

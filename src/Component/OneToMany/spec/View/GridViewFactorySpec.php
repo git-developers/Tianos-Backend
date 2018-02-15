@@ -11,16 +11,16 @@
 
 declare(strict_types=1);
 
-namespace spec\Component\Grid\View;
+namespace spec\Component\OneToMany\View;
 
 use PhpSpec\ObjectBehavior;
-use Component\Grid\Data\DataProviderInterface;
-use Component\Grid\Definition\Grid;
-use Component\Grid\Parameters;
-use Component\Grid\View\GridView;
-use Component\Grid\View\GridViewFactoryInterface;
+use Component\OneToMany\Data\DataProviderInterface;
+use Component\OneToMany\Definition\OneToMany;
+use Component\OneToMany\Parameters;
+use Component\OneToMany\View\OneToManyView;
+use Component\OneToMany\View\OneToManyViewFactoryInterface;
 
-final class GridViewFactorySpec extends ObjectBehavior
+final class OneToManyViewFactorySpec extends ObjectBehavior
 {
     function let(DataProviderInterface $dataProvider): void
     {
@@ -29,19 +29,19 @@ final class GridViewFactorySpec extends ObjectBehavior
 
     function it_implements_grid_view_factory_interface(): void
     {
-        $this->shouldImplement(GridViewFactoryInterface::class);
+        $this->shouldImplement(OneToManyViewFactoryInterface::class);
     }
 
     function it_uses_data_provider_to_create_a_view_with_data_and_definition(
         DataProviderInterface $dataProvider,
-        Grid $grid
+        OneToMany $grid
     ): void {
         $parameters = new Parameters();
 
-        $expectedGridView = new GridView(['foo', 'bar'], $grid->getWrappedObject(), $parameters);
+        $expectedOneToManyView = new OneToManyView(['foo', 'bar'], $grid->getWrappedObject(), $parameters);
 
         $dataProvider->getData($grid, $parameters)->willReturn(['foo', 'bar']);
 
-        $this->create($grid, $parameters)->shouldBeLike($expectedGridView);
+        $this->create($grid, $parameters)->shouldBeLike($expectedOneToManyView);
     }
 }

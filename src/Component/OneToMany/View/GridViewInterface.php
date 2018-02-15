@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Component\Grid\View;
+namespace Component\OneToMany\View;
 
-use Component\Grid\Definition\Grid;
-use Component\Grid\Parameters;
+use Component\OneToMany\Definition\OneToMany;
+use Component\OneToMany\Parameters;
 
-interface GridViewInterface
+interface OneToManyViewInterface
 {
     /**
      * @return mixed
@@ -15,9 +15,9 @@ interface GridViewInterface
     public function getData();
 
     /**
-     * @return Grid
+     * @return OneToMany
      */
-    public function getDefinition(): Grid;
+    public function getDefinition(): OneToMany;
 
     /**
      * @return Parameters

@@ -1,5 +1,5 @@
 suites:
     main:
-        namespace: Component\Grid
-        psr4_prefix: Component\Grid
+        namespace: Component\OneToMany
+        psr4_prefix: Component\OneToMany
         src_path: .

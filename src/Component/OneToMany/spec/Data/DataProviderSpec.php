@@ -11,16 +11,16 @@
 
 declare(strict_types=1);
 
-namespace spec\Component\Grid\Data;
+namespace spec\Component\OneToMany\Data;
 
 use PhpSpec\ObjectBehavior;
-use Component\Grid\Data\DataProviderInterface;
-use Component\Grid\Data\DataSourceInterface;
-use Component\Grid\Data\DataSourceProviderInterface;
-use Component\Grid\Definition\Grid;
-use Component\Grid\Filtering\FiltersApplicatorInterface;
-use Component\Grid\Parameters;
-use Component\Grid\Sorting\SorterInterface;
+use Component\OneToMany\Data\DataProviderInterface;
+use Component\OneToMany\Data\DataSourceInterface;
+use Component\OneToMany\Data\DataSourceProviderInterface;
+use Component\OneToMany\Definition\OneToMany;
+use Component\OneToMany\Filtering\FiltersApplicatorInterface;
+use Component\OneToMany\Parameters;
+use Component\OneToMany\Sorting\SorterInterface;
 
 final class DataProviderSpec extends ObjectBehavior
 {
@@ -42,7 +42,7 @@ final class DataProviderSpec extends ObjectBehavior
         DataSourceInterface $dataSource,
         FiltersApplicatorInterface $filtersApplicator,
         SorterInterface $sorter,
-        Grid $grid
+        OneToMany $grid
     ): void {
         $parameters = new Parameters();
 

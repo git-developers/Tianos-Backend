@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace Component\Grid\Data;
+namespace Component\OneToMany\Data;
 
 interface ExpressionBuilderInterface
 {

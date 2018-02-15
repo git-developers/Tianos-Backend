@@ -11,15 +11,15 @@
 
 declare(strict_types=1);
 
-namespace spec\Component\Grid\Sorting;
+namespace spec\Component\OneToMany\Sorting;
 
 use PhpSpec\ObjectBehavior;
-use Component\Grid\Data\DataSourceInterface;
-use Component\Grid\Data\ExpressionBuilderInterface;
-use Component\Grid\Definition\Field;
-use Component\Grid\Definition\Grid;
-use Component\Grid\Parameters;
-use Component\Grid\Sorting\SorterInterface;
+use Component\OneToMany\Data\DataSourceInterface;
+use Component\OneToMany\Data\ExpressionBuilderInterface;
+use Component\OneToMany\Definition\Field;
+use Component\OneToMany\Definition\OneToMany;
+use Component\OneToMany\Parameters;
+use Component\OneToMany\Sorting\SorterInterface;
 
 final class SorterSpec extends ObjectBehavior
 {
@@ -29,7 +29,7 @@ final class SorterSpec extends ObjectBehavior
     }
 
     function it_sorts_the_data_source_via_expression_builder_based_on_the_grid_definition(
-        Grid $grid,
+        OneToMany $grid,
         Field $nameField,
         Field $nonSortableField,
         DataSourceInterface $dataSource,
@@ -58,7 +58,7 @@ final class SorterSpec extends ObjectBehavior
     }
 
     function it_sorts_the_data_source_via_expression_builder_based_on_sorting_parameter(
-        Grid $grid,
+        OneToMany $grid,
         Field $nameField,
         Field $nonSortableField,
         DataSourceInterface $dataSource,

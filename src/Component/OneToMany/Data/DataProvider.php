@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Component\Grid\Data;
+namespace Component\OneToMany\Data;
 
-use Component\Grid\Definition\Grid;
-use Component\Grid\Filtering\FiltersApplicatorInterface;
-use Component\Grid\Parameters;
-use Component\Grid\Sorting\SorterInterface;
+use Component\OneToMany\Definition\OneToMany;
+use Component\OneToMany\Filtering\FiltersApplicatorInterface;
+use Component\OneToMany\Parameters;
+use Component\OneToMany\Sorting\SorterInterface;
 
 final class DataProvider implements DataProviderInterface
 {
@@ -44,7 +44,7 @@ final class DataProvider implements DataProviderInterface
     /**
      * {@inheritdoc}
      */
-    public function getData(Grid $grid, Parameters $parameters)
+    public function getData(OneToMany $grid, Parameters $parameters)
     {
         $dataSource = $this->dataSourceProvider->getDataSource($grid, $parameters);
 

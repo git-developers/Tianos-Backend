@@ -11,24 +11,24 @@
 
 declare(strict_types=1);
 
-namespace spec\Component\Grid\View;
+namespace spec\Component\OneToMany\View;
 
 use PhpSpec\ObjectBehavior;
-use Component\Grid\Definition\Field;
-use Component\Grid\Definition\Grid;
-use Component\Grid\Parameters;
-use Component\Grid\View\GridViewInterface;
+use Component\OneToMany\Definition\Field;
+use Component\OneToMany\Definition\OneToMany;
+use Component\OneToMany\Parameters;
+use Component\OneToMany\View\OneToManyViewInterface;
 
-final class GridViewSpec extends ObjectBehavior
+final class OneToManyViewSpec extends ObjectBehavior
 {
-    function let(Grid $gridDefinition): void
+    function let(OneToMany $gridDefinition): void
     {
         $this->beConstructedWith(['foo', 'bar'], $gridDefinition, new Parameters());
     }
 
     function it_implements_a_grid_view_interface(): void
     {
-        $this->shouldHaveType(GridViewInterface::class);
+        $this->shouldHaveType(OneToManyViewInterface::class);
     }
 
     function it_has_data(): void
@@ -36,7 +36,7 @@ final class GridViewSpec extends ObjectBehavior
         $this->getData()->shouldReturn(['foo', 'bar']);
     }
 
-    function it_has_definition(Grid $gridDefinition): void
+    function it_has_definition(OneToMany $gridDefinition): void
     {
         $this->getDefinition()->shouldReturn($gridDefinition);
     }
@@ -47,7 +47,7 @@ final class GridViewSpec extends ObjectBehavior
     }
 
     function it_uses_the_default_sorting_from_definition_if_not_provided_in_parameters(
-        Grid $gridDefinition,
+        OneToMany $gridDefinition,
         Field $codeField,
         Field $nameField
     ): void {
@@ -68,7 +68,7 @@ final class GridViewSpec extends ObjectBehavior
         $this->isSortedBy('name')->shouldReturn(true);
     }
 
-    function it_knows_which_field_it_has_been_sorted_by(Grid $gridDefinition, Field $codeField, Field $nameField): void
+    function it_knows_which_field_it_has_been_sorted_by(OneToMany $gridDefinition, Field $codeField, Field $nameField): void
     {
         $this->beConstructedWith(['foo', 'bar'], $gridDefinition, new Parameters([
             'sorting' => ['name' => ['direction' => 'asc']],
@@ -92,7 +92,7 @@ final class GridViewSpec extends ObjectBehavior
         $this->isSortedBy('code')->shouldReturn(false);
     }
 
-    function it_throws_exception_when_trying_to_sort_by_a_non_existent_field(Grid $gridDefinition): void
+    function it_throws_exception_when_trying_to_sort_by_a_non_existent_field(OneToMany $gridDefinition): void
     {
         $gridDefinition->hasField('code')->willReturn(false);
 
@@ -103,7 +103,7 @@ final class GridViewSpec extends ObjectBehavior
     }
 
     function it_throws_exception_when_trying_to_sort_by_a_non_sortable_field(
-        Grid $gridDefinition,
+        OneToMany $gridDefinition,
         Field $nameField
     ): void {
         $gridDefinition->hasField('code')->willReturn(true);

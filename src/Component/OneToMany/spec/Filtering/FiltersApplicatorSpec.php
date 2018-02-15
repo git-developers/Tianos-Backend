@@ -11,17 +11,17 @@
 
 declare(strict_types=1);
 
-namespace spec\Component\Grid\Filtering;
+namespace spec\Component\OneToMany\Filtering;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use Component\Grid\Data\DataSourceInterface;
-use Component\Grid\Definition\Filter;
-use Component\Grid\Definition\Grid;
-use Component\Grid\Filtering\FilterInterface;
-use Component\Grid\Filtering\FiltersApplicatorInterface;
-use Component\Grid\Filtering\FiltersCriteriaResolverInterface;
-use Component\Grid\Parameters;
+use Component\OneToMany\Data\DataSourceInterface;
+use Component\OneToMany\Definition\Filter;
+use Component\OneToMany\Definition\OneToMany;
+use Component\OneToMany\Filtering\FilterInterface;
+use Component\OneToMany\Filtering\FiltersApplicatorInterface;
+use Component\OneToMany\Filtering\FiltersCriteriaResolverInterface;
+use Component\OneToMany\Parameters;
 use Component\Registry\ServiceRegistryInterface;
 
 final class FiltersApplicatorSpec extends ObjectBehavior
@@ -39,7 +39,7 @@ final class FiltersApplicatorSpec extends ObjectBehavior
     function it_does_nothing_when_there_are_no_filtering_criteria(
         FiltersCriteriaResolverInterface $criteriaResolver,
         FilterInterface $stringFilter,
-        Grid $grid,
+        OneToMany $grid,
         Filter $filter,
         DataSourceInterface $dataSource
     ): void {
@@ -58,7 +58,7 @@ final class FiltersApplicatorSpec extends ObjectBehavior
         ServiceRegistryInterface $filtersRegistry,
         FiltersCriteriaResolverInterface $criteriaResolver,
         FilterInterface $stringFilter,
-        Grid $grid,
+        OneToMany $grid,
         Filter $filter,
         DataSourceInterface $dataSource
     ): void {
@@ -86,7 +86,7 @@ final class FiltersApplicatorSpec extends ObjectBehavior
         ServiceRegistryInterface $filtersRegistry,
         FiltersCriteriaResolverInterface $criteriaResolver,
         FilterInterface $stringFilter,
-        Grid $grid,
+        OneToMany $grid,
         Filter $filter,
         DataSourceInterface $dataSource
     ): void {

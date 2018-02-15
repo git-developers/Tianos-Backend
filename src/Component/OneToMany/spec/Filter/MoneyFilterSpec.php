@@ -11,14 +11,14 @@
 
 declare(strict_types=1);
 
-namespace spec\Component\Grid\Filter;
+namespace spec\Component\OneToMany\Filter;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use Component\Grid\Data\DataSourceInterface;
-use Component\Grid\Data\ExpressionBuilderInterface;
-use Component\Grid\Filter\MoneyFilter;
-use Component\Grid\Filtering\FilterInterface;
+use Component\OneToMany\Data\DataSourceInterface;
+use Component\OneToMany\Data\ExpressionBuilderInterface;
+use Component\OneToMany\Filter\MoneyFilter;
+use Component\OneToMany\Filtering\FilterInterface;
 
 final class MoneyFilterSpec extends ObjectBehavior
 {

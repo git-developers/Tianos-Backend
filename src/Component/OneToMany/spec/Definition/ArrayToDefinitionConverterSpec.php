@@ -11,17 +11,17 @@
 
 declare(strict_types=1);
 
-namespace spec\Component\Grid\Definition;
+namespace spec\Component\OneToMany\Definition;
 
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
-use Component\Grid\Definition\Action;
-use Component\Grid\Definition\ActionGroup;
-use Component\Grid\Definition\ArrayToDefinitionConverterInterface;
-use Component\Grid\Definition\Field;
-use Component\Grid\Definition\Filter;
-use Component\Grid\Definition\Grid;
-use Component\Grid\Event\GridDefinitionConverterEvent;
+use Component\OneToMany\Definition\Action;
+use Component\OneToMany\Definition\ActionGroup;
+use Component\OneToMany\Definition\ArrayToDefinitionConverterInterface;
+use Component\OneToMany\Definition\Field;
+use Component\OneToMany\Definition\Filter;
+use Component\OneToMany\Definition\OneToMany;
+use Component\OneToMany\Event\OneToManyDefinitionConverterEvent;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 final class ArrayToDefinitionConverterSpec extends ObjectBehavior
@@ -38,7 +38,7 @@ final class ArrayToDefinitionConverterSpec extends ObjectBehavior
 
     function it_converts_an_array_to_grid_definition(EventDispatcherInterface $eventDispatcher): void
     {
-        $grid = Grid::fromCodeAndDriverConfiguration(
+        $grid = OneToMany::fromCodeAndDriverConfiguration(
             'sylius_admin_tax_category',
             'doctrine/orm',
             ['resource' => 'sylius.tax_category']
@@ -94,7 +94,7 @@ final class ArrayToDefinitionConverterSpec extends ObjectBehavior
         $grid->addFilter($filter);
 
         $eventDispatcher
-            ->dispatch('sylius.grid.admin_tax_category', Argument::type(GridDefinitionConverterEvent::class))
+            ->dispatch('sylius.grid.admin_tax_category', Argument::type(OneToManyDefinitionConverterEvent::class))
             ->shouldBeCalled()
         ;
 

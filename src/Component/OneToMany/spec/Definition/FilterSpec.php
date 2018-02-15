@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace spec\Component\Grid\Definition;
+namespace spec\Component\OneToMany\Definition;
 
 use PhpSpec\ObjectBehavior;
 
@@ -47,8 +47,8 @@ final class FilterSpec extends ObjectBehavior
 
     function its_template_is_mutable(): void
     {
-        $this->setTemplate('SyliusGridBundle:Filter:template.html.twig');
-        $this->getTemplate()->shouldReturn('SyliusGridBundle:Filter:template.html.twig');
+        $this->setTemplate('SyliusOneToManyBundle:Filter:template.html.twig');
+        $this->getTemplate()->shouldReturn('SyliusOneToManyBundle:Filter:template.html.twig');
     }
 
     function it_has_no_options_by_default(): void

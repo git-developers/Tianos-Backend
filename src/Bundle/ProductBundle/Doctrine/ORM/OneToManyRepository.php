@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Bundle\ProductBundle\Doctrine\ORM;
 
 use Bundle\CoreBundle\Doctrine\ORM\EntityRepository as TianosEntityRepository;
-use Component\Product\Repository\ProductRepositoryInterface;
+use Component\Product\Repository\OneToManyRepositoryInterface;
 
-class ProductRepository extends TianosEntityRepository implements ProductRepositoryInterface
+class OneToManyRepository extends TianosEntityRepository implements OneToManyRepositoryInterface
 {
 
     /**

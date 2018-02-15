@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Component\Grid\Filtering;
+namespace Component\OneToMany\Filtering;
 
-use Component\Grid\Data\DataSourceInterface;
-use Component\Grid\Definition\Grid;
-use Component\Grid\Parameters;
+use Component\OneToMany\Data\DataSourceInterface;
+use Component\OneToMany\Definition\OneToMany;
+use Component\OneToMany\Parameters;
 use Component\Registry\ServiceRegistryInterface;
 
 final class FiltersApplicator implements FiltersApplicatorInterface
@@ -36,7 +36,7 @@ final class FiltersApplicator implements FiltersApplicatorInterface
     /**
      * {@inheritdoc}
      */
-    public function apply(DataSourceInterface $dataSource, Grid $grid, Parameters $parameters): void
+    public function apply(DataSourceInterface $dataSource, OneToMany $grid, Parameters $parameters): void
     {
         if (!$this->criteriaResolver->hasCriteria($grid, $parameters)) {
             return;

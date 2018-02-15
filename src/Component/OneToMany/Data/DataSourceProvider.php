@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Component\Grid\Data;
+namespace Component\OneToMany\Data;
 
-use Component\Grid\Definition\Grid;
-use Component\Grid\Parameters;
+use Component\OneToMany\Definition\OneToMany;
+use Component\OneToMany\Parameters;
 use Component\Registry\ServiceRegistryInterface;
 
 final class DataSourceProvider implements DataSourceProviderInterface
@@ -26,7 +26,7 @@ final class DataSourceProvider implements DataSourceProviderInterface
     /**
      * {@inheritdoc}
      */
-    public function getDataSource(Grid $grid, Parameters $parameters): DataSourceInterface
+    public function getDataSource(OneToMany $grid, Parameters $parameters): DataSourceInterface
     {
         $driverName = $grid->getDriver();
 

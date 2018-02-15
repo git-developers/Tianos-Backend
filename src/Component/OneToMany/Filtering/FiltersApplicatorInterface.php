@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Component\Grid\Filtering;
+namespace Component\OneToMany\Filtering;
 
-use Component\Grid\Data\DataSourceInterface;
-use Component\Grid\Definition\Grid;
-use Component\Grid\Parameters;
+use Component\OneToMany\Data\DataSourceInterface;
+use Component\OneToMany\Definition\OneToMany;
+use Component\OneToMany\Parameters;
 
 interface FiltersApplicatorInterface
 {
     /**
      * @param DataSourceInterface $dataSource
-     * @param Grid $grid
+     * @param OneToMany $grid
      * @param Parameters $parameters
      */
-    public function apply(DataSourceInterface $dataSource, Grid $grid, Parameters $parameters): void;
+    public function apply(DataSourceInterface $dataSource, OneToMany $grid, Parameters $parameters): void;
 }

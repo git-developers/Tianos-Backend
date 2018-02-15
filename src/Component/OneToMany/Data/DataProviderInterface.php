@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Component\Grid\Data;
+namespace Component\OneToMany\Data;
 
-use Component\Grid\Definition\Grid;
-use Component\Grid\Parameters;
+use Component\OneToMany\Definition\OneToMany;
+use Component\OneToMany\Parameters;
 
 interface DataProviderInterface
 {
     /**
-     * @param Grid $grid
+     * @param OneToMany $grid
      * @param Parameters $parameters
      *
      * @return mixed
      */
-    public function getData(Grid $grid, Parameters $parameters);
+    public function getData(OneToMany $grid, Parameters $parameters);
 }

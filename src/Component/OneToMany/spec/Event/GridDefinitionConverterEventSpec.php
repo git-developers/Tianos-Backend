@@ -11,20 +11,20 @@
 
 declare(strict_types=1);
 
-namespace spec\Component\Grid\Event;
+namespace spec\Component\OneToMany\Event;
 
 use PhpSpec\ObjectBehavior;
-use Component\Grid\Definition\Grid;
+use Component\OneToMany\Definition\OneToMany;
 
-final class GridDefinitionConverterEventSpec extends ObjectBehavior
+final class OneToManyDefinitionConverterEventSpec extends ObjectBehavior
 {
-    function let(Grid $grid): void
+    function let(OneToMany $grid): void
     {
         $this->beConstructedWith($grid);
     }
 
-    function it_has_a_grid(Grid $grid): void
+    function it_has_a_grid(OneToMany $grid): void
     {
-        $this->getGrid()->shouldReturn($grid);
+        $this->getOneToMany()->shouldReturn($grid);
     }
 }

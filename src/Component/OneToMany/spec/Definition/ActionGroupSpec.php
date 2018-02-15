@@ -11,10 +11,10 @@
 
 declare(strict_types=1);
 
-namespace spec\Component\Grid\Definition;
+namespace spec\Component\OneToMany\Definition;
 
 use PhpSpec\ObjectBehavior;
-use Component\Grid\Definition\Action;
+use Component\OneToMany\Definition\Action;
 
 final class ActionGroupSpec extends ObjectBehavior
 {

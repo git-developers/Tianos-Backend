@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Component\Grid\Filter;
+namespace Component\OneToMany\Filter;
 
-use Component\Grid\Data\DataSourceInterface;
-use Component\Grid\Filtering\FilterInterface;
+use Component\OneToMany\Data\DataSourceInterface;
+use Component\OneToMany\Filtering\FilterInterface;
 
 final class BooleanFilter implements FilterInterface
 {

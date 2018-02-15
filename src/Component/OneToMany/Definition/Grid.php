@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Component\Grid\Definition;
+namespace Component\OneToMany\Definition;
 
 use Webmozart\Assert\Assert;
 
-class Grid
+class OneToMany
 {
     /**
      * @var string

@@ -11,13 +11,13 @@
 
 declare(strict_types=1);
 
-namespace spec\Component\Grid\Filter;
+namespace spec\Component\OneToMany\Filter;
 
 use PhpSpec\ObjectBehavior;
-use Component\Grid\Data\DataSourceInterface;
-use Component\Grid\Data\ExpressionBuilderInterface;
-use Component\Grid\Filter\BooleanFilter;
-use Component\Grid\Filtering\FilterInterface;
+use Component\OneToMany\Data\DataSourceInterface;
+use Component\OneToMany\Data\ExpressionBuilderInterface;
+use Component\OneToMany\Filter\BooleanFilter;
+use Component\OneToMany\Filtering\FilterInterface;
 
 final class BooleanFilterSpec extends ObjectBehavior
 {

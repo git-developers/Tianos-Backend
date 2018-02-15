@@ -2,19 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Component\Grid\Provider;
+namespace Component\OneToMany\Provider;
 
-use Component\Grid\Definition\Grid;
-use Component\Grid\Exception\UndefinedGridException;
+use Component\OneToMany\Definition\OneToMany;
+use Component\OneToMany\Exception\UndefinedOneToManyException;
 
-interface GridProviderInterface
+interface OneToManyProviderInterface
 {
     /**
      * @param string $code
      *
-     * @return Grid
+     * @return OneToMany
      *
-     * @throws UndefinedGridException
+     * @throws UndefinedOneToManyException
      */
-    public function get(string $code): Grid;
+    public function get(string $code): OneToMany;
 }

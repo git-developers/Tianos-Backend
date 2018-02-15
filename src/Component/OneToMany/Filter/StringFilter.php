@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Component\Grid\Filter;
+namespace Component\OneToMany\Filter;
 
-use Component\Grid\Data\DataSourceInterface;
-use Component\Grid\Data\ExpressionBuilderInterface;
-use Component\Grid\Filtering\FilterInterface;
+use Component\OneToMany\Data\DataSourceInterface;
+use Component\OneToMany\Data\ExpressionBuilderInterface;
+use Component\OneToMany\Filtering\FilterInterface;
 
 final class StringFilter implements FilterInterface
 {

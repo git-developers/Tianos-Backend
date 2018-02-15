@@ -2,30 +2,30 @@
 
 declare(strict_types=1);
 
-namespace Component\Grid\Event;
+namespace Component\OneToMany\Event;
 
-use Component\Grid\Definition\Grid;
+use Component\OneToMany\Definition\OneToMany;
 use Symfony\Component\EventDispatcher\Event;
 
-final class GridDefinitionConverterEvent extends Event
+final class OneToManyDefinitionConverterEvent extends Event
 {
     /**
-     * @var Grid
+     * @var OneToMany
      */
     private $grid;
 
     /**
-     * @param Grid $grid
+     * @param OneToMany $grid
      */
-    public function __construct(Grid $grid)
+    public function __construct(OneToMany $grid)
     {
         $this->grid = $grid;
     }
 
     /**
-     * @return Grid
+     * @return OneToMany
      */
-    public function getGrid(): Grid
+    public function getOneToMany(): OneToMany
     {
         return $this->grid;
     }

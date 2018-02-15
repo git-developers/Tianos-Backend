@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Component\Grid\Definition;
+namespace Component\OneToMany\Definition;
 
-use Component\Grid\Event\GridDefinitionConverterEvent;
+use Component\OneToMany\Event\OneToManyDefinitionConverterEvent;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 
 final class ArrayToDefinitionConverter implements ArrayToDefinitionConverterInterface
@@ -27,9 +27,9 @@ final class ArrayToDefinitionConverter implements ArrayToDefinitionConverterInte
     /**
      * {@inheritdoc}
      */
-    public function convert(string $code, array $configuration): Grid
+    public function convert(string $code, array $configuration): OneToMany
     {
-        $grid = Grid::fromCodeAndDriverConfiguration(
+        $grid = OneToMany::fromCodeAndDriverConfiguration(
             $code,
             $configuration['driver']['name'],
             $configuration['driver']['options']
@@ -55,7 +55,7 @@ final class ArrayToDefinitionConverter implements ArrayToDefinitionConverterInte
             $grid->addActionGroup($this->convertActionGroup($name, $actionGroupConfiguration));
         }
 
-        $this->eventDispatcher->dispatch($this->getEventName($code), new GridDefinitionConverterEvent($grid));
+        $this->eventDispatcher->dispatch($this->getEventName($code), new OneToManyDefinitionConverterEvent($grid));
 
         return $grid;
     }

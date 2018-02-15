@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Component\Grid\Definition;
+namespace Component\OneToMany\Definition;
 
 class Field
 {

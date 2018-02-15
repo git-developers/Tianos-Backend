@@ -1,4 +1,4 @@
-Sylius Grid Component [![Build status...](https://secure.travis-ci.org/Sylius/Grid.png?branch=master)](http://travis-ci.org/Sylius/Grid)
+Sylius OneToMany Component [![Build status...](https://secure.travis-ci.org/Sylius/OneToMany.png?branch=master)](http://travis-ci.org/Sylius/OneToMany)
 =====================
 
 PHP library for building grids of objects. Supports different drivers with filtering, sorting and custom field types.
@@ -13,7 +13,7 @@ Sylius is an Open Source eCommerce solution built from decoupled components with
 Documentation
 -------------
 
-Documentation is available on [**docs.sylius.org**](http://docs.sylius.org/en/latest/components/Grid/index.html).
+Documentation is available on [**docs.sylius.org**](http://docs.sylius.org/en/latest/components/OneToMany/index.html).
 
 Contributing
 ------------

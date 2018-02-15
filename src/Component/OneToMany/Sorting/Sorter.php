@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Component\Grid\Sorting;
+namespace Component\OneToMany\Sorting;
 
-use Component\Grid\Data\DataSourceInterface;
-use Component\Grid\Definition\Grid;
-use Component\Grid\Parameters;
+use Component\OneToMany\Data\DataSourceInterface;
+use Component\OneToMany\Definition\OneToMany;
+use Component\OneToMany\Parameters;
 
 final class Sorter implements SorterInterface
 {
     /**
      * {@inheritdoc}
      */
-    public function sort(DataSourceInterface $dataSource, Grid $grid, Parameters $parameters): void
+    public function sort(DataSourceInterface $dataSource, OneToMany $grid, Parameters $parameters): void
     {
         $expressionBuilder = $dataSource->getExpressionBuilder();
 

@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Component\Grid\Exception;
+namespace Component\OneToMany\Exception;
 
-class UndefinedGridException extends \InvalidArgumentException
+class UndefinedOneToManyException extends \InvalidArgumentException
 {
     /**
      * @param string $code
      */
     public function __construct($code)
     {
-        parent::__construct(sprintf('Grid "%s" does not exist.', $code));
+        parent::__construct(sprintf('OneToMany "%s" does not exist.', $code));
     }
 }

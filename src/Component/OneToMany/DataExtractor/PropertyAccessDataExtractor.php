@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Component\Grid\DataExtractor;
+namespace Component\OneToMany\DataExtractor;
 
-use Component\Grid\Definition\Field;
+use Component\OneToMany\Definition\Field;
 use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
 
 final class PropertyAccessDataExtractor implements DataExtractorInterface

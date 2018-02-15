@@ -11,15 +11,15 @@
 
 declare(strict_types=1);
 
-namespace spec\Component\Grid\Definition;
+namespace spec\Component\OneToMany\Definition;
 
 use PhpSpec\ObjectBehavior;
-use Component\Grid\Definition\Action;
-use Component\Grid\Definition\ActionGroup;
-use Component\Grid\Definition\Field;
-use Component\Grid\Definition\Filter;
+use Component\OneToMany\Definition\Action;
+use Component\OneToMany\Definition\ActionGroup;
+use Component\OneToMany\Definition\Field;
+use Component\OneToMany\Definition\Filter;
 
-final class GridSpec extends ObjectBehavior
+final class OneToManySpec extends ObjectBehavior
 {
     function let(): void
     {

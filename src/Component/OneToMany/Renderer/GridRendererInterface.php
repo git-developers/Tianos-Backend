@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace Component\Grid\Renderer;
+namespace Component\OneToMany\Renderer;
 
-use Component\Grid\Definition\Action;
-use Component\Grid\Definition\Field;
-use Component\Grid\Definition\Filter;
-use Component\Grid\View\GridViewInterface;
-use Bundle\GridBundle\Services\Crud\Builder\Button;
+use Component\OneToMany\Definition\Action;
+use Component\OneToMany\Definition\Field;
+use Component\OneToMany\Definition\Filter;
+use Component\OneToMany\View\OneToManyViewInterface;
+use Bundle\OneToManyBundle\Services\Crud\Builder\Button;
 
-interface GridRendererInterface
+interface OneToManyRendererInterface
 {
 
     // JAFETH
@@ -21,36 +21,36 @@ interface GridRendererInterface
 
 
     /**
-     * @param GridViewInterface $gridView
+     * @param OneToManyViewInterface $gridView
      * @param string|null $template
      *
      * @return mixed
      */
-    public function render(GridViewInterface $gridView, ?string $template = null);
+    public function render(OneToManyViewInterface $gridView, ?string $template = null);
 
     /**
-     * @param GridViewInterface $gridView
+     * @param OneToManyViewInterface $gridView
      * @param Field $field
      * @param mixed $data
      *
      * @return mixed
      */
-    public function renderField(GridViewInterface $gridView, Field $field, $data);
+    public function renderField(OneToManyViewInterface $gridView, Field $field, $data);
 
     /**
-     * @param GridViewInterface $gridView
+     * @param OneToManyViewInterface $gridView
      * @param Action $action
      * @param mixed|null $data
      *
      * @return mixed
      */
-    public function renderAction(GridViewInterface $gridView, Action $action, $data = null);
+    public function renderAction(OneToManyViewInterface $gridView, Action $action, $data = null);
 
     /**
-     * @param GridViewInterface $gridView
+     * @param OneToManyViewInterface $gridView
      * @param Filter $filter
      *
      * @return mixed
      */
-    public function renderFilter(GridViewInterface $gridView, Filter $filter);
+    public function renderFilter(OneToManyViewInterface $gridView, Filter $filter);
 }

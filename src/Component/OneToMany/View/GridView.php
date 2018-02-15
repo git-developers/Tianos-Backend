@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Component\Grid\View;
+namespace Component\OneToMany\View;
 
-use Component\Grid\Definition\Grid;
-use Component\Grid\Parameters;
+use Component\OneToMany\Definition\OneToMany;
+use Component\OneToMany\Parameters;
 use Webmozart\Assert\Assert;
 
-class GridView implements GridViewInterface
+class OneToManyView implements OneToManyViewInterface
 {
     /**
      * @var mixed
@@ -16,7 +16,7 @@ class GridView implements GridViewInterface
     private $data;
 
     /**
-     * @var Grid
+     * @var OneToMany
      */
     private $definition;
 
@@ -27,10 +27,10 @@ class GridView implements GridViewInterface
 
     /**
      * @param mixed $data
-     * @param Grid $definition
+     * @param OneToMany $definition
      * @param Parameters $parameters
      */
-    public function __construct($data, Grid $definition, Parameters $parameters)
+    public function __construct($data, OneToMany $definition, Parameters $parameters)
     {
         $this->data = $data;
         $this->definition = $definition;
@@ -48,7 +48,7 @@ class GridView implements GridViewInterface
     /**
      * {@inheritdoc}
      */
-    public function getDefinition(): Grid
+    public function getDefinition(): OneToMany
     {
         return $this->definition;
     }

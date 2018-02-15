@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Component\Grid\View;
+namespace Component\OneToMany\View;
 
-use Component\Grid\Definition\Grid;
-use Component\Grid\Parameters;
+use Component\OneToMany\Definition\OneToMany;
+use Component\OneToMany\Parameters;
 
-interface GridViewFactoryInterface
+interface OneToManyViewFactoryInterface
 {
     /**
-     * @param Grid $grid
+     * @param OneToMany $grid
      * @param Parameters $parameters
      *
-     * @return GridViewInterface
+     * @return OneToManyViewInterface
      */
-    public function create(Grid $grid, Parameters $parameters): GridViewInterface;
+    public function create(OneToMany $grid, Parameters $parameters): OneToManyViewInterface;
 }

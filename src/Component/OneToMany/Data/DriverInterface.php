@@ -11,9 +11,9 @@
 
 declare(strict_types=1);
 
-namespace Component\Grid\Data;
+namespace Component\OneToMany\Data;
 
-use Component\Grid\Parameters;
+use Component\OneToMany\Parameters;
 
 interface DriverInterface
 {

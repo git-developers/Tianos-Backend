@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace Component\Grid\Filtering;
+namespace Component\OneToMany\Filtering;
 
-use Component\Grid\Definition\Filter;
-use Component\Grid\Definition\Grid;
-use Component\Grid\Parameters;
+use Component\OneToMany\Definition\Filter;
+use Component\OneToMany\Definition\OneToMany;
+use Component\OneToMany\Parameters;
 
 final class FiltersCriteriaResolver implements FiltersCriteriaResolverInterface
 {
     /**
      * {@inheritdoc}
      */
-    public function hasCriteria(Grid $grid, Parameters $parameters): bool
+    public function hasCriteria(OneToMany $grid, Parameters $parameters): bool
     {
         return $parameters->has('criteria') || !empty($this->getFiltersDefaultCriteria($grid->getFilters()));
     }
@@ -21,7 +21,7 @@ final class FiltersCriteriaResolver implements FiltersCriteriaResolverInterface
     /**
      * {@inheritdoc}
      */
-    public function getCriteria(Grid $grid, Parameters $parameters): array
+    public function getCriteria(OneToMany $grid, Parameters $parameters): array
     {
         $defaultCriteria = array_map(function (Filter $filter) {
             return $filter->getCriteria();

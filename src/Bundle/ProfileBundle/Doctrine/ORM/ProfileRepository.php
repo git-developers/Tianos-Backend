@@ -6,9 +6,24 @@ namespace Bundle\ProfileBundle\Doctrine\ORM;
 
 use Bundle\CoreBundle\Doctrine\ORM\EntityRepository as TianosEntityRepository;
 use Component\Profile\Repository\ProfileRepositoryInterface;
+use Component\OneToMany\Repository\OneToManyLeftRepositoryInterface;
 
-class ProfileRepository extends TianosEntityRepository implements ProfileRepositoryInterface
+class ProfileRepository extends TianosEntityRepository implements ProfileRepositoryInterface, OneToManyLeftRepositoryInterface
 {
+
+    /**
+     * {@inheritdoc}
+     */
+    public function deleteAllById($id): array
+    {
+        $em = $this->getEntityManager();
+        $numRows = $em
+                    ->createQuery('DELETE FROM profile_has_role WHERE profile_id = :id;')
+                    ->setParameter('id', $id)
+                    ->execute();
+
+        return $numRows;
+    }
 
     /**
      * {@inheritdoc}

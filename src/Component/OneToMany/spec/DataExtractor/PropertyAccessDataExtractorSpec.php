@@ -11,11 +11,11 @@
 
 declare(strict_types=1);
 
-namespace spec\Component\Grid\DataExtractor;
+namespace spec\Component\OneToMany\DataExtractor;
 
 use PhpSpec\ObjectBehavior;
-use Component\Grid\DataExtractor\DataExtractorInterface;
-use Component\Grid\Definition\Field;
+use Component\OneToMany\DataExtractor\DataExtractorInterface;
+use Component\OneToMany\Definition\Field;
 use Symfony\Component\PropertyAccess\PropertyAccessorInterface;
 
 final class PropertyAccessDataExtractorSpec extends ObjectBehavior

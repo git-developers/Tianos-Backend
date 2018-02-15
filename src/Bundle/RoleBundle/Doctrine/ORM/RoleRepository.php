@@ -6,8 +6,9 @@ namespace Bundle\RoleBundle\Doctrine\ORM;
 
 use Bundle\CoreBundle\Doctrine\ORM\EntityRepository as TianosEntityRepository;
 use Component\Role\Repository\RoleRepositoryInterface;
+use Component\OneToMany\Repository\OneToManyRightRepositoryInterface;
 
-class RoleRepository extends TianosEntityRepository implements RoleRepositoryInterface
+class RoleRepository extends TianosEntityRepository implements RoleRepositoryInterface, OneToManyRightRepositoryInterface
 {
 
     /**

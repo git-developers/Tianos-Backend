@@ -11,15 +11,15 @@
 
 declare(strict_types=1);
 
-namespace spec\Component\Grid\Data;
+namespace spec\Component\OneToMany\Data;
 
 use PhpSpec\ObjectBehavior;
-use Component\Grid\Data\DataSourceInterface;
-use Component\Grid\Data\DataSourceProviderInterface;
-use Component\Grid\Data\DriverInterface;
-use Component\Grid\Data\UnsupportedDriverException;
-use Component\Grid\Definition\Grid;
-use Component\Grid\Parameters;
+use Component\OneToMany\Data\DataSourceInterface;
+use Component\OneToMany\Data\DataSourceProviderInterface;
+use Component\OneToMany\Data\DriverInterface;
+use Component\OneToMany\Data\UnsupportedDriverException;
+use Component\OneToMany\Definition\OneToMany;
+use Component\OneToMany\Parameters;
 use Component\Registry\ServiceRegistryInterface;
 
 final class DataSourceProviderSpec extends ObjectBehavior
@@ -38,7 +38,7 @@ final class DataSourceProviderSpec extends ObjectBehavior
         ServiceRegistryInterface $driversRegistry,
         DataSourceInterface $dataSource,
         DriverInterface $driver,
-        Grid $grid
+        OneToMany $grid
     ): void {
         $parameters = new Parameters();
 
@@ -52,7 +52,7 @@ final class DataSourceProviderSpec extends ObjectBehavior
         $this->getDataSource($grid, $parameters)->shouldReturn($dataSource);
     }
 
-    function it_throws_an_exception_if_driver_is_not_supported(Grid $grid, ServiceRegistryInterface $driversRegistry): void
+    function it_throws_an_exception_if_driver_is_not_supported(OneToMany $grid, ServiceRegistryInterface $driversRegistry): void
     {
         $parameters = new Parameters();
 

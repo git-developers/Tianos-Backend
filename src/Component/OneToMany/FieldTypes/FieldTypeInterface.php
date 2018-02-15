@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Component\Grid\FieldTypes;
+namespace Component\OneToMany\FieldTypes;
 
-use Component\Grid\Definition\Field;
+use Component\OneToMany\Definition\Field;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 interface FieldTypeInterface

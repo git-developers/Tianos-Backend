@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Component\Grid\View;
+namespace Component\OneToMany\View;
 
-use Component\Grid\Data\DataProviderInterface;
-use Component\Grid\Definition\Grid;
-use Component\Grid\Parameters;
+use Component\OneToMany\Data\DataProviderInterface;
+use Component\OneToMany\Definition\OneToMany;
+use Component\OneToMany\Parameters;
 
-final class GridViewFactory implements GridViewFactoryInterface
+final class OneToManyViewFactory implements OneToManyViewFactoryInterface
 {
     /**
      * @var DataProviderInterface
@@ -26,8 +26,8 @@ final class GridViewFactory implements GridViewFactoryInterface
     /**
      * {@inheritdoc}
      */
-    public function create(Grid $grid, Parameters $parameters): GridViewInterface
+    public function create(OneToMany $grid, Parameters $parameters): OneToManyViewInterface
     {
-        return new GridView($this->dataProvider->getData($grid, $parameters), $grid, $parameters);
+        return new OneToManyView($this->dataProvider->getData($grid, $parameters), $grid, $parameters);
     }
 }

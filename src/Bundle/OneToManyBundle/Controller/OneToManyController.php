@@ -188,6 +188,21 @@ class OneToManyController extends BaseController
         $vars = $configuration->getVars();
 
         //REPOSITORY
+        $objectsLeft = $this->get($repositoryLeft)->deleteAllById($boxLeftValue);
+
+//        foreach ($objectsLeft as $key => $objectLeft){
+//
+//        }
+
+
+        echo "POLLO:: <pre>";
+        print_r($objectsLeft);
+        exit;
+
+
+
+
+
         $objectsLeft = $this->get($repositoryLeft)->$methodLeft($boxLeftValue);
 
         foreach ($boxRightValues as $key => $boxRightValue){

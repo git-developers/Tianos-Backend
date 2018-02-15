@@ -11,12 +11,12 @@
 
 declare(strict_types=1);
 
-namespace spec\Component\Grid\FieldTypes;
+namespace spec\Component\OneToMany\FieldTypes;
 
 use PhpSpec\ObjectBehavior;
-use Component\Grid\DataExtractor\DataExtractorInterface;
-use Component\Grid\Definition\Field;
-use Component\Grid\FieldTypes\FieldTypeInterface;
+use Component\OneToMany\DataExtractor\DataExtractorInterface;
+use Component\OneToMany\Definition\Field;
+use Component\OneToMany\FieldTypes\FieldTypeInterface;
 
 final class StringFieldTypeSpec extends ObjectBehavior
 {

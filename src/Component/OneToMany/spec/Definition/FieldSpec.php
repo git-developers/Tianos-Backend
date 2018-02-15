@@ -11,7 +11,7 @@
 
 declare(strict_types=1);
 
-namespace spec\Component\Grid\Definition;
+namespace spec\Component\OneToMany\Definition;
 
 use PhpSpec\ObjectBehavior;
 
@@ -81,8 +81,8 @@ final class FieldSpec extends ObjectBehavior
 
     function it_can_have_options(): void
     {
-        $this->setOptions(['template' => 'SyliusUiBundle:Grid/Field:_status.html.twig']);
-        $this->getOptions()->shouldReturn(['template' => 'SyliusUiBundle:Grid/Field:_status.html.twig']);
+        $this->setOptions(['template' => 'SyliusUiBundle:OneToMany/Field:_status.html.twig']);
+        $this->getOptions()->shouldReturn(['template' => 'SyliusUiBundle:OneToMany/Field:_status.html.twig']);
     }
 
     function it_has_last_position_by_default(): void

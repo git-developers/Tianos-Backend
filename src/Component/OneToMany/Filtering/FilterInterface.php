@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Component\Grid\Filtering;
+namespace Component\OneToMany\Filtering;
 
-use Component\Grid\Data\DataSourceInterface;
+use Component\OneToMany\Data\DataSourceInterface;
 
 interface FilterInterface
 {
