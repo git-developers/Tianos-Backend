@@ -17,7 +17,7 @@ delete:
 	rm -rf /tianos/data/google/credentials/*
 	@echo ---;
 
-permission:
+perm:
 	@echo ---;
 	@echo se dara permisos a los folderes cache y logs;
 	chmod 0777 -R var/cache var/logs var/sessions $$PWD/app/DoctrineMigrations
@@ -35,7 +35,7 @@ endif
 	php bin/console cache:clear --env=$(ENV) $(DEBUG);
 	php bin/console assets:install --symlink --env=$(ENV) $(DEBUG);
 	php bin/console assetic:dump --env=$(ENV) $(DEBUG);
-	make permission
+	make perm
 
 save:
 	git add .
@@ -98,7 +98,7 @@ db_load:
 	php bin/console doctrine:migration:diff
 	php bin/console doctrine:migration:migrate --no-interaction
 	make load_fixture
-	make permission
+	make perm
 
 log_nginx:
 ifeq ($(clean), 1)
@@ -210,7 +210,7 @@ crud2:
 crud:
 	@echo =========== CRUD: replace dummy ===========;
 	php bin/console tianos:create:crud $(model)
-	make permission
+	make perm
 
 migrate_delete:
 	@echo =========== Migrations: delete all ===========;
