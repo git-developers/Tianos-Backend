@@ -418,6 +418,17 @@ class RequestConfiguration
         return is_array($repository) ? $repository['box_left']['method'] : $repository;
     }
 
+    public function getRepositoryMethodDeleteAssociativeLeft()
+    {
+        if (!$this->parameters->has('repository')) {
+            return null;
+        }
+
+        $repository = $this->parameters->get('repository');
+
+        return is_array($repository) ? $repository['box_left']['method_delete_associative'] : $repository;
+    }
+
     public function getRepositoryMethodRight()
     {
         if (!$this->parameters->has('repository')) {

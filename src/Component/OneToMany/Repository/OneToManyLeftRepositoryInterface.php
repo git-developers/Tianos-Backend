@@ -8,8 +8,8 @@ use Component\Core\Repository\RepositoryInterface;
 
 interface OneToManyLeftRepositoryInterface extends RepositoryInterface
 {
-    public function searchBoxLeft($q, $offset = 0, $limit = 50): array;
     public function find($id);
-    public function deleteAllById($id): array;
+    public function deleteAssociativeTableById($id): bool;
+    public function searchBoxLeft($q, $offset = 0, $limit = 50): array;
     public function findAllOffsetLimit($offset = 0, $limit = 50): array;
 }

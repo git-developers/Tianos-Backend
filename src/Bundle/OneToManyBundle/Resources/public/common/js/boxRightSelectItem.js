@@ -13,6 +13,7 @@
         var boxLeft = null;
         var boxRight = null;
         var globalTimeout = null;
+        var msg_default = '<p><i class="fa fa-fw fa-info"></i> Seleccione un item.</p>';
         var msg_error = '<i class="fa fa-fw fa-warning"></i> Seleccion derecha Error: reintentar';
         var msg_assign_error = '<i class="fa fa-fw fa-warning"></i> Error al asignar items.';
         var msgBoxleftNotValue = '<i class="fa fa-fw fa-warning"></i> Tiene que seleccionar un item de la izquierda.';
@@ -51,10 +52,6 @@
                 return this.value;
             }).get();
 
-            // var id = checkbox.data('id');
-            // console.log('ID:: ' + id);
-
-
             if(globalTimeout != null){
                 clearTimeout(globalTimeout);
             }
@@ -76,8 +73,16 @@
                     success: function(data, textStatus, jqXHR) {
                         boxRight.find('i.fa-refresh').hide();
 
-                        if(!data.status){
+                        if(data.status){
 
+                            base.addClassCallout('success');
+                            base.setMessageCallout('<p><i class="fa fa-fw fa-thumbs-up"></i> Exito: <span class="badge bg-green-active">' + boxLeftValue + '</span></p>');
+
+                            setTimeout(function(){
+                                base.setMessageCallout(msg_default)
+                            }, 800);
+
+                        }else{
                             base.addClassCallout('danger');
                             checkboxAll.prop('checked', false);
                             // boxRight.find('li').removeClass(options.liClass);
@@ -97,82 +102,6 @@
                 });
 
             }, DELAY);
-
-
-
-
-
-
-
-
-
-
-
-            /*
-
-            var checkbox = $(context).find('input[type=checkbox]');
-            var checkboxHidden = $(context).find('input[name=' + options.box_value_hidden + ']');
-            var checkboxAll = boxRight.find('input[type=checkbox]');
-
-            var id = checkbox.data('id');
-
-            if (checkbox.is(':checked')) {
-                checkbox.prop('checked', false);
-                $(context).removeClass(options.liClass);
-                checkboxHidden.val(id + options.box_separator + options.action.delete);
-            }else{
-                checkbox.prop('checked', true);
-                $(context).addClass(options.liClass);
-                checkboxHidden.val(id + options.box_separator + options.action.create);
-            }
-
-            var id = $(context).data('id');
-            var fields = $("form[name='" + options.formName + "']").serializeArray();
-
-            if(globalTimeout != null){
-                clearTimeout(globalTimeout);
-            }
-
-            globalTimeout = setTimeout(function() {
-
-                $.ajax({
-                    url: options.routeSelectItem,
-                    type: 'POST',
-                    dataType: 'json',
-                    data: {
-                        fields:fields
-                    },
-                    cache: true,
-                    beforeSend: function(jqXHR, settings) {
-                        boxRight.find('i.fa-refresh').show();
-                    },
-                    success: function(data, textStatus, jqXHR) {
-                        boxRight.find('i.fa-refresh').hide();
-
-                        if(!data.status){
-
-                            base.addClassCallout('danger');
-                            checkboxAll.prop('checked', false);
-                            boxRight.find('li').removeClass(options.liClass);
-
-                            // if(jQuery.inArray(error_boxleft_not_value, data.errors) > -1){
-                            //     base.setMessageCallout(msgBoxleftNotValue);
-                            // }else{
-                            //     base.setMessageCallout(msg_assign_error);
-                            // }
-                        }
-                    },
-                    error: function(jqXHR, exception) {
-                        base.addClassCallout('danger');
-                        base.setMessageCallout(msg_error);
-                        boxRight.find('i.fa-refresh').hide();
-                    }
-                });
-
-            }, DELAY);
-
-            */
-
         };
 
         base.isValid = function(event) {
@@ -194,22 +123,8 @@
             console.log(e);
         }
 
-        /*
-        var isUserSelected = false;
-
-        function setUserSelected(value) {
-            isUserSelected = value;
-        }
-        */
-
-
         base.init();
     };
-
-    // $.boxRightSelectItem.defaultOptions = {
-    //     buttonStyle: "border: 1px solid #fff; background-color:#000; color:#fff; padding:20px 50px",
-    //     buttonPress: function () {}
-    // };
 
     $.fn.boxRightSelectItem = function(options){
 
@@ -225,9 +140,7 @@
                     bp.selectItem(this);
                 }
             });
-
         });
-
     };
 
 })(jQuery);

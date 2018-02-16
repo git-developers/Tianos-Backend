@@ -81,25 +81,20 @@
                 {#},#}
             });
 
+            $('div#{{ boxLeft.id }}').boxLeftSelectItem({
+                {#form_name: '{{ box.form_name }}',#}
+                boxLeftId: '{{ boxLeft.id }}',
+                boxRightId: '{{ boxRight.id }}',
+                liClass: '{{ boxLeft.li_class }}',
+                {#box_li_id: '{{ boxLeft.box_li_id }}',#}
+                {#box_li_class: '{{ boxLeft.box_li_class }}',#}
+                routeSelectItem: '{{ path(boxLeft.route_select_item) }}',
+            });
+
             $('body.{{ vars.body_css }}').boxInfo({
                 modalInfoId: '{{ modal.info_id }}',
                 routeInfo: '{{ path(box.route_info) }}',
             });
-
-
-
-            {#
-
-            $('div#{{ boxLeft.box_id }}').boxLeftSelectItem({
-                form_name: '{{ box.form_name }}',
-                boxLeft_id: '{{ boxLeft.box_id }}',
-                boxRight_id: '{{ boxRight.box_id }}',
-                box_li_id: '{{ boxLeft.box_li_id }}',
-                box_li_class: '{{ boxLeft.box_li_class }}',
-                route_select_item: '{{ boxLeft.route_select_item }}',
-            });
-
-            #}
 
         });
 

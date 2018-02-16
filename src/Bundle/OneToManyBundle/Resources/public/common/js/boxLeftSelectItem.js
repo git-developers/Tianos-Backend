@@ -12,9 +12,9 @@
         var base = this;
         var boxLeft = null;
         var boxRight = null;
-        var msg_loading = '<p align="center"><i class="fa fa-1x fa-refresh fa-spin"></i></p>';
-        var msg_error = '<i class="fa fa-fw fa-warning"></i> Buscador izquierda Error: reintentar';
-        var msg_success = '<i class="fa fa-fw fa-info"></i> Selecciono item con id: ';
+        var msgLoading = '<p align="center"><i class="fa fa-1x fa-refresh fa-spin"></i></p>';
+        var msgError = '<i class="fa fa-fw fa-warning"></i> Buscador izquierda Error: reintentar';
+        var msgSuccess = '<i class="fa fa-fw fa-info"></i> Selecciono item con id: ';
 
         base.$el = $(el);
         base.el = el;
@@ -22,8 +22,8 @@
 
         base.init = function(){
             var totalButtons = 0;
-            boxLeft = $('div#' + options.box_left_id);
-            boxRight = $('div#' + options.box_right_id);
+            boxLeft = $('div#' + options.boxLeftId);
+            boxRight = $('div#' + options.boxRightId);
             // base.$el.append('<button name="public" style="'+base.options.buttonStyle+'">Private</button>');
         };
 
@@ -42,12 +42,14 @@
             // debug(e);
             // base.options.buttonPress.call( this );
 
+            //
+            // var radio = $(context).find('input[type=radio]');
+
             var boxUl = boxRight.find('ul');
             var id = $(context).data('id');
-            var radio = $(context).find('input[type=radio]');
 
             $.ajax({
-                url: options.route_select_item,
+                url: options.routeSelectItem,
                 type: 'POST',
                 dataType: 'html',
                 data: {
@@ -55,27 +57,22 @@
                 },
                 cache: true,
                 beforeSend: function(jqXHR, settings) {
-                    base.setMessageCallout(msg_loading);
+                    base.setMessageCallout(msgLoading);
                 },
                 success: function(data, textStatus, jqXHR) {
 
                     boxUl.html(data);
-                    radio.prop('checked', true);
+                    // radio.prop('checked', true);
 
                     base.addClassCallout('success');
-                    base.setMessageCallout(msg_success + '<span class="badge bg-green-active">' + id + '</span>');
+                    base.setMessageCallout(msgSuccess + '<span class="badge bg-green-active">' + id + '</span>');
 
-                    boxLeft.find('li').removeClass(options.box_li_class);
-                    $(context).addClass(options.box_li_class);
-
-
-                    /*
-                    setUserSelected(true);
-                    */
+                    // boxLeft.find('li').removeClass(options.box_li_class);
+                    // $(context).addClass(options.box_li_class);
                 },
                 error: function(jqXHR, exception) {
                     base.addClassCallout('danger');
-                    base.setMessageCallout(msg_error);
+                    base.setMessageCallout(msgError);
                 }
             });
 
@@ -109,7 +106,7 @@
 
             var bp = new $.boxLeftSelectItem(this, options);
 
-            $(document).on('click', 'li.' + options.box_li_id, function(event) {
+            $(document).on('click', 'li.' + options.liClass, function(event) {
                 bp.selectItem(this);
             });
 
