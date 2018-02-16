@@ -40,3 +40,6 @@ backend_core:
 backend_session:
     resource: '@SessionBundle/Resources/config/routing/backend.yml'
     prefix: /session
+backend_reportpointofsaleandproduct:
+    resource: '@ReportpointofsaleandproductBundle/Resources/config/routing/backend.yml'
+    prefix: /reportpointofsaleandproduct

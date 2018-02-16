@@ -14,3 +14,4 @@ imports:
     - { resource: '@PointofsaleBundle/Resources/config/services.yml' }
     - { resource: '@CategoryBundle/Resources/config/services.yml' }
     - { resource: '@SessionBundle/Resources/config/services.yml' }
+    - { resource: '@ReportpointofsaleandproductBundle/Resources/config/services.yml' }
