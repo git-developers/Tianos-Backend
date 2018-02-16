@@ -1,6 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Bundle\CoreBundle\Twig\Extension;
+
+use Twig_Environment;
 
 class CommonExtension extends \Twig_Extension
 {
@@ -51,7 +55,11 @@ class CommonExtension extends \Twig_Extension
 
     public function randomStringFunction($length)
     {
-        return substr(str_shuffle(str_repeat($x='-0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ', ceil($length/strlen($x)) )),1,$length);
+        $x = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $multiplier = (int) ceil($length/strlen($x));
+        $string = str_shuffle(str_repeat($x, $multiplier));
+
+        return substr($string, 1, $length);
     }
 
     public function xxxxxxxxxFilter(\Twig_Environment $twig)
@@ -109,5 +117,14 @@ class CommonExtension extends \Twig_Extension
         return 'common_extension';
     }
 
+    public function initRuntime(Twig_Environment $environment)
+    {
+        // TODO: Implement initRuntime() method.
+    }
+
+    public function getGlobals()
+    {
+        // TODO: Implement getGlobals() method.
+    }
 }
 

@@ -1,11 +1,5 @@
 services:
 
-    twig.extension.user:
-        class: Bundle\CoreBundle\Twig\Extension\UserExtension
-        public: false
-        tags:
-           - { name: twig.extension }
-
     sylius.form.type.admin_user:
         class: Bundle\UserBundle\Form\Type\UserType
         arguments: [ "%sylius.model.admin_user.class%" ]
@@ -30,7 +24,17 @@ services:
         tags:
             - { name: tianos.core.controller.default, alias: tianos.core.controller.default }
 
+    twig.extension.common:
+         class: Bundle\CoreBundle\Twig\Extension\CommonExtension
+         public: false
+         tags:
+             - { name: twig.extension }
 
+    twig.extension.user:
+        class: Bundle\CoreBundle\Twig\Extension\UserExtension
+        public: false
+        tags:
+           - { name: twig.extension }
 
 
 
@@ -129,11 +133,6 @@ services:
 #         tags:
 #             - { name: twig.extension }
 #
-#    twig.extension.common:
-#         class: Bundle\CoreBundle\Twig\Extension\CommonExtension
-#         public: false
-#         tags:
-#             - { name: twig.extension }
 #
 #    twig.extension.boxmapper:
 #         class: Bundle\CoreBundle\Twig\Extension\BoxMapperExtension

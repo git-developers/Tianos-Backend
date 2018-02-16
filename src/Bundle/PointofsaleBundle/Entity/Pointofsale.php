@@ -87,9 +87,9 @@ class Pointofsale
     private $isActive = '1';
 
     /**
-     * @var \AppBundle\Entity\PointOfSale
+     * @var \Bundle\PointofsaleBundle\Entity\Pointofsale
      *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\PointOfSale")
+     * @ORM\ManyToOne(targetEntity="Bundle\PointofsaleBundle\Entity\Pointofsale")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="point_of_sale_id", referencedColumnName="id")
      * })
@@ -392,11 +392,11 @@ class Pointofsale
     /**
      * Set pointOfSale
      *
-     * @param \AppBundle\Entity\PointOfSale $pointOfSale
+     * @param \Bundle\PointofsaleBundle\Entity\Pointofsale $pointOfSale
      *
      * @return PointOfSale
      */
-    public function setPointOfSale(\AppBundle\Entity\PointOfSale $pointOfSale = null)
+    public function setPointOfSale(\Bundle\PointofsaleBundle\Entity\Pointofsale $pointOfSale = null)
     {
         $this->pointOfSale = $pointOfSale;
 
@@ -406,7 +406,7 @@ class Pointofsale
     /**
      * Get pointOfSale
      *
-     * @return \AppBundle\Entity\PointOfSale
+     * @return \Bundle\PointofsaleBundle\Entity\Pointofsale
      */
     public function getPointOfSale()
     {
@@ -416,11 +416,11 @@ class Pointofsale
     /**
      * Add user
      *
-     * @param \AppBundle\Entity\User $user
+     * @param \Bundle\UserBundle\Entity\User $user
      *
      * @return PointOfSale
      */
-    public function addUser(\AppBundle\Entity\User $user)
+    public function addUser(\Bundle\UserBundle\Entity\User $user)
     {
         $this->user[] = $user;
 
@@ -430,9 +430,9 @@ class Pointofsale
     /**
      * Remove user
      *
-     * @param \AppBundle\Entity\User $user
+     * @param \Bundle\UserBundle\Entity\User $user
      */
-    public function removeUser(\AppBundle\Entity\User $user)
+    public function removeUser(\Bundle\UserBundle\Entity\User $user)
     {
         $this->user->removeElement($user);
     }
