@@ -1,8 +1,8 @@
-backend_profile_has_role_index:
+backend_associative_profile_has_role_index:
     path: /
     methods: [GET]
     defaults:
-        _controller: tianos.profilehasrole.controller.profile:indexAction
+        _controller: tianos.profilehasrole.controller.associative:indexAction
         _tianos:
             action: index
             section: admin
@@ -19,7 +19,7 @@ backend_profile_has_role_index:
                     class: primary
                     form_name: main-form
                     title: Profile has Role
-                    route_info: backend_profile_has_role_info
+                    route_info: backend_associative_profile_has_role_info
                 box_left:
                     icon: user-secret
                     class: primary
@@ -29,8 +29,8 @@ backend_profile_has_role_index:
                     li_badge_class: bg-blue
                     li_input_name: box-lefts-selected-value
                     search_input_name: search-input-name-left
-                    route_search: backend_profile_has_role_boxleft_search
-                    route_select_item: backend_profile_has_role_boxleft_select_item
+                    route_search: backend_associative_profile_has_role_boxleft_search
+                    route_select_item: backend_associative_profile_has_role_boxleft_select_item
                 box_right:
                     icon: expeditedssl
                     class: primary
@@ -40,8 +40,8 @@ backend_profile_has_role_index:
                     li_badge_class: bg-orange-active
                     li_input_name: box-right-selected-value
                     search_input_name: search-input-name-right
-                    route_search: backend_profile_has_role_boxright_search
-                    route_select_item: backend_profile_has_role_boxright_select_item
+                    route_search: backend_associative_profile_has_role_boxright_search
+                    route_select_item: backend_associative_profile_has_role_boxright_select_item
             form:
                 type: Bundle\ProfileBundle\Form\Type\ProfileType
             repository:
@@ -56,11 +56,11 @@ backend_profile_has_role_index:
                     arguments:
                         limit: 20
 
-backend_profile_has_role_boxleft_search:
+backend_associative_profile_has_role_boxleft_search:
     path: /box-left-search
     methods: [POST]
     defaults:
-        _controller: tianos.profilehasrole.controller.profile:boxLeftSearchAction
+        _controller: tianos.profilehasrole.controller.associative:boxLeftSearchAction
         _tianos:
             action: left_search
             template: OneToManyBundle:Li:box_left.html.twig
@@ -76,7 +76,7 @@ backend_profile_has_role_boxleft_search:
                     li_badge_class: bg-blue
                     li_input_name: box-lefts-selected-value
                     search_input_name: search-input-name-left
-#                    route_search: backend_profile_has_role_boxleft_search
+#                    route_search: backend_associative_profile_has_role_boxleft_search
             repository:
                 box_left:
                     service: tianos.repository.profile
@@ -87,11 +87,11 @@ backend_profile_has_role_boxleft_search:
 #            form:
 #                type: Bundle\ProfileBundle\Form\Type\ProfileType
 
-backend_profile_has_role_boxright_search:
+backend_associative_profile_has_role_boxright_search:
     path: /box-right-search
     methods: [POST]
     defaults:
-        _controller: tianos.profilehasrole.controller.profile:boxRightSearchAction
+        _controller: tianos.profilehasrole.controller.associative:boxRightSearchAction
         _tianos:
             action: right_search
             template: OneToManyBundle:Li:box_right.html.twig
@@ -107,7 +107,7 @@ backend_profile_has_role_boxright_search:
                     li_badge_class: bg-blue
                     li_input_name: box-lefts-selected-value
                     search_input_name: search-input-name-left
-#                    route_search: backend_profile_has_role_boxleft_search
+#                    route_search: backend_associative_profile_has_role_boxleft_search
             repository:
                 box_right:
                     service: tianos.repository.role
@@ -118,11 +118,11 @@ backend_profile_has_role_boxright_search:
 #            form:
 #                type: Bundle\ProfileBundle\Form\Type\ProfileType
 
-backend_profile_has_role_boxright_select_item:
+backend_associative_profile_has_role_boxright_select_item:
     path: /boxright-select-item
     methods: [POST]
     defaults:
-        _controller: tianos.profilehasrole.controller.profile:boxRightSelectItemAction
+        _controller: tianos.profilehasrole.controller.associative:boxRightSelectItemAction
         _tianos:
             repository:
                 box_left:
@@ -137,11 +137,11 @@ backend_profile_has_role_boxright_select_item:
 #            action: info
 #            template: ProfileBundle:ProfileBackend/Informative:infoProfileHasRole.html.twig
 
-backend_profile_has_role_boxleft_select_item:
+backend_associative_profile_has_role_boxleft_select_item:
     path: /boxleft-select-item
     methods: [POST]
     defaults:
-        _controller: tianos.profilehasrole.controller.profile:boxLeftSelectItemAction
+        _controller: tianos.profilehasrole.controller.associative:boxLeftSelectItemAction
         _tianos:
             repository:
                 box_left:
@@ -156,11 +156,11 @@ backend_profile_has_role_boxleft_select_item:
 #            action: info
 #            template: ProfileBundle:ProfileBackend/Informative:infoProfileHasRole.html.twig
 
-backend_profile_has_role_info:
+backend_associative_profile_has_role_info:
     path: /info
     methods: [POST]
     defaults:
-        _controller: tianos.profilehasrole.controller.profile:infoAction
+        _controller: tianos.profilehasrole.controller.associative:infoAction
         _tianos:
             action: info
             template: ProfileBundle:ProfileBackend/Informative:infoProfileHasRole.html.twig

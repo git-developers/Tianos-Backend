@@ -2,16 +2,17 @@ imports:
     - { resource: '@ApiBundle/Resources/config/services.yml' }
     - { resource: '@CoreBundle/Resources/config/services.yml' }
     - { resource: '@GridBundle/Resources/config/services.yml' }
+    - { resource: '@UserBundle/Resources/config/services.yml' }
+    - { resource: '@RoleBundle/Resources/config/services.yml' }
+    - { resource: '@ClientBundle/Resources/config/services.yml' }
     - { resource: '@BackendBundle/Resources/config/services.yml' }
+    - { resource: '@ProductBundle/Resources/config/services.yml' }
+    - { resource: '@SessionBundle/Resources/config/services.yml' }
+    - { resource: '@ProfileBundle/Resources/config/services.yml' }
     - { resource: '@FrontendBundle/Resources/config/services.yml' }
     - { resource: '@ResourceBundle/Resources/config/services.yml' }
-    - { resource: '@ProductBundle/Resources/config/services.yml' }
-    - { resource: '@ClientBundle/Resources/config/services.yml' }
-    - { resource: '@GroupofusersBundle/Resources/config/services.yml' }
-    - { resource: '@UserBundle/Resources/config/services.yml' }
-    - { resource: '@ProfileBundle/Resources/config/services.yml' }
-    - { resource: '@RoleBundle/Resources/config/services.yml' }
-    - { resource: '@PointofsaleBundle/Resources/config/services.yml' }
     - { resource: '@CategoryBundle/Resources/config/services.yml' }
-    - { resource: '@SessionBundle/Resources/config/services.yml' }
+    - { resource: '@PointofsaleBundle/Resources/config/services.yml' }
+    - { resource: '@AssociativeBundle/Resources/config/services.yml' }
+    - { resource: '@GroupofusersBundle/Resources/config/services.yml' }
     - { resource: '@ReportpointofsaleandproductBundle/Resources/config/services.yml' }

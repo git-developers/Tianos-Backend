@@ -1,6 +1,9 @@
 backend_default:
     resource: '@BackendBundle/Resources/config/routing/default.yml'
     prefix: /
+backend_associative:
+    resource: '@AssociativeBundle/Resources/config/routing.yml'
+    prefix: /associative
 backend_pointofsale:
     resource: '@PointofsaleBundle/Resources/config/routing/backend.yml'
     prefix: /point-of-sale
@@ -25,9 +28,6 @@ backend_role:
 backend_profile:
     resource: '@ProfileBundle/Resources/config/routing/backend.yml'
     prefix: /profile
-backend_profile_has_role:
-    resource: '@ProfileBundle/Resources/config/routing/profileHasRole.yml'
-    prefix: /profile-has-role
 backend_user:
     resource: '@UserBundle/Resources/config/routing/backend.yml'
     prefix: /user

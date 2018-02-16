@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Bundle\ProfileBundle\Controller;
+namespace Bundle\AssociativeBundle\Controller;
 
 use Bundle\OneToManyBundle\Controller\OneToManyController;
 

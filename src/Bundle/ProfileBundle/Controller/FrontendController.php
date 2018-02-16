@@ -9,7 +9,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Component\Resource\Metadata\Metadata;
 use Bundle\ResourceBundle\ResourceBundle;
 use Bundle\CoreBundle\Controller\BaseController;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class FrontendController extends BaseController
 {
