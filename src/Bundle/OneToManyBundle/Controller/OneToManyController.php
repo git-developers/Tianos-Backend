@@ -272,15 +272,6 @@ class OneToManyController extends BaseController
 
     public function infoAction(Request $request): Response
     {
-
-
-        echo '<pre> POLLO:: ';
-        print_r(5555555);
-        exit;
-
-
-
-
         if (!$this->isXmlHttpRequest()) {
             throw $this->createAccessDeniedException(self::ACCESS_DENIED_MSG);
         }

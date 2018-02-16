@@ -51,9 +51,11 @@ class CreateCrudCommand extends ContainerAwareCommand
         ]);
 
         $cwd = getcwd();
-        $src = $cwd . '/src/Bundle/'.self::DUMMY_UPPER.'Bundle';
+
+        $src = $cwd . '/data/generator/bundle/'.self::DUMMY_UPPER.'Bundle';
         $dest = $cwd . '/src/Bundle/' . $bundle . 'Bundle';
-        $srcComponent = $cwd.'/src/Component/'.self::DUMMY_UPPER;
+
+        $srcComponent = $cwd.'/data/generator/component/'.self::DUMMY_UPPER;
         $destComponent = $cwd.'/src/Component/'.$bundle;
 
 

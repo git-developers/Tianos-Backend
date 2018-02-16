@@ -15,4 +15,3 @@ imports:
     - { resource: '@PointofsaleBundle/Resources/config/services.yml' }
     - { resource: '@AssociativeBundle/Resources/config/services.yml' }
     - { resource: '@GroupofusersBundle/Resources/config/services.yml' }
-    - { resource: '@ReportpointofsaleandproductBundle/Resources/config/services.yml' }
