@@ -57,7 +57,7 @@ backend_associative_profile_has_role_index:
                         limit: 20
 
 backend_associative_profile_has_role_boxleft_search:
-    path: /box-left-search
+    path: /boxleft-search
     methods: [POST]
     defaults:
         _controller: tianos.profilehasrole.controller.associative:boxLeftSearchAction
@@ -88,7 +88,7 @@ backend_associative_profile_has_role_boxleft_search:
 #                type: Bundle\ProfileBundle\Form\Type\ProfileType
 
 backend_associative_profile_has_role_boxright_search:
-    path: /box-right-search
+    path: /boxright-search
     methods: [POST]
     defaults:
         _controller: tianos.profilehasrole.controller.associative:boxRightSearchAction
@@ -163,7 +163,7 @@ backend_associative_profile_has_role_info:
         _controller: tianos.profilehasrole.controller.associative:infoAction
         _tianos:
             action: info
-            template: ProfileBundle:ProfileBackend/Informative:infoProfileHasRole.html.twig
+            template: AssociativeBundle:ProfileHasRole/Informative:info.html.twig
 
 
 
