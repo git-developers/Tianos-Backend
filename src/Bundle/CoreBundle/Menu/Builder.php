@@ -325,11 +325,46 @@ class Builder implements ContainerAwareInterface
             ->setDisplay($loadFixture)
         ;
 
+
+
+
+        /**
+         * FRONTEND
+         */
+        $loadFixture = true; //$this->isGranted('ROLE_CLIENT_VIEW');
+        $menu->addChild('Front-end', [
+            'route' => 'backend_default_dashboard',
+            'extras' => ['safe_label' => true],
+            'childrenAttributes' => [
+                'class' => 'treeview-menu',
+            ],
+        ])
+            ->setAttribute('class', 'treeview')
+            ->setAttribute('icon', 'fa-fw fa-tv')
+            ->setDisplay($loadFixture)
+        ;
+
+        $menu['Front-end']->addChild('ver', [
+            'route' => 'frontend_default_index'
+        ])
+            ->setAttribute('icon', self::CIRCLE_1_YELLOW)
+            ->setDisplay($loadFixture)
+        ;
+
+//        $menu[$child]->addChild('GoogleDrive mimetype', [
+//            'route' => 'backend_default_dashboard'
+//        ])
+//            ->setAttribute('icon', self::CIRCLE_2_AQUA)
+//            ->setDisplay($loadFixture)
+//        ;
+
+
+
+
+
+
+
         return $menu;
-
-
-
-
     }
 
     protected function getUser()
