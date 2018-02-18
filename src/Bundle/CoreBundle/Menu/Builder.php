@@ -344,7 +344,7 @@ class Builder implements ContainerAwareInterface
             ->setDisplay($loadFixture)
         ;
 
-        $menu['Front-end']->addChild('ver', [
+        $menu['Front-end']->addChild('inicio', [
             'route' => 'frontend_default_index'
         ])
             ->setAttribute('icon', self::CIRCLE_1_YELLOW)

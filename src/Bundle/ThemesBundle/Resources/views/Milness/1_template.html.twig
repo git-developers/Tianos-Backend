@@ -1,0 +1,515 @@
+{#https://livedemo00.template-help.com/wt_prod-12847/#}
+{#http://milness.fidex.com.ua/#}
+{% import "ThemesBundle::Milness/Macro/html.html.twig" as html %}
+{% import "ThemesBundle::Milness/Macro/head.html.twig" as head %}
+{% import "ThemesBundle::Milness/Macro/meta.html.twig" as meta %}
+{% import "ThemesBundle::Milness/Macro/bi3d.html.twig" as bi3d %}
+{% import "ThemesBundle::Milness/Macro/twitter.html.twig" as twitter %}
+{% import "ThemesBundle::Milness/Macro/open_graph.html.twig" as og %}
+
+{% spaceless %}
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="profile" href="http://gmpg.org/xfn/11">
+    <title>Milness &#8211; Just another WordPress site</title>
+    <link rel='dns-prefetch' href='//fonts.googleapis.com' />
+    <link rel='dns-prefetch' href='//s.w.org' />
+    <link rel="alternate" type="application/rss+xml" title="Milness &raquo; Feed" href="http://milness.fidex.com.ua/feed/" />
+    <link rel="alternate" type="application/rss+xml" title="Milness &raquo; Comments Feed" href="http://milness.fidex.com.ua/comments/feed/" />
+    <script type="text/javascript">
+        window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.4\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.4\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/milness.fidex.com.ua\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.9.3"}};
+        !function(a,b,c){function d(a,b){var c=String.fromCharCode;l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,a),0,0);var d=k.toDataURL();l.clearRect(0,0,k.width,k.height),l.fillText(c.apply(this,b),0,0);var e=k.toDataURL();return d===e}function e(a){var b;if(!l||!l.fillText)return!1;switch(l.textBaseline="top",l.font="600 32px Arial",a){case"flag":return!(b=d([55356,56826,55356,56819],[55356,56826,8203,55356,56819]))&&(b=d([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]),!b);case"emoji":return b=d([55357,56692,8205,9792,65039],[55357,56692,8203,9792,65039]),!b}return!1}function f(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var g,h,i,j,k=b.createElement("canvas"),l=k.getContext&&k.getContext("2d");for(j=Array("flag","emoji"),c.supports={everything:!0,everythingExceptFlag:!0},i=0;i<j.length;i++)c.supports[j[i]]=e(j[i]),c.supports.everything=c.supports.everything&&c.supports[j[i]],"flag"!==j[i]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[j[i]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(h=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",h,!1),a.addEventListener("load",h,!1)):(a.attachEvent("onload",h),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),g=c.source||{},g.concatemoji?f(g.concatemoji):g.wpemoji&&g.twemoji&&(f(g.twemoji),f(g.wpemoji)))}(window,document,window._wpemojiSettings);
+    </script>
+    <style type="text/css">
+        img.wp-smiley,
+        img.emoji {
+            display: inline !important;
+            border: none !important;
+            box-shadow: none !important;
+            height: 1em !important;
+            width: 1em !important;
+            margin: 0 .07em !important;
+            vertical-align: -0.1em !important;
+            background: none !important;
+            padding: 0 !important;
+        }
+    </style>
+    <link rel='stylesheet' id='contact-form-7-css'  href='http://milness.fidex.com.ua/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=4.9.2' type='text/css' media='all' />
+    <link rel='stylesheet' id='rs-plugin-settings-css'  href='http://milness.fidex.com.ua/wp-content/plugins/rev-slider/public/assets/css/settings.css?ver=5.4.6.3.1' type='text/css' media='all' />
+    <style id='rs-plugin-settings-inline-css' type='text/css'>
+        #rs-demo-id {}
+    </style>
+    <link rel='stylesheet' id='woocommerce-layout-css'  href='http://milness.fidex.com.ua/wp-content/plugins/woocommerce/assets/css/woocommerce-layout.css?ver=3.2.6' type='text/css' media='all' />
+    <link rel='stylesheet' id='woocommerce-smallscreen-css'  href='http://milness.fidex.com.ua/wp-content/plugins/woocommerce/assets/css/woocommerce-smallscreen.css?ver=3.2.6' type='text/css' media='only screen and (max-width: 768px)' />
+    <link rel='stylesheet' id='woocommerce-general-css'  href='http://milness.fidex.com.ua/wp-content/plugins/woocommerce/assets/css/woocommerce.css?ver=3.2.6' type='text/css' media='all' />
+    <link rel='stylesheet' id='milness-fonts-css'  href='//fonts.googleapis.com/css?family=Roboto+Slab%3A400%2C500%2C600%2C700%2C300%7CRoboto%3A400%2C500%2C700%2C300%7CPacifico%7CPoppins%7CLato%3A900&#038;ver=1.0.0' type='text/css' media='all' />
+    <link rel='stylesheet' id='milness-style-css'  href='http://milness.fidex.com.ua/wp-content/themes/milness/style.css?ver=4.9.3' type='text/css' media='all' />
+    <link rel='stylesheet' id='milness-loader-css'  href='http://milness.fidex.com.ua/wp-content/themes/milness/assets/css/loader.css?ver=4.9.3' type='text/css' media='all' />
+    <link rel='stylesheet' id='milness-bootstrap-css'  href='http://milness.fidex.com.ua/wp-content/themes/milness/assets/libs/bootstrap/css/bootstrap-grid.min.css?ver=4.9.3' type='text/css' media='all' />
+    <link rel='stylesheet' id='milness-stroke-css'  href='http://milness.fidex.com.ua/wp-content/themes/milness/assets/libs/pe-icon-7-stroke/css/pe-icon-7-stroke.css?ver=4.9.3' type='text/css' media='all' />
+    <link rel='stylesheet' id='milness-fontawesome-css'  href='http://milness.fidex.com.ua/wp-content/themes/milness/assets/libs/font-awesome-4.6.3/css/font-awesome.min.css?ver=4.9.3' type='text/css' media='all' />
+    <link rel='stylesheet' id='milness-superfish-css'  href='http://milness.fidex.com.ua/wp-content/themes/milness/assets/libs/superfish-master/css/superfish.css?ver=4.9.3' type='text/css' media='all' />
+    <link rel='stylesheet' id='milness-magnific-css'  href='http://milness.fidex.com.ua/wp-content/themes/milness/assets/libs/magnific-popup/magnific-popup.css?ver=4.9.3' type='text/css' media='all' />
+    <link rel='stylesheet' id='milness-slick-css'  href='http://milness.fidex.com.ua/wp-content/themes/milness/assets/libs/slick/slick.css?ver=4.9.3' type='text/css' media='all' />
+    <link rel='stylesheet' id='milness-animate-css'  href='http://milness.fidex.com.ua/wp-content/themes/milness/assets/libs/animate/animate.css?ver=4.9.3' type='text/css' media='all' />
+    <link rel='stylesheet' id='milness-main-styles-css'  href='http://milness.fidex.com.ua/wp-content/themes/milness/assets/css/main1.css?ver=4.9.3' type='text/css' media='all' />
+    <link rel='stylesheet' id='milness-main-css'  href='http://milness.fidex.com.ua/wp-content/themes/milness/assets/css/main1.css?ver=4.9.3' type='text/css' media='all' />
+    <link rel='stylesheet' id='milness-styler-css-css'  href='http://milness.fidex.com.ua/wp-content/themes/milness/assets/libs/style-customizer/style-customizer.css?ver=all' type='text/css' media='all' />
+    <link rel='stylesheet' id='js_composer_front-css'  href='http://milness.fidex.com.ua/wp-content/plugins/visual-composer/assets/css/js_composer.min.css?ver=5.4.5' type='text/css' media='all' />
+    <link rel='stylesheet' id='kirki-styles-milness-css'  href='http://milness.fidex.com.ua/wp-content/plugins/kirki/assets/css/kirki-styles.css?ver=3.0.22' type='text/css' media='all' />
+    <style id='kirki-styles-milness-inline-css' type='text/css'>
+        .sf-menu > li{font-family:"Roboto Slab", Georgia, serif;font-size:16px;font-weight:700;letter-spacing:0.3px;line-height:24px;}.logo{font-family:Pacifico, "Comic Sans MS", cursive, sans-serif;font-size:29px;font-weight:500;color:#f6f5f5;}body{font-family:Roboto, Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;line-height:1.5;}h1{font-family:Roboto, Helvetica, Arial, sans-serif;font-size:47px;font-weight:700;letter-spacing:0.3px;line-height:71px;}h2{font-family:Roboto, Helvetica, Arial, sans-serif;font-size:40px;font-weight:700;letter-spacing:0.3px;line-height:60px;}h3{font-family:Roboto, Helvetica, Arial, sans-serif;font-size:35px;font-weight:700;letter-spacing:0.3px;line-height:53px;}h4{font-family:Roboto, Helvetica, Arial, sans-serif;font-size:27px;font-weight:700;letter-spacing:0.3px;line-height:41px;}h5{font-family:Roboto, Helvetica, Arial, sans-serif;font-size:20px;font-weight:700;letter-spacing:0.3px;line-height:30px;}h6{font-family:Roboto, Helvetica, Arial, sans-serif;font-size:17px;font-weight:700;letter-spacing:0.3px;line-height:26px;}p{font-family:Roboto, Helvetica, Arial, sans-serif;font-size:16px;font-weight:400;letter-spacing:0.3px;line-height:24px;}
+    </style>
+    <script type='text/javascript' src='http://milness.fidex.com.ua/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+    <script type='text/javascript' src='http://milness.fidex.com.ua/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1'></script>
+    <script type='text/javascript' src='http://milness.fidex.com.ua/wp-content/plugins/rev-slider/public/assets/js/jquery.themepunch.tools.min.js?ver=5.4.6.3.1'></script>
+    <script type='text/javascript' src='http://milness.fidex.com.ua/wp-content/plugins/rev-slider/public/assets/js/jquery.themepunch.revolution.min.js?ver=5.4.6.3.1'></script>
+    <script type='text/javascript'>
+        /* <![CDATA[ */
+        var wc_add_to_cart_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"http:\/\/milness.fidex.com.ua\/?wc-ajax=%%endpoint%%","i18n_view_cart":"View cart","cart_url":"http:\/\/milness.fidex.com.ua\/cart\/","is_cart":"","cart_redirect_after_add":"no"};
+        /* ]]> */
+    </script>
+    <script type='text/javascript' src='http://milness.fidex.com.ua/wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart.min.js?ver=3.2.6'></script>
+    <script type='text/javascript' src='http://milness.fidex.com.ua/wp-content/plugins/visual-composer/assets/js/vendors/woocommerce-add-to-cart.js?ver=5.4.5'></script>
+    <link rel='https://api.w.org/' href='http://milness.fidex.com.ua/wp-json/' />
+    <link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://milness.fidex.com.ua/xmlrpc.php?rsd" />
+    <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://milness.fidex.com.ua/wp-includes/wlwmanifest.xml" />
+    <meta name="generator" content="WordPress 4.9.3" />
+    <meta name="generator" content="WooCommerce 3.2.6" />
+    <link rel="canonical" href="http://milness.fidex.com.ua/" />
+    <link rel='shortlink' href='http://milness.fidex.com.ua/' />
+    <link rel="alternate" type="application/json+oembed" href="http://milness.fidex.com.ua/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fmilness.fidex.com.ua%2F" />
+    <link rel="alternate" type="text/xml+oembed" href="http://milness.fidex.com.ua/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fmilness.fidex.com.ua%2F&#038;format=xml" />
+    <noscript>
+        <style>.woocommerce-product-gallery{ opacity: 1 !important; }</style>
+    </noscript>
+    <style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+    <meta name="generator" content="Powered by WPBakery Page Builder - drag and drop page builder for WordPress."/>
+    <!--[if lte IE 9]>
+    <link rel="stylesheet" type="text/css" href="http://milness.fidex.com.ua/wp-content/plugins/visual-composer/assets/css/vc_lte_ie9.min.css" media="screen">
+    <![endif]-->
+    <meta name="generator" content="Powered by Slider Revolution 5.4.6.3.1 - responsive, Mobile-Friendly Slider Plugin for WordPress with comfortable drag and drop interface." />
+    <link rel="icon" href="http://milness.fidex.com.ua/wp-content/uploads/2017/10/icon2.png" sizes="32x32" />
+    <link rel="icon" href="http://milness.fidex.com.ua/wp-content/uploads/2017/10/icon2.png" sizes="192x192" />
+    <link rel="apple-touch-icon-precomposed" href="http://milness.fidex.com.ua/wp-content/uploads/2017/10/icon2.png" />
+    <meta name="msapplication-TileImage" content="http://milness.fidex.com.ua/wp-content/uploads/2017/10/icon2.png" />
+    <script type="text/javascript">function setREVStartSize(e){
+            try{ var i=jQuery(window).width(),t=9999,r=0,n=0,l=0,f=0,s=0,h=0;
+                if(e.responsiveLevels&&(jQuery.each(e.responsiveLevels,function(e,f){f>i&&(t=r=f,l=e),i>f&&f>r&&(r=f,n=e)}),t>r&&(l=n)),f=e.gridheight[l]||e.gridheight[0]||e.gridheight,s=e.gridwidth[l]||e.gridwidth[0]||e.gridwidth,h=i/s,h=h>1?1:h,f=Math.round(h*f),"fullscreen"==e.sliderLayout){var u=(e.c.width(),jQuery(window).height());if(void 0!=e.fullScreenOffsetContainer){var c=e.fullScreenOffsetContainer.split(",");if (c) jQuery.each(c,function(e,i){u=jQuery(i).length>0?u-jQuery(i).outerHeight(!0):u}),e.fullScreenOffset.split("%").length>1&&void 0!=e.fullScreenOffset&&e.fullScreenOffset.length>0?u-=jQuery(window).height()*parseInt(e.fullScreenOffset,0)/100:void 0!=e.fullScreenOffset&&e.fullScreenOffset.length>0&&(u-=parseInt(e.fullScreenOffset,0))}f=u}else void 0!=e.minHeight&&f<e.minHeight&&(f=e.minHeight);e.c.closest(".rev_slider_wrapper").css({height:f})
+            }catch(d){console.log("Failure at Presize of Slider:"+d)}
+        };
+    </script>
+    <style type="text/css" data-type="vc_shortcodes-custom-css">.vc_custom_1513902594746{padding-top: 70px !important;padding-bottom: 90px !important;background: #fafafa url(//milness.fidex.com.ua/wp-content/uploads/2017/10/pattern.png?id=1634) !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}.vc_custom_1514922386826{padding-top: 80px !important;padding-bottom: 80px !important;background-image: url(http://milness.fidex.com.ua/wp-content/uploads/2018/01/bg7.jpg?id=2163) !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}.vc_custom_1514126480209{padding-top: 50px !important;padding-bottom: 90px !important;background-color: #efeff1 !important;}.vc_custom_1514925497984{padding-top: 50px !important;padding-bottom: 90px !important;background-image: url(http://milness.fidex.com.ua/wp-content/uploads/2018/01/bg7.jpg?id=2163) !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}.vc_custom_1509552383739{padding-top: 50px !important;background-color: #e6ecf1 !important;}.vc_custom_1514925547370{padding-top: 50px !important;padding-bottom: 90px !important;background-image: url(http://milness.fidex.com.ua/wp-content/uploads/2018/01/bg7.jpg?id=2163) !important;}.vc_custom_1509648281756{padding-top: 50px !important;padding-bottom: 55px !important;background-color: #e7edf3 !important;}.vc_custom_1514924980320{padding-top: 50px !important;padding-bottom: 90px !important;background-image: url(http://milness.fidex.com.ua/wp-content/uploads/2018/01/bg7.jpg?id=2163) !important;}.vc_custom_1514989526439{padding-top: 50px !important;padding-bottom: 0px !important;background: #f2f2f2 url(//milness.fidex.com.ua/wp-content/uploads/2017/10/pattern.png?id=1634) !important;background-position: center !important;background-repeat: no-repeat !important;background-size: cover !important;}.vc_custom_1514493289921{padding-top: 50px !important;padding-bottom: 0px !important;background-color: #efeff1 !important;}.vc_custom_1514924437778{padding-top: 55px !important;padding-bottom: 45px !important;background-color: #11495a !important;}.vc_custom_1514924250246{padding-top: 50px !important;padding-bottom: 90px !important;background-image: url(http://milness.fidex.com.ua/wp-content/uploads/2018/01/bg7.jpg?id=2163) !important;background-position: center;background-repeat: no-repeat !important;background-size: cover !important;}.vc_custom_1514924001590{padding-top: 50px !important;padding-bottom: 90px !important;background-image: url(http://milness.fidex.com.ua/wp-content/uploads/2018/01/bg7.jpg?id=2163) !important;}.vc_custom_1509550650426{padding-top: 0px !important;}.vc_custom_1509636013391{border-bottom-width: 50px !important;}.vc_custom_1509636410004{padding-top: 0px !important;}.vc_custom_1509636529477{padding-top: 0px !important;}.vc_custom_1509636420633{padding-top: 0px !important;}.vc_custom_1514370486626{padding-top: 20px !important;}.vc_custom_1509743584683{padding-top: 0px !important;}.vc_custom_1509743597603{padding-top: 0px !important;}.vc_custom_1514151224296{margin-top: 45px !important;margin-bottom: 30px !important;}.vc_custom_1509489377880{padding-top: 0px !important;}.vc_custom_1509537747707{padding-top: 0px !important;}.vc_custom_1514901435686{padding-top: 80px !important;padding-bottom: 80px !important;background-color: #f9f9f9 !important;}.vc_custom_1514901442296{padding-top: 80px !important;padding-bottom: 80px !important;background-color: #f5f5f5 !important;}.vc_custom_1514901393118{padding-top: 80px !important;padding-bottom: 80px !important;background-color: #f9f9f9 !important;}.vc_custom_1509449633635{padding-top: 0px !important;padding-bottom: 0px !important;}</style>
+    <noscript>
+        <style type="text/css"> .wpb_animate_when_almost_visible { opacity: 1; }</style>
+    </noscript>
+
+
+
+
+
+    {#{% block stylesheets %}#}
+
+        {#{% stylesheets#}
+            {#filter='cssrewrite'#}
+            {#'bundles/themes/adminlte/thirdparty/font-awesome/css/font-awesome.min.css'#}
+            {#'@ThemesBundle/Resources/public/adminlte/plugins/pace/pace.min.css'#}
+
+            {#'@ThemesBundle/Resources/public/common/css/tianos.css'#}
+        {#%}#}
+            {#<link rel="stylesheet" href="{{ asset_url }}" />#}
+        {#{% endstylesheets %}#}
+
+    {#{% endblock %}#}
+
+</head>
+
+<body class="home page-template page-template-page-builder page-template-page-builder-php page page-id-1807 wpb-js-composer js-comp-ver-5.4.5 vc_responsive">
+<div id="preloader">
+    <div style="background-color: #1e73be" id="status"></div>
+</div>
+<div id="top-scroll"></div>
+
+<header id="top-nav">
+    <div class="container">
+        <!-- Logo -->
+        <a href="http://milness.fidex.com.ua/" class="logo">
+            Milness
+        </a>
+        <!-- Top navigation -->
+        <nav class="top-menu">
+            <ul id="menu-menu-1" class="sf-menu">
+                <li id="menu-item-2287" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-1807 current_page_item current-menu-ancestor current-menu-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-2287">
+                    <a href="http://milness.fidex.com.ua/">Home</a>
+                    <ul class="sub-menu">
+                        <li id="menu-item-2277" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-1807 current_page_item menu-item-2277"><a href="http://milness.fidex.com.ua/">Home – Default</a></li>
+                        <li id="menu-item-2275" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2275"><a href="http://milness.fidex.com.ua/home-demo-2/">Home – Demo 2</a></li>
+                        <li id="menu-item-2274" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2274"><a href="http://milness.fidex.com.ua/home-demo-3/">Home – Demo 3</a></li>
+                        <li id="menu-item-2282" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2282"><a href="http://milness.fidex.com.ua/home-slider/">Home – Slider</a></li>
+                        <li id="menu-item-2281" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2281"><a href="http://milness.fidex.com.ua/home-hero-background/">Home – Hero Background</a></li>
+                        <li id="menu-item-2280" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2280"><a href="http://milness.fidex.com.ua/home-fixed-image-slider/">Home – Fixed Image Slider</a></li>
+                        <li id="menu-item-2279" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2279"><a href="http://milness.fidex.com.ua/home-slider-only-text/">Home – Slider Only Text</a></li>
+                        <li id="menu-item-2278" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2278"><a href="http://milness.fidex.com.ua/home-video-background/">Home – Video Background</a></li>
+                        <li id="menu-item-2283" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2283"><a href="http://milness.fidex.com.ua/home-canvas-1/">Home – Canvas 1</a></li>
+                        <li id="menu-item-2276" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2276"><a href="http://milness.fidex.com.ua/home-canvas-2/">Home – Canvas 2</a></li>
+                    </ul>
+                </li>
+                <li id="menu-item-1085" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1085">
+                    <a href="#">Pages</a>
+                    <ul class="sub-menu">
+                        <li id="menu-item-1081" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1081"><a href="http://milness.fidex.com.ua/blog/">Blog</a></li>
+                        <li id="menu-item-1191" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1191"><a href="/404">Error 404</a></li>
+                        <li id="menu-item-1188" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1188"><a href="http://milness.fidex.com.ua/page-contact/">Page – Contact</a></li>
+                        <li id="menu-item-1190" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1190"><a href="http://milness.fidex.com.ua/page-faq/">Page – FAQ</a></li>
+                        <li id="menu-item-1189" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1189"><a href="http://milness.fidex.com.ua/page-terms/">Page – TERMS</a></li>
+                    </ul>
+                </li>
+                <li id="menu-item-1084" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1084">
+                    <a href="http://milness.fidex.com.ua/shop/">Shop</a>
+                    <ul class="sub-menu">
+                        <li id="menu-item-1181" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1181"><a href="http://milness.fidex.com.ua/shop/">Shop Page</a></li>
+                        <li id="menu-item-1080" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1080"><a href="http://milness.fidex.com.ua/account/">Account</a></li>
+                        <li id="menu-item-1082" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1082"><a href="http://milness.fidex.com.ua/cart/">Cart</a></li>
+                        <li id="menu-item-1083" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1083"><a href="http://milness.fidex.com.ua/checkout/">Checkout</a></li>
+                    </ul>
+                </li>
+                <li id="menu-item-1176" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1176"><a href="#features">Features</a></li>
+                <li id="menu-item-1177" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1177"><a href="#services">Services</a></li>
+                <li id="menu-item-1178" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1178"><a href="#price">Price</a></li>
+                <li id="menu-item-1180" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1180"><a href="#contact">Contact</a></li>
+            </ul>
+            <!-- Start WC Cart-->
+            <div class="br-header-cart">
+                <a class="cart-contents" href="http://milness.fidex.com.ua/cart/" title="View your shopping cart"></a>
+            </div>
+            <!-- End WC Cart-->
+        </nav>
+        <!-- Toggle menu -->
+        <a href="#" class="toggle-mnu">
+            <span></span>
+        </a>
+        <!-- Mobile menu -->
+        <div id="mobile-menu">
+            <div class="inner-wrap">
+                <nav>
+                    <ul id="menu-menu-2" class="nav_menu">
+                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-1807 current_page_item current-menu-ancestor current-menu-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-2287">
+                            <a href="http://milness.fidex.com.ua/">Home</a>
+                            <ul class="sub-menu">
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-1807 current_page_item menu-item-2277"><a href="http://milness.fidex.com.ua/">Home – Default</a></li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2275"><a href="http://milness.fidex.com.ua/home-demo-2/">Home – Demo 2</a></li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2274"><a href="http://milness.fidex.com.ua/home-demo-3/">Home – Demo 3</a></li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2282"><a href="http://milness.fidex.com.ua/home-slider/">Home – Slider</a></li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2281"><a href="http://milness.fidex.com.ua/home-hero-background/">Home – Hero Background</a></li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2280"><a href="http://milness.fidex.com.ua/home-fixed-image-slider/">Home – Fixed Image Slider</a></li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2279"><a href="http://milness.fidex.com.ua/home-slider-only-text/">Home – Slider Only Text</a></li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2278"><a href="http://milness.fidex.com.ua/home-video-background/">Home – Video Background</a></li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2283"><a href="http://milness.fidex.com.ua/home-canvas-1/">Home – Canvas 1</a></li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2276"><a href="http://milness.fidex.com.ua/home-canvas-2/">Home – Canvas 2</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1085">
+                            <a href="#">Pages</a>
+                            <ul class="sub-menu">
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1081"><a href="http://milness.fidex.com.ua/blog/">Blog</a></li>
+                                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1191"><a href="/404">Error 404</a></li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1188"><a href="http://milness.fidex.com.ua/page-contact/">Page – Contact</a></li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1190"><a href="http://milness.fidex.com.ua/page-faq/">Page – FAQ</a></li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1189"><a href="http://milness.fidex.com.ua/page-terms/">Page – TERMS</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1084">
+                            <a href="http://milness.fidex.com.ua/shop/">Shop</a>
+                            <ul class="sub-menu">
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1181"><a href="http://milness.fidex.com.ua/shop/">Shop Page</a></li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1080"><a href="http://milness.fidex.com.ua/account/">Account</a></li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1082"><a href="http://milness.fidex.com.ua/cart/">Cart</a></li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1083"><a href="http://milness.fidex.com.ua/checkout/">Checkout</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1176"><a href="#features">Features</a></li>
+                        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1177"><a href="#services">Services</a></li>
+                        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1178"><a href="#price">Price</a></li>
+                        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1180"><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <!-- end mobile menu -->
+    </div>
+</header>
+
+{% block content %}
+
+{% endblock %}
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="heading-title">
+                    <h2>
+                        <span>
+                        Milness                                                   </span>
+                    </h2>
+                </div>
+                <div class="social-inons">
+                    <ul>
+                        <li class="icon-circle" ><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                        <li class="icon-circle" ><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                        <li class="icon-circle" ><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                        <li class="icon-circle" ><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                        <li class="icon-circle" ><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="bottom-footer white-color">
+                <div class="col-md-6">
+                    <div class="footer-copyright">
+                        <p>Milness © 2018 All Rights Reserved. Developed by - BrainiakThemes</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <!-- Bottom nav -->
+                    <div class="footer-menu">
+                        <ul id="menu-footer-menu" class="al-footer-menu">
+                            <li id="menu-item-1281" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1281"><a href="#">Terms</a></li>
+                            <li id="menu-item-1282" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1282"><a href="#">Privacy Policy</a></li>
+                            <li id="menu-item-1283" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1283"><a href="#">Licenses</a></li>
+                        </ul>
+                    </div>
+                    <!-- End Bottom nav -->
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<div class="top icon-down toTopFromBottom">
+    <a href="#top-scroll" class="smooth-scroll"><i class="pe-7s-angle-up"></i></a>
+</div>
+
+<!-- style-customizer start-->
+<div class="style-customizer closed">
+    <div class="buy-button">
+        <a href="http://milness.fidex.com.ua/" class="customizer-logo logo">
+            Milness                    </a>
+        <a href="#" class="opener"><i aria-hidden="true" class="fa fa-cog fa-spin fa-fw"></i></a>
+        <a href="http://themeforest.com/cart/add_items?ref=Brainiak&amp;item_ids=19519022" target="blanc" class="button button-border btn-buy">Buy now!</a>
+    </div>
+    <div class="clearfix content-chooser">
+        <h3>Color Schemes</h3>
+        <p>Which theme color you want to use? Select from here.</p>
+        <ul class="styleChange clearfix">
+            <li title="color-1" data-style="http://milness.fidex.com.ua/wp-content/themes/milness/assets/css/main1.css" class="color-11 selected"></li>
+            <li title="color-2" data-style="http://milness.fidex.com.ua/wp-content/themes/milness/assets/css/main2.css" class="color-2"></li>
+            <li title="color-3" data-style="http://milness.fidex.com.ua/wp-content/themes/milness/assets/css/main3.css" class="color-3"></li>
+            <li title="color-4" data-style="http://milness.fidex.com.ua/wp-content/themes/milness/assets/css/main4.css" class="color-4"></li>
+            <li title="color-5" data-style="http://milness.fidex.com.ua/wp-content/themes/milness/assets/css/main5.css" class="color-5"></li>
+            <li title="color-6" data-style="http://milness.fidex.com.ua/wp-content/themes/milness/assets/css/main6.css" class="color-6"></li>
+            <li title="color-7" data-style="http://milness.fidex.com.ua/wp-content/themes/milness/assets/css/main7.css" class="color-7"></li>
+            <li title="color-8" data-style="http://milness.fidex.com.ua/wp-content/themes/milness/assets/css/main8.css" class="color-8"></li>
+            <li title="color-9" data-style="http://milness.fidex.com.ua/wp-content/themes/milness/assets/css/main9.css" class="color-9"></li>
+            <li title="color-10" data-style="http://milness.fidex.com.ua/wp-content/themes/milness/assets/css/main10.css" class="color-10"></li>
+            <li title="color-11" data-style="http://milness.fidex.com.ua/wp-content/themes/milness/assets/css/main11.css" class="color-1"></li>
+            <li title="color-12" data-style="http://milness.fidex.com.ua/wp-content/themes/milness/assets/css/main12.css" class="color-12"></li>
+        </ul>
+        <ul class="resetAll">
+            <li><a href="#" class="button button-border button-reset">Reset All</a></li>
+        </ul>
+    </div>
+</div>
+<script>
+    /* style-customizer */
+    jQuery(document).ready(function($) {
+
+        /*************************
+         Left sidebar
+         *************************/
+        style_switcher = $('.style-customizer'),
+            panelWidth = style_switcher.outerWidth(true);
+        $('.style-customizer .opener').on("click", function(){
+            var $this = $(this);
+            if ($(".style-customizer.closed").length>0) {
+                style_switcher.animate({"left" : "0px"});
+                $(".style-customizer.closed").removeClass("closed");
+                $(".style-customizer").addClass("opened");
+            } else {
+                $(".style-customizer.opened").removeClass("opened");
+                $(".style-customizer").addClass("closed");
+                style_switcher.animate({"left" : '-' + panelWidth});
+            }
+            return false;
+        });
+
+        /*************************
+         style change
+         *************************/
+        var link = $('link[id="milness-main-css"]'),
+            link_no_cookie = $('link[data-style="styles-no-cookie"]');
+
+        /****************************************
+         Resume from last selected style
+         ****************************************/
+        var tp_stylesheet = $.cookie('tp_stylesheet');
+
+        $(".style-customizer .selected").removeClass("selected");
+        if (!($.cookie('tp_stylesheet'))) {
+            $.cookie('tp_stylesheet', 'http://milness.fidex.com.ua/wp-content/themes/milness/assets/css/main1.css', 30);
+            tp_stylesheet = $.cookie('tp_stylesheet');
+            $('.style-customizer .styleChange li[data-style="'+tp_stylesheet+'"]').addClass("selected");
+        } else {
+            if (link.length>0) {
+                link.attr('href','' + tp_stylesheet + '');
+                $('.style-customizer .styleChange li[data-style="'+tp_stylesheet+'"]').addClass("selected");
+            };
+        };
+
+        /*************************
+         Color Changer
+         *************************/
+        $('.style-customizer .styleChange li').on('click',function(){
+            if (link.length>0) {
+                var $this = $(this),
+                    tp_stylesheet = $this.data('style');
+                $(".style-customizer .styleChange .selected").removeClass("selected");
+                $this.addClass("selected");
+                link.attr('href', '' + tp_stylesheet + '');
+                $.cookie('tp_stylesheet', tp_stylesheet, 30);
+            } else {
+                var $this = $(this),
+                    tp_stylesheet_no_cookie = $this.data('style');
+                $(".style-customizer .styleChange .selected").removeClass("selected");
+                $this.addClass("selected");
+                link_no_cookie.attr('href', '' + tp_stylesheet_no_cookie + '');
+
+            };
+        });
+
+        /**************************************
+         Reset all customize styles
+         **************************************/
+        $('.style-customizer .resetAll li a.button-reset').on('click',function() {
+            $(".owl-carousel .container").css("marginLeft", "auto");
+            $('.style-customizer .patternChange li.selected').removeClass("selected");
+
+            //Logo change
+            $.cookie('tp_stylesheet', 'http://milness.fidex.com.ua/wp-content/themes/milness/assets/css/main1.css', 30);
+            var tp_stylesheet = 'http://milness.fidex.com.ua/wp-content/themes/milness/assets/css/main1.css';
+            $('.style-customizer .styleChange li.selected').removeClass("selected");
+            $('.style-customizer .styleChange li[data-style="'+tp_stylesheet+'"]').addClass("selected");
+            link.attr('href', '' + tp_stylesheet + '');
+            $(window).trigger('resize');
+        });
+
+    });
+
+
+</script>
+<!-- style-customizer end-->
+<script>
+    jQuery(document).ready(function($){
+        $('.quantity').on('click', '.plus', function(e) {
+            $input = $(this).prev('input.qty');
+            var val = parseInt($input.val());
+            var step = $input.attr('step');
+            step = 'undefined' !== typeof(step) ? parseInt(step) : 1;
+            $input.val( val + step ).change();
+        });
+        $('.quantity').on('click', '.minus',
+            function(e) {
+                $input = $(this).next('input.qty');
+                var val = parseInt($input.val());
+                var step = $input.attr('step');
+                step = 'undefined' !== typeof(step) ? parseInt(step) : 1;
+                if (val > 0) {
+                    $input.val( val - step ).change();
+                }
+            });
+    });
+</script>
+<link rel='stylesheet' property='stylesheet' id='rs-icon-set-fa-icon-css'  href='http://milness.fidex.com.ua/wp-content/plugins/rev-slider/public/assets/fonts/font-awesome/css/font-awesome.css' type='text/css' media='all' />
+<script type="text/javascript">
+    function revslider_showDoubleJqueryError(sliderID) {
+        var errorMessage = "Revolution Slider Error: You have some jquery.js library include that comes after the revolution files js include.";
+        errorMessage += "<br> This includes make eliminates the revolution slider libraries, and make it not work.";
+        errorMessage += "<br><br> To fix it you can:<br>&nbsp;&nbsp;&nbsp; 1. In the Slider Settings -> Troubleshooting set option:  <strong><b>Put JS Includes To Body</b></strong> option to true.";
+        errorMessage += "<br>&nbsp;&nbsp;&nbsp; 2. Find the double jquery.js include and remove it.";
+        errorMessage = "<span style='font-size:16px;color:#BC0C06;'>" + errorMessage + "</span>";
+        jQuery(sliderID).show().html(errorMessage);
+    }
+</script>
+<link rel='stylesheet' id='stroke-css'  href='http://milness.fidex.com.ua/wp-content/plugins/milness-helper/includes/vc_extend/vc_icons/fonts/stroke/dist/pe-icon-7-stroke.css?ver=4.9.3' type='text/css' media='all' />
+<link rel='stylesheet' id='font-awesome-css'  href='http://milness.fidex.com.ua/wp-content/plugins/visual-composer/assets/lib/bower/font-awesome/css/font-awesome.min.css?ver=5.4.5' type='text/css' media='all' />
+<script type='text/javascript'>
+    /* <![CDATA[ */
+    var wpcf7 = {"apiSettings":{"root":"http:\/\/milness.fidex.com.ua\/wp-json\/contact-form-7\/v1","namespace":"contact-form-7\/v1"},"recaptcha":{"messages":{"empty":"Please verify that you are not a robot."}}};
+    /* ]]> */
+</script>
+<script type='text/javascript' src='http://milness.fidex.com.ua/wp-content/plugins/contact-form-7/includes/js/scripts.js?ver=4.9.2'></script>
+<script type='text/javascript' src='http://milness.fidex.com.ua/wp-content/plugins/woocommerce/assets/js/jquery-blockui/jquery.blockUI.min.js?ver=2.70'></script>
+<script type='text/javascript' src='http://milness.fidex.com.ua/wp-content/plugins/woocommerce/assets/js/js-cookie/js.cookie.min.js?ver=2.1.4'></script>
+<script type='text/javascript'>
+    /* <![CDATA[ */
+    var woocommerce_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"http:\/\/milness.fidex.com.ua\/?wc-ajax=%%endpoint%%"};
+    /* ]]> */
+</script>
+<script type='text/javascript' src='http://milness.fidex.com.ua/wp-content/plugins/woocommerce/assets/js/frontend/woocommerce.min.js?ver=3.2.6'></script>
+<script type='text/javascript'>
+    /* <![CDATA[ */
+    var wc_cart_fragments_params = {"ajax_url":"\/wp-admin\/admin-ajax.php","wc_ajax_url":"http:\/\/milness.fidex.com.ua\/?wc-ajax=%%endpoint%%","fragment_name":"wc_fragments_8729c9cde7be93f676595d338d6b6e43"};
+    /* ]]> */
+</script>
+<script type='text/javascript' src='http://milness.fidex.com.ua/wp-content/plugins/woocommerce/assets/js/frontend/cart-fragments.min.js?ver=3.2.6'></script>
+<script type='text/javascript' src='http://milness.fidex.com.ua/wp-content/themes/milness/assets/libs/superfish-master/js/superfish.min.js?ver=20151215'></script>
+<script type='text/javascript' src='http://milness.fidex.com.ua/wp-content/themes/milness/assets/libs/isotope/isotope.pkgd.min.js?ver=20151215'></script>
+<script type='text/javascript' src='http://milness.fidex.com.ua/wp-content/themes/milness/assets/libs/imagesloaded/imagesloaded.pkgd.min.js?ver=20151215'></script>
+<script type='text/javascript' src='http://milness.fidex.com.ua/wp-content/themes/milness/assets/libs/slick/slick.min.js?ver=20151215'></script>
+<script type='text/javascript' src='http://milness.fidex.com.ua/wp-content/themes/milness/assets/libs/sticky/jquery.sticky-min.js?ver=20151215'></script>
+<script type='text/javascript' src='http://milness.fidex.com.ua/wp-content/themes/milness/assets/libs/waypoints/waypoints.min.js?ver=20151215'></script>
+<script type='text/javascript' src='http://milness.fidex.com.ua/wp-content/themes/milness/assets/libs/animate/animate-css.js?ver=20151215'></script>
+<script type='text/javascript' src='http://milness.fidex.com.ua/wp-content/themes/milness/assets/libs/parallax/parallax.min.js?ver=20151215'></script>
+<script type='text/javascript' src='http://milness.fidex.com.ua/wp-content/themes/milness/assets/libs/magnific-popup/jquery.magnific-popup.min.js?ver=20151215'></script>
+<script type='text/javascript' src='http://milness.fidex.com.ua/wp-content/themes/milness/assets/libs/jquery-ui-1.12.0.custom/jquery-ui.min.js?ver=20151215'></script>
+<script type='text/javascript' src='http://milness.fidex.com.ua/wp-content/themes/milness/assets/libs/googlemaps/gmap3.min.js?ver=20151215'></script>
+<script type='text/javascript' src='http://milness.fidex.com.ua/wp-content/themes/milness/assets/libs/jquery.matchHeigh/jquery.matchHeight-min.js?ver=20151215'></script>
+<script type='text/javascript' src='http://milness.fidex.com.ua/wp-content/themes/milness/assets/libs/canvas-bg/particles.min.js?ver=20151215'></script>
+<script type='text/javascript' src='http://milness.fidex.com.ua/wp-content/themes/milness/assets/libs/canvas-bg/demo-2.js?ver=20151215'></script>
+<script type='text/javascript' src='http://milness.fidex.com.ua/wp-content/themes/milness/assets/libs/style-customizer/style-customizer.js?ver=20151215'></script>
+<script type='text/javascript' src='http://milness.fidex.com.ua/wp-content/themes/milness/assets/scripts/common.js?ver=20151215'></script>
+<script type='text/javascript' src='http://milness.fidex.com.ua/wp-content/themes/milness/js/navigation.js?ver=20151215'></script>
+<script type='text/javascript' src='http://milness.fidex.com.ua/wp-content/themes/milness/js/skip-link-focus-fix.js?ver=20151215'></script>
+<script type='text/javascript' src='http://milness.fidex.com.ua/wp-includes/js/wp-embed.min.js?ver=4.9.3'></script>
+<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js?ver=3.0.22'></script>
+<script type='text/javascript'>
+    WebFont.load({google:{families:['Roboto Slab:700', 'Pacifico:', 'Roboto:700']}});
+</script>
+<script type='text/javascript' src='http://milness.fidex.com.ua/wp-content/plugins/visual-composer/assets/js/dist/js_composer_front.min.js?ver=5.4.5'></script>
+<script type='text/javascript' src='http://milness.fidex.com.ua/wp-content/plugins/visual-composer/assets/lib/bower/skrollr/dist/skrollr.min.js?ver=5.4.5'></script>
+
+
+{#{% block javascripts %}#}
+
+{#{% javascripts#}
+{#'@ThemesBundle/Resources/public/adminlte/plugins/jQuery/jquery-2.2.3.min.js'#}
+
+{#%}#}
+{#<script src="{{ asset_url }}"></script>#}
+{#{% endjavascripts %}#}
+
+{#<script type="text/javascript">#}
+
+
+{#</script>#}
+
+{#{% endblock %}#}
+
+
+</body>
+</html>
+{% endspaceless %}
