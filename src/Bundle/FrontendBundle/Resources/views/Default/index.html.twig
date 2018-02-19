@@ -17,22 +17,64 @@
             <div class="wpb_column vc_column_container vc_col-sm-12">
                 <div class="vc_column-inner ">
                     <div class="wpb_wrapper">
-                        <link href="http://fonts.googleapis.com/css?family=Lato:900%7CRoboto+Slab:300%2C700%2C900%2C400%7CRoboto:300%2C400" rel="stylesheet" property="stylesheet" type="text/css" media="all">
+
+                        {#<link href="http://fonts.googleapis.com/css?family=Lato:900%7CRoboto+Slab:300%2C700%2C900%2C400%7CRoboto:300%2C400" rel="stylesheet" property="stylesheet" type="text/css" media="all">#}
+
                         <div id="rev_slider_25_1_wrapper" class="rev_slider_wrapper fullscreen-container" data-source="gallery" style="background:transparent;padding:0px;">
-                            <!-- START REVOLUTION SLIDER 5.4.6.3.1 fullscreen mode -->
+
+                            {#START REVOLUTION SLIDER 5.4.6.3.1 fullscreen mode#}
 
                             <div id="rev_slider_25_1" class="rev_slider fullscreenbanner" style="display:none;" data-version="5.4.6.3.1">
                                 <ul>
-                                    <!-- SLIDE  -->
-                                    <li data-index="rs-61" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="1000"  data-thumb="http://milness.fidex.com.ua/wp-content/uploads/2018/01/bg9-100x50.jpg"  data-rotate="0"  data-saveperformance="off"  data-title="Solution" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
-                                        <!-- MAIN IMAGE -->
-                                        <img src="http://milness.fidex.com.ua/wp-content/plugins/rev-slider/admin/assets/images/dummy.png"  alt="" title="bg9"  width="1920" height="1350" data-lazyload="http://milness.fidex.com.ua/wp-content/uploads/2018/01/bg9.jpg" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
-                                        <!-- LAYERS -->
-                                        <!-- LAYER NR. 1 -->
-                                        <div class="tp-caption   tp-resizeme"
+                                    {#SLIDE#}
+                                    <li
+                                        data-index="rs-61"
+                                        data-transition="fade"
+                                        data-slotamount="default"
+                                        data-hideafterloop="0"
+                                        data-hideslideonmobile="off"
+                                        data-easein="default"
+                                        data-easeout="default"
+                                        data-masterspeed="1000"
+                                        data-thumb="{{ asset('bundles/themes/milness/images/rev-slider/bg9-100x50.jpg') }}"
+                                        data-rotate="0"
+                                        data-saveperformance="off"
+                                        data-title="Solution"
+                                        data-param1=""
+                                        data-param2=""
+                                        data-param3=""
+                                        data-param4=""
+                                        data-param5=""
+                                        data-param6=""
+                                        data-param7=""
+                                        data-param8=""
+                                        data-param9=""
+                                        data-param10=""
+                                        data-description="">
+
+                                        {#MAIN IMAGE#}
+                                        <img
+                                            src="{{ asset('bundles/themes/milness/images/rev-slider/dummy.png') }}"
+                                            alt=""
+                                            title="bg9"
+                                            width="1920"
+                                            height="1350"
+                                            data-lazyload="{{ asset('bundles/themes/milness/images/rev-slider/bg9.jpg') }}"
+                                            data-bgposition="center center"
+                                            data-bgfit="cover"
+                                            data-bgrepeat="no-repeat"
+                                            class="rev-slidebg"
+                                            data-no-retina>
+
+
+                                        {#LAYERS#}
+                                        {#LAYER NR. 1#}
+                                        <div class="tp-caption tp-resizeme"
                                              id="slide-61-layer-1"
-                                             data-x="['left','left','left','left']" data-hoffset="['45','45','45','20']"
-                                             data-y="['top','top','top','top']" data-voffset="['30','30','30','30']"
+                                             data-x="['left','left','left','left']"
+                                             data-hoffset="['45','45','45','20']"
+                                             data-y="['top','top','top','top']"
+                                             data-voffset="['30','30','30','30']"
                                              data-fontsize="['150','150','100','70']"
                                              data-lineheight="['150','150','100','70']"
                                              data-width="none"
@@ -47,12 +89,16 @@
                                              data-paddingright="[0,0,0,0]"
                                              data-paddingbottom="[0,0,0,0]"
                                              data-paddingleft="[0,0,0,0]"
-                                             style="z-index: 5; white-space: nowrap; font-size: 150px; line-height: 150px; font-weight: 900; color: rgba(0,0,0,0.05); letter-spacing: px;font-family:Lato;">INNOVATIVE </div>
-                                        <!-- LAYER NR. 2 -->
-                                        <div class="tp-caption   tp-resizeme"
+                                             style="z-index: 5; white-space: nowrap; font-size: 150px; line-height: 150px; font-weight: 900; color: rgba(0,0,0,0.05); letter-spacing: px;font-family:Lato;">INNOVATIVE
+                                        </div>
+
+                                        {#LAYER NR. 2#}
+                                        <div class="tp-caption tp-resizeme"
                                              id="slide-61-layer-2"
-                                             data-x="['left','left','left','left']" data-hoffset="['45','45','45','20']"
-                                             data-y="['top','top','top','top']" data-voffset="['169','169','132','101']"
+                                             data-x="['left','left','left','left']"
+                                             data-hoffset="['45','45','45','20']"
+                                             data-y="['top','top','top','top']"
+                                             data-voffset="['169','169','132','101']"
                                              data-fontsize="['150','150','100','70']"
                                              data-lineheight="['150','150','100','70']"
                                              data-width="none"
@@ -67,12 +113,16 @@
                                              data-paddingright="[0,0,0,0]"
                                              data-paddingbottom="[0,0,0,0]"
                                              data-paddingleft="[0,0,0,0]"
-                                             style="z-index: 6; white-space: nowrap; font-size: 150px; line-height: 150px; font-weight: 900; color: rgba(0,0,0,0.05); letter-spacing: px;font-family:Lato;">RESPONSIVE </div>
-                                        <!-- LAYER NR. 3 -->
-                                        <div class="tp-caption   tp-resizeme"
+                                             style="z-index: 6; white-space: nowrap; font-size: 150px; line-height: 150px; font-weight: 900; color: rgba(0,0,0,0.05); letter-spacing: px;font-family:Lato;">RESPONSIVE
+                                        </div>
+
+                                        {#LAYER NR. 3#}
+                                        <div class="tp-caption tp-resizeme"
                                              id="slide-61-layer-3"
-                                             data-x="['left','left','left','left']" data-hoffset="['45','45','45','20']"
-                                             data-y="['top','top','top','top']" data-voffset="['308','308','235','172']"
+                                             data-x="['left','left','left','left']"
+                                             data-hoffset="['45','45','45','20']"
+                                             data-y="['top','top','top','top']"
+                                             data-voffset="['308','308','235','172']"
                                              data-fontsize="['150','150','100','70']"
                                              data-lineheight="['150','150','100','70']"
                                              data-width="none"
@@ -87,12 +137,16 @@
                                              data-paddingright="[0,0,0,0]"
                                              data-paddingbottom="[0,0,0,0]"
                                              data-paddingleft="[0,0,0,0]"
-                                             style="z-index: 7; white-space: nowrap; font-size: 150px; line-height: 150px; font-weight: 900; color: rgba(0,0,0,0.05); letter-spacing: ;font-family:Lato;">VERSATILE </div>
-                                        <!-- LAYER NR. 4 -->
-                                        <div class="tp-caption   tp-resizeme"
+                                             style="z-index: 7; white-space: nowrap; font-size: 150px; line-height: 150px; font-weight: 900; color: rgba(0,0,0,0.05); letter-spacing: ;font-family:Lato;">VERSATILE
+                                        </div>
+
+                                        {#LAYER NR. 4#}
+                                        <div class="tp-caption tp-resizeme"
                                              id="slide-61-layer-7"
-                                             data-x="['left','left','left','left']" data-hoffset="['700','580','420','230']"
-                                             data-y="['middle','middle','middle','middle']" data-voffset="['-131','-132','-133','-159']"
+                                             data-x="['left','left','left','left']"
+                                             data-hoffset="['700','580','420','230']"
+                                             data-y="['middle','middle','middle','middle']"
+                                             data-voffset="['-131','-132','-133','-159']"
                                              data-fontsize="['45','40','35','25']"
                                              data-lineheight="['50','40','40','30']"
                                              data-color="['rgba(255,255,255,1)','rgb(59,165,227)','rgba(255,255,255,1)','rgba(255,255,255,1)']"
@@ -107,12 +161,16 @@
                                              data-paddingright="[0,0,0,0]"
                                              data-paddingbottom="[0,0,0,0]"
                                              data-paddingleft="[0,0,0,0]"
-                                             style="z-index: 8; white-space: nowrap; font-size: 45px; line-height: 50px; font-weight: 300; color: rgba(255,255,255,1); letter-spacing: px;font-family:Roboto Slab;">Awesome Start </div>
-                                        <!-- LAYER NR. 5 -->
-                                        <div class="tp-caption   tp-resizeme"
+                                             style="z-index: 8; white-space: nowrap; font-size: 45px; line-height: 50px; font-weight: 300; color: rgba(255,255,255,1); letter-spacing: px;font-family:Roboto Slab;">Awesome Start
+                                        </div>
+
+                                        {#LAYER NR. 5#}
+                                        <div class="tp-caption tp-resizeme"
                                              id="slide-61-layer-8"
-                                             data-x="['left','left','left','left']" data-hoffset="['700','580','420','230']"
-                                             data-y="['middle','middle','middle','middle']" data-voffset="['29','1','1','-4']"
+                                             data-x="['left','left','left','left']"
+                                             data-hoffset="['700','580','420','230']"
+                                             data-y="['middle','middle','middle','middle']"
+                                             data-voffset="['29','1','1','-4']"
                                              data-fontsize="['17','15','15','15']"
                                              data-fontweight="['300','300','400','300']"
                                              data-width="['320','320','320','222']"
@@ -126,12 +184,16 @@
                                              data-paddingright="[0,0,0,0]"
                                              data-paddingbottom="[0,0,0,0]"
                                              data-paddingleft="[0,0,0,0]"
-                                             style="z-index: 9; min-width: 320px; max-width: 320px; white-space: normal; font-size: 17px; line-height: 24px; font-weight: 300; color: rgba(255,255,255,1); letter-spacing: px;font-family:Roboto;">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi.. </div>
-                                        <!-- LAYER NR. 6 -->
-                                        <div class="tp-caption SleekLanding-ButtonBG tp-shape tp-shapewrapper  tp-resizeme"
+                                             style="z-index: 9; min-width: 320px; max-width: 320px; white-space: normal; font-size: 17px; line-height: 24px; font-weight: 300; color: rgba(255,255,255,1); letter-spacing: px;font-family:Roboto;">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi..
+                                        </div>
+
+                                        {#LAYER NR. 6#}
+                                        <div class="tp-caption SleekLanding-ButtonBG tp-shape tp-shapewrapper tp-resizeme"
                                              id="slide-61-layer-9"
-                                             data-x="['left','left','left','left']" data-hoffset="['706','580','420','226']"
-                                             data-y="['middle','middle','middle','middle']" data-voffset="['142','105','105','105']"
+                                             data-x="['left','left','left','left']"
+                                             data-hoffset="['706','580','420','226']"
+                                             data-y="['middle','middle','middle','middle']"
+                                             data-voffset="['142','105','105','105']"
                                              data-width="230"
                                              data-height="50"
                                              data-whitespace="nowrap"
@@ -144,11 +206,14 @@
                                              data-paddingbottom="[0,0,0,0]"
                                              data-paddingleft="[0,0,0,0]"
                                              style="z-index: 10;font-family:Arial;"> </div>
-                                        <!-- LAYER NR. 7 -->
-                                        <div class="tp-caption   tp-resizeme"
+
+                                        {#LAYER NR. 7#}
+                                        <div class="tp-caption tp-resizeme"
                                              id="slide-61-layer-15"
-                                             data-x="['right','right','right','right']" data-hoffset="['-100','-142','-149','23']"
-                                             data-y="['bottom','bottom','bottom','bottom']" data-voffset="['-304','-384','-376','-166']"
+                                             data-x="['right','right','right','right']"
+                                             data-hoffset="['-100','-142','-149','23']"
+                                             data-y="['bottom','bottom','bottom','bottom']"
+                                             data-voffset="['-304','-384','-376','-166']"
                                              data-width="none"
                                              data-height="none"
                                              data-whitespace="nowrap"
@@ -160,12 +225,24 @@
                                              data-paddingright="[0,0,0,0]"
                                              data-paddingbottom="[0,0,0,0]"
                                              data-paddingleft="[0,0,0,0]"
-                                             style="z-index: 11;"><img src="http://milness.fidex.com.ua/wp-content/plugins/rev-slider/admin/assets/images/dummy.png" alt="" data-ww="['760px','760px','760','380px']" data-hh="['1000px','1000px','1000','500px']" width="760" height="1000" data-lazyload="http://milness.fidex.com.ua/wp-content/uploads/revslider/sleeklandingpage/coffee_cup.png" data-no-retina> </div>
-                                        <!-- LAYER NR. 8 -->
-                                        <div class="tp-caption   tp-resizeme"
+                                             style="z-index: 11;">
+                                            <img
+                                                width="760"
+                                                height="1000"
+                                                alt="" data-ww="['760px','760px','760','380px']"
+                                                data-hh="['1000px','1000px','1000','500px']"
+                                                src="{{ asset('bundles/themes/milness/images/rev-slider/dummy.png') }}"
+                                                data-lazyload="{{ asset('bundles/themes/milness/images/rev-slider/coffee_cup.png') }}"
+                                                data-no-retina>
+                                        </div>
+
+                                        {#LAYER NR. 8#}
+                                        <div class="tp-caption tp-resizeme"
                                              id="slide-61-layer-14"
-                                             data-x="['right','right','right','right']" data-hoffset="['971','826','360','70']"
-                                             data-y="['bottom','bottom','bottom','bottom']" data-voffset="['345','227','763','621']"
+                                             data-x="['right','right','right','right']"
+                                             data-hoffset="['971','826','360','70']"
+                                             data-y="['bottom','bottom','bottom','bottom']"
+                                             data-voffset="['345','227','763','621']"
                                              data-width="none"
                                              data-height="none"
                                              data-whitespace="nowrap"
@@ -177,12 +254,25 @@
                                              data-paddingright="[0,0,0,0]"
                                              data-paddingbottom="[0,0,0,0]"
                                              data-paddingleft="[0,0,0,0]"
-                                             style="z-index: 12;"><img src="http://milness.fidex.com.ua/wp-content/plugins/rev-slider/admin/assets/images/dummy.png" alt="" data-ww="['600px','600px','600px','300px']" data-hh="['140px','140px','140px','70px']" width="600" height="140" data-lazyload="http://milness.fidex.com.ua/wp-content/uploads/revslider/sleeklandingpage/wood_pencil.png" data-no-retina> </div>
-                                        <!-- LAYER NR. 9 -->
-                                        <div class="tp-caption   tp-resizeme"
+                                             style="z-index: 12;">
+                                            <img
+                                                alt=""
+                                                width="600"
+                                                height="140"
+                                                data-ww="['600px','600px','600px','300px']"
+                                                data-hh="['140px','140px','140px','70px']"
+                                                src="{{ asset('bundles/themes/milness/images/rev-slider/dummy.png') }}"
+                                                data-lazyload="{{ asset('bundles/themes/milness/images/rev-slider/wood_pencil.png') }}"
+                                                data-no-retina>
+                                        </div>
+
+                                        {#LAYER NR. 9#}
+                                        <div class="tp-caption tp-resizeme"
                                              id="slide-61-layer-16"
-                                             data-x="['left','left','left','left']" data-hoffset="['-13','-50','13','24']"
-                                             data-y="['top','top','top','top']" data-voffset="['552','564','690','589']"
+                                             data-x="['left','left','left','left']"
+                                             data-hoffset="['-13','-50','13','24']"
+                                             data-y="['top','top','top','top']"
+                                             data-voffset="['552','564','690','589']"
                                              data-width="none"
                                              data-height="none"
                                              data-whitespace="nowrap"
@@ -194,12 +284,25 @@
                                              data-paddingright="[0,0,0,0]"
                                              data-paddingbottom="[0,0,0,0]"
                                              data-paddingleft="[0,0,0,0]"
-                                             style="z-index: 13;"><img src="http://milness.fidex.com.ua/wp-content/plugins/rev-slider/admin/assets/images/dummy.png" alt="" data-ww="['340px','340px','340px','200px']" data-hh="['180px','180px','180px','106px']" width="340" height="180" data-lazyload="http://milness.fidex.com.ua/wp-content/uploads/revslider/sleeklandingpage/eraser_pink.png" data-no-retina> </div>
-                                        <!-- LAYER NR. 10 -->
-                                        <div class="tp-caption SleekLanding-SmallTitle   tp-resizeme"
+                                             style="z-index: 13;">
+                                            <img
+                                                alt=""
+                                                width="340"
+                                                height="180"
+                                                data-ww="['340px','340px','340px','200px']"
+                                                data-hh="['180px','180px','180px','106px']"
+                                                src="{{ asset('bundles/themes/milness/images/rev-slider/dummy.png') }}"
+                                                data-lazyload="{{ asset('bundles/themes/milness/images/rev-slider/eraser_pink.png') }}"
+                                                data-no-retina>
+                                        </div>
+
+                                        {#LAYER NR. 10#}
+                                        <div class="tp-caption SleekLanding-SmallTitle tp-resizeme"
                                              id="slide-61-layer-10"
-                                             data-x="['left','left','left','left']" data-hoffset="['727','601','441','247']"
-                                             data-y="['middle','middle','middle','middle']" data-voffset="['143','106','106','106']"
+                                             data-x="['left','left','left','left']"
+                                             data-hoffset="['727','601','441','247']"
+                                             data-y="['middle','middle','middle','middle']"
+                                             data-voffset="['143','106','106','106']"
                                              data-fontweight="['700','700','900','900']"
                                              data-width="none"
                                              data-height="none"
@@ -212,12 +315,17 @@
                                              data-paddingright="[0,0,0,0]"
                                              data-paddingbottom="[0,0,0,0]"
                                              data-paddingleft="[0,0,0,0]"
-                                             style="z-index: 14; white-space: nowrap; font-weight: 700; letter-spacing: px;font-family:Roboto Slab;">GET OUR APP </div>
-                                        <!-- LAYER NR. 11 -->
-                                        <div class="tp-caption   tp-resizeme"
+                                             style="z-index: 14; white-space: nowrap; font-weight: 700; letter-spacing: px;font-family:Roboto Slab;">
+                                            GET OUR APP
+                                        </div>
+
+                                        {#LAYER NR. 11#}
+                                        <div class="tp-caption tp-resizeme"
                                              id="slide-61-layer-11"
-                                             data-x="['left','left','left','left']" data-hoffset="['859','733','573','379']"
-                                             data-y="['middle','middle','middle','middle']" data-voffset="['143','106','106','106']"
+                                             data-x="['left','left','left','left']"
+                                             data-hoffset="['859','733','573','379']"
+                                             data-y="['middle','middle','middle','middle']"
+                                             data-voffset="['143','106','106','106']"
                                              data-width="none"
                                              data-height="none"
                                              data-whitespace="nowrap"
@@ -229,12 +337,17 @@
                                              data-paddingright="[0,0,0,0]"
                                              data-paddingbottom="[0,0,0,0]"
                                              data-paddingleft="[0,0,0,0]"
-                                             style="z-index: 15; white-space: nowrap; font-size: 30px; line-height: 30px; font-weight: 400; color: rgba(0,0,0,0.25); letter-spacing: px;cursor:pointer;"><i class="fa-icon-apple"></i> </div>
-                                        <!-- LAYER NR. 12 -->
-                                        <div class="tp-caption   tp-resizeme"
+                                             style="z-index: 15; white-space: nowrap; font-size: 30px; line-height: 30px; font-weight: 400; color: rgba(0,0,0,0.25); letter-spacing: px;cursor:pointer;">
+                                            <i class="fa-icon-apple"></i>
+                                        </div>
+
+                                        {#LAYER NR. 12#}
+                                        <div class="tp-caption tp-resizeme"
                                              id="slide-61-layer-12"
-                                             data-x="['left','left','left','left']" data-hoffset="['894','768','608','414']"
-                                             data-y="['middle','middle','middle','middle']" data-voffset="['142','105','105','105']"
+                                             data-x="['left','left','left','left']"
+                                             data-hoffset="['894','768','608','414']"
+                                             data-y="['middle','middle','middle','middle']"
+                                             data-voffset="['142','105','105','105']"
                                              data-width="none"
                                              data-height="none"
                                              data-whitespace="nowrap"
@@ -246,12 +359,17 @@
                                              data-paddingright="[0,0,0,0]"
                                              data-paddingbottom="[0,0,0,0]"
                                              data-paddingleft="[0,0,0,0]"
-                                             style="z-index: 16; white-space: nowrap; font-size: 30px; line-height: 30px; font-weight: 400; color: rgba(0,0,0,0.25); letter-spacing: ;cursor:pointer;"><i class="fa-icon-android"></i> </div>
-                                        <!-- LAYER NR. 13 -->
-                                        <div class="tp-caption tp-shape tp-shapewrapper  tp-resizeme"
+                                             style="z-index: 16; white-space: nowrap; font-size: 30px; line-height: 30px; font-weight: 400; color: rgba(0,0,0,0.25); letter-spacing: ;cursor:pointer;">
+                                            <i class="fa-icon-android"></i>
+                                        </div>
+
+                                        {#LAYER NR. 13#}
+                                        <div class="tp-caption tp-shape tp-shapewrapper tp-resizeme"
                                              id="slide-61-layer-18"
-                                             data-x="['center','center','center','center']" data-hoffset="['-104','-104','-134','-164']"
-                                             data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']"
+                                             data-x="['center','center','center','center']"
+                                             data-hoffset="['-104','-104','-134','-164']"
+                                             data-y="['middle','middle','middle','middle']"
+                                             data-voffset="['0','0','0','0']"
                                              data-width="['219','219','207','207']"
                                              data-height="['471','471','367','367']"
                                              data-whitespace="nowrap"
@@ -263,12 +381,16 @@
                                              data-paddingright="[0,0,0,0]"
                                              data-paddingbottom="[0,0,0,0]"
                                              data-paddingleft="[0,0,0,0]"
-                                             style="z-index: 17;background-color:rgba(51,51,51,1);"> </div>
-                                        <!-- LAYER NR. 14 -->
-                                        <div class="tp-caption   tp-resizeme"
+                                             style="z-index: 17;background-color:rgba(51,51,51,1);">
+                                        </div>
+
+                                        {#LAYER NR. 14#}
+                                        <div class="tp-caption tp-resizeme"
                                              id="slide-61-layer-17"
-                                             data-x="['center','center','center','center']" data-hoffset="['-104','-104','-134','-164']"
-                                             data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']"
+                                             data-x="['center','center','center','center']"
+                                             data-hoffset="['-104','-104','-134','-164']"
+                                             data-y="['middle','middle','middle','middle']"
+                                             data-voffset="['0','0','0','0']"
                                              data-width="none"
                                              data-height="none"
                                              data-whitespace="nowrap"
@@ -280,12 +402,25 @@
                                              data-paddingright="[0,0,0,0]"
                                              data-paddingbottom="[0,0,0,0]"
                                              data-paddingleft="[0,0,0,0]"
-                                             style="z-index: 18;"><img src="http://milness.fidex.com.ua/wp-content/plugins/rev-slider/admin/assets/images/dummy.png" alt="" data-ww="['219px','219px','219px','219px']" data-hh="['471px','471px','471px','471px']" width="219" height="474" data-lazyload="http://milness.fidex.com.ua/wp-content/uploads/2017/12/screen3.png" data-no-retina> </div>
-                                        <!-- LAYER NR. 15 -->
-                                        <div class="tp-caption   tp-resizeme"
+                                             style="z-index: 18;">
+                                            <img
+                                                alt=""
+                                                width="219"
+                                                height="474"
+                                                data-ww="['219px','219px','219px','219px']"
+                                                data-hh="['471px','471px','471px','471px']"
+                                                src="{{ asset('bundles/themes/milness/images/rev-slider/dummy.png') }}"
+                                                data-lazyload="{{ asset('bundles/themes/milness/images/rev-slider/screen3.png') }}"
+                                                data-no-retina>
+                                        </div>
+
+                                        {#LAYER NR. 15#}
+                                        <div class="tp-caption tp-resizeme"
                                              id="slide-61-layer-20"
-                                             data-x="['left','left','left','left']" data-hoffset="['701','580','420','230']"
-                                             data-y="['middle','middle','middle','middle']" data-voffset="['-82','-84','-89','-122']"
+                                             data-x="['left','left','left','left']"
+                                             data-hoffset="['701','580','420','230']"
+                                             data-y="['middle','middle','middle','middle']"
+                                             data-voffset="['-82','-84','-89','-122']"
                                              data-fontsize="['45','40','35','25']"
                                              data-lineheight="['50','40','40','30']"
                                              data-color="['rgb(38,161,224)','rgba(255,255,255,1)','rgb(59,165,227)','rgb(59,165,227)']"
@@ -300,18 +435,56 @@
                                              data-paddingright="[0,0,0,0]"
                                              data-paddingbottom="[0,0,0,0]"
                                              data-paddingleft="[0,0,0,0]"
-                                             style="z-index: 19; white-space: nowrap; font-size: 45px; line-height: 50px; font-weight: 400; color: #26a1e0; letter-spacing: px;font-family:Roboto Slab;">For Your Business. </div>
+                                             style="z-index: 19; white-space: nowrap; font-size: 45px; line-height: 50px; font-weight: 400; color: #26a1e0; letter-spacing: px;font-family:Roboto Slab;">For Your Business.
+                                        </div>
                                     </li>
-                                    <!-- SLIDE  -->
-                                    <li data-index="rs-62" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="1000"  data-thumb="http://milness.fidex.com.ua/wp-content/uploads/2018/01/bg11-100x50.jpg"  data-rotate="0"  data-saveperformance="off"  data-title="Diversity" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
-                                        <!-- MAIN IMAGE -->
-                                        <img src="http://milness.fidex.com.ua/wp-content/plugins/rev-slider/admin/assets/images/dummy.png"  alt="" title="bg11"  width="1920" height="1350" data-lazyload="http://milness.fidex.com.ua/wp-content/uploads/2018/01/bg11.jpg" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
-                                        <!-- LAYERS -->
-                                        <!-- LAYER NR. 16 -->
-                                        <div class="tp-caption   tp-resizeme"
+
+                                    {#SLIDE#}
+                                    <li data-index="rs-62"
+                                        data-transition="fade"
+                                        data-slotamount="default"
+                                        data-hideafterloop="0"
+                                        data-hideslideonmobile="off"
+                                        data-easein="default"
+                                        data-easeout="default"
+                                        data-masterspeed="1000"
+                                        data-thumb="{{ asset('bundles/themes/milness/images/rev-slider/bg11-100x50.jpg') }}"
+                                        data-rotate="0"
+                                        data-saveperformance="off"
+                                        data-title="Diversity"
+                                        data-param1=""
+                                        data-param2=""
+                                        data-param3=""
+                                        data-param4=""
+                                        data-param5=""
+                                        data-param6=""
+                                        data-param7=""
+                                        data-param8=""
+                                        data-param9=""
+                                        data-param10="" data-description="">
+
+                                        {#MAIN IMAGE#}
+                                        <img
+                                            alt=""
+                                            title="bg11"
+                                            width="1920"
+                                            height="1350"
+                                            data-bgposition="center center"
+                                            data-bgfit="cover"
+                                            data-bgrepeat="no-repeat"
+                                            class="rev-slidebg"
+                                            data-lazyload="{{ asset('bundles/themes/milness/images/rev-slider/bg11.jpg') }}"
+                                            src="{{ asset('bundles/themes/milness/images/rev-slider/dummy.png') }}"
+                                            data-no-retina>
+
+                                        {#LAYERS#}
+                                        {#LAYER NR. 16#}
+                                        <div class="tp-caption tp-resizeme"
                                              id="slide-62-layer-1"
-                                             data-x="['left','left','left','left']" data-hoffset="['45','45','45','20']"
-                                             data-y="['top','top','top','top']" data-voffset="['30','30','30','30']"
+                                             data-x="['left','left','left','left']"
+                                             data-hoffset="['45','45','45','20']"
+                                             data-y="['top','top','top','top']"
+                                             data-voffset="['30','30','30','30']"
                                              data-fontsize="['150','150','100','70']"
                                              data-lineheight="['150','150','100','70']"
                                              data-width="none"
@@ -326,12 +499,16 @@
                                              data-paddingright="[0,0,0,0]"
                                              data-paddingbottom="[0,0,0,0]"
                                              data-paddingleft="[0,0,0,0]"
-                                             style="z-index: 5; white-space: nowrap; font-size: 150px; line-height: 150px; font-weight: 900; color: rgba(0,0,0,0.05); letter-spacing: ;font-family:Lato;">TONS OF </div>
-                                        <!-- LAYER NR. 17 -->
-                                        <div class="tp-caption   tp-resizeme"
+                                             style="z-index: 5; white-space: nowrap; font-size: 150px; line-height: 150px; font-weight: 900; color: rgba(0,0,0,0.05); letter-spacing: ;font-family:Lato;">TONS OF
+                                        </div>
+
+                                        {#LAYER NR. 17#}
+                                        <div class="tp-caption tp-resizeme"
                                              id="slide-62-layer-2"
-                                             data-x="['left','left','left','left']" data-hoffset="['45','45','45','20']"
-                                             data-y="['top','top','top','top']" data-voffset="['169','169','132','101']"
+                                             data-x="['left','left','left','left']"
+                                             data-hoffset="['45','45','45','20']"
+                                             data-y="['top','top','top','top']"
+                                             data-voffset="['169','169','132','101']"
                                              data-fontsize="['150','150','100','70']"
                                              data-lineheight="['150','150','100','70']"
                                              data-width="none"
@@ -346,12 +523,16 @@
                                              data-paddingright="[0,0,0,0]"
                                              data-paddingbottom="[0,0,0,0]"
                                              data-paddingleft="[0,0,0,0]"
-                                             style="z-index: 6; white-space: nowrap; font-size: 150px; line-height: 150px; font-weight: 900; color: rgba(0,0,0,0.05); letter-spacing: ;font-family:Lato;">TEMPLATES </div>
-                                        <!-- LAYER NR. 18 -->
-                                        <div class="tp-caption   tp-resizeme"
+                                             style="z-index: 6; white-space: nowrap; font-size: 150px; line-height: 150px; font-weight: 900; color: rgba(0,0,0,0.05); letter-spacing: ;font-family:Lato;">TEMPLATES
+                                        </div>
+
+                                        {#LAYER NR. 18#}
+                                        <div class="tp-caption tp-resizeme"
                                              id="slide-62-layer-3"
-                                             data-x="['left','left','left','left']" data-hoffset="['45','45','45','20']"
-                                             data-y="['top','top','top','top']" data-voffset="['308','308','235','172']"
+                                             data-x="['left','left','left','left']"
+                                             data-hoffset="['45','45','45','20']"
+                                             data-y="['top','top','top','top']"
+                                             data-voffset="['308','308','235','172']"
                                              data-fontsize="['150','150','100','70']"
                                              data-lineheight="['150','150','100','70']"
                                              data-width="none"
@@ -366,12 +547,16 @@
                                              data-paddingright="[0,0,0,0]"
                                              data-paddingbottom="[0,0,0,0]"
                                              data-paddingleft="[0,0,0,0]"
-                                             style="z-index: 7; white-space: nowrap; font-size: 150px; line-height: 150px; font-weight: 900; color: rgba(0,0,0,0.05); letter-spacing: px;font-family:Lato;">INCLUDED </div>
-                                        <!-- LAYER NR. 19 -->
-                                        <div class="tp-caption SleekLanding-ButtonBG tp-shape tp-shapewrapper  tp-resizeme"
+                                             style="z-index: 7; white-space: nowrap; font-size: 150px; line-height: 150px; font-weight: 900; color: rgba(0,0,0,0.05); letter-spacing: px;font-family:Lato;">INCLUDED
+                                        </div>
+
+                                        {#LAYER NR. 19#}
+                                        <div class="tp-caption SleekLanding-ButtonBG tp-shape tp-shapewrapper tp-resizeme"
                                              id="slide-62-layer-9"
-                                             data-x="['left','left','left','left']" data-hoffset="['700','580','420','230']"
-                                             data-y="['middle','middle','middle','middle']" data-voffset="['142','105','105','105']"
+                                             data-x="['left','left','left','left']"
+                                             data-hoffset="['700','580','420','230']"
+                                             data-y="['middle','middle','middle','middle']"
+                                             data-voffset="['142','105','105','105']"
                                              data-width="230"
                                              data-height="50"
                                              data-whitespace="nowrap"
@@ -383,12 +568,16 @@
                                              data-paddingright="[0,0,0,0]"
                                              data-paddingbottom="[0,0,0,0]"
                                              data-paddingleft="[0,0,0,0]"
-                                             style="z-index: 8;font-family:Arial;"> </div>
-                                        <!-- LAYER NR. 20 -->
-                                        <div class="tp-caption   tp-resizeme"
+                                             style="z-index: 8;font-family:Arial;">
+                                        </div>
+
+                                        {#LAYER NR. 20#}
+                                        <div class="tp-caption tp-resizeme"
                                              id="slide-62-layer-15"
-                                             data-x="['right','right','right','right']" data-hoffset="['-428','-485','-17','-112']"
-                                             data-y="['top','bottom','bottom','bottom']" data-voffset="['-11','148','-12','-106']"
+                                             data-x="['right','right','right','right']"
+                                             data-hoffset="['-428','-485','-17','-112']"
+                                             data-y="['top','bottom','bottom','bottom']"
+                                             data-voffset="['-11','148','-12','-106']"
                                              data-width="none"
                                              data-height="none"
                                              data-whitespace="nowrap"
@@ -400,12 +589,25 @@
                                              data-paddingright="[0,0,0,0]"
                                              data-paddingbottom="[0,0,0,0]"
                                              data-paddingleft="[0,0,0,0]"
-                                             style="z-index: 9;"><img src="http://milness.fidex.com.ua/wp-content/plugins/rev-slider/admin/assets/images/dummy.png" alt="" data-ww="['800px','800px','400px','400px']" data-hh="['800px','800px','400px','400px']" width="800" height="800" data-lazyload="http://milness.fidex.com.ua/wp-content/uploads/revslider/sleeklandingpage/paper.png" data-no-retina> </div>
-                                        <!-- LAYER NR. 21 -->
-                                        <div class="tp-caption   tp-resizeme"
+                                             style="z-index: 9;">
+                                            <img
+                                                alt=""
+                                                width="800"
+                                                height="800"
+                                                data-ww="['800px','800px','400px','400px']"
+                                                data-hh="['800px','800px','400px','400px']"
+                                                src="{{ asset('bundles/themes/milness/images/rev-slider/dummy.png') }}"
+                                                data-lazyload="{{ asset('bundles/themes/milness/images/rev-slider/paper.png') }}"
+                                                data-no-retina>
+                                        </div>
+
+                                        {#LAYER NR. 21#}
+                                        <div class="tp-caption tp-resizeme"
                                              id="slide-62-layer-14"
-                                             data-x="['right','right','right','right']" data-hoffset="['962','814','619','341']"
-                                             data-y="['bottom','bottom','bottom','bottom']" data-voffset="['2','-61','72','-40']"
+                                             data-x="['right','right','right','right']"
+                                             data-hoffset="['962','814','619','341']"
+                                             data-y="['bottom','bottom','bottom','bottom']"
+                                             data-voffset="['2','-61','72','-40']"
                                              data-width="none"
                                              data-height="none"
                                              data-whitespace="nowrap"
@@ -417,12 +619,25 @@
                                              data-paddingright="[0,0,0,0]"
                                              data-paddingbottom="[0,0,0,0]"
                                              data-paddingleft="[0,0,0,0]"
-                                             style="z-index: 10;"><img src="http://milness.fidex.com.ua/wp-content/plugins/rev-slider/admin/assets/images/dummy.png" alt="" data-ww="['750px','750','375px','375px']" data-hh="['640px','640','320px','320px']" width="750" height="640" data-lazyload="http://milness.fidex.com.ua/wp-content/uploads/revslider/sleeklandingpage/plant.png" data-no-retina> </div>
-                                        <!-- LAYER NR. 22 -->
-                                        <div class="tp-caption   tp-resizeme"
+                                             style="z-index: 10;">
+                                            <img
+                                                alt=""
+                                                width="750"
+                                                height="640"
+                                                data-ww="['750px','750','375px','375px']"
+                                                data-hh="['640px','640','320px','320px']"
+                                                src="{{ asset('bundles/themes/milness/images/rev-slider/dummy.png') }}"
+                                                data-lazyload="{{ asset('bundles/themes/milness/images/rev-slider/plant.png') }}"
+                                                data-no-retina>
+                                        </div>
+
+                                        {#LAYER NR. 22#}
+                                        <div class="tp-caption tp-resizeme"
                                              id="slide-62-layer-19"
-                                             data-x="['right','right','right','right']" data-hoffset="['-133','-142','161','51']"
-                                             data-y="['top','bottom','bottom','bottom']" data-voffset="['527','134','95','40']"
+                                             data-x="['right','right','right','right']"
+                                             data-hoffset="['-133','-142','161','51']"
+                                             data-y="['top','bottom','bottom','bottom']"
+                                             data-voffset="['527','134','95','40']"
                                              data-width="none"
                                              data-height="none"
                                              data-whitespace="nowrap"
@@ -434,12 +649,25 @@
                                              data-paddingright="[0,0,0,0]"
                                              data-paddingbottom="[0,0,0,0]"
                                              data-paddingleft="[0,0,0,0]"
-                                             style="z-index: 11;"><img src="http://milness.fidex.com.ua/wp-content/plugins/rev-slider/admin/assets/images/dummy.png" alt="" data-ww="['400px','400px','200px','200px']" data-hh="['140px','140px','70px','70px']" width="400" height="140" data-lazyload="http://milness.fidex.com.ua/wp-content/uploads/revslider/sleeklandingpage/glasses.png" data-no-retina> </div>
-                                        <!-- LAYER NR. 23 -->
-                                        <div class="tp-caption   tp-resizeme"
+                                             style="z-index: 11;">
+                                            <img
+                                                alt=""
+                                                width="400"
+                                                height="140"
+                                                data-ww="['400px','400px','200px','200px']"
+                                                data-hh="['140px','140px','70px','70px']"
+                                                src="{{ asset('bundles/themes/milness/images/rev-slider/dummy.png') }}"
+                                                data-lazyload="{{ asset('bundles/themes/milness/images/rev-slider/glasses.png') }}"
+                                                data-no-retina>
+                                        </div>
+
+                                        {#LAYER NR. 23#}
+                                        <div class="tp-caption tp-resizeme"
                                              id="slide-62-layer-16"
-                                             data-x="['right','right','right','right']" data-hoffset="['-220','-275','-40','-9']"
-                                             data-y="['top','top','top','top']" data-voffset="['-120','-194','-19','13']"
+                                             data-x="['right','right','right','right']"
+                                             data-hoffset="['-220','-275','-40','-9']"
+                                             data-y="['top','top','top','top']"
+                                             data-voffset="['-120','-194','-19','13']"
                                              data-width="none"
                                              data-height="none"
                                              data-whitespace="nowrap"
@@ -452,12 +680,25 @@
                                              data-paddingright="[0,0,0,0]"
                                              data-paddingbottom="[0,0,0,0]"
                                              data-paddingleft="[0,0,0,0]"
-                                             style="z-index: 12;"><img src="http://milness.fidex.com.ua/wp-content/plugins/rev-slider/admin/assets/images/dummy.png" alt="" data-ww="['750px','750px','375px','188px']" data-hh="['640px','640px','320px','160px']" width="750" height="640" data-lazyload="http://milness.fidex.com.ua/wp-content/uploads/revslider/sleeklandingpage/lamp.png" data-no-retina> </div>
-                                        <!-- LAYER NR. 24 -->
-                                        <div class="tp-caption SleekLanding-Title   tp-resizeme"
+                                             style="z-index: 12;">
+                                            <img
+                                                alt=""
+                                                width="750"
+                                                height="640"
+                                                data-ww="['750px','750px','375px','188px']"
+                                                data-hh="['640px','640px','320px','160px']"
+                                                src="{{ asset('bundles/themes/milness/images/rev-slider/dummy.png') }}"
+                                                data-lazyload="{{ asset('bundles/themes/milness/images/rev-slider/lamp.png') }}"
+                                                data-no-retina>
+                                        </div>
+
+                                        {#LAYER NR. 24#}
+                                        <div class="tp-caption SleekLanding-Title tp-resizeme"
                                              id="slide-62-layer-7"
-                                             data-x="['left','left','left','left']" data-hoffset="['700','580','420','230']"
-                                             data-y="['middle','middle','middle','middle']" data-voffset="['-131','-132','-133','-159']"
+                                             data-x="['left','left','left','left']"
+                                             data-hoffset="['700','580','420','230']"
+                                             data-y="['middle','middle','middle','middle']"
+                                             data-voffset="['-131','-132','-133','-159']"
                                              data-fontsize="['45','40','35','25']"
                                              data-lineheight="['50','40','40','30']"
                                              data-color="['rgba(255,255,255,1)','rgb(255,255,255)','rgba(255,255,255,1)','rgba(255,255,255,1)']"
@@ -472,12 +713,16 @@
                                              data-paddingright="[0,0,0,0]"
                                              data-paddingbottom="[0,0,0,0]"
                                              data-paddingleft="[0,0,0,0]"
-                                             style="z-index: 13; white-space: nowrap; font-size: 45px; line-height: 50px; font-weight: 300; letter-spacing: 0px;font-family:Roboto Slab;">Awesome Start </div>
-                                        <!-- LAYER NR. 25 -->
-                                        <div class="tp-caption   tp-resizeme"
+                                             style="z-index: 13; white-space: nowrap; font-size: 45px; line-height: 50px; font-weight: 300; letter-spacing: 0px;font-family:Roboto Slab;">Awesome Start
+                                        </div>
+
+                                        {#LAYER NR. 25#}
+                                        <div class="tp-caption tp-resizeme"
                                              id="slide-62-layer-8"
-                                             data-x="['left','left','left','left']" data-hoffset="['700','580','420','230']"
-                                             data-y="['middle','middle','middle','middle']" data-voffset="['29','1','1','-4']"
+                                             data-x="['left','left','left','left']"
+                                             data-hoffset="['700','580','420','230']"
+                                             data-y="['middle','middle','middle','middle']"
+                                             data-voffset="['29','1','1','-4']"
                                              data-fontsize="['17','15','15','15']"
                                              data-width="['320','320','320','222']"
                                              data-height="['none','none','none','169']"
@@ -490,9 +735,11 @@
                                              data-paddingright="[0,0,0,0]"
                                              data-paddingbottom="[0,0,0,0]"
                                              data-paddingleft="[0,0,0,0]"
-                                             style="z-index: 14; min-width: 320px; max-width: 320px; white-space: normal; font-size: 17px; line-height: 24px; font-weight: 300; color: rgba(255,255,255,1); letter-spacing: px;font-family:Roboto;">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi.. </div>
-                                        <!-- LAYER NR. 26 -->
-                                        <div class="tp-caption SleekLanding-SmallTitle   tp-resizeme"
+                                             style="z-index: 14; min-width: 320px; max-width: 320px; white-space: normal; font-size: 17px; line-height: 24px; font-weight: 300; color: rgba(255,255,255,1); letter-spacing: px;font-family:Roboto;">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi..
+                                        </div>
+
+                                        {#LAYER NR. 26#}
+                                        <div class="tp-caption SleekLanding-SmallTitle tp-resizeme"
                                              id="slide-62-layer-10"
                                              data-x="['left','left','left','left']" data-hoffset="['721','601','441','251']"
                                              data-y="['middle','middle','middle','middle']" data-voffset="['143','106','106','106']"
@@ -508,12 +755,16 @@
                                              data-paddingright="[0,0,0,0]"
                                              data-paddingbottom="[0,0,0,0]"
                                              data-paddingleft="[0,0,0,0]"
-                                             style="z-index: 15; white-space: nowrap; font-weight: 700; letter-spacing: px;font-family:Roboto Slab;">GET OUR APP </div>
-                                        <!-- LAYER NR. 27 -->
-                                        <div class="tp-caption   tp-resizeme"
+                                             style="z-index: 15; white-space: nowrap; font-weight: 700; letter-spacing: px;font-family:Roboto Slab;">GET OUR APP
+                                        </div>
+
+                                        {#LAYER NR. 27#}
+                                        <div class="tp-caption tp-resizeme"
                                              id="slide-62-layer-11"
-                                             data-x="['left','left','left','left']" data-hoffset="['853','733','573','383']"
-                                             data-y="['middle','middle','middle','middle']" data-voffset="['143','106','106','106']"
+                                             data-x="['left','left','left','left']"
+                                             data-hoffset="['853','733','573','383']"
+                                             data-y="['middle','middle','middle','middle']"
+                                             data-voffset="['143','106','106','106']"
                                              data-width="none"
                                              data-height="none"
                                              data-whitespace="nowrap"
@@ -525,12 +776,17 @@
                                              data-paddingright="[0,0,0,0]"
                                              data-paddingbottom="[0,0,0,0]"
                                              data-paddingleft="[0,0,0,0]"
-                                             style="z-index: 16; white-space: nowrap; font-size: 30px; line-height: 30px; font-weight: 400; color: rgba(0,0,0,0.25); letter-spacing: px;cursor:pointer;"><i class="fa-icon-apple"></i> </div>
-                                        <!-- LAYER NR. 28 -->
+                                             style="z-index: 16; white-space: nowrap; font-size: 30px; line-height: 30px; font-weight: 400; color: rgba(0,0,0,0.25); letter-spacing: px;cursor:pointer;">
+                                            <i class="fa-icon-apple"></i>
+                                        </div>
+
+                                        {#LAYER NR. 28#}
                                         <div class="tp-caption   tp-resizeme"
                                              id="slide-62-layer-12"
-                                             data-x="['left','left','left','left']" data-hoffset="['888','768','608','418']"
-                                             data-y="['middle','middle','middle','middle']" data-voffset="['143','105','105','105']"
+                                             data-x="['left','left','left','left']"
+                                             data-hoffset="['888','768','608','418']"
+                                             data-y="['middle','middle','middle','middle']"
+                                             data-voffset="['143','105','105','105']"
                                              data-width="none"
                                              data-height="none"
                                              data-whitespace="nowrap"
@@ -542,12 +798,17 @@
                                              data-paddingright="[0,0,0,0]"
                                              data-paddingbottom="[0,0,0,0]"
                                              data-paddingleft="[0,0,0,0]"
-                                             style="z-index: 17; white-space: nowrap; font-size: 30px; line-height: 30px; font-weight: 400; color: rgba(0,0,0,0.25); letter-spacing: px;cursor:pointer;"><i class="fa-icon-android"></i> </div>
-                                        <!-- LAYER NR. 29 -->
-                                        <div class="tp-caption tp-shape tp-shapewrapper  tp-resizeme"
+                                             style="z-index: 17; white-space: nowrap; font-size: 30px; line-height: 30px; font-weight: 400; color: rgba(0,0,0,0.25); letter-spacing: px;cursor:pointer;">
+                                            <i class="fa-icon-android"></i>
+                                        </div>
+
+                                        {#LAYER NR. 29#}
+                                        <div class="tp-caption tp-shape tp-shapewrapper tp-resizeme"
                                              id="slide-62-layer-18"
-                                             data-x="['center','center','center','center']" data-hoffset="['-104','-104','-134','-164']"
-                                             data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']"
+                                             data-x="['center','center','center','center']"
+                                             data-hoffset="['-104','-104','-134','-164']"
+                                             data-y="['middle','middle','middle','middle']"
+                                             data-voffset="['0','0','0','0']"
                                              data-width="219"
                                              data-height="471"
                                              data-whitespace="nowrap"
@@ -559,12 +820,16 @@
                                              data-paddingright="[0,0,0,0]"
                                              data-paddingbottom="[0,0,0,0]"
                                              data-paddingleft="[0,0,0,0]"
-                                             style="z-index: 18;background-color:rgba(51,51,51,1);"> </div>
-                                        <!-- LAYER NR. 30 -->
-                                        <div class="tp-caption   tp-resizeme"
+                                             style="z-index: 18;background-color:rgba(51,51,51,1);">
+                                        </div>
+
+                                        {#LAYER NR. 30#}
+                                        <div class="tp-caption tp-resizeme"
                                              id="slide-62-layer-17"
-                                             data-x="['center','center','center','center']" data-hoffset="['-105','-104','-134','-164']"
-                                             data-y="['middle','middle','middle','middle']" data-voffset="['0','0','0','0']"
+                                             data-x="['center','center','center','center']"
+                                             data-hoffset="['-105','-104','-134','-164']"
+                                             data-y="['middle','middle','middle','middle']"
+                                             data-voffset="['0','0','0','0']"
                                              data-width="none"
                                              data-height="none"
                                              data-whitespace="nowrap"
@@ -576,12 +841,15 @@
                                              data-paddingright="[0,0,0,0]"
                                              data-paddingbottom="[0,0,0,0]"
                                              data-paddingleft="[0,0,0,0]"
-                                             style="z-index: 19;"><img src="http://milness.fidex.com.ua/wp-content/plugins/rev-slider/admin/assets/images/dummy.png" alt="" data-ww="['219px','219px','219px','219px']" data-hh="['471px','471px','471px','471px']" width="219" height="474" data-lazyload="http://milness.fidex.com.ua/wp-content/uploads/2017/12/screen.png" data-no-retina> </div>
-                                        <!-- LAYER NR. 31 -->
-                                        <div class="tp-caption SleekLanding-Title   tp-resizeme"
+                                             style="z-index: 19;"><img src="{{ asset('bundles/themes/milness/images/rev-slider/dummy.png') }}" alt="" data-ww="['219px','219px','219px','219px']" data-hh="['471px','471px','471px','471px']" width="219" height="474" data-lazyload="http://milness.fidex.com.ua/wp-content/uploads/2017/12/screen.png" data-no-retina> </div>
+
+                                        {#LAYER NR. 31#}
+                                        <div class="tp-caption SleekLanding-Title tp-resizeme"
                                              id="slide-62-layer-21"
-                                             data-x="['left','left','left','left']" data-hoffset="['700','580','420','230']"
-                                             data-y="['middle','middle','middle','middle']" data-voffset="['-81','-84','-89','-122']"
+                                             data-x="['left','left','left','left']"
+                                             data-hoffset="['700','580','420','230']"
+                                             data-y="['middle','middle','middle','middle']"
+                                             data-voffset="['-81','-84','-89','-122']"
                                              data-fontsize="['45','40','35','25']"
                                              data-lineheight="['50','40','40','30']"
                                              data-color="['rgb(38,161,224)','rgb(59,165,227)','rgb(59,165,227)','rgb(59,165,227)']"
@@ -596,18 +864,59 @@
                                              data-paddingright="[0,0,0,0]"
                                              data-paddingbottom="[0,0,0,0]"
                                              data-paddingleft="[0,0,0,0]"
-                                             style="z-index: 20; white-space: nowrap; font-size: 45px; line-height: 50px; color: #26a1e0; letter-spacing: 0px;font-family:Roboto Slab;">For Your Business. </div>
+                                             style="z-index: 20; white-space: nowrap; font-size: 45px; line-height: 50px; color: #26a1e0; letter-spacing: 0px;font-family:Roboto Slab;">For Your Business.
+                                        </div>
                                     </li>
-                                    <!-- SLIDE  -->
-                                    <li data-index="rs-63" data-transition="fade" data-slotamount="default" data-hideafterloop="0" data-hideslideonmobile="off"  data-easein="default" data-easeout="default" data-masterspeed="1000"  data-thumb="http://milness.fidex.com.ua/wp-content/"  data-rotate="0"  data-saveperformance="off"  data-title="Diversity" data-param1="" data-param2="" data-param3="" data-param4="" data-param5="" data-param6="" data-param7="" data-param8="" data-param9="" data-param10="" data-description="">
-                                        <!-- MAIN IMAGE -->
-                                        <img src="http://milness.fidex.com.ua/wp-content/plugins/rev-slider/admin/assets/images/dummy.png" data-bgcolor='#dddddd' style='background:#dddddd' alt="" title="Home &#8211; Rev Slider"  data-lazyload="http://milness.fidex.com.ua/wp-content/plugins/rev-slider/admin/assets/images/transparent.png" data-bgposition="center center" data-bgfit="cover" data-bgrepeat="no-repeat" class="rev-slidebg" data-no-retina>
-                                        <!-- LAYERS -->
-                                        <!-- LAYER NR. 32 -->
-                                        <div class="tp-caption   tp-resizeme"
+
+                                    {#SLIDE#}
+                                    <li
+                                        data-index="rs-63"
+                                        data-transition="fade"
+                                        data-slotamount="default"
+                                        data-hideafterloop="0"
+                                        data-hideslideonmobile="off"
+                                        data-easein="default"
+                                        data-easeout="default"
+                                        data-masterspeed="1000"
+                                        data-thumb=""
+                                        {#data-thumb="http://milness.fidex.com.ua/wp-content/"#}
+                                        data-rotate="0"
+                                        data-saveperformance="off"
+                                        data-title="Diversity"
+                                        data-param1=""
+                                        data-param2=""
+                                        data-param3=""
+                                        data-param4=""
+                                        data-param5=""
+                                        data-param6=""
+                                        data-param7=""
+                                        data-param8=""
+                                        data-param9=""
+                                        data-param10=""
+                                        data-description="">
+
+                                        {#MAIN IMAGE#}
+                                        <img
+                                            src="{{ asset('bundles/themes/milness/images/rev-slider/dummy.png') }}"
+                                            data-bgcolor='#dddddd'
+                                            style='background:#dddddd'
+                                            alt=""
+                                            title="Home &#8211; Rev Slider"
+                                            data-bgposition="center center"
+                                            data-bgfit="cover"
+                                            data-bgrepeat="no-repeat"
+                                            class="rev-slidebg"
+                                            data-lazyload="{{ asset('bundles/themes/milness/images/rev-slider/transparent.png') }}"
+                                            data-no-retina>
+
+                                        {#LAYERS#}
+                                        {#LAYER NR. 32#}
+                                        <div class="tp-caption tp-resizeme"
                                              id="slide-63-layer-1"
-                                             data-x="['left','left','left','left']" data-hoffset="['45','45','45','20']"
-                                             data-y="['top','top','top','top']" data-voffset="['30','30','30','30']"
+                                             data-x="['left','left','left','left']"
+                                             data-hoffset="['45','45','45','20']"
+                                             data-y="['top','top','top','top']"
+                                             data-voffset="['30','30','30','30']"
                                              data-fontsize="['150','150','100','70']"
                                              data-lineheight="['150','150','100','70']"
                                              data-width="none"
@@ -622,12 +931,16 @@
                                              data-paddingright="[0,0,0,0]"
                                              data-paddingbottom="[0,0,0,0]"
                                              data-paddingleft="[0,0,0,0]"
-                                             style="z-index: 5; white-space: nowrap; font-size: 150px; line-height: 150px; font-weight: 900; color: rgba(0,0,0,0.05); letter-spacing: ;font-family:Lato;">SUPREME </div>
-                                        <!-- LAYER NR. 33 -->
-                                        <div class="tp-caption   tp-resizeme"
+                                             style="z-index: 5; white-space: nowrap; font-size: 150px; line-height: 150px; font-weight: 900; color: rgba(0,0,0,0.05); letter-spacing: ;font-family:Lato;">SUPREME
+                                        </div>
+
+                                        {#LAYER NR. 33#}
+                                        <div class="tp-caption tp-resizeme"
                                              id="slide-63-layer-2"
-                                             data-x="['left','left','left','left']" data-hoffset="['45','45','45','20']"
-                                             data-y="['top','top','top','top']" data-voffset="['169','169','132','101']"
+                                             data-x="['left','left','left','left']"
+                                             data-hoffset="['45','45','45','20']"
+                                             data-y="['top','top','top','top']"
+                                             data-voffset="['169','169','132','101']"
                                              data-fontsize="['150','150','100','70']"
                                              data-lineheight="['150','150','100','70']"
                                              data-width="none"
@@ -642,12 +955,16 @@
                                              data-paddingright="[0,0,0,0]"
                                              data-paddingbottom="[0,0,0,0]"
                                              data-paddingleft="[0,0,0,0]"
-                                             style="z-index: 6; white-space: nowrap; font-size: 150px; line-height: 150px; font-weight: 900; color: rgba(0,0,0,0.05); letter-spacing: ;font-family:Lato;">GOODIES </div>
-                                        <!-- LAYER NR. 34 -->
-                                        <div class="tp-caption   tp-resizeme"
+                                             style="z-index: 6; white-space: nowrap; font-size: 150px; line-height: 150px; font-weight: 900; color: rgba(0,0,0,0.05); letter-spacing: ;font-family:Lato;">GOODIES
+                                        </div>
+
+                                        {#LAYER NR. 34#}
+                                        <div class="tp-caption tp-resizeme"
                                              id="slide-63-layer-3"
-                                             data-x="['left','left','left','left']" data-hoffset="['45','45','45','20']"
-                                             data-y="['top','top','top','top']" data-voffset="['308','308','235','172']"
+                                             data-x="['left','left','left','left']"
+                                             data-hoffset="['45','45','45','20']"
+                                             data-y="['top','top','top','top']"
+                                             data-voffset="['308','308','235','172']"
                                              data-fontsize="['150','150','100','70']"
                                              data-lineheight="['150','150','100','70']"
                                              data-width="none"
@@ -662,12 +979,16 @@
                                              data-paddingright="[0,0,0,0]"
                                              data-paddingbottom="[0,0,0,0]"
                                              data-paddingleft="[0,0,0,0]"
-                                             style="z-index: 7; white-space: nowrap; font-size: 150px; line-height: 150px; font-weight: 900; color: rgba(0,0,0,0.05); letter-spacing: ;font-family:Lato;">FREE </div>
-                                        <!-- LAYER NR. 35 -->
-                                        <div class="tp-caption SleekLanding-Title   tp-resizeme"
+                                             style="z-index: 7; white-space: nowrap; font-size: 150px; line-height: 150px; font-weight: 900; color: rgba(0,0,0,0.05); letter-spacing: ;font-family:Lato;">FREE
+                                        </div>
+
+                                        {#LAYER NR. 35#}
+                                        <div class="tp-caption SleekLanding-Title tp-resizeme"
                                              id="slide-63-layer-7"
-                                             data-x="['left','left','left','left']" data-hoffset="['700','580','420','230']"
-                                             data-y="['middle','middle','middle','middle']" data-voffset="['-131','-132','-133','-159']"
+                                             data-x="['left','left','left','left']"
+                                             data-hoffset="['700','580','420','230']"
+                                             data-y="['middle','middle','middle','middle']"
+                                             data-voffset="['-131','-132','-133','-159']"
                                              data-fontsize="['45','40','35','25']"
                                              data-lineheight="['50','40','40','30']"
                                              data-width="none"
@@ -681,12 +1002,16 @@
                                              data-paddingright="[0,0,0,0]"
                                              data-paddingbottom="[0,0,0,0]"
                                              data-paddingleft="[0,0,0,0]"
-                                             style="z-index: 8; white-space: nowrap; font-size: 45px; line-height: 50px; font-weight: 300; color: rgba(34,34,34,1); letter-spacing: 0px;font-family:Roboto Slab;">Awesome Start </div>
-                                        <!-- LAYER NR. 36 -->
-                                        <div class="tp-caption   tp-resizeme"
+                                             style="z-index: 8; white-space: nowrap; font-size: 45px; line-height: 50px; font-weight: 300; color: rgba(34,34,34,1); letter-spacing: 0px;font-family:Roboto Slab;">Awesome Start
+                                        </div>
+
+                                        {#LAYER NR. 36#}
+                                        <div class="tp-caption tp-resizeme"
                                              id="slide-63-layer-8"
-                                             data-x="['left','left','left','left']" data-hoffset="['700','580','420','230']"
-                                             data-y="['middle','middle','middle','middle']" data-voffset="['29','1','1','-4']"
+                                             data-x="['left','left','left','left']"
+                                             data-hoffset="['700','580','420','230']"
+                                             data-y="['middle','middle','middle','middle']"
+                                             data-voffset="['29','1','1','-4']"
                                              data-fontsize="['17','15','15','15']"
                                              data-fontweight="['300','400','400','400']"
                                              data-width="['320','320','320','222']"
@@ -700,12 +1025,16 @@
                                              data-paddingright="[0,0,0,0]"
                                              data-paddingbottom="[0,0,0,0]"
                                              data-paddingleft="[0,0,0,0]"
-                                             style="z-index: 9; min-width: 320px; max-width: 320px; white-space: normal; font-size: 17px; line-height: 24px; font-weight: 300; color: rgba(68,68,68,1); letter-spacing: px;font-family:Roboto;">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi.. </div>
-                                        <!-- LAYER NR. 37 -->
-                                        <div class="tp-caption SleekLanding-ButtonBG tp-shape tp-shapewrapper  tp-resizeme"
+                                             style="z-index: 9; min-width: 320px; max-width: 320px; white-space: normal; font-size: 17px; line-height: 24px; font-weight: 300; color: rgba(68,68,68,1); letter-spacing: px;font-family:Roboto;">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi..
+                                        </div>
+
+                                        {#LAYER NR. 37#}
+                                        <div class="tp-caption SleekLanding-ButtonBG tp-shape tp-shapewrapper tp-resizeme"
                                              id="slide-63-layer-9"
-                                             data-x="['left','left','left','left']" data-hoffset="['700','580','420','230']"
-                                             data-y="['middle','middle','middle','middle']" data-voffset="['142','105','105','105']"
+                                             data-x="['left','left','left','left']"
+                                             data-hoffset="['700','580','420','230']"
+                                             data-y="['middle','middle','middle','middle']"
+                                             data-voffset="['142','105','105','105']"
                                              data-width="230"
                                              data-height="50"
                                              data-whitespace="nowrap"
@@ -717,12 +1046,16 @@
                                              data-paddingright="[0,0,0,0]"
                                              data-paddingbottom="[0,0,0,0]"
                                              data-paddingleft="[0,0,0,0]"
-                                             style="z-index: 10;font-family:Arial;"> </div>
-                                        <!-- LAYER NR. 38 -->
-                                        <div class="tp-caption   tp-resizeme"
+                                             style="z-index: 10;font-family:Arial;">
+                                        </div>
+
+                                        {#LAYER NR. 38#}
+                                        <div class="tp-caption tp-resizeme"
                                              id="slide-63-layer-15"
-                                             data-x="['right','right','right','right']" data-hoffset="['-23','-10','40','12']"
-                                             data-y="['bottom','bottom','bottom','bottom']" data-voffset="['-74','-127','60','9']"
+                                             data-x="['right','right','right','right']"
+                                             data-hoffset="['-23','-10','40','12']"
+                                             data-y="['bottom','bottom','bottom','bottom']"
+                                             data-voffset="['-74','-127','60','9']"
                                              data-width="none"
                                              data-height="none"
                                              data-whitespace="nowrap"
@@ -734,12 +1067,25 @@
                                              data-paddingright="[0,0,0,0]"
                                              data-paddingbottom="[0,0,0,0]"
                                              data-paddingleft="[0,0,0,0]"
-                                             style="z-index: 11;"><img src="http://milness.fidex.com.ua/wp-content/plugins/rev-slider/admin/assets/images/dummy.png" alt="" data-ww="['520px','520px','260','260px']" data-hh="['380px','380px','190px','190px']" width="520" height="380" data-lazyload="http://milness.fidex.com.ua/wp-content/uploads/revslider/sleeklandingpage/ball.png" data-no-retina> </div>
-                                        <!-- LAYER NR. 39 -->
-                                        <div class="tp-caption   tp-resizeme"
+                                             style="z-index: 11;">
+                                            <img
+                                                src="{{ asset('bundles/themes/milness/images/rev-slider/dummy.png') }}"
+                                                alt=""
+                                                data-ww="['520px','520px','260','260px']"
+                                                data-hh="['380px','380px','190px','190px']"
+                                                width="520"
+                                                height="380"
+                                                data-lazyload="{{ asset('bundles/themes/milness/images/rev-slider/ball.png') }}"
+                                                data-no-retina>
+                                        </div>
+
+                                        {#LAYER NR. 39#}
+                                        <div class="tp-caption tp-resizeme"
                                              id="slide-63-layer-14"
-                                             data-x="['right','right','right','right']" data-hoffset="['44','10','30','10']"
-                                             data-y="['top','top','top','top']" data-voffset="['31','10','25','10']"
+                                             data-x="['right','right','right','right']"
+                                             data-hoffset="['44','10','30','10']"
+                                             data-y="['top','top','top','top']"
+                                             data-voffset="['31','10','25','10']"
                                              data-width="none"
                                              data-height="none"
                                              data-whitespace="nowrap"
@@ -751,12 +1097,25 @@
                                              data-paddingright="[0,0,0,0]"
                                              data-paddingbottom="[0,0,0,0]"
                                              data-paddingleft="[0,0,0,0]"
-                                             style="z-index: 12;"><img src="http://milness.fidex.com.ua/wp-content/plugins/rev-slider/admin/assets/images/dummy.png" alt="" data-ww="['230px','230','165px','165']" data-hh="['290px','290','208px','208']" width="230" height="290" data-lazyload="http://milness.fidex.com.ua/wp-content/uploads/revslider/sleeklandingpage/usb.png" data-no-retina> </div>
-                                        <!-- LAYER NR. 40 -->
-                                        <div class="tp-caption   tp-resizeme"
+                                             style="z-index: 12;">
+                                            <img
+                                                src="{{ asset('bundles/themes/milness/images/rev-slider/dummy.png') }}"
+                                                alt=""
+                                                data-ww="['230px','230','165px','165']"
+                                                data-hh="['290px','290','208px','208']"
+                                                width="230"
+                                                height="290"
+                                                data-lazyload="http://milness.fidex.com.ua/wp-content/uploads/revslider/sleeklandingpage/usb.png"
+                                                data-no-retina>
+                                        </div>
+
+                                        {#LAYER NR. 40#}
+                                        <div class="tp-caption tp-resizeme"
                                              id="slide-63-layer-16"
-                                             data-x="['left','left','left','left']" data-hoffset="['-299','-413','-53','-172']"
-                                             data-y="['bottom','bottom','bottom','bottom']" data-voffset="['-307','-323','-96','-176']"
+                                             data-x="['left','left','left','left']"
+                                             data-hoffset="['-299','-413','-53','-172']"
+                                             data-y="['bottom','bottom','bottom','bottom']"
+                                             data-voffset="['-307','-323','-96','-176']"
                                              data-width="none"
                                              data-height="none"
                                              data-whitespace="nowrap"
@@ -768,7 +1127,10 @@
                                              data-paddingright="[0,0,0,0]"
                                              data-paddingbottom="[0,0,0,0]"
                                              data-paddingleft="[0,0,0,0]"
-                                             style="z-index: 13;"><img src="http://milness.fidex.com.ua/wp-content/plugins/rev-slider/admin/assets/images/dummy.png" alt="" data-ww="['800px','800','400px','400px']" data-hh="['910px','910','455px','455']" width="800" height="910" data-lazyload="http://milness.fidex.com.ua/wp-content/uploads/revslider/sleeklandingpage/headphones.png" data-no-retina> </div>
+                                             style="z-index: 13;">
+                                            <img
+                                                src="{{ asset('bundles/themes/milness/images/rev-slider/dummy.png') }}" alt="" data-ww="['800px','800','400px','400px']" data-hh="['910px','910','455px','455']" width="800" height="910" data-lazyload="http://milness.fidex.com.ua/wp-content/uploads/revslider/sleeklandingpage/headphones.png" data-no-retina> </div>
+
                                         <!-- LAYER NR. 41 -->
                                         <div class="tp-caption SleekLanding-SmallTitle   tp-resizeme"
                                              id="slide-63-layer-10"
@@ -853,7 +1215,7 @@
                                              data-paddingright="[0,0,0,0]"
                                              data-paddingbottom="[0,0,0,0]"
                                              data-paddingleft="[0,0,0,0]"
-                                             style="z-index: 18;"><img src="http://milness.fidex.com.ua/wp-content/plugins/rev-slider/admin/assets/images/dummy.png" alt="" data-ww="['219px','219px','219px','219px']" data-hh="['471px','471px','471px','471px']" width="219" height="474" data-lazyload="http://milness.fidex.com.ua/wp-content/uploads/2017/12/screen2.png" data-no-retina> </div>
+                                             style="z-index: 18;"><img src="{{ asset('bundles/themes/milness/images/rev-slider/dummy.png') }}" alt="" data-ww="['219px','219px','219px','219px']" data-hh="['471px','471px','471px','471px']" width="219" height="474" data-lazyload="http://milness.fidex.com.ua/wp-content/uploads/2017/12/screen2.png" data-no-retina> </div>
                                         <!-- LAYER NR. 46 -->
                                         <div class="tp-caption SleekLanding-Title   tp-resizeme"
                                              id="slide-63-layer-20"
@@ -917,7 +1279,16 @@
                                          data-paddingright="[0,0,0,0]"
                                          data-paddingbottom="[0,0,0,0]"
                                          data-paddingleft="[0,0,0,0]"
-                                         style="z-index: 52;"><img src="http://milness.fidex.com.ua/wp-content/plugins/rev-slider/admin/assets/images/dummy.png" alt="" data-ww="['250px','250px','250px','250px']" data-hh="['501px','501px','501px','501px']" width="250" height="501" data-lazyload="http://milness.fidex.com.ua/wp-content/uploads/2017/12/rev_iphone.png" data-no-retina> </div>
+                                         style="z-index: 52;">
+                                        <img
+                                            alt=""
+                                            width="250"
+                                            height="501"
+                                            data-ww="['250px','250px','250px','250px']"
+                                            data-hh="['501px','501px','501px','501px']"
+                                            src="{{ asset('bundles/themes/milness/images/rev-slider/dummy.png') }}"
+                                            data-lazyload="http://milness.fidex.com.ua/wp-content/uploads/2017/12/rev_iphone.png" data-no-retina>
+                                    </div>
                                 </div>
                                 <script>var htmlDiv = document.getElementById("rs-plugin-settings-inline-css"); var htmlDivCss="";
                                     if(htmlDiv) {
@@ -1186,7 +1557,7 @@
                                                 });
                                             });
                                         </script>
-                                        <a href="https://www.youtube.com/watch?v=lm4OJxGQm_E" class="al-video-play-button anim-shadow-play" id="alian4x_el_5a89c46623f9f"><i class="pe-7s-play"></i></a>
+                                        <a href="https://www.youtube.com/watch?v=ZyyYQoXr6PQ" class="al-video-play-button anim-shadow-play" id="alian4x_el_5a89c46623f9f"><i class="pe-7s-play"></i></a>
                                     </div>
                                 </div>
                             </div>
