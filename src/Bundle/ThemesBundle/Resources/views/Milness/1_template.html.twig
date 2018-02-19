@@ -66,7 +66,6 @@
             filter='cssrewrite'
             'bundles/themes/milness/css/style-singles.css'
             'bundles/themes/milness/css/settings.css'
-            'bundles/themes/milness/css/themes/main1.css'
             'bundles/themes/milness/css/themes/pe-icon-7-stroke.css'
             'bundles/themes/milness/css/woocommerce/woocommerce.css'
             'bundles/themes/milness/css/font-awesome/font-awesome.min.css'
@@ -76,6 +75,7 @@
             '@ThemesBundle/Resources/public/milness/css/themes/loader.css'
             '@ThemesBundle/Resources/public/milness/css/themes/bootstrap-grid.min.css'
             '@ThemesBundle/Resources/public/milness/css/themes/superfish.css'
+            'bundles/themes/milness/css/themes/main1.css'
             '@ThemesBundle/Resources/public/milness/css/themes/magnific-popup.css'
             '@ThemesBundle/Resources/public/milness/css/themes/slick.css'
             '@ThemesBundle/Resources/public/milness/css/themes/animate.css'
@@ -83,6 +83,7 @@
             '@ThemesBundle/Resources/public/milness/css/visual-composer/js_composer.min.css'
         %}
             <link rel='stylesheet' type='text/css' media='all' href="{{ asset_url }}" />
+
         {% endstylesheets %}
 
         {% stylesheets
@@ -97,9 +98,22 @@
             <link rel='stylesheet' type='text/css' media='only screen and (max-width: 768px)' href="{{ asset_url }}" />
         {% endstylesheets %}
 
+        <link rel='stylesheet' id='milness-fonts-css' href='//fonts.googleapis.com/css?family=Roboto+Slab%3A400%2C500%2C600%2C700%2C300%7CRoboto%3A400%2C500%2C700%2C300%7CPacifico%7CPoppins%7CLato%3A900&#038;ver=1.0.0' type='text/css' media='all' />
+
+
+
+
     {% endblock %}
 
-    <link rel='stylesheet' id='milness-fonts-css' href='//fonts.googleapis.com/css?family=Roboto+Slab%3A400%2C500%2C600%2C700%2C300%7CRoboto%3A400%2C500%2C700%2C300%7CPacifico%7CPoppins%7CLato%3A900&#038;ver=1.0.0' type='text/css' media='all' />
+
+    {#<link rel='stylesheet' id='milness-superfish-css'  #}
+          {#href='http://milness.fidex.com.ua/wp-content/themes/milness/assets/libs/superfish-master/css/superfish.css?ver=4.9.3' type='text/css' media='all' />#}
+    {##}
+    {#<link rel='stylesheet' id='milness-main-styles-css'#}
+          {#href='http://milness.fidex.com.ua/wp-content/themes/milness/assets/css/main1.css?ver=4.9.3' type='text/css' media='all' />#}
+
+
+
 
     {% block javascripts %}
 
