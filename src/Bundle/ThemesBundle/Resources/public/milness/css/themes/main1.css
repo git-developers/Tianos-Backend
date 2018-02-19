@@ -135,7 +135,7 @@ section {
     position: absolute;
     width: 100vw;
     height: 100px;
-    background-image: url(../img/s1_triangle.svg);
+    background-image: url(../../fonts/s1_triangle.svg);
     background-position: bottom;
     z-index: 3;
     background-repeat: no-repeat;
@@ -1760,7 +1760,7 @@ header .top-menu {
     width: 100%;
     height: 30px;
     position: absolute;
-    background-image: url("../img/s1_triangle1.svg");
+    background-image: url("../../fonts/s1_triangle1.svg");
     background-size: contain;
     background-repeat: no-repeat; }
 .item-price .head .price-wrap {
