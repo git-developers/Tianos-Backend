@@ -1,80 +1,135 @@
-<header class="main-header">
+<header id="top-nav">
+    <div class="container">
 
-    {#Logo#}
-    <a href="{{ url('backend_default_dashboard') }}" class="logo">
-        {#mini logo for sidebar mini 50x50 pixels#}
-        <span class="logo-mini">
-            {#<b>TIA</b>NOS#}
-            <img src="{{ asset('bundles/themes/adminlte/images/favicon.ico') }}" height="40" width="40">
-        </span>
-
-        {#logo for regular state and mobile devices#}
-        <span class="logo-lg">
-            {{ application_name_html|raw }}
-        </span>
-    </a>
-
-    {#Header Navbar: style can be found in header.less#}
-    <nav class="navbar navbar-static-top">
-
-        {#Sidebar toggle button#}
-        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-            <span class="sr-only">Toggle navigation</span>
+        {#Logo#}
+        <a href="http://milness.fidex.com.ua/" class="logo">
+            Milness
         </a>
 
-        <div class="navbar-custom-menu">
-
-            {#<form id="search-box-header" action="" class="navbar-form navbar-left" role="search" >#}
-                {#<div class="input-group" >#}
-                    {#<input type="text" class="form-control" placeholder="Buscar..." id="navbar-search-input">#}
-                    {#<span class="input-group-btn">#}
-                        {#<button type="submit" name="search" id="search-btn" class="btn btn-flat" >#}
-                            {#<i class="fa fa-search" style="color: #E8750C"></i>#}
-                        {#</button>#}
-                    {#</span>#}
-                {#</div>#}
-            {#</form>#}
-
-            <ul class="nav navbar-nav">
-
-{#                <li class="messages-menu">
-                    <a href="{{ path('backend_googledrive_index', {id: 'my-drive'}) }}" class="dropdown-toggle" title="Subir archivo">
-                        <i class="fa fa-upload"></i>
-                    </a>
-                </li>#}
-
-                {% if app.user is not null %}
-                    {#Messages: style can be found in dropdown.less#}
-                    {#{{ include("CoreBundle::Template/dropdown_menu_messages.html.twig") }}#}
-
-                    {#Notifications: style can be found in dropdown.less#}
-                    {{ include("ThemesBundle::Adminlte/Dropdown/dropdown_menu_notifications.html.twig") }}
-
-                    {#Tasks: style can be found in dropdown.less#}
-                    {#{{ include("CoreBundle::Template/dropdown_menu_tasks.html.twig") }}#}
-                {% endif %}
-
-                {% if app.user is null %}
-                    <li>
-                        {#<a href="{{ url('frontend_security_login') }}">#}
-                        <a href="">
-                            <i class="fa fa-key"></i> Login
-                        </a>
-                    </li>
-                    <li>
-                        {#<a href="{{ url('frontend_user_register') }}" title="Crea tu nueva cuenta">#}
-                        <a href="" title="Crea tu nueva cuenta">
-                            <i class="fa fa-user-plus"></i> Crear cuenta
-                        </a>
-                    </li>
-                {% endif %}
-
-                {#User Account: style can be found in dropdown.less#}
-                {% if app.user is not null %}
-                    {{ include("ThemesBundle::Adminlte/Dropdown/dropdown_menu_user.html.twig") }}
-                {% endif %}
-
+        {#Top navigation#}
+        <nav class="top-menu">
+            <ul id="menu-menu-1" class="sf-menu">
+                <li id="menu-item-2287" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-1807 current_page_item current-menu-ancestor current-menu-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-2287">
+                    <a href="http://milness.fidex.com.ua/">Home</a>
+                    <ul class="sub-menu">
+                        <li id="menu-item-2277" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-1807 current_page_item menu-item-2277"><a href="http://milness.fidex.com.ua/">Home – Default</a></li>
+                        <li id="menu-item-2275" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2275"><a href="http://milness.fidex.com.ua/home-demo-2/">Home – Demo 2</a></li>
+                        <li id="menu-item-2274" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2274"><a href="http://milness.fidex.com.ua/home-demo-3/">Home – Demo 3</a></li>
+                        <li id="menu-item-2282" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2282"><a href="http://milness.fidex.com.ua/home-slider/">Home – Slider</a></li>
+                        <li id="menu-item-2281" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2281"><a href="http://milness.fidex.com.ua/home-hero-background/">Home – Hero Background</a></li>
+                        <li id="menu-item-2280" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2280"><a href="http://milness.fidex.com.ua/home-fixed-image-slider/">Home – Fixed Image Slider</a></li>
+                        <li id="menu-item-2279" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2279"><a href="http://milness.fidex.com.ua/home-slider-only-text/">Home – Slider Only Text</a></li>
+                        <li id="menu-item-2278" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2278"><a href="http://milness.fidex.com.ua/home-video-background/">Home – Video Background</a></li>
+                        <li id="menu-item-2283" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2283"><a href="http://milness.fidex.com.ua/home-canvas-1/">Home – Canvas 1</a></li>
+                        <li id="menu-item-2276" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2276"><a href="http://milness.fidex.com.ua/home-canvas-2/">Home – Canvas 2</a></li>
+                    </ul>
+                </li>
+                <li id="menu-item-1085" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1085">
+                    <a href="#">Pages</a>
+                    <ul class="sub-menu">
+                        <li id="menu-item-1081" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1081"><a href="http://milness.fidex.com.ua/blog/">Blog</a></li>
+                        <li id="menu-item-1191" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1191"><a href="/404">Error 404</a></li>
+                        <li id="menu-item-1188" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1188"><a href="http://milness.fidex.com.ua/page-contact/">Page – Contact</a></li>
+                        <li id="menu-item-1190" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1190"><a href="http://milness.fidex.com.ua/page-faq/">Page – FAQ</a></li>
+                        <li id="menu-item-1189" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1189"><a href="http://milness.fidex.com.ua/page-terms/">Page – TERMS</a></li>
+                    </ul>
+                </li>
+                <li id="menu-item-1084" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1084">
+                    <a href="http://milness.fidex.com.ua/shop/">Shop</a>
+                    <ul class="sub-menu">
+                        <li id="menu-item-1181" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1181"><a href="http://milness.fidex.com.ua/shop/">Shop Page</a></li>
+                        <li id="menu-item-1080" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1080"><a href="http://milness.fidex.com.ua/account/">Account</a></li>
+                        <li id="menu-item-1082" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1082"><a href="http://milness.fidex.com.ua/cart/">Cart</a></li>
+                        <li id="menu-item-1083" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1083"><a href="http://milness.fidex.com.ua/checkout/">Checkout</a></li>
+                    </ul>
+                </li>
+                <li id="menu-item-1176" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1176"><a href="#features">Features</a></li>
+                <li id="menu-item-1177" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1177"><a href="#services">Services</a></li>
+                <li id="menu-item-1178" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1178"><a href="#price">Price</a></li>
+                <li id="menu-item-1180" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1180"><a href="#contact">Contact</a></li>
             </ul>
+
+            {#Start WC Cart#}
+            <div class="br-header-cart">
+                <a class="cart-contents" href="http://milness.fidex.com.ua/cart/" title="View your shopping cart"></a>
+            </div>
+            {#End WC Cart#}
+
+        </nav>
+
+        {#Toggle menu#}
+        <a href="#" class="toggle-mnu">
+            <span></span>
+        </a>
+
+        {#Mobile menu#}
+        <div id="mobile-menu">
+            <div class="inner-wrap">
+                <nav>
+                    <ul id="menu-menu-2" class="nav_menu">
+                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-1807 current_page_item current-menu-ancestor current-menu-parent current_page_parent current_page_ancestor menu-item-has-children menu-item-2287">
+                            <a href="http://milness.fidex.com.ua/">Home</a>
+                            <ul class="sub-menu">
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-1807 current_page_item menu-item-2277">
+                                    <a href="http://milness.fidex.com.ua/">Home – Default</a>
+                                </li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2275">
+                                    <a href="http://milness.fidex.com.ua/home-demo-2/">Home – Demo 2</a>
+                                </li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2274">
+                                    <a href="http://milness.fidex.com.ua/home-demo-3/">Home – Demo 3</a>
+                                </li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2282">
+                                    <a href="http://milness.fidex.com.ua/home-slider/">Home – Slider</a>
+                                </li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2281">
+                                    <a href="http://milness.fidex.com.ua/home-hero-background/">Home – Hero Background</a>
+                                </li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2280">
+                                    <a href="http://milness.fidex.com.ua/home-fixed-image-slider/">Home – Fixed Image Slider</a>
+                                </li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2279">
+                                    <a href="http://milness.fidex.com.ua/home-slider-only-text/">Home – Slider Only Text</a>
+                                </li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2278">
+                                    <a href="http://milness.fidex.com.ua/home-video-background/">Home – Video Background</a>
+                                </li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2283">
+                                    <a href="http://milness.fidex.com.ua/home-canvas-1/">Home – Canvas 1</a>
+                                </li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2276">
+                                    <a href="http://milness.fidex.com.ua/home-canvas-2/">Home – Canvas 2</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-1085">
+                            <a href="#">Pages</a>
+                            <ul class="sub-menu">
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1081"><a href="http://milness.fidex.com.ua/blog/">Blog</a></li>
+                                <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1191"><a href="/404">Error 404</a></li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1188"><a href="http://milness.fidex.com.ua/page-contact/">Page – Contact</a></li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1190"><a href="http://milness.fidex.com.ua/page-faq/">Page – FAQ</a></li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1189"><a href="http://milness.fidex.com.ua/page-terms/">Page – TERMS</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children menu-item-1084">
+                            <a href="http://milness.fidex.com.ua/shop/">Shop</a>
+                            <ul class="sub-menu">
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1181"><a href="http://milness.fidex.com.ua/shop/">Shop Page</a></li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1080"><a href="http://milness.fidex.com.ua/account/">Account</a></li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1082"><a href="http://milness.fidex.com.ua/cart/">Cart</a></li>
+                                <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1083"><a href="http://milness.fidex.com.ua/checkout/">Checkout</a></li>
+                            </ul>
+                        </li>
+                        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1176"><a href="#features">Features</a></li>
+                        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1177"><a href="#services">Services</a></li>
+                        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1178"><a href="#price">Price</a></li>
+                        <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1180"><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
         </div>
-    </nav>
+        {#end mobile menu#}
+
+    </div>
 </header>

@@ -1,80 +1,102 @@
-<header class="main-header">
-
-    {#Logo#}
-    <a href="{{ url('backend_default_dashboard') }}" class="logo">
-        {#mini logo for sidebar mini 50x50 pixels#}
-        <span class="logo-mini">
-            {#<b>TIA</b>NOS#}
-            <img src="{{ asset('bundles/themes/adminlte/images/favicon.ico') }}" height="40" width="40">
-        </span>
-
-        {#logo for regular state and mobile devices#}
-        <span class="logo-lg">
-            {{ application_name_html|raw }}
-        </span>
-    </a>
-
-    {#Header Navbar: style can be found in header.less#}
-    <nav class="navbar navbar-static-top">
-
-        {#Sidebar toggle button#}
-        <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
-            <span class="sr-only">Toggle navigation</span>
-        </a>
-
-        <div class="navbar-custom-menu">
-
-            {#<form id="search-box-header" action="" class="navbar-form navbar-left" role="search" >#}
-                {#<div class="input-group" >#}
-                    {#<input type="text" class="form-control" placeholder="Buscar..." id="navbar-search-input">#}
-                    {#<span class="input-group-btn">#}
-                        {#<button type="submit" name="search" id="search-btn" class="btn btn-flat" >#}
-                            {#<i class="fa fa-search" style="color: #E8750C"></i>#}
-                        {#</button>#}
-                    {#</span>#}
-                {#</div>#}
-            {#</form>#}
-
-            <ul class="nav navbar-nav">
-
-{#                <li class="messages-menu">
-                    <a href="{{ path('backend_googledrive_index', {id: 'my-drive'}) }}" class="dropdown-toggle" title="Subir archivo">
-                        <i class="fa fa-upload"></i>
-                    </a>
-                </li>#}
-
-                {% if app.user is not null %}
-                    {#Messages: style can be found in dropdown.less#}
-                    {#{{ include("CoreBundle::Template/dropdown_menu_messages.html.twig") }}#}
-
-                    {#Notifications: style can be found in dropdown.less#}
-                    {{ include("ThemesBundle::Adminlte/Dropdown/dropdown_menu_notifications.html.twig") }}
-
-                    {#Tasks: style can be found in dropdown.less#}
-                    {#{{ include("CoreBundle::Template/dropdown_menu_tasks.html.twig") }}#}
-                {% endif %}
-
-                {% if app.user is null %}
-                    <li>
-                        {#<a href="{{ url('frontend_security_login') }}">#}
-                        <a href="">
-                            <i class="fa fa-key"></i> Login
-                        </a>
-                    </li>
-                    <li>
-                        {#<a href="{{ url('frontend_user_register') }}" title="Crea tu nueva cuenta">#}
-                        <a href="" title="Crea tu nueva cuenta">
-                            <i class="fa fa-user-plus"></i> Crear cuenta
-                        </a>
-                    </li>
-                {% endif %}
-
-                {#User Account: style can be found in dropdown.less#}
-                {% if app.user is not null %}
-                    {{ include("ThemesBundle::Adminlte/Dropdown/dropdown_menu_user.html.twig") }}
-                {% endif %}
-
-            </ul>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="heading-title">
+                    <h2>
+                        <span>Milness</span>
+                    </h2>
+                </div>
+                <div class="social-inons">
+                    <ul>
+                        <li class="icon-circle" >
+                            <a href="#">
+                                <i class="fa fa-facebook" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li class="icon-circle" >
+                            <a href="#">
+                                <i class="fa fa-twitter" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li class="icon-circle" >
+                            <a href="#">
+                                <i class="fa fa-linkedin" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li class="icon-circle" >
+                            <a href="#">
+                                <i class="fa fa-instagram" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                        <li class="icon-circle" >
+                            <a href="#">
+                                <i class="fa fa-youtube" aria-hidden="true"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
-    </nav>
-</header>
+
+        <div class="row">
+            <div class="bottom-footer white-color">
+                <div class="col-md-6">
+                    <div class="footer-copyright">
+                        <p>Milness © 2018 All Rights Reserved. Developed by - BrainiakThemes</p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="footer-menu">
+                        <ul id="menu-footer-menu" class="al-footer-menu">
+                            <li id="menu-item-1281" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1281">
+                                <a href="#">Terms</a>
+                            </li>
+                            <li id="menu-item-1282" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1282">
+                                <a href="#">Privacy Policy</a>
+                            </li>
+                            <li id="menu-item-1283" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1283">
+                                <a href="#">Licenses</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</footer>
+
+<div class="top icon-down toTopFromBottom">
+    <a href="#top-scroll" class="smooth-scroll"><i class="pe-7s-angle-up"></i></a>
+</div>
+
+<div class="style-customizer closed">
+    <div class="buy-button">
+        <a href="http://milness.fidex.com.ua/" class="customizer-logo logo">
+            Milness                    </a>
+        <a href="#" class="opener"><i aria-hidden="true" class="fa fa-cog fa-spin fa-fw"></i></a>
+        <a href="http://themeforest.com/cart/add_items?ref=Brainiak&amp;item_ids=19519022" target="blanc" class="button button-border btn-buy">Buy now!</a>
+    </div>
+    <div class="clearfix content-chooser">
+        <h3>Color Schemes</h3>
+        <p>Which theme color you want to use? Select from here.</p>
+        <ul class="styleChange clearfix">
+            <li title="color-1" data-style="http://milness.fidex.com.ua/wp-content/themes/milness/assets/css/main1.css" class="color-11 selected"></li>
+            <li title="color-2" data-style="http://milness.fidex.com.ua/wp-content/themes/milness/assets/css/main2.css" class="color-2"></li>
+            <li title="color-3" data-style="http://milness.fidex.com.ua/wp-content/themes/milness/assets/css/main3.css" class="color-3"></li>
+            <li title="color-4" data-style="http://milness.fidex.com.ua/wp-content/themes/milness/assets/css/main4.css" class="color-4"></li>
+            <li title="color-5" data-style="http://milness.fidex.com.ua/wp-content/themes/milness/assets/css/main5.css" class="color-5"></li>
+            <li title="color-6" data-style="http://milness.fidex.com.ua/wp-content/themes/milness/assets/css/main6.css" class="color-6"></li>
+            <li title="color-7" data-style="http://milness.fidex.com.ua/wp-content/themes/milness/assets/css/main7.css" class="color-7"></li>
+            <li title="color-8" data-style="http://milness.fidex.com.ua/wp-content/themes/milness/assets/css/main8.css" class="color-8"></li>
+            <li title="color-9" data-style="http://milness.fidex.com.ua/wp-content/themes/milness/assets/css/main9.css" class="color-9"></li>
+            <li title="color-10" data-style="http://milness.fidex.com.ua/wp-content/themes/milness/assets/css/main10.css" class="color-10"></li>
+            <li title="color-11" data-style="http://milness.fidex.com.ua/wp-content/themes/milness/assets/css/main11.css" class="color-1"></li>
+            <li title="color-12" data-style="http://milness.fidex.com.ua/wp-content/themes/milness/assets/css/main12.css" class="color-12"></li>
+        </ul>
+        <ul class="resetAll">
+            <li><a href="#" class="button button-border button-reset">Reset All</a></li>
+        </ul>
+    </div>
+</div>

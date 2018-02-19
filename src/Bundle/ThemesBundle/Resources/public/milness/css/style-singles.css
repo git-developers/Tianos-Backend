@@ -1,0 +1,270 @@
+img.wp-smiley,
+img.emoji {
+    display: inline !important;
+    border: none !important;
+    box-shadow: none !important;
+    height: 1em !important;
+    width: 1em !important;
+    margin: 0 .07em !important;
+    vertical-align: -0.1em !important;
+    background: none !important;
+    padding: 0 !important;
+}
+
+/*################*/
+
+#rs-demo-id {}
+
+/*################*/
+
+.sf-menu>li {
+    font-family: "Roboto Slab", Georgia, serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    line-height: 24px;
+}
+
+.logo {
+    font-family: Pacifico, "Comic Sans MS", cursive, sans-serif;
+    font-size: 29px;
+    font-weight: 500;
+    color: #f6f5f5;
+}
+
+body {
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+}
+
+h1 {
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-size: 47px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    line-height: 71px;
+}
+
+h2 {
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    line-height: 60px;
+}
+
+h3 {
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-size: 35px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    line-height: 53px;
+}
+
+h4 {
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-size: 27px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    line-height: 41px;
+}
+
+h5 {
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    line-height: 30px;
+}
+
+h6 {
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    line-height: 26px;
+}
+
+p {
+    font-family: Roboto, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0.3px;
+    line-height: 24px;
+}
+
+/*################*/
+
+.recentcomments a{
+    display:inline !important;
+    padding:0 !important;
+    margin:0 !important;
+}
+
+/*################*/
+
+.vc_custom_1513902594746 {
+    padding-top: 70px !important;
+    padding-bottom: 90px !important;
+    background: #fafafa url(../images/pattern.png) !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+}
+
+.vc_custom_1514922386826 {
+    padding-top: 80px !important;
+    padding-bottom: 80px !important;
+    background-image: url(../images/bg7.jpg) !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+}
+
+.vc_custom_1514126480209 {
+    padding-top: 50px !important;
+    padding-bottom: 90px !important;
+    background-color: #efeff1 !important;
+}
+
+.vc_custom_1514925497984 {
+    padding-top: 50px !important;
+    padding-bottom: 90px !important;
+    background-image: url(../images/bg7.jpg) !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+}
+
+.vc_custom_1509552383739 {
+    padding-top: 50px !important;
+    background-color: #e6ecf1 !important;
+}
+
+.vc_custom_1514925547370 {
+    padding-top: 50px !important;
+    padding-bottom: 90px !important;
+    background-image: url(../images/bg7.jpg) !important;
+}
+
+.vc_custom_1509648281756 {
+    padding-top: 50px !important;
+    padding-bottom: 55px !important;
+    background-color: #e7edf3 !important;
+}
+
+.vc_custom_1514924980320 {
+    padding-top: 50px !important;
+    padding-bottom: 90px !important;
+    background-image: url(../images/bg7.jpg) !important;
+}
+
+.vc_custom_1514989526439 {
+    padding-top: 50px !important;
+    padding-bottom: 0px !important;
+    background: #f2f2f2 url(../images/pattern.png) !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+}
+
+.vc_custom_1514493289921 {
+    padding-top: 50px !important;
+    padding-bottom: 0px !important;
+    background-color: #efeff1 !important;
+}
+
+.vc_custom_1514924437778 {
+    padding-top: 55px !important;
+    padding-bottom: 45px !important;
+    background-color: #11495a !important;
+}
+
+.vc_custom_1514924250246 {
+    padding-top: 50px !important;
+    padding-bottom: 90px !important;
+    background-image: url(../images/bg7.jpg) !important;
+    background-position: center;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+}
+
+.vc_custom_1514924001590 {
+    padding-top: 50px !important;
+    padding-bottom: 90px !important;
+    background-image: url(../images/bg7.jpg) !important;
+}
+
+.vc_custom_1509550650426 {
+    padding-top: 0px !important;
+}
+
+.vc_custom_1509636013391 {
+    border-bottom-width: 50px !important;
+}
+
+.vc_custom_1509636410004 {
+    padding-top: 0px !important;
+}
+
+.vc_custom_1509636529477 {
+    padding-top: 0px !important;
+}
+
+.vc_custom_1509636420633 {
+    padding-top: 0px !important;
+}
+
+.vc_custom_1514370486626 {
+    padding-top: 20px !important;
+}
+
+.vc_custom_1509743584683 {
+    padding-top: 0px !important;
+}
+
+.vc_custom_1509743597603 {
+    padding-top: 0px !important;
+}
+
+.vc_custom_1514151224296 {
+    margin-top: 45px !important;
+    margin-bottom: 30px !important;
+}
+
+.vc_custom_1509489377880 {
+    padding-top: 0px !important;
+}
+
+.vc_custom_1509537747707 {
+    padding-top: 0px !important;
+}
+
+.vc_custom_1514901435686 {
+    padding-top: 80px !important;
+    padding-bottom: 80px !important;
+    background-color: #f9f9f9 !important;
+}
+
+.vc_custom_1514901442296 {
+    padding-top: 80px !important;
+    padding-bottom: 80px !important;
+    background-color: #f5f5f5 !important;
+}
+
+.vc_custom_1514901393118 {
+    padding-top: 80px !important;
+    padding-bottom: 80px !important;
+    background-color: #f9f9f9 !important;
+}
+
+.vc_custom_1509449633635 {
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+}
+
+/*################*/
+
+
