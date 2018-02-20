@@ -4,7 +4,7 @@
             <div class="col-md-12">
                 <div class="heading-title">
                     <h2>
-                        <span>Milness</span>
+                        <span>{{ application_name }}</span>
                     </h2>
                 </div>
                 <div class="social-inons">
@@ -43,7 +43,7 @@
             <div class="bottom-footer white-color">
                 <div class="col-md-6">
                     <div class="footer-copyright">
-                        <p>Milness © 2018 All Rights Reserved. Developed by - BrainiakThemes</p>
+                        <p>{{ application_name }}  &copy {{ "now"|date("d, F Y - H:i") }} - All rights reserved.</p>
                     </div>
                 </div>
                 <div class="col-md-6">
@@ -68,13 +68,16 @@
 </footer>
 
 <div class="top icon-down toTopFromBottom">
-    <a href="#top-scroll" class="smooth-scroll"><i class="pe-7s-angle-up"></i></a>
+    <a href="#top-scroll" class="smooth-scroll">
+        <i class="pe-7s-angle-up"></i>
+    </a>
 </div>
 
 <div class="style-customizer closed">
     <div class="buy-button">
         <a href="http://milness.fidex.com.ua/" class="customizer-logo logo">
-            Milness                    </a>
+            {{ application_name }}
+        </a>
         <a href="#" class="opener"><i aria-hidden="true" class="fa fa-cog fa-spin fa-fw"></i></a>
         <a href="http://themeforest.com/cart/add_items?ref=Brainiak&amp;item_ids=19519022" target="blanc" class="button button-border btn-buy">Buy now!</a>
     </div>
