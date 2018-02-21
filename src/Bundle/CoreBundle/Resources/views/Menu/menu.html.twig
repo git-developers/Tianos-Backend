@@ -111,7 +111,11 @@
 {% block linkElement %}
     {% import _self as knp_menu %}
     <a href="{{ item.uri }}"{{ knp_menu.attributes(item.linkAttributes) }}>
-        <i class="fa {{ item.attribute('icon') }}"></i>
+
+        {%- if item.attribute('icon') is not empty %}
+            <i class="fa {{ item.attribute('icon') }}"></i>
+        {%- endif %}
+
         <span>{{ block('label') }}</span>
 
         {% if item.attribute('allow_angle') %}
