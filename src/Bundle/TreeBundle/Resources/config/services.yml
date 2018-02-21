@@ -1,0 +1,44 @@
+services:
+
+    grid.crud:
+        class: Bundle\TreeBundle\Services\Crud\Crud
+        arguments: [ "@router", "@request_stack" ]
+        tags:
+            - { name: grid.crud, alias: grid.crud }
+
+    tianos.form_registry.grid_filter:
+        class: Bundle\TreeBundle\Form\Registry\FormTypeRegistry
+        public: false
+
+    tianos.registry.grid_field:
+        class: Component\Registry\ServiceRegistry
+        arguments: [ Component\Grid\FieldTypes\FieldTypeInterface, "grid field" ]
+
+    tianos.expression_language:
+        class: Bundle\ResourceBundle\ExpressionLanguage\ExpressionLanguage
+        public: false
+
+    tianos.grid_options_parser:
+        class: Bundle\ResourceBundle\Grid\Parser\OptionsParser
+        arguments: [ "@service_container", "@tianos.expression_language", "@property_accessor" ]
+        public: false
+
+    tianos.custom_grid_renderer.twig.inner:
+        class: Bundle\TreeBundle\Renderer\TwigGridRenderer
+        arguments: [ "@twig", "@tianos.registry.grid_field", "@form.factory", "@tianos.form_registry.grid_filter", SyliusTreeBundle::_grid.html.twig ]
+        public: false
+
+    tianos.custom_grid_renderer.twig:
+        class: Bundle\ResourceBundle\Grid\Renderer\TwigGridRenderer
+        arguments: [ "@tianos.custom_grid_renderer.twig.inner", "@twig", "@tianos.grid_options_parser" ]
+
+    tianos.templating.helper.grid:
+        class: Bundle\TreeBundle\Templating\Helper\GridHelper
+        arguments: [ "@tianos.custom_grid_renderer.twig" ]
+
+    twig.extension.grid:
+        class: Bundle\TreeBundle\Twig\GridExtension
+        arguments: ['@tianos.templating.helper.grid']
+        public: false
+        tags:
+         - { name: twig.extension }

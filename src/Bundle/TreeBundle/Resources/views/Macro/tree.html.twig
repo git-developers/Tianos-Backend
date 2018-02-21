@@ -1,0 +1,29 @@
+{% macro tree(entity, tree, index) %}
+
+    {% for key, value in entity %}
+
+        {% if loop.index0 == 0 %}
+            {% set index = index + 1 %}
+        {% endif %}
+
+        {% set entityParent = value.parent %}
+
+        {% if entityParent is not empty %}
+            <li
+                class="x-hand"
+                data-id="{{ entityParent.id_increment }}"
+                id="li-{{ entityParent.id_increment }}">
+
+                {{ include('CoreBundle:Tree:Template/li.html.twig', {entity:entityParent, tree:tree, badge_color:index|badge_colors()}) }}
+
+                <ul class="{{ tree.box_child_ul ~ entityParent.id_increment }}">
+                    {% import _self as macro %}
+                    {{ macro.tree(value.children, tree, index) }}
+                </ul>
+
+            </li>
+        {% endif %}
+
+    {% endfor %}
+{% endmacro %}
+
