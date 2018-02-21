@@ -132,27 +132,6 @@ class Builder implements ContainerAwareInterface
         ->setAttribute('icon', self::CIRCLE_1_YELLOW)
         ->setDisplay($clasesView)
         ;
-
-        $activeRoute = $this->activeRoute(['backend_session_index']);
-        $menu['Master']->addChild('Session', [
-            'route' => 'backend_session_index',
-            'extras' => ['safe_label' => true],
-            'childrenAttributes' => [
-                'class' => 'treeview-menu',
-            ],
-        ])
-        ->setAttribute('icon', 'fa-fw fa-history')
-        ->setAttribute('class', $activeRoute)
-        ->setDisplay($clasesView)
-        ;
-
-        $menu['Master']['Session']->addChild('Gestionar', [
-            'route' => 'backend_session_index'
-        ])
-        ->setAttribute('icon', self::CIRCLE_1_YELLOW)
-        ->setAttribute('class', $activeRoute)
-        ->setDisplay($clasesView)
-        ;
         /**
          * CRUD
          */
@@ -249,6 +228,25 @@ class Builder implements ContainerAwareInterface
         ->setAttribute('icon', self::CIRCLE_1_YELLOW)
         ->setDisplay($clasesView)
         ;
+
+        $menu['Cuentas']->addChild('Session', [
+            'route' => 'backend_session_index',
+            'extras' => ['safe_label' => true],
+            'childrenAttributes' => [
+                'class' => 'treeview-menu',
+            ],
+        ])
+            ->setAttribute('icon', 'fa-fw fa-history')
+            ->setAttribute('class', $activeRoute)
+            ->setDisplay($clasesView)
+        ;
+
+        $menu['Cuentas']['Session']->addChild('Gestionar', [
+            'route' => 'backend_session_index'
+        ])
+            ->setAttribute('icon', self::CIRCLE_1_YELLOW)
+            ->setDisplay($clasesView)
+        ;
         /**
          * USER
          */
@@ -282,7 +280,7 @@ class Builder implements ContainerAwareInterface
                 'class' => 'treeview-menu',
             ],
         ])
-            ->setAttribute('icon', 'fa-fw fa-user-secret')
+            ->setAttribute('icon', '')
             ->setDisplay($clasesView)
         ;
         /**
@@ -291,6 +289,64 @@ class Builder implements ContainerAwareInterface
 
 
 
+
+
+        /**
+         * REPORTS
+         */
+        $clasesView = true; //$this->isGranted('ROLE_CLIENT_VIEW');
+        $menu->addChild('Reports', [
+            'route' => 'backend_default_dashboard',
+            'extras' => ['safe_label' => true],
+            'childrenAttributes' => [
+                'class' => 'treeview-menu',
+            ],
+        ])
+            ->setAttribute('allow_angle', true)
+            ->setAttribute('class', 'treeview')
+            ->setAttribute('icon', 'fa-fw fa-line-chart')
+            ->setDisplay($clasesView)
+        ;
+
+        $menu['Reports']->addChild('Point of sale <i class="fa fa-fw fa-angle-double-right"></i> product', [
+            'route' => 'backend_reportpointofsaleandproduct_index',
+            'extras' => ['safe_label' => true],
+            'childrenAttributes' => [
+                'class' => 'treeview-menu',
+            ],
+        ])
+            ->setAttribute('icon', '')
+            ->setDisplay($clasesView)
+        ;
+        /**
+         * ASSOCIATION
+         */
+
+
+
+
+        /**
+         * FRONTEND
+         */
+        $loadFixture = true; //$this->isGranted('ROLE_CLIENT_VIEW');
+        $menu->addChild('Front-end', [
+            'route' => 'backend_default_dashboard',
+            'extras' => ['safe_label' => true],
+            'childrenAttributes' => [
+                'class' => 'treeview-menu',
+            ],
+        ])
+            ->setAttribute('class', 'treeview')
+            ->setAttribute('icon', 'fa-fw fa-tv')
+            ->setDisplay($loadFixture)
+        ;
+
+        $menu['Front-end']->addChild('inicio', [
+            'route' => 'frontend_default_index'
+        ])
+            ->setAttribute('icon', self::CIRCLE_1_YELLOW)
+            ->setDisplay($loadFixture)
+        ;
 
 
 
@@ -327,36 +383,6 @@ class Builder implements ContainerAwareInterface
 
 
 
-
-        /**
-         * FRONTEND
-         */
-        $loadFixture = true; //$this->isGranted('ROLE_CLIENT_VIEW');
-        $menu->addChild('Front-end', [
-            'route' => 'backend_default_dashboard',
-            'extras' => ['safe_label' => true],
-            'childrenAttributes' => [
-                'class' => 'treeview-menu',
-            ],
-        ])
-            ->setAttribute('class', 'treeview')
-            ->setAttribute('icon', 'fa-fw fa-tv')
-            ->setDisplay($loadFixture)
-        ;
-
-        $menu['Front-end']->addChild('inicio', [
-            'route' => 'frontend_default_index'
-        ])
-            ->setAttribute('icon', self::CIRCLE_1_YELLOW)
-            ->setDisplay($loadFixture)
-        ;
-
-//        $menu[$child]->addChild('GoogleDrive mimetype', [
-//            'route' => 'backend_default_dashboard'
-//        ])
-//            ->setAttribute('icon', self::CIRCLE_2_AQUA)
-//            ->setDisplay($loadFixture)
-//        ;
 
 
 
