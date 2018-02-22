@@ -10,8 +10,8 @@
     {{ parent() }}
 
     {% stylesheets
-        '@TreeBundle/Resources/public/common/css/tree.css'
-        '@TreeBundle/Resources/public/tree/css/tree.css'
+        '@TreeBundle/Resources/public/css/tree.css'
+        '@CoreBundle/Resources/public/css/tree.css'
     %}
     <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
@@ -26,12 +26,12 @@
     {{ parent() }}
 
     {% javascripts
-        '@TreeBundle/Resources/public/tree/js/formCreate.js'
-        '@TreeBundle/Resources/public/tree/js/formCreateChild.js'
-        '@TreeBundle/Resources/public/tree/js/formEdit.js'
-        '@TreeBundle/Resources/public/tree/js/formDelete.js'
-        '@TreeBundle/Resources/public/tree/js/formView.js'
-        '@TreeBundle/Resources/public/common/js/jquery.tmpl.js'
+        '@TreeBundle/Resources/public/js/formCreate.js'
+        '@TreeBundle/Resources/public/js/formCreateChild.js'
+        '@TreeBundle/Resources/public/js/formEdit.js'
+        '@TreeBundle/Resources/public/js/formDelete.js'
+        '@TreeBundle/Resources/public/js/formView.js'
+        '@CoreBundle/Resources/public/js/jquery.tmpl.js'
     %}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
@@ -49,6 +49,8 @@
             },
         }, 'span.li-span');
 
+
+        {#
         $('body.{{ tree.body_css }}').formCreate({
             box_main_div: '{{ tree.box_main_div }}',
             box_main_ul: '{{ tree.box_main_ul }}',
@@ -66,7 +68,6 @@
         });
 
         $('body.{{ tree.body_css }}').formEdit({
-            {#form_input_id: '{{ tree.form_input_id }}',#}
             form_edit_name: '{{ tree.form_edit_name }}',
             modal_edit_id: '{{ tree.modal_edit_id }}',
             route_edit: '{{ tree.route_edit }}'
@@ -74,7 +75,6 @@
 
         $('body.{{ tree.body_css }}').formDelete({
             box_main_div: '{{ tree.box_main_div }}',
-            {#form_input_id: '{{ tree.form_input_id }}',#}
             form_delete_name: '{{ tree.form_delete_name }}',
             modal_delete_id: '{{ tree.modal_delete_id }}',
             route_delete: '{{ tree.route_delete }}'
@@ -85,6 +85,10 @@
             modal_view_id: '{{ tree.modal_view_id }}',
             route_view: '{{ tree.route_view }}'
         });
+
+        #}
+
+
     </script>
 
 {% endblock %}
@@ -152,13 +156,13 @@
         </form>
     </section>
 
-    {{ include('TreeBundle:Tree:Modal/create.html.twig') }}
-    {{ include('TreeBundle:Tree:Modal/create_child.html.twig') }}
-    {{ include('TreeBundle:Tree:Modal/edit.html.twig') }}
-    {{ include('TreeBundle:Tree:Modal/delete.html.twig') }}
-    {{ include('TreeBundle:Tree:Modal/view.html.twig') }}
+    {{ include('TreeBundle:Modal/create.html.twig') }}
+    {{ include('TreeBundle:Modal/create_child.html.twig') }}
+    {{ include('TreeBundle:Modal/edit.html.twig') }}
+    {{ include('TreeBundle:Modal/delete.html.twig') }}
+    {{ include('TreeBundle:Modal/view.html.twig') }}
 
-    {{ include('TreeBundle:Tree:Template/jquery_tmpl_1.html.twig') }}
-    {{ include('TreeBundle:Tree:Template/jquery_tmpl_2.html.twig') }}
+    {{ include('TreeBundle:Template/jquery_tmpl_1.html.twig') }}
+    {{ include('TreeBundle:Template/jquery_tmpl_2.html.twig') }}
 
 {% endblock %}

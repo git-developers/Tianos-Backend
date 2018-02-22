@@ -30,7 +30,7 @@ services:
 
     tianos.tree.controller.category:
         class: Bundle\CategoryBundle\Controller\TreeController
-        arguments: [ Bundle\TreeBundle\Factory\RequestConfigurationFactoryInterface ]
+        arguments: [ Bundle\ResourceBundle\Factory\RequestConfigurationFactoryInterface ]
         tags:
             - { name: tianos.tree.controller.category, alias: tianos.tree.controller.category }
 

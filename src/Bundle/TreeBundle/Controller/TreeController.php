@@ -51,7 +51,7 @@ class TreeController extends BaseController
         $repository = $configuration->getRepositoryService();
         $method = $configuration->getRepositoryMethod();
         $template = $configuration->getTemplate('');
-        $grid = $configuration->getGrid();
+        $tree = $configuration->getTree();
         $vars = $configuration->getVars();
 
         //REPOSITORY
@@ -63,27 +63,27 @@ class TreeController extends BaseController
         $modal = $crud->getModalMapper()->getDefaults();
         $formMapper = $crud->getFormMapper()->getDefaults();
 
-        //DATATABLE
-        $dataTable = $crud->getDataTableMapper($grid)
-            ->setRoute()
-            ->setColumns()
-            ->setOptions()
-            ->setRowCallBack()
-            ->setData($objects)
-            ->setTableOptions()
-            ->setTableButton()
-            ->setTableHeaderButton()
-            ->setColumnsTargets()
-            ->resetGridVariable()
-        ;
+//        //DATATABLE
+//        $dataTable = $crud->getDataTableMapper($grid)
+//            ->setRoute()
+//            ->setColumns()
+//            ->setOptions()
+//            ->setRowCallBack()
+//            ->setData($objects)
+//            ->setTableOptions()
+//            ->setTableButton()
+//            ->setTableHeaderButton()
+//            ->setColumnsTargets()
+//            ->resetGridVariable()
+//        ;
 
         return $this->render(
             $template,
             [
                 'vars' => $vars,
-                'grid' => $grid,
+                'tree' => $tree,
                 'modal' => $modal,
-                'dataTable' => $dataTable,
+//                'dataTable' => $dataTable,
                 'form_mapper' => $formMapper,
             ]
         );

@@ -1,30 +1,30 @@
-backend_category_index:
+backend_category_tree_index:
     path: /
     methods: [GET]
     defaults:
-        _controller: tianos.backend.controller.category:indexAction
+        _controller: tianos.tree.controller.category:indexAction
         _tianos:
             action: index
             section: admin
             permission: true
-            template: GridBundle::index.html.twig
+            template: TreeBundle::index.html.twig
             vars:
                 subheader: sylius.ui.manage_your_category_catalog
                 icon: cube
                 body_css: grid-body-css
                 serialize_group_name: crud
 #            grid: sylius_admin_product
-            grid:
+            tree:
                 icon: cube
                 box_class: primary
                 title: Gestionar category
                 data_table:
                     route:
-                        info: backend_category_info
-                        view: backend_category_view
-                        edit: backend_category_edit
-                        create: backend_category_create
-                        delete: backend_category_delete
+                        info: backend_category_tree_info
+                        view: backend_category_tree_view
+                        edit: backend_category_tree_edit
+                        create: backend_category_tree_create
+                        delete: backend_category_tree_delete
                     table_button:
                         - edit
                         - delete
@@ -38,21 +38,21 @@ backend_category_index:
                           value: aData.id
                         - key: class
                           value: "'alert'"
-                    columns:
-                        - name: '#'
-                          obj: " '<span class=\"badge bg-blue\">' + obj.id + '</span>' "
-#                        - name: code
-#                          obj: obj.code
+#                    columns:
+#                        - name: '#'
+#                          obj: " '<span class=\"badge bg-blue\">' + obj.id + '</span>' "
+##                        - name: code
+##                          obj: obj.code
+##                          options:
+##                              icon: map-marker
+#                        - name: Name
+#                          obj: obj.name
+##                        - name: slug
+##                          obj: obj.slug
+#                        - name: Creado
+#                          obj: obj.createdAt
 #                          options:
-#                              icon: map-marker
-                        - name: Name
-                          obj: obj.name
-#                        - name: slug
-#                          obj: obj.slug
-                        - name: Creado
-                          obj: obj.createdAt
-                          options:
-                              icon: calendar
+#                              icon: calendar
             form:
                 type: Bundle\CategoryBundle\Form\Type\CategoryType
             repository:
@@ -60,11 +60,11 @@ backend_category_index:
                 method: findAll
                 arguments: [$categoryId]
 
-backend_category_create:
+backend_category_tree_create:
     path: /create
     methods: [POST]
     defaults:
-        _controller: tianos.backend.controller.category:createAction
+        _controller: tianos.tree.controller.category:createAction
         _tianos:
             action: create
             template: CategoryBundle:CategoryBackend/Form:form.html.twig
@@ -74,11 +74,11 @@ backend_category_create:
             vars:
                 serialize_group_name: crud
 
-backend_category_edit:
+backend_category_tree_edit:
     path: /edit
     methods: [PUT, POST]
     defaults:
-        _controller: tianos.backend.controller.category:editAction
+        _controller: tianos.tree.controller.category:editAction
         _tianos:
             action: edit
             template: CategoryBundle:CategoryBackend/Form:form.html.twig
@@ -91,11 +91,11 @@ backend_category_edit:
             vars:
                 serialize_group_name: crud
 
-backend_category_delete:
+backend_category_tree_delete:
     path: /delete
     methods: [POST, DELETE]
     defaults:
-        _controller: tianos.backend.controller.category:deleteAction
+        _controller: tianos.tree.controller.category:deleteAction
         _tianos:
             action: delete
             template: GridBundle:Template:delete.html.twig
@@ -106,11 +106,11 @@ backend_category_delete:
             vars:
 #                body_css: grid-body-css
 
-backend_category_view:
+backend_category_tree_view:
     path: /view
     methods: [POST]
     defaults:
-        _controller: tianos.backend.controller.category:viewAction
+        _controller: tianos.tree.controller.category:viewAction
         _tianos:
             action: view
             template: CategoryBundle:CategoryBackend/Informative:view.html.twig
@@ -119,64 +119,11 @@ backend_category_view:
                 method: find
                 arguments: [$categoryId]
 
-backend_category_info:
+backend_category_tree_info:
     path: /info
     methods: [POST]
     defaults:
-        _controller: tianos.backend.controller.category:infoAction
+        _controller: tianos.tree.controller.category:infoAction
         _tianos:
             action: info
             template: CategoryBundle:CategoryBackend/Informative:info.html.twig
-
-
-
-
-
-#/var/www/html/Sylius/sylius/vendor/sylius/sylius/docs/customization/factory.rst
-#
-#    sylius_admin_product_create_simple:
-#        path: /products/new/simple
-#        methods: [GET, POST]
-#        defaults:
-#            _controller: sylius.controller.product:createAction
-#            _sylius:
-#                section: admin
-#                factory:
-#                    method: createDisabled # like here for example
-#                template: SyliusAdminBundle:Crud:create.html.twig
-#                redirect: sylius_admin_product_update
-#                vars:
-#                    subheader: sylius.ui.manage_your_product_catalog
-#                    templates:
-#                        form: SyliusAdminBundle:CRUDDUMMY:_form.html.twig
-#                    route:
-#                        name: sylius_admin_product_create_simple
-
-
-
-#            template: "@SyliusAdmin/ProductVariant/generate.html.twig"
-#            section: admin
-#            permission: true
-#            redirect:
-#                route: sylius_admin_product_variant_index
-#                parameters: { productId: $productId }
-#            form:
-#                type: Sylius\Bundle\ProductBundle\Form\Type\ProductGenerateVariantsType
-#            repository:
-#                method: find
-#                arguments: [$productId]
-#            flash: sylius.product_variant.generate
-
-#sylius_admin_product_index:
-#    path: /products/
-#    methods: [GET]
-#    defaults:
-#        _controller: sylius.controller.product:indexAction
-#        _sylius:
-#            section: admin
-#            permission: true
-#            grid: sylius_admin_product
-#            template: SyliusAdminBundle:CRUDDUMMY:index.html.twig
-#            vars:
-#                subheader: sylius.ui.manage_your_product_catalog
-#                icon: cube

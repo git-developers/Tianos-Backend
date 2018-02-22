@@ -132,6 +132,13 @@ class Builder implements ContainerAwareInterface
         ->setAttribute('icon', self::CIRCLE_1_YELLOW)
         ->setDisplay($clasesView)
         ;
+
+        $menu['Master']['Category']->addChild('Tree', [
+            'route' => 'backend_category_tree_index'
+        ])
+        ->setAttribute('icon', self::CIRCLE_2_AQUA)
+        ->setDisplay($clasesView)
+        ;
         /**
          * CRUD
          */

@@ -16,6 +16,9 @@ backend_product:
 backend_category:
     resource: '@CategoryBundle/Resources/config/routing/backend.yml'
     prefix: /category
+backend_category_tree:
+    resource: '@CategoryBundle/Resources/config/routing/tree.yml'
+    prefix: /category-tree
 backend_groupofusers:
     resource: '@GroupofusersBundle/Resources/config/routing/backend.yml'
     prefix: /group-of-users

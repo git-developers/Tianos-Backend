@@ -673,6 +673,14 @@ class RequestConfiguration
     /**
      * @return bool
      */
+    public function hasTree()
+    {
+        return $this->parameters->has('tree');
+    }
+
+    /**
+     * @return bool
+     */
     public function hasOneToMany($key)
     {
         if($this->parameters->has('one_to_many')){
@@ -693,6 +701,15 @@ class RequestConfiguration
         }
 
         return $this->parameters->get('grid');
+    }
+
+    public function getTree()
+    {
+        if (!$this->hasTree()) {
+            throw new \LogicException('Current action does not use tree.');
+        }
+
+        return $this->parameters->get('tree');
     }
 
     public function oneToManyBox()
