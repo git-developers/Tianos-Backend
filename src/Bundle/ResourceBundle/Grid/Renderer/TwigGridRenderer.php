@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Bundle\ResourceBundle\Grid\Renderer;
 
-use Bundle\GridBundle\Services\Crud\Builder\Button;
+use Bundle\CoreBundle\Services\Button;
 use Bundle\ResourceBundle\Grid\Parser\OptionsParserInterface;
 use Component\Grid\Definition\Action;
 use Component\Grid\Definition\Field;

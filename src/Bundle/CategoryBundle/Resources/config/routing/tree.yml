@@ -18,7 +18,10 @@ backend_category_tree_index:
                 icon: cube
                 box_class: primary
                 title: Gestionar category
-                data_table:
+                main_div: box-main-div
+                main_ul: box-main-ul
+                child_ul: box-child-ul
+                box:
                     route:
                         info: backend_category_tree_info
                         view: backend_category_tree_view

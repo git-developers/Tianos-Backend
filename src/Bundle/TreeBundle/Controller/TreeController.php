@@ -83,6 +83,7 @@ class TreeController extends BaseController
                 'vars' => $vars,
                 'tree' => $tree,
                 'modal' => $modal,
+                'objects' => $objects,
 //                'dataTable' => $dataTable,
                 'form_mapper' => $formMapper,
             ]

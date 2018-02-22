@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Bundle\GridBundle\Renderer;
 
 use Bundle\GridBundle\Form\Registry\FormTypeRegistryInterface;
-use Bundle\GridBundle\Services\Crud\Builder\Button;
+use Bundle\CoreBundle\Services\Button;
 use Component\Grid\Definition\Action;
 use Component\Grid\Definition\Field;
 use Component\Grid\Definition\Filter;

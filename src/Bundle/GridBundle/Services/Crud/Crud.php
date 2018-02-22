@@ -4,8 +4,8 @@ namespace Bundle\GridBundle\Services\Crud;
 
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
-use Bundle\GridBundle\Services\Crud\Builder\FormMapper;
-use Bundle\GridBundle\Services\Crud\Builder\ModalMapper;
+use Bundle\CoreBundle\Services\FormMapper;
+use Bundle\CoreBundle\Services\ModalMapper;
 use Bundle\ResourceBundle\Controller\RequestConfiguration;
 use Bundle\GridBundle\Services\Crud\Builder\DataTableMapper;
 use Bundle\GridBundle\Services\Crud\Builder\ButtonHeaderMapper;

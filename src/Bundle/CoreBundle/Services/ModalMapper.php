@@ -1,6 +1,6 @@
 <?php
 
-namespace Bundle\GridBundle\Services\Crud\Builder;
+namespace Bundle\CoreBundle\Services;
 
 use Symfony\Component\Console\Exception\InvalidArgumentException;
 use CoreBundle\Services\Common\Base;

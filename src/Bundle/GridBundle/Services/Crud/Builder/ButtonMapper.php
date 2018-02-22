@@ -2,6 +2,9 @@
 
 namespace Bundle\GridBundle\Services\Crud\Builder;
 
+use Bundle\CoreBundle\Services\Button;
+use Bundle\CoreBundle\Services\ModalMapper;
+
 class ButtonMapper
 {
 

@@ -9,7 +9,7 @@ use Component\Grid\Definition\Field;
 use Component\Grid\Definition\Filter;
 use Component\Grid\Renderer\GridRendererInterface;
 use Component\Grid\View\GridView;
-use Bundle\GridBundle\Services\Crud\Builder\Button;
+use Bundle\CoreBundle\Services\Button;
 use Symfony\Component\Templating\Helper\Helper;
 
 class GridHelper extends Helper

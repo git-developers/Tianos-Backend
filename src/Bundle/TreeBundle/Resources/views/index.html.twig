@@ -3,7 +3,7 @@
 {% import "TreeBundle::Macro/tree.html.twig" as macro %}
 
 {% block bodyclass %}{% spaceless %}
-    {{ tree.body_css }}
+    {{ vars.body_css }}
 {% endspaceless %}{% endblock %}
 
 {% block stylesheets %}
@@ -97,8 +97,8 @@
 
     <section class="content-header">
         <h1>
-            <i class="fa fa-fw fa-sitemap"></i> {{ tree.section_title }}
-            <small>panel</small>
+            <i class="fa fa-fw fa-sitemap"></i> {{ tree.title }}
+            <small>tree</small>
         </h1>
         <ol class="breadcrumb">
             <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -120,11 +120,11 @@
                             <div class="box-tools pull-right">
                                 <button
                                         type="button"
-                                        class="btn btn-default pull-right {{ tree.modal_create_id }}"
+                                        class="btn btn-default pull-right {{ modal.create_id }}"
                                         alt="Crear item"
                                         title="Crear item"
                                         data-toggle="modal"
-                                        data-target="#{{ tree.modal_create_id }}">
+                                        data-target="#{{ modal.create_id }}">
                                     <i class="fa fa-plus"></i> Crear item
                                 </button>
                             </div>
@@ -133,11 +133,11 @@
                         {#<link rel="stylesheet" href="http://zgs225.github.io/easy-tree/dist/css/easyTree.min.css">#}
                         {#https://two-wrongs.com/draw-a-tree-structure-with-only-css#}
 
-                        <div class="{{ tree.box_main_div }} box-body">
+                        <div class="{{ tree.main_div }} box-body">
 
-                            <ul id="{{ tree.box_main_ul }}">
-                                {% if entity is not empty %}
-                                    {{ macro.tree(entity, tree, -1) }}
+                            <ul id="{{ tree.main_ul }}">
+                                {% if objects is not empty %}
+                                    {#{{ macro.tree(entity, tree, -1) }}#}
                                 {% else %}
                                     <p>No hay items que mostrar</p>
                                 {% endif %}
@@ -156,13 +156,13 @@
         </form>
     </section>
 
-    {{ include('TreeBundle:Modal/create.html.twig') }}
-    {{ include('TreeBundle:Modal/create_child.html.twig') }}
-    {{ include('TreeBundle:Modal/edit.html.twig') }}
-    {{ include('TreeBundle:Modal/delete.html.twig') }}
-    {{ include('TreeBundle:Modal/view.html.twig') }}
+    {{ include('TreeBundle:Modal:create.html.twig') }}
+    {{ include('TreeBundle:Modal:create_child.html.twig') }}
+    {{ include('TreeBundle:Modal:edit.html.twig') }}
+    {{ include('TreeBundle:Modal:delete.html.twig') }}
+    {{ include('TreeBundle:Modal:view.html.twig') }}
 
-    {{ include('TreeBundle:Template/jquery_tmpl_1.html.twig') }}
-    {{ include('TreeBundle:Template/jquery_tmpl_2.html.twig') }}
+    {{ include('TreeBundle:Template:jquery_tmpl_1.html.twig') }}
+    {{ include('TreeBundle:Template:jquery_tmpl_2.html.twig') }}
 
 {% endblock %}

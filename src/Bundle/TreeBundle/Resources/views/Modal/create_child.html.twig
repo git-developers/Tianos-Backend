@@ -1,6 +1,6 @@
 {% spaceless %}
-    <div class="modal modal-success fade in" id="{{ crud.modal_create_child_id }}">
-        <div class="modal-dialog {{ crud.modal_create_child_size }}">
+    <div class="modal modal-success fade in" id="{{ modal.create_child_id }}">
+        <div class="modal-dialog {{ modal.create_child_size }}">
 
             <div class="modal-content">
 
@@ -15,7 +15,7 @@
                     </h4>
                 </div>
 
-                <form name="{{ crud.form_create_child_name }}" method="post" class="">
+                <form name="{{ form_mapper.create_child_name }}" method="post" class="">
                     <div class="crud-modal-content"></div>
                 </form>
 
