@@ -12,21 +12,27 @@ services:
 
     tianos.api.controller.category:
         class: Bundle\CategoryBundle\Controller\ApiController
-        arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
+        arguments: [ Bundle\ResourceBundle\Factory\RequestConfigurationFactoryInterface ]
         tags:
             - { name: tianos.api.controller.category, alias: tianos.api.controller.category }
 
     tianos.backend.controller.category:
         class: Bundle\CategoryBundle\Controller\BackendController
-        arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
+        arguments: [ Bundle\ResourceBundle\Factory\RequestConfigurationFactoryInterface ]
         tags:
             - { name: tianos.backend.controller.category, alias: tianos.backend.controller.category }
 
     tianos.frontend.controller.category:
         class: Bundle\CategoryBundle\Controller\FrontendController
-        arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
+        arguments: [ Bundle\ResourceBundle\Factory\RequestConfigurationFactoryInterface ]
         tags:
             - { name: tianos.frontend.controller.category, alias: tianos.frontend.controller.category }
+
+    tianos.tree.controller.category:
+        class: Bundle\CategoryBundle\Controller\TreeController
+        arguments: [ Bundle\TreeBundle\Factory\RequestConfigurationFactoryInterface ]
+        tags:
+            - { name: tianos.tree.controller.category, alias: tianos.tree.controller.category }
 
     tianos.repository.category:
         class: Dummy

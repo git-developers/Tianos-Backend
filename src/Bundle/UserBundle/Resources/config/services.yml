@@ -12,25 +12,25 @@ services:
 
     tianos.api.controller.user:
         class: Bundle\UserBundle\Controller\ApiController
-        arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
+        arguments: [ Bundle\ResourceBundle\Factory\RequestConfigurationFactoryInterface ]
         tags:
             - { name: tianos.api.controller.user, alias: tianos.api.controller.user }
 
     tianos.backend.controller.user:
         class: Bundle\UserBundle\Controller\BackendController
-        arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
+        arguments: [ Bundle\ResourceBundle\Factory\RequestConfigurationFactoryInterface ]
         tags:
             - { name: tianos.backend.controller.user, alias: tianos.backend.controller.user }
 
     tianos.frontend.controller.user:
         class: Bundle\UserBundle\Controller\FrontendController
-        arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
+        arguments: [ Bundle\ResourceBundle\Factory\RequestConfigurationFactoryInterface ]
         tags:
             - { name: tianos.frontend.controller.user, alias: tianos.frontend.controller.user }
 
     tianos.security.controller.user:
         class: Bundle\UserBundle\Controller\SecurityController
-        arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
+        arguments: [ Bundle\ResourceBundle\Factory\RequestConfigurationFactoryInterface ]
         public: true
         tags:
             - { name: tianos.security.controller.user, alias: tianos.security.controller.user }

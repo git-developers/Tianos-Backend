@@ -12,19 +12,19 @@ services:
 
     tianos.api.controller.client:
         class: Bundle\ClientBundle\Controller\ApiController
-        arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
+        arguments: [ Bundle\ResourceBundle\Factory\RequestConfigurationFactoryInterface ]
         tags:
             - { name: tianos.api.controller.client, alias: tianos.api.controller.client }
 
     tianos.backend.controller.client:
         class: Bundle\ClientBundle\Controller\BackendController
-        arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
+        arguments: [ Bundle\ResourceBundle\Factory\RequestConfigurationFactoryInterface ]
         tags:
             - { name: tianos.backend.controller.client, alias: tianos.backend.controller.client }
 
     tianos.frontend.controller.client:
         class: Bundle\ClientBundle\Controller\FrontendController
-        arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
+        arguments: [ Bundle\ResourceBundle\Factory\RequestConfigurationFactoryInterface ]
         tags:
             - { name: tianos.frontend.controller.client, alias: tianos.frontend.controller.client }
 

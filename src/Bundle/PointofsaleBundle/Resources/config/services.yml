@@ -12,25 +12,25 @@ services:
 
     tianos.api.controller.pointofsale:
         class: Bundle\PointofsaleBundle\Controller\ApiController
-        arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
+        arguments: [ Bundle\ResourceBundle\Factory\RequestConfigurationFactoryInterface ]
         tags:
             - { name: tianos.api.controller.pointofsale, alias: tianos.api.controller.pointofsale }
 
     tianos.backend.controller.pointofsale:
         class: Bundle\PointofsaleBundle\Controller\BackendController
-        arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
+        arguments: [ Bundle\ResourceBundle\Factory\RequestConfigurationFactoryInterface ]
         tags:
             - { name: tianos.backend.controller.pointofsale, alias: tianos.backend.controller.pointofsale }
 
     tianos.frontend.controller.pointofsale:
         class: Bundle\PointofsaleBundle\Controller\FrontendController
-        arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
+        arguments: [ Bundle\ResourceBundle\Factory\RequestConfigurationFactoryInterface ]
         tags:
             - { name: tianos.frontend.controller.pointofsale, alias: tianos.frontend.controller.pointofsale }
 
     tianos.map.controller.pointofsale:
         class: Bundle\PointofsaleBundle\Controller\MapController
-        arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
+        arguments: [ Bundle\ResourceBundle\Factory\RequestConfigurationFactoryInterface ]
         tags:
             - { name: tianos.map.controller.pointofsale, alias: tianos.map.controller.pointofsale }
 

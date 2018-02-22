@@ -12,19 +12,19 @@ services:
 
     tianos.api.controller.reportpointofsaleandproduct:
         class: Bundle\ReportpointofsaleandproductBundle\Controller\ApiController
-        arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
+        arguments: [ Bundle\ResourceBundle\Factory\RequestConfigurationFactoryInterface ]
         tags:
             - { name: tianos.api.controller.reportpointofsaleandproduct, alias: tianos.api.controller.reportpointofsaleandproduct }
 
     tianos.backend.controller.reportpointofsaleandproduct:
         class: Bundle\ReportpointofsaleandproductBundle\Controller\BackendController
-        arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
+        arguments: [ Bundle\ResourceBundle\Factory\RequestConfigurationFactoryInterface ]
         tags:
             - { name: tianos.backend.controller.reportpointofsaleandproduct, alias: tianos.backend.controller.reportpointofsaleandproduct }
 
     tianos.frontend.controller.reportpointofsaleandproduct:
         class: Bundle\ReportpointofsaleandproductBundle\Controller\FrontendController
-        arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
+        arguments: [ Bundle\ResourceBundle\Factory\RequestConfigurationFactoryInterface ]
         tags:
             - { name: tianos.frontend.controller.reportpointofsaleandproduct, alias: tianos.frontend.controller.reportpointofsaleandproduct }
 

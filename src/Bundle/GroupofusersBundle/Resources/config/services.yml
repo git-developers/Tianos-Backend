@@ -12,19 +12,19 @@ services:
 
     tianos.api.controller.groupofusers:
         class: Bundle\GroupofusersBundle\Controller\ApiController
-        arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
+        arguments: [ Bundle\ResourceBundle\Factory\RequestConfigurationFactoryInterface ]
         tags:
             - { name: tianos.api.controller.groupofusers, alias: tianos.api.controller.groupofusers }
 
     tianos.backend.controller.groupofusers:
         class: Bundle\GroupofusersBundle\Controller\BackendController
-        arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
+        arguments: [ Bundle\ResourceBundle\Factory\RequestConfigurationFactoryInterface ]
         tags:
             - { name: tianos.backend.controller.groupofusers, alias: tianos.backend.controller.groupofusers }
 
     tianos.frontend.controller.groupofusers:
         class: Bundle\GroupofusersBundle\Controller\FrontendController
-        arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
+        arguments: [ Bundle\ResourceBundle\Factory\RequestConfigurationFactoryInterface ]
         tags:
             - { name: tianos.frontend.controller.groupofusers, alias: tianos.frontend.controller.groupofusers }
 

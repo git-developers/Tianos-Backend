@@ -2,6 +2,6 @@ services:
 
     tianos.frontend.controller.default:
         class: Bundle\FrontendBundle\Controller\DefaultController
-        arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
+        arguments: [ Bundle\ResourceBundle\Factory\RequestConfigurationFactoryInterface ]
         tags:
             - { name: tianos.frontend.controller.default, alias: tianos.frontend.controller.default }
