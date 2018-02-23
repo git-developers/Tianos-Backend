@@ -6,6 +6,14 @@ Bundle\CategoryBundle\Entity\Category:
 #    mappedSuperclass: Component\CRUDDUMMY\Model\CRUDDUMMY
     table: category
     repositoryClass: Bundle\CategoryBundle\Doctrine\ORM\CategoryRepository
+    indexes:
+        fk_category_category1_idx:
+            columns:
+                - category_id
+    uniqueConstraints:
+        code_UNIQUE:
+            columns:
+                - code
     id:
         id:
             type: integer
@@ -24,7 +32,7 @@ Bundle\CategoryBundle\Entity\Category:
                 fixed: false
         name:
             type: string
-            nullable: false
+            nullable: true
             length: 150
             options:
                 fixed: false
@@ -34,19 +42,10 @@ Bundle\CategoryBundle\Entity\Category:
             length: 150
             options:
                 fixed: false
-#        image:
-#            type: string
-#            nullable: true
-#            length: 45
-#            options:
-#                fixed: false
         createdAt:
             type: datetime
-            nullable: false
+            nullable: true
             column: created_at
-#            gedmo:
-#                timestampable:
-#                    on: create
         userCreate:
             type: integer
             nullable: true
@@ -69,7 +68,15 @@ Bundle\CategoryBundle\Entity\Category:
             options:
                 default: '1'
             column: is_active
+    manyToOne:
+        category:
+            targetEntity: Bundle\CategoryBundle\Entity\Category
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                category_id:
+                    referencedColumnName: id
+            orphanRemoval: false
     lifecycleCallbacks: {  }
-#    lifecycleCallbacks:
-#        prePersist: [ doStuffOnPrePersist, doOtherStuffOnPrePersistToo ]
-#        postPersist: [ doStuffOnPostPersist ]

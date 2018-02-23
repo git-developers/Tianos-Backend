@@ -19,8 +19,8 @@ use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\QueryBuilder;
 use PhpSpec\ObjectBehavior;
 use Bundle\TreeBundle\Doctrine\ORM\DataSource;
-use Component\Grid\Data\DriverInterface;
-use Component\Grid\Parameters;
+use Component\Tree\Data\DriverInterface;
+use Component\Tree\Parameters;
 
 final class DriverSpec extends ObjectBehavior
 {

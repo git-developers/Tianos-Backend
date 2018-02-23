@@ -28,19 +28,19 @@ backend_category_tree_index:
                         edit: backend_category_tree_edit
                         create: backend_category_tree_create
                         delete: backend_category_tree_delete
-                    table_button:
-                        - edit
-                        - delete
-                    table_button_header:
-                        - create
-                        - info
-                    row_call_back:
-                        - key: id
-                          value: aData.id
-                        - key: data-id
-                          value: aData.id
-                        - key: class
-                          value: "'alert'"
+#                    table_button:
+#                        - edit
+#                        - delete
+#                    table_button_header:
+#                        - create
+#                        - info
+#                    row_call_back:
+#                        - key: id
+#                          value: aData.id
+#                        - key: data-id
+#                          value: aData.id
+#                        - key: class
+#                          value: "'alert'"
 #                    columns:
 #                        - name: '#'
 #                          obj: " '<span class=\"badge bg-blue\">' + obj.id + '</span>' "
@@ -60,7 +60,7 @@ backend_category_tree_index:
                 type: Bundle\CategoryBundle\Form\Type\CategoryType
             repository:
                 service: tianos.repository.category
-                method: findAll
+                method: findAllParents
                 arguments: [$categoryId]
 
 backend_category_tree_create:

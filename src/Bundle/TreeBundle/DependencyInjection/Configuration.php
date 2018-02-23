@@ -31,7 +31,7 @@ final class Configuration implements ConfigurationInterface
 
         $this->addDriversSection($rootNode);
         $this->addTemplatesSection($rootNode);
-        $this->addGridsSection($rootNode);
+        $this->addTreesSection($rootNode);
 
         return $treeBuilder;
     }
@@ -78,7 +78,7 @@ final class Configuration implements ConfigurationInterface
     /**
      * @param ArrayNodeDefinition $node
      */
-    private function addGridsSection(ArrayNodeDefinition $node): void
+    private function addTreesSection(ArrayNodeDefinition $node): void
     {
         $node
             ->children()

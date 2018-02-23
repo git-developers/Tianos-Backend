@@ -66,6 +66,15 @@ class Category
      */
     private $isActive = '1';
 
+    /**
+     * @var \Bundle\CategoryBundle\Entity\Category
+     *
+     * @ORM\ManyToOne(targetEntity="Bundle\CategoryBundle\Entity\Category")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     * })
+     */
+    private $category;
 
     /**
      * Get id
@@ -267,6 +276,30 @@ class Category
     public function getIsActive()
     {
         return $this->isActive;
+    }
+
+    /**
+     * Set category
+     *
+     * @param \Bundle\CategoryBundle\Entity\Category $category
+     *
+     * @return Category
+     */
+    public function setCategory(\Bundle\CategoryBundle\Entity\Category $category = null)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
+
+    /**
+     * Get category
+     *
+     * @return \Bundle\CategoryBundle\Entity\Category
+     */
+    public function getCategory()
+    {
+        return $this->category;
     }
 }
 

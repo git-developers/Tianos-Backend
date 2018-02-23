@@ -15,7 +15,7 @@ namespace Bundle\TreeBundle\Doctrine\ORM;
 
 use Doctrine\ORM\Query\Expr\Comparison;
 use Doctrine\ORM\QueryBuilder;
-use Component\Grid\Data\ExpressionBuilderInterface;
+use Component\Tree\Data\ExpressionBuilderInterface;
 
 final class ExpressionBuilder implements ExpressionBuilderInterface
 {

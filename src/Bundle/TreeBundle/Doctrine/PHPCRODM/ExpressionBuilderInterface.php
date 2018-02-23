@@ -13,7 +13,7 @@ declare(strict_types=1);
 
 namespace Bundle\TreeBundle\Doctrine\PHPCRODM;
 
-use Component\Grid\Data\ExpressionBuilderInterface as BaseExpressionBuilderInterface;
+use Component\Tree\Data\ExpressionBuilderInterface as BaseExpressionBuilderInterface;
 
 interface ExpressionBuilderInterface extends BaseExpressionBuilderInterface
 {

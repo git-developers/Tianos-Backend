@@ -56,12 +56,22 @@ class TreeController extends BaseController
 
         //REPOSITORY
         $objects = $this->get($repository)->$method();
-        $objects = $this->getSerialize($objects, $vars['serialize_group_name']);
+        $objects = $this->getTreeEntities($objects, $configuration, $vars['serialize_group_name']);
+
+
+
+
 
         //CRUD
-        $crud = $this->get('grid.crud');
+        $crud = $this->get('tianos.tree');
         $modal = $crud->getModalMapper()->getDefaults();
         $formMapper = $crud->getFormMapper()->getDefaults();
+
+
+//        echo "POLLO:: <pre>";
+//        print_r($modal);
+//        exit;
+
 
 //        //DATATABLE
 //        $dataTable = $crud->getDataTableMapper($grid)
@@ -74,7 +84,7 @@ class TreeController extends BaseController
 //            ->setTableButton()
 //            ->setTableHeaderButton()
 //            ->setColumnsTargets()
-//            ->resetGridVariable()
+//            ->resetTreeVariable()
 //        ;
 
         return $this->render(
@@ -92,6 +102,25 @@ class TreeController extends BaseController
 //        return new JsonResponse([
 //            'slug' => $this->get('sylius.generator.slug')->generate($name),
 //        ]);
+    }
+
+    private function getTreeEntities($parents, $configuration, $serializeGroupName)
+    {
+        if(is_null($parents)){
+            $parents = [];
+        }
+
+        $repository = $configuration->getRepositoryService();
+//        $method = $configuration->getRepositoryMethod();
+
+        $entity = [];
+        foreach ($parents as $key => $parent){
+            $entity[$key]['parent'] = $this->getSerializeDecode($parent, $serializeGroupName);
+            $children = $this->get($repository)->findAllByParent($parent);
+            $entity[$key]['children'] = $this->getTreeEntities($children, $configuration, $serializeGroupName);
+        }
+
+        return $entity;
     }
 
     /**

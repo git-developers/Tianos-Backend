@@ -16,9 +16,9 @@ namespace Bundle\TreeBundle\Doctrine\PHPCRODM;
 use Doctrine\ODM\PHPCR\Query\Builder\QueryBuilder;
 use Pagerfanta\Adapter\DoctrineODMPhpcrAdapter;
 use Pagerfanta\Pagerfanta;
-use Component\Grid\Data\DataSourceInterface;
-use Component\Grid\Data\ExpressionBuilderInterface;
-use Component\Grid\Parameters;
+use Component\Tree\Data\DataSourceInterface;
+use Component\Tree\Data\ExpressionBuilderInterface;
+use Component\Tree\Parameters;
 
 final class DataSource implements DataSourceInterface
 {

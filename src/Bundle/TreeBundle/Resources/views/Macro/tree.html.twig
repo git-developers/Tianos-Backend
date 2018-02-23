@@ -1,6 +1,6 @@
-{% macro tree(entity, tree, index) %}
+{% macro tree(objects, tree, modal, index) %}
 
-    {% for key, value in entity %}
+    {% for key, value in objects %}
 
         {% if loop.index0 == 0 %}
             {% set index = index + 1 %}
@@ -11,14 +11,14 @@
         {% if entityParent is not empty %}
             <li
                 class="x-hand"
-                data-id="{{ entityParent.id_increment }}"
-                id="li-{{ entityParent.id_increment }}">
+                data-id="{{ entityParent.id }}"
+                id="li-{{ entityParent.id }}">
 
-                {{ include('CoreBundle:Tree:Template/li.html.twig', {entity:entityParent, tree:tree, badge_color:index|badge_colors()}) }}
+                {{ include('TreeBundle::Template/li.html.twig', {entity:entityParent, modal:modal, badge_color:index|badge_colors()}) }}
 
-                <ul class="{{ tree.box_child_ul ~ entityParent.id_increment }}">
+                <ul class="{{ tree.child_ul ~ entityParent.id }}">
                     {% import _self as macro %}
-                    {{ macro.tree(value.children, tree, index) }}
+                    {{ macro.tree(value.children, tree, modal, index) }}
                 </ul>
 
             </li>

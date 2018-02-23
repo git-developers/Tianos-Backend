@@ -72,7 +72,7 @@ class OneToManyController extends BaseController
 
 
         //CRUD
-        $crud = $this->get('grid.crud');
+        $crud = $this->get('tianos.one_to_many');
         $modal = $crud->getModalMapper()->getDefaults();
         $formMapper = $crud->getFormMapper()->getDefaults();
 

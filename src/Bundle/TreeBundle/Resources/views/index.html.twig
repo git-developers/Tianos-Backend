@@ -137,7 +137,7 @@
 
                             <ul id="{{ tree.main_ul }}">
                                 {% if objects is not empty %}
-                                    {#{{ macro.tree(entity, tree, -1) }}#}
+                                    {{ macro.tree(objects, tree, modal, -1) }}
                                 {% else %}
                                     <p>No hay items que mostrar</p>
                                 {% endif %}

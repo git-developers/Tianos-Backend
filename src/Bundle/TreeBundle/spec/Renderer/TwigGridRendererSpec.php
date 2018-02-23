@@ -16,18 +16,18 @@ namespace spec\Bundle\TreeBundle\Renderer;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Bundle\TreeBundle\Form\Registry\FormTypeRegistryInterface;
-use Component\Grid\Definition\Action;
-use Component\Grid\Definition\Field;
-use Component\Grid\FieldTypes\FieldTypeInterface;
-use Component\Grid\Filter\StringFilter;
-use Component\Grid\Renderer\GridRendererInterface;
-use Component\Grid\View\GridView;
-use Component\Grid\View\GridViewInterface;
+use Component\Tree\Definition\Action;
+use Component\Tree\Definition\Field;
+use Component\Tree\FieldTypes\FieldTypeInterface;
+use Component\Tree\Filter\StringFilter;
+use Component\Tree\Renderer\TreeRendererInterface;
+use Component\Tree\View\TreeView;
+use Component\Tree\View\TreeViewInterface;
 use Component\Registry\ServiceRegistryInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-final class TwigGridRendererSpec extends ObjectBehavior
+final class TwigTreeRendererSpec extends ObjectBehavior
 {
     function let(
         \Twig_Environment $twig,
@@ -56,22 +56,22 @@ final class TwigGridRendererSpec extends ObjectBehavior
 
     function it_is_a_grid_renderer(): void
     {
-        $this->shouldImplement(GridRendererInterface::class);
+        $this->shouldImplement(TreeRendererInterface::class);
     }
 
-    function it_uses_twig_to_render_the_grid_view(\Twig_Environment $twig, GridViewInterface $gridView): void
+    function it_uses_twig_to_render_the_grid_view(\Twig_Environment $twig, TreeViewInterface $gridView): void
     {
-        $twig->render('SyliusTreeBundle:default.html.twig', ['grid' => $gridView])->willReturn('<html>Grid!</html>');
-        $this->render($gridView)->shouldReturn('<html>Grid!</html>');
+        $twig->render('SyliusTreeBundle:default.html.twig', ['grid' => $gridView])->willReturn('<html>Tree!</html>');
+        $this->render($gridView)->shouldReturn('<html>Tree!</html>');
     }
 
-    function it_uses_custom_template_if_specified(\Twig_Environment $twig, GridView $gridView): void
+    function it_uses_custom_template_if_specified(\Twig_Environment $twig, TreeView $gridView): void
     {
-        $twig->render('SyliusTreeBundle:custom.html.twig', ['grid' => $gridView])->willReturn('<html>Grid!</html>');
-        $this->render($gridView, 'SyliusTreeBundle:custom.html.twig')->shouldReturn('<html>Grid!</html>');
+        $twig->render('SyliusTreeBundle:custom.html.twig', ['grid' => $gridView])->willReturn('<html>Tree!</html>');
+        $this->render($gridView, 'SyliusTreeBundle:custom.html.twig')->shouldReturn('<html>Tree!</html>');
     }
 
-    function it_uses_twig_to_render_the_action(\Twig_Environment $twig, GridViewInterface $gridView, Action $action): void
+    function it_uses_twig_to_render_the_action(\Twig_Environment $twig, TreeViewInterface $gridView, Action $action): void
     {
         $action->getType()->willReturn('link');
         $action->getOptions()->willReturn([]);
@@ -89,7 +89,7 @@ final class TwigGridRendererSpec extends ObjectBehavior
     }
 
     function it_renders_a_field_with_data_via_appropriate_field_type(
-        GridViewInterface $gridView,
+        TreeViewInterface $gridView,
         Field $field,
         ServiceRegistryInterface $fieldsRegistry,
         FieldTypeInterface $fieldType
@@ -111,7 +111,7 @@ final class TwigGridRendererSpec extends ObjectBehavior
     }
 
     function it_throws_an_exception_if_template_is_not_configured_for_given_action_type(
-        GridViewInterface $gridView,
+        TreeViewInterface $gridView,
         Action $action
     ): void {
         $action->getType()->willReturn('foo');

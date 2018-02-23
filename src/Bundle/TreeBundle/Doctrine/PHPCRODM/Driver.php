@@ -14,9 +14,9 @@ declare(strict_types=1);
 namespace Bundle\TreeBundle\Doctrine\PHPCRODM;
 
 use Doctrine\ODM\PHPCR\DocumentManagerInterface;
-use Component\Grid\Data\DataSourceInterface;
-use Component\Grid\Data\DriverInterface;
-use Component\Grid\Parameters;
+use Component\Tree\Data\DataSourceInterface;
+use Component\Tree\Data\DriverInterface;
+use Component\Tree\Parameters;
 
 final class Driver implements DriverInterface
 {

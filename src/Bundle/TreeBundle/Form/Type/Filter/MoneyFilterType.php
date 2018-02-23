@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Bundle\TreeBundle\Form\Type\Filter;
 
 use Bundle\CurrencyBundle\Form\Type\CurrencyChoiceType;
-use Component\Grid\Filter\MoneyFilter;
+use Component\Tree\Filter\MoneyFilter;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormBuilderInterface;

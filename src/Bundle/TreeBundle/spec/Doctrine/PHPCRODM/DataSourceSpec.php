@@ -25,8 +25,8 @@ use Pagerfanta\Pagerfanta;
 use PhpSpec\ObjectBehavior;
 use Prophecy\Argument;
 use Bundle\TreeBundle\Doctrine\PHPCRODM\ExpressionBuilderInterface;
-use Component\Grid\Data\DataSourceInterface;
-use Component\Grid\Parameters;
+use Component\Tree\Data\DataSourceInterface;
+use Component\Tree\Parameters;
 
 /**
  * @require Doctrine\ODM\PHPCR\DocumentManagerInterface

@@ -59,7 +59,7 @@ class GridController extends BaseController
         $objects = $this->getSerialize($objects, $vars['serialize_group_name']);
 
         //CRUD
-        $crud = $this->get('grid.crud');
+        $crud = $this->get('tianos.crud');
         $modal = $crud->getModalMapper()->getDefaults();
         $formMapper = $crud->getFormMapper()->getDefaults();
 

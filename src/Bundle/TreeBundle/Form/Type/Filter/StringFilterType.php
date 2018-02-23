@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Bundle\TreeBundle\Form\Type\Filter;
 
-use Component\Grid\Filter\StringFilter;
+use Component\Tree\Filter\StringFilter;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;

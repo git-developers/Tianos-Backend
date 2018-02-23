@@ -1,10 +1,10 @@
 services:
 
-    grid.crud:
+    tianos.crud:
         class: Bundle\GridBundle\Services\Crud\Crud
         arguments: [ "@router", "@request_stack" ]
         tags:
-            - { name: grid.crud, alias: grid.crud }
+            - { name: tianos.crud, alias: tianos.crud }
 
     tianos.form_registry.grid_filter:
         class: Bundle\GridBundle\Form\Registry\FormTypeRegistry

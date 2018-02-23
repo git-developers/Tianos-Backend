@@ -14,16 +14,16 @@ declare(strict_types=1);
 namespace spec\Bundle\TreeBundle\Templating\Helper;
 
 use PhpSpec\ObjectBehavior;
-use Component\Grid\Definition\Action;
-use Component\Grid\Definition\Field;
-use Component\Grid\Renderer\GridRendererInterface;
-use Component\Grid\View\GridView;
+use Component\Tree\Definition\Action;
+use Component\Tree\Definition\Field;
+use Component\Tree\Renderer\TreeRendererInterface;
+use Component\Tree\View\TreeView;
 use Symfony\Component\Templating\Helper\Helper;
 use Symfony\Component\Templating\Helper\HelperInterface;
 
-final class GridHelperSpec extends ObjectBehavior
+final class TreeHelperSpec extends ObjectBehavior
 {
-    function let(GridRendererInterface $gridRenderer): void
+    function let(TreeRendererInterface $gridRenderer): void
     {
         $this->beConstructedWith($gridRenderer);
     }
@@ -38,19 +38,19 @@ final class GridHelperSpec extends ObjectBehavior
         $this->shouldHaveType(Helper::class);
     }
 
-    function it_uses_grid_renderer_to_render_grid(GridRendererInterface $gridRenderer, GridView $gridView): void
+    function it_uses_grid_renderer_to_render_grid(TreeRendererInterface $gridRenderer, TreeView $gridView): void
     {
-        $gridRenderer->render($gridView, null)->willReturn('<html>Grid!</html>');
-        $this->renderGrid($gridView, null)->shouldReturn('<html>Grid!</html>');
+        $gridRenderer->render($gridView, null)->willReturn('<html>Tree!</html>');
+        $this->renderTree($gridView, null)->shouldReturn('<html>Tree!</html>');
     }
 
-    function it_uses_grid_renderer_to_render_field(GridRendererInterface $gridRenderer, GridView $gridView, Field $field): void
+    function it_uses_grid_renderer_to_render_field(TreeRendererInterface $gridRenderer, TreeView $gridView, Field $field): void
     {
         $gridRenderer->renderField($gridView, $field, 'foo')->willReturn('Value');
         $this->renderField($gridView, $field, 'foo')->shouldReturn('Value');
     }
 
-    function it_uses_grid_renderer_to_render_action(GridRendererInterface $gridRenderer, GridView $gridView, Action $action): void
+    function it_uses_grid_renderer_to_render_action(TreeRendererInterface $gridRenderer, TreeView $gridView, Action $action): void
     {
         $gridRenderer->renderAction($gridView, $action, null)->willReturn('<a href="#">Go go Gadget arms!</a>');
         $this->renderAction($gridView, $action)->shouldReturn('<a href="#">Go go Gadget arms!</a>');

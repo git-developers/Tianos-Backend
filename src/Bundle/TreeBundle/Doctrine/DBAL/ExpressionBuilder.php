@@ -14,7 +14,7 @@ declare(strict_types=1);
 namespace Bundle\TreeBundle\Doctrine\DBAL;
 
 use Doctrine\DBAL\Query\QueryBuilder;
-use Component\Grid\Data\ExpressionBuilderInterface;
+use Component\Tree\Data\ExpressionBuilderInterface;
 
 final class ExpressionBuilder implements ExpressionBuilderInterface
 {

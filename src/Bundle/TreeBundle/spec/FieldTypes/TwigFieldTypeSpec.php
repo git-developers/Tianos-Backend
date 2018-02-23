@@ -14,9 +14,9 @@ declare(strict_types=1);
 namespace spec\Bundle\TreeBundle\FieldTypes;
 
 use PhpSpec\ObjectBehavior;
-use Component\Grid\DataExtractor\DataExtractorInterface;
-use Component\Grid\Definition\Field;
-use Component\Grid\FieldTypes\FieldTypeInterface;
+use Component\Tree\DataExtractor\DataExtractorInterface;
+use Component\Tree\Definition\Field;
+use Component\Tree\FieldTypes\FieldTypeInterface;
 
 final class TwigFieldTypeSpec extends ObjectBehavior
 {

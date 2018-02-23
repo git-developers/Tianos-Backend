@@ -14,9 +14,9 @@ declare(strict_types=1);
 namespace Bundle\TreeBundle\Tests\DependencyInjection;
 
 use Matthias\SymfonyDependencyInjectionTest\PhpUnit\AbstractExtensionTestCase;
-use Bundle\TreeBundle\DependencyInjection\SyliusGridExtension;
+use Bundle\TreeBundle\DependencyInjection\SyliusTreeExtension;
 
-final class SyliusGridExtensionTest extends AbstractExtensionTestCase
+final class SyliusTreeExtensionTest extends AbstractExtensionTestCase
 {
     /**
      * @test
@@ -83,15 +83,15 @@ final class SyliusGridExtensionTest extends AbstractExtensionTestCase
         $this->load([
             'templates' => [
                 'filter' => [
-                    'string' => 'AppBundle:Grid/Filter:string.html.twig',
-                    'date' => 'AppBundle:Grid/Filter:date.html.twig',
+                    'string' => 'AppBundle:Tree/Filter:string.html.twig',
+                    'date' => 'AppBundle:Tree/Filter:date.html.twig',
                 ],
             ],
         ]);
 
         $this->assertContainerBuilderHasParameter('sylius.grid.templates.filter', [
-            'string' => 'AppBundle:Grid/Filter:string.html.twig',
-            'date' => 'AppBundle:Grid/Filter:date.html.twig',
+            'string' => 'AppBundle:Tree/Filter:string.html.twig',
+            'date' => 'AppBundle:Tree/Filter:date.html.twig',
         ]);
     }
 
@@ -103,15 +103,15 @@ final class SyliusGridExtensionTest extends AbstractExtensionTestCase
         $this->load([
             'templates' => [
                 'action' => [
-                    'create' => 'AppBundle:Grid/Filter:create.html.twig',
-                    'update' => 'AppBundle:Grid/Filter:update.html.twig',
+                    'create' => 'AppBundle:Tree/Filter:create.html.twig',
+                    'update' => 'AppBundle:Tree/Filter:update.html.twig',
                 ],
             ],
         ]);
 
         $this->assertContainerBuilderHasParameter('sylius.grid.templates.action', [
-            'create' => 'AppBundle:Grid/Filter:create.html.twig',
-            'update' => 'AppBundle:Grid/Filter:update.html.twig',
+            'create' => 'AppBundle:Tree/Filter:create.html.twig',
+            'update' => 'AppBundle:Tree/Filter:update.html.twig',
         ]);
     }
 
@@ -121,7 +121,7 @@ final class SyliusGridExtensionTest extends AbstractExtensionTestCase
     protected function getContainerExtensions(): array
     {
         return [
-            new SyliusGridExtension(),
+            new SyliusTreeExtension(),
         ];
     }
 }

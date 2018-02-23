@@ -10,6 +10,43 @@ use Component\Category\Repository\CategoryRepositoryInterface;
 class CategoryRepository extends TianosEntityRepository implements CategoryRepositoryInterface
 {
 
+    public function findAllParents(): array
+    {
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT parent
+            FROM CategoryBundle:Category parent
+            WHERE
+            parent.isActive = :active AND
+            parent.category IS NULL
+            ORDER BY parent.id DESC
+            ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+
+        return $query->getResult();
+    }
+
+    public function findAllByParent($parent): array
+    {
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT child
+            FROM CategoryBundle:Category child
+            WHERE
+            child.isActive = :active AND
+            child.category = :parent
+            ORDER BY child.id DESC
+            ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+        $query->setParameter('parent', $parent);
+
+        return $query->getResult();
+    }
+
     /**
      * {@inheritdoc}
      */

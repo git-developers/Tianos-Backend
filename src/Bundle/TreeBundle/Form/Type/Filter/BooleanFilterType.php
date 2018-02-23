@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Bundle\TreeBundle\Form\Type\Filter;
 
-use Component\Grid\Filter\BooleanFilter;
+use Component\Tree\Filter\BooleanFilter;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\OptionsResolver\OptionsResolver;

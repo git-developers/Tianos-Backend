@@ -1,10 +1,10 @@
 services:
 
-    grid.crud:
-        class: Bundle\OneToManyBundle\Services\Crud\Crud
+    tianos.one_to_many:
+        class: Bundle\OneToManyBundle\Services\OneToMany\OneToMany
         arguments: [ "@router", "@request_stack" ]
         tags:
-            - { name: grid.crud, alias: grid.crud }
+            - { name: grid.one_to_many, alias: grid.one_to_many }
 
     tianos.form_registry.grid_filter:
         class: Bundle\OneToManyBundle\Form\Registry\FormTypeRegistry

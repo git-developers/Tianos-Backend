@@ -10,13 +10,10 @@ use Component\Core\Repository\RepositoryInterface;
 interface CategoryRepositoryInterface extends RepositoryInterface
 {
 
-//    /**
-//     * @return array
-//     */
-//    public function gatazo(): array;
-
     public function find($id);
     public function findAll(): array;
+    public function findAllParents(): array;
+    public function findAllByParent($parent): array;
 
     /**
      * @param string $name

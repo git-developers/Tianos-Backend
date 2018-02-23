@@ -18,8 +18,8 @@ use Doctrine\ODM\PHPCR\DocumentRepository;
 use Doctrine\ODM\PHPCR\Query\Builder\QueryBuilder;
 use PhpSpec\ObjectBehavior;
 use Bundle\TreeBundle\Doctrine\PHPCRODM\DataSource;
-use Component\Grid\Data\DriverInterface;
-use Component\Grid\Parameters;
+use Component\Tree\Data\DriverInterface;
+use Component\Tree\Parameters;
 
 /**
  * @require Doctrine\ODM\PHPCR\DocumentManagerInterface

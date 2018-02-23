@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Bundle\GridBundle\Services\Crud;
 
 use Symfony\Component\HttpFoundation\RequestStack;
