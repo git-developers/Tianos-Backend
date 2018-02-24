@@ -11,7 +11,7 @@
         var base = this;
         var modal = null;
 
-        var modalContent = null;
+        var apiContent = null;
 
         var msg_error = '<p>INFO: Oops!, no se completo el proceso. Contacte a su proveedor (code 3030)</p>';
         var msg_loading = '<div class="modal-body" align="center"><i class="fa fa-2x fa-refresh fa-spin"></i></div>';
@@ -25,7 +25,7 @@
             // base.$el.append('<button name="public" style="'+base.options.buttonStyle+'">Private</button>');
 
             modal = $('#' + options.modalId);
-            modalContent = modal.find('.crud-modal-content');
+            apiContent = modal.find('.crud-modal-content');
         };
 
         base.openModal = function(event) {
@@ -38,13 +38,13 @@
                 dataType: 'html',
                 data: '',
                 beforeSend: function(jqXHR, settings) {
-                    modalContent.html(msg_loading);
+                    apiContent.html(msg_loading);
                 },
                 success: function(data, textStatus, jqXHR) {
-                    modalContent.html(data);
+                    apiContent.html(data);
                 },
                 error: function(jqXHR, exception) {
-                    modalContent.html(msg_error);
+                    apiContent.html(msg_error);
                 }
             });
         };

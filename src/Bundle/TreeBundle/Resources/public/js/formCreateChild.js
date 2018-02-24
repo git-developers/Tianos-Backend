@@ -28,7 +28,7 @@
             // base.$el.append('<button name="public" style="'+base.options.buttonStyle+'">Private</button>');
 
             modal = $('#' + options.modal_create_child_id);
-            apiContent = modal.find('.api-content');
+            apiContent = modal.find('.tree-modal-content');
         };
 
         base.openModal = function(event, context) {

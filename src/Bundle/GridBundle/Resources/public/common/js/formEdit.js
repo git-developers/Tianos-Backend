@@ -11,7 +11,7 @@
         var base = this;
         var modal = null;
 
-        var modalContent = null;
+        var apiContent = null;
         var modalMsgDiv = null;
         var modalMsgText = null;
         var modalRefresh = null;
@@ -28,7 +28,7 @@
             // base.$el.append('<button name="public" style="'+base.options.buttonStyle+'">Private</button>');
 
             modal = $('#' + options.modalId);
-            modalContent = modal.find('.crud-modal-content');
+            apiContent = modal.find('.crud-modal-content');
         };
 
         base.openModal = function(event, context) {
@@ -55,14 +55,14 @@
 
                     modalMsgDiv.hide();
                     modalMsgText.empty();
-                    modalContent.html(msg_loading);
+                    apiContent.html(msg_loading);
                 },
                 success: function(data, textStatus, jqXHR) {
                     $('button[type="submit"]').prop('disabled', false);
-                    modalContent.html(data);
+                    apiContent.html(data);
                 },
                 error: function(jqXHR, exception) {
-                    modalContent.html(msg_error);
+                    apiContent.html(msg_error);
                 }
             });
 

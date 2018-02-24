@@ -28,7 +28,7 @@
             // debug(e);
             // base.options.buttonPress.call( this );
 
-            var modalContent = modal.find('.crud-modal-content');
+            var apiContent = modal.find('.crud-modal-content');
 
             $.ajax({
                 url: options.routeInfo,
@@ -37,13 +37,13 @@
                 data: '',
                 cache: true,
                 beforeSend: function(jqXHR, settings) {
-                    modalContent.html(msg_loading);
+                    apiContent.html(msg_loading);
                 },
                 success: function(data, textStatus, jqXHR) {
-                    modalContent.html(data);
+                    apiContent.html(data);
                 },
                 error: function(jqXHR, exception) {
-                    modalContent.html('<p>' + msg_error + '(code 7070)</p>');
+                    apiContent.html('<p>' + msg_error + '(code 7070)</p>');
                 }
             });
         };

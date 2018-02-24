@@ -33,13 +33,13 @@
     {{ parent() }}
 
     {% javascripts
-        '@GridBundle/Resources/public/plugins/datatables/jquery.dataTables.min.js'
-        '@GridBundle/Resources/public/plugins/datatables/dataTables.bootstrap.min.js'
-        '@GridBundle/Resources/public/common/js/formCreate.js'
         '@GridBundle/Resources/public/common/js/formEdit.js'
-        '@GridBundle/Resources/public/common/js/formDelete.js'
         '@GridBundle/Resources/public/common/js/formView.js'
         '@GridBundle/Resources/public/common/js/formInfo.js'
+        '@GridBundle/Resources/public/common/js/formCreate.js'
+        '@GridBundle/Resources/public/common/js/formDelete.js'
+        '@GridBundle/Resources/public/plugins/datatables/jquery.dataTables.min.js'
+        '@GridBundle/Resources/public/plugins/datatables/dataTables.bootstrap.min.js'
     %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}

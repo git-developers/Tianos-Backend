@@ -17,17 +17,17 @@ backend_category_tree_index:
             tree:
                 icon: cube
                 box_class: primary
-                title: Gestionar category
+                title: Gestionar category tree
                 main_div: box-main-div
                 main_ul: box-main-ul
                 child_ul: box-child-ul
-                box:
-                    route:
-                        info: backend_category_tree_info
-                        view: backend_category_tree_view
-                        edit: backend_category_tree_edit
-                        create: backend_category_tree_create
-                        delete: backend_category_tree_delete
+                li_span: li-span
+                route:
+                    info: backend_category_tree_info
+                    view: backend_category_tree_view
+                    edit: backend_category_tree_edit
+                    create: backend_category_tree_create
+                    delete: backend_category_tree_delete
 #                    table_button:
 #                        - edit
 #                        - delete

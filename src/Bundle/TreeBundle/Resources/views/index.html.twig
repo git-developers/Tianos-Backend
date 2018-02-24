@@ -26,12 +26,13 @@
     {{ parent() }}
 
     {% javascripts
-        '@TreeBundle/Resources/public/js/formCreate.js'
-        '@TreeBundle/Resources/public/js/formCreateChild.js'
         '@TreeBundle/Resources/public/js/formEdit.js'
-        '@TreeBundle/Resources/public/js/formDelete.js'
+        '@TreeBundle/Resources/public/js/formInfo.js'
         '@TreeBundle/Resources/public/js/formView.js'
+        '@TreeBundle/Resources/public/js/formDelete.js'
+        '@TreeBundle/Resources/public/js/formCreate.js'
         '@CoreBundle/Resources/public/js/jquery.tmpl.js'
+        '@TreeBundle/Resources/public/js/formCreateChild.js'
     %}
     <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
@@ -47,17 +48,35 @@
                 $(this).find('div.tools').toggle();
                 $(this).toggleClass('bg-gray');
             },
-        }, 'span.li-span');
+        }, 'span.{{ tree.li_span }}');
 
+
+        $('body.{{ vars.body_css }}').formView({
+            mainUl: '{{ tree.main_ul }}',
+            modalId: '{{ modal.view_id }}',
+            route: '{{ path(tree.route.view) }}'
+        });
+
+        $('body.{{ vars.body_css }}').formInfo({
+            modalId: '{{ modal.info_id }}',
+            route: '{{ path(tree.route.info) }}'
+        });
+
+        $('body.{{ vars.body_css }}').formCreate({
+            mainDiv: '{{ tree.main_div }}',
+            mainUl: '{{ tree.main_ul }}',
+            modalId: '{{ modal.create_id }}',
+            formName: '{{ form_mapper.create_name }}',
+            route: '{{ path(tree.route.create) }}'
+        });
+
+        $('body.{{ vars.body_css }}').formEdit({
+            modalId: '{{ modal.edit_id }}',
+            formName: '{{ form_mapper.edit_name }}',
+            route: '{{ path(tree.route.edit) }}'
+        });
 
         {#
-        $('body.{{ tree.body_css }}').formCreate({
-            box_main_div: '{{ tree.box_main_div }}',
-            box_main_ul: '{{ tree.box_main_ul }}',
-            form_create_name: '{{ tree.form_create_name }}',
-            modal_create_id: '{{ tree.modal_create_id }}',
-            route_create: '{{ tree.route_create }}'
-        });
 
         $('body.{{ tree.body_css }}').formCreateChild({
             box_main_div: '{{ tree.box_main_div }}',
@@ -67,23 +86,11 @@
             route_create_child: '{{ tree.route_create_child }}'
         });
 
-        $('body.{{ tree.body_css }}').formEdit({
-            form_edit_name: '{{ tree.form_edit_name }}',
-            modal_edit_id: '{{ tree.modal_edit_id }}',
-            route_edit: '{{ tree.route_edit }}'
-        });
-
         $('body.{{ tree.body_css }}').formDelete({
             box_main_div: '{{ tree.box_main_div }}',
             form_delete_name: '{{ tree.form_delete_name }}',
             modal_delete_id: '{{ tree.modal_delete_id }}',
             route_delete: '{{ tree.route_delete }}'
-        });
-
-        $('body.{{ tree.body_css }}').formView({
-            box_main_ul: '{{ tree.box_main_ul }}',
-            modal_view_id: '{{ tree.modal_view_id }}',
-            route_view: '{{ tree.route_view }}'
         });
 
         #}
@@ -101,12 +108,24 @@
             <small>tree</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li class="active">Dashboard</li>
+            {#<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>#}
+            {#<li class="active">Dashboard</li>#}
+
+            <li>
+                <button
+                        class="btn btn-info btn-xs modal-info"
+                        alt="Info"
+                        title="Info"
+                        data-toggle="modal"
+                        data-target="#modal-info">
+                    <i class="fa fa-fw fa-info-circle"></i> info
+                </button>
+            </li>
         </ol>
     </section>
 
     <section class="content">
+
         <form name="form-category-product">
 
             <div class="row">
@@ -156,11 +175,12 @@
         </form>
     </section>
 
-    {{ include('TreeBundle:Modal:create.html.twig') }}
-    {{ include('TreeBundle:Modal:create_child.html.twig') }}
     {{ include('TreeBundle:Modal:edit.html.twig') }}
-    {{ include('TreeBundle:Modal:delete.html.twig') }}
     {{ include('TreeBundle:Modal:view.html.twig') }}
+    {{ include('TreeBundle:Modal:info.html.twig') }}
+    {{ include('TreeBundle:Modal:create.html.twig') }}
+    {{ include('TreeBundle:Modal:delete.html.twig') }}
+    {{ include('TreeBundle:Modal:create_child.html.twig') }}
 
     {{ include('TreeBundle:Template:jquery_tmpl_1.html.twig') }}
     {{ include('TreeBundle:Template:jquery_tmpl_2.html.twig') }}

@@ -27,8 +27,8 @@
             var totalButtons = 0;
             // base.$el.append('<button name="public" style="'+base.options.buttonStyle+'">Private</button>');
 
-            modal = $('#' + options.modal_create_id);
-            apiContent = modal.find('.api-content');
+            modal = $('#' + options.modalId);
+            apiContent = modal.find('.tree-modal-content');
         };
 
         base.openModal = function(event) {
@@ -36,10 +36,9 @@
             // base.options.buttonPress.call( this );
 
             $.ajax({
-                url: options.route_create,
+                url: options.route,
                 type: 'POST',
                 dataType: 'html',
-                data: '',
                 cache: true,
                 beforeSend: function(jqXHR, settings) {
                     $('button[type="submit"]').prop('disabled', true);
@@ -62,10 +61,10 @@
             modalMsgText = modal.find('div#message p');
             modalRefresh = modal.find('i.fa-refresh');
 
-            var fields = $("form[name='" + options.form_create_name + "']").serializeArray();
+            var fields = $("form[name='" + options.formName + "']").serializeArray();
 
             $.ajax({
-                url: options.route_create,
+                url: options.route,
                 type: 'POST',
                 dataType: 'json',
                 data: fields,
@@ -84,10 +83,10 @@
                     if(data.status){
 
                         var tmpl = $('#jquery_tmpl_1').tmpl(data.entity);
-                        tmpl.prependTo('div.' + options.box_main_div + ' ul#' + options.box_main_ul);
+                        tmpl.prependTo('div.' + options.mainDiv + ' ul#' + options.mainUl);
 
                         //remove empty message
-                        $('div.' + options.box_main_div).find('p').remove();
+                        $('div.' + options.mainDiv).find('p').remove();
 
                         modal.modal('hide');
                     }else{
@@ -128,11 +127,11 @@
 
             var bp = new $.formCreate(this, options);
 
-            $('button.' + options.modal_create_id).click(function(event) {
+            $('button.' + options.modalId).click(function(event) {
                 bp.openModal(event);
             });
 
-            $(document).on('submit', "form[name='" + options.form_create_name + "']" , function(event) {
+            $(document).on('submit', "form[name='" + options.formName + "']" , function(event) {
                 bp.save(event);
             });
 

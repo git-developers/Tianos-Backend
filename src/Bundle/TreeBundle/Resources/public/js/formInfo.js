@@ -4,7 +4,7 @@
     // Global Variables
     var MAX_HEIGHT = 100;
 
-    $.formView = function(el, options) {
+    $.formInfo = function(el, options) {
 
         // Global Private Variables
         var MAX_WIDTH = 200;
@@ -18,7 +18,7 @@
 
         base.$el = $(el);
         base.el = el;
-        base.$el.data('formView', base);
+        base.$el.data('formInfo', base);
 
         base.init = function(){
             var totalButtons = 0;
@@ -28,18 +28,15 @@
             apiContent = modal.find('.tree-modal-content');
         };
 
-        base.openModal = function(event, context) {
+        base.openModal = function(event) {
             // debug(e);
             // base.options.buttonPress.call( this );
-
-            modal.modal('show');
-            var id = $(context).data('id');
 
             $.ajax({
                 url: options.route,
                 type: 'POST',
                 dataType: 'html',
-                data: {id:id},
+                data: '',
                 beforeSend: function(jqXHR, settings) {
                     apiContent.html(msg_loading);
                 },
@@ -60,25 +57,19 @@
         base.init();
     };
 
-    // $.formView.defaultOptions = {
+    // $.formInfo.defaultOptions = {
     //     buttonStyle: "border: 1px solid #fff; background-color:#000; color:#fff; padding:20px 50px",
     //     buttonPress: function () {}
     // };
 
-    $.fn.formView = function(options){
+    $.fn.formInfo = function(options){
 
         return this.each(function(){
 
-            var bp = new $.formView(this, options);
+            var bp = new $.formInfo(this, options);
 
-            $(document).on('click', 'ul#' + options.mainUl + ' li', function(event) {
-                event.stopPropagation();
-
-                if($(event.target).is('i')){
-                    return false;
-                }
-
-                bp.openModal(event, this);
+            $('button.' + options.modalId).click(function(event) {
+                bp.openModal(event);
             });
 
         });

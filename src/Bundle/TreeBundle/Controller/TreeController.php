@@ -58,10 +58,6 @@ class TreeController extends BaseController
         $objects = $this->get($repository)->$method();
         $objects = $this->getTreeEntities($objects, $configuration, $vars['serialize_group_name']);
 
-
-
-
-
         //CRUD
         $crud = $this->get('tianos.tree');
         $modal = $crud->getModalMapper()->getDefaults();
@@ -366,7 +362,6 @@ class TreeController extends BaseController
             ]
         );
     }
-
 
     public function infoAction(Request $request): Response
     {
