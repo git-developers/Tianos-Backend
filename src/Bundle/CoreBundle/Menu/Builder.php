@@ -12,15 +12,23 @@ class Builder implements ContainerAwareInterface
 {
     use ContainerAwareTrait;
 
+    private $_route;
+
     const CIRCLE_1_YELLOW = 'fa-circle-o text-yellow';
     const CIRCLE_2_AQUA = 'fa-circle-o text-aqua';
     const CIRCLE_3_BLUE = 'fa-circle-o text-blue';
     const CIRCLE_4_ORANGE = 'fa-circle-o text-orange';
     const CIRCLE_5_RED = 'fa-circle-o text-red';
 
+    function __construct() {
+
+    }
 
     public function mainMenu(FactoryInterface $factory, array $options)
     {
+
+        $request = $this->container->get('request_stack')->getCurrentRequest();
+        $this->_route = $request->attributes->get('_route');
 
         $menu = $factory->createItem('root', [
             'childrenAttributes' => [
@@ -34,8 +42,8 @@ class Builder implements ContainerAwareInterface
         /**
          * CRUD
          */
-        $clasesView = true; //$this->isGranted('ROLE_CLIENT_VIEW');
-        $activeRoute = $this->activeRoute(['backend_session_index']);
+        $isGranted = true; //$this->isGranted('ROLE_CLIENT_VIEW');
+
         $menu->addChild('Master', [
             'route' => 'backend_default_dashboard',
             'extras' => ['safe_label' => true],
@@ -44,64 +52,84 @@ class Builder implements ContainerAwareInterface
             ],
         ])
         ->setAttribute('allow_angle', true)
-        ->setAttribute('class', 'treeview active') //active
+        ->setAttribute('class', 'treeview')
+        ->setAttribute('class', $this->activeRoute([
+            'backend_client_index',
+            'backend_product_index',
+            'backend_category_index',
+            'backend_pointofsale_index',
+            'backend_category_tree_index',
+            'backend_pointofsale_map_index',
+        ]))
         ->setAttribute('icon', 'fa-fw fa-code-fork')
-        ->setDisplay($clasesView)
+        ->setDisplay($isGranted)
         ;
 
         $menu['Master']->addChild('Client', [
-            'route' => 'backend_client_index',
+            'route' => 'backend_default_dashboard',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
                 'class' => 'treeview-menu',
             ],
         ])
         ->setAttribute('icon', 'fa-fw fa-odnoklassniki')
-        ->setDisplay($clasesView)
+        ->setAttribute('class', $this->activeRoute([
+            'backend_client_index',
+        ]))
+        ->setDisplay($isGranted)
         ;
 
         $menu['Master']['Client']->addChild('Gestionar', [
             'route' => 'backend_client_index'
         ])
         ->setAttribute('icon', self::CIRCLE_1_YELLOW)
-        ->setDisplay($clasesView)
+        ->setAttribute('class', $this->activeRoute('backend_client_index'))
+        ->setDisplay($isGranted)
         ;
 
         $menu['Master']->addChild('Product', [
-            'route' => 'backend_product_index',
+            'route' => 'backend_default_dashboard',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
                 'class' => 'treeview-menu',
             ],
         ])
         ->setAttribute('icon', 'fa-fw fa-cube')
-        ->setDisplay($clasesView)
+        ->setAttribute('class', $this->activeRoute([
+            'backend_product_index',
+        ]))
+        ->setDisplay($isGranted)
         ;
 
         $menu['Master']['Product']->addChild('Gestionar', [
             'route' => 'backend_product_index'
         ])
         ->setAttribute('icon', self::CIRCLE_1_YELLOW)
-        ->setDisplay($clasesView)
+        ->setAttribute('class', $this->activeRoute('backend_product_index'))
+        ->setDisplay($isGranted)
         ;
 
         $menu['Master']->addChild('Punto de venta', [
-            'route' => 'backend_pointofsale_index',
+            'route' => 'backend_default_dashboard',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
                 'class' => 'treeview-menu',
             ],
         ])
         ->setAttribute('icon', 'fa-fw fa-map-marker')
-//        ->setAttribute('class', 'active')
-        ->setDisplay($clasesView)
+        ->setAttribute('class', $this->activeRoute([
+            'backend_pointofsale_index',
+            'backend_pointofsale_map_index',
+        ]))
+        ->setDisplay($isGranted)
         ;
 
         $menu['Master']['Punto de venta']->addChild('Gestionar', [
             'route' => 'backend_pointofsale_index'
         ])
         ->setAttribute('icon', self::CIRCLE_1_YELLOW)
-        ->setDisplay($clasesView)
+        ->setAttribute('class', $this->activeRoute('backend_pointofsale_index'))
+        ->setDisplay($isGranted)
         ;
 
         $menu['Master']['Punto de venta']->addChild('Mapa', [
@@ -111,33 +139,39 @@ class Builder implements ContainerAwareInterface
             ],
         ])
         ->setAttribute('icon', self::CIRCLE_2_AQUA)
-//        ->setAttribute('class', 'active')
-        ->setDisplay($clasesView)
+        ->setAttribute('class', $this->activeRoute('backend_pointofsale_map_index'))
+        ->setDisplay($isGranted)
         ;
 
         $menu['Master']->addChild('Category', [
-            'route' => 'backend_category_index',
+            'route' => 'backend_default_dashboard',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
                 'class' => 'treeview-menu',
             ],
         ])
         ->setAttribute('icon', 'fa-fw fa-sitemap')
-        ->setDisplay($clasesView)
+        ->setAttribute('class', $this->activeRoute([
+            'backend_category_index',
+            'backend_category_tree_index',
+        ]))
+        ->setDisplay($isGranted)
         ;
 
         $menu['Master']['Category']->addChild('Gestionar', [
             'route' => 'backend_category_index'
         ])
         ->setAttribute('icon', self::CIRCLE_1_YELLOW)
-        ->setDisplay($clasesView)
+        ->setAttribute('class', $this->activeRoute('backend_category_index'))
+        ->setDisplay($isGranted)
         ;
 
         $menu['Master']['Category']->addChild('Tree', [
             'route' => 'backend_category_tree_index'
         ])
         ->setAttribute('icon', self::CIRCLE_2_AQUA)
-        ->setDisplay($clasesView)
+        ->setAttribute('class', $this->activeRoute('backend_category_tree_index'))
+        ->setDisplay($isGranted)
         ;
         /**
          * CRUD
@@ -150,7 +184,7 @@ class Builder implements ContainerAwareInterface
         /**
          * USER
          */
-        $clasesView = true; //$this->isGranted('ROLE_CLIENT_VIEW');
+        $isGranted = true; //$this->isGranted('ROLE_CLIENT_VIEW');
         $menu->addChild('Cuentas', [
             'route' => 'backend_default_dashboard',
             'extras' => ['safe_label' => true],
@@ -160,99 +194,125 @@ class Builder implements ContainerAwareInterface
         ])
         ->setAttribute('allow_angle', true)
         ->setAttribute('class', 'treeview')
+        ->setAttribute('class', $this->activeRoute([
+            'backend_user_index',
+            'backend_role_index',
+            'backend_session_index',
+            'backend_profile_index',
+            'backend_groupofusers_index',
+        ]))
         ->setAttribute('icon', 'fa-fw fa-users')
-        ->setDisplay($clasesView)
+        ->setDisplay($isGranted)
         ;
 
         $menu['Cuentas']->addChild('User', [
-            'route' => 'backend_user_index',
+            'route' => 'backend_default_dashboard',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
                 'class' => 'treeview-menu',
             ],
         ])
         ->setAttribute('icon', 'fa-fw fa-user')
-        ->setDisplay($clasesView)
+        ->setAttribute('class', $this->activeRoute([
+            'backend_user_index',
+        ]))
+        ->setDisplay($isGranted)
         ;
 
         $menu['Cuentas']['User']->addChild('Gestionar', [
             'route' => 'backend_user_index'
         ])
         ->setAttribute('icon', self::CIRCLE_1_YELLOW)
-        ->setDisplay($clasesView)
+        ->setAttribute('class', $this->activeRoute('backend_user_index'))
+        ->setDisplay($isGranted)
         ;
 
         $menu['Cuentas']->addChild('Group of users', [
-            'route' => 'backend_groupofusers_index',
+            'route' => 'backend_default_dashboard',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
                 'class' => 'treeview-menu',
             ],
         ])
             ->setAttribute('icon', 'fa-fw fa-users')
-            ->setDisplay($clasesView)
+            ->setAttribute('class', $this->activeRoute([
+                'backend_groupofusers_index',
+            ]))
+            ->setDisplay($isGranted)
         ;
 
         $menu['Cuentas']['Group of users']->addChild('Gestionar', [
             'route' => 'backend_groupofusers_index'
         ])
             ->setAttribute('icon', self::CIRCLE_1_YELLOW)
-            ->setDisplay($clasesView)
+            ->setAttribute('class', $this->activeRoute('backend_groupofusers_index'))
+            ->setDisplay($isGranted)
         ;
 
         $menu['Cuentas']->addChild('Profile', [
-            'route' => 'backend_profile_index',
+            'route' => 'backend_default_dashboard',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
                 'class' => 'treeview-menu',
             ],
         ])
         ->setAttribute('icon', 'fa-fw fa-user-secret')
-        ->setDisplay($clasesView)
+        ->setAttribute('class', $this->activeRoute([
+            'backend_profile_index',
+        ]))
+        ->setDisplay($isGranted)
         ;
 
         $menu['Cuentas']['Profile']->addChild('Gestionar', [
             'route' => 'backend_profile_index'
         ])
         ->setAttribute('icon', self::CIRCLE_1_YELLOW)
-        ->setDisplay($clasesView)
+        ->setAttribute('class', $this->activeRoute('backend_profile_index'))
+        ->setDisplay($isGranted)
         ;
 
         $menu['Cuentas']->addChild('Role', [
-            'route' => 'backend_role_index',
+            'route' => 'backend_default_dashboard',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
                 'class' => 'treeview-menu',
             ],
         ])
         ->setAttribute('icon', 'fa-fw fa-expeditedssl')
-        ->setDisplay($clasesView)
+        ->setAttribute('class', $this->activeRoute([
+            'backend_role_index',
+        ]))
+        ->setDisplay($isGranted)
         ;
 
         $menu['Cuentas']['Role']->addChild('Gestionar', [
             'route' => 'backend_role_index'
         ])
         ->setAttribute('icon', self::CIRCLE_1_YELLOW)
-        ->setDisplay($clasesView)
+        ->setAttribute('class', $this->activeRoute('backend_role_index'))
+        ->setDisplay($isGranted)
         ;
 
         $menu['Cuentas']->addChild('Session', [
-            'route' => 'backend_session_index',
+            'route' => 'backend_default_dashboard',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
                 'class' => 'treeview-menu',
             ],
         ])
             ->setAttribute('icon', 'fa-fw fa-history')
-            ->setAttribute('class', $activeRoute)
-            ->setDisplay($clasesView)
+            ->setAttribute('class', $this->activeRoute([
+                'backend_session_index',
+            ]))
+            ->setDisplay($isGranted)
         ;
 
         $menu['Cuentas']['Session']->addChild('Gestionar', [
             'route' => 'backend_session_index'
         ])
             ->setAttribute('icon', self::CIRCLE_1_YELLOW)
-            ->setDisplay($clasesView)
+            ->setAttribute('class', $this->activeRoute('backend_session_index'))
+            ->setDisplay($isGranted)
         ;
         /**
          * USER
@@ -266,7 +326,7 @@ class Builder implements ContainerAwareInterface
         /**
          * ASSOCIATION
          */
-        $clasesView = true; //$this->isGranted('ROLE_CLIENT_VIEW');
+        $isGranted = true; //$this->isGranted('ROLE_CLIENT_VIEW');
         $menu->addChild('Asociacion', [
             'route' => 'backend_default_dashboard',
             'extras' => ['safe_label' => true],
@@ -276,11 +336,14 @@ class Builder implements ContainerAwareInterface
         ])
             ->setAttribute('allow_angle', true)
             ->setAttribute('class', 'treeview')
+            ->setAttribute('class', $this->activeRoute([
+                'backend_associative_profile_has_role_index',
+            ]))
             ->setAttribute('icon', 'fa-fw fa-exchange')
-            ->setDisplay($clasesView)
+            ->setDisplay($isGranted)
         ;
 
-        $menu['Asociacion']->addChild('Profile <i class="fa fa-fw fa-arrow-right"></i> Role', [
+        $menu['Asociacion']->addChild('<i class="fa ' . self::CIRCLE_1_YELLOW . '"></i> Profile <i class="fa fa-fw fa-arrow-right"></i> Role', [
             'route' => 'backend_associative_profile_has_role_index',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
@@ -288,7 +351,8 @@ class Builder implements ContainerAwareInterface
             ],
         ])
             ->setAttribute('icon', '')
-            ->setDisplay($clasesView)
+            ->setAttribute('class', $this->activeRoute('backend_associative_profile_has_role_index'))
+            ->setDisplay($isGranted)
         ;
         /**
          * ASSOCIATION
@@ -301,7 +365,7 @@ class Builder implements ContainerAwareInterface
         /**
          * REPORTS
          */
-        $clasesView = true; //$this->isGranted('ROLE_CLIENT_VIEW');
+        $isGranted = true; //$this->isGranted('ROLE_CLIENT_VIEW');
         $menu->addChild('Reports', [
             'route' => 'backend_default_dashboard',
             'extras' => ['safe_label' => true],
@@ -311,11 +375,14 @@ class Builder implements ContainerAwareInterface
         ])
             ->setAttribute('allow_angle', true)
             ->setAttribute('class', 'treeview')
+            ->setAttribute('class', $this->activeRoute([
+                'backend_reportpointofsaleandproduct_index',
+            ]))
             ->setAttribute('icon', 'fa-fw fa-line-chart')
-            ->setDisplay($clasesView)
+            ->setDisplay($isGranted)
         ;
 
-        $menu['Reports']->addChild('Point of sale <i class="fa fa-fw fa-angle-double-right"></i> product', [
+        $menu['Reports']->addChild('<i class="fa ' . self::CIRCLE_1_YELLOW . '"></i> Point of sale <i class="fa fa-fw fa-angle-double-right"></i> product', [
             'route' => 'backend_reportpointofsaleandproduct_index',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
@@ -323,7 +390,8 @@ class Builder implements ContainerAwareInterface
             ],
         ])
             ->setAttribute('icon', '')
-            ->setDisplay($clasesView)
+            ->setAttribute('class', $this->activeRoute('backend_reportpointofsaleandproduct_index'))
+            ->setDisplay($isGranted)
         ;
         /**
          * ASSOCIATION
@@ -352,6 +420,7 @@ class Builder implements ContainerAwareInterface
             'route' => 'frontend_default_index'
         ])
             ->setAttribute('icon', self::CIRCLE_1_YELLOW)
+            ->setAttribute('class', $this->activeRoute('frontend_default_index'))
             ->setDisplay($loadFixture)
         ;
 
@@ -360,9 +429,8 @@ class Builder implements ContainerAwareInterface
         /**
          * SETTINGS
          */
-        $child = 'Settings';
         $loadFixture = true; //$this->isGranted('ROLE_CLIENT_VIEW');
-        $menu->addChild($child, [
+        $menu->addChild('Settings', [
             'route' => 'backend_default_dashboard',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
@@ -370,31 +438,28 @@ class Builder implements ContainerAwareInterface
             ],
         ])
             ->setAttribute('class', 'treeview')
+            ->setAttribute('class', $this->activeRoute([
+                'backend_core_loadfixtures',
+            ]))
             ->setAttribute('icon', 'fa-fw fa-cog')
             ->setDisplay($loadFixture)
         ;
 
-        $menu[$child]->addChild('Load Fixtures', [
+        $menu['Settings']->addChild('Load Fixtures', [
             'route' => 'backend_core_loadfixtures'
         ])
             ->setAttribute('icon', self::CIRCLE_1_YELLOW)
+            ->setAttribute('class', $this->activeRoute('backend_core_loadfixtures'))
             ->setDisplay($loadFixture)
         ;
 
-        $menu[$child]->addChild('GoogleDrive mimetype', [
+        $menu['Settings']->addChild('GoogleDrive mimetype', [
             'route' => 'backend_default_dashboard'
         ])
             ->setAttribute('icon', self::CIRCLE_2_AQUA)
+//            ->setAttribute('class', $this->activeRoute('backend_default_dashboard'))
             ->setDisplay($loadFixture)
         ;
-
-
-
-
-
-
-
-
 
 
         return $menu;
@@ -427,16 +492,21 @@ class Builder implements ContainerAwareInterface
         return $this->container->get('security.authorization_checker')->isGranted($attributes, $object);
     }
 
-    protected function activeRoute($routes = [])
+    protected function activeRoute($routes): string
     {
-        $request = $this->container->get('request_stack')->getCurrentRequest();
-
-        foreach ($routes as $key => $route){
-            if($route === $request->attributes->get('_route')){
-                return 'active';
+        if(is_array($routes)){
+            foreach ($routes as $key => $route){
+                if($this->_route === $route){
+                    return 'active';
+                }
             }
         }
-        return false;
+
+        if($this->_route === $routes){
+            return 'active';
+        }
+
+        return '';
     }
 
 }

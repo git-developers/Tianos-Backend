@@ -44,6 +44,7 @@
     {% endif %}
 
     {% for item in currentItem.children %}
+
         {{ block('item') }}
     {% endfor %}
 
@@ -90,7 +91,18 @@
         {% import _self as knp_menu %}
 
 
-        {#{{ dump(attributes) }}#}
+        {#**************ACTIVE URL******************#}
+        {#{%- set currentRoute = app.request.attributes.get('_route') %}#}
+
+        {#{% for itemChildren in item.children %}#}
+            {#{% for itemRoute in itemChildren.extras.routes %}#}
+                {#{%- if itemRoute.route == currentRoute %}#}
+                    {#{%- set attributes = attributes|merge({'class': attributes.class|default() ~ ' ' ~ options.attributes.classActive}) %}#}
+                {#{%- endif %}#}
+            {#{% endfor %}#}
+        {#{% endfor %}#}
+        {#**************ACTIVE URL******************#}
+
 
         <li{{ knp_menu.attributes(attributes) }}>
             {%- if item.uri is not empty and (not matcher.isCurrent(item) or options.currentAsLink) %}
