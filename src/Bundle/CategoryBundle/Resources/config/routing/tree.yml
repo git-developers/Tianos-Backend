@@ -12,7 +12,7 @@ backend_category_tree_index:
                 subheader: sylius.ui.manage_your_category_catalog
                 icon: cube
                 body_css: grid-body-css
-                serialize_group_name: crud
+                serialize_group_name: tree
 #            grid: sylius_admin_product
             tree:
                 icon: cube
@@ -88,7 +88,7 @@ backend_category_tree_create_child:
             template: CategoryBundle:CategoryBackend/Form:form.html.twig
             entity: Bundle\CategoryBundle\Entity\Category
             form:
-                type: tianos.type.category
+                type: Bundle\CategoryBundle\Form\Type\CategoryType
             vars:
                 serialize_group_name: tree
 

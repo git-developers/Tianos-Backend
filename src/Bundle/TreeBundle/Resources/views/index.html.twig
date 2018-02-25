@@ -84,17 +84,12 @@
             route: '{{ path(tree.route.create_child) }}'
         });
 
-        {#
-
-        $('body.{{ tree.body_css }}').formDelete({
-            box_main_div: '{{ tree.box_main_div }}',
-            form_delete_name: '{{ tree.form_delete_name }}',
-            modal_delete_id: '{{ tree.modal_delete_id }}',
-            route_delete: '{{ tree.route_delete }}'
+        $('body.{{ vars.body_css }}').formDelete({
+            mainDiv: '{{ tree.main_div }}',
+            formName: '{{ form_mapper.delete_name }}',
+            modalId: '{{ modal.delete_id }}',
+            route: '{{ path(tree.route.delete) }}'
         });
-
-        #}
-
 
     </script>
 

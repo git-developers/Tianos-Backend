@@ -27,7 +27,7 @@
             var totalButtons = 0;
             // base.$el.append('<button name="public" style="'+base.options.buttonStyle+'">Private</button>');
 
-            modal = $('#' + options.modal_delete_id);
+            modal = $('#' + options.modalId);
             apiContent = modal.find('.tree-modal-content');
         };
 
@@ -43,7 +43,7 @@
             modal.find('small.label').html('Item ' + id);
 
             $.ajax({
-                url: options.route_delete,
+                url: options.route,
                 type: 'POST',
                 dataType: 'html',
                 data: {
@@ -75,10 +75,10 @@
             modalMsgText = modal.find('div#message p');
             modalRefresh = modal.find('i.fa-refresh');
 
-            var fields = $("form[name='" + options.form_delete_name + "']").serializeArray();
+            var fields = $("form[name='" + options.formName + "']").serializeArray();
 
             $.ajax({
-                url: options.route_delete,
+                url: options.route,
                 type: 'DELETE',
                 dataType: 'json',
                 data: fields,
@@ -95,7 +95,7 @@
                     modalRefresh.hide();
 
                     if(data.status){
-                        $('div.' + options.box_main_div +' ul #li-' + data.id).remove();
+                        $('div.' + options.mainDiv +' ul #li-' + data.id).remove();
                         modal.modal('hide');
                     }else{
                         modalMsgText.html(data.errors);
@@ -132,11 +132,11 @@
 
             var bp = new $.formDelete(this, options);
 
-            $(document).on('click', 'i.' + options.modal_delete_id, function() {
+            $(document).on('click', 'i.' + options.modalId, function() {
                 bp.openModal(event, this);
             });
 
-            $(document).on('submit', "form[name='" + options.form_delete_name + "']" , function(event) {
+            $(document).on('submit', "form[name='" + options.formName + "']" , function(event) {
                 bp.delete(event);
             });
 

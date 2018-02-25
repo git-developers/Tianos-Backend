@@ -144,7 +144,7 @@ class TreeController extends BaseController
         $entity = $configuration->getEntity();
         $entity = new $entity();
 
-        $form = $this->createForm($formType, $entity, ['form_data' => []]);
+        $form = $this->createForm($formType, $entity, []);
         $form->handleRequest($request);
 
         if ($form->isSubmitted()) {
@@ -215,15 +215,9 @@ class TreeController extends BaseController
         $entity = $configuration->getEntity();
         $entity = new $entity();
 
-        $form = $this->createForm($formType, $entity, ['form_data' => []]);
+        $id = $request->get('id');
+        $form = $this->createForm($formType, $entity, ['form_data' => ['parent_id' => $id]]);
         $form->handleRequest($request);
-
-
-/*        $id = $request->get('id');
-        $options = array_merge($tree['form_data'], ['parent_id' => $id]);
-
-        $entity = new $tree['class_path']();
-        $form = $this->createForm($tree['form_type'], $entity, $options);*/
 
         if ($form->isSubmitted()) {
 
@@ -252,6 +246,7 @@ class TreeController extends BaseController
             }
 
             return $this->json([
+                'id' => $id,
                 'status' => $status,
                 'errors' => $errors,
                 'entity' => $entity,
@@ -261,6 +256,7 @@ class TreeController extends BaseController
         return $this->render(
             $template,
             [
+                'id' => $id,
                 'action' => $action,
                 'form' => $form->createView(),
             ]

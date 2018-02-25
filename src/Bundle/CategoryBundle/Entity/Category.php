@@ -17,19 +17,21 @@ class Category
     /**
      * @var integer
      *
-     * @JMSS\Groups({"crud"})
+     * @JMSS\Groups({"crud", "tree"})
      */
     private $id;
 
     /**
      * @var string
+     *
+     * @JMSS\Groups({"crud", "tree"})
      */
     private $code;
 
     /**
      * @var string
      *
-     * @JMSS\Groups({"crud"})
+     * @JMSS\Groups({"crud", "tree"})
      */
     private $name;
 
@@ -41,7 +43,7 @@ class Category
     /**
      * @var \DateTime
      *
-     * @JMSS\Groups({"crud"})
+     * @JMSS\Groups({"crud", "tree"})
      * @JMSS\Type("DateTime<'Y-m-d H:i'>")
      */
     private $createdAt;
@@ -75,6 +77,10 @@ class Category
      * })
      */
     private $category;
+
+    public function __toString() {
+        return sprintf('%s - %s', $this->id, $this->name);
+    }
 
     /**
      * Get id

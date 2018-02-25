@@ -27,12 +27,20 @@ class CategoryType extends AbstractType
         return $this->em->getRepository(Category::class)->find($id);
     }
 
+    public function getParentId($options) {
+        $object = (object) $options['form_data'];
+        return isset($object->parent_id) ? $object->parent_id : null;
+    }
+
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $em = $this->em;
+        $this->parentId = $this->getParentId($options);
+
         $builder
             ->add('code', TextType::class, [
                 'label' =>' code',
@@ -56,9 +64,8 @@ class CategoryType extends AbstractType
             ])
         ;
 
-        $em = $this->em;
         $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) use ($em) {
-            $data = $event->getData();
+//            $data = $event->getData();
             $form = $event->getForm();
 
             $options = [
@@ -95,10 +102,9 @@ class CategoryType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-//            'data_class' => Category::class,
+            'data_class' => Category::class,
+            'form_data' => [],
         ]);
-
-        $resolver->setRequired(['form_data']);
     }
 
 }

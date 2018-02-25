@@ -87,6 +87,18 @@ class CategoryRepository extends TianosEntityRepository implements CategoryRepos
     /**
      * {@inheritdoc}
      */
+    public function findAllObjects()
+    {
+        return $this->createQueryBuilder('o')
+            ->where('o.isActive = :active')
+            ->orderBy('o.id', 'ASC')
+            ->setParameter('active', true)
+            ;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function findAll(): array
     {
         return $this->createQueryBuilder('o')
