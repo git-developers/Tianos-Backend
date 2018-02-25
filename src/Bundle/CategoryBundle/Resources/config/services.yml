@@ -39,6 +39,11 @@ services:
         factory: ['@doctrine.orm.entity_manager', getRepository]
         arguments: [ Bundle\CategoryBundle\Entity\Category ]
 
+    tianos.type.category:
+        class: Bundle\CategoryBundle\Form\Type\CategoryType
+        arguments: ['@doctrine.orm.entity_manager']
+        tags:
+            - { name: form.type, alias: tianos.type.category }
 
 
 #    tianos.controller.grid:

@@ -189,6 +189,84 @@ class TreeController extends BaseController
         );
     }
 
+
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function createChildAction(Request $request): Response
+    {
+        if (!$this->isXmlHttpRequest()) {
+            throw $this->createAccessDeniedException(self::ACCESS_DENIED_MSG);
+        }
+
+        $parameters = [
+            'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
+        ];
+        $applicationName = $this->container->getParameter('application_name');
+        $this->metadata = new Metadata('tianos', $applicationName, $parameters);
+
+        //CONFIGURATION
+        $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
+        $template = $configuration->getTemplate('');
+        $action = $configuration->getAction();
+        $formType = $configuration->getFormType();
+        $vars = $configuration->getVars();
+        $entity = $configuration->getEntity();
+        $entity = new $entity();
+
+        $form = $this->createForm($formType, $entity, ['form_data' => []]);
+        $form->handleRequest($request);
+
+
+/*        $id = $request->get('id');
+        $options = array_merge($tree['form_data'], ['parent_id' => $id]);
+
+        $entity = new $tree['class_path']();
+        $form = $this->createForm($tree['form_type'], $entity, $options);*/
+
+        if ($form->isSubmitted()) {
+
+            $errors = [];
+            $entityJson = null;
+            $status = self::STATUS_ERROR;
+
+            try{
+
+                if ($form->isValid()) {
+                    $this->persist($entity);
+                    $entity = $this->getSerializeDecode($entity, $vars['serialize_group_name']);
+                    $status = self::STATUS_SUCCESS;
+                }else{
+                    foreach ($form->getErrors(true) as $key => $error) {
+                        if ($form->isRoot()) {
+                            $errors[] = $error->getMessage();
+                        } else {
+                            $errors[] = $error->getMessage();
+                        }
+                    }
+                }
+
+            }catch (\Exception $e){
+                $errors[] = $e->getMessage();
+            }
+
+            return $this->json([
+                'status' => $status,
+                'errors' => $errors,
+                'entity' => $entity,
+            ]);
+        }
+
+        return $this->render(
+            $template,
+            [
+                'action' => $action,
+                'form' => $form->createView(),
+            ]
+        );
+    }
+
     /**
      * @param Request $request
      * @return Response

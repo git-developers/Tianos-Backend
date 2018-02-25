@@ -27,6 +27,7 @@ backend_category_tree_index:
                     view: backend_category_tree_view
                     edit: backend_category_tree_edit
                     create: backend_category_tree_create
+                    create_child: backend_category_tree_create_child
                     delete: backend_category_tree_delete
 #                    table_button:
 #                        - edit
@@ -75,7 +76,21 @@ backend_category_tree_create:
             form:
                 type: Bundle\CategoryBundle\Form\Type\CategoryType
             vars:
-                serialize_group_name: crud
+                serialize_group_name: tree
+
+backend_category_tree_create_child:
+    path: /create-child
+    methods: [POST]
+    defaults:
+        _controller: tianos.tree.controller.category:createChildAction
+        _tianos:
+            action: create
+            template: CategoryBundle:CategoryBackend/Form:form.html.twig
+            entity: Bundle\CategoryBundle\Entity\Category
+            form:
+                type: tianos.type.category
+            vars:
+                serialize_group_name: tree
 
 backend_category_tree_edit:
     path: /edit
@@ -92,7 +107,7 @@ backend_category_tree_edit:
             form:
                 type: Bundle\CategoryBundle\Form\Type\CategoryType
             vars:
-                serialize_group_name: crud
+                serialize_group_name: tree
 
 backend_category_tree_delete:
     path: /delete

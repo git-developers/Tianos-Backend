@@ -27,7 +27,7 @@
             var totalButtons = 0;
             // base.$el.append('<button name="public" style="'+base.options.buttonStyle+'">Private</button>');
 
-            modal = $('#' + options.modal_create_child_id);
+            modal = $('#' + options.modalId);
             apiContent = modal.find('.tree-modal-content');
         };
 
@@ -40,7 +40,7 @@
             modal.find('small.label').html('Parent ' + id);
 
             $.ajax({
-                url: options.route_create_child,
+                url: options.route,
                 type: 'POST',
                 dataType: 'html',
                 data: {id:id},
@@ -66,10 +66,10 @@
             modalMsgText = modal.find('div#message p');
             modalRefresh = modal.find('i.fa-refresh');
 
-            var fields = $("form[name='" + options.form_create_child_name + "']").serializeArray();
+            var fields = $("form[name='" + options.formName + "']").serializeArray();
 
             $.ajax({
-                url: options.route_create_child,
+                url: options.route,
                 type: 'POST',
                 dataType: 'json',
                 data: fields,
@@ -87,7 +87,7 @@
 
                     if(data.status){
                         var tmpl = $('#jquery_tmpl_1').tmpl(data.entity);
-                        tmpl.prependTo('div.' + options.box_main_div + ' ul.' + options.box_child_ul + data.id);
+                        tmpl.prependTo('div.' + options.mainDiv + ' ul.' + options.childUl + data.id);
 
                         modal.modal('hide');
                     }else{
@@ -128,11 +128,11 @@
 
             var bp = new $.formCreateChild(this, options);
 
-            $(document).on('click', 'i.' + options.modal_create_child_id, function(event) {
+            $(document).on('click', 'i.' + options.modalId, function(event) {
                 bp.openModal(event, this);
             });
 
-            $(document).on('submit', "form[name='" + options.form_create_child_name + "']" , function(event) {
+            $(document).on('submit', "form[name='" + options.formName + "']" , function(event) {
                 bp.save(event);
             });
 

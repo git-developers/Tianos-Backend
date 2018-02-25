@@ -76,15 +76,15 @@
             route: '{{ path(tree.route.edit) }}'
         });
 
-        {#
-
-        $('body.{{ tree.body_css }}').formCreateChild({
-            box_main_div: '{{ tree.box_main_div }}',
-            box_child_ul: '{{ tree.box_child_ul }}',
-            form_create_child_name: '{{ tree.form_create_child_name }}',
-            modal_create_child_id: '{{ tree.modal_create_child_id }}',
-            route_create_child: '{{ tree.route_create_child }}'
+        $('body.{{ vars.body_css }}').formCreateChild({
+            mainDiv: '{{ tree.main_div }}',
+            childUl: '{{ tree.child_ul }}',
+            formName: '{{ form_mapper.create_child_name }}',
+            modalId: '{{ modal.create_child_id }}',
+            route: '{{ path(tree.route.create_child) }}'
         });
+
+        {#
 
         $('body.{{ tree.body_css }}').formDelete({
             box_main_div: '{{ tree.box_main_div }}',
