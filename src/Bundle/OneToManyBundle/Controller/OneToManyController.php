@@ -95,6 +95,10 @@ class OneToManyController extends BaseController
 //        ]);
     }
 
+    /**
+     * @param Request $request
+     * @return Response
+     */
     public function boxLeftSearchAction(Request $request)
     {
         if (!$this->isXmlHttpRequest()) {
@@ -159,7 +163,7 @@ class OneToManyController extends BaseController
             [
                 'boxRight' => $boxRight,
                 'objectsRight' => $objectsRight,
-                'isAssigned' => true,
+                'isAssigned' => false,
             ]
         );
     }
@@ -220,12 +224,14 @@ class OneToManyController extends BaseController
 
     public function boxLeftSelectItemAction(Request $request): Response
     {
-        if (!$this->isXmlHttpRequest()) {
+        $id = $request->get('id');
+
+        if (!$this->isXmlHttpRequest() || is_null($id)) {
             throw $this->createAccessDeniedException(self::ACCESS_DENIED_MSG);
         }
 
-        $boxLeftValue = $request->get('boxLeftValue');
-        $boxRightValues = $request->get('boxRightValues');
+//        $boxLeftValue = $request->get('boxLeftValue');
+//        $boxRightValues = $request->get('boxRightValues');
 
         $parameters = [
             'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
@@ -238,37 +244,23 @@ class OneToManyController extends BaseController
 
         $repositoryLeft = $configuration->getRepositoryServiceLeft();
         $methodLeft = $configuration->getRepositoryMethodLeft();
+        $template = $configuration->getTemplate('');
+        $boxRight = $configuration->oneToManyBoxRight();
         $vars = $configuration->getVars();
 
         //REPOSITORY
-        $objectsLeft = $this->get($repositoryLeft)->$methodLeft();
+        $objectsLeft = $this->get($repositoryLeft)->$methodLeft($id);
         $objectsLeft = $this->getSerializeDecode($objectsLeft, $vars['serialize_group_name']);
 
-/*        //DELETE
-        $result = $this->get($repositoryLeft)->$methodDeleteAssociativeLeft($boxLeftValue);
-
-        if(!$result){
-            return $this->json([
-                'status' => false,
-                'response' => [
-                    'msg' => '',
-                ],
-            ]);
-        }
-
-        //SAVE
-        $objectsLeft = $this->get($repositoryLeft)->$methodLeft($boxLeftValue);
-        foreach ($boxRightValues as $key => $boxRightValue){
-            $objectsRight = $this->get($repositoryRight)->$methodRight($boxRightValue);
-            $objectsLeft->addRole($objectsRight);
-            $this->persist($objectsLeft);
-        }*/
-
-        return $this->json([
-            'objectsLeft' => $objectsLeft,
-        ]);
+        return $this->render(
+            $template,
+            [
+                'isAssigned' => true,
+                'boxRight' => $boxRight,
+                'objectsRight' => $objectsLeft[$boxRight->entity],
+            ]
+        );
     }
-
 
     public function infoAction(Request $request): Response
     {

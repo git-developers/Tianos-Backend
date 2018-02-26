@@ -9,7 +9,7 @@
 
     {% stylesheets
     filter='cssrewrite'
-    '@OneToManyBundle/Resources/public/common/css/switch.css'
+    '@OneToManyBundle/Resources/public/css/switch.css'
     '@OneToManyBundle/Resources/public/plugins/datatables/dataTables.bootstrap.css'
     '@OneToManyBundle/Resources/public/plugins/datatables/extensions/Editor/css/editor.dataTables.min.css'
     %}
@@ -38,11 +38,11 @@
     {{ parent() }}
 
     {% javascripts
-        '@OneToManyBundle/Resources/public/common/js/boxInfo.js'
-        '@OneToManyBundle/Resources/public/common/js/boxLeftSearch.js'
-        '@OneToManyBundle/Resources/public/common/js/boxRightSearch.js'
-        '@OneToManyBundle/Resources/public/common/js/boxRightSelectItem.js'
-        '@OneToManyBundle/Resources/public/common/js/boxLeftSelectItem.js'
+        '@OneToManyBundle/Resources/public/js/boxInfo.js'
+        '@OneToManyBundle/Resources/public/js/boxLeftSearch.js'
+        '@OneToManyBundle/Resources/public/js/boxRightSearch.js'
+        '@OneToManyBundle/Resources/public/js/boxRightSelectItem.js'
+        '@OneToManyBundle/Resources/public/js/boxLeftSelectItem.js'
     %}
     <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}

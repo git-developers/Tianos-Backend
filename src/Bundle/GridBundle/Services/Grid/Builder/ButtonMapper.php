@@ -1,6 +1,6 @@
 <?php
 
-namespace Bundle\GridBundle\Services\Crud\Builder;
+namespace Bundle\GridBundle\Services\Grid\Builder;
 
 use Bundle\CoreBundle\Services\Button;
 use Bundle\CoreBundle\Services\ModalMapper;

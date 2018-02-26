@@ -16,6 +16,8 @@
 
     {% block stylesheets %}
 
+        {#'@ThemesBundle/Resources/public/common/css/skin-tianos.css'#}
+
         {% stylesheets
             filter='cssrewrite'
             'bundles/themes/adminlte/thirdparty/font-awesome/css/font-awesome.min.css'
@@ -25,6 +27,7 @@
             'bundles/themes/adminlte/plugins/iCheck/square/green.css'
             'bundles/themes/adminlte/plugins/iCheck/square/pink.css'
             'bundles/themes/adminlte/bootstrap/css/bootstrap.min.css'
+            'bundles/themes/common/css/tianos.css'
             '@ThemesBundle/Resources/public/adminlte/dist/css/AdminLTE.min.css'
             '@ThemesBundle/Resources/public/adminlte/plugins/morris/morris.css'
             '@ThemesBundle/Resources/public/adminlte/plugins/jvectormap/jquery-jvectormap-1.2.2.css'
@@ -32,8 +35,6 @@
             '@ThemesBundle/Resources/public/adminlte/plugins/daterangepicker/daterangepicker.css'
             '@ThemesBundle/Resources/public/adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css'
             '@ThemesBundle/Resources/public/adminlte/plugins/pace/pace.min.css'
-            '@ThemesBundle/Resources/public/common/css/skin-tianos.css'
-            '@ThemesBundle/Resources/public/common/css/tianos.css'
         %}
             <link rel="stylesheet" href="{{ asset_url }}" />
         {% endstylesheets %}

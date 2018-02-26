@@ -21,14 +21,12 @@ class ModalMapper
     const VIEW_ID = 'modal-view';
     const INFO_ID = 'modal-info';
 
-    public function __construct(Router $router, RequestStack $requestStack)
+    public function __construct(Router $router)
     {
 
 //        parent::__construct($router, $requestStack);
 
         $this->defaults = [
-
-            'info_size' => self::SIZE_LARGE,
 
             'edit_id' => self::EDIT_ID,
             'edit_size' => null,
@@ -43,15 +41,15 @@ class ModalMapper
 
             'view_id' => self::VIEW_ID,
             'view_size' => null,
-            'info_id' => self::INFO_ID,
-            'info_size' => null,
-        ];
 
+            'info_id' => self::INFO_ID,
+            'info_size' => self::SIZE_LARGE,
+        ];
     }
 
-    public function getDefaults()
+    public function getDefaults(array $defaults = [])
     {
-        return $this->defaults;
+        return array_replace($this->defaults, $defaults);
     }
 
 //    public function add($key, $value = null, array $options = [])

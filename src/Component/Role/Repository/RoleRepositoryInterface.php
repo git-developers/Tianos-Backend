@@ -16,7 +16,7 @@ interface RoleRepositoryInterface extends RepositoryInterface
 //    public function gatazo(): array;
 
     public function find($id);
-    public function findAll(): array;
+    public function findAll();
 
 
     /**

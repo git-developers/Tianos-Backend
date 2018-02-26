@@ -53,18 +53,19 @@ class GridController extends BaseController
         $template = $configuration->getTemplate('');
         $grid = $configuration->getGrid();
         $vars = $configuration->getVars();
+        $modal = $configuration->getModal();
 
         //REPOSITORY
         $objects = $this->get($repository)->$method();
         $objects = $this->getSerialize($objects, $vars['serialize_group_name']);
 
-        //CRUD
-        $crud = $this->get('tianos.crud');
-        $modal = $crud->getModalMapper()->getDefaults();
-        $formMapper = $crud->getFormMapper()->getDefaults();
+        //GRID
+        $gridService = $this->get('tianos.grid');
+        $modal = $gridService->getModalMapper()->getDefaults($modal);
+        $formMapper = $gridService->getFormMapper()->getDefaults();
 
         //DATATABLE
-        $dataTable = $crud->getDataTableMapper($grid)
+        $dataTable = $gridService->getDataTableMapper($grid)
             ->setRoute()
             ->setColumns()
             ->setOptions()

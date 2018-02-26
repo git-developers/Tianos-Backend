@@ -1,6 +1,6 @@
 <?php
 
-namespace Bundle\GridBundle\Services\Crud\Builder;
+namespace Bundle\GridBundle\Services\Grid\Builder;
 
 class DataTableMapper
 {

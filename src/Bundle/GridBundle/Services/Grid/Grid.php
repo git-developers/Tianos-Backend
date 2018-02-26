@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace Bundle\GridBundle\Services\Crud;
+namespace Bundle\GridBundle\Services\Grid;
 
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use Bundle\CoreBundle\Services\FormMapper;
 use Bundle\CoreBundle\Services\ModalMapper;
 use Bundle\ResourceBundle\Controller\RequestConfiguration;
-use Bundle\GridBundle\Services\Crud\Builder\DataTableMapper;
-use Bundle\GridBundle\Services\Crud\Builder\ButtonHeaderMapper;
+use Bundle\GridBundle\Services\Grid\Builder\DataTableMapper;
+use Bundle\GridBundle\Services\Grid\Builder\ButtonHeaderMapper;
 
-class Crud
+class Grid
 {
 
     protected $requestStack;
@@ -26,7 +26,7 @@ class Crud
 
     public function getModalMapper()
     {
-        return new ModalMapper($this->router, $this->requestStack);
+        return new ModalMapper($this->router);
     }
 
     public function getFormMapper()

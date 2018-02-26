@@ -11,8 +11,8 @@ backend_associative_profile_has_role_index:
             vars:
                 subheader: sylius.ui.manage_your_profile_catalog
                 icon: cube
-                body_css: grid-body-css
-                serialize_group_name: crud
+                body_css: one-to-many-body-css
+                serialize_group_name: one-to-many
             one_to_many:
                 box:
                     icon: exchange
@@ -65,7 +65,7 @@ backend_associative_profile_has_role_boxleft_search:
             action: left_search
             template: OneToManyBundle:Li:box_left.html.twig
             vars:
-                serialize_group_name: crud
+                serialize_group_name: one-to-many
             one_to_many:
                 box_left:
 #                    icon: user-secret
@@ -96,7 +96,7 @@ backend_associative_profile_has_role_boxright_search:
             action: right_search
             template: OneToManyBundle:Li:box_right.html.twig
             vars:
-                serialize_group_name: crud
+                serialize_group_name: one-to-many
             one_to_many:
                 box_right:
 #                    icon: user-secret
@@ -143,6 +143,22 @@ backend_associative_profile_has_role_boxleft_select_item:
     defaults:
         _controller: tianos.profilehasrole.controller.associative:boxLeftSelectItemAction
         _tianos:
+            template: OneToManyBundle:Li:box_right.html.twig
+            vars:
+                serialize_group_name: one-to-many
+            one_to_many:
+                box_right:
+                    icon: expeditedssl
+                    class: primary
+                    id: box-right-id
+                    title: Role
+                    entity: role
+                    li_class: box-right-li
+                    li_badge_class: bg-orange-active
+                    li_input_name: box-right-selected-value
+                    search_input_name: search-input-name-right
+#                    route_search: backend_associative_profile_has_role_boxright_search
+#                    route_select_item: backend_associative_profile_has_role_boxright_select_item
             repository:
                 box_left:
                     service: tianos.repository.profile

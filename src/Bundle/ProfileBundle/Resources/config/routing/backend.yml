@@ -18,6 +18,8 @@ backend_profile_index:
                 icon: cube
                 box_class: primary
                 title: Gestionar profile
+                modal:
+                    create_size: modal-lg
                 data_table:
                     route:
                         info: backend_profile_info

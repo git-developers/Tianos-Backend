@@ -71,15 +71,20 @@ class RoleRepository extends TianosEntityRepository implements RoleRepositoryInt
     /**
      * {@inheritdoc}
      */
-    public function findAll(): array
+    public function findAll()
     {
-        return $this->createQueryBuilder('o')
-            ->select('o.id, o.code, o.name, o.createdAt')
-            ->andWhere('o.isActive = :active')
-            ->setParameter('active', 1)
-            ->getQuery()
-            ->getResult()
-            ;
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT role
+            FROM RoleBundle:Role role
+            WHERE
+            role.isActive = :active
+            ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+
+        return $query->getResult();
     }
 
     /**

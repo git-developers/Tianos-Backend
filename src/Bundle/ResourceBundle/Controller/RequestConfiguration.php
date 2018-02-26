@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Bundle\ResourceBundle\Controller;
 
 use Component\Resource\Metadata\MetadataInterface;
-use Bundle\GridBundle\Services\Crud\Builder\DataTableMapper;
+use Bundle\GridBundle\Services\Grid\Builder\DataTableMapper;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\PropertyAccess\PropertyAccess;
 
@@ -703,6 +703,21 @@ class RequestConfiguration
         return $this->parameters->get('grid');
     }
 
+    public function getModal()
+    {
+        if (!$this->hasGrid()) {
+            throw new \LogicException('Modal:: Current action does not use grid.');
+        }
+
+        $grid = $this->parameters->get('grid');
+
+        if (!isset($grid['modal'])) {
+            return [];
+        }
+
+        return $grid['modal'];
+    }
+
     public function getTree()
     {
         if (!$this->hasTree()) {
@@ -730,14 +745,13 @@ class RequestConfiguration
         return $this->parameters->getChild('one_to_many', 'box_left');
     }
 
-
     public function oneToManyBoxRight()
     {
         if (!$this->hasOneToMany('box_right')) {
             throw new \LogicException('Current action does not use: oneToManyBoxRight.');
         }
 
-        return $this->parameters->getChild('one_to_many', 'box_right');
+        return (object) $this->parameters->getChild('one_to_many', 'box_right');
     }
 
     public function getGridDataTable(?string $key = null): array

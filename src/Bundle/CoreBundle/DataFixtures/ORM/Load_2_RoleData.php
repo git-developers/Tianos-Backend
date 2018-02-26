@@ -19,28 +19,36 @@ class Load_2_RoleData extends AbstractFixture implements OrderedFixtureInterface
          * ROLE_ADMIN
          */
         $entity = new Role();
-        $entity->setName('administrator');
-        $entity->setSlug('ROLE_ADMIN');
-//        $entity->setGroupRol('backend');
-//        $entity->setGroupRolTag('group-backend');
+        $entity->setName('User create');
+        $entity->setSlug('ROLE_USER_CREATE');
+        $entity->setGroupRol('user');
+        $entity->setGroupRolTag('group-user');
         $manager->persist($entity);
-        $this->addReference('role-backend', $entity);
+        $this->addReference('role-user-create', $entity);
 
         $entity = new Role();
-        $entity->setName('vendedor');
-        $entity->setSlug('ROLE_USER');
-//        $entity->setGroupRol('backend');
-//        $entity->setGroupRolTag('group-backend');
+        $entity->setName('User edit');
+        $entity->setSlug('ROLE_USER_EDIT');
+        $entity->setGroupRol('user');
+        $entity->setGroupRolTag('group-user');
         $manager->persist($entity);
-        $this->addReference('role-vendedor', $entity);
+        $this->addReference('role-user-edit', $entity);
 
         $entity = new Role();
-        $entity->setName('editor');
-        $entity->setSlug('ROLE_USER');
-//        $entity->setGroupRol('backend');
-//        $entity->setGroupRolTag('group-backend');
+        $entity->setName('User view');
+        $entity->setSlug('ROLE_USER_VIEW');
+        $entity->setGroupRol('user');
+        $entity->setGroupRolTag('group-user');
         $manager->persist($entity);
-        $this->addReference('role-editor', $entity);
+        $this->addReference('role-user-view', $entity);
+
+        $entity = new Role();
+        $entity->setName('User delete');
+        $entity->setSlug('ROLE_USER_DELETE');
+        $entity->setGroupRol('user');
+        $entity->setGroupRolTag('group-user');
+        $manager->persist($entity);
+        $this->addReference('role-user-delete', $entity);
 
         $manager->flush();
 

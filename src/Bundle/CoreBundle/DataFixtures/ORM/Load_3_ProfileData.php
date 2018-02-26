@@ -14,12 +14,17 @@ class Load_3_ProfileData extends AbstractFixture implements OrderedFixtureInterf
     public function load(ObjectManager $manager)
     {
 
-        $roleBackend = $this->getReference('role-backend');
-
+        $roleUserCreate = $this->getReference('role-user-create');
+        $roleUserEdit = $this->getReference('role-user-edit');
+        $roleUserView = $this->getReference('role-user-view');
+        $roleUserDelete = $this->getReference('role-user-delete');
 
         $entity = new Profile();
         $entity->setName(Profile::ADMIN);
-//        $entity->addRole($roleBackend);
+        $entity->addRole($roleUserCreate);
+        $entity->addRole($roleUserEdit);
+        $entity->addRole($roleUserView);
+        $entity->addRole($roleUserDelete);
         $manager->persist($entity);
         $this->addReference('profile-admin', $entity);
 
@@ -34,7 +39,6 @@ class Load_3_ProfileData extends AbstractFixture implements OrderedFixtureInterf
 
         $entity = new Profile();
         $entity->setName(Profile::GUEST);
-//        $entity->addRole($roleBackend);
         $manager->persist($entity);
 
 

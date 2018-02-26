@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Bundle\CoreBundle\Twig\Extension;
 
 use Twig_Environment;
+use Component\OneToMany\Definition\Action;
 
 class CommonExtension extends \Twig_Extension
 {
@@ -24,6 +25,7 @@ class CommonExtension extends \Twig_Extension
     {
         return [
             new \Twig_SimpleFunction('xxxxxxxxx', [$this, 'xxxxxxxxxFilter'], ['is_safe' => ['html'], 'needs_environment' => true] ),
+            new \Twig_SimpleFunction('sliderBgColor', [$this, 'sliderBgColorFunction'] ),
             new \Twig_SimpleFunction('randomString', [$this, 'randomStringFunction'] ),
             new \Twig_SimpleFunction('randomBgColor', [$this, 'randomBgColorFunction'] ),
             new \Twig_SimpleFunction('randomBoxColor', [$this, 'randomBoxColorFunction'] ),
@@ -110,6 +112,25 @@ class CommonExtension extends \Twig_Extension
         ];
 
         return isset($badgeColors[$index]) ? $badgeColors[$index] : null;
+    }
+
+
+    public function sliderBgColorFunction()
+    {
+        $action = null;
+
+        switch ($action){
+            case Action::CREATE:
+                $bg = 'green';
+                break;
+            case Action::EDIT:
+                $bg = 'yellow';
+                break;
+            default:
+                $bg = 'gray';
+        }
+
+        return 'bg-' . $bg . '-slider';
     }
 
     public function getName()

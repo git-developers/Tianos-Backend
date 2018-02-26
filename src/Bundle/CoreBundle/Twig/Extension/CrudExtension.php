@@ -33,7 +33,6 @@ class CrudExtension extends \Twig_Extension
     public function getFunctions()
     {
         return [
-            new \Twig_SimpleFunction('slider_bg_color', [$this, 'sliderBgColorFunction'] ),
             new \Twig_SimpleFunction('modal_footer', [$this, 'modalFooterFunction'] ),
             new \Twig_SimpleFunction('modal_footer_access_denied', [$this, 'modalFooterAccessDeniedFunction'] ),
         ];
@@ -81,24 +80,6 @@ class CrudExtension extends \Twig_Extension
                 return self::CLOSED_RIGHT_OUTLINE;
                 break;
         }
-    }
-
-    public function sliderBgColorFunction()
-    {
-        $action = null; //$this->getAction();
-
-        switch ($action){
-            case Action::CREATE:
-                $bg = 'green';
-                break;
-            case Action::EDIT:
-                $bg = 'yellow';
-                break;
-            default:
-                $bg = 'gray';
-        }
-
-        return 'bg-' . $bg . '-slider';
     }
 
     private function getAction()

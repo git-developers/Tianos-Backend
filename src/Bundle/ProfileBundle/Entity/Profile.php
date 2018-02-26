@@ -18,19 +18,21 @@ class Profile
     /**
      * @var integer
      *
-     * @JMSS\Groups({"crud"})
+     * @JMSS\Groups({"crud", "one-to-many"})
      */
     private $id;
 
     /**
      * @var string
+     *
+     * @JMSS\Groups({"crud", "one-to-many"})
      */
     private $code;
 
     /**
      * @var string
      *
-     * @JMSS\Groups({"crud"})
+     * @JMSS\Groups({"crud", "one-to-many"})
      */
     private $name;
 
@@ -42,7 +44,7 @@ class Profile
     /**
      * @var \DateTime
      *
-     * @JMSS\Groups({"crud"})
+     * @JMSS\Groups({"crud", "one-to-many"})
      * @JMSS\Type("DateTime<'Y-m-d H:i'>")
      */
     private $createdAt;
@@ -79,8 +81,22 @@ class Profile
      *     @ORM\JoinColumn(name="role_id", referencedColumnName="id")
      *   }
      * )
+     *
+     * @JMSS\Groups({"one-to-many"})
      */
     private $role;
+
+    /**
+     * @var boolean
+     *
+     */
+    private $toggleCheckbox;
+
+    /**
+     * @var boolean
+     *
+     */
+    private $collapsedBox;
 
     /**
      * Constructor
@@ -328,6 +344,38 @@ class Profile
     public function getRole()
     {
         return $this->role;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isToggleCheckbox()
+    {
+        return $this->toggleCheckbox;
+    }
+
+    /**
+     * @param boolean $toggleCheckbox
+     */
+    public function setToggleCheckbox($toggleCheckbox)
+    {
+        $this->toggleCheckbox = $toggleCheckbox;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isCollapsedBox()
+    {
+        return $this->collapsedBox;
+    }
+
+    /**
+     * @param boolean $collapsedBox
+     */
+    public function setCollapsedBox($collapsedBox)
+    {
+        $this->collapsedBox = $collapsedBox;
     }
 }
 

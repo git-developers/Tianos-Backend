@@ -174,7 +174,7 @@ step_2_init_msql:
 	#dentro de mysql, ejecutar: ALTER USER 'root'@'localhost' IDENTIFIED BY 'root';
 
 load_fixture:
-	#php bin/console tianos:truncate:tables
+	php bin/console tianos:truncate:tables
 	php bin/console doctrine:fixtures:load --no-interaction
 
 setfacl:

@@ -15,19 +15,21 @@ class Role
     /**
      * @var integer
      *
-     * @JMSS\Groups({"crud"})
+     * @JMSS\Groups({"crud", "one-to-many"})
      */
     private $id;
 
     /**
      * @var string
+     *
+     * @JMSS\Groups({"crud", "one-to-many"})
      */
     private $code;
 
     /**
      * @var string
      *
-     * @JMSS\Groups({"crud"})
+     * @JMSS\Groups({"crud", "one-to-many"})
      */
     private $name;
 
@@ -51,7 +53,7 @@ class Role
     /**
      * @var \DateTime
      *
-     * @JMSS\Groups({"crud"})
+     * @JMSS\Groups({"crud", "one-to-many"})
      * @JMSS\Type("DateTime<'Y-m-d H:i'>")
      */
     private $createdAt;
@@ -80,6 +82,8 @@ class Role
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="Bundle\ProfileBundle\Entity\Profile", mappedBy="role")
+     *
+     * @JMSS\Groups({"one-to-many"})
      */
     private $profile;
 
@@ -89,6 +93,10 @@ class Role
     public function __construct()
     {
         $this->profile = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    public function __toString() {
+        return sprintf('(%s) %s', $this->id, $this->name);
     }
 
     /**
