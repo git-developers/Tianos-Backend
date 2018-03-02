@@ -50,6 +50,45 @@ class Load_2_RoleData extends AbstractFixture implements OrderedFixtureInterface
         $manager->persist($entity);
         $this->addReference('role-user-delete', $entity);
 
+
+
+        /**
+         * ROLE_CLIENT
+         */
+        $entity = new Role();
+        $entity->setName('Client create');
+        $entity->setSlug('ROLE_CLIENT_CREATE');
+        $entity->setGroupRol('client');
+        $entity->setGroupRolTag('group-client');
+        $manager->persist($entity);
+        $this->addReference('role-client-create', $entity);
+
+        $entity = new Role();
+        $entity->setName('client edit');
+        $entity->setSlug('ROLE_CLIENT_EDIT');
+        $entity->setGroupRol('client');
+        $entity->setGroupRolTag('group-client');
+        $manager->persist($entity);
+        $this->addReference('role-client-edit', $entity);
+
+        $entity = new Role();
+        $entity->setName('client view');
+        $entity->setSlug('ROLE_CLIENT_VIEW');
+        $entity->setGroupRol('client');
+        $entity->setGroupRolTag('group-client');
+        $manager->persist($entity);
+        $this->addReference('role-client-view', $entity);
+
+        $entity = new Role();
+        $entity->setName('client delete');
+        $entity->setSlug('ROLE_CLIENT_DELETE');
+        $entity->setGroupRol('client');
+        $entity->setGroupRolTag('group-client');
+        $manager->persist($entity);
+        $this->addReference('role-client-delete', $entity);
+
+
+
         $manager->flush();
 
     }

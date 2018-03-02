@@ -185,31 +185,14 @@ setfacl:
 crud_routing:
 	php bin/console tianos:crud:routing BackendBundle
 
-gato:
-	@echo =========== CRUD: replace dummy 2222 ===========;
-	$(eval MODEL := $(model) | tr '[:upper:]' '[:lower:]' | python -c "print raw_input().capitalize()" )
-	@echo $(MODEL)
-
-xxxx:
-	$(eval MODEL_UPPER := php bin/console tianos:capitalized $(model))
-	$(eval DUMMY_UPPER := DUMMY_UPPER)
-
-	mv $$PWD/src/Bundle/$(DUMMY_UPPER)Bundle $$PWD/src/Bundle/$(MODEL_UPPER)Bundle
-
-crud2:
-	@echo =========== CRUD: replace dummy ===========;
-	@echo ;
-	read -r -p "Are you sure? [y/N] " response;
-	if [ -s ${response} == "y" ];
-	then
-	    @echo =========== 11111111111 ===========;
-	else
-	    @echo =========== 2222222222 ===========;
-	fi
-
 crud:
 	@echo =========== CRUD: replace dummy ===========;
-	php bin/console tianos:create:crud $(model)
+	php bin/console tianos:create:crud $(bundle)
+	make perm
+
+onetomany:
+	@echo =========== CRUD: replace dummy ===========;
+	php bin/console tianos:create:crud $(bundle_left) $(bundle_right)
 	make perm
 
 migrate_delete:

@@ -17,7 +17,7 @@ use Symfony\Component\Process\Exception\ProcessFailedException;
 //https://symfony.com/doc/current/doctrine/reverse_engineering.html
 //doctrine:mapping:import
 
-class CreateCrudCommand extends ContainerAwareCommand
+class CreateOneToManyCommand extends ContainerAwareCommand
 {
 
     const DUMMY_UPPER = 'DUMMY_UPPER';
@@ -27,8 +27,8 @@ class CreateCrudCommand extends ContainerAwareCommand
     protected function configure()
     {
         $this
-            ->setName('tianos:create:crud')
-            ->setDescription('Crud generator')
+            ->setName('tianos:create:one-to-many')
+            ->setDescription('OneToMany generator')
             ->addOption('baz', 'tn', InputOption::VALUE_NONE, 'Test option')
 //            ->addArgument('status', InputArgument::OPTIONAL, 'El status: e.g. TRUE - FALSE', false)
             ->addArgument('bundle', InputArgument::OPTIONAL, 'The component: product, client', false)

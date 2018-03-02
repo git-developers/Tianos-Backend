@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Bundle\ApiBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
