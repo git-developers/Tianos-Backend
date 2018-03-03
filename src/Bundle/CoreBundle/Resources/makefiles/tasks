@@ -191,8 +191,8 @@ crud:
 	make perm
 
 onetomany:
-	@echo =========== CRUD: replace dummy ===========;
-	php bin/console tianos:create:crud $(bundle_left) $(bundle_right)
+	@echo =========== OneToMany: replace dummy ===========;
+	php bin/console tianos:create:one-to-many $(bundle_left) $(bundle_right)
 	make perm
 
 migrate_delete:

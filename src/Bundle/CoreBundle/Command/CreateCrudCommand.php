@@ -52,10 +52,10 @@ class CreateCrudCommand extends ContainerAwareCommand
 
         $cwd = getcwd();
 
-        $src = $cwd . '/data/generator/crud/bundle/'.self::DUMMY_UPPER.'Bundle';
+        $source = $cwd . '/data/generator/crud/bundle/'.self::DUMMY_UPPER.'Bundle';
         $dest = $cwd . '/src/Bundle/' . $bundle . 'Bundle';
 
-        $srcComponent = $cwd.'/data/generator/crud/component/'.self::DUMMY_UPPER;
+        $sourceComponent = $cwd.'/data/generator/crud/component/'.self::DUMMY_UPPER;
         $destComponent = $cwd.'/src/Component/'.$bundle;
 
 
@@ -64,7 +64,7 @@ class CreateCrudCommand extends ContainerAwareCommand
         $output->writeln('');
         $output->writeln('<question>CRUD: bundle</question>');
 
-        $result = $this->linuxCommand('cp -R '.$src.' '. $dest);
+        $result = $this->linuxCommand('cp -R '.$source.' '. $dest);
         $output->writeln('<info>* Copiar bundle: '.$result.'</info>');
 
         $result = $this->linuxCommand('chown -R 1000:1000 '. $dest);
@@ -93,7 +93,7 @@ class CreateCrudCommand extends ContainerAwareCommand
         //=============================================
         $output->writeln('');
         $output->writeln('<question>CRUD: component</question>');
-        $result = $this->linuxCommand('cp -R '.$srcComponent.' '. $destComponent);
+        $result = $this->linuxCommand('cp -R '.$sourceComponent.' '. $destComponent);
         $output->writeln('<info>* Copiar bundle: '.$result.'</info>');
 
         $result = $this->linuxCommand('chown -R 1000:1000 '. $destComponent);
@@ -157,14 +157,14 @@ class CreateCrudCommand extends ContainerAwareCommand
         return $process->getOutput();
     }
 
-    private function recurseRenameDirectory($src, $needle, $bundle) {
+    private function recurseRenameDirectory($source, $needle, $bundle) {
 
-        $dir = opendir($src);
+        $dir = opendir($source);
 
         while(false !== ( $file = readdir($dir)) ) {
             if (( $file != '.' ) && ( $file != '..' )) {
 
-                $path = $src . '/' . $file;
+                $path = $source . '/' . $file;
 
                 if ( is_dir($path) ) {
 
@@ -186,15 +186,15 @@ class CreateCrudCommand extends ContainerAwareCommand
         closedir($dir);
     }
 
-    private function recurseRenameFiles($src, $needle, $bundle) {
+    private function recurseRenameFiles($source, $needle, $bundle) {
 
-        $dir = opendir($src);
+        $dir = opendir($source);
 
         while(false !== ( $file = readdir($dir)) ) {
 
             if (( $file != '.' ) && ( $file != '..' )) {
 
-                $path = $src . '/' . $file;
+                $path = $source . '/' . $file;
 
                 if ( is_dir($path) ) {
                     $this->recurseRenameFiles($path, $needle, $bundle);
