@@ -12,6 +12,8 @@ delete:
 	rm -rf var/cache/*
 	rm -rf web/bundles/*
 	rm -rf web/media/*
+	rm -rf web/css/*
+	rm -rf web/js/*
 	@echo ---;
 	@echo ===========borrar los tokens de google===========;
 	rm -rf /tianos/data/google/credentials/*

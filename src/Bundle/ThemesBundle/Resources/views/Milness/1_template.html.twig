@@ -101,7 +101,7 @@
 
         {% stylesheets
             filter='cssrewrite'
-            'bundles/themes/milness/css/fonts-api/fonts-api.css'
+            'bundles/themes/milness/css/google-apis/fonts.css'
         %}
             <link rel='stylesheet' property='stylesheet' type='text/css' media='all' href="{{ asset_url }}" />
         {% endstylesheets %}
@@ -170,6 +170,7 @@
             '@ThemesBundle/Resources/public/milness/js/themes/wp-embed.min.js'
             '@ThemesBundle/Resources/public/milness/js/visual-composer/js_composer_front.min.js'
             '@ThemesBundle/Resources/public/milness/js/visual-composer/skrollr.min.js'
+            '@ThemesBundle/Resources/public/milness/js/google-apis/webfont.js'
         %}
             <script type='text/javascript' src="{{ asset_url }}"></script>
         {% endjavascripts %}
@@ -246,7 +247,7 @@
             // /* ]]> */
         </script>
 
-        <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js?ver=3.0.22'></script>
+        {#<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js?ver=3.0.22'></script>#}
 
         <script type='text/javascript'>
             WebFont.load({
@@ -263,7 +264,7 @@
 <body class="home page-template page-template-page-builder page-template-page-builder-php page page-id-1807 wpb-js-composer js-comp-ver-5.4.5 vc_responsive">
 
     <div id="preloader">
-        <div style="background-color: #1e73be" id="status"></div>
+        <div style="background-color: #ff9d01" id="status"></div>
     </div>
 
     <div id="top-scroll"></div>
