@@ -15,7 +15,7 @@ backend_groupofusers_index:
                 serialize_group_name: crud
 #            grid: sylius_admin_product
             grid:
-                icon: cube
+                icon: users
                 box_class: primary
                 title: Gestionar groupofusers
                 data_table:

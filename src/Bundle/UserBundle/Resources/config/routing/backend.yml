@@ -15,7 +15,7 @@ backend_user_index:
                 serialize_group_name: crud
 #            grid: sylius_admin_user
             grid:
-                icon: cube
+                icon: user
                 box_class: primary
                 title: Gestionar user
                 data_table:
