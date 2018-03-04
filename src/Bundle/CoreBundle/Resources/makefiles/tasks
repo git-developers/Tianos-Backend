@@ -192,6 +192,7 @@ crud:
 
 onetomany:
 	@echo =========== OneToMany: replace dummy ===========;
+	@echo =========== make onetomany bundle_left=profile bundle_right=role ===========;
 	php bin/console tianos:create:one-to-many $(bundle_left) $(bundle_right)
 	make perm
 

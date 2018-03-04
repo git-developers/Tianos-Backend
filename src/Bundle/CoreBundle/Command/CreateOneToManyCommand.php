@@ -70,37 +70,37 @@ class CreateOneToManyCommand extends ContainerAwareCommand
         $dest = getcwd() . '/src/Bundle/AssociativeBundle';
 
 
-//        //=============================================
-//        $output->writeln('');
-//        $output->writeln('<question>OneToMany: controller</question>');
-//
-//        $controllerSource = $source . '/Controller/'.self::DUMMY_LEFT_UPPER.'Has'.self::DUMMY_RIGHT_UPPER.'Controller.php';
-//        $controllerDest = $dest . '/Controller/'.$this->setts->bundleLeftUpper.'Has'.$this->setts->bundleRightUpper.'Controller.php';
-//
-//        $this->linuxCommand('cp -R '.$controllerSource.' '. $controllerDest);
-//        $output->writeln('<info>* Copiar controller</info>');
-//
-//        $this->linuxCommand('find '.$controllerDest.' -name \*.php -exec sed -i "s/'.self::DUMMY_LEFT_UPPER.'/'.$this->setts->bundleLeftUpper.'/g" {} \;');
-//        $this->linuxCommand('find '.$controllerDest.' -name \*.php -exec sed -i "s/'.self::DUMMY_RIGHT_UPPER.'/'.$this->setts->bundleRightUpper.'/g" {} \;');
-//        $output->writeln('<info>* Cambiar texto PHP dentro del bundle</info>');
-//
-//        $this->linuxCommand('chown -R 1000:1000 '. $controllerDest);
-//        $output->writeln('<info>* Dar permisos controller</info>');
-//
-//
-//
-//        //=============================================
-//        $output->writeln('');
-//        $output->writeln('<question>OneToMany: copy view</question>');
-//
-//        $viewSource = $source . '/Resources/views/'.self::DUMMY_LEFT_UPPER.'Has'.self::DUMMY_RIGHT_UPPER;
-//        $viewDest = $dest . '/Resources/views/'.$this->setts->bundleLeftUpper.'Has'.$this->setts->bundleRightUpper;
-//
-//        $this->linuxCommand('cp -R '.$viewSource.' '. $viewDest);
-//        $output->writeln('<info>* Copiar view</info>');
-//
-//        $this->linuxCommand('chown -R 1000:1000 '. $viewDest);
-//        $output->writeln('<info>* Dar permisos view</info>');
+        //=============================================
+        $output->writeln('');
+        $output->writeln('<question>OneToMany: controller</question>');
+
+        $controllerSource = $source . '/Controller/'.self::DUMMY_LEFT_UPPER.'Has'.self::DUMMY_RIGHT_UPPER.'Controller.php';
+        $controllerDest = $dest . '/Controller/'.$this->setts->bundleLeftUpper.'Has'.$this->setts->bundleRightUpper.'Controller.php';
+
+        $this->linuxCommand('cp -R '.$controllerSource.' '. $controllerDest);
+        $output->writeln('<info>* Copiar controller</info>');
+
+        $this->linuxCommand('find '.$controllerDest.' -name \*.php -exec sed -i "s/'.self::DUMMY_LEFT_UPPER.'/'.$this->setts->bundleLeftUpper.'/g" {} \;');
+        $this->linuxCommand('find '.$controllerDest.' -name \*.php -exec sed -i "s/'.self::DUMMY_RIGHT_UPPER.'/'.$this->setts->bundleRightUpper.'/g" {} \;');
+        $output->writeln('<info>* Cambiar texto PHP dentro del bundle</info>');
+
+        $this->linuxCommand('chown -R 1000:1000 '. $controllerDest);
+        $output->writeln('<info>* Dar permisos controller</info>');
+
+
+
+        //=============================================
+        $output->writeln('');
+        $output->writeln('<question>OneToMany: copy view</question>');
+
+        $viewSource = $source . '/Resources/views/'.self::DUMMY_LEFT_UPPER.'Has'.self::DUMMY_RIGHT_UPPER;
+        $viewDest = $dest . '/Resources/views/'.$this->setts->bundleLeftUpper.'Has'.$this->setts->bundleRightUpper;
+
+        $this->linuxCommand('cp -R '.$viewSource.' '. $viewDest);
+        $output->writeln('<info>* Copiar view</info>');
+
+        $this->linuxCommand('chown -R 1000:1000 '. $viewDest);
+        $output->writeln('<info>* Dar permisos view</info>');
 
 
 
@@ -109,7 +109,7 @@ class CreateOneToManyCommand extends ContainerAwareCommand
         $output->writeln('<question>OneToMany: routing 1</question>');
 
         $routingSource = $source . '/Resources/config/routing/'.self::DUMMY_LEFT_LOWER.'Has'.self::DUMMY_RIGHT_LOWER.'.yml';
-        $routingDest = $dest . '/Resources/config/routing/'.$this->setts->bundleLeftUpper.'Has'.$this->setts->bundleRightUpper.'.yml';
+        $routingDest = $dest . '/Resources/config/routing/'.$this->setts->bundleLeftLower.'_has_'.$this->setts->bundleRightLower.'.yml';
 
         $this->linuxCommand('cp -R '.$routingSource.' '. $routingDest);
         $output->writeln('<info>* Copiar routing</info>');
@@ -134,78 +134,22 @@ class CreateOneToManyCommand extends ContainerAwareCommand
 
 
 
-
-        /*
-        $result = $this->recurseRenameDirectory($dest, self::DUMMY_UPPER, $bundle);
-        $output->writeln('<info>* Cambiar nombre a folderes: '.$result.'</info>');
-
-        sleep(1);
-
-        $result = $this->recurseRenameFiles($dest, self::DUMMY_UPPER, $bundle);
-        $output->writeln('<info>* Cambiar nombre a files: '.$result.'</info>');
-
-        sleep(1);
-
-        $result = $this->linuxCommand('find '.$dest.' -name \*.php -exec sed -i "s/'.self::DUMMY_LOWER.'/'.$bundleLower.'/g" {} \;');
-        $result = $this->linuxCommand('find '.$dest.' -name \*.php -exec sed -i "s/'.self::DUMMY_UPPER.'/'.$bundle.'/g" {} \;');
-        $output->writeln('<info>* Cambiar texto PHP dentro del bundle: '.$result.'</info>');
-
-        $result = $this->linuxCommand('find '.$dest.' -name \*.yml -exec sed -i "s/'.self::DUMMY_LOWER.'/'.$bundleLower.'/g" {} \;');
-        $result = $this->linuxCommand('find '.$dest.' -name \*.yml -exec sed -i "s/'.self::DUMMY_UPPER.'/'.$bundle.'/g" {} \;');
-        $output->writeln('<info>* Cambiar texto YML dentro del bundle: '.$result.'</info>');
-
-
-
-        //=============================================
-        $output->writeln('');
-        $output->writeln('<question>CRUD: component</question>');
-        $result = $this->linuxCommand('cp -R '.$srcComponent.' '. $destComponent);
-        $output->writeln('<info>* Copiar bundle: '.$result.'</info>');
-
-        $result = $this->linuxCommand('chown -R 1000:1000 '. $destComponent);
-        $output->writeln('<info>* Dar permisos bundle: '.$result.'</info>');
-
-        $result = $this->recurseRenameDirectory($destComponent, self::DUMMY_UPPER, $bundle);
-        $output->writeln('<info>* Cambiar nombre a folderes: '.$result.'</info>');
-
-        sleep(1);
-
-        $result = $this->recurseRenameFiles($destComponent, self::DUMMY_UPPER, $bundle);
-        $output->writeln('<info>* Cambiar nombre a files: '.$result.'</info>');
-
-        sleep(1);
-
-        $result = $this->linuxCommand('find '.$destComponent.' -name \*.php -exec sed -i "s/'.self::DUMMY_UPPER.'/'.$bundle.'/g" {} \;');
-        $output->writeln('<info>* Cambiar texto PHP dentro del bundle: '.$result.'</info>');
-
-
-
-        //=============================================
-        $output->writeln('');
-        $output->writeln('<question>CRUD YML: services.yml</question>');
-        $result = $this->crudServicesYml($bundle);
-        $output->writeln('<info>* services YML bundle: '.$result.'</info>');
-
-
-
         //=============================================
         $output->writeln('');
         $output->writeln('<question>CRUD YML: routing.yml</question>');
-        $result = $this->crudRoutingYml($bundleLower);
+        $result = $this->routingYml();
         $output->writeln('<info>* routing YML bundle: '.$result.'</info>');
 
-        */
 
 
         //=============================================
         $output->writeln('--');
         $output->writeln('<comment>=== Se termino el proceso, pon el Kernel ===</comment>');
-//        $output->writeln('<comment>* Para eliminar, borrar files:</comment>');
-//        $output->writeln('* BUNDLE: Tianos/src/Bundle/'.$bundle.'Bundle');
-//        $output->writeln('* COMPONENT: Tianos/src/Component/'.$bundle);
-//        $output->writeln('* KERNEL: Tianos/app/AppKernel.php');
-//        $output->writeln('* ROUTING: Tianos/src/Bundle/BackendBundle/Resources/config/routing.yml');
-//        $output->writeln('* SERVICES: Tianos/app/config/services/services.yml');
+        $output->writeln('<comment>* Para eliminar, borrar files:</comment>');
+        $output->writeln('* CONTROLLER: Bundle/AssociativeBundle/Controller/'.$this->setts->bundleLeftUpper.'Has'.$this->setts->bundleRightUpper.'Controller.php');
+        $output->writeln('* ROUTING: Bundle/AssociativeBundle/Resources/config/routing/'.$this->setts->bundleLeftUpper.'_has_'.$this->setts->bundleRightLower.'.yml');
+        $output->writeln('* SERVICES: Bundle/AssociativeBundle/Resources/config/services.yml');
+        $output->writeln('* VIEW: Bundle/AssociativeBundle/Resources/views/ProfileHasRole');
         $output->writeln('--');
     }
 
@@ -226,12 +170,9 @@ class CreateOneToManyCommand extends ContainerAwareCommand
 
     private function servicesYml()
     {
-        $destPath = getcwd() . '/src/Bundle/AssociativeBundle/Resources/config/services.yml';
-        $destYmlValues = Yaml::parseFile($destPath);
-
         $services = [];
         $services['tianos.'.$this->setts->bundleLeftLower.'has'.$this->setts->bundleRightLower.'.controller.associative'] = [
-            'class' => 'Bundle\AssociativeBundle\Controller'.$this->setts->bundleLeftUpper.'Has'.$this->setts->bundleRightUpper.'Controller',
+            'class' => 'Bundle\AssociativeBundle\Controller\\'.$this->setts->bundleLeftUpper.'Has'.$this->setts->bundleRightUpper.'Controller',
             'arguments' => ['Bundle\ResourceBundle\Factory\RequestConfigurationFactoryInterface'],
             'tags' => [
                 [
@@ -241,24 +182,29 @@ class CreateOneToManyCommand extends ContainerAwareCommand
             ],
         ];
 
-        $destYmlValues['services'][] = $services;
+        $destPath = getcwd() . '/src/Bundle/AssociativeBundle/Resources/config/services.yml';
+        $destYmlValues = Yaml::parseFile($destPath);
 
+        $destYmlValues = is_array($destYmlValues['services']) ? $destYmlValues['services'] : [];
+        $saveYmlValues['services'] = array_merge($destYmlValues, $services);
 
         //COPIAR YML
-        file_put_contents($destPath, Yaml::dump($destYmlValues));
+        file_put_contents($destPath, Yaml::dump($saveYmlValues));
     }
 
     private function routingYml()
     {
-        # https://symfony.com/doc/current/service_container.html
         $exist = false;
-        $ymlPath = __DIR__ . '/../../../../src/Bundle/BackendBundle/Resources/config/routing.yml';
+        $bundle = $this->setts->bundleLeftLower.'_has_'.$this->setts->bundleRightLower;
+        $prefix = $this->setts->bundleLeftLower.'-has-'.$this->setts->bundleRightLower;
+        $ymlPath = __DIR__ . '/../../../../src/Bundle/AssociativeBundle/Resources/config/routing.yml';
 
         $ymlValues = Yaml::parseFile($ymlPath);
+        $ymlValues = is_array($ymlValues) ? $ymlValues : [];
 
         foreach ($ymlValues as $key => $ymlValue){
 
-            $ymlValue = str_replace('backend_', '', $ymlValue);
+            $ymlValue = str_replace('backend_associative_', '', $ymlValue);
 
             if($ymlValue == $bundle){
                 $exist = true;
@@ -266,9 +212,9 @@ class CreateOneToManyCommand extends ContainerAwareCommand
         }
 
         if(!$exist){
-            $ymlValues['backend_' . $bundle] = [
-                'resource' => '@' . ucfirst($bundle) . 'Bundle/Resources/config/routing/backend.yml',
-                'prefix' => '/' . $bundle,
+            $ymlValues['backend_associative_' . $bundle] = [
+                'resource' => '@AssociativeBundle/Resources/config/routing/' . $bundle . '.yml',
+                'prefix' => '/' . $prefix,
             ];
         }
 
