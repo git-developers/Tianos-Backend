@@ -13,7 +13,7 @@
 
   tasks:
     - name: Git Pull Project
-      git: repo={{repo_url}} dest={{webapps_dir}}/{{app_name}} version=master
+      git: repo={{repo_url}} dest={{webapps_dir}}/{{app_name}} version=master force=yes
 
 
 #accept_hostkey=no
