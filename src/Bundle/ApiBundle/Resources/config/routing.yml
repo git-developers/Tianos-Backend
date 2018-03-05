@@ -2,6 +2,10 @@ api_default:
     resource: '@ApiBundle/Resources/config/routing/default.yml'
     prefix: /
 
-#api_product:
-#    resource: '@ProductBundle/Resources/config/routing/api.yml'
-#    prefix: /products
+api_pointofsale:
+    resource: '@PointofsaleBundle/Resources/config/routing/api.yml'
+    prefix: /point-of-sale
+
+api_user:
+    resource: '@UserBundle/Resources/config/routing/api.yml'
+    prefix: /user

@@ -99,7 +99,7 @@ class Pointofsale
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\User", mappedBy="pointOfSale")
+     * @ORM\ManyToMany(targetEntity="Bundle\UserBundle\Entity\User", mappedBy="pointOfSale")
      */
     private $user;
 

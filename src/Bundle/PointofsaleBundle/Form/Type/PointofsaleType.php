@@ -59,7 +59,7 @@ class PointofsaleType extends AbstractType
                     'placeholder' => 'nombre',
                 ],
             ])
-            ->add('latitude', NumberType::class, [
+            ->add('latitude', TextType::class, [
                 'label' => 'latitude',
                 'label_attr' => [
                     'class' => ''
@@ -69,7 +69,7 @@ class PointofsaleType extends AbstractType
                     'placeholder' => 'nombre',
                 ],
             ])
-            ->add('longitude', NumberType::class, [
+            ->add('longitude', TextType::class, [
                 'label' => 'longitude',
                 'label_attr' => [
                     'class' => ''

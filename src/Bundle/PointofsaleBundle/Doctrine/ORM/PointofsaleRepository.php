@@ -46,8 +46,9 @@ class PointofsaleRepository extends TianosEntityRepository implements Pointofsal
     public function findAll(): array
     {
         return $this->createQueryBuilder('o')
-            ->select('o.id, o.code, o.name, o.createdAt')
+            ->select('o.id, o.code, o.name, o.createdAt, o.latitude, o.longitude')
             ->andWhere('o.isActive = :active')
+            ->orderBy('o.id', 'DESC')
             ->setParameter('active', 1)
             ->getQuery()
             ->getResult()

@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use JMS\Serializer\Serializer;
 use JMS\Serializer\SerializerBuilder;
 use JMS\Serializer\SerializationContext;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 
 abstract class BaseController extends Controller
 {
@@ -44,6 +45,7 @@ abstract class BaseController extends Controller
     const MAX_AGE_HOUR = 3600; #cache for 300 seconds
     const MAX_AGE_WEEK = 604800; #cache for 604800 seconds
     const MAX_AGE_YEAR = 31622400; #cache for 31622400 seconds
+    const CONTENT_TYPE_APPLICATION_JSON = 'application/json';
 
     protected function em()
     {
@@ -123,6 +125,15 @@ abstract class BaseController extends Controller
         $request = $this->container->get('request_stack')->getCurrentRequest();
         return $request->isXmlHttpRequest() || $request->get('_xml_http_request');
 //        return 'XMLHttpRequest' == $this->headers->get('X-Requested-With');
+    }
+
+    protected function contentTypeValidation(Request $request)
+    {
+        $content = $request->headers->get('Content-Type');
+
+        if(strpos($content, self::CONTENT_TYPE_APPLICATION_JSON) !== 0){
+            throw new BadRequestHttpException('Tianos: content-type not allowed');
+        }
     }
 
 //    protected function getBundleName()

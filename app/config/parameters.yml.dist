@@ -24,7 +24,7 @@ parameters:
     application_url_canonical: http://tianos.xyz
     application_skin: 'skin-yellow'
     application_name: 'Tianos'
-    application_name_html: '<b>TIA</b>NOS'
+    application_name_html: '<b>Tia</b>nos'
     application_fb_app_id: '129906047219991'
     application_google_api_key: 'AIzaSyBAsxwIhfRbFNd5NBO7WkRJupk5sEL9gbQ'
     application_google_plus: 'https://plus.google.com/u/0/101583248641629113892'

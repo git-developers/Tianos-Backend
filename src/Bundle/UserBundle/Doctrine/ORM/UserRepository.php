@@ -38,4 +38,28 @@ class UserRepository extends EntityRepository implements UserRepositoryInterface
             ->getOneOrNullResult()
         ;
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function login(\stdClass $data)
+    {
+        $username = strtolower($data->username);
+
+        $em = $this->getEntityManager();
+        $dql = '
+            SELECT UserTianos
+            FROM UserBundle:User UserTianos
+            WHERE
+            (UserTianos.email = :email OR UserTianos.username = :username) AND
+            UserTianos.isActive = :active
+        ';
+
+        return $em->createQuery($dql)
+                ->setParameter('active', 1)
+                ->setParameter('email', $username)
+                ->setParameter('username', $username)
+                ->getOneOrNullResult()
+        ;
+    }
 }

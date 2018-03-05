@@ -1,16 +1,17 @@
 api_pointofsale_index:
     path: /
-    methods: [GET]
+    methods: [POST]
     defaults:
         _controller: tianos.api.controller.pointofsale:indexAction
         _tianos:
             section: admin
             permission: true
             grid: sylius_admin_pointofsale
-            template: PointofsaleBundle:Pointofsale:index.html.twig
+#            template: PointofsaleBundle:Pointofsale:index.html.twig
             vars:
                 subheader: sylius.ui.manage_your_product_catalog
                 icon: cube
+                serialize_group_name: crud
             form:
                 type: Bundle\PointofsaleBundle\Form\Type\PointofsaleType
             repository:

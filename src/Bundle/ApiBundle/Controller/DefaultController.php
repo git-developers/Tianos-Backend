@@ -14,8 +14,8 @@ class DefaultController extends BaseController
     public function indexAction(Request $request): Response
     {
         return $this->json([
-            'status' => self::STATUS_SUCCESS,
-            'msg' => 'mensaje ddd',
+            'status' => self::STATUS_ERROR,
+            'msg' => 'access denied',
         ]);
     }
 }

@@ -47,6 +47,10 @@ backend_pointofsale_index:
 #                              icon: map-marker
                         - name: Name
                           obj: obj.name
+                        - name: Latitude
+                          obj: obj.latitude
+                        - name: Longitude
+                          obj: obj.longitude
 #                        - name: slug
 #                          obj: obj.slug
                         - name: Creado

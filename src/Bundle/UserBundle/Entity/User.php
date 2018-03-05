@@ -6,6 +6,8 @@ namespace Bundle\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
+use JMS\Serializer\Annotation as JMSS;
+use JMS\Serializer\Annotation\Type as TypeJMS;
 
 /**
  * User
@@ -16,8 +18,23 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     /**
      * @var int
      *
+     * @JMSS\Groups({"login"})
      */
     protected $id;
+
+    /**
+     * @var string
+     *
+     * @JMSS\Groups({"login"})
+     */
+    protected $username;
+
+    /**
+     * @var string
+     *
+     * @JMSS\Groups({"login"})
+     */
+    protected $email;
 
     /**
      * @var string|null
@@ -40,12 +57,14 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     /**
      * @var string
      *
+     * @JMSS\Groups({"login"})
      */
     private $name;
 
     /**
      * @var string|null
      *
+     * @JMSS\Groups({"login"})
      */
     private $lastName;
 

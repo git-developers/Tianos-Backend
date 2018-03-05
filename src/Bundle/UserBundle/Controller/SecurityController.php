@@ -21,9 +21,6 @@ class SecurityController extends Controller
 //        /var/www/html/Sylius/src/Sylius/Bundle/UiBundle/Resources/views/Form/theme.html.twig
 
         $authenticationUtils = $this->get('security.authentication_utils');
-
-
-        $authenticationUtils = $this->get('security.authentication_utils');
         $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();
 

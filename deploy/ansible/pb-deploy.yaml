@@ -3,11 +3,11 @@
 - hosts: webservers
 #  sudo: yes
   vars:
-    - app_name: PleaseDeployMe
-    - repo_url: git@gitlab.ec.pe:jafeth.bendezu/tianos.git
+    - app_name: tianos
+    - repo_url: https://jafeth-bendezu:123456abC@bitbucket.org/jafeth-bendezu/tianos.git
     - repo_remote: origin
     - repo_version: master
-    - webapps_dir: /deployed
+    - webapps_dir: /var/www/html
     - virtualenv_root: /deployed/PleaseDeployMe/mac
     - welcomeMsg: "Pollo gordo 33333333333"
 
@@ -17,3 +17,5 @@
 
 
 #accept_hostkey=no
+#    - repo_url: git@gitlab.ec.pe:jafeth.bendezu/tianos.git
+

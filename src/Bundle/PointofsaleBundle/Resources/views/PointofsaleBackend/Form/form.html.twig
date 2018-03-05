@@ -10,19 +10,50 @@
 
     {{ form_widget(form._token) }}
 
-    {#<div class="form-group">#}
-        {#<i class="fa fa-fw fa-industry"></i>#}
-        {#{{ form_label(form.code) }}#}
-        {#{{ form_widget(form.code) }}#}
-    {#</div>#}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <i class="fa fa-fw fa-home"></i>
+                    {{ form_label(form.pointOfSale) }}
+                    {{ form_widget(form.pointOfSale) }}
+                </div>
+            </div>
+        </div>
 
-    {#<div class="form-group">#}
-        {#<i class="fa fa-fw fa-industry"></i>#}
-        {#{{ form_label(form.name) }}#}
-        {#{{ form_widget(form.name) }}#}
-    {#</div>#}
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    {{ form_label(form.code) }}
+                    {{ form_widget(form.code) }}
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    {{ form_label(form.name) }}
+                    {{ form_widget(form.name) }}
+                </div>
+            </div>
+        </div>
 
-    {{ form_widget(form) }}
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <i class="fa fa-fw fa-map-marker"></i>
+                    {{ form_label(form.latitude) }}
+                    {{ form_widget(form.latitude) }}
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    <i class="fa fa-fw fa-map-marker"></i>
+                    {{ form_label(form.longitude) }}
+                    {{ form_widget(form.longitude) }}
+                </div>
+            </div>
+        </div>
+
+    {#{{ form_widget(form) }}#}
     {{ form_end(form) }}
 
 {% endblock %}

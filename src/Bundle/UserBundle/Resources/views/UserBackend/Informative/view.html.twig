@@ -13,7 +13,17 @@
             </strong>
 
             <p class="text-muted">
-                {{ entity.name }}
+                {{ entity.name ~' '~ entity.lastName }}
+            </p>
+
+            <hr>
+
+            <strong>
+                <i class="fa fa-fw fa-envelope-o"></i> Email
+            </strong>
+
+            <p class="text-muted">
+                {{ entity.email }}
             </p>
 
             <hr>
