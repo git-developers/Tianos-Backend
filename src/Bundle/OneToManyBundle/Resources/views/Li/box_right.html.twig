@@ -3,13 +3,15 @@
 
         {% set id = entity.id|default() %}
 
-        {#{% if boxRightAssignedKeys is defined %}#}
-            {#{% set isAssigned = false %}#}
+{#        {% if boxRightAssignedKeys is defined %}
+            {% set isAssigned = false %}
 
-            {#{% if idIncrement in boxRightAssignedKeys %}#}
-                {#{% set isAssigned = true %}#}
-            {#{% endif %}#}
-        {#{% endif %}#}
+            {% if idIncrement in boxRightAssignedKeys %}
+                {% set isAssigned = true %}
+            {% endif %}
+        {% endif %}#}
+
+        {% set isAssigned = tianos_onetomany_box_right_is_assigned(oneToManyLeft|default([]), id) %}
 
         <li
             class="{{ boxRight.li_class }} x-hand {{ isAssigned ? 'bg-orange' : '' }}"
@@ -40,10 +42,10 @@
                 {{ entity.name }}
             </span>
 
-            {#<div class="tools">#}
-                {#<i class="fa fa-edit"></i>#}
+            <div class="tools">
+                <i class="fa fa-edit"></i>
                 {#<i class="fa fa-trash-o"></i>#}
-            {#</div>#}
+            </div>
         </li>
     {% else %}
         <li>

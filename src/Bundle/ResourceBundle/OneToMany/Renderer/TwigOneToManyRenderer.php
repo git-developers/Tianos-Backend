@@ -63,6 +63,17 @@ final class TwigOneToManyRenderer implements OneToManyRendererInterface
      */
 
     //JAFETH
+    //    JAFETH
+    public function boxRightIsAssigned(array $oneToManyLeft = [], $id) // Button $button,
+    {
+
+        echo "POLLO:: <pre>";
+        print_r($oneToManyLeft);
+        exit;
+
+//        return $this->twig->render($template ?: $this->defaultTemplate, ['template' => $template]);
+    }
+
     public function renderModalFooter(?string $action = null)
     {
         switch ($action){

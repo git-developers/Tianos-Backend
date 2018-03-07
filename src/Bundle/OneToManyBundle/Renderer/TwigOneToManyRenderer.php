@@ -81,16 +81,26 @@ final class TwigOneToManyRenderer implements OneToManyRendererInterface
         $this->filterTemplates = $filterTemplates;
     }
 
+    //    JAFETH
+    public function boxRightIsAssigned(array $oneToManyLeft = [], $id) // Button $button,
+    {
+
+        echo "POLLO: 222: <pre>";
+        print_r($oneToManyLeft);
+        exit;
+
+//        return $this->twig->render($template ?: $this->defaultTemplate, ['template' => $template]);
+    }
+
+    //    JAFETH
     public function renderModalFooter(?string $template = null) // Button $button,
     {
-//        JAFETH
         return $this->twig->render($template ?: $this->defaultTemplate, ['template' => $template]);
     }
 
-
+    //    JAFETH
     public function renderButton(Button $button, ?string $template = null)
     {
-//        JAFETH
         return $this->twig->render($template ?: $this->defaultTemplate, ['grid' => $button]);
     }
 

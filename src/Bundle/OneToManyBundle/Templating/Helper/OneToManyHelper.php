@@ -27,6 +27,28 @@ class OneToManyHelper extends Helper
         $this->gridRenderer = $gridRenderer;
     }
 
+    //    JAFETH
+    public function boxRightIsAssigned(array $oneToManyLeft = [], $id)
+    {
+        if(empty($oneToManyLeft)){
+            return false;
+        }
+
+        echo "POLLO:: <pre>";
+        print_r($oneToManyLeft);
+        exit;
+
+        foreach (array_shift($oneToManyLeft) as $key => $value){
+            if(reset($value) === $id){
+                return true;
+            }
+        }
+
+        return false;
+
+//        return $this->twig->render($template ?: $this->defaultTemplate, ['template' => $template]);
+    }
+
     //        JAFETH
     public function renderModalFooter(?string $template = null) // Button $button,
     {

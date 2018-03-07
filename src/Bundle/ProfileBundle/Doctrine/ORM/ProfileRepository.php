@@ -26,6 +26,27 @@ class ProfileRepository extends TianosEntityRepository implements ProfileReposit
     /**
      * {@inheritdoc}
      */
+    public function oneToManyLeft($leftValue)
+    {
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT profile
+            FROM ProfileBundle:Profile profile
+            WHERE
+            profile.id = :id AND
+            profile.isActive = :active
+            ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+        $query->setParameter('id', $leftValue);
+
+        return $query->getOneOrNullResult();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function find($id)
     {
         $em = $this->getEntityManager();

@@ -45,7 +45,19 @@
             // debug(e);
             // base.options.buttonPress.call( this );
 
-            // var checkbox = $(context).find('input[type=checkbox]');
+
+            /* ****CHECKBOX TOOGLE **** */
+            var checkboxRight = $(context).find('input[type=checkbox]');
+
+            if(checkboxRight.is(':checked')){
+                checkboxRight.prop('checked', false);
+            }else{
+                checkboxRight.prop('checked', true);
+            }
+            /* ****CHECKBOX TOOGLE **** */
+
+
+
             var checkboxAll = boxRight.find('input[type=checkbox]');
             var boxLeftValue = $('#' + options.boxLeftId + ' input[name=' + options.boxLeftLiInputName + ']:checked').val();
             var boxRightValues = $('#' + options.boxRightId + ' input:checkbox:checked').map(function() {
@@ -86,12 +98,6 @@
                             base.addClassCallout('danger');
                             checkboxAll.prop('checked', false);
                             // boxRight.find('li').removeClass(options.liClass);
-
-                            // if(jQuery.inArray(error_boxleft_not_value, data.errors) > -1){
-                            //     base.setMessageCallout(msgBoxleftNotValue);
-                            // }else{
-                            //     base.setMessageCallout(msg_assign_error);
-                            // }
                         }
                     },
                     error: function(jqXHR, exception) {

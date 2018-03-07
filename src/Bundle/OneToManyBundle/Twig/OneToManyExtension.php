@@ -12,14 +12,14 @@ final class OneToManyExtension extends \Twig_Extension
     /**
      * @var OneToManyHelper
      */
-    private $gridHelper;
+    private $oneToManyHelper;
 
     /**
-     * @param OneToManyHelper $gridHelper
+     * @param OneToManyHelper $oneToManyHelper
      */
-    public function __construct(OneToManyHelper $gridHelper)
+    public function __construct(OneToManyHelper $oneToManyHelper)
     {
-        $this->gridHelper = $gridHelper;
+        $this->oneToManyHelper = $oneToManyHelper;
     }
 
     /**
@@ -28,8 +28,9 @@ final class OneToManyExtension extends \Twig_Extension
     public function getFunctions(): array
     {
         return [
-            new \Twig_SimpleFunction('tianos_grid_render_button', [$this->gridHelper, 'renderButton'], ['is_safe' => ['html']]),
-            new \Twig_SimpleFunction('tianos_grid_render_modal_footer', [$this->gridHelper, 'renderModalFooter'], ['is_safe' => ['html']]),
+            new \Twig_SimpleFunction('tianos_onetomany_render_button', [$this->oneToManyHelper, 'renderButton'], ['is_safe' => ['html']]),
+            new \Twig_SimpleFunction('tianos_onetomany_render_modal_footer', [$this->oneToManyHelper, 'renderModalFooter'], ['is_safe' => ['html']]),
+            new \Twig_SimpleFunction('tianos_onetomany_box_right_is_assigned', [$this->oneToManyHelper, 'boxRightIsAssigned']),
 //            new \Twig_SimpleFunction('sylius_grid_render', [$this->gridHelper, 'renderOneToMany'], ['is_safe' => ['html']]),
 //            new \Twig_Function('sylius_grid_render_field', [$this->gridHelper, 'renderField'], ['is_safe' => ['html']]),
 //            new \Twig_Function('sylius_grid_render_action', [$this->gridHelper, 'renderAction'], ['is_safe' => ['html']]),

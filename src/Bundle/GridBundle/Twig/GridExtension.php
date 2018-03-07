@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Bundle\GridBundle\Twig;
 
 use Bundle\GridBundle\Templating\Helper\GridHelper;
+use Twig_Environment;
 
 final class GridExtension extends \Twig_Extension
 {
@@ -34,5 +35,20 @@ final class GridExtension extends \Twig_Extension
 //            new \Twig_Function('sylius_grid_render_action', [$this->gridHelper, 'renderAction'], ['is_safe' => ['html']]),
 //            new \Twig_Function('sylius_grid_render_filter', [$this->gridHelper, 'renderFilter'], ['is_safe' => ['html']]),
         ];
+    }
+
+    public function initRuntime(Twig_Environment $environment)
+    {
+        // TODO: Implement initRuntime() method.
+    }
+
+    public function getGlobals()
+    {
+        // TODO: Implement getGlobals() method.
+    }
+
+    public function getName()
+    {
+        // TODO: Implement getName() method.
     }
 }

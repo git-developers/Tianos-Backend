@@ -42,7 +42,7 @@
             // debug(e);
             // base.options.buttonPress.call( this );
 
-            var radioButtonLeft = $(context).find('input[type=radio]');
+            var radioLeft = $(context).find('input[type=radio]');
             var boxUl = boxRight.find('ul');
             var id = $(context).data('id');
 
@@ -60,7 +60,7 @@
                 success: function(data, textStatus, jqXHR) {
 
                     boxUl.html(data);
-                    radioButtonLeft.prop('checked', true);
+                    radioLeft.prop('checked', true);
 
                     base.addClassCallout('success');
                     base.setMessageCallout(msgSuccess + '<span class="badge bg-green-active">' + id + '</span>');

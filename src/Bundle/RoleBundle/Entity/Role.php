@@ -15,7 +15,7 @@ class Role
     /**
      * @var integer
      *
-     * @JMSS\Groups({"crud", "one-to-many"})
+     * @JMSS\Groups({"crud", "one-to-many", "one-to-many-left"})
      */
     private $id;
 

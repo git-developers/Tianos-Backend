@@ -635,6 +635,28 @@ class RequestConfiguration
         return $this->parameters->get('vars', []);
     }
 
+    public function getRepositoryVarsLeft()
+    {
+        if (!$this->parameters->has('repository')) {
+            return null;
+        }
+
+        $repository = $this->parameters->get('repository');
+
+        return is_array($repository) ? $repository['box_left']['vars'] : $repository;
+    }
+
+    public function getRepositoryVarsRight()
+    {
+        if (!$this->parameters->has('repository')) {
+            return null;
+        }
+
+        $repository = $this->parameters->get('repository');
+
+        return is_array($repository) ? $repository['box_right']['vars'] : $repository;
+    }
+
     /**
      * @param array  $parameters
      * @param object $resource

@@ -42,6 +42,8 @@
             // debug(e);
             // base.options.buttonPress.call( this );
 
+            var radioLeftValue = boxLeft.find('input[type=radio]:checked').val();
+
             var boxUl = boxRight.find('ul');
             var q = $(context).val();
             // var fields = $("form[name='" + options.form_name + "']").serializeArray();
@@ -57,7 +59,8 @@
                     type: 'POST',
                     dataType: 'html',
                     data: {
-                        q:q
+                        q:q,
+                        radioLeftValue:radioLeftValue
                     },
                     cache: true,
                     beforeSend: function(jqXHR, settings) {

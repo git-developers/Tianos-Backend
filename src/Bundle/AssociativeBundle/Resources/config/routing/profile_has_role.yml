@@ -95,8 +95,8 @@ backend_associative_profile_has_role_boxright_search:
         _tianos:
             action: right_search
             template: OneToManyBundle:Li:box_right.html.twig
-            vars:
-                serialize_group_name: one-to-many
+#            vars:
+#                serialize_group_name: one-to-many
             one_to_many:
                 box_right:
 #                    icon: user-secret
@@ -109,9 +109,18 @@ backend_associative_profile_has_role_boxright_search:
                     search_input_name: search-input-name-left
 #                    route_search: backend_associative_profile_has_role_boxleft_search
             repository:
+                box_left:
+                    service: tianos.repository.profile
+                    method: oneToManyLeft
+                    vars:
+                        serialize_group_name: one-to-many-left
+                    arguments:
+                        limit: 20
                 box_right:
                     service: tianos.repository.role
                     method: searchBoxRight
+                    vars:
+                        serialize_group_name: one-to-many
                     arguments:
                         limit: 20
 #            entity: Bundle\ProfileBundle\Entity\Profile

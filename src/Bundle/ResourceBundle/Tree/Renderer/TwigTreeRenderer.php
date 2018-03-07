@@ -97,9 +97,9 @@ final class TwigTreeRenderer implements TreeRendererInterface
         ]);
     }
 
+    //JAFETH
     public function renderButton(Button $button, ?string $template = null)
     {
-        //JAFETH
         return (string) $this->twig->render($template, [
             'button' => $button,
         ]);

@@ -118,6 +118,7 @@ class OneToManyController extends BaseController
 
         $repositoryLeft = $configuration->getRepositoryServiceLeft();
         $methodLeft = $configuration->getRepositoryMethodLeft();
+
         $vars = $configuration->getVars();
 
         //REPOSITORY
@@ -150,20 +151,29 @@ class OneToManyController extends BaseController
         $template = $configuration->getTemplate('');
         $boxRight = $configuration->oneToManyBoxRight();
 
+        $repositoryLeft = $configuration->getRepositoryServiceLeft();
+        $methodLeft = $configuration->getRepositoryMethodLeft();
+        $varsLeft = $configuration->getRepositoryVarsLeft();
+
         $repositoryRight = $configuration->getRepositoryServiceRight();
         $methodRight = $configuration->getRepositoryMethodRight();
-        $vars = $configuration->getVars();
+        $varsRight = $configuration->getRepositoryVarsRight();
+
+        //OneToMany Value
+        $oneToManyLeft = $this->get($repositoryLeft)->$methodLeft($request->get('radioLeftValue'));
+        $oneToManyLeft = $this->getSerializeDecode($oneToManyLeft, $varsLeft['serialize_group_name']);
 
         //REPOSITORY
         $objectsRight = $this->get($repositoryRight)->$methodRight($request->get('q'));
-        $objectsRight = $this->getSerializeDecode($objectsRight, $vars['serialize_group_name']);
+        $objectsRight = $this->getSerializeDecode($objectsRight, $varsRight['serialize_group_name']);
 
         return $this->render(
             $template,
             [
                 'boxRight' => $boxRight,
                 'objectsRight' => $objectsRight,
-                'isAssigned' => false,
+                'oneToManyLeft' => $oneToManyLeft,
+//                'isAssigned' => false,
             ]
         );
     }

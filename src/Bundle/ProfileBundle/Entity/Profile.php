@@ -82,7 +82,7 @@ class Profile
      *   }
      * )
      *
-     * @JMSS\Groups({"one-to-many"})
+     * @JMSS\Groups({"one-to-many", "one-to-many-left"})
      */
     private $role;
 

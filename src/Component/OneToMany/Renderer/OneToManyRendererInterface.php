@@ -15,8 +15,8 @@ interface OneToManyRendererInterface
 
     // JAFETH
     public function renderModalFooter(?string $template = null); // Button $button,
-
     public function renderButton(Button $button, ?string $template = null);
+    public function boxRightIsAssigned(array $oneToManyLeft = [], $id);
     // JAFETH
 
 
