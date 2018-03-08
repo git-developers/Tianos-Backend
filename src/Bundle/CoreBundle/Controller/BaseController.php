@@ -42,6 +42,10 @@ abstract class BaseController extends Controller
     const STATUS_SUCCESS = true;
     const STATUS_ERROR = false;
 
+    const STATUS_SUCCESS_API = 1;
+    const STATUS_WARNING_API = 2;
+    const STATUS_ERROR_API = 3;
+
     const MAX_AGE_HOUR = 3600; #cache for 300 seconds
     const MAX_AGE_WEEK = 604800; #cache for 604800 seconds
     const MAX_AGE_YEAR = 31622400; #cache for 31622400 seconds

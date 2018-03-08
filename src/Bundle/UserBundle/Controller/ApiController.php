@@ -16,7 +16,7 @@ class ApiController extends BaseController
     public function indexAction(Request $request): Response
     {
         return $this->json([
-            'status' => self::STATUS_ERROR,
+            'status' => self::STATUS_ERROR_API,
             'message' => 'mensaje',
         ]);
     }
@@ -44,7 +44,7 @@ class ApiController extends BaseController
 
         if(is_null($object)){
             return $this->json([
-                'status' => self::STATUS_ERROR,
+                'status' => self::STATUS_ERROR_API,
                 'message' => 'The user name or password is incorrect (001)',
             ]);
         }
@@ -54,7 +54,7 @@ class ApiController extends BaseController
 
         if(!$match){
             return $this->json([
-                'status' => self::STATUS_ERROR,
+                'status' => self::STATUS_ERROR_API,
                 'message' => 'The user name or password is incorrect (002)',
             ]);
         }
@@ -62,7 +62,7 @@ class ApiController extends BaseController
         $object = $this->getSerializeDecode($object, $vars['serialize_group_name']);
 
         return $this->json([
-            'status' => self::STATUS_SUCCESS,
+            'status' => self::STATUS_SUCCESS_API,
             'message' => 'mensaje',
             'object' => $object,
         ]);
