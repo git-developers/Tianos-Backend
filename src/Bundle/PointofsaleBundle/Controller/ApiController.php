@@ -42,7 +42,7 @@ class ApiController extends BaseController
 
         return $this->json([
             'status' => self::STATUS_SUCCESS,
-            'msg' => 'mensaje',
+            'message' => 'mensaje',
             'objects' => $objects,
         ]);
     }

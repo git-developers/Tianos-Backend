@@ -211,7 +211,7 @@ class OneToManyController extends BaseController
             return $this->json([
                 'status' => false,
                 'response' => [
-                    'msg' => '',
+                    'message' => '',
                 ],
             ]);
         }
@@ -227,7 +227,7 @@ class OneToManyController extends BaseController
         return $this->json([
             'status' => true,
             'response' => [
-                'msg' => '',
+                'message' => '',
             ],
         ]);
     }

@@ -33,7 +33,7 @@ class ApiController extends BaseController
 
         return $this->json([
             'status' => self::STATUS_SUCCESS,
-            'msg' => 'mensaje ddd',
+            'message' => 'mensaje ddd',
             'products' => json_decode($products),
         ]);
     }

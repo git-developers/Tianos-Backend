@@ -15,7 +15,7 @@ class DefaultController extends BaseController
     {
         return $this->json([
             'status' => self::STATUS_ERROR,
-            'msg' => 'access denied',
+            'message' => 'access denied',
         ]);
     }
 }

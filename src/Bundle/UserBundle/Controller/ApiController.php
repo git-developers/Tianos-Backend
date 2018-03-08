@@ -17,7 +17,7 @@ class ApiController extends BaseController
     {
         return $this->json([
             'status' => self::STATUS_ERROR,
-            'msg' => 'mensaje',
+            'message' => 'mensaje',
         ]);
     }
 
@@ -45,7 +45,7 @@ class ApiController extends BaseController
         if(is_null($object)){
             return $this->json([
                 'status' => self::STATUS_ERROR,
-                'msg' => 'The user name or password is incorrect (001)',
+                'message' => 'The user name or password is incorrect (001)',
             ]);
         }
 
@@ -55,7 +55,7 @@ class ApiController extends BaseController
         if(!$match){
             return $this->json([
                 'status' => self::STATUS_ERROR,
-                'msg' => 'The user name or password is incorrect (002)',
+                'message' => 'The user name or password is incorrect (002)',
             ]);
         }
 
@@ -63,7 +63,7 @@ class ApiController extends BaseController
 
         return $this->json([
             'status' => self::STATUS_SUCCESS,
-            'msg' => 'mensaje',
+            'message' => 'mensaje',
             'object' => $object,
         ]);
     }
