@@ -1,0 +1,301 @@
+<?php
+
+declare(strict_types=1);
+
+namespace Bundle\TreeOneToManyBundle\Controller;
+
+use Bundle\CoreBundle\Controller\BaseController;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Component\Resource\Metadata\Metadata;
+use Bundle\ResourceBundle\ResourceBundle;
+use JMS\Serializer\SerializationContext;
+
+class TreeOneToManyController extends BaseController
+{
+
+    /**
+     * @var MetadataInterface
+     */
+    protected $metadata;
+
+    /**
+     * @var RequestConfigurationFactoryInterface
+     */
+    protected $requestConfigurationFactory;
+
+
+//    public function __construct(RequestConfigurationFactoryInterface $requestConfigurationFactory) {
+//        $this->requestConfigurationFactory = $requestConfigurationFactory;
+//    }
+
+    /**
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function indexAction(Request $request): Response
+    {
+
+//        $configuration = $this->requestConfigurationFactory->create($this->metadata, $request);
+
+        $parameters = [
+            'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
+        ];
+        $applicationName = $this->container->getParameter('application_name');
+        $this->metadata = new Metadata('tianos', $applicationName, $parameters);
+
+        //CONFIGURATION
+        $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
+//        $repository = $configuration->getRepositoryService();
+
+        $repositoryLeft = $configuration->getRepositoryServiceLeft();
+        $methodLeft = $configuration->getRepositoryMethodLeft();
+
+        $repositoryRight = $configuration->getRepositoryServiceRight();
+        $methodRight = $configuration->getRepositoryMethodRight();
+
+        $template = $configuration->getTemplate('');
+
+        $box = $configuration->oneToManyBox();
+        $boxLeft = $configuration->oneToManyBoxLeft();
+        $boxRight = $configuration->oneToManyBoxRight();
+        $vars = $configuration->getVars();
+
+
+        //REPOSITORY
+        $objectsLeft = $this->get($repositoryLeft)->$methodLeft();
+        $objectsLeft = $this->getSerializeDecode($objectsLeft, $vars['serialize_group_name']);
+        $objectsRight = $this->get($repositoryRight)->$methodRight();
+        $objectsRight = $this->getSerializeDecode($objectsRight, $vars['serialize_group_name']);
+
+
+        //CRUD
+        $crud = $this->get('tianos.one_to_many');
+        $modal = $crud->getModalMapper()->getDefaults();
+        $formMapper = $crud->getFormMapper()->getDefaults();
+
+        return $this->render(
+            $template,
+            [
+                'box' => $box,
+                'vars' => $vars,
+                'modal' => $modal,
+                'boxLeft' => $boxLeft,
+                'boxRight' => $boxRight,
+                'objectsLeft' => $objectsLeft,
+                'objectsRight' => $objectsRight,
+                'formMapper' => $formMapper,
+            ]
+        );
+
+//        return new JsonResponse([
+//            'slug' => $this->get('sylius.generator.slug')->generate($name),
+//        ]);
+    }
+
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function boxLeftSearchAction(Request $request)
+    {
+        if (!$this->isXmlHttpRequest()) {
+            throw $this->createAccessDeniedException(self::ACCESS_DENIED_MSG);
+        }
+
+        $parameters = [
+            'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
+        ];
+        $applicationName = $this->container->getParameter('application_name');
+        $this->metadata = new Metadata('tianos', $applicationName, $parameters);
+
+        //CONFIGURATION
+        $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
+        $template = $configuration->getTemplate('');
+        $boxLeft = $configuration->oneToManyBoxLeft();
+
+        $repositoryLeft = $configuration->getRepositoryServiceLeft();
+        $methodLeft = $configuration->getRepositoryMethodLeft();
+
+        $vars = $configuration->getVars();
+
+        //REPOSITORY
+        $objectsLeft = $this->get($repositoryLeft)->$methodLeft($request->get('q'));
+        $objectsLeft = $this->getSerializeDecode($objectsLeft, $vars['serialize_group_name']);
+
+        return $this->render(
+            $template,
+            [
+                'boxLeft' => $boxLeft,
+                'objectsLeft' => $objectsLeft,
+            ]
+        );
+    }
+
+    public function boxRightSearchAction(Request $request)
+    {
+        if (!$this->isXmlHttpRequest()) {
+            throw $this->createAccessDeniedException(self::ACCESS_DENIED_MSG);
+        }
+
+        $parameters = [
+            'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
+        ];
+        $applicationName = $this->container->getParameter('application_name');
+        $this->metadata = new Metadata('tianos', $applicationName, $parameters);
+
+        //CONFIGURATION
+        $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
+        $template = $configuration->getTemplate('');
+        $boxRight = $configuration->oneToManyBoxRight();
+
+        $repositoryLeft = $configuration->getRepositoryServiceLeft();
+        $methodLeft = $configuration->getRepositoryMethodLeft();
+        $varsLeft = $configuration->getRepositoryVarsLeft();
+
+        $repositoryRight = $configuration->getRepositoryServiceRight();
+        $methodRight = $configuration->getRepositoryMethodRight();
+        $varsRight = $configuration->getRepositoryVarsRight();
+
+        //OneToMany Value
+        $oneToManyLeft = $this->get($repositoryLeft)->$methodLeft($request->get('radioLeftValue'));
+        $oneToManyLeft = $this->getSerializeDecode($oneToManyLeft, $varsLeft['serialize_group_name']);
+
+        //REPOSITORY
+        $objectsRight = $this->get($repositoryRight)->$methodRight($request->get('q'));
+        $objectsRight = $this->getSerializeDecode($objectsRight, $varsRight['serialize_group_name']);
+
+        return $this->render(
+            $template,
+            [
+                'boxRight' => $boxRight,
+                'objectsRight' => $objectsRight,
+                'oneToManyLeft' => $oneToManyLeft,
+//                'isAssigned' => false,
+            ]
+        );
+    }
+
+    public function boxRightSelectItemAction(Request $request): Response
+    {
+        if (!$this->isXmlHttpRequest()) {
+            throw $this->createAccessDeniedException(self::ACCESS_DENIED_MSG);
+        }
+
+        $boxLeftValue = $request->get('boxLeftValue');
+        $boxRightValues = $request->get('boxRightValues');
+
+        $parameters = [
+            'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
+        ];
+        $applicationName = $this->container->getParameter('application_name');
+        $this->metadata = new Metadata('tianos', $applicationName, $parameters);
+
+        //CONFIGURATION
+        $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
+
+        $repositoryRight = $configuration->getRepositoryServiceRight();
+        $methodRight = $configuration->getRepositoryMethodRight();
+
+        $repositoryLeft = $configuration->getRepositoryServiceLeft();
+        $methodLeft = $configuration->getRepositoryMethodLeft();
+        $methodDeleteAssociativeLeft = $configuration->getRepositoryMethodDeleteAssociativeLeft();
+        $vars = $configuration->getVars();
+
+        //DELETE
+        $result = $this->get($repositoryLeft)->$methodDeleteAssociativeLeft($boxLeftValue);
+
+        if(!$result){
+            return $this->json([
+                'status' => false,
+                'response' => [
+                    'message' => '',
+                ],
+            ]);
+        }
+
+        //SAVE
+        $objectsLeft = $this->get($repositoryLeft)->$methodLeft($boxLeftValue);
+        foreach ($boxRightValues as $key => $boxRightValue){
+            $objectsRight = $this->get($repositoryRight)->$methodRight($boxRightValue);
+            $objectsLeft->addRole($objectsRight);
+            $this->persist($objectsLeft);
+        }
+
+        return $this->json([
+            'status' => true,
+            'response' => [
+                'message' => '',
+            ],
+        ]);
+    }
+
+    public function boxLeftSelectItemAction(Request $request): Response
+    {
+        $id = $request->get('id');
+
+        if (!$this->isXmlHttpRequest() || is_null($id)) {
+            throw $this->createAccessDeniedException(self::ACCESS_DENIED_MSG);
+        }
+
+//        $boxLeftValue = $request->get('boxLeftValue');
+//        $boxRightValues = $request->get('boxRightValues');
+
+        $parameters = [
+            'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
+        ];
+        $applicationName = $this->container->getParameter('application_name');
+        $this->metadata = new Metadata('tianos', $applicationName, $parameters);
+
+        //CONFIGURATION
+        $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
+
+        $repositoryLeft = $configuration->getRepositoryServiceLeft();
+        $methodLeft = $configuration->getRepositoryMethodLeft();
+        $template = $configuration->getTemplate('');
+        $boxRight = $configuration->oneToManyBoxRight();
+        $vars = $configuration->getVars();
+
+        //REPOSITORY
+        $objectsLeft = $this->get($repositoryLeft)->$methodLeft($id);
+        $objectsLeft = $this->getSerializeDecode($objectsLeft, $vars['serialize_group_name']);
+
+        return $this->render(
+            $template,
+            [
+                'isAssigned' => true,
+                'boxRight' => $boxRight,
+                'objectsRight' => $objectsLeft[$boxRight->entity],
+            ]
+        );
+    }
+
+    public function infoAction(Request $request): Response
+    {
+        if (!$this->isXmlHttpRequest()) {
+            throw $this->createAccessDeniedException(self::ACCESS_DENIED_MSG);
+        }
+
+        $parameters = [
+            'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
+        ];
+        $applicationName = $this->container->getParameter('application_name');
+        $this->metadata = new Metadata('tianos', $applicationName, $parameters);
+
+        //CONFIGURATION
+        $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
+        $template = $configuration->getTemplate('');
+        $action = $configuration->getAction();
+
+        return $this->render(
+            $template,
+            [
+                'action' => $action,
+            ]
+        );
+    }
+
+}
+

@@ -197,6 +197,13 @@ onetomany:
 	@echo =========== make onetomany bundle_left=profile bundle_right=role ===========;
 	php bin/console tianos:create:one-to-many $(bundle_left) $(bundle_right)
 	make perm
+	make perm
+
+tree_onetomany:
+	@echo =========== Tree OneToMany: replace dummy ===========;
+	@echo =========== make tree_onetomany bundle_left=category bundle_right=product ===========;
+	php bin/console tianos:create:tree-one-to-many $(bundle_left) $(bundle_right)
+	make perm
 
 migrate_delete:
 	@echo =========== Migrations: delete all ===========;

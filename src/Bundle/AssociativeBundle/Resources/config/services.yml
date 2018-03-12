@@ -1,2 +1,3 @@
 services:
     tianos.profilehasrole.controller.associative: { class: Bundle\AssociativeBundle\Controller\ProfileHasRoleController, arguments: [Bundle\ResourceBundle\Factory\RequestConfigurationFactoryInterface], tags: [{ name: tianos.profilehasrole.controller.associative, alias: tianos.profilehasrole.controller.associative }] }
+    tianos.categoryhasproduct.controller.associative: { class: Bundle\AssociativeBundle\Controller\CategoryHasProductController, arguments: [Bundle\ResourceBundle\Factory\RequestConfigurationFactoryInterface], tags: [{ name: tianos.categoryhasproduct.controller.associative, alias: tianos.categoryhasproduct.controller.associative }] }

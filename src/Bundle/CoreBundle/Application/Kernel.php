@@ -65,6 +65,7 @@ class Kernel extends HttpKernel
             new \Bundle\ResourceBundle\ResourceBundle(),
             new \Bundle\OneToManyBundle\OneToManyBundle(),
             new \Bundle\AssociativeBundle\AssociativeBundle(),
+            new \Bundle\TreeOneToManyBundle\TreeOneToManyBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

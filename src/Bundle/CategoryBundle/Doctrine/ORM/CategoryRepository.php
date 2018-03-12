@@ -4,11 +4,43 @@ declare(strict_types=1);
 
 namespace Bundle\CategoryBundle\Doctrine\ORM;
 
-use Bundle\CoreBundle\Doctrine\ORM\EntityRepository as TianosEntityRepository;
 use Component\Category\Repository\CategoryRepositoryInterface;
+use Component\TreeOneToMany\Repository\TreeOneToManyLeftRepositoryInterface;
+use Bundle\CoreBundle\Doctrine\ORM\EntityRepository as TianosEntityRepository;
 
-class CategoryRepository extends TianosEntityRepository implements CategoryRepositoryInterface
+class CategoryRepository extends TianosEntityRepository
+    implements CategoryRepositoryInterface, TreeOneToManyLeftRepositoryInterface
 {
+
+    /**
+     * {@inheritdoc}
+     */
+    public function deleteAssociativeTableById($id): bool
+    {
+        $em = $this->getEntityManager();
+        $statement = $em->getConnection()->prepare('DELETE FROM category_has_product WHERE category_id = :id;');
+        $statement->bindValue('id', $id);
+
+        return $statement->execute();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function findAllOffsetLimit($offset = 0, $limit = 50): array
+    {
+        $qb = $this->createQueryBuilder('o')
+            ->select('o.id, o.code, o.name, o.createdAt')
+            ->andWhere('o.isActive = :active')
+            ->setParameter('active', 1)
+            ->getQuery()
+        ;
+
+        $qb->setFirstResult($offset);
+        $qb->setMaxResults($limit);
+
+        return $qb->getResult();
+    }
 
     public function findAllParents(): array
     {

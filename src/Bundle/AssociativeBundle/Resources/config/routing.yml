@@ -1,3 +1,6 @@
 backend_associative_profile_has_role:
     resource: '@AssociativeBundle/Resources/config/routing/profile_has_role.yml'
     prefix: /profile-has-role
+backend_associative_category_has_product:
+    resource: '@AssociativeBundle/Resources/config/routing/category_has_product.yml'
+    prefix: /category-has-product

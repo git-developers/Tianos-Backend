@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace Bundle\RoleBundle\Doctrine\ORM;
 
-use Bundle\CoreBundle\Doctrine\ORM\EntityRepository as TianosEntityRepository;
 use Component\Role\Repository\RoleRepositoryInterface;
 use Component\OneToMany\Repository\OneToManyRightRepositoryInterface;
+use Bundle\CoreBundle\Doctrine\ORM\EntityRepository as TianosEntityRepository;
 
-class RoleRepository extends TianosEntityRepository implements RoleRepositoryInterface, OneToManyRightRepositoryInterface
+class RoleRepository extends TianosEntityRepository
+    implements RoleRepositoryInterface, OneToManyRightRepositoryInterface
 {
 
     /**
