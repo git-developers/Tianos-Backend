@@ -66,9 +66,10 @@ class TreeOneToManyController extends BaseController
 
         //REPOSITORY
         $objectsLeft = $this->get($repositoryLeft)->$methodLeft();
-        $objectsLeft = $this->getSerializeDecode($objectsLeft, $vars['serialize_group_name']);
+        $objectsLeft = $this->getTreeEntities($objectsLeft, $configuration, $vars['serialize_group_name']);
         $objectsRight = $this->get($repositoryRight)->$methodRight();
         $objectsRight = $this->getSerializeDecode($objectsRight, $vars['serialize_group_name']);
+
 
 
         //CRUD
@@ -84,15 +85,34 @@ class TreeOneToManyController extends BaseController
                 'modal' => $modal,
                 'boxLeft' => $boxLeft,
                 'boxRight' => $boxRight,
+                'formMapper' => $formMapper,
                 'objectsLeft' => $objectsLeft,
                 'objectsRight' => $objectsRight,
-                'formMapper' => $formMapper,
             ]
         );
 
 //        return new JsonResponse([
 //            'slug' => $this->get('sylius.generator.slug')->generate($name),
 //        ]);
+    }
+
+    private function getTreeEntities($parents, $configuration, $serializeGroupName)
+    {
+        if(is_null($parents)){
+            $parents = [];
+        }
+
+        $repository = $configuration->getRepositoryServiceLeft();
+//        $method = $configuration->getRepositoryMethod();
+
+        $entity = [];
+        foreach ($parents as $key => $parent){
+            $entity[$key]['parent'] = $this->getSerializeDecode($parent, $serializeGroupName);
+            $children = $this->get($repository)->findAllByParent($parent);
+            $entity[$key]['children'] = $this->getTreeEntities($children, $configuration, $serializeGroupName);
+        }
+
+        return $entity;
     }
 
     /**

@@ -8,24 +8,15 @@
     {{ parent() }}
 
     {% stylesheets
-    filter='cssrewrite'
-    '@OneToManyBundle/Resources/public/css/switch.css'
-    '@OneToManyBundle/Resources/public/plugins/datatables/dataTables.bootstrap.css'
-    '@OneToManyBundle/Resources/public/plugins/datatables/extensions/Editor/css/editor.dataTables.min.css'
+        filter='cssrewrite'
+        '@OneToManyBundle/Resources/public/css/switch.css'
+        '@OneToManyBundle/Resources/public/plugins/datatables/dataTables.bootstrap.css'
+        '@OneToManyBundle/Resources/public/plugins/datatables/extensions/Editor/css/editor.dataTables.min.css'
     %}
     <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
 
     <style>
-
-        {#
-        table#{{ dataTable.tableOptions.table_name }} tr.{{ dataTable.tableOptions.table_tr_class }}:hover{
-            background-color: #d2d6de;
-            cursor: pointer;
-        }
-        #}
-
-
         input[type=checkbox] {
             height: 16px;
             width: 16px;

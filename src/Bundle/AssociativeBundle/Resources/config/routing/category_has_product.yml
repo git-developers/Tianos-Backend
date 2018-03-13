@@ -7,12 +7,12 @@ backend_associative_category_has_product_index:
             action: index
             section: admin
             permission: true
-            template: OneToManyBundle::index.html.twig
+            template: TreeOneToManyBundle::index.html.twig
             vars:
                 subheader: sylius.ui.manage_your_category_catalog
                 icon: cube
                 body_css: one-to-many-body-css
-                serialize_group_name: one-to-many
+                serialize_group_name: tree-one-to-many
             one_to_many:
                 box:
                     icon: exchange
@@ -31,6 +31,13 @@ backend_associative_category_has_product_index:
                     search_input_name: search-input-name-left
                     route_search: backend_associative_category_has_product_boxleft_search
                     route_select_item: backend_associative_category_has_product_boxleft_select_item
+                    tree:
+                        icon: cube
+                        box_class: primary
+                        main_div: box-main-div
+                        main_ul: box-main-ul
+                        child_ul: box-child-ul
+                        li_span: li-span
                 box_right:
                     icon: expeditedssl
                     class: primary
@@ -47,7 +54,7 @@ backend_associative_category_has_product_index:
             repository:
                 box_left:
                     service: tianos.repository.category
-                    method: findAllOffsetLimit
+                    method: findAllParents
                     arguments:
                         limit: 20
                 box_right:

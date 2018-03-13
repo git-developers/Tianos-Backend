@@ -160,13 +160,13 @@ abstract class BaseController extends Controller
 //        return end($matches);
 //    }
 
-    protected function templateExists($name)
-    {
-        if($this->get('templating')->exists($name)){
-            return $name;
-        }
-
-//        return self::TEMPLATE_ERROR;
-    }
+//    protected function templateExists($name)
+//    {
+//        if($this->get('templating')->exists($name)){
+//            return $name;
+//        }
+//
+////        return self::TEMPLATE_ERROR;
+//    }
 
 }

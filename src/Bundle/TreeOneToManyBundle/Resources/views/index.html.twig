@@ -1,5 +1,7 @@
 {% extends "ThemesBundle:Adminlte:1_template.html.twig" %}
 
+{% import "TreeOneToManyBundle::Macro/tree.html.twig" as macro %}
+
 {% block bodyclass %}{% spaceless %}
     {{ vars.body_css }}
 {% endspaceless %}{% endblock %}
@@ -8,24 +10,16 @@
     {{ parent() }}
 
     {% stylesheets
-    filter='cssrewrite'
-    '@TreeOneToManyBundle/Resources/public/css/switch.css'
-    '@TreeOneToManyBundle/Resources/public/plugins/datatables/dataTables.bootstrap.css'
-    '@TreeOneToManyBundle/Resources/public/plugins/datatables/extensions/Editor/css/editor.dataTables.min.css'
+        filter='cssrewrite'
+        '@CoreBundle/Resources/public/css/tree.css'
+        '@TreeOneToManyBundle/Resources/public/css/tree.css'
+        '@TreeOneToManyBundle/Resources/public/plugins/datatables/dataTables.bootstrap.css'
+        '@TreeOneToManyBundle/Resources/public/plugins/datatables/extensions/Editor/css/editor.dataTables.min.css'
     %}
     <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
 
     <style>
-
-        {#
-        table#{{ dataTable.tableOptions.table_name }} tr.{{ dataTable.tableOptions.table_tr_class }}:hover{
-            background-color: #d2d6de;
-            cursor: pointer;
-        }
-        #}
-
-
         input[type=checkbox] {
             height: 16px;
             width: 16px;
@@ -51,6 +45,17 @@
     <script type="application/javascript">
 
         $(function() {
+
+            $(document).on({
+                mouseenter: function(){
+                    $(this).find('div.tools').toggle();
+                    $(this).toggleClass('bg-gray');
+                },
+                mouseleave: function(){
+                    $(this).find('div.tools').toggle();
+                    $(this).toggleClass('bg-gray');
+                },
+            }, 'span.{{ boxLeft.tree.li_span }}');
 
             $('div#{{ boxLeft.id }}').boxLeftSearch({
                 boxId: '{{ boxLeft.id }}',
@@ -208,9 +213,17 @@
                                 </p>
                             </div>
 
-                            <ul class="todo-list ui-sortable">
-                                {{ include('TreeOneToManyBundle:Li:box_left.html.twig') }}
-                            </ul>
+                            <div class="{{ boxLeft.tree.main_div }} box-body">
+
+                                <ul id="{{ boxLeft.tree.main_ul }}">
+                                    {% if objectsLeft is not empty %}
+                                        {{ macro.tree(objectsLeft, boxLeft, modal, -1) }}
+                                    {% else %}
+                                        <p>No hay items que mostrar</p>
+                                    {% endif %}
+                                </ul>
+
+                            </div>
                         </div>
                         {#<div class="box-footer clearfix no-border">#}
                         {#<button type="button" class="btn btn-default pull-right">#}
