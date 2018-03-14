@@ -42,9 +42,10 @@
             // debug(e);
             // base.options.buttonPress.call( this );
 
-            var radioLeft = $(context).find('input[type=radio]');
+            // var radioLeft = $(context).find('input[type=radio]');
             var boxUl = boxRight.find('ul');
-            var id = $(context).data('id');
+            // var id = $(context).data('id');
+            var id = $(context).val();
 
             $.ajax({
                 url: options.routeSelectItem,
@@ -60,7 +61,7 @@
                 success: function(data, textStatus, jqXHR) {
 
                     boxUl.html(data);
-                    radioLeft.prop('checked', true);
+                    // radioLeft.prop('checked', true);
 
                     base.addClassCallout('success');
                     base.setMessageCallout(msgSuccess + '<span class="badge bg-green-active">' + id + '</span>');
@@ -104,7 +105,8 @@
 
             var bp = new $.boxLeftSelectItem(this, options);
 
-            $(document).on('click', 'li.' + options.liClass, function(event) {
+            // $(document).on('click', 'li.' + options.liClass, function(event) {
+            $(document).on('click', 'input[type=radio]', function(event) {
                 bp.selectItem(this);
             });
 

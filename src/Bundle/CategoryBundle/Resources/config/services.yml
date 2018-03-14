@@ -39,6 +39,11 @@ services:
         factory: ['@doctrine.orm.entity_manager', getRepository]
         arguments: [ Bundle\CategoryBundle\Entity\Category ]
 
+    tianos.repository.category.has.product:
+        class: Dummy
+        factory: ['@doctrine.orm.entity_manager', getRepository]
+        arguments: [ Bundle\CategoryBundle\Entity\CategoryHasProduct ]
+
     tianos.type.category:
         class: Bundle\CategoryBundle\Form\Type\CategoryType
         arguments: ['@doctrine.orm.entity_manager']

@@ -282,12 +282,20 @@ class TreeOneToManyController extends BaseController
         $objectsLeft = $this->get($repositoryLeft)->$methodLeft($id);
         $objectsLeft = $this->getSerializeDecode($objectsLeft, $vars['serialize_group_name']);
 
+
+//        echo "POLLO:: <pre>";
+//        print_r($objectsLeft);
+//        exit;
+
+
+
         return $this->render(
             $template,
             [
                 'isAssigned' => true,
                 'boxRight' => $boxRight,
-                'objectsRight' => $objectsLeft[$boxRight->entity],
+                'objectsRight' => [],
+//                'objectsRight' => $objectsLeft[$boxRight->entity],
             ]
         );
     }

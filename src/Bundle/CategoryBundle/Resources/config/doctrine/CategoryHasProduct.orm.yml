@@ -1,0 +1,61 @@
+#http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/reference/yaml-mapping.html
+
+Bundle\CategoryBundle\Entity\CategoryHasProduct:
+    type: entity
+#    type: mappedSuperclass
+#    mappedSuperclass: Component\CRUDDUMMY\Model\CRUDDUMMY
+    table: category_has_product
+    repositoryClass: Bundle\CategoryBundle\Doctrine\ORM\CategoryHasProductRepository
+    indexes:
+        fk_category_has_product_product1_idx:
+            columns:
+                - product_id
+        fk_category_has_product_category1_idx:
+            columns:
+                - category_id
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            column: id_increment
+            generator:
+                strategy: IDENTITY
+    fields:
+        stock:
+            type: integer
+            nullable: true
+            options:
+                unsigned: false
+        createdAt:
+            type: datetime
+            nullable: false
+            column: created_at
+        updatedAt:
+            type: datetime
+            nullable: true
+            column: updated_at
+    manyToOne:
+        category:
+            targetEntity: Bundle\CategoryBundle\Entity\Category
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                category_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        product:
+            targetEntity: Bundle\ProductBundle\Entity\Product
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                product_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }
