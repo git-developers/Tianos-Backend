@@ -47,6 +47,7 @@
 
 
             /* ****CHECKBOX TOOGLE **** */
+            /*
             var checkboxRight = $(context).find('input[type=checkbox]');
 
             if(checkboxRight.is(':checked')){
@@ -54,12 +55,14 @@
             }else{
                 checkboxRight.prop('checked', true);
             }
+
             /* ****CHECKBOX TOOGLE **** */
 
 
 
             var checkboxAll = boxRight.find('input[type=checkbox]');
             var boxLeftValue = $('#' + options.boxLeftId + ' input[name=' + options.boxLeftLiInputName + ']:checked').val();
+
             var boxRightValues = $('#' + options.boxRightId + ' input:checkbox:checked').map(function() {
                 return this.value;
             }).get();

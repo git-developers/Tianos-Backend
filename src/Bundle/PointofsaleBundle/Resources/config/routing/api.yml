@@ -11,7 +11,7 @@ api_pointofsale_index:
             vars:
                 subheader: sylius.ui.manage_your_product_catalog
                 icon: cube
-                serialize_group_name: crud
+                serialize_group_name: api
             form:
                 type: Bundle\PointofsaleBundle\Form\Type\PointofsaleType
             repository:

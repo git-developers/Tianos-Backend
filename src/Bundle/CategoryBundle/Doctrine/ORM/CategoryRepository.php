@@ -12,10 +12,22 @@ class CategoryRepository extends TianosEntityRepository
     implements CategoryRepositoryInterface, TreeOneToManyLeftRepositoryInterface
 {
 
+//    /**
+//     * {@inheritdoc}
+//     */
+//    public function deleteAssociativeTableById($id): bool
+//    {
+//        $em = $this->getEntityManager();
+//        $statement = $em->getConnection()->prepare('DELETE FROM category_has_product WHERE category_id = :id;');
+//        $statement->bindValue('id', $id);
+//
+//        return $statement->execute();
+//    }
+
     /**
      * {@inheritdoc}
      */
-    public function deleteAssociativeTableById($id): bool
+    public function deleteAssociativeTableLeft($id): bool
     {
         $em = $this->getEntityManager();
         $statement = $em->getConnection()->prepare('DELETE FROM category_has_product WHERE category_id = :id;');

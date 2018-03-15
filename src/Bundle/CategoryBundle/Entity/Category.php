@@ -17,21 +17,21 @@ class Category
     /**
      * @var integer
      *
-     * @JMSS\Groups({"crud", "tree", "tree-one-to-many"})
+     * @JMSS\Groups({"crud", "tree", "tree-one-to-many", "api"})
      */
     private $id;
 
     /**
      * @var string
      *
-     * @JMSS\Groups({"crud", "tree", "tree-one-to-many"})
+     * @JMSS\Groups({"crud", "tree", "tree-one-to-many", "api"})
      */
     private $code;
 
     /**
      * @var string
      *
-     * @JMSS\Groups({"crud", "tree", "tree-one-to-many"})
+     * @JMSS\Groups({"crud", "tree", "tree-one-to-many", "api"})
      */
     private $name;
 

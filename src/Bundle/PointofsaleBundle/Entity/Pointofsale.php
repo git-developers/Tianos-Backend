@@ -17,18 +17,21 @@ class Pointofsale
     /**
      * @var integer
      *
+     * @JMSS\Groups({"api"})
      */
     private $id;
 
     /**
      * @var string
      *
+     * @JMSS\Groups({"api"})
      */
     private $code;
 
     /**
      * @var string
      *
+     * @JMSS\Groups({"api"})
      */
     private $name;
 
@@ -41,12 +44,14 @@ class Pointofsale
     /**
      * @var string
      *
+     * @JMSS\Groups({"api"})
      */
     private $latitude;
 
     /**
      * @var string
      *
+     * @JMSS\Groups({"api"})
      */
     private $longitude;
 

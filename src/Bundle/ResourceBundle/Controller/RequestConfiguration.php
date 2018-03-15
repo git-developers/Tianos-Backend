@@ -709,6 +709,21 @@ class RequestConfiguration
             $oneToMany = $this->parameters->get('one_to_many');
             return array_key_exists($key, $oneToMany);
         }
+
+        return false;
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasTreeOneToMany($key)
+    {
+        if($this->parameters->has('tree_one_to_many')){
+            $oneToMany = $this->parameters->get('tree_one_to_many');
+            return array_key_exists($key, $oneToMany);
+        }
+
+        return false;
     }
 
     /**
@@ -758,6 +773,24 @@ class RequestConfiguration
         return $this->parameters->getChild('one_to_many', 'box');
     }
 
+    public function treeOneToManyBox()
+    {
+        if (!$this->hasTreeOneToMany('box')) {
+            throw new \LogicException('Current action does not use: treeOneToManyBox.');
+        }
+
+        return $this->parameters->getChild('tree_one_to_many', 'box');
+    }
+
+    public function treeOneToManyBoxLeft()
+    {
+        if (!$this->hasTreeOneToMany('box_left')) {
+            throw new \LogicException('Current action does not use: treeOneToManyBoxLeft.');
+        }
+
+        return $this->parameters->getChild('tree_one_to_many', 'box_left');
+    }
+
     public function oneToManyBoxLeft()
     {
         if (!$this->hasOneToMany('box_left')) {
@@ -774,6 +807,15 @@ class RequestConfiguration
         }
 
         return (object) $this->parameters->getChild('one_to_many', 'box_right');
+    }
+
+    public function treeOneToManyBoxRight()
+    {
+        if (!$this->hasTreeOneToMany('box_right')) {
+            throw new \LogicException('Current action does not use: treeOneToManyBoxRight.');
+        }
+
+        return (object) $this->parameters->getChild('tree_one_to_many', 'box_right');
     }
 
     public function getGridDataTable(?string $key = null): array

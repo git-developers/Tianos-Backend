@@ -67,9 +67,9 @@ final class TwigOneToManyRenderer implements OneToManyRendererInterface
     public function boxRightIsAssigned(array $oneToManyLeft = [], $id) // Button $button,
     {
 
-        echo "POLLO:: <pre>";
-        print_r($oneToManyLeft);
-        exit;
+//        echo "POLLO:: <pre>";
+//        print_r($oneToManyLeft);
+//        exit;
 
 //        return $this->twig->render($template ?: $this->defaultTemplate, ['template' => $template]);
     }

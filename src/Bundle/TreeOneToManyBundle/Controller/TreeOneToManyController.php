@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Component\Resource\Metadata\Metadata;
 use Bundle\ResourceBundle\ResourceBundle;
 use JMS\Serializer\SerializationContext;
+use Bundle\CategoryBundle\Entity\CategoryHasProduct;
 
 class TreeOneToManyController extends BaseController
 {
@@ -58,9 +59,9 @@ class TreeOneToManyController extends BaseController
 
         $template = $configuration->getTemplate('');
 
-        $box = $configuration->oneToManyBox();
-        $boxLeft = $configuration->oneToManyBoxLeft();
-        $boxRight = $configuration->oneToManyBoxRight();
+        $box = $configuration->treeOneToManyBox();
+        $boxLeft = $configuration->treeOneToManyBoxLeft();
+        $boxRight = $configuration->treeOneToManyBoxRight();
         $vars = $configuration->getVars();
 
 
@@ -134,7 +135,7 @@ class TreeOneToManyController extends BaseController
         //CONFIGURATION
         $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
         $template = $configuration->getTemplate('');
-        $boxLeft = $configuration->oneToManyBoxLeft();
+        $boxLeft = $configuration->treOneToManyBoxLeft();
 
         $repositoryLeft = $configuration->getRepositoryServiceLeft();
         $methodLeft = $configuration->getRepositoryMethodLeft();
@@ -169,7 +170,7 @@ class TreeOneToManyController extends BaseController
         //CONFIGURATION
         $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
         $template = $configuration->getTemplate('');
-        $boxRight = $configuration->oneToManyBoxRight();
+        $boxRight = $configuration->treeOneToManyBoxRight();
 
         $repositoryLeft = $configuration->getRepositoryServiceLeft();
         $methodLeft = $configuration->getRepositoryMethodLeft();
@@ -204,6 +205,7 @@ class TreeOneToManyController extends BaseController
             throw $this->createAccessDeniedException(self::ACCESS_DENIED_MSG);
         }
 
+
         $boxLeftValue = $request->get('boxLeftValue');
         $boxRightValues = $request->get('boxRightValues');
 
@@ -237,11 +239,13 @@ class TreeOneToManyController extends BaseController
         }
 
         //SAVE
-        $objectsLeft = $this->get($repositoryLeft)->$methodLeft($boxLeftValue);
-        foreach ($boxRightValues as $key => $boxRightValue){
+        foreach ($boxRightValues as $key => $boxRightValue) {
+            $object = new CategoryHasProduct();
+            $objectLeft = $this->get($repositoryLeft)->$methodLeft($boxLeftValue);
             $objectsRight = $this->get($repositoryRight)->$methodRight($boxRightValue);
-            $objectsLeft->addRole($objectsRight);
-            $this->persist($objectsLeft);
+            $object->setCategory($objectLeft);
+            $object->setProduct($objectsRight);
+            $this->persist($object);
         }
 
         return $this->json([
@@ -275,7 +279,7 @@ class TreeOneToManyController extends BaseController
         $repositoryLeft = $configuration->getRepositoryServiceLeft();
         $methodLeft = $configuration->getRepositoryMethodLeft();
         $template = $configuration->getTemplate('');
-        $boxRight = $configuration->oneToManyBoxRight();
+        $boxRight = $configuration->treeOneToManyBoxRight();
         $vars = $configuration->getVars();
 
         //REPOSITORY

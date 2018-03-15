@@ -6,6 +6,14 @@ api_pointofsale:
     resource: '@PointofsaleBundle/Resources/config/routing/api.yml'
     prefix: /point-of-sale
 
+api_category:
+    resource: '@CategoryBundle/Resources/config/routing/api.yml'
+    prefix: /category
+
+api_product:
+    resource: '@ProductBundle/Resources/config/routing/api.yml'
+    prefix: /product
+
 api_user:
     resource: '@UserBundle/Resources/config/routing/api.yml'
     prefix: /user

@@ -10,6 +10,7 @@ use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Bundle\CategoryBundle\Entity\Category;
+use Bundle\CategoryBundle\Entity\CategoryHasProduct;
 use Cocur\Slugify\Slugify;
 
 // https://coderwall.com/p/es3zkw/symfony2-listen-doctrine-events
@@ -60,9 +61,13 @@ class DoctrineListenerService implements EventSubscriber
 //        $entityManager = $args->getEntityManager();
 //        $className = $entityManager->getClassMetadata(get_class($entity))->getName();
 
-        if ($entity instanceof Category){
+        if ($entity instanceof Category) {
             $name = $entity->getName();
             $entity->setSlug($this->slugify($name));
+            $entity->setCreatedAt($this->dateTime);
+
+            return;
+        } elseif ($entity instanceof CategoryHasProduct) {
             $entity->setCreatedAt($this->dateTime);
 
             return;
@@ -76,7 +81,7 @@ class DoctrineListenerService implements EventSubscriber
     {
         $entity = $args->getEntity();
 
-        if ($entity instanceof Category){
+        if ($entity instanceof Category) {
             $entity->setUpdatedAt($this->dateTime);
 
             return;
@@ -90,7 +95,7 @@ class DoctrineListenerService implements EventSubscriber
     {
         $entity = $args->getEntity();
 
-        if ($entity instanceof Category){
+        if ($entity instanceof Category) {
 
             return;
         }
@@ -103,7 +108,7 @@ class DoctrineListenerService implements EventSubscriber
     {
         $entity = $args->getEntity();
 
-        if ($entity instanceof Category){
+        if ($entity instanceof Category) {
 
             return;
         }
@@ -116,7 +121,7 @@ class DoctrineListenerService implements EventSubscriber
     {
         $entity = $args->getEntity();
 
-        if ($entity instanceof Category){
+        if ($entity instanceof Category) {
 
             return;
         }

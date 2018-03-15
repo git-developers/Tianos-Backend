@@ -34,9 +34,9 @@ class OneToManyHelper extends Helper
             return false;
         }
 
-        echo "POLLO:: <pre>";
-        print_r($oneToManyLeft);
-        exit;
+//        echo "POLLO:: <pre>";
+//        print_r($oneToManyLeft);
+//        exit;
 
         foreach (array_shift($oneToManyLeft) as $key => $value){
             if(reset($value) === $id){

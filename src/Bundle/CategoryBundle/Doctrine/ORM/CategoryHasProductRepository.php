@@ -8,8 +8,10 @@ use Component\Category\Model\CategoryInterface;
 use Component\Category\Repository\CategoryRepositoryInterface;
 use Component\TreeOneToMany\Repository\TreeOneToManyLeftRepositoryInterface;
 use Bundle\CoreBundle\Doctrine\ORM\EntityRepository as TianosEntityRepository;
+use Bundle\CategoryBundle\Entity\CategoryHasProduct;
 
-class CategoryHasProductRepository extends TianosEntityRepository implements CategoryRepositoryInterface
+class CategoryHasProductRepository extends TianosEntityRepository
+    implements CategoryRepositoryInterface, TreeOneToManyLeftRepositoryInterface
 {
     /**
      * {@inheritdoc}
@@ -28,6 +30,72 @@ class CategoryHasProductRepository extends TianosEntityRepository implements Cat
         $query->setParameter('id', $idLeft);
 
         return $query->getResult();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function deleteAssociativeTableById($id): bool
+    {
+        $em = $this->getEntityManager();
+        $statement = $em->getConnection()->prepare('DELETE FROM category_has_product WHERE category_id = :id;');
+        $statement->bindValue('id', $id);
+
+        return $statement->execute();
+
+
+
+//        $em = $this->getEntityManager();
+//        return $em->getConnection()
+//                    ->prepare('DELETE FROM category_has_product WHERE category_id = :id;')
+//                    ->bindValue('id', $id)
+//                    ->execute()
+//        ;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function findOneLeftById($id): ?CategoryHasProduct
+    {
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT categoryHasProduct, category
+            FROM CategoryBundle:CategoryHasProduct categoryHasProduct
+            INNER JOIN categoryHasProduct.category category
+            WHERE
+            category.id = :id
+            ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('id', $id);
+
+        return $query->getOneOrNullResult();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function findOneRightById($id): ?CategoryHasProduct
+    {
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT categoryHasProduct, product
+            FROM CategoryBundle:CategoryHasProduct categoryHasProduct
+            INNER JOIN categoryHasProduct.product product
+            WHERE
+            product.id = :id
+            ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('id', $id);
+
+        return $query->getOneOrNullResult();
+    }
+
+    public function findAllOffsetLimit($offset = 0, $limit = 50): array
+    {
+
     }
 
     public function findAll(): array

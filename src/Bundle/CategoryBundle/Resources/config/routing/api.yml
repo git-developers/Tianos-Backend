@@ -1,6 +1,6 @@
 api_category_index:
     path: /
-    methods: [GET]
+    methods: [POST]
     defaults:
         _controller: tianos.api.controller.category:indexAction
         _tianos:
@@ -11,6 +11,7 @@ api_category_index:
             vars:
                 subheader: sylius.ui.manage_your_product_catalog
                 icon: cube
+                serialize_group_name: api
             form:
                 type: Bundle\CategoryBundle\Form\Type\CategoryType
             repository:
