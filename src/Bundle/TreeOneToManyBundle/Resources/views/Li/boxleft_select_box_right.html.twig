@@ -1,8 +1,11 @@
 {% spaceless %}
 
     {% for key, entity in objectsRight %}
+
+        {% set entity = entity|first %}
+
         <li
-            class="{{ boxRight.li_class }} x-hand"
+            class="{{ boxRight.li_class }} x-hand bg-orange"
             data-id="{{ entity.id }}">
 
             <span class="handle ui-sortable-handle">
@@ -17,6 +20,7 @@
             <input
                 name="{{ boxRight.li_input_name }}"
                 type="checkbox"
+                checked="checked"
                 data-id="{{ entity.id }}"
                 value="{{ entity.id }}">
 

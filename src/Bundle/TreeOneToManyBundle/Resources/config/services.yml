@@ -6,39 +6,45 @@ services:
         tags:
             - { name: tianos.one_to_many, alias: tianos.one_to_many }
 
-    tianos.form_registry.onetomany_filter:
+    tianos.form_registry.treeonetomany_filter:
         class: Bundle\TreeOneToManyBundle\Form\Registry\FormTypeRegistry
         public: false
 
-    tianos.registry.onetomany_field:
+    tianos.registry.treeonetomany_field:
         class: Component\Registry\ServiceRegistry
-        arguments: [ Component\OneToMany\FieldTypes\FieldTypeInterface, "grid field" ]
+        arguments: [ Component\TreeOneToMany\FieldTypes\FieldTypeInterface, "grid field" ]
 
     tianos.expression_language:
         class: Bundle\ResourceBundle\ExpressionLanguage\ExpressionLanguage
         public: false
 
-    tianos.onetomany_options_parser:
-        class: Bundle\ResourceBundle\OneToMany\Parser\OptionsParser
+    tianos.treeonetomany_options_parser:
+        class: Bundle\ResourceBundle\TreeOneToMany\Parser\OptionsParser
         arguments: [ "@service_container", "@tianos.expression_language", "@property_accessor" ]
         public: false
 
-    tianos.custom_onetomany_renderer.twig.inner:
-        class: Bundle\TreeOneToManyBundle\Renderer\TwigOneToManyRenderer
-        arguments: [ "@twig", "@tianos.registry.onetomany_field", "@form.factory", "@tianos.form_registry.onetomany_filter", SyliusTreeOneToManyBundle::_grid.html.twig ]
+    tianos.custom_treeonetomany_renderer.twig.inner:
+        class: Bundle\TreeOneToManyBundle\Renderer\TwigTreeOneToManyRenderer
+        arguments: [
+                "@twig",
+                "@tianos.registry.treeonetomany_field",
+                "@form.factory",
+                "@tianos.form_registry.treeonetomany_filter",
+                SyliusTreeOneToManyBundle::_grid.html.twig
+                ]
         public: false
 
-    tianos.custom_onetomany_renderer.twig:
-        class: Bundle\ResourceBundle\OneToMany\Renderer\TwigOneToManyRenderer
-        arguments: [ "@tianos.custom_onetomany_renderer.twig.inner", "@twig", "@tianos.onetomany_options_parser" ]
+    tianos.custom_treeonetomany_renderer.twig:
+        class: Bundle\ResourceBundle\TreeOneToMany\Renderer\TwigTreeOneToManyRenderer
+        arguments: [ "@tianos.custom_treeonetomany_renderer.twig.inner", "@twig", "@tianos.treeonetomany_options_parser" ]
 
-    tianos.templating.helper.onetomany:
-        class: Bundle\TreeOneToManyBundle\Templating\Helper\OneToManyHelper
-        arguments: [ "@tianos.custom_onetomany_renderer.twig" ]
+    tianos.templating.helper.tree.onetomany:
+        class: Bundle\TreeOneToManyBundle\Templating\Helper\TreeOneToManyHelper
+        arguments: [ "@tianos.custom_treeonetomany_renderer.twig" ]
 
-    twig.extension.one_to_many:
-        class: Bundle\TreeOneToManyBundle\Twig\OneToManyExtension
-        arguments: ['@tianos.templating.helper.onetomany']
+    twig.extension.tree_one_to_many:
+        class: Bundle\TreeOneToManyBundle\Twig\TreeOneToManyExtension
+        arguments: ['@tianos.templating.helper.tree.onetomany']
         public: false
         tags:
          - { name: twig.extension }

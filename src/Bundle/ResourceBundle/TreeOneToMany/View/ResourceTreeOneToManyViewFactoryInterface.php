@@ -18,7 +18,7 @@ use Component\OneToMany\Definition\OneToMany;
 use Component\OneToMany\Parameters;
 use Component\Resource\Metadata\MetadataInterface;
 
-interface ResourceOneToManyViewFactoryInterface
+interface ResourceTreeOneToManyViewFactoryInterface
 {
     /**
      * @param OneToMany $grid

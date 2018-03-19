@@ -188,6 +188,7 @@ class TreeOneToManyController extends BaseController
         $objectsRight = $this->get($repositoryRight)->$methodRight($request->get('q'));
         $objectsRight = $this->getSerializeDecode($objectsRight, $varsRight['serialize_group_name']);
 
+
         return $this->render(
             $template,
             [
@@ -195,6 +196,55 @@ class TreeOneToManyController extends BaseController
                 'objectsRight' => $objectsRight,
                 'oneToManyLeft' => $oneToManyLeft,
 //                'isAssigned' => false,
+            ]
+        );
+    }
+
+    public function boxLeftSelectItemAction(Request $request): Response
+    {
+        $id = $request->get('id');
+
+        if (!$this->isXmlHttpRequest() || is_null($id)) {
+            throw $this->createAccessDeniedException(self::ACCESS_DENIED_MSG);
+        }
+
+//        $boxLeftValue = $request->get('boxLeftValue');
+//        $boxRightValues = $request->get('boxRightValues');
+
+        $parameters = [
+            'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
+        ];
+        $applicationName = $this->container->getParameter('application_name');
+        $this->metadata = new Metadata('tianos', $applicationName, $parameters);
+
+        //CONFIGURATION
+        $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
+
+        $repositoryLeft = $configuration->getRepositoryServiceLeft();
+        $methodLeft = $configuration->getRepositoryMethodLeft();
+        $template = $configuration->getTemplate('');
+        $boxRight = $configuration->treeOneToManyBoxRight();
+        $vars = $configuration->getVars();
+
+        //REPOSITORY
+        $objectsRight = $this->get($repositoryLeft)->$methodLeft($id);
+        $objectsRight = $this->getSerializeDecode($objectsRight, $vars['serialize_group_name']);
+
+
+//        echo "POLLO: objectsRight: <pre>";
+//        print_r($objectsRight);
+//        exit;
+
+
+
+        return $this->render(
+            $template,
+            [
+                'isAssigned' => true,
+                'boxRight' => $boxRight,
+                'objectsRight' => $objectsRight,
+//                'objectsLeft' => $objectsLeft,
+//                'objectsRight' => $objectsLeft[$boxRight->entity],
             ]
         );
     }
@@ -254,54 +304,6 @@ class TreeOneToManyController extends BaseController
                 'message' => '',
             ],
         ]);
-    }
-
-    public function boxLeftSelectItemAction(Request $request): Response
-    {
-        $id = $request->get('id');
-
-        if (!$this->isXmlHttpRequest() || is_null($id)) {
-            throw $this->createAccessDeniedException(self::ACCESS_DENIED_MSG);
-        }
-
-//        $boxLeftValue = $request->get('boxLeftValue');
-//        $boxRightValues = $request->get('boxRightValues');
-
-        $parameters = [
-            'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
-        ];
-        $applicationName = $this->container->getParameter('application_name');
-        $this->metadata = new Metadata('tianos', $applicationName, $parameters);
-
-        //CONFIGURATION
-        $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
-
-        $repositoryLeft = $configuration->getRepositoryServiceLeft();
-        $methodLeft = $configuration->getRepositoryMethodLeft();
-        $template = $configuration->getTemplate('');
-        $boxRight = $configuration->treeOneToManyBoxRight();
-        $vars = $configuration->getVars();
-
-        //REPOSITORY
-        $objectsLeft = $this->get($repositoryLeft)->$methodLeft($id);
-        $objectsLeft = $this->getSerializeDecode($objectsLeft, $vars['serialize_group_name']);
-
-
-//        echo "POLLO:: <pre>";
-//        print_r($objectsLeft);
-//        exit;
-
-
-
-        return $this->render(
-            $template,
-            [
-                'isAssigned' => true,
-                'boxRight' => $boxRight,
-                'objectsRight' => [],
-//                'objectsRight' => $objectsLeft[$boxRight->entity],
-            ]
-        );
     }
 
     public function infoAction(Request $request): Response

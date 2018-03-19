@@ -338,6 +338,7 @@ class Builder implements ContainerAwareInterface
             ->setAttribute('class', 'treeview')
             ->setAttribute('class', $this->activeRoute([
                 'backend_associative_profile_has_role_index',
+                'backend_associative_category_has_product_index',
             ]))
             ->setAttribute('icon', 'fa-fw fa-exchange')
             ->setDisplay($isGranted)
@@ -352,6 +353,18 @@ class Builder implements ContainerAwareInterface
         ])
             ->setAttribute('icon', self::CIRCLE_1_YELLOW)
             ->setAttribute('class', $this->activeRoute('backend_associative_profile_has_role_index'))
+            ->setDisplay($isGranted)
+        ;
+
+        $menu['Asociacion']->addChild('Category <i class="fa fa-fw fa-arrow-right"></i> Product', [
+            'route' => 'backend_associative_category_has_product_index',
+            'extras' => ['safe_label' => true],
+            'childrenAttributes' => [
+                'class' => 'treeview-menu',
+            ],
+        ])
+            ->setAttribute('icon', self::CIRCLE_2_AQUA)
+            ->setAttribute('class', $this->activeRoute('backend_associative_category_has_product_index'))
             ->setDisplay($isGranted)
         ;
         /**

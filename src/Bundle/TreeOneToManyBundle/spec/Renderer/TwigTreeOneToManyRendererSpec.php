@@ -27,7 +27,7 @@ use Component\Registry\ServiceRegistryInterface;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-final class TwigOneToManyRendererSpec extends ObjectBehavior
+final class TwigTreeOneToManyRendererSpec extends ObjectBehavior
 {
     function let(
         \Twig_Environment $twig,

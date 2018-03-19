@@ -101,7 +101,7 @@ backend_associative_category_has_product_boxright_search:
         _controller: tianos.categoryhasproduct.controller.associative:boxRightSearchAction
         _tianos:
             action: right_search
-            template: OneToManyBundle:Li:box_right.html.twig
+            template: OneToManyBundle:Li:boxright_search_box_left.html.twig
             vars:
                 serialize_group_name: tree-one-to-many
             tree_one_to_many:
@@ -134,32 +134,13 @@ backend_associative_category_has_product_boxright_search:
 #            form:
 #                type: Bundle\ProfileBundle\Form\Type\ProfileType
 
-backend_associative_category_has_product_boxright_select_item:
-    path: /boxright-select-item
-    methods: [POST]
-    defaults:
-        _controller: tianos.categoryhasproduct.controller.associative:boxRightSelectItemAction
-        _tianos:
-            repository:
-                box_left:
-                    service: tianos.repository.category
-                    method: find
-                    method_delete_associative: deleteAssociativeTableLeft
-                box_right:
-                    service: tianos.repository.product
-                    method: find
-#                    arguments:
-#                        limit: 20
-#            action: info
-#            template: ProfileBundle:ProfileBackend/Informative:infoProfileHasRole.html.twig
-
 backend_associative_category_has_product_boxleft_select_item:
     path: /boxleft-select-item
     methods: [POST]
     defaults:
         _controller: tianos.categoryhasproduct.controller.associative:boxLeftSelectItemAction
         _tianos:
-            template: TreeOneToManyBundle:Li:box_right.html.twig
+            template: TreeOneToManyBundle:Li:boxleft_select_box_right.html.twig
             vars:
                 serialize_group_name: tree-one-to-many
             tree_one_to_many:
@@ -183,6 +164,25 @@ backend_associative_category_has_product_boxleft_select_item:
                 box_right:
                     service: tianos.repository.product
                     method: find
+#            action: info
+#            template: ProfileBundle:ProfileBackend/Informative:infoProfileHasRole.html.twig
+
+backend_associative_category_has_product_boxright_select_item:
+    path: /boxright-select-item
+    methods: [POST]
+    defaults:
+        _controller: tianos.categoryhasproduct.controller.associative:boxRightSelectItemAction
+        _tianos:
+            repository:
+                box_left:
+                    service: tianos.repository.category
+                    method: find
+                    method_delete_associative: deleteAssociativeTableLeft
+                box_right:
+                    service: tianos.repository.product
+                    method: find
+#                    arguments:
+#                        limit: 20
 #            action: info
 #            template: ProfileBundle:ProfileBackend/Informative:infoProfileHasRole.html.twig
 

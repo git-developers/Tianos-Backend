@@ -20,7 +20,7 @@ use Component\OneToMany\Definition\OneToMany;
 use Component\OneToMany\Parameters;
 use Component\Resource\Metadata\MetadataInterface;
 
-final class ResourceOneToManyViewFactory implements ResourceOneToManyViewFactoryInterface
+final class ResourceTreeOneToManyViewFactory implements ResourceTreeOneToManyViewFactoryInterface
 {
     /**
      * @var DataProviderInterface
@@ -50,12 +50,12 @@ final class ResourceOneToManyViewFactory implements ResourceOneToManyViewFactory
         Parameters $parameters,
         MetadataInterface $metadata,
         RequestConfiguration $requestConfiguration
-    ): ResourceOneToManyView {
+    ): ResourceTreeOneToManyView {
         $driverConfiguration = $grid->getDriverConfiguration();
         $request = $requestConfiguration->getRequest();
 
         $grid->setDriverConfiguration($this->parametersParser->parseRequestValues($driverConfiguration, $request));
 
-        return new ResourceOneToManyView($this->dataProvider->getData($grid, $parameters), $grid, $parameters, $metadata, $requestConfiguration);
+        return new ResourceTreeOneToManyView($this->dataProvider->getData($grid, $parameters), $grid, $parameters, $metadata, $requestConfiguration);
     }
 }

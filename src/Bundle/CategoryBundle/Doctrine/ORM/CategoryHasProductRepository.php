@@ -124,4 +124,8 @@ class CategoryHasProductRepository extends TianosEntityRepository
     }
 
 
+    public function deleteAssociativeTableLeft($id): bool
+    {
+        // TODO: Implement deleteAssociativeTableLeft() method.
+    }
 }

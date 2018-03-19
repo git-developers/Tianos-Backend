@@ -4,22 +4,22 @@ declare(strict_types=1);
 
 namespace Bundle\TreeOneToManyBundle\Twig;
 
-use Bundle\TreeOneToManyBundle\Templating\Helper\OneToManyHelper;
+use Bundle\TreeOneToManyBundle\Templating\Helper\TreeOneToManyHelper;
 use Twig_Environment;
 
-final class OneToManyExtension extends \Twig_Extension
+final class TreeOneToManyExtension extends \Twig_Extension
 {
     /**
-     * @var OneToManyHelper
+     * @var TreeOneToManyHelper
      */
-    private $oneToManyHelper;
+    private $treeOneToManyHelper;
 
     /**
-     * @param OneToManyHelper $oneToManyHelper
+     * @param TreeOneToManyHelper $oneToManyHelper
      */
-    public function __construct(OneToManyHelper $oneToManyHelper)
+    public function __construct(TreeOneToManyHelper $treeOneToManyHelper)
     {
-        $this->oneToManyHelper = $oneToManyHelper;
+        $this->treeOneToManyHelper = $treeOneToManyHelper;
     }
 
     /**
@@ -28,9 +28,9 @@ final class OneToManyExtension extends \Twig_Extension
     public function getFunctions(): array
     {
         return [
-            new \Twig_SimpleFunction('tianos_onetomany_render_button', [$this->oneToManyHelper, 'renderButton'], ['is_safe' => ['html']]),
-            new \Twig_SimpleFunction('tianos_onetomany_render_modal_footer', [$this->oneToManyHelper, 'renderModalFooter'], ['is_safe' => ['html']]),
-            new \Twig_SimpleFunction('tianos_onetomany_box_right_is_assigned', [$this->oneToManyHelper, 'boxRightIsAssigned']),
+            new \Twig_SimpleFunction('tianos_treeonetomany_render_button', [$this->treeOneToManyHelper, 'renderButton'], ['is_safe' => ['html']]),
+            new \Twig_SimpleFunction('tianos_treeonetomany_render_modal_footer', [$this->treeOneToManyHelper, 'renderModalFooter'], ['is_safe' => ['html']]),
+            new \Twig_SimpleFunction('tianos_treeonetomany_box_right_is_assigned', [$this->treeOneToManyHelper, 'boxRightIsAssigned']),
 //            new \Twig_SimpleFunction('sylius_grid_render', [$this->gridHelper, 'renderOneToMany'], ['is_safe' => ['html']]),
 //            new \Twig_Function('sylius_grid_render_field', [$this->gridHelper, 'renderField'], ['is_safe' => ['html']]),
 //            new \Twig_Function('sylius_grid_render_action', [$this->gridHelper, 'renderAction'], ['is_safe' => ['html']]),

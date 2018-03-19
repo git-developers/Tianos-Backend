@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace Bundle\TreeOneToManyBundle\Templating\Helper;
 
-use Component\OneToMany\Definition\Action;
-use Component\OneToMany\Definition\Field;
-use Component\OneToMany\Definition\Filter;
-use Component\OneToMany\Renderer\OneToManyRendererInterface;
-use Component\OneToMany\View\OneToManyView;
+use Component\TreeOneToMany\Definition\Action;
+use Component\TreeOneToMany\Definition\Field;
+use Component\TreeOneToMany\Definition\Filter;
+use Component\TreeOneToMany\Renderer\TreeOneToManyRendererInterface;
+use Component\TreeOneToMany\View\TreeOneToManyView;
 use Bundle\CoreBundle\Services\Button;
 use Symfony\Component\Templating\Helper\Helper;
 
-class OneToManyHelper extends Helper
+class TreeOneToManyHelper extends Helper
 {
     /**
      * @var OneToManyRendererInterface
@@ -22,27 +22,30 @@ class OneToManyHelper extends Helper
     /**
      * @param OneToManyRendererInterface $gridRenderer
      */
-    public function __construct(OneToManyRendererInterface $gridRenderer)
+    public function __construct(TreeOneToManyRendererInterface $gridRenderer)
     {
         $this->gridRenderer = $gridRenderer;
     }
 
     //    JAFETH
-    public function boxRightIsAssigned(array $oneToManyLeft = [], $id)
+    public function boxRightIsAssigned(array $objectsLeft = [], $id)
     {
-        if(empty($oneToManyLeft)){
-            return false;
-        }
 
-        echo "POLLO:: <pre>";
-        print_r($oneToManyLeft);
-        exit;
+//        echo "POLLO: 2222 :: objectsLeft: <pre>";
+//        print_r($objectsLeft);
+//        exit;
 
-        foreach (array_shift($oneToManyLeft) as $key => $value){
-            if(reset($value) === $id){
-                return true;
-            }
-        }
+
+
+//        if(empty($objectsLeft)){
+//            return false;
+//        }
+//
+//        foreach (array_shift($oneToManyLeft) as $key => $value){
+//            if(reset($value) === $id){
+//                return true;
+//            }
+//        }
 
         return false;
 
@@ -62,48 +65,48 @@ class OneToManyHelper extends Helper
     }
 
     /**
-     * @param OneToManyView $gridView
+     * @param TreeOneToManyView $gridView
      * @param string|null $template
      *
      * @return mixed
      */
-    public function renderOneToMany(OneToManyView $gridView, ?string $template = null)
+    public function renderOneToMany(TreeOneToManyView $gridView, ?string $template = null)
     {
         //JAFETH
         return $this->gridRenderer->render($gridView, $template);
     }
 
     /**
-     * @param OneToManyView $gridView
+     * @param TreeOneToManyView $gridView
      * @param Field $field
      * @param mixed $data
      *
      * @return mixed
      */
-    public function renderField(OneToManyView $gridView, Field $field, $data)
+    public function renderField(TreeOneToManyView $gridView, Field $field, $data)
     {
         return $this->gridRenderer->renderField($gridView, $field, $data);
     }
 
     /**
-     * @param OneToManyView $gridView
+     * @param TreeOneToManyView $gridView
      * @param Action $action
      * @param mixed|null $data
      *
      * @return mixed
      */
-    public function renderAction(OneToManyView $gridView, Action $action, $data = null)
+    public function renderAction(TreeOneToManyView $gridView, Action $action, $data = null)
     {
         return $this->gridRenderer->renderAction($gridView, $action, $data);
     }
 
     /**
-     * @param OneToManyView $gridView
+     * @param TreeOneToManyView $gridView
      * @param Filter $filter
      *
      * @return mixed
      */
-    public function renderFilter(OneToManyView $gridView, Filter $filter)
+    public function renderFilter(TreeOneToManyView $gridView, Filter $filter)
     {
         return $this->gridRenderer->renderFilter($gridView, $filter);
     }

@@ -55,6 +55,8 @@ class CategoryHasProduct
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="product_id", referencedColumnName="id")
      * })
+     *
+     * @JMSS\Groups({"tree-one-to-many"})
      */
     private $product;
 

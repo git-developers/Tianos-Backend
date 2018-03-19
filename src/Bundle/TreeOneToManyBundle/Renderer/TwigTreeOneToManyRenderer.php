@@ -5,14 +5,14 @@ declare(strict_types=1);
 namespace Bundle\TreeOneToManyBundle\Renderer;
 
 use Bundle\CoreBundle\Services\Button;
-use Component\OneToMany\Definition\Field;
-use Component\OneToMany\Definition\Filter;
-use Component\OneToMany\Definition\Action;
+use Component\TreeOneToMany\Definition\Field;
+use Component\TreeOneToMany\Definition\Filter;
+use Component\TreeOneToMany\Definition\Action;
 use Component\Registry\ServiceRegistryInterface;
 use Symfony\Component\Form\FormFactoryInterface;
-use Component\OneToMany\View\OneToManyViewInterface;
+use Component\TreeOneToMany\View\TreeOneToManyViewInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Component\OneToMany\FieldTypes\FieldTypeInterface;
+use Component\TreeOneToMany\FieldTypes\FieldTypeInterface;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Component\TreeOneToMany\Renderer\TreeOneToManyRendererInterface;
 use Bundle\TreeOneToManyBundle\Form\Registry\FormTypeRegistryInterface;
@@ -107,7 +107,7 @@ final class TwigTreeOneToManyRenderer implements TreeOneToManyRendererInterface
     /**
      * {@inheritdoc}
      */
-    public function render(OneToManyViewInterface $gridView, ?string $template = null)
+    public function render(TreeOneToManyViewInterface $gridView, ?string $template = null)
     {
 
 //        $template ---- @SyliusUi/OneToMany/_default.html.twig
@@ -127,7 +127,7 @@ final class TwigTreeOneToManyRenderer implements TreeOneToManyRendererInterface
     /**
      * {@inheritdoc}
      */
-    public function renderField(OneToManyViewInterface $gridView, Field $field, $data)
+    public function renderField(TreeOneToManyViewInterface $gridView, Field $field, $data)
     {
         /** @var FieldTypeInterface $fieldType */
         $fieldType = $this->fieldsRegistry->get($field->getType());
@@ -141,7 +141,7 @@ final class TwigTreeOneToManyRenderer implements TreeOneToManyRendererInterface
     /**
      * {@inheritdoc}
      */
-    public function renderAction(OneToManyViewInterface $gridView, Action $action, $data = null)
+    public function renderAction(TreeOneToManyViewInterface $gridView, Action $action, $data = null)
     {
         $type = $action->getType();
         if (!isset($this->actionTemplates[$type])) {
@@ -158,7 +158,7 @@ final class TwigTreeOneToManyRenderer implements TreeOneToManyRendererInterface
     /**
      * {@inheritdoc}
      */
-    public function renderFilter(OneToManyViewInterface $gridView, Filter $filter)
+    public function renderFilter(TreeOneToManyViewInterface $gridView, Filter $filter)
     {
         $template = $this->getFilterTemplate($filter);
 
