@@ -255,7 +255,6 @@ class TreeOneToManyController extends BaseController
             throw $this->createAccessDeniedException(self::ACCESS_DENIED_MSG);
         }
 
-
         $boxLeftValue = $request->get('boxLeftValue');
         $boxRightValues = $request->get('boxRightValues');
 
