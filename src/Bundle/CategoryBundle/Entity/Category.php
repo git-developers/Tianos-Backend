@@ -76,7 +76,6 @@ class Category
      *   @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      * })
      *
-     * @JMSS\Groups({"api"})
      */
     private $category;
 
