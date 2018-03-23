@@ -29,7 +29,8 @@ class ApiController extends BaseController
 
         //REPOSITORY
         $objects = $this->get($repository)->$method();
-        $objects = $this->getSerializeDecode($objects, $vars['serialize_group_name']);
+        $objects = $this->getTreeEntities($objects, $configuration, $vars['serialize_group_name']);
+//        $objects = $this->getSerializeDecode($objects, $vars['serialize_group_name']);
 
 
         return $this->json([
@@ -37,6 +38,25 @@ class ApiController extends BaseController
             'message' => 'mensaje',
             'category' => $objects,
         ]);
+    }
+
+    private function getTreeEntities($parents, $configuration, $serializeGroupName)
+    {
+        if(is_null($parents)){
+            $parents = [];
+        }
+
+        $repository = $configuration->getRepositoryService();
+//        $method = $configuration->getRepositoryMethod();
+
+        $entity = [];
+        foreach ($parents as $key => $parent){
+            $entity[$key]['parent'] = $this->getSerializeDecode($parent, $serializeGroupName);
+            $children = $this->get($repository)->findAllByParent($parent);
+            $entity[$key]['children'] = $this->getTreeEntities($children, $configuration, $serializeGroupName);
+        }
+
+        return $entity;
     }
 
 }

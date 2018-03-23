@@ -16,5 +16,5 @@ api_category_index:
                 type: Bundle\CategoryBundle\Form\Type\CategoryType
             repository:
                 service: tianos.repository.category
-                method: findAll
+                method: findAllParents
                 arguments: [$categoryId]

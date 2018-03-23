@@ -145,13 +145,18 @@ class CategoryRepository extends TianosEntityRepository
      */
     public function findAll(): array
     {
-        return $this->createQueryBuilder('o')
-            ->select('o.id, o.code, o.name, o.createdAt')
-            ->andWhere('o.isActive = :active')
-            ->setParameter('active', 1)
-            ->getQuery()
-            ->getResult()
-            ;
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT category
+            FROM CategoryBundle:Category category
+            WHERE
+            category.isActive = :active
+            ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+
+        return $query->getResult();
     }
 
     /**
