@@ -66,6 +66,12 @@ class Visit
     private $userUpdate;
 
     /**
+     * @var string
+     *
+     */
+    private $uuid;
+
+    /**
      * @var \Bundle\PointOfSaleBundle\Entity\PointOfSale
      *
      * @ORM\OneToOne(targetEntity="Bundle\PointOfSaleBundle\Entity\PointOfSale")
@@ -205,6 +211,30 @@ class Visit
     public function setUserUpdate(int $userUpdate): void
     {
         $this->userUpdate = $userUpdate;
+    }
+
+    /**
+     * Set uuid
+     *
+     * @param string $uuid
+     *
+     * @return Visit
+     */
+    public function setUuid($uuid)
+    {
+        $this->uuid = $uuid;
+
+        return $this;
+    }
+
+    /**
+     * Get uuid
+     *
+     * @return string
+     */
+    public function getUuid()
+    {
+        return $this->uuid;
     }
 
     /**

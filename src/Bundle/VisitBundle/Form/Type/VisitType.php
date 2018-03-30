@@ -80,6 +80,16 @@ class VisitType extends AbstractType
                     'placeholder' => 'visitEnd',
                 ],
             ])
+            ->add('uuid', TextType::class, [
+                'label' => 'uuid',
+                'label_attr' => [
+                    'class' => ''
+                ],
+                'attr' => [
+                    'class' => 'form-control',
+                    'placeholder' => 'uuid',
+                ],
+            ])
         ;
     }
     
