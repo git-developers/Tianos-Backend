@@ -30,6 +30,7 @@ final class GridExtension extends \Twig_Extension
         return [
             new \Twig_SimpleFunction('tianos_grid_render_button', [$this->gridHelper, 'renderButton'], ['is_safe' => ['html']]),
             new \Twig_SimpleFunction('tianos_grid_render_modal_footer', [$this->gridHelper, 'renderModalFooter'], ['is_safe' => ['html']]),
+            new \Twig_SimpleFunction('tianos_grid_form_js', [$this->gridHelper, 'renderFormJs'], ['is_safe' => ['html']]),
 //            new \Twig_SimpleFunction('sylius_grid_render', [$this->gridHelper, 'renderGrid'], ['is_safe' => ['html']]),
 //            new \Twig_Function('sylius_grid_render_field', [$this->gridHelper, 'renderField'], ['is_safe' => ['html']]),
 //            new \Twig_Function('sylius_grid_render_action', [$this->gridHelper, 'renderAction'], ['is_safe' => ['html']]),

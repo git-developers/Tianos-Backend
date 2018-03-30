@@ -46,3 +46,6 @@ backend_session:
 backend_reportpointofsaleandproduct:
     resource: '@ReportpointofsaleandproductBundle/Resources/config/routing/backend.yml'
     prefix: /report-pointofsale-and-product
+backend_visit:
+    resource: '@VisitBundle/Resources/config/routing/backend.yml'
+    prefix: /visit

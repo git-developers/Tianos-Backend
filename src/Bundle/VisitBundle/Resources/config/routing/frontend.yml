@@ -1,0 +1,19 @@
+frontend_visit_index:
+    path: /
+    methods: [GET]
+    defaults:
+        _controller: tianos.frontend.controller.visit:indexAction
+        _tianos:
+            section: admin
+            permission: true
+            grid: sylius_admin_visit
+            template: VisitBundle:Visit:index.html.twig
+            vars:
+                subheader: sylius.ui.manage_your_visit_catalog
+                icon: cube
+            form:
+                type: Bundle\VisitBundle\Form\Type\VisitType
+            repository:
+                service: tianos.repository.visit
+                method: findAll
+                arguments: [$visitId]

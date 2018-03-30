@@ -1,0 +1,15 @@
+api_visit_create:
+    path: /create
+    methods: [POST]
+    defaults:
+        _controller: tianos.backend.controller.visit:createAction
+        _tianos:
+            action: create
+#            template: VisitBundle:VisitApi/Form:form.html.twig
+            entity: Bundle\VisitBundle\Entity\Visit
+            form:
+                type: Bundle\VisitBundle\Form\Type\VisitType
+            repository:
+                service: tianos.repository.visit
+                method: create
+                arguments: [$visitId]

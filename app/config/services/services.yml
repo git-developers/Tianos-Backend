@@ -21,3 +21,4 @@ imports:
     - { resource: '@GroupofusersBundle/Resources/config/services.yml' }
     - { resource: '@TreeOneToManyBundle/Resources/config/services.yml' }
     - { resource: '@ReportpointofsaleandproductBundle/Resources/config/services.yml' }
+    - { resource: '@VisitBundle/Resources/config/services.yml' }

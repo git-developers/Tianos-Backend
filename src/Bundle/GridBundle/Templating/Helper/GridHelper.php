@@ -11,6 +11,7 @@ use Component\Grid\Renderer\GridRendererInterface;
 use Component\Grid\View\GridView;
 use Bundle\CoreBundle\Services\Button;
 use Symfony\Component\Templating\Helper\Helper;
+use Bundle\GridBundle\Services\Grid\Builder\DataTableMapper;
 
 class GridHelper extends Helper
 {
@@ -25,6 +26,12 @@ class GridHelper extends Helper
     public function __construct(GridRendererInterface $gridRenderer)
     {
         $this->gridRenderer = $gridRenderer;
+    }
+
+    //        JAFETH
+    public function renderFormJs($vars, $modal, $formMapper, DataTableMapper $dataTable, ?string $template = null)
+    {
+        return $this->gridRenderer->renderFormJs($vars, $modal, $formMapper, $dataTable, $template);
     }
 
     //        JAFETH

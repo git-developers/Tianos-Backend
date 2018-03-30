@@ -390,6 +390,7 @@ class Builder implements ContainerAwareInterface
             ->setAttribute('class', 'treeview')
             ->setAttribute('class', $this->activeRoute([
                 'backend_reportpointofsaleandproduct_index',
+                'backend_visit_index',
             ]))
             ->setAttribute('icon', 'fa-fw fa-line-chart')
             ->setDisplay($isGranted)
@@ -406,8 +407,20 @@ class Builder implements ContainerAwareInterface
             ->setAttribute('class', $this->activeRoute('backend_reportpointofsaleandproduct_index'))
             ->setDisplay($isGranted)
         ;
+
+        $menu['Reports']->addChild('Visita', [
+            'route' => 'backend_visit_index',
+            'extras' => ['safe_label' => true],
+            'childrenAttributes' => [
+                'class' => 'treeview-menu',
+            ],
+        ])
+            ->setAttribute('icon', self::CIRCLE_2_AQUA)
+            ->setAttribute('class', $this->activeRoute('backend_visit_index'))
+            ->setDisplay($isGranted)
+        ;
         /**
-         * ASSOCIATION
+         * REPORTS
          */
 
 
