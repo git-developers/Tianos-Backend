@@ -16,23 +16,6 @@ class ApiController extends BaseController
     public function createAction(Request $request): Response
     {
 
-
-
-        echo "POLLO:: <pre>";
-        print_r($request);
-        exit;
-
-
-
-
-
-
-
-
-        if (!$this->isXmlHttpRequest()) {
-            throw $this->createAccessDeniedException(self::ACCESS_DENIED_MSG);
-        }
-
         $parameters = [
             'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
         ];
@@ -41,56 +24,78 @@ class ApiController extends BaseController
 
         //CONFIGURATION
         $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
-        $template = $configuration->getTemplate('');
+//        $template = $configuration->getTemplate('');
         $action = $configuration->getAction();
         $formType = $configuration->getFormType();
         $vars = $configuration->getVars();
         $entity = $configuration->getEntity();
         $entity = new $entity();
 
+
+
+
+
         $form = $this->createForm($formType, $entity, ['form_data' => []]);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted()) {
+        $errors = [];
 
-            $errors = [];
-            $entityJson = null;
-            $status = self::STATUS_ERROR;
+//        if ($form->isSubmitted()) {
 
-            try{
+        $entityJson = null;
+        $status = self::STATUS_ERROR;
 
-                if ($form->isValid()) {
-                    $this->persist($entity);
-                    $entity = $this->getSerializeDecode($entity, $vars['serialize_group_name']);
-                    $status = self::STATUS_SUCCESS;
-                }else{
-                    foreach ($form->getErrors(true) as $key => $error) {
-                        if ($form->isRoot()) {
-                            $errors[] = $error->getMessage();
-                        } else {
-                            $errors[] = $error->getMessage();
-                        }
-                    }
-                }
 
-            }catch (\Exception $e){
-                $errors[] = $e->getMessage();
-            }
 
-            return $this->json([
-                'status' => $status,
-                'errors' => $errors,
-                'entity' => $entity,
-            ]);
+
+
+        //jafeth
+        $data = $request->get('visit');
+
+        if(isset($data['visitStart'])){
+            $entity->setVisitStart(new \DateTime($data['visitStart']));
         }
 
-        return $this->render(
-            $template,
-            [
-                'action' => $action,
-                'form' => $form->createView(),
-            ]
-        );
+        if(isset($data['visitEnd'])){
+            $entity->setVisitEnd(new \DateTime($data['visitEnd']));
+        }
+        //jafeth
+
+        $this->persist($entity);
+        $entity = $this->getSerializeDecode($entity, $vars['serialize_group_name']);
+        $status = self::STATUS_SUCCESS;
+
+
+
+        /*
+        try{
+
+            if ($form->isValid()) {
+
+                $this->persist($entity);
+                $entity = $this->getSerializeDecode($entity, $vars['serialize_group_name']);
+                $status = self::STATUS_SUCCESS;
+            }else{
+                foreach ($form->getErrors(true) as $key => $error) {
+                    if ($form->isRoot()) {
+                        $errors[] = $error->getMessage();
+                    } else {
+                        $errors[] = $error->getMessage();
+                    }
+                }
+            }
+
+        }catch (\Exception $e){
+            $errors[] = $e->getMessage();
+        }
+        */
+
+        return $this->json([
+            'status' => $status,
+            'errors' => $errors,
+            'entity' => $entity,
+        ]);
+
     }
 
 }

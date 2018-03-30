@@ -1,6 +1,7 @@
 Bundle\VisitBundle\Entity\Visit:
     type: entity
     table: visit
+    repositoryClass: Bundle\VisitBundle\Doctrine\ORM\VisitRepository
     indexes:
         fk_visita_user1_idx:
             columns:
@@ -15,17 +16,16 @@ Bundle\VisitBundle\Entity\Visit:
             options:
                 unsigned: false
             id: true
+            generator:
+                strategy: IDENTITY
     fields:
         visitStart:
             type: datetime
             nullable: true
             column: visit_start
         visitEnd:
-            type: string
+            type: datetime
             nullable: true
-            length: 45
-            options:
-                fixed: false
             column: visit_end
         createdAt:
             type: datetime
@@ -47,7 +47,11 @@ Bundle\VisitBundle\Entity\Visit:
             options:
                 unsigned: false
             column: user_update
-    oneToOne:
+        isActive:
+            type: boolean
+            nullable: false
+            column: is_active
+    manyToOne:
         pointOfSale:
             targetEntity: Bundle\PointOfSaleBundle\Entity\PointOfSale
             cascade: {  }

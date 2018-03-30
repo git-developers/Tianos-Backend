@@ -11,6 +11,22 @@ use Component\User\Repository\UserRepositoryInterface;
 class UserRepository extends EntityRepository implements UserRepositoryInterface
 {
 
+
+    public function findAllObjects()
+    {
+
+        return $this->createQueryBuilder('a')
+            ->where('a.enabled = :active')
+            ->orderBy('a.id', 'ASC')
+            ->setParameter('active', true)
+            ;
+
+//        echo "POLLO:: <pre>";
+//        print_r($eeee->getDQL());
+//        exit;
+
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -18,7 +34,7 @@ class UserRepository extends EntityRepository implements UserRepositoryInterface
     {
         return $this->createQueryBuilder('o')
             ->select('o.id, o.username, o.email, o.name, o.lastName, o.createdAt')
-            ->andWhere('o.isActive = :active')
+            ->andWhere('o.enabled = :active')
             ->setParameter('active', 1)
             ->getQuery()
             ->getResult()
@@ -52,7 +68,7 @@ class UserRepository extends EntityRepository implements UserRepositoryInterface
             FROM UserBundle:User UserTianos
             WHERE
             (UserTianos.email = :email OR UserTianos.username = :username) AND
-            UserTianos.isActive = :active
+            UserTianos.enabled = :active
         ';
 
         return $em->createQuery($dql)

@@ -33,7 +33,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setName('Alfredo');
         $entity->setLastName('Bringas');
         $entity->setEmail('abringas@' . $this->applicationUrl);
-        $entity->setIsActive(true);
+        $entity->setEnabled(true);
         $entity->setClient($client1);
         $entity->setProfile($profileAdmin);
         $manager->persist($entity);
@@ -44,7 +44,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setName('Alan');
         $entity->setLastName('Garcia');
         $entity->setEmail('agarcia-' . uniqid() . '@' . $this->applicationUrl);
-        $entity->setIsActive(true);
+        $entity->setEnabled(true);
         $entity->setClient($client1);
         $entity->setProfile($profileAdmin);
         $manager->persist($entity);
@@ -57,7 +57,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('aeinstein-' . uniqid() . '@' . $this->applicationUrl);
         $entity->setClient($client1);
         $entity->setProfile($profileAdmin);
-        $entity->setIsActive(true);
+        $entity->setEnabled(true);
         $manager->persist($entity);
 
         $entity = new User();
@@ -68,7 +68,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('sjobs-' . uniqid() . '@' . $this->applicationUrl);
         $entity->setClient($client2);
         $entity->setProfile($profileAdmin);
-        $entity->setIsActive(true);
+        $entity->setEnabled(true);
         $manager->persist($entity);
 
         $entity = new User();
@@ -79,7 +79,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('bgates-' . uniqid() . '@' . $this->applicationUrl);
         $entity->setClient($client2);
         $entity->setProfile($profileAdmin);
-        $entity->setIsActive(true);
+        $entity->setEnabled(true);
         $manager->persist($entity);
 
         $entity = new User();
@@ -90,7 +90,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('inewton-' . uniqid() . '@' . $this->applicationUrl);
         $entity->setClient($client2);
         $entity->setProfile($profileAdmin);
-        $entity->setIsActive(true);
+        $entity->setEnabled(true);
         $manager->persist($entity);
 
 

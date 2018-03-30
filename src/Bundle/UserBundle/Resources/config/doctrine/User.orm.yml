@@ -128,12 +128,6 @@ Bundle\UserBundle\Entity\User:
             options:
                 unsigned: false
             column: user_update
-        isActive:
-            type: boolean
-            nullable: false
-            options:
-                default: '1'
-            column: is_active
         lastAccess:
             type: datetime
             nullable: true

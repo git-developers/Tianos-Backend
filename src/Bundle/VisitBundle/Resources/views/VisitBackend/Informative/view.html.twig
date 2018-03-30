@@ -9,11 +9,21 @@
         <div class="box-body">
 
             <strong>
-                <i class="fa fa-book margin-r-5"></i> Nombre
+                <i class="fa fa-book margin-r-5"></i> visitStart
             </strong>
 
             <p class="text-muted">
-                {{ entity.name }}
+                {{ entity.visitStart|date('Y-m-d H:i:s') }}
+            </p>
+
+            <hr>
+
+            <strong>
+                <i class="fa fa-book margin-r-5"></i> visitEnd
+            </strong>
+
+            <p class="text-muted">
+                {{ entity.visitEnd|date('Y-m-d H:i:s') }}
             </p>
 
             <hr>

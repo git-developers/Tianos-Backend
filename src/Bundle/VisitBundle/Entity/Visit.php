@@ -7,6 +7,7 @@ namespace Bundle\VisitBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as JMSS;
 use JMS\Serializer\Annotation\Type as TypeJMS;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Visit
@@ -24,19 +25,25 @@ class Visit
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="visit_start", type="datetime", nullable=true)
+     * @Assert\DateTime()
+     *
+     * @JMSS\Groups({"crud"})
      */
     private $visitStart;
 
     /**
-     * @var string
+     * @var \DateTime
      *
+     * @Assert\DateTime()
+     *
+     * @JMSS\Groups({"crud"})
      */
     private $visitEnd;
 
     /**
      * @var \DateTime
      *
+     * @JMSS\Groups({"crud"})
      */
     private $createdAt;
 
@@ -79,7 +86,6 @@ class Visit
     private $user;
 
 
-
     /**
      * @var boolean
      */
@@ -99,7 +105,7 @@ class Visit
     /**
      * @return \DateTime
      */
-    public function getVisitStart(): \DateTime
+    public function getVisitStart()
     {
         return $this->visitStart;
     }
@@ -107,23 +113,32 @@ class Visit
     /**
      * @param \DateTime $visitStart
      */
-    public function setVisitStart(\DateTime $visitStart): void
+    public function setVisitStart($visitStart): void
     {
+
+//        //\DateTime
+//
+//
+//        echo "POLLO:: <pre>";
+//        print_r($visitStart);
+//        exit;
+
+
         $this->visitStart = $visitStart;
     }
 
     /**
-     * @return string
+     * @return \DateTime
      */
-    public function getVisitEnd(): string
+    public function getVisitEnd()
     {
         return $this->visitEnd;
     }
 
     /**
-     * @param string $visitEnd
+     * @param \DateTime $visitEnd
      */
-    public function setVisitEnd(string $visitEnd): void
+    public function setVisitEnd($visitEnd): void
     {
         $this->visitEnd = $visitEnd;
     }
@@ -131,7 +146,7 @@ class Visit
     /**
      * @return \DateTime
      */
-    public function getCreatedAt(): \DateTime
+    public function getCreatedAt()
     {
         return $this->createdAt;
     }
@@ -163,7 +178,7 @@ class Visit
     /**
      * @return \DateTime
      */
-    public function getUpdatedAt(): \DateTime
+    public function getUpdatedAt()
     {
         return $this->updatedAt;
     }
@@ -179,7 +194,7 @@ class Visit
     /**
      * @return int
      */
-    public function getUserUpdate(): int
+    public function getUserUpdate()
     {
         return $this->userUpdate;
     }
@@ -195,7 +210,7 @@ class Visit
     /**
      * @return \Bundle\PointOfSaleBundle\Entity\PointOfSale
      */
-    public function getPointOfSale(): \Bundle\PointOfSaleBundle\Entity\PointOfSale
+    public function getPointOfSale()
     {
         return $this->pointOfSale;
     }
@@ -211,7 +226,7 @@ class Visit
     /**
      * @return \Bundle\UserBundle\Entity\User
      */
-    public function getUser(): \Bundle\UserBundle\Entity\User
+    public function getUser()
     {
         return $this->user;
     }
