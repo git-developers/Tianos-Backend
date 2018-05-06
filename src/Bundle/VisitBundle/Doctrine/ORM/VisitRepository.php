@@ -53,7 +53,7 @@ class VisitRepository extends TianosEntityRepository implements VisitRepositoryI
     public function findAll(): array
     {
         return $this->createQueryBuilder('o')
-            ->select('o.id, o.createdAt')
+            ->select('o')
             ->andWhere('o.isActive = :active')
             ->setParameter('active', 1)
             ->getQuery()

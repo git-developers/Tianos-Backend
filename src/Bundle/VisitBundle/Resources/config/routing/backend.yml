@@ -41,12 +41,12 @@ backend_visit_index:
                     columns:
                         - name: '#'
                           obj: " '<span class=\"badge bg-blue\">' + obj.id + '</span>' "
-                        - name: visitStart
-                          obj: obj.visitStart
-                        - name: visitEnd
-                          obj: obj.visitEnd
+                        - name: visit Start
+                          obj: obj.visit_start
+                        - name: visit End
+                          obj: obj.visit_end
                         - name: Creado
-                          obj: obj.createdAt
+                          obj: obj.created_at
                           options:
                               icon: calendar
             form:
