@@ -135,7 +135,7 @@ class Pointofsale
      *
      * @param string $code
      *
-     * @return PointOfSale
+     * @return Pointofsale
      */
     public function setCode($code)
     {

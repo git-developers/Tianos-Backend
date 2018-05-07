@@ -42,7 +42,7 @@ class VisitType extends AbstractType
                 ],
             ])
             ->add('pointOfSale', EntityType::class, [
-                'class' => PointOfSale::class,
+                'class' => Pointofsale::class,
                 'query_builder' => function(EntityRepository $er) {
                     return $er->findAllObjects();
                 },

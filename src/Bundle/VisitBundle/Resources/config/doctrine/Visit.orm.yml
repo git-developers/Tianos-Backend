@@ -59,7 +59,7 @@ Bundle\VisitBundle\Entity\Visit:
                 fixed: false
     manyToOne:
         pointOfSale:
-            targetEntity: Bundle\PointOfSaleBundle\Entity\PointOfSale
+            targetEntity: Bundle\PointofsaleBundle\Entity\Pointofsale
             cascade: {  }
             fetch: LAZY
             mappedBy: null

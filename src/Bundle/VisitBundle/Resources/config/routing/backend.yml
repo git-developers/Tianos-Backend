@@ -47,6 +47,8 @@ backend_visit_index:
                           obj: obj.visit_end
                         - name: Creado
                           obj: obj.created_at
+                        - name: Uuid
+                          obj: obj.uuid
                           options:
                               icon: calendar
             form:

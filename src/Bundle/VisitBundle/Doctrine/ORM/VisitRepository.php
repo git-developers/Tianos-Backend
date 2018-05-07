@@ -13,6 +13,25 @@ class VisitRepository extends TianosEntityRepository implements VisitRepositoryI
     /**
      * {@inheritdoc}
      */
+    public function findByUuid($uuid)
+    {
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT visit
+            FROM VisitBundle:Visit visit
+            WHERE
+            visit.uuid = :uuid
+            ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('uuid', $uuid);
+
+        return $query->getOneOrNullResult();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function find($id)
     {
         $em = $this->getEntityManager();

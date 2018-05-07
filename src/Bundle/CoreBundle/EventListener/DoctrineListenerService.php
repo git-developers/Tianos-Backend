@@ -7,7 +7,7 @@ use Doctrine\ORM\Event\LifecycleEventArgs;
 use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
-use CoreBundle\Entity\PointOfSale;
+use CoreBundle\Entity\Pointofsale;
 use CoreBundle\Entity\Client;
 use CoreBundle\Entity\User;
 use CoreBundle\Entity\Category;
@@ -22,7 +22,7 @@ use CoreBundle\Entity\Template;
 use CoreBundle\Entity\TemplateModule;
 use CoreBundle\Entity\TemplateHasModule;
 use CoreBundle\Entity\TemplateEParagraph;
-use CoreBundle\Entity\PointOfSaleHasCRUD_DUMMY;
+use CoreBundle\Entity\PointofsaleHasCRUD_DUMMY;
 use CoreBundle\Entity\TemplateEPost;
 use CoreBundle\Entity\TemplateEItem;
 use Cocur\Slugify\Slugify;
@@ -126,7 +126,7 @@ class DoctrineListenerService implements EventSubscriber
             $entity->setView(FileMimeType::VIEW_DOC);
 
             return;
-        }else if ($entity instanceof PointOfSale){
+        }else if ($entity instanceof Pointofsale){
             $name = $entity->getName();
             $entity->setSlug($this->slugify($name));
             $entity->setCreatedAt($this->dateTime);
@@ -164,7 +164,7 @@ class DoctrineListenerService implements EventSubscriber
             $entity->setCreatedAt($this->dateTime);
 
             return;
-        }else if ($entity instanceof PointOfSaleHasCRUD_DUMMY){
+        }else if ($entity instanceof PointofsaleHasCRUD_DUMMY){
             $entity->setCreatedAt($this->dateTime);
 
             return;
@@ -267,7 +267,7 @@ class DoctrineListenerService implements EventSubscriber
             $entity->setUpdatedAt($this->dateTime);
 
             return;
-        }else if ($entity instanceof PointOfSaleHasCRUD_DUMMY){
+        }else if ($entity instanceof PointofsaleHasCRUD_DUMMY){
             $entity->setUpdatedAt($this->dateTime);
 
             return;

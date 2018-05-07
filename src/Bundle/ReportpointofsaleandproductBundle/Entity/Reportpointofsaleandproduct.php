@@ -268,7 +268,7 @@ class Reportpointofsaleandproduct
      *
      * @param \DateTime $timeDelivery
      *
-     * @return ReportPointOfSaleAndProduct
+     * @return ReportPointofsaleAndProduct
      */
     public function setTimeDelivery($timeDelivery)
     {
@@ -292,7 +292,7 @@ class Reportpointofsaleandproduct
      *
      * @param integer $stockOut
      *
-     * @return ReportPointOfSaleAndProduct
+     * @return ReportPointofsaleAndProduct
      */
     public function setStockOut($stockOut)
     {

@@ -9,6 +9,9 @@ use Symfony\Component\HttpFoundation\Response;
 use Component\Resource\Metadata\Metadata;
 use Bundle\ResourceBundle\ResourceBundle;
 use Bundle\CoreBundle\Controller\BaseController;
+use Bundle\VisitBundle\Entity\Visit;
+use Bundle\PointofsaleBundle\Entity\Pointofsale;
+use Bundle\UserBundle\Entity\User;
 
 class ApiController extends BaseController
 {
@@ -29,41 +32,62 @@ class ApiController extends BaseController
         $formType = $configuration->getFormType();
         $vars = $configuration->getVars();
         $entity = $configuration->getEntity();
-        $entity = new $entity();
 
 
 
+        $saveEntity = [];
+        $visits = $request->get('visits');
+
+        foreach ($visits as $key => $visit){
+
+            //$visitObject = $this->em()->getRepository(Visit::class)->findByUuid($visit['uuid']);
+            $visitObject = $this->get('tianos.repository.visit')->findByUuid($visit['uuid']);
 
 
-        $form = $this->createForm($formType, $entity, ['form_data' => []]);
-        $form->handleRequest($request);
+            if(is_null($visitObject)){
+                $visitObject = new $entity();
+            }
 
-        $errors = [];
+
+//            $form = $this->createForm($formType, $entity, ['form_data' => []]);
+//            $form->handleRequest($request);
+
+            $errors = [];
 
 //        if ($form->isSubmitted()) {
 
-        $entityJson = null;
-        $status = self::STATUS_ERROR;
 
+            if(isset($visit['uuid'])){
+                $visitObject->setUuid($visit['uuid']);
+            }
 
+            if(isset($visit['username'])){
+                $user = $this->em()->getRepository(User::class)->findOneByUsername($visit['username']);
+                $visitObject->setUser($user);
+            }
 
+            if(isset($visit['pointOfSale'])){
+                $pdv = $this->em()->getRepository(Pointofsale::class)->find($visit['pointOfSale']);
+                $visitObject->setPointOfSale($pdv);
+            }
 
+            if(isset($visit['visitStart'])){
+                $visitObject->setVisitStart(new \DateTime($visit['visitStart']));
+            }
 
-        //jafeth
-        $data = $request->get('visit');
+            if(isset($visit['visitEnd'])){
+                $visitObject->setVisitEnd(new \DateTime($visit['visitEnd']));
+            }
 
-        if(isset($data['visitStart'])){
-            $entity->setVisitStart(new \DateTime($data['visitStart']));
+            $this->persist($visitObject);
+            $saveEntity[] = $this->getSerializeDecode($visitObject, $vars['serialize_group_name']);
         }
 
-        if(isset($data['visitEnd'])){
-            $entity->setVisitEnd(new \DateTime($data['visitEnd']));
-        }
-        //jafeth
 
-        $this->persist($entity);
-        $entity = $this->getSerializeDecode($entity, $vars['serialize_group_name']);
         $status = self::STATUS_SUCCESS;
+
+
+
 
 
 
@@ -93,7 +117,7 @@ class ApiController extends BaseController
         return $this->json([
             'status' => $status,
             'errors' => $errors,
-            'entity' => $entity,
+            'entity' => $saveEntity,
         ]);
 
     }

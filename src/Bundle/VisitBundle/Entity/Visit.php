@@ -68,13 +68,14 @@ class Visit
     /**
      * @var string
      *
+     * @JMSS\Groups({"crud"})
      */
     private $uuid;
 
     /**
-     * @var \Bundle\PointOfSaleBundle\Entity\PointOfSale
+     * @var \Bundle\PointofsaleBundle\Entity\Pointofsale
      *
-     * @ORM\OneToOne(targetEntity="Bundle\PointOfSaleBundle\Entity\PointOfSale")
+     * @ORM\ManyToOne(targetEntity="Bundle\PointofsaleBundle\Entity\Pointofsale")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="point_of_sale_id", referencedColumnName="id", unique=true)
      * })
@@ -84,7 +85,7 @@ class Visit
     /**
      * @var \Bundle\UserBundle\Entity\User
      *
-     * @ORM\OneToOne(targetEntity="Bundle\UserBundle\Entity\User")
+     * @ORM\ManyToOne(targetEntity="Bundle\UserBundle\Entity\User")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="user_id", referencedColumnName="id", unique=true)
      * })
@@ -238,7 +239,7 @@ class Visit
     }
 
     /**
-     * @return \Bundle\PointOfSaleBundle\Entity\PointOfSale
+     * @return \Bundle\PointofsaleBundle\Entity\Pointofsale
      */
     public function getPointOfSale()
     {
@@ -246,9 +247,9 @@ class Visit
     }
 
     /**
-     * @param \Bundle\PointOfSaleBundle\Entity\PointOfSale $pointOfSale
+     * @param \Bundle\PointofsaleBundle\Entity\Pointofsale $pointOfSale
      */
-    public function setPointOfSale(\Bundle\PointOfSaleBundle\Entity\PointOfSale $pointOfSale): void
+    public function setPointOfSale(\Bundle\PointofsaleBundle\Entity\Pointofsale $pointOfSale): void
     {
         $this->pointOfSale = $pointOfSale;
     }
