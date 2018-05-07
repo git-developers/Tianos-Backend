@@ -34,6 +34,10 @@ class Load_3_ProfileData extends AbstractFixture implements OrderedFixtureInterf
         $manager->persist($entity);
 
         $entity = new Profile();
+        $entity->setName('Distribuidor');
+        $manager->persist($entity);
+
+        $entity = new Profile();
         $entity->setName('Despachador');
         $manager->persist($entity);
 

@@ -35,6 +35,8 @@ class Role
 
     /**
      * @var string
+     *
+     * @JMSS\Groups({"login"})
      */
     private $slug;
 

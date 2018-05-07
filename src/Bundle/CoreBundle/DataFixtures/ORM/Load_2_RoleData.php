@@ -16,7 +16,7 @@ class Load_2_RoleData extends AbstractFixture implements OrderedFixtureInterface
 
 
         /**
-         * ROLE_ADMIN
+         * USER
          */
         $entity = new Role();
         $entity->setName('User create');
@@ -53,7 +53,7 @@ class Load_2_RoleData extends AbstractFixture implements OrderedFixtureInterface
 
 
         /**
-         * ROLE_CLIENT
+         * CLIENT
          */
         $entity = new Role();
         $entity->setName('Client create');
@@ -86,6 +86,114 @@ class Load_2_RoleData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setGroupRolTag('group-client');
         $manager->persist($entity);
         $this->addReference('role-client-delete', $entity);
+
+
+
+        /**
+         * PDV
+         */
+        $entity = new Role();
+        $entity->setName('Pdv create');
+        $entity->setSlug('ROLE_PDV_CREATE');
+        $entity->setGroupRol('pdv');
+        $entity->setGroupRolTag('group-pdv');
+        $manager->persist($entity);
+        $this->addReference('role-pdv-create', $entity);
+
+        $entity = new Role();
+        $entity->setName('Pdv edit');
+        $entity->setSlug('ROLE_PDV_EDIT');
+        $entity->setGroupRol('pdv');
+        $entity->setGroupRolTag('group-pdv');
+        $manager->persist($entity);
+        $this->addReference('role-pdv-edit', $entity);
+
+        $entity = new Role();
+        $entity->setName('Pdv view');
+        $entity->setSlug('ROLE_PDV_VIEW');
+        $entity->setGroupRol('pdv');
+        $entity->setGroupRolTag('group-pdv');
+        $manager->persist($entity);
+        $this->addReference('role-pdv-view', $entity);
+
+        $entity = new Role();
+        $entity->setName('Pdv delete');
+        $entity->setSlug('ROLE_PDV_DELETE');
+        $entity->setGroupRol('pdv');
+        $entity->setGroupRolTag('group-pdv');
+        $manager->persist($entity);
+        $this->addReference('role-pdv-delete', $entity);
+
+
+        /**
+         * PRODUCT
+         */
+        $entity = new Role();
+        $entity->setName('Product create');
+        $entity->setSlug('ROLE_PRODUCT_CREATE');
+        $entity->setGroupRol('product');
+        $entity->setGroupRolTag('group-product');
+        $manager->persist($entity);
+        $this->addReference('role-product-create', $entity);
+
+        $entity = new Role();
+        $entity->setName('Product edit');
+        $entity->setSlug('ROLE_PRODUCT_EDIT');
+        $entity->setGroupRol('product');
+        $entity->setGroupRolTag('group-product');
+        $manager->persist($entity);
+        $this->addReference('role-product-edit', $entity);
+
+        $entity = new Role();
+        $entity->setName('Product view');
+        $entity->setSlug('ROLE_PRODUCT_VIEW');
+        $entity->setGroupRol('product');
+        $entity->setGroupRolTag('group-product');
+        $manager->persist($entity);
+        $this->addReference('role-product-view', $entity);
+
+        $entity = new Role();
+        $entity->setName('Product delete');
+        $entity->setSlug('ROLE_PRODUCT_DELETE');
+        $entity->setGroupRol('product');
+        $entity->setGroupRolTag('group-product');
+        $manager->persist($entity);
+        $this->addReference('role-product-delete', $entity);
+
+        /**
+         * CATEGORY
+         */
+        $entity = new Role();
+        $entity->setName('Category create');
+        $entity->setSlug('ROLE_CATEGORY_CREATE');
+        $entity->setGroupRol('category');
+        $entity->setGroupRolTag('group-category');
+        $manager->persist($entity);
+        $this->addReference('role-category-create', $entity);
+
+        $entity = new Role();
+        $entity->setName('Category edit');
+        $entity->setSlug('ROLE_CATEGORY_EDIT');
+        $entity->setGroupRol('category');
+        $entity->setGroupRolTag('group-category');
+        $manager->persist($entity);
+        $this->addReference('role-category-edit', $entity);
+
+        $entity = new Role();
+        $entity->setName('Category view');
+        $entity->setSlug('ROLE_CATEGORY_VIEW');
+        $entity->setGroupRol('category');
+        $entity->setGroupRolTag('group-category');
+        $manager->persist($entity);
+        $this->addReference('role-category-view', $entity);
+
+        $entity = new Role();
+        $entity->setName('Category delete');
+        $entity->setSlug('ROLE_CATEGORY_DELETE');
+        $entity->setGroupRol('category');
+        $entity->setGroupRolTag('group-category');
+        $manager->persist($entity);
+        $this->addReference('role-category-delete', $entity);
 
 
 

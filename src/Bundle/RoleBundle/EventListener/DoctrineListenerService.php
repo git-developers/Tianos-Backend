@@ -62,7 +62,7 @@ class DoctrineListenerService implements EventSubscriber
 
         if ($entity instanceof Role){
             $name = $entity->getName();
-            $entity->setSlug($this->slugify($name));
+//            $entity->setSlug($this->slugify($name));
             $entity->setCreatedAt($this->dateTime);
 
             return;
