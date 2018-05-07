@@ -15,21 +15,21 @@ class Role
     /**
      * @var integer
      *
-     * @JMSS\Groups({"crud", "one-to-many", "one-to-many-left"})
+     * @JMSS\Groups({"crud", "one-to-many", "one-to-many-left", "login"})
      */
     private $id;
 
     /**
      * @var string
      *
-     * @JMSS\Groups({"crud", "one-to-many"})
+     * @JMSS\Groups({"crud", "one-to-many", "login"})
      */
     private $code;
 
     /**
      * @var string
      *
-     * @JMSS\Groups({"crud", "one-to-many"})
+     * @JMSS\Groups({"crud", "one-to-many", "login"})
      */
     private $name;
 
@@ -41,12 +41,14 @@ class Role
     /**
      * @var string
      *
+     * @JMSS\Groups({"login"})
      */
     private $groupRol;
 
     /**
      * @var string
      *
+     * @JMSS\Groups({"login"})
      */
     private $groupRolTag;
 

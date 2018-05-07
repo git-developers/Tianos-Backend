@@ -18,21 +18,21 @@ class Profile
     /**
      * @var integer
      *
-     * @JMSS\Groups({"crud", "one-to-many"})
+     * @JMSS\Groups({"crud", "login", "one-to-many"})
      */
     private $id;
 
     /**
      * @var string
      *
-     * @JMSS\Groups({"crud", "one-to-many"})
+     * @JMSS\Groups({"crud", "login", "one-to-many"})
      */
     private $code;
 
     /**
      * @var string
      *
-     * @JMSS\Groups({"crud", "one-to-many"})
+     * @JMSS\Groups({"crud", "login", "one-to-many"})
      */
     private $name;
 
@@ -82,7 +82,7 @@ class Profile
      *   }
      * )
      *
-     * @JMSS\Groups({"one-to-many", "one-to-many-left"})
+     * @JMSS\Groups({"one-to-many", "one-to-many-left", "login"})
      */
     private $role;
 
