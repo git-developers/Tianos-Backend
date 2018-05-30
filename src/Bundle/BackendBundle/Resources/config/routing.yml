@@ -43,9 +43,12 @@ backend_core:
 backend_session:
     resource: '@SessionBundle/Resources/config/routing/backend.yml'
     prefix: /session
-backend_reportpointofsaleandproduct:
-    resource: '@ReportpointofsaleandproductBundle/Resources/config/routing/backend.yml'
+backend_pdvhasproduct:
+    resource: '@PdvhasproductBundle/Resources/config/routing/backend.yml'
     prefix: /report-pointofsale-and-product
 backend_visit:
     resource: '@VisitBundle/Resources/config/routing/backend.yml'
     prefix: /visit
+backend_pdvhasproduct:
+    resource: '@PdvhasproductBundle/Resources/config/routing/backend.yml'
+    prefix: /pdvhasproduct

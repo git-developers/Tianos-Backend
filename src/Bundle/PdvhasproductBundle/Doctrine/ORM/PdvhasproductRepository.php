@@ -2,32 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Bundle\ClientBundle\Doctrine\ORM;
+namespace Bundle\PdvhasproductBundle\Doctrine\ORM;
 
 use Bundle\CoreBundle\Doctrine\ORM\EntityRepository as TianosEntityRepository;
-use Component\Client\Repository\ClientRepositoryInterface;
+use Component\Pdvhasproduct\Repository\PdvhasproductRepositoryInterface;
 
-class ClientRepository extends TianosEntityRepository implements ClientRepositoryInterface
+class PdvhasproductRepository extends TianosEntityRepository implements PdvhasproductRepositoryInterface
 {
-
-    /**
-     * {@inheritdoc}
-     */
-    public function find($id)
-    {
-        return $this->createQueryBuilder('o')
-            ->select('o.id, o.code, o.name, o.createdAt')
-            ->innerJoin('o.translations', 'translation',
-                'WITH',
-                'translation.locale = :locale')
-            ->andWhere('o.isActive = :active')
-            ->andWhere('o.id = :id')
-            ->setParameter('active', 1)
-            ->setParameter('id', $id)
-            ->getQuery()
-            ->getResult()
-            ;
-    }
 
     /**
      * {@inheritdoc}
@@ -36,11 +17,11 @@ class ClientRepository extends TianosEntityRepository implements ClientRepositor
     {
         $em = $this->getEntityManager();
         $dql = "
-            SELECT client
-            FROM ClientBundle:Client client
+            SELECT pdvhasproduct
+            FROM PdvhasproductBundle:Pdvhasproduct pdvhasproduct
             WHERE
-            client.id = :id AND
-            client.isActive = :active
+            pdvhasproduct.id = :id AND
+            pdvhasproduct.isActive = :active
             ";
 
         $query = $em->createQuery($dql);
@@ -49,6 +30,22 @@ class ClientRepository extends TianosEntityRepository implements ClientRepositor
 
         return $query->getOneOrNullResult();
     }
+
+    /**
+     * {@inheritdoc}
+     */
+//    public function find($id)
+//    {
+//        return $this->createQueryBuilder('o')
+//            ->select('o.id, o.code, o.name, o.createdAt')
+//            ->andWhere('o.isActive = :active')
+//            ->andWhere('o.id = :id')
+//            ->setParameter('active', 1)
+//            ->setParameter('id', $id)
+//            ->getQuery()
+//            ->getOneOrNullResult()
+//            ;
+//    }
 
     /**
      * {@inheritdoc}

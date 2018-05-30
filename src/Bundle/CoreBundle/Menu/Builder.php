@@ -389,7 +389,7 @@ class Builder implements ContainerAwareInterface
             ->setAttribute('allow_angle', true)
             ->setAttribute('class', 'treeview')
             ->setAttribute('class', $this->activeRoute([
-                'backend_reportpointofsaleandproduct_index',
+                'backend_pdvhasproduct_index',
                 'backend_visit_index',
             ]))
             ->setAttribute('icon', 'fa-fw fa-line-chart')
@@ -397,14 +397,14 @@ class Builder implements ContainerAwareInterface
         ;
 
         $menu['Reports']->addChild('Point of sale <i class="fa fa-fw fa-angle-double-right"></i> product', [
-            'route' => 'backend_reportpointofsaleandproduct_index',
+            'route' => 'backend_pdvhasproduct_index',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
                 'class' => 'treeview-menu',
             ],
         ])
             ->setAttribute('icon', self::CIRCLE_1_YELLOW)
-            ->setAttribute('class', $this->activeRoute('backend_reportpointofsaleandproduct_index'))
+            ->setAttribute('class', $this->activeRoute('backend_pdvhasproduct_index'))
             ->setDisplay($isGranted)
         ;
 
