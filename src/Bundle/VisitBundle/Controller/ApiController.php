@@ -81,7 +81,7 @@ class ApiController extends BaseController
         return $this->json([
             'status' => $status,
             'errors' => [],
-            'entity' => $saveEntity,
+            'visits' => $saveEntity,
         ]);
 
     }
@@ -131,7 +131,7 @@ class ApiController extends BaseController
         return $this->json([
             'status' => $status,
             'errors' => [],
-            'entity' => $saveEntity,
+            'visits' => $saveEntity,
         ]);
     }
 
