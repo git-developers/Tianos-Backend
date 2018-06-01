@@ -17,7 +17,7 @@ backend_pdvhasproduct_index:
             grid:
                 icon: cube
                 box_class: primary
-                title: Gestionar pdvhasproduct
+                title: Gestionar puntos de venta -> productos
                 data_table:
                     route:
                         info: backend_pdvhasproduct_info
