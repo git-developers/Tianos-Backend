@@ -17,7 +17,7 @@ backend_profile_index:
             grid:
                 icon: user-secret
                 box_class: primary
-                title: Gestionar profile
+                title: Gestionar perfiles
                 modal:
                     create_size: modal-lg
                 data_table:

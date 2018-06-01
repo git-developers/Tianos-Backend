@@ -1,8 +1,8 @@
-api_visit_create:
-    path: /create
+api_visit_start:
+    path: /start
     methods: [POST]
     defaults:
-        _controller: tianos.api.controller.visit:createAction
+        _controller: tianos.api.controller.visit:startAction
         _tianos:
             action: create
 #            template: VisitBundle:VisitApi/Form:form.html.twig
@@ -14,4 +14,23 @@ api_visit_create:
                 method: create
                 arguments: [$visitId]
             vars:
-                serialize_group_name: crud
+                serialize_group_name: api
+
+api_visit_end:
+    path: /end
+    methods: [POST]
+    defaults:
+        _controller: tianos.api.controller.visit:endAction
+        _tianos:
+            action: create
+#            template: VisitBundle:VisitApi/Form:form.html.twig
+            entity: Bundle\VisitBundle\Entity\Visit
+            form:
+                type: Bundle\VisitBundle\Form\Type\VisitType
+            repository:
+                service: tianos.repository.visit
+                method: create
+                arguments: [$visitId]
+            vars:
+                serialize_group_name: api
+

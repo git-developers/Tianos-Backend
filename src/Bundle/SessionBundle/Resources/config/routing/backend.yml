@@ -17,7 +17,7 @@ backend_session_index:
             grid:
                 icon: history
                 box_class: primary
-                title: Gestionar session
+                title: "Gestionar sesión al End-user <i class=\"fa fa-fw fa-mobile-phone\"></i>"
                 data_table:
                     route:
                         info: backend_session_info
@@ -26,10 +26,10 @@ backend_session_index:
                         create: backend_session_create
                         delete: backend_session_delete
                     table_button:
-                        - edit
-                        - delete
+#                        - edit
+#                        - delete
                     table_button_header:
-                        - create
+#                        - create
                         - info
                     row_call_back:
                         - key: id
@@ -41,16 +41,20 @@ backend_session_index:
                     columns:
                         - name: '#'
                           obj: " '<span class=\"badge bg-blue\">' + obj.id + '</span>' "
+                        - name: Usuario
+                          obj: "obj.user.name +' '+ obj.user.last_name"
+                          options:
+                              icon: user
 #                        - name: code
 #                          obj: obj.code
 #                          options:
 #                              icon: map-marker
                         - name: Token
-                          obj: obj.token
+                          obj: " '<small class=\"label bg-green\">' + obj.token + '</small>' "
 #                        - name: slug
 #                          obj: obj.slug
                         - name: Creado
-                          obj: obj.createdAt
+                          obj: obj.created_at
                           options:
                               icon: calendar
             form:

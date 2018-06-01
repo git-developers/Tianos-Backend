@@ -17,7 +17,7 @@ backend_product_index:
             grid:
                 icon: cube
                 box_class: primary
-                title: Gestionar product
+                title: Gestionar productos
                 data_table:
                     route:
                         info: backend_product_info

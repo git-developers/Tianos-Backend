@@ -218,6 +218,7 @@ class OneToManyController extends BaseController
 
         //SAVE
         $objectsLeft = $this->get($repositoryLeft)->$methodLeft($boxLeftValue);
+
         foreach ($boxRightValues as $key => $boxRightValue){
             $objectsRight = $this->get($repositoryRight)->$methodRight($boxRightValue);
             $objectsLeft->addRole($objectsRight);

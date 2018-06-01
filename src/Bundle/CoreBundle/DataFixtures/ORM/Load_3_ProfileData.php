@@ -30,20 +30,53 @@ class Load_3_ProfileData extends AbstractFixture implements OrderedFixtureInterf
 
 
         $entity = new Profile();
-        $entity->setName('Conductor');
+        $entity->setName('Jefe de Administración Comercial');
         $manager->persist($entity);
+        $this->addReference('profile-jefe-administracion-comercial', $entity);
+
+        $entity = new Profile();
+        $entity->setName('Asistente de Distribución y Transporte');
+        $manager->persist($entity);
+        $this->addReference('profile-asistente-distribucion-transporte', $entity);
+
+        $entity = new Profile();
+        $entity->setName('Gerente de ventas');
+        $manager->persist($entity);
+        $this->addReference('profile-gerente-ventas', $entity);
+
+        $entity = new Profile();
+        $entity->setName('Supervisor de venta');
+        $manager->persist($entity);
+        $this->addReference('profile-supervisor-venta', $entity);
+
+        $entity = new Profile();
+        $entity->setName('Jefe de venta');
+        $manager->persist($entity);
+        $this->addReference('profile-jefe-venta', $entity);
+
+        $entity = new Profile();
+        $entity->setName('Jefe de almacén');
+        $manager->persist($entity);
+        $this->addReference('profile-jefe-almacen', $entity);
+
+        $entity = new Profile();
+        $entity->setName('Transportista');
+        $manager->persist($entity);
+        $this->addReference('profile-transportista', $entity);
 
         $entity = new Profile();
         $entity->setName('Distribuidor');
         $manager->persist($entity);
+        $this->addReference('profile-distribuidor', $entity);
 
         $entity = new Profile();
-        $entity->setName('Despachador');
+        $entity->setName('Canillita');
         $manager->persist($entity);
+        $this->addReference('profile-canillita', $entity);
 
-        $entity = new Profile();
-        $entity->setName(Profile::GUEST);
-        $manager->persist($entity);
+//        $entity = new Profile();
+//        $entity->setName(Profile::GUEST);
+//        $manager->persist($entity);
 
 
         $manager->flush();

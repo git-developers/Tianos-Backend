@@ -17,7 +17,7 @@ backend_role_index:
             grid:
                 icon: expeditedssl
                 box_class: primary
-                title: Gestionar role
+                title: Gestionar roles
                 data_table:
                     route:
                         info: backend_role_info

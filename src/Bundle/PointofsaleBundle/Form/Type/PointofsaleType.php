@@ -59,6 +59,16 @@ class PointofsaleType extends AbstractType
                     'placeholder' => 'nombre',
                 ],
             ])
+            ->add('address', TextType::class, [
+                'label' => 'Direccion',
+                'label_attr' => [
+                    'class' => ''
+                ],
+                'attr' => [
+                    'class' => 'form-control',
+                    'placeholder' => 'direccion',
+                ],
+            ])
             ->add('latitude', TextType::class, [
                 'label' => 'latitude',
                 'label_attr' => [

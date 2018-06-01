@@ -54,6 +54,18 @@ Bundle\PointofsaleBundle\Entity\Pointofsale:
             length: 65535
             options:
                 fixed: false
+        address:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+        phone:
+            type: text
+            nullable: true
+            length: 100
+            options:
+                fixed: false
         createdAt:
             type: datetime
             nullable: false

@@ -17,7 +17,7 @@ backend_visit_index:
             grid:
                 icon: cube
                 box_class: primary
-                title: Gestionar visit
+                title: Gestionar visitas
                 data_table:
                     route:
                         info: backend_visit_info
@@ -41,16 +41,20 @@ backend_visit_index:
                     columns:
                         - name: '#'
                           obj: " '<span class=\"badge bg-blue\">' + obj.id + '</span>' "
-                        - name: visit Start
-                          obj: obj.visit_start
-                        - name: visit End
-                          obj: obj.visit_end
-                        - name: Creado
-                          obj: obj.created_at
+                        - name: Usuario
+                          obj: " obj.user.name + ' ' + obj.user.last_name "
+                        - name: Punto de venta
+                          obj: obj.point_of_sale.name
+                        - name: Inicio de visita
+                          obj: " '<small class=\"label bg-green\" style=\"font-size:13px\">' + obj.visit_start + '</small>' "
+                        - name: Fin de visita
+                          obj: " '<small class=\"label bg-orange\" style=\"font-size:13px\">' + obj.visit_end + '</small>' "
                         - name: Uuid
                           obj: obj.uuid
                           options:
                               icon: calendar
+#                        - name: Creado
+#                          obj: obj.created_at
             form:
                 type: Bundle\VisitBundle\Form\Type\VisitType
             repository:

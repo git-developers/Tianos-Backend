@@ -17,7 +17,7 @@ backend_category_index:
             grid:
                 icon: sitemap
                 box_class: primary
-                title: Gestionar category
+                title: Gestionar categoría
                 data_table:
                     route:
                         info: backend_category_info

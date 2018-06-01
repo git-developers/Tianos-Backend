@@ -24,6 +24,20 @@ class Load_5_CategoryData extends AbstractFixture implements OrderedFixtureInter
 
         $entity = new Category();
         $entity->setCode('111');
+        $entity->setName('Marca PrenSmart');
+        $entity->setSlug('marca-prensmart');
+        $manager->persist($entity);
+
+        $entity = new Category();
+        $entity->setCode('222');
+        $entity->setName('Marca El Comercio');
+        $entity->setSlug('marca-el-comercio');
+        $manager->persist($entity);
+
+
+        /*
+        $entity = new Category();
+        $entity->setCode('111');
         $entity->setName('Periódicos');
         $entity->setSlug('category-1');
         $manager->persist($entity);
@@ -66,6 +80,7 @@ class Load_5_CategoryData extends AbstractFixture implements OrderedFixtureInter
         $entity->setName('Publicidad');
         $entity->setSlug('category-4');
         $manager->persist($entity);
+        */
 
 
         $manager->flush();

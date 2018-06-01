@@ -61,8 +61,8 @@ class DoctrineListenerService implements EventSubscriber
 //        $className = $entityManager->getClassMetadata(get_class($entity))->getName();
 
         if ($entity instanceof Session){
-            $name = $entity->getName();
-            $entity->setSlug($this->slugify($name));
+//            $name = $entity->getName();
+//            $entity->setSlug($this->slugify($name));
             $entity->setCreatedAt($this->dateTime);
 
             return;

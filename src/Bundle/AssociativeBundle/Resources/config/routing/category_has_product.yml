@@ -101,7 +101,8 @@ backend_associative_category_has_product_boxright_search:
         _controller: tianos.categoryhasproduct.controller.associative:boxRightSearchAction
         _tianos:
             action: right_search
-            template: OneToManyBundle:Li:boxright_search_box_left.html.twig
+#            template: OneToManyBundle:Li:boxright_search_box_left.html.twig
+            template: OneToManyBundle:Li:box_right.html.twig
             vars:
                 serialize_group_name: tree-one-to-many
             tree_one_to_many:

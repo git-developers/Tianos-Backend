@@ -65,7 +65,7 @@ class Builder implements ContainerAwareInterface
         ->setDisplay($isGranted)
         ;
 
-        $menu['Master']->addChild('Client', [
+        $menu['Master']->addChild('Cliente', [
             'route' => 'backend_default_dashboard',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
@@ -79,7 +79,7 @@ class Builder implements ContainerAwareInterface
         ->setDisplay($isGranted)
         ;
 
-        $menu['Master']['Client']->addChild('Gestionar', [
+        $menu['Master']['Cliente']->addChild('Gestionar', [
             'route' => 'backend_client_index'
         ])
         ->setAttribute('icon', self::CIRCLE_1_YELLOW)
@@ -87,7 +87,7 @@ class Builder implements ContainerAwareInterface
         ->setDisplay($isGranted)
         ;
 
-        $menu['Master']->addChild('Product', [
+        $menu['Master']->addChild('Producto', [
             'route' => 'backend_default_dashboard',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
@@ -101,7 +101,7 @@ class Builder implements ContainerAwareInterface
         ->setDisplay($isGranted)
         ;
 
-        $menu['Master']['Product']->addChild('Gestionar', [
+        $menu['Master']['Producto']->addChild('Gestionar', [
             'route' => 'backend_product_index'
         ])
         ->setAttribute('icon', self::CIRCLE_1_YELLOW)
@@ -143,7 +143,7 @@ class Builder implements ContainerAwareInterface
         ->setDisplay($isGranted)
         ;
 
-        $menu['Master']->addChild('Category', [
+        $menu['Master']->addChild('Categoría', [
             'route' => 'backend_default_dashboard',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
@@ -158,7 +158,7 @@ class Builder implements ContainerAwareInterface
         ->setDisplay($isGranted)
         ;
 
-        $menu['Master']['Category']->addChild('Gestionar', [
+        $menu['Master']['Categoría']->addChild('Gestionar', [
             'route' => 'backend_category_index'
         ])
         ->setAttribute('icon', self::CIRCLE_1_YELLOW)
@@ -166,7 +166,7 @@ class Builder implements ContainerAwareInterface
         ->setDisplay($isGranted)
         ;
 
-        $menu['Master']['Category']->addChild('Tree', [
+        $menu['Master']['Categoría']->addChild('Tree', [
             'route' => 'backend_category_tree_index'
         ])
         ->setAttribute('icon', self::CIRCLE_2_AQUA)
@@ -205,7 +205,7 @@ class Builder implements ContainerAwareInterface
         ->setDisplay($isGranted)
         ;
 
-        $menu['Cuentas']->addChild('User', [
+        $menu['Cuentas']->addChild('Usuario', [
             'route' => 'backend_default_dashboard',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
@@ -219,7 +219,7 @@ class Builder implements ContainerAwareInterface
         ->setDisplay($isGranted)
         ;
 
-        $menu['Cuentas']['User']->addChild('Gestionar', [
+        $menu['Cuentas']['Usuario']->addChild('Gestionar', [
             'route' => 'backend_user_index'
         ])
         ->setAttribute('icon', self::CIRCLE_1_YELLOW)
@@ -227,7 +227,7 @@ class Builder implements ContainerAwareInterface
         ->setDisplay($isGranted)
         ;
 
-        $menu['Cuentas']->addChild('Group of users', [
+        $menu['Cuentas']->addChild('Grupo de usuarios', [
             'route' => 'backend_default_dashboard',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
@@ -241,7 +241,7 @@ class Builder implements ContainerAwareInterface
             ->setDisplay($isGranted)
         ;
 
-        $menu['Cuentas']['Group of users']->addChild('Gestionar', [
+        $menu['Cuentas']['Grupo de usuarios']->addChild('Gestionar', [
             'route' => 'backend_groupofusers_index'
         ])
             ->setAttribute('icon', self::CIRCLE_1_YELLOW)
@@ -249,7 +249,7 @@ class Builder implements ContainerAwareInterface
             ->setDisplay($isGranted)
         ;
 
-        $menu['Cuentas']->addChild('Profile', [
+        $menu['Cuentas']->addChild('Perfil', [
             'route' => 'backend_default_dashboard',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
@@ -263,7 +263,7 @@ class Builder implements ContainerAwareInterface
         ->setDisplay($isGranted)
         ;
 
-        $menu['Cuentas']['Profile']->addChild('Gestionar', [
+        $menu['Cuentas']['Perfil']->addChild('Gestionar', [
             'route' => 'backend_profile_index'
         ])
         ->setAttribute('icon', self::CIRCLE_1_YELLOW)
@@ -271,7 +271,7 @@ class Builder implements ContainerAwareInterface
         ->setDisplay($isGranted)
         ;
 
-        $menu['Cuentas']->addChild('Role', [
+        $menu['Cuentas']->addChild('Rol', [
             'route' => 'backend_default_dashboard',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
@@ -285,7 +285,7 @@ class Builder implements ContainerAwareInterface
         ->setDisplay($isGranted)
         ;
 
-        $menu['Cuentas']['Role']->addChild('Gestionar', [
+        $menu['Cuentas']['Rol']->addChild('Gestionar', [
             'route' => 'backend_role_index'
         ])
         ->setAttribute('icon', self::CIRCLE_1_YELLOW)
@@ -293,7 +293,7 @@ class Builder implements ContainerAwareInterface
         ->setDisplay($isGranted)
         ;
 
-        $menu['Cuentas']->addChild('Session', [
+        $menu['Cuentas']->addChild('Sesión', [
             'route' => 'backend_default_dashboard',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
@@ -307,7 +307,7 @@ class Builder implements ContainerAwareInterface
             ->setDisplay($isGranted)
         ;
 
-        $menu['Cuentas']['Session']->addChild('Gestionar', [
+        $menu['Cuentas']['Sesión']->addChild('Gestionar', [
             'route' => 'backend_session_index'
         ])
             ->setAttribute('icon', self::CIRCLE_1_YELLOW)
@@ -327,7 +327,7 @@ class Builder implements ContainerAwareInterface
          * ASSOCIATION
          */
         $isGranted = true; //$this->isGranted('ROLE_CLIENT_VIEW');
-        $menu->addChild('Asociacion', [
+        $menu->addChild('Asociación', [
             'route' => 'backend_default_dashboard',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
@@ -344,7 +344,7 @@ class Builder implements ContainerAwareInterface
             ->setDisplay($isGranted)
         ;
 
-        $menu['Asociacion']->addChild('Profile <i class="fa fa-fw fa-arrow-right"></i> Role', [
+        $menu['Asociación']->addChild('Perfil <i class="fa fa-fw fa-arrow-right"></i> Rol', [
             'route' => 'backend_associative_profile_has_role_index',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
@@ -356,7 +356,7 @@ class Builder implements ContainerAwareInterface
             ->setDisplay($isGranted)
         ;
 
-        $menu['Asociacion']->addChild('Category <i class="fa fa-fw fa-arrow-right"></i> Product', [
+        $menu['Asociación']->addChild('Categoría <i class="fa fa-fw fa-arrow-right"></i> Producto', [
             'route' => 'backend_associative_category_has_product_index',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
@@ -379,7 +379,7 @@ class Builder implements ContainerAwareInterface
          * REPORTS
          */
         $isGranted = true; //$this->isGranted('ROLE_CLIENT_VIEW');
-        $menu->addChild('Reports', [
+        $menu->addChild('Reportes', [
             'route' => 'backend_default_dashboard',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
@@ -396,7 +396,7 @@ class Builder implements ContainerAwareInterface
             ->setDisplay($isGranted)
         ;
 
-        $menu['Reports']->addChild('Point of sale <i class="fa fa-fw fa-angle-double-right"></i> product', [
+        $menu['Reportes']->addChild('Punto de venta <i class="fa fa-fw fa-angle-double-right"></i> producto', [
             'route' => 'backend_pdvhasproduct_index',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
@@ -408,7 +408,7 @@ class Builder implements ContainerAwareInterface
             ->setDisplay($isGranted)
         ;
 
-        $menu['Reports']->addChild('Visita', [
+        $menu['Reportes']->addChild('Visita', [
             'route' => 'backend_visit_index',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
@@ -455,6 +455,8 @@ class Builder implements ContainerAwareInterface
         /**
          * SETTINGS
          */
+
+        /*
         $isGranted = true; //$this->isGranted('ROLE_CLIENT_VIEW');
         $menu->addChild('Settings', [
             'route' => 'backend_default_dashboard',
@@ -486,6 +488,7 @@ class Builder implements ContainerAwareInterface
 //            ->setAttribute('class', $this->activeRoute('backend_default_dashboard'))
             ->setDisplay($isGranted)
         ;
+        */
 
 
         return $menu;

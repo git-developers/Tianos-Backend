@@ -16,18 +16,25 @@ class ProfileRepository extends TianosEntityRepository implements ProfileReposit
      */
     public function deleteAssociativeTableById($id): bool
     {
-//        $em = $this->getEntityManager();
-//        $statement = $em->getConnection()->prepare('DELETE FROM profile_has_role WHERE profile_id = :id;');
-//        $statement->bindValue('id', $id);
-//
-//        return $statement->execute();
 
         $em = $this->getEntityManager();
-        return $em->getConnection()
-            ->prepare('DELETE FROM profile_has_role WHERE profile_id = :id;')
-            ->bindValue('id', $id)
-            ->execute()
-            ;
+
+//        return $em->getConnection()
+//            ->prepare('DELETE FROM profile_has_role WHERE profile_id = :id;')
+//            ->bindValue('id', $id)
+//            ->execute()
+//            ;
+
+
+        $sql = "DELETE FROM profile_has_role WHERE profile_id = :id;";
+        $params = array('id' => $id);
+
+        $stmt = $em->getConnection()->prepare($sql);
+        $stmt->execute($params);
+
+        // puesto provisional
+        return true;
+
     }
 
     /**

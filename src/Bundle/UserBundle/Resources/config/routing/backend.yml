@@ -17,7 +17,7 @@ backend_user_index:
             grid:
                 icon: user
                 box_class: primary
-                title: Gestionar user
+                title: Gestionar usuarios
                 data_table:
                     route:
                         info: backend_user_info
@@ -41,16 +41,20 @@ backend_user_index:
                     columns:
                         - name: '#'
                           obj: " '<span class=\"badge bg-blue\">' + obj.id + '</span>' "
+                        - name: Perfil
+                          obj: obj.profile.name
+                        - name: Username
+                          obj: " '<span class=\"badge bg-green\">' + obj.username + '</span>' "
                         - name: Email
                           obj: obj.email
 #                          options:
 #                              icon: map-marker
                         - name: Name
-                          obj: " obj.name + ' ' + obj.lastName "
+                          obj: " obj.name + ' ' + obj.last_name "
 #                        - name: slug
 #                          obj: obj.slug
                         - name: Creado
-                          obj: obj.createdAt
+                          obj: obj.created_at
                           options:
                               icon: calendar
             form:

@@ -17,8 +17,9 @@ class PdvhasproductRepository extends TianosEntityRepository implements Pdvhaspr
     {
         $em = $this->getEntityManager();
         $dql = "
-            SELECT pdvhasproduct
+            SELECT pdvhasproduct, user_
             FROM PdvhasproductBundle:Pdvhasproduct pdvhasproduct
+            INNER JOIN pdvhasproduct.user user_
             WHERE
             pdvhasproduct.id = :id AND
             pdvhasproduct.isActive = :active
@@ -52,13 +53,27 @@ class PdvhasproductRepository extends TianosEntityRepository implements Pdvhaspr
      */
     public function findAll(): array
     {
-        return $this->createQueryBuilder('o')
-            ->select('o.id, o.code, o.name, o.createdAt')
-            ->andWhere('o.isActive = :active')
-            ->setParameter('active', 1)
-            ->getQuery()
-            ->getResult()
-            ;
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT pdvhasproduct, user_
+            FROM PdvhasproductBundle:Pdvhasproduct pdvhasproduct
+            INNER JOIN pdvhasproduct.user user_
+            WHERE
+            pdvhasproduct.isActive = :active
+            ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+
+        return $query->getResult();
+
+//        return $this->createQueryBuilder('o')
+//            ->select('o.id, o.code, o.name, o.createdAt')
+//            ->andWhere('o.isActive = :active')
+//            ->setParameter('active', 1)
+//            ->getQuery()
+//            ->getResult()
+//            ;
     }
 
     /**

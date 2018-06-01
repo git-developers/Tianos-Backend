@@ -18,21 +18,21 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     /**
      * @var int
      *
-     * @JMSS\Groups({"login"})
+     * @JMSS\Groups({"login", "crud"})
      */
     protected $id;
 
     /**
      * @var string
      *
-     * @JMSS\Groups({"login"})
+     * @JMSS\Groups({"login", "crud"})
      */
     protected $username;
 
     /**
      * @var string
      *
-     * @JMSS\Groups({"login"})
+     * @JMSS\Groups({"login", "crud"})
      */
     protected $email;
 
@@ -57,14 +57,14 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     /**
      * @var string
      *
-     * @JMSS\Groups({"login"})
+     * @JMSS\Groups({"login", "crud"})
      */
     private $name;
 
     /**
      * @var string|null
      *
-     * @JMSS\Groups({"login"})
+     * @JMSS\Groups({"login", "crud"})
      */
     private $lastName;
 
@@ -95,6 +95,7 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     /**
      * @var \DateTime
      *
+     * @JMSS\Groups({"crud"})
      */
     private $createdAt;
 
@@ -134,7 +135,7 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="profile_id", referencedColumnName="id")
      * })
-     * @JMSS\Groups({"login"})
+     * @JMSS\Groups({"login", "crud"})
      */
     private $profile;
 

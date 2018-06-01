@@ -55,6 +55,7 @@ class GridController extends BaseController
         $vars = $configuration->getVars();
         $modal = $configuration->getModal();
 
+
         //REPOSITORY
         $objects = $this->get($repository)->$method();
         $objects = $this->getSerialize($objects, $vars['serialize_group_name']);
@@ -77,6 +78,13 @@ class GridController extends BaseController
             ->setColumnsTargets()
             ->resetGridVariable()
         ;
+
+
+//        echo "POLLO:: <pre>";
+//        print_r($objects);
+//        exit;
+
+
 
         return $this->render(
             $template,

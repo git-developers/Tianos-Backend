@@ -26,10 +26,10 @@ backend_pdvhasproduct_index:
                         create: backend_pdvhasproduct_create
                         delete: backend_pdvhasproduct_delete
                     table_button:
-                        - edit
-                        - delete
+#                        - edit
+#                        - delete
                     table_button_header:
-                        - create
+#                        - create
                         - info
                     row_call_back:
                         - key: id
@@ -45,12 +45,16 @@ backend_pdvhasproduct_index:
 #                          obj: obj.code
 #                          options:
 #                              icon: map-marker
-                        - name: Name
-                          obj: obj.name
-#                        - name: slug
-#                          obj: obj.slug
+                        - name: Usuario
+                          obj: " obj.user.name + ' ' + obj.user.last_name "
+                        - name: Punto de venta
+                          obj: obj.point_of_sale.name
+                        - name: Producto
+                          obj: obj.product.name
+                        - name: Cantidad productos
+                          obj: " '<span class=\"badge bg-green\">' + obj.quantity + '</span>' "
                         - name: Creado
-                          obj: obj.createdAt
+                          obj: obj.created_at
                           options:
                               icon: calendar
             form:

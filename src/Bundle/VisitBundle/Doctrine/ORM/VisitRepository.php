@@ -53,31 +53,28 @@ class VisitRepository extends TianosEntityRepository implements VisitRepositoryI
     /**
      * {@inheritdoc}
      */
-//    public function find($id)
-//    {
-//        return $this->createQueryBuilder('o')
-//            ->select('o.id, o.code, o.name, o.createdAt')
-//            ->andWhere('o.isActive = :active')
-//            ->andWhere('o.id = :id')
-//            ->setParameter('active', 1)
-//            ->setParameter('id', $id)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//            ;
-//    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function findAll(): array
     {
-        return $this->createQueryBuilder('o')
-            ->select('o')
-            ->andWhere('o.isActive = :active')
-            ->setParameter('active', 1)
-            ->getQuery()
-            ->getResult()
-            ;
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT visit
+            FROM VisitBundle:Visit visit
+            WHERE
+            visit.isActive = :active
+            ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+
+        return $query->getResult();
+
+//        return $this->createQueryBuilder('o')
+//            ->select('o')
+//            ->andWhere('o.isActive = :active')
+//            ->setParameter('active', 1)
+//            ->getQuery()
+//            ->getResult()
+//            ;
     }
 
     /**

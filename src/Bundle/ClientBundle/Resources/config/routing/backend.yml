@@ -17,7 +17,7 @@ backend_client_index:
             grid:
                 icon: odnoklassniki
                 box_class: primary
-                title: Gestionar client
+                title: Gestionar clientes
                 data_table:
                     route:
                         info: backend_client_info

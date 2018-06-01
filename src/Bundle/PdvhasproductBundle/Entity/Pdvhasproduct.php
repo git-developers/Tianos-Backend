@@ -39,6 +39,13 @@ class Pdvhasproduct
     private $slug;
 
     /**
+     * @var integer
+     *
+     * @JMSS\Groups({"crud"})
+     */
+    private $quantity;
+
+    /**
      * @var \DateTime
      *
      * @JMSS\Groups({"crud"})
@@ -62,10 +69,52 @@ class Pdvhasproduct
     private $userUpdate;
 
     /**
+     * @var string
+     *
+     * @JMSS\Groups({"crud"})
+     */
+    private $uuid;
+
+    /**
      * @var boolean
      */
     private $isActive = '1';
 
+    /**
+     * @var \Bundle\PointofsaleBundle\Entity\Pointofsale
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\PointOfSale")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="point_of_sale_id", referencedColumnName="id")
+     * })
+     *
+     * @JMSS\Groups({"crud"})
+     */
+    private $pointOfSale;
+
+    /**
+     * @var \Bundle\ProductBundle\Entity\Product
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Product")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="product_id", referencedColumnName="id")
+     * })
+     *
+     * @JMSS\Groups({"crud"})
+     */
+    private $product;
+
+    /**
+     * @var \Bundle\UserBundle\Entity\User
+     *
+     * @ORM\ManyToOne(targetEntity="Bundle\UserBundle\Entity\User")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="user_id", referencedColumnName="id", unique=true)
+     * })
+     *
+     * @JMSS\Groups({"crud"})
+     */
+    private $user;
 
     /**
      * Get id
@@ -147,6 +196,22 @@ class Pdvhasproduct
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * @return int
+     */
+    public function getQuantity(): int
+    {
+        return $this->quantity;
+    }
+
+    /**
+     * @param int $quantity
+     */
+    public function setQuantity(int $quantity): void
+    {
+        $this->quantity = $quantity;
     }
 
     /**
@@ -246,6 +311,30 @@ class Pdvhasproduct
     }
 
     /**
+     * Set uuid
+     *
+     * @param string $uuid
+     *
+     * @return Visit
+     */
+    public function setUuid($uuid)
+    {
+        $this->uuid = $uuid;
+
+        return $this;
+    }
+
+    /**
+     * Get uuid
+     *
+     * @return string
+     */
+    public function getUuid()
+    {
+        return $this->uuid;
+    }
+
+    /**
      * Set isActive
      *
      * @param boolean $isActive
@@ -267,6 +356,71 @@ class Pdvhasproduct
     public function getIsActive()
     {
         return $this->isActive;
+    }
+
+
+    /**
+     * Set pointOfSale
+     *
+     * @param \Bundle\PointofsaleBundle\Entity\Pointofsale $pointOfSale
+     *
+     * @return PdvHasProduct
+     */
+    public function setPointOfSale(\Bundle\PointofsaleBundle\Entity\Pointofsale $pointOfSale = null)
+    {
+        $this->pointOfSale = $pointOfSale;
+
+        return $this;
+    }
+
+    /**
+     * Get pointOfSale
+     *
+     * @return \Bundle\PointofsaleBundle\Entity\Pointofsale
+     */
+    public function getPointOfSale()
+    {
+        return $this->pointOfSale;
+    }
+
+    /**
+     * Set product
+     *
+     * @param \Bundle\ProductBundle\Entity\Product $product
+     *
+     * @return PdvHasProduct
+     */
+    public function setProduct(\Bundle\ProductBundle\Entity\Product $product = null)
+    {
+        $this->product = $product;
+
+        return $this;
+    }
+
+    /**
+     * Get product
+     *
+     * @return \Bundle\ProductBundle\Entity\Product
+     */
+    public function getProduct()
+    {
+        return $this->product;
+    }
+
+    /**
+     * @return \Bundle\UserBundle\Entity\User
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param \Bundle\UserBundle\Entity\User $user
+     */
+    public function setUser(\Bundle\UserBundle\Entity\User $user): void
+    {
+        $this->user = $user;
     }
 }
 

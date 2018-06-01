@@ -17,21 +17,21 @@ class Pointofsale
     /**
      * @var integer
      *
-     * @JMSS\Groups({"api"})
+     * @JMSS\Groups({"api", "crud"})
      */
     private $id;
 
     /**
      * @var string
      *
-     * @JMSS\Groups({"api"})
+     * @JMSS\Groups({"api", "crud"})
      */
     private $code;
 
     /**
      * @var string
      *
-     * @JMSS\Groups({"api"})
+     * @JMSS\Groups({"api", "crud"})
      */
     private $name;
 
@@ -44,14 +44,14 @@ class Pointofsale
     /**
      * @var string
      *
-     * @JMSS\Groups({"api"})
+     * @JMSS\Groups({"api", "crud"})
      */
     private $latitude;
 
     /**
      * @var string
      *
-     * @JMSS\Groups({"api"})
+     * @JMSS\Groups({"api", "crud"})
      */
     private $longitude;
 
@@ -60,6 +60,19 @@ class Pointofsale
      *
      */
     private $description;
+
+    /**
+     * @var string
+     *
+     * @JMSS\Groups({"crud"})
+     */
+    private $address;
+
+    /**
+     * @var string
+     *
+     */
+    private $phone;
 
     /**
      * @var \DateTime
@@ -272,6 +285,38 @@ class Pointofsale
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * @param string $address
+     */
+    public function setAddress(string $address): void
+    {
+        $this->address = $address;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * @param string $phone
+     */
+    public function setPhone(string $phone): void
+    {
+        $this->phone = $phone;
     }
 
     /**

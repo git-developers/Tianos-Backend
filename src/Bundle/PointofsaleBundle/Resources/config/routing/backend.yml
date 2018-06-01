@@ -17,7 +17,7 @@ backend_pointofsale_index:
             grid:
                 icon: map-marker
                 box_class: primary
-                title: Gestionar pointofsale
+                title: Gestionar puntos de ventas
                 data_table:
                     route:
                         info: backend_pointofsale_info
@@ -43,14 +43,12 @@ backend_pointofsale_index:
                           obj: " '<span class=\"badge bg-blue\">' + obj.id + '</span>' "
 #                        - name: code
 #                          obj: obj.code
-#                          options:
-#                              icon: map-marker
-                        - name: Name
+                        - name: Nombre
                           obj: obj.name
-                        - name: Latitude
-                          obj: obj.latitude
-                        - name: Longitude
-                          obj: obj.longitude
+                        - name: Coordenadas
+                          obj: " '<span class=\"badge bg-green\">' + obj.latitude + ' :: ' + obj.longitude + '</span>' "
+                          options:
+                              icon: map-marker
 #                        - name: slug
 #                          obj: obj.slug
                         - name: Creado

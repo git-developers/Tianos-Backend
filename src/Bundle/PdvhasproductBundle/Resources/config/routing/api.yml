@@ -1,19 +1,39 @@
-api_pdvhasproduct_index:
-    path: /
-    methods: [GET]
+api_pdvhasproduct_create:
+    path: /create
+    methods: [POST]
     defaults:
-        _controller: tianos.api.controller.pdvhasproduct:indexAction
+        _controller: tianos.api.controller.pdvhasproduct:createAction
         _tianos:
-            section: admin
-            permission: true
-            grid: sylius_admin_pdvhasproduct
-            template: PdvhasproductBundle:Pdvhasproduct:index.html.twig
-            vars:
-                subheader: sylius.ui.manage_your_product_catalog
-                icon: cube
+            action: create
+#            template: VisitBundle:VisitApi/Form:form.html.twig
+            entity: Bundle\PdvhasproductBundle\Entity\Pdvhasproduct
             form:
                 type: Bundle\PdvhasproductBundle\Form\Type\PdvhasproductType
             repository:
                 service: tianos.repository.pdvhasproduct
-                method: findAll
+                method: create
                 arguments: [$pdvhasproductId]
+            vars:
+                serialize_group_name: crud
+
+
+#
+#api_pdvhasproduct_index:
+#    path: /
+#    methods: [GET]
+#    defaults:
+#        _controller: tianos.api.controller.pdvhasproduct:indexAction
+#        _tianos:
+#            section: admin
+#            permission: true
+#            grid: sylius_admin_pdvhasproduct
+#            template: PdvhasproductBundle:Pdvhasproduct:index.html.twig
+#            vars:
+#                subheader: sylius.ui.manage_your_product_catalog
+#                icon: cube
+#            form:
+#                type: Bundle\PdvhasproductBundle\Form\Type\PdvhasproductType
+#            repository:
+#                service: tianos.repository.pdvhasproduct
+#                method: findAll
+#                arguments: [$pdvhasproductId]

@@ -32,13 +32,29 @@ class UserRepository extends EntityRepository implements UserRepositoryInterface
      */
     public function findAll(): array
     {
-        return $this->createQueryBuilder('o')
-            ->select('o.id, o.username, o.email, o.name, o.lastName, o.createdAt')
-            ->andWhere('o.enabled = :active')
-            ->setParameter('active', 1)
-            ->getQuery()
-            ->getResult()
-            ;
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT user_, profile
+            FROM UserBundle:User user_
+            INNER JOIN user_.profile profile
+            WHERE
+            user_.enabled = :active
+            ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+
+        return $query->getResult();
+
+
+
+//        return $this->createQueryBuilder('o')
+//            ->select('o.id, o.username, o.email, o.name, o.lastName, o.createdAt')
+//            ->andWhere('o.enabled = :active')
+//            ->setParameter('active', 1)
+//            ->getQuery()
+//            ->getResult()
+//            ;
     }
 
 

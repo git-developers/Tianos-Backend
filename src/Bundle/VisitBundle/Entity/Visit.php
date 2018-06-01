@@ -18,7 +18,7 @@ class Visit
     /**
      * @var integer
      *
-     * @JMSS\Groups({"crud"})
+     * @JMSS\Groups({"crud", "api"})
      */
     private $id;
 
@@ -28,6 +28,7 @@ class Visit
      * @Assert\DateTime()
      *
      * @JMSS\Groups({"crud"})
+     * @JMSS\Type("DateTime<'Y-m-d H:i'>")
      */
     private $visitStart;
 
@@ -44,6 +45,7 @@ class Visit
      * @var \DateTime
      *
      * @JMSS\Groups({"crud"})
+     * @JMSS\Type("DateTime<'Y-m-d H:i'>")
      */
     private $createdAt;
 
@@ -79,6 +81,8 @@ class Visit
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="point_of_sale_id", referencedColumnName="id", unique=true)
      * })
+     *
+     * @JMSS\Groups({"crud"})
      */
     private $pointOfSale;
 
@@ -89,6 +93,8 @@ class Visit
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="user_id", referencedColumnName="id", unique=true)
      * })
+     *
+     * @JMSS\Groups({"crud"})
      */
     private $user;
 
