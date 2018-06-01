@@ -73,15 +73,16 @@ class ApiController extends BaseController
 
             $this->persist($pdvhasproductObject);
 //            $saveEntity[] = $this->getSerializeDecode($pdvhasproductObject, $vars['serialize_group_name']);
-            $saveEntity[]['id_backend'] = $pdvhasproductObject->getId();
+            $saveEntity[$key]['uuid'] = $pdvHasProduct['uuid'];
+            $saveEntity[$key]['id_backend'] = $pdvhasproductObject->getId();
         }
 
         $status = self::STATUS_SUCCESS;
 
         return $this->json([
-            'status' => $status,
-            'errors' => [],
-            'entity' => $saveEntity,
+//            'status' => $status,
+//            'errors' => [],
+            'pdvHasProduct' => $saveEntity,
         ]);
     }
 
