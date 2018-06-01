@@ -73,6 +73,7 @@ class ApiController extends BaseController
 
             $this->persist($visitObject);
 //            $saveEntity[] = $this->getSerializeDecode($visitObject, $vars['serialize_group_name']);
+            $saveEntity[]['uuid'] = $visit['uuid'];
             $saveEntity[]['id_backend'] = $visitObject->getId();
         }
 
@@ -121,16 +122,17 @@ class ApiController extends BaseController
             }
 
             $this->persist($visitObject);
-//            $saveEntity[] = $this->getSerializeDecode($visitObject, $vars['serialize_group_name']);
+            $saveEntity[]['uuid'] = $visit['uuid'];
             $saveEntity[]['id_backend'] = $visitObject->getId();
+//            $saveEntity[] = $this->getSerializeDecode($visitObject, $vars['serialize_group_name']);
         }
 
 
         $status = self::STATUS_SUCCESS;
 
         return $this->json([
-            'status' => $status,
-            'errors' => [],
+//            'status' => $status,
+//            'errors' => [],
             'visits' => $saveEntity,
         ]);
     }
