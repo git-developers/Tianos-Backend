@@ -73,8 +73,8 @@ class ApiController extends BaseController
 
             $this->persist($visitObject);
 //            $saveEntity[] = $this->getSerializeDecode($visitObject, $vars['serialize_group_name']);
-            $saveEntity[]['uuid'] = $visit['uuid'];
-            $saveEntity[]['id_backend'] = $visitObject->getId();
+            $saveEntity[$key]['uuid'] = $visit['uuid'];
+            $saveEntity[$key]['id_backend'] = $visitObject->getId();
         }
 
         $status = self::STATUS_SUCCESS;
@@ -122,8 +122,8 @@ class ApiController extends BaseController
             }
 
             $this->persist($visitObject);
-            $saveEntity[]['uuid'] = $visit['uuid'];
-            $saveEntity[]['id_backend'] = $visitObject->getId();
+            $saveEntity[$key]['uuid'] = $visit['uuid'];
+            $saveEntity[$key]['id_backend'] = $visitObject->getId();
 //            $saveEntity[] = $this->getSerializeDecode($visitObject, $vars['serialize_group_name']);
         }
 
