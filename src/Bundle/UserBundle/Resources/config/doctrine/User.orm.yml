@@ -18,9 +18,9 @@ Bundle\UserBundle\Entity\User:
         username_UNIQUE:
             columns:
                 - username
-        dni_UNIQUE:
-            columns:
-                - dni
+#        dni_UNIQUE:
+#            columns:
+#                - dni
     id:
         id:
             type: integer
@@ -62,12 +62,12 @@ Bundle\UserBundle\Entity\User:
 #            length: 45
 #            options:
 #                fixed: false
-        dni:
-            type: string
-            nullable: true
-            length: 8
-            options:
-                fixed: false
+#        dni:
+#            type: string
+#            nullable: true
+#            length: 8
+#            options:
+#                fixed: false
         name:
             type: string
             nullable: false

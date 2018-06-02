@@ -226,7 +226,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setPassword('1q2w3e4r');
         $entity->setName('Javier');
         $entity->setLastName('Palomares');
-        $entity->setEmail('jpique@' . $this->applicationUrl);
+        $entity->setEmail('jpalomares@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileTransportista);
         $entity->setEnabled(true);
@@ -482,9 +482,9 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity = new User();
         $entity->setDni('23748239');
         $entity->setPassword('1q2w3e4r');
-        $entity->setName('Luis');
-        $entity->setLastName('Huamani');
-        $entity->setEmail('xxxxs@' . $this->applicationUrl);
+        $entity->setName('Pedro');
+        $entity->setLastName('Zavaleta');
+        $entity->setEmail('pzavaleta@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileCanillita);
         $entity->setEnabled(true);
@@ -494,8 +494,8 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setDni('22334465');
         $entity->setPassword('1q2w3e4r');
         $entity->setName('Carlos');
-        $entity->setLastName('Maldonado');
-        $entity->setEmail('gregfdv@' . $this->applicationUrl);
+        $entity->setLastName('Gonzales');
+        $entity->setEmail('cgonzales@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileCanillita);
         $entity->setEnabled(true);
@@ -505,8 +505,8 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setDni('45887766');
         $entity->setPassword('1q2w3e4r');
         $entity->setName('Hector');
-        $entity->setLastName('Ruiz');
-        $entity->setEmail('dfgdfg@' . $this->applicationUrl);
+        $entity->setLastName('Galvan');
+        $entity->setEmail('hgalvan@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileCanillita);
         $entity->setEnabled(true);
@@ -516,8 +516,8 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setDni('74645332');
         $entity->setPassword('1q2w3e4r');
         $entity->setName('Jorge');
-        $entity->setLastName('Linares');
-        $entity->setEmail('cdcd@' . $this->applicationUrl);
+        $entity->setLastName('Castaña');
+        $entity->setEmail('jcastaña@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileCanillita);
         $entity->setEnabled(true);

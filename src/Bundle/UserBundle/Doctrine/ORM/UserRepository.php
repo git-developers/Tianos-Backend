@@ -11,6 +11,23 @@ use Component\User\Repository\UserRepositoryInterface;
 class UserRepository extends EntityRepository implements UserRepositoryInterface
 {
 
+    /**
+     * {@inheritdoc}
+     */
+    public function findAllOffsetLimit($offset = 0, $limit = 50): array
+    {
+        $qb = $this->createQueryBuilder('o')
+            ->select('o.id, o.name, o.createdAt')
+            ->andWhere('o.enabled = :active')
+            ->setParameter('active', 1)
+            ->getQuery()
+        ;
+
+        $qb->setFirstResult($offset);
+        $qb->setMaxResults($limit);
+
+        return $qb->getResult();
+    }
 
     public function findAllObjects()
     {

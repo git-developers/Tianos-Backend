@@ -334,14 +334,15 @@ class Builder implements ContainerAwareInterface
                 'class' => 'treeview-menu',
             ],
         ])
-            ->setAttribute('allow_angle', true)
-            ->setAttribute('class', 'treeview')
-            ->setAttribute('class', $this->activeRoute([
-                'backend_associative_profile_has_role_index',
-                'backend_associative_category_has_product_index',
-            ]))
-            ->setAttribute('icon', 'fa-fw fa-exchange')
-            ->setDisplay($isGranted)
+        ->setAttribute('allow_angle', true)
+        ->setAttribute('class', 'treeview')
+        ->setAttribute('class', $this->activeRoute([
+            'backend_associative_profile_has_role_index',
+            'backend_associative_category_has_product_index',
+            'backend_associative_pointofsale_has_user_index',
+        ]))
+        ->setAttribute('icon', 'fa-fw fa-exchange')
+        ->setDisplay($isGranted)
         ;
 
         $menu['Asociación']->addChild('Perfil <i class="fa fa-fw fa-arrow-right"></i> Rol', [
@@ -351,9 +352,9 @@ class Builder implements ContainerAwareInterface
                 'class' => 'treeview-menu',
             ],
         ])
-            ->setAttribute('icon', self::CIRCLE_1_YELLOW)
-            ->setAttribute('class', $this->activeRoute('backend_associative_profile_has_role_index'))
-            ->setDisplay($isGranted)
+        ->setAttribute('icon', self::CIRCLE_1_YELLOW)
+        ->setAttribute('class', $this->activeRoute('backend_associative_profile_has_role_index'))
+        ->setDisplay($isGranted)
         ;
 
         $menu['Asociación']->addChild('Categoría <i class="fa fa-fw fa-arrow-right"></i> Producto', [
@@ -363,9 +364,21 @@ class Builder implements ContainerAwareInterface
                 'class' => 'treeview-menu',
             ],
         ])
-            ->setAttribute('icon', self::CIRCLE_2_AQUA)
-            ->setAttribute('class', $this->activeRoute('backend_associative_category_has_product_index'))
-            ->setDisplay($isGranted)
+        ->setAttribute('icon', self::CIRCLE_2_AQUA)
+        ->setAttribute('class', $this->activeRoute('backend_associative_category_has_product_index'))
+        ->setDisplay($isGranted)
+        ;
+
+        $menu['Asociación']->addChild('Punto de venta <i class="fa fa-fw fa-arrow-right"></i> Canillita', [
+            'route' => 'backend_associative_pointofsale_has_user_index',
+            'extras' => ['safe_label' => true],
+            'childrenAttributes' => [
+                'class' => 'treeview-menu',
+            ],
+        ])
+        ->setAttribute('icon', self::CIRCLE_3_BLUE)
+        ->setAttribute('class', $this->activeRoute('backend_associative_pointofsale_has_user_index'))
+        ->setDisplay($isGranted)
         ;
         /**
          * ASSOCIATION

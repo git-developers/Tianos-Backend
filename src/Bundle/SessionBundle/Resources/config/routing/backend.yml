@@ -17,7 +17,7 @@ backend_session_index:
             grid:
                 icon: history
                 box_class: primary
-                title: "Gestionar sesión al End-user <i class=\"fa fa-fw fa-mobile-phone\"></i>"
+                title: "Lista de sesión al End-user <i class=\"fa fa-fw fa-mobile-phone\"></i>"
                 data_table:
                     route:
                         info: backend_session_info

@@ -10,6 +10,24 @@ use Component\Pointofsale\Repository\PointofsaleRepositoryInterface;
 class PointofsaleRepository extends TianosEntityRepository implements PointofsaleRepositoryInterface
 {
 
+    /**
+     * {@inheritdoc}
+     */
+    public function findAllOffsetLimit($offset = 0, $limit = 50): array
+    {
+        $qb = $this->createQueryBuilder('o')
+            ->select('o.id, o.code, o.name, o.createdAt')
+            ->andWhere('o.isActive = :active')
+            ->setParameter('active', 1)
+            ->getQuery()
+        ;
+
+        $qb->setFirstResult($offset);
+        $qb->setMaxResults($limit);
+
+        return $qb->getResult();
+    }
+
     public function findAllObjects()
     {
         return $this->createQueryBuilder('a')

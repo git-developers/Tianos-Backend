@@ -10,25 +10,6 @@ use Component\Client\Repository\ClientRepositoryInterface;
 class ClientRepository extends TianosEntityRepository implements ClientRepositoryInterface
 {
 
-//    /**
-//     * {@inheritdoc}
-//     */
-//    public function find($id)
-//    {
-//        return $this->createQueryBuilder('o')
-//            ->select('o.id, o.code, o.name, o.createdAt')
-//            ->innerJoin('o.translations', 'translation',
-//                'WITH',
-//                'translation.locale = :locale')
-//            ->andWhere('o.isActive = :active')
-//            ->andWhere('o.id = :id')
-//            ->setParameter('active', 1)
-//            ->setParameter('id', $id)
-//            ->getQuery()
-//            ->getResult()
-//            ;
-//    }
-
     /**
      * {@inheritdoc}
      */
@@ -55,13 +36,26 @@ class ClientRepository extends TianosEntityRepository implements ClientRepositor
      */
     public function findAll(): array
     {
-        return $this->createQueryBuilder('o')
-            ->select('o.id, o.code, o.name, o.createdAt')
-            ->andWhere('o.isActive = :active')
-            ->setParameter('active', 1)
-            ->getQuery()
-            ->getResult()
-            ;
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT client
+            FROM ClientBundle:Client client
+            WHERE
+            client.isActive = :active
+            ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+
+        return $query->getResult();
+
+//        return $this->createQueryBuilder('o')
+//            ->select('o.id, o.code, o.name, o.createdAt')
+//            ->andWhere('o.isActive = :active')
+//            ->setParameter('active', 1)
+//            ->getQuery()
+//            ->getResult()
+//            ;
     }
 
     /**

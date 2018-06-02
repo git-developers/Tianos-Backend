@@ -21,7 +21,7 @@ backend_associative_category_has_product_index:
                     title: Category has Product
                     route_info: backend_associative_category_has_product_info
                 box_left:
-                    icon: user-secret
+                    icon: sitemap
                     class: primary
                     id: box-left-id
                     title: Category
@@ -39,7 +39,7 @@ backend_associative_category_has_product_index:
                         child_ul: box-child-ul
                         li_span: li-span
                 box_right:
-                    icon: expeditedssl
+                    icon: cube
                     class: primary
                     id: box-right-id
                     title: Product

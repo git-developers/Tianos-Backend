@@ -41,16 +41,16 @@ backend_category_index:
                     columns:
                         - name: '#'
                           obj: " '<span class=\"badge bg-blue\">' + obj.id + '</span>' "
-#                        - name: code
-#                          obj: obj.code
-#                          options:
-#                              icon: map-marker
+                        - name: code
+                          obj: obj.code
+                          options:
+                              icon: qrcode
                         - name: Name
                           obj: obj.name
 #                        - name: slug
 #                          obj: obj.slug
                         - name: Creado
-                          obj: obj.createdAt
+                          obj: obj.created_at
                           options:
                               icon: calendar
             form:

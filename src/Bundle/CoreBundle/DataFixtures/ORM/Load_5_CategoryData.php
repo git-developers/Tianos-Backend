@@ -23,13 +23,13 @@ class Load_5_CategoryData extends AbstractFixture implements OrderedFixtureInter
     {
 
         $entity = new Category();
-        $entity->setCode('111');
+        $entity->setCode('prensmart-1112');
         $entity->setName('Marca PrenSmart');
         $entity->setSlug('marca-prensmart');
         $manager->persist($entity);
 
         $entity = new Category();
-        $entity->setCode('222');
+        $entity->setCode('elcomercio-1113');
         $entity->setName('Marca El Comercio');
         $entity->setSlug('marca-el-comercio');
         $manager->persist($entity);

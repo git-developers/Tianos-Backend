@@ -152,21 +152,21 @@ class UserType extends AbstractType
 //                'data_class' => null,
 //                'error_bubbling' => true
 //            ])
-            ->add('dni', TextType::class, [
-                'label' => 'Dni',
-                'label_attr' => [
-                    'class' => ''
-                ],
-                'attr' => [
-                    'class' => 'form-control',
-                    'placeholder' => 'dni (8 caracteres)',
-                    'pattern'=>'[0-9]{8}',
-                    'maxlength'=>'8',
-                    'minlength'=>'8',
-//                    'form'=>'user-form',
-                ],
-                'error_bubbling' => true
-            ])
+//            ->add('dni', TextType::class, [
+//                'label' => 'Dni',
+//                'label_attr' => [
+//                    'class' => ''
+//                ],
+//                'attr' => [
+//                    'class' => 'form-control',
+//                    'placeholder' => 'dni (8 caracteres)',
+//                    'pattern'=>'[0-9]{8}',
+//                    'maxlength'=>'8',
+//                    'minlength'=>'8',
+////                    'form'=>'user-form',
+//                ],
+//                'error_bubbling' => true
+//            ])
             ->add('name', TextType::class, [
                 'label' =>' Nombres',
                 'label_attr' => [

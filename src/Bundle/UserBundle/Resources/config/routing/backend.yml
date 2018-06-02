@@ -47,8 +47,8 @@ backend_user_index:
                           obj: " '<span class=\"badge bg-green\">' + obj.username + '</span>' "
                         - name: Email
                           obj: obj.email
-#                          options:
-#                              icon: map-marker
+                          options:
+                              icon: envelope-o
                         - name: Name
                           obj: " obj.name + ' ' + obj.last_name "
 #                        - name: slug
