@@ -31,7 +31,6 @@ class ApiController extends BaseController
         $objects = $this->get($repository)->$method();
         $objects = $this->getSerializeDecode($objects, $vars['serialize_group_name']);
 
-
         return $this->json([
             'status' => self::STATUS_SUCCESS_API,
             'message' => 'mensaje',

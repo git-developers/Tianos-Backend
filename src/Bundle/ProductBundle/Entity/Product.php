@@ -15,7 +15,7 @@ class Product
     /**
      * @var integer
      *
-     * @JMSS\Groups({"crud", "tree-one-to-many"})
+     * @JMSS\Groups({"api", "crud", "tree-one-to-many"})
      */
     private $id;
 
@@ -27,7 +27,7 @@ class Product
     /**
      * @var string
      *
-     * @JMSS\Groups({"crud", "tree-one-to-many"})
+     * @JMSS\Groups({"api", "crud", "tree-one-to-many"})
      */
     private $name;
 
@@ -39,7 +39,7 @@ class Product
     /**
      * @var \DateTime
      *
-     * @JMSS\Groups({"crud", "tree-one-to-many"})
+     * @JMSS\Groups({"api", "crud", "tree-one-to-many"})
      * @JMSS\Type("DateTime<'Y-m-d H:i'>")
      */
     private $createdAt;
