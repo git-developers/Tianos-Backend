@@ -1,25 +1,28 @@
 {% spaceless %}
+
+    {% set id = entity.id|default('< missing ID >') %}
+
     <span class="{{ boxLeft.tree.li_span }}">
         <span class="badge {{ badge_color }}">
             {{ entity.id }}
         </span>
 
-        <input type="radio" name="{{ boxLeft.li_input_name }}" value="{{ entity.id }}">
+        <input type="radio" name="{{ boxLeft.li_input_name }}" value="{{ id }}">
 
-        <span id="li-span-{{ entity.id }}">
+        <span id="li-span-{{ id }}">
             <span class="label label-default">
                 {{ entity.code }}
             </span>
 
             <span class="text">
-                {{ entity.name }}
+                {{ entity.name_box|default('< missing name_box >') }}
             </span>
         </span>
 
         <div
             class="tools"
             data-toggle="tooltip"
-            data-original-title="Category {{ entity.id }}"
+            data-original-title="Category {{ id }}"
             style="display: none"
         >
             <i

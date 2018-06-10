@@ -15,7 +15,7 @@ class Product
     /**
      * @var integer
      *
-     * @JMSS\Groups({"api", "crud", "tree-one-to-many"})
+     * @JMSS\Groups({"api", "crud", "tree-one-to-many-right", "tree-one-to-many-search-categoryhasproduct"})
      */
     private $id;
 
@@ -27,7 +27,7 @@ class Product
     /**
      * @var string
      *
-     * @JMSS\Groups({"api", "crud", "tree-one-to-many"})
+     * @JMSS\Groups({"api", "crud"})
      */
     private $name;
 
@@ -39,7 +39,7 @@ class Product
     /**
      * @var \DateTime
      *
-     * @JMSS\Groups({"api", "crud", "tree-one-to-many"})
+     * @JMSS\Groups({"api", "crud"})
      * @JMSS\Type("DateTime<'Y-m-d H:i'>")
      */
     private $createdAt;
@@ -64,6 +64,13 @@ class Product
      */
     private $isActive = '1';
 
+    /**
+     * @var string
+     *
+     * @JMSS\Accessor(getter="getNameBox", setter="setNameBox")
+     * @JMSS\Groups({"tree-one-to-many-right"})
+     */
+    private $nameBox;
 
     /**
      * Get id
@@ -265,5 +272,22 @@ class Product
     public function getIsActive()
     {
         return $this->isActive;
+    }
+
+    /**
+     *
+     * @return string
+     */
+    public function getNameBox()
+    {
+        return sprintf('%s', $this->name);
+    }
+
+    /**
+     * @param string $nameBox
+     */
+    public function setNameBox($nameBox)
+    {
+        $this->nameBox = $nameBox;
     }
 }

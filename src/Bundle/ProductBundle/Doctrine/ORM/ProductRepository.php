@@ -17,19 +17,22 @@ class ProductRepository extends TianosEntityRepository
      */
     public function searchBoxRight($q, $offset = 0, $limit = 50): array
     {
-        $qb = $this->createQueryBuilder('o')
-            ->select('o.id, o.code, o.name, o.createdAt')
-            ->andWhere('o.isActive = :active')
-            ->andWhere('o.name LIKE :q')
-            ->setParameter('active', 1)
-            ->setParameter('q', '%' . $q . '%')
-            ->getQuery()
-        ;
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT product
+            FROM ProductBundle:Product product
+            WHERE
+            product.name LIKE :q AND
+            product.isActive = :active
+            ";
 
-        $qb->setFirstResult($offset);
-        $qb->setMaxResults($limit);
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+        $query->setParameter('q', '%' . $q . '%');
+        $query->setFirstResult($offset);
+        $query->setMaxResults($limit);
 
-        return $qb->getResult();
+        return $query->getResult();
     }
 
     /**
@@ -37,17 +40,20 @@ class ProductRepository extends TianosEntityRepository
      */
     public function findAllOffsetLimit($offset = 0, $limit = 50): array
     {
-        $qb = $this->createQueryBuilder('o')
-            ->select('o.id, o.code, o.name, o.createdAt')
-            ->andWhere('o.isActive = :active')
-            ->setParameter('active', 1)
-            ->getQuery()
-        ;
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT product
+            FROM ProductBundle:Product product
+            WHERE
+            product.isActive = :active
+            ";
 
-        $qb->setFirstResult($offset);
-        $qb->setMaxResults($limit);
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+        $query->setFirstResult($offset);
+        $query->setMaxResults($limit);
 
-        return $qb->getResult();
+        return $query->getResult();
     }
 
     /**

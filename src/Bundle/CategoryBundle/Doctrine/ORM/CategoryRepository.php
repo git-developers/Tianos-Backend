@@ -12,18 +12,6 @@ class CategoryRepository extends TianosEntityRepository
     implements CategoryRepositoryInterface, TreeOneToManyLeftRepositoryInterface
 {
 
-//    /**
-//     * {@inheritdoc}
-//     */
-//    public function deleteAssociativeTableById($id): bool
-//    {
-//        $em = $this->getEntityManager();
-//        $statement = $em->getConnection()->prepare('DELETE FROM category_has_product WHERE category_id = :id;');
-//        $statement->bindValue('id', $id);
-//
-//        return $statement->execute();
-//    }
-
     /**
      * {@inheritdoc}
      */
@@ -115,22 +103,6 @@ class CategoryRepository extends TianosEntityRepository
     /**
      * {@inheritdoc}
      */
-//    public function find($id)
-//    {
-//        return $this->createQueryBuilder('o')
-//            ->select('o.id, o.code, o.name, o.createdAt')
-//            ->andWhere('o.isActive = :active')
-//            ->andWhere('o.id = :id')
-//            ->setParameter('active', 1)
-//            ->setParameter('id', $id)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//            ;
-//    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function findAllObjects()
     {
         return $this->createQueryBuilder('o')
@@ -187,5 +159,28 @@ class CategoryRepository extends TianosEntityRepository
             ->getQuery()
             ->getResult()
         ;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function searchBoxLeft($q, $offset = 0, $limit = 50): array
+    {
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT category
+            FROM CategoryBundle:Category category
+            WHERE
+            category.name LIKE :q AND
+            category.isActive = :active
+            ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+        $query->setParameter('q', '%' . $q . '%');
+        $query->setFirstResult($offset);
+        $query->setMaxResults($limit);
+
+        return $query->getResult();
     }
 }
