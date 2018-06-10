@@ -50,7 +50,7 @@ backend_DUMMY_LOWER_index:
 #                        - name: slug
 #                          obj: obj.slug
                         - name: Creado
-                          obj: obj.createdAt
+                          obj: obj.created_at
                           options:
                               icon: calendar
             form:

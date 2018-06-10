@@ -18,6 +18,8 @@ backend_groupofusers_index:
                 icon: users
                 box_class: primary
                 title: Gestionar grupo de usuarios
+                modal:
+                    title: Crear grupo de usuario
                 data_table:
                     route:
                         info: backend_groupofusers_info

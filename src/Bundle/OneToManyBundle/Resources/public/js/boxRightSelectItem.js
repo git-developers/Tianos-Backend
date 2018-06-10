@@ -49,11 +49,11 @@
             /* ****CHECKBOX TOOGLE **** */
             var checkboxRight = $(context).find('input[type=checkbox]');
 
-            if(checkboxRight.is(':checked')){
-                checkboxRight.prop('checked', false);
-            }else{
-                checkboxRight.prop('checked', true);
-            }
+            // if(checkboxRight.is(':checked')){
+            //     checkboxRight.prop('checked', false);
+            // }else{
+            //     checkboxRight.prop('checked', true);
+            // }
             /* ****CHECKBOX TOOGLE **** */
 
 

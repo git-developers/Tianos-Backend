@@ -418,6 +418,28 @@ class RequestConfiguration
         return is_array($repository) ? $repository['box_left']['method'] : $repository;
     }
 
+    public function getAddEntityLeft()
+    {
+        if (!$this->parameters->has('repository')) {
+            return null;
+        }
+
+        $repository = $this->parameters->get('repository');
+
+        return is_array($repository) ? $repository['box_left']['add_entity'] : $repository;
+    }
+
+    public function getRemoveEntityLeft()
+    {
+        if (!$this->parameters->has('repository')) {
+            return null;
+        }
+
+        $repository = $this->parameters->get('repository');
+
+        return is_array($repository) ? $repository['box_left']['remove_entity'] : $repository;
+    }
+
     public function getRepositoryMethodDeleteAssociativeLeft()
     {
         if (!$this->parameters->has('repository')) {

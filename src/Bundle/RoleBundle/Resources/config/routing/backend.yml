@@ -18,6 +18,8 @@ backend_role_index:
                 icon: expeditedssl
                 box_class: primary
                 title: Gestionar roles
+                modal:
+                    title: Crear rol
                 data_table:
                     route:
                         info: backend_role_info
@@ -50,7 +52,7 @@ backend_role_index:
 #                        - name: slug
 #                          obj: obj.slug
                         - name: Creado
-                          obj: obj.createdAt
+                          obj: obj.created_at
                           options:
                               icon: calendar
             form:

@@ -49,6 +49,6 @@ backend_pdvhasproduct:
 backend_visit:
     resource: '@VisitBundle/Resources/config/routing/backend.yml'
     prefix: /visit
-backend_pdvhasproduct:
-    resource: '@PdvhasproductBundle/Resources/config/routing/backend.yml'
-    prefix: /pdvhasproduct
+backend_route:
+    resource: '@RouteBundle/Resources/config/routing/backend.yml'
+    prefix: /route

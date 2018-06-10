@@ -4,7 +4,7 @@ Bundle\PdvhasproductBundle\Entity\Pdvhasproduct:
     type: entity
 #    type: mappedSuperclass
 #    mappedSuperclass: Component\CRUDDUMMY\Model\CRUDDUMMY
-    table: pdv_has_product
+    table: point_of_sale_has_product
     repositoryClass: Bundle\PdvhasproductBundle\Doctrine\ORM\PdvhasproductRepository
     indexes:
         fk_pdv_has_product_product1_idx:

@@ -7,8 +7,10 @@ namespace Bundle\UserBundle\Doctrine\ORM;
 use Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 use Component\User\Model\UserInterface;
 use Component\User\Repository\UserRepositoryInterface;
+use Component\OneToMany\Repository\OneToManyLeftRepositoryInterface;
 
-class UserRepository extends EntityRepository implements UserRepositoryInterface
+class UserRepository extends EntityRepository
+    implements UserRepositoryInterface
 {
 
     /**
@@ -16,17 +18,20 @@ class UserRepository extends EntityRepository implements UserRepositoryInterface
      */
     public function findAllOffsetLimit($offset = 0, $limit = 50): array
     {
-        $qb = $this->createQueryBuilder('o')
-            ->select('o.id, o.name, o.createdAt')
-            ->andWhere('o.enabled = :active')
-            ->setParameter('active', 1)
-            ->getQuery()
-        ;
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT user_
+            FROM UserBundle:User user_
+            WHERE
+            user_.enabled = :active
+            ";
 
-        $qb->setFirstResult($offset);
-        $qb->setMaxResults($limit);
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+        $query->setFirstResult($offset);
+        $query->setMaxResults($limit);
 
-        return $qb->getResult();
+        return $query->getResult();
     }
 
     public function findAllObjects()
@@ -37,11 +42,6 @@ class UserRepository extends EntityRepository implements UserRepositoryInterface
             ->orderBy('a.id', 'ASC')
             ->setParameter('active', true)
             ;
-
-//        echo "POLLO:: <pre>";
-//        print_r($eeee->getDQL());
-//        exit;
-
     }
 
     /**
@@ -62,16 +62,6 @@ class UserRepository extends EntityRepository implements UserRepositoryInterface
         $query->setParameter('active', 1);
 
         return $query->getResult();
-
-
-
-//        return $this->createQueryBuilder('o')
-//            ->select('o.id, o.username, o.email, o.name, o.lastName, o.createdAt')
-//            ->andWhere('o.enabled = :active')
-//            ->setParameter('active', 1)
-//            ->getQuery()
-//            ->getResult()
-//            ;
     }
 
 
@@ -110,5 +100,94 @@ class UserRepository extends EntityRepository implements UserRepositoryInterface
                 ->setParameter('username', $username)
                 ->getOneOrNullResult()
         ;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function oneToManyLeft($leftValue)
+    {
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT user_
+            FROM UserBundle:User user_
+            WHERE
+            user_.id = :id AND
+            user_.enabled = :active
+            ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+        $query->setParameter('id', $leftValue);
+
+        return $query->getOneOrNullResult();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function searchBoxRight($q, $offset = 0, $limit = 50): array
+    {
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT user_
+            FROM UserBundle:User user_
+            WHERE
+            ( user_.name LIKE :q OR user_.lastName LIKE :q ) AND
+            user_.enabled = :active
+            ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+        $query->setParameter('q', '%' . $q . '%');
+        $query->setFirstResult($offset);
+        $query->setMaxResults($limit);
+
+        return $query->getResult();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function searchBoxLeft($q, $offset = 0, $limit = 50): array
+    {
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT user_
+            FROM UserBundle:User user_
+            WHERE
+            ( user_.name LIKE :q OR user_.lastName LIKE :q ) AND
+            user_.enabled = :active
+            ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+        $query->setParameter('q', '%' . $q . '%');
+        $query->setFirstResult($offset);
+        $query->setMaxResults($limit);
+
+        return $query->getResult();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function deleteAssociativeTableById($id): bool
+    {
+//        return $em->getConnection()
+//            ->prepare('DELETE FROM profile_has_role WHERE profile_id = :id;')
+//            ->bindValue('id', $id)
+//            ->execute()
+//            ;
+
+        $em = $this->getEntityManager();
+        $sql = "DELETE FROM user_has_route WHERE user_id = :id;";
+        $params = array('id' => $id);
+
+        $stmt = $em->getConnection()->prepare($sql);
+        $stmt->execute($params);
+
+        // puesto provisional
+        return true;
     }
 }

@@ -22,3 +22,4 @@ imports:
     - { resource: '@TreeOneToManyBundle/Resources/config/services.yml' }
     - { resource: '@VisitBundle/Resources/config/services.yml' }
     - { resource: '@PdvhasproductBundle/Resources/config/services.yml' }
+    - { resource: '@RouteBundle/Resources/config/services.yml' }

@@ -18,21 +18,21 @@ class Profile
     /**
      * @var integer
      *
-     * @JMSS\Groups({"crud", "login", "one-to-many"})
+     * @JMSS\Groups({"crud", "login", "one-to-many-left"})
      */
     private $id;
 
     /**
      * @var string
      *
-     * @JMSS\Groups({"crud", "login", "one-to-many"})
+     * @JMSS\Groups({"crud", "login", "one-to-many-left"})
      */
     private $code;
 
     /**
      * @var string
      *
-     * @JMSS\Groups({"crud", "login", "one-to-many"})
+     * @JMSS\Groups({"crud", "login", "one-to-many-left"})
      */
     private $name;
 
@@ -44,7 +44,7 @@ class Profile
     /**
      * @var \DateTime
      *
-     * @JMSS\Groups({"crud", "one-to-many"})
+     * @JMSS\Groups({"crud"})
      * @JMSS\Type("DateTime<'Y-m-d H:i'>")
      */
     private $createdAt;
@@ -82,7 +82,7 @@ class Profile
      *   }
      * )
      *
-     * @JMSS\Groups({"one-to-many", "one-to-many-left", "login"})
+     * @JMSS\Groups({"one-to-many-left-profilehasrole", "one-to-many-search", "login"})
      */
     private $role;
 
@@ -97,6 +97,14 @@ class Profile
      *
      */
     private $collapsedBox;
+
+    /**
+     * @var string
+     *
+     * @JMSS\Accessor(getter="getNameBox", setter="setNameBox")
+     * @JMSS\Groups({"one-to-many-left"})
+     */
+    private $nameBox;
 
     /**
      * Constructor
@@ -376,6 +384,23 @@ class Profile
     public function setCollapsedBox($collapsedBox)
     {
         $this->collapsedBox = $collapsedBox;
+    }
+
+    /**
+     *
+     * @return string
+     */
+    public function getNameBox()
+    {
+        return sprintf('%s', $this->name);
+    }
+
+    /**
+     * @param string $nameBox
+     */
+    public function setNameBox($nameBox)
+    {
+        $this->nameBox = $nameBox;
     }
 }
 

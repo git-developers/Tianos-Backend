@@ -15,21 +15,21 @@ class Role
     /**
      * @var integer
      *
-     * @JMSS\Groups({"crud", "one-to-many", "one-to-many-left", "login"})
+     * @JMSS\Groups({"crud", "login", "one-to-many-left", "one-to-many-right", "one-to-many-left-profilehasrole", "one-to-many-search"})
      */
     private $id;
 
     /**
      * @var string
      *
-     * @JMSS\Groups({"crud", "one-to-many", "login"})
+     * @JMSS\Groups({"crud", "login"})
      */
     private $code;
 
     /**
      * @var string
      *
-     * @JMSS\Groups({"crud", "one-to-many", "login"})
+     * @JMSS\Groups({"crud", "login"})
      */
     private $name;
 
@@ -57,7 +57,7 @@ class Role
     /**
      * @var \DateTime
      *
-     * @JMSS\Groups({"crud", "one-to-many"})
+     * @JMSS\Groups({"crud"})
      * @JMSS\Type("DateTime<'Y-m-d H:i'>")
      */
     private $createdAt;
@@ -87,9 +87,16 @@ class Role
      *
      * @ORM\ManyToMany(targetEntity="Bundle\ProfileBundle\Entity\Profile", mappedBy="role")
      *
-     * @JMSS\Groups({"one-to-many"})
      */
     private $profile;
+
+    /**
+     * @var string
+     *
+     * @JMSS\Accessor(getter="getNameBox", setter="setNameBox")
+     * @JMSS\Groups({"one-to-many-left", "one-to-many-right", "one-to-many-left-profilehasrole"})
+     */
+    private $nameBox;
 
     /**
      * Constructor
@@ -385,6 +392,23 @@ class Role
     public function getProfile()
     {
         return $this->profile;
+    }
+
+    /**
+     *
+     * @return string
+     */
+    public function getNameBox()
+    {
+        return sprintf('%s', $this->name);
+    }
+
+    /**
+     * @param string $nameBox
+     */
+    public function setNameBox($nameBox)
+    {
+        $this->nameBox = $nameBox;
     }
 }
 

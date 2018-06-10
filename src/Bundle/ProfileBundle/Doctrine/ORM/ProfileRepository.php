@@ -8,7 +8,8 @@ use Bundle\CoreBundle\Doctrine\ORM\EntityRepository as TianosEntityRepository;
 use Component\Profile\Repository\ProfileRepositoryInterface;
 use Component\OneToMany\Repository\OneToManyLeftRepositoryInterface;
 
-class ProfileRepository extends TianosEntityRepository implements ProfileRepositoryInterface, OneToManyLeftRepositoryInterface
+class ProfileRepository extends TianosEntityRepository
+    implements ProfileRepositoryInterface, OneToManyLeftRepositoryInterface
 {
 
     /**
@@ -111,19 +112,22 @@ class ProfileRepository extends TianosEntityRepository implements ProfileReposit
      */
     public function searchBoxLeft($q, $offset = 0, $limit = 50): array
     {
-        $qb = $this->createQueryBuilder('o')
-            ->select('o.id, o.code, o.name, o.createdAt')
-            ->andWhere('o.isActive = :active')
-            ->andWhere('o.name LIKE :q')
-            ->setParameter('active', 1)
-            ->setParameter('q', '%' . $q . '%')
-            ->getQuery()
-            ;
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT profile
+            FROM ProfileBundle:Profile profile
+            WHERE
+            profile.name LIKE :q AND
+            profile.isActive = :active
+            ";
 
-        $qb->setFirstResult($offset);
-        $qb->setMaxResults($limit);
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+        $query->setParameter('q', '%' . $q . '%');
+        $query->setFirstResult($offset);
+        $query->setMaxResults($limit);
 
-        return $qb->getResult();
+        return $query->getResult();
     }
 
     /**
@@ -131,17 +135,20 @@ class ProfileRepository extends TianosEntityRepository implements ProfileReposit
      */
     public function findAllOffsetLimit($offset = 0, $limit = 50): array
     {
-        $qb = $this->createQueryBuilder('o')
-            ->select('o.id, o.code, o.name, o.createdAt')
-            ->andWhere('o.isActive = :active')
-            ->setParameter('active', 1)
-            ->getQuery()
-            ;
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT profile
+            FROM ProfileBundle:Profile profile
+            WHERE
+            profile.isActive = :active
+            ";
 
-        $qb->setFirstResult($offset);
-        $qb->setMaxResults($limit);
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+        $query->setFirstResult($offset);
+        $query->setMaxResults($limit);
 
-        return $qb->getResult();
+        return $query->getResult();
     }
 
     /**

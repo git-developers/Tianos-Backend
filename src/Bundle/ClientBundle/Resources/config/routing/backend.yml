@@ -18,6 +18,8 @@ backend_client_index:
                 icon: odnoklassniki
                 box_class: primary
                 title: Gestionar clientes
+                modal:
+                    title: Crear cliente
                 data_table:
                     route:
                         info: backend_client_info

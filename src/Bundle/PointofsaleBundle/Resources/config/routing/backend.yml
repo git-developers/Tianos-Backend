@@ -18,6 +18,8 @@ backend_pointofsale_index:
                 icon: map-marker
                 box_class: primary
                 title: Gestionar puntos de ventas
+                modal:
+                    title: Crear punto de venta
                 data_table:
                     route:
                         info: backend_pointofsale_info

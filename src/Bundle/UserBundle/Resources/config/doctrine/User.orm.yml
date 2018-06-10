@@ -179,4 +179,29 @@ Bundle\UserBundle\Entity\User:
                         name: point_of_sale_id
                         referencedColumnName: id
             orderBy: null
+        pointOfSale2:
+            targetEntity: Bundle\PointofsaleBundle\Entity\Pointofsale
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: user
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+        route:
+            targetEntity: Bundle\RouteBundle\Entity\Route
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: user
+            joinTable:
+                name: user_has_route
+                joinColumns:
+                    -
+                        name: user_id
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    -
+                        name: route_id
+                        referencedColumnName: id
+            orderBy: null
     lifecycleCallbacks: {  }

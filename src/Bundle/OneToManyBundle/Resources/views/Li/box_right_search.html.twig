@@ -1,21 +1,15 @@
 {% spaceless %}
+
     {% for key, entity in objectsRight %}
 
-        {% set id = entity.id|default() %}
+        {% set id = entity.id|default('< missing ID >') %}
 
-{#        {% if boxRightAssignedKeys is defined %}
-            {% set isAssigned = false %}
-
-            {% if idIncrement in boxRightAssignedKeys %}
-                {% set isAssigned = true %}
-            {% endif %}
-        {% endif %}#}
-
-        {% set isAssigned = tianos_onetomany_box_right_is_assigned(oneToManyLeft|default([]), id) %}
+        {% set isAssigned = tianos_onetomany_box_right_is_assigned(oneToManyLeftIds|default([]), id) %}
 
         <li
             class="{{ boxRight.li_class }} x-hand {{ isAssigned ? 'bg-orange' : '' }}"
-            data-id="{{ id }}">
+            data-id="{{ id }}"
+        >
 
             <span class="handle ui-sortable-handle">
                 <i class="fa fa-ellipsis-v"></i>
@@ -38,8 +32,7 @@
             </span>
 
             <span class="text">
-                {#{{ entity.name_box|default() }}#}
-                {{ entity.name }}
+                {{ entity.name_box|default('< missing name_box >') }}
             </span>
 
             <div class="tools">

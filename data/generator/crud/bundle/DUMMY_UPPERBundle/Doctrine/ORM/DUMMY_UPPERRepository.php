@@ -34,31 +34,28 @@ class DUMMY_UPPERRepository extends TianosEntityRepository implements DUMMY_UPPE
     /**
      * {@inheritdoc}
      */
-//    public function find($id)
-//    {
+    public function findAll(): array
+    {
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT DUMMY_LOWER
+            FROM DUMMY_UPPERBundle:DUMMY_UPPER DUMMY_LOWER
+            WHERE
+            DUMMY_LOWER.isActive = :active
+            ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+
+        return $query->getResult();
+
 //        return $this->createQueryBuilder('o')
 //            ->select('o.id, o.code, o.name, o.createdAt')
 //            ->andWhere('o.isActive = :active')
-//            ->andWhere('o.id = :id')
 //            ->setParameter('active', 1)
-//            ->setParameter('id', $id)
 //            ->getQuery()
-//            ->getOneOrNullResult()
+//            ->getResult()
 //            ;
-//    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function findAll(): array
-    {
-        return $this->createQueryBuilder('o')
-            ->select('o.id, o.code, o.name, o.createdAt')
-            ->andWhere('o.isActive = :active')
-            ->setParameter('active', 1)
-            ->getQuery()
-            ->getResult()
-            ;
     }
 
     /**

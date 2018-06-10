@@ -18,6 +18,8 @@ backend_user_index:
                 icon: user
                 box_class: primary
                 title: Gestionar usuarios
+                modal:
+                    title: Crear usuario
                 data_table:
                     route:
                         info: backend_user_info

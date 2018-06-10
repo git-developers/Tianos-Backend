@@ -65,7 +65,6 @@ abstract class BaseController extends Controller
 
         $this->em()->persist($entity);
         $this->em()->flush();
-
     }
 
     protected function remove($entity)

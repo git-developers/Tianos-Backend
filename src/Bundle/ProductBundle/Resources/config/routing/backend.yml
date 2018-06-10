@@ -18,6 +18,8 @@ backend_product_index:
                 icon: cube
                 box_class: primary
                 title: Gestionar productos
+                modal:
+                    title: Crear producto
                 data_table:
                     route:
                         info: backend_product_info

@@ -12,19 +12,18 @@ backend_associative_profile_has_role_index:
                 subheader: sylius.ui.manage_your_profile_catalog
                 icon: cube
                 body_css: one-to-many-body-css
-                serialize_group_name: one-to-many
             one_to_many:
                 box:
                     icon: exchange
                     class: primary
                     form_name: main-form
-                    title: Profile has Role
+                    title: Perfil<i class="fa fa-fw fa-angle-double-right"></i>tiene<i class="fa fa-fw fa-angle-double-right"></i>Roles
                     route_info: backend_associative_profile_has_role_info
                 box_left:
                     icon: user-secret
                     class: primary
                     id: box-left-id
-                    title: Profile
+                    title: Perfil
                     li_class: box-left-li
                     li_badge_class: bg-blue
                     li_input_name: box-lefts-selected-value
@@ -35,7 +34,7 @@ backend_associative_profile_has_role_index:
                     icon: expeditedssl
                     class: primary
                     id: box-right-id
-                    title: Role
+                    title: Rol
                     li_class: box-right-li
                     li_badge_class: bg-orange-active
                     li_input_name: box-right-selected-value
@@ -50,11 +49,15 @@ backend_associative_profile_has_role_index:
                     method: findAllOffsetLimit
                     arguments:
                         limit: 20
+                    vars:
+                        serialize_group_name: one-to-many-left
                 box_right:
                     service: tianos.repository.role
                     method: findAllOffsetLimit
                     arguments:
                         limit: 20
+                    vars:
+                        serialize_group_name: one-to-many-right
 
 backend_associative_profile_has_role_boxleft_search:
     path: /boxleft-search
@@ -64,28 +67,20 @@ backend_associative_profile_has_role_boxleft_search:
         _tianos:
             action: left_search
             template: OneToManyBundle:Li:box_left.html.twig
-            vars:
-                serialize_group_name: one-to-many
             one_to_many:
                 box_left:
-#                    icon: user-secret
-#                    class: primary
-#                    id: box-left-id
-#                    title: profile
                     li_class: box-left-li
                     li_badge_class: bg-blue
                     li_input_name: box-lefts-selected-value
                     search_input_name: search-input-name-left
-#                    route_search: backend_associative_profile_has_role_boxleft_search
             repository:
                 box_left:
                     service: tianos.repository.profile
                     method: searchBoxLeft
                     arguments:
                         limit: 20
-#            entity: Bundle\ProfileBundle\Entity\Profile
-#            form:
-#                type: Bundle\ProfileBundle\Form\Type\ProfileType
+                    vars:
+                        serialize_group_name: one-to-many-left
 
 backend_associative_profile_has_role_boxright_search:
     path: /boxright-search
@@ -94,38 +89,28 @@ backend_associative_profile_has_role_boxright_search:
         _controller: tianos.profilehasrole.controller.associative:boxRightSearchAction
         _tianos:
             action: right_search
-            template: OneToManyBundle:Li:box_right.html.twig
-#            vars:
-#                serialize_group_name: one-to-many
+            template: OneToManyBundle:Li:box_right_search.html.twig
             one_to_many:
                 box_right:
-#                    icon: user-secret
-#                    class: primary
-#                    id: box-right-id
-#                    title: profile
                     li_class: box-right-li
                     li_badge_class: bg-blue
                     li_input_name: box-lefts-selected-value
                     search_input_name: search-input-name-left
-#                    route_search: backend_associative_profile_has_role_boxleft_search
             repository:
                 box_left:
                     service: tianos.repository.profile
                     method: oneToManyLeft
-                    vars:
-                        serialize_group_name: one-to-many-left
                     arguments:
                         limit: 20
+                    vars:
+                        serialize_group_name: one-to-many-search
                 box_right:
                     service: tianos.repository.role
                     method: searchBoxRight
-                    vars:
-                        serialize_group_name: one-to-many
                     arguments:
                         limit: 20
-#            entity: Bundle\ProfileBundle\Entity\Profile
-#            form:
-#                type: Bundle\ProfileBundle\Form\Type\ProfileType
+                    vars:
+                        serialize_group_name: one-to-many-right
 
 backend_associative_profile_has_role_boxright_select_item:
     path: /boxright-select-item
@@ -137,14 +122,12 @@ backend_associative_profile_has_role_boxright_select_item:
                 box_left:
                     service: tianos.repository.profile
                     method: find
+                    add_entity: addRole
+                    remove_entity: removeRole
                     method_delete_associative: deleteAssociativeTableById
                 box_right:
                     service: tianos.repository.role
                     method: find
-#                    arguments:
-#                        limit: 20
-#            action: info
-#            template: ProfileBundle:ProfileBackend/Informative:infoProfileHasRole.html.twig
 
 backend_associative_profile_has_role_boxleft_select_item:
     path: /boxleft-select-item
@@ -152,9 +135,7 @@ backend_associative_profile_has_role_boxleft_select_item:
     defaults:
         _controller: tianos.profilehasrole.controller.associative:boxLeftSelectItemAction
         _tianos:
-            template: OneToManyBundle:Li:box_right.html.twig
-            vars:
-                serialize_group_name: one-to-many
+            template: OneToManyBundle:Li:box_right_select_item.html.twig
             one_to_many:
                 box_right:
                     icon: expeditedssl
@@ -163,23 +144,20 @@ backend_associative_profile_has_role_boxleft_select_item:
                     title: Role
                     entity: role
                     li_class: box-right-li
-                    li_badge_class: bg-orange-active
+                    li_badge_class: bg-blue
                     li_input_name: box-right-selected-value
                     search_input_name: search-input-name-right
-#                    route_search: backend_associative_profile_has_role_boxright_search
-#                    route_select_item: backend_associative_profile_has_role_boxright_select_item
             repository:
                 box_left:
                     service: tianos.repository.profile
                     method: find
-#                    method_delete_associative: deleteAssociativeTableById
+                    vars:
+                        serialize_group_name: one-to-many-left-profilehasrole
                 box_right:
                     service: tianos.repository.role
                     method: find
-#                    arguments:
-#                        limit: 20
-#            action: info
-#            template: ProfileBundle:ProfileBackend/Informative:infoProfileHasRole.html.twig
+                    vars:
+                        serialize_group_name: one-to-many-right
 
 backend_associative_profile_has_role_info:
     path: /info
@@ -189,60 +167,3 @@ backend_associative_profile_has_role_info:
         _tianos:
             action: info
             template: AssociativeBundle:ProfileHasRole/Informative:info.html.twig
-
-
-
-
-
-
-
-
-
-
-
-#backend_profile_has_role_edit:
-#    path: /edit
-#    methods: [PUT, POST]
-#    defaults:
-#        _controller: tianos.profilehasrole.controller.profile:editAction
-#        _tianos:
-#            action: edit
-#            template: ProfileBundle:ProfileBackend/Form:form.html.twig
-#            repository:
-#                service: tianos.repository.profile
-#                method: find
-#                arguments: [$profileId]
-#            form:
-#                type: Bundle\ProfileBundle\Form\Type\ProfileType
-#            vars:
-#                serialize_group_name: crud
-#
-#backend_profile_has_role_delete:
-#    path: /delete
-#    methods: [POST, DELETE]
-#    defaults:
-#        _controller: tianos.profilehasrole.controller.profile:deleteAction
-#        _tianos:
-#            action: delete
-#            template: GridBundle:Template:delete.html.twig
-#            repository:
-#                service: tianos.repository.profile
-#                method: find
-#                arguments: [$profileId]
-#            vars:
-##                body_css: grid-body-css
-#
-#backend_profile_has_role_view:
-#    path: /view
-#    methods: [POST]
-#    defaults:
-#        _controller: tianos.profilehasrole.controller.profile:viewAction
-#        _tianos:
-#            action: view
-#            template: ProfileBundle:ProfileBackend/Informative:view.html.twig
-#            repository:
-#                service: tianos.repository.profile
-#                method: find
-#                arguments: [$profileId]
-
-

@@ -121,7 +121,7 @@ backend_associative_category_has_product_boxright_search:
                     service: tianos.repository.category.has.product
                     method: treeOneToManyLeft
                     vars:
-                        serialize_group_name: tree-one-to-many-left
+                        serialize_group_name: tree-one-to-many-search
                     arguments:
                         limit: 20
                 box_right:
