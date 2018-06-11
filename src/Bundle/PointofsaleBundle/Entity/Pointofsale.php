@@ -17,7 +17,7 @@ class Pointofsale
     /**
      * @var integer
      *
-     * @JMSS\Groups({"api", "crud", "one-to-many-left", "one-to-many-right", "one-to-many-search"})
+     * @JMSS\Groups({"api", "crud", "one-to-many-left", "one-to-many-right", "one-to-many-search", "order-in-left"})
      */
     private $id;
 
@@ -139,7 +139,7 @@ class Pointofsale
      *   }
      * )
      *
-     * @JMSS\Groups({"one-to-many-left", "one-to-many-search-pointofsalehasuser"})
+     * @JMSS\Groups({"one-to-many-left", "one-to-many-search-pointofsalehasuser", "order-in-left-select-item"})
      */
     private $user2;
 
@@ -154,7 +154,7 @@ class Pointofsale
      * @var string
      *
      * @JMSS\Accessor(getter="getNameBox", setter="setNameBox")
-     * @JMSS\Groups({"one-to-many-left", "one-to-many-right"})
+     * @JMSS\Groups({"one-to-many-left", "one-to-many-right", "order-in-left"})
      */
     private $nameBox;
 

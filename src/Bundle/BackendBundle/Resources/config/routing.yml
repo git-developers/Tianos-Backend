@@ -52,3 +52,6 @@ backend_visit:
 backend_route:
     resource: '@RouteBundle/Resources/config/routing/backend.yml'
     prefix: /route
+backend_orderin:
+    resource: '@OrderinBundle/Resources/config/routing/backend.yml'
+    prefix: /orderin

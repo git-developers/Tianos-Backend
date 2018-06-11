@@ -17,7 +17,7 @@
     {% endstylesheets %}
 
     <style>
-        input[type=checkbox] {
+        input[type=checkbox], input[type=radio] {
             height: 16px;
             width: 16px;
         }
@@ -56,31 +56,19 @@
                 routeSearch: '{{ path(boxRight.route_search) }}',
             });
 
+            $('div#{{ boxLeft.id }}').boxLeftSelectItem({
+                boxLeftId: '{{ boxLeft.id }}',
+                boxRightId: '{{ boxRight.id }}',
+                liClass: '{{ boxLeft.li_class }}',
+                routeSelectItem: '{{ path(boxLeft.route_select_item) }}',
+            });
+
             $('div#{{ boxRight.id }}').boxRightSelectItem({
-                {#formName: '{{ box.form_name }}',#}
-                {#box_separator: '{{ box.box_separator }}',#}
                 boxLeftId: '{{ boxLeft.id }}',
                 boxRightId: '{{ boxRight.id }}',
                 boxLeftLiInputName: '{{ boxLeft.li_input_name }}',
                 liClass: '{{ boxRight.li_class }}',
                 routeSelectItem: '{{ path(boxRight.route_select_item) }}',
-                {#box_li_class: '{{ boxRight.box_li_class }}',#}
-                {#box_value_hidden: '{{ boxRight.box_value_hidden }}',#}
-
-                {#action: {#}
-                    {#create:'{{ box.action_create }}',#}
-                    {#delete:'{{ box.action_delete }}'#}
-                {#},#}
-            });
-
-            $('div#{{ boxLeft.id }}').boxLeftSelectItem({
-                {#form_name: '{{ box.form_name }}',#}
-                boxLeftId: '{{ boxLeft.id }}',
-                boxRightId: '{{ boxRight.id }}',
-                liClass: '{{ boxLeft.li_class }}',
-                {#box_li_id: '{{ boxLeft.box_li_id }}',#}
-                {#box_li_class: '{{ boxLeft.box_li_class }}',#}
-                routeSelectItem: '{{ path(boxLeft.route_select_item) }}',
             });
 
             $('body.{{ vars.body_css }}').boxInfo({
@@ -245,8 +233,7 @@
                         </div>
                         <div class="box-body">
                             <ul class="todo-list ui-sortable">
-                                {{ include('OneToManyBundle:Li:box_right_index.html.twig') }}
-                                {#{{ include('CoreBundle:BoxOneToMany:Li/boxRight.html.twig', {isAssigned:false,}) }}#}
+                                {{ include('OneToManyBundle:Li:box_right.html.twig') }}
                             </ul>
                         </div>
                         {#<div class="box-footer clearfix no-border">#}

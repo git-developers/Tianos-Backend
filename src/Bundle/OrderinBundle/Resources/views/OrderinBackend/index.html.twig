@@ -1,0 +1,181 @@
+{% extends "ThemesBundle:Adminlte:1_template.html.twig" %}
+
+{% block bodyclass %}{% spaceless %}
+    {{ vars.body_css }}
+{% endspaceless %}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    {#{% stylesheets#}
+        {#filter='cssrewrite'#}
+        {#'@GridBundle/Resources/public/common/css/switch.css'#}
+        {#'@GridBundle/Resources/public/plugins/datatables/dataTables.bootstrap.css'#}
+        {#'@GridBundle/Resources/public/plugins/datatables/extensions/Editor/css/editor.dataTables.min.css'#}
+    {#%}#}
+    {#<link rel="stylesheet" href="{{ asset_url }}" />#}
+    {#{% endstylesheets %}#}
+
+    <style>
+        {#table#{{ dataTable.tableOptions.table_name }} tr.{{ dataTable.tableOptions.table_tr_class }}:hover{#}
+            {#background-color: #d2d6de;#}
+            {#cursor: pointer;#}
+        {#}#}
+        input[type=checkbox] {
+            height: 16px;
+            width: 16px;
+        }
+    </style>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    {% javascripts
+        '@OrderinBundle/Resources/public/js/boxInfo.js'
+        '@OrderinBundle/Resources/public/js/boxLeftSearch.js'
+        '@OrderinBundle/Resources/public/js/boxLeftSelectItem.js'
+        '@OrderinBundle/Resources/public/js/boxCenterSelectItem.js'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+
+    <script type="text/javascript">
+        $(function() {
+
+            $('div#{{ boxLeft.id }}').boxLeftSearch({
+                boxId: '{{ boxLeft.id }}',
+                searchInputName: '{{ boxLeft.search_input_name }}',
+                routeSearch: '{{ path(boxLeft.route_search) }}',
+            });
+
+            $('div#{{ boxLeft.id }}').boxLeftSelectItem({
+                boxLeftId: '{{ boxLeft.id }}',
+                boxCenterId: '{{ boxCenter.id }}',
+                liClass: '{{ boxLeft.li_class }}',
+                routeSelectItem: '{{ path(boxLeft.route_select_item) }}',
+            });
+
+            $('div#{{ boxCenter.id }}').boxCenterSelectItem({
+                boxCenterId: '{{ boxCenter.id }}',
+                boxRightId: '{{ boxRight.id }}',
+                liClass: '{{ boxCenter.li_class }}',
+                routeSelectItem: '{{ path(boxCenter.route_select_item) }}',
+            });
+
+        });
+    </script>
+
+
+
+{% endblock %}
+
+{% block content %}
+
+    <section class="content-header">
+        <h1>
+            <i class="fa fa-fw fa-{{ box.icon }}"></i> {{ box.title|raw }}
+            <small>newspaper</small>
+        </h1>
+        <ol class="breadcrumb">
+            {#<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>#}
+            {#<li class="active">Dashboard</li>#}
+
+            {% for key, button in dataTable.tableHeaderButton %}
+                <li>
+                    {{ tianos_grid_render_button(button, '@Ui/Grid/Button/Header/_table_header_button.html.twig') }}
+                </li>
+            {% endfor %}
+        </ol>
+    </section>
+
+    <section class="content">
+
+        <form name="{{ box.form_name }}">
+
+            <div class="row">
+
+                {#LEFT#}
+                <div id="{{ boxLeft.id }}" class="col-md-4">
+                    <div class="box box-success box-solid">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">
+                                <i class="fa fa-fw fa-{{ boxLeft.icon }}"></i> {{ boxLeft.title }}
+                            </h3>
+                            <div class="box-tools pull-right">
+                                <div class="row">
+                                    <div class="col-md-offset-6 col-md-6">
+                                        <div class="input-group">
+                                            <input name="{{ boxLeft.search_input_name }}" type="search" class="form-control" maxlength="50">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-fw fa-search"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                {#<ul class="pagination pagination-sm inline">#}
+                                {#<li><a href="#">«</a></li>#}
+                                {#<li><a href="#">1</a></li>#}
+                                {#</ul>#}
+                            </div>
+                        </div>
+                        <div class="box-body">
+                            <ul class="todo-list ui-sortable">
+                                {{ include('OrderinBundle:OrderinBackend/Li:box_left.html.twig') }}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                {#LEFT#}
+
+                {#CENTER#}
+                <div id="{{ boxCenter.id }}" class="col-md-4">
+                    <div class="box box-primary box-solid">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">
+                                <i class="fa fa-fw fa-{{ boxCenter.icon }}"></i> {{ boxCenter.title }}
+                            </h3>
+                            <div class="box-tools pull-right"></div>
+                        </div>
+                        <div class="box-body">
+                            <ul class="todo-list ui-sortable">
+                                {#{{ include('OrderinBundle:OrderinBackend/Li:box_center.html.twig') }}#}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                {#CENTER#}
+
+                {#RIGHT#}
+                <div class="col-md-4">
+                    <div class="box box-warning box-solid">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">
+                                <i class="fa fa-fw fa-{{ boxRight.icon }}"></i> {{ boxRight.title }}
+                            </h3>
+                            <div class="box-tools pull-right"></div>
+                        </div>
+                        <div class="box-body">
+                            <ul class="todo-list ui-sortable">
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                {#RIGHT#}
+
+            </div>
+
+        </form>
+
+    </section>
+
+    {#{{ include('GridBundle:Modal:create.html.twig') }}#}
+    {#{{ include('GridBundle:Modal:edit.html.twig') }}#}
+    {#{{ include('GridBundle:Modal:delete.html.twig') }}#}
+    {#{{ include('GridBundle:Modal:view.html.twig') }}#}
+    {{ include('GridBundle:Modal:info.html.twig') }}
+
+{% endblock %}

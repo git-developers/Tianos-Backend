@@ -441,6 +441,58 @@ class Builder implements ContainerAwareInterface
 
 
         /**
+         * ORDENES
+         */
+        $isGranted = true; //$this->isGranted('ROLE_CLIENT_VIEW');
+        $menu->addChild('Ordenes', [
+            'route' => 'backend_default_dashboard',
+            'extras' => ['safe_label' => true],
+            'childrenAttributes' => [
+                'class' => 'treeview-menu',
+            ],
+        ])
+        ->setAttribute('allow_angle', true)
+        ->setAttribute('class', 'treeview')
+        ->setAttribute('class', $this->activeRoute([
+            'backend_orderin_index',
+        ]))
+        ->setAttribute('icon', 'fa-fw fa-newspaper-o')
+        ->setDisplay($isGranted)
+        ;
+
+        $menu['Ordenes']->addChild('Pedido', [
+            'route' => 'backend_orderin_index',
+            'extras' => ['safe_label' => true],
+            'childrenAttributes' => [
+                'class' => 'treeview-menu',
+            ],
+        ])
+        ->setAttribute('icon', 'fa-arrow-circle-right')
+        ->setAttribute('class', $this->activeRoute('backend_orderin_index'))
+        ->setDisplay($isGranted)
+        ;
+
+        $menu['Ordenes']->addChild('Devoluciones', [
+            'route' => 'backend_orderin_index',
+            'extras' => ['safe_label' => true],
+            'childrenAttributes' => [
+                'class' => 'treeview-menu',
+            ],
+        ])
+        ->setAttribute('icon', 'fa-arrow-circle-left')
+        ->setAttribute('class', $this->activeRoute('backend_orderin_index'))
+        ->setDisplay($isGranted)
+        ;
+
+        /**
+         * ORDENES
+         */
+
+
+
+
+
+        /**
          * REPORTS
          */
         $isGranted = true; //$this->isGranted('ROLE_CLIENT_VIEW');
