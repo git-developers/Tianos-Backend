@@ -1,0 +1,82 @@
+services:
+
+    tianos.listener.doctrine.order:
+        class: Bundle\OrderBundle\EventListener\DoctrineListenerService
+        arguments: ["@security.token_storage"]
+        tags:
+          - { name: doctrine.event_listener, event: postUpdate }
+          - { name: doctrine.event_listener, event: preUpdate }
+          - { name: doctrine.event_listener, event: prePersist }
+          - { name: doctrine.event_listener, event: postLoad }
+          - { name: doctrine.event_listener, event: postRemove }
+
+    tianos.api.controller.order:
+        class: Bundle\OrderBundle\Controller\ApiController
+        arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
+        tags:
+            - { name: tianos.api.controller.order, alias: tianos.api.controller.order }
+
+    tianos.backend.in.controller.order:
+        class: Bundle\OrderBundle\Controller\BackendInController
+        arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
+        tags:
+            - { name: tianos.backend.in.controller.order, alias: tianos.backend.in.controller.order }
+
+    tianos.backend.out.controller.order:
+        class: Bundle\OrderBundle\Controller\BackendOutController
+        arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
+        tags:
+            - { name: tianos.backend.out.controller.order, alias: tianos.backend.out.controller.order }
+
+    tianos.frontend.controller.order:
+        class: Bundle\OrderBundle\Controller\FrontendController
+        arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
+        tags:
+            - { name: tianos.frontend.controller.order, alias: tianos.frontend.controller.order }
+
+    tianos.repository.order:
+        class: Dummy
+        factory: ['@doctrine.orm.entity_manager', getRepository]
+        arguments: [ Bundle\OrderBundle\Entity\Order ]
+
+
+
+
+    #TO-DO ESTO PARA CREAR EL TWIG
+    tianos.form_registry.order_filter:
+        class: Bundle\OrderBundle\Form\Registry\FormTypeRegistry
+        public: false
+
+    tianos.registry.order_field:
+        class: Component\Registry\ServiceRegistry
+        arguments: [ Component\Order\FieldTypes\FieldTypeInterface, "grid field" ]
+
+    tianos.expression_language:
+        class: Bundle\ResourceBundle\ExpressionLanguage\ExpressionLanguage
+        public: false
+
+    tianos.order_options_parser:
+        class: Bundle\ResourceBundle\Order\Parser\OptionsParser
+        arguments: [ "@service_container", "@tianos.expression_language", "@property_accessor" ]
+        public: false
+
+    tianos.custom_order_renderer.twig.inner:
+        class: Bundle\OrderBundle\Renderer\TwigOrderRenderer
+        arguments: [ "@twig", "@tianos.registry.order_field", "@form.factory", "@tianos.form_registry.order_filter", SyliusOneToManyBundle::_grid.html.twig ]
+        public: false
+
+    tianos.custom_order_renderer.twig:
+        class: Bundle\ResourceBundle\Order\Renderer\TwigOrderRenderer
+        arguments: [ "@tianos.custom_order_renderer.twig.inner", "@twig", "@tianos.order_options_parser" ]
+
+    tianos.templating.helper.order:
+        class: Bundle\OrderBundle\Templating\Helper\OrderHelper
+        arguments: [ "@tianos.custom_order_renderer.twig" ]
+
+    twig.extension.order:
+        class: Bundle\OrderBundle\Twig\OrderExtension
+        arguments: ['@tianos.templating.helper.order']
+        public: false
+        tags:
+         - { name: twig.extension }
+    #TO-DO ESTO PARA CREAR EL TWIG

@@ -23,4 +23,4 @@ imports:
     - { resource: '@VisitBundle/Resources/config/services.yml' }
     - { resource: '@PdvhasproductBundle/Resources/config/services.yml' }
     - { resource: '@RouteBundle/Resources/config/services.yml' }
-    - { resource: '@OrderinBundle/Resources/config/services.yml' }
+    - { resource: '@OrderBundle/Resources/config/services.yml' }

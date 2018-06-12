@@ -1,0 +1,175 @@
+backend_orderin_index:
+    path: /
+    methods: [GET]
+    defaults:
+        _controller: tianos.backend.in.controller.order:indexAction
+        _tianos:
+            action: index
+            section: admin
+            permission: true
+            template: OrderBundle:OrderInBackend:index.html.twig
+            vars:
+                subheader: sylius.ui.manage_your_orderin_catalog
+                icon: cube
+                body_css: grid-body-css
+                serialize_group_name: crud
+                box:
+                    icon: newspaper-o
+                    class: primary
+                    box_class: primary
+                    form_name: main-form
+                    title: Devolución de periódicos por los Canillitas <i class="fa fa-arrow-circle-left"></i>
+                    route_submit: backend_orderin_upsert
+                    route_info: backend_orderin_info
+                    table_button_header:
+                        - create
+                        - info
+                box_left:
+                    icon: map-marker
+                    class: primary
+                    id: box-left-id
+                    title: Puntos de venta
+                    li_class: box-left-li
+                    li_badge_class: bg-green
+                    li_input_name: box_left_selected_value
+                    search_input_name: search-input-name-left
+                    route_search: backend_orderin_search
+                    route_select_item: backend_orderin_boxleft_select_item
+                box_center:
+                    icon: user
+                    class: primary
+                    id: box-center-id
+                    title: Usuarios
+                    li_class: box-center-li
+                    li_badge_class: bg-orange-active
+                    li_input_name: box_center_selected_value
+                    route_select_item: backend_orderin_boxcenter_select_item
+                box_right:
+                    icon: newspaper-o
+                    class: primary
+                    id: box-right-id
+                    title: Periódicos
+                    li_class: box-right-li
+                    li_badge_class: bg-orange-active
+                    li_input_name: box-right-selected-value
+            grid:
+#                icon: cube
+#                box_class: primary
+#                title: Gestionar productos
+#                modal:
+#                    title: Crear producto
+                data_table:
+                    route:
+                    table_button:
+                    table_button_header:
+                        - info
+                    row_call_back:
+                    columns:
+            form:
+                type: Bundle\OrderBundle\Form\Type\OrderinType
+            repository:
+                box_left:
+                    service: tianos.repository.pointofsale
+                    method: findAllOffsetLimit
+                    arguments:
+                        limit: 20
+                    vars:
+                        serialize_group_name: order-in-left
+
+backend_orderin_search:
+    path: /order-search
+    methods: [POST]
+    defaults:
+        _controller: tianos.backend.in.controller.order:boxLeftSearchAction
+        _tianos:
+            action: left_search
+            template: OrderBundle:OrderInBackend/Li:box_left.html.twig
+            vars:
+                box_left:
+                    li_class: box-left-li
+                    li_badge_class: bg-blue
+                    li_input_name: box-left-selected-value
+                    search_input_name: search-input-name-left
+            repository:
+                box_left:
+                    service: tianos.repository.pointofsale
+                    method: searchBoxLeft
+                    arguments:
+                        limit: 20
+                    vars:
+                        serialize_group_name: order-in-left
+
+backend_orderin_boxleft_select_item:
+    path: /order-boxleft-select-item
+    methods: [POST]
+    defaults:
+        _controller: tianos.backend.in.controller.order:boxLeftSelectItemAction
+        _tianos:
+            template: OrderBundle:OrderInBackend/Li:box_center_select_item.html.twig
+            vars:
+                box_center:
+                    icon: expeditedssl
+                    class: primary
+                    id: box-center-id
+                    title: user2
+                    entity: user2
+                    li_class: box-center-li
+                    li_badge_class: bg-blue
+                    li_input_name: box_center_selected_value
+                    search_input_name: search-input-name-center
+            repository:
+                box_left:
+                    service: tianos.repository.pointofsale
+                    method: find
+                    vars:
+                        serialize_group_name: order-in-left-select-item
+
+backend_orderin_boxcenter_select_item:
+    path: /order-boxcenter-select-item
+    methods: [POST]
+    defaults:
+        _controller: tianos.backend.in.controller.order:boxCenterSelectItemAction
+        _tianos:
+            template: OrderBundle:OrderInBackend/Li:box_right_select_item.html.twig
+            vars:
+                box_right:
+                    icon: expeditedssl
+                    class: primary
+                    id: box-right-id
+                    title: product
+                    entity: product
+                    li_class: box-right-li
+                    li_badge_class: bg-blue
+                    li_input_name: box-right-selected-value
+                    search_input_name: search-input-name-right
+            repository:
+                box_right:
+                    service: tianos.repository.product
+                    method: findAllOffsetLimit
+                    arguments:
+                        limit: 20
+                    vars:
+                        serialize_group_name: order-in-right
+
+backend_orderin_upsert:
+    path: /upsert
+    methods: [POST]
+    defaults:
+        _controller: tianos.backend.in.controller.order:upsertAction
+        _tianos:
+            action: create
+            template: OrderBundle:OrderInBackend/Form:form.html.twig
+            entity: Bundle\OrderBundle\Entity\Order
+            form:
+                type: Bundle\OrderBundle\Form\Type\OrderinType
+            vars:
+                serialize_group_name: order-in
+
+backend_orderin_info:
+    path: /info
+    methods: [POST]
+    defaults:
+        _controller: tianos.backend.in.controller.order:infoAction
+        _tianos:
+            action: info
+            template: OrderBundle:OrderInBackend/Informative:info.html.twig

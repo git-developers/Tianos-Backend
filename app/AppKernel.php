@@ -21,7 +21,7 @@ class AppKernel extends Kernel
             new \Bundle\PointofsaleBundle\PointofsaleBundle(),
             new \Bundle\GroupofusersBundle\GroupofusersBundle(),
             new \Bundle\PdvhasproductBundle\PdvhasproductBundle(),
-            new \Bundle\OrderinBundle\OrderinBundle(),
+            new \Bundle\OrderBundle\OrderBundle(),
         ];
 
         return array_merge(parent::registerBundles(), $bundles);

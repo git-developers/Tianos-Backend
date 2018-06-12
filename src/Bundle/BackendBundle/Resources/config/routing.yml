@@ -53,5 +53,8 @@ backend_route:
     resource: '@RouteBundle/Resources/config/routing/backend.yml'
     prefix: /route
 backend_orderin:
-    resource: '@OrderinBundle/Resources/config/routing/backend.yml'
-    prefix: /orderin
+    resource: '@OrderBundle/Resources/config/routing/backend_in.yml'
+    prefix: /order/in
+backend_orderout:
+    resource: '@OrderBundle/Resources/config/routing/backend_out.yml'
+    prefix: /order/out

@@ -455,20 +455,21 @@ class Builder implements ContainerAwareInterface
         ->setAttribute('class', 'treeview')
         ->setAttribute('class', $this->activeRoute([
             'backend_orderin_index',
+            'backend_orderout_index',
         ]))
         ->setAttribute('icon', 'fa-fw fa-newspaper-o')
         ->setDisplay($isGranted)
         ;
 
         $menu['Ordenes']->addChild('Pedido', [
-            'route' => 'backend_orderin_index',
+            'route' => 'backend_orderout_index',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
                 'class' => 'treeview-menu',
             ],
         ])
         ->setAttribute('icon', 'fa-arrow-circle-right')
-        ->setAttribute('class', $this->activeRoute('backend_orderin_index'))
+        ->setAttribute('class', $this->activeRoute('backend_orderout_index'))
         ->setDisplay($isGranted)
         ;
 
