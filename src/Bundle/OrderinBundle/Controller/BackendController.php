@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Component\Resource\Metadata\Metadata;
 use Bundle\ResourceBundle\ResourceBundle;
+use Bundle\OrderinBundle\Entity\Order;
 
 class BackendController extends BaseController
 {
@@ -162,7 +163,10 @@ class BackendController extends BaseController
         );
     }
 
-
+    /**
+     * @param Request $request
+     * @return Response
+     */
     public function boxLeftSelectItemAction(Request $request): Response
     {
         $id = $request->get('id');
@@ -213,35 +217,74 @@ class BackendController extends BaseController
         );
     }
 
+    public function boxCenterSelectItemAction(Request $request): Response
+    {
+
+        $pointOfSaleId = $request->get('pointOfSaleId');
+        $userId = $request->get('userId');
+
+        if (!$this->isXmlHttpRequest() || is_null($userId) || is_null($pointOfSaleId)) {
+            throw $this->createAccessDeniedException(self::ACCESS_DENIED_MSG);
+        }
+
+        $parameters = [
+            'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
+        ];
+        $applicationName = $this->container->getParameter('application_name');
+        $this->metadata = new Metadata('tianos', $applicationName, $parameters);
+
+        //CONFIGURATION
+        $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
+
+        $repositoryRight = $configuration->getRepositoryServiceRight();
+        $methodRight = $configuration->getRepositoryMethodRight();
+        $template = $configuration->getTemplate('');
+
+//        $boxRight = $configuration->oneToManyBoxRight();
+
+        $vars = $configuration->getVars();
+        $boxRight = $vars['box_right'];
+        $boxRight = json_decode(json_encode($boxRight));
+
+        //REPOSITORY
+        $objectsRight = $this->get($repositoryRight)->$methodRight();
+        $varsRight = $configuration->getRepositoryVarsRight();
+        $objectsRight = $this->getSerializeDecode($objectsRight, $varsRight['serialize_group_name']);
+
+        //ORDERS
+        $datetime = new \DateTime("now");
+        $orderDate = $datetime->format('Y-m-d');
+        $orders = $this->get('tianos.repository.orderin')->findObjectCenterSelectItem(
+            $pointOfSaleId,
+            $userId,
+            $orderDate
+        );
+
+//        foreach ($orders as $key => $order) {
+//            echo "POLLO:: <pre>";
+//            print_r($order->getProduct()->getId());
+//        }
+//
+//
+//        exit;
 
 
-
-
-
-
-
-
-
-
-
-
+        return $this->render(
+            $template,
+            [
+                'orders' => $orders,
+                'boxRight' => $boxRight,
+                'objectsRight' => $objectsRight,
+            ]
+        );
+    }
 
     /**
      * @param Request $request
      * @return Response
      */
-    public function createAction(Request $request): Response
+    public function upsertAction(Request $request): Response
     {
-
-
-
-//        echo "POLLO:: <pre>";
-//        print_r($request);
-//        exit;
-
-
-
-
         if (!$this->isXmlHttpRequest()) {
             throw $this->createAccessDeniedException(self::ACCESS_DENIED_MSG);
         }
@@ -259,225 +302,57 @@ class BackendController extends BaseController
         $formType = $configuration->getFormType();
         $vars = $configuration->getVars();
         $entity = $configuration->getEntity();
-        $entity = new $entity();
 
-        $form = $this->createForm($formType, $entity, ['form_data' => []]);
-        $form->handleRequest($request);
+//        $form = $this->createForm($formType, $entity, ['form_data' => []]);
+//        $form->handleRequest($request);
 
-        if ($form->isSubmitted()) {
+        $all = $request->request->all();
+        $all = json_decode(json_encode($all));
 
-            $errors = [];
-            $entityJson = null;
-            $status = self::STATUS_ERROR;
+        $pointOfSaleId = $all->box_left_selected_value;
+        $userId = $all->box_center_selected_value;
+        $orderDate = $all->order_date;
+        $products = $all->order->product;
+        $quantities = $all->order->quantity;
 
-            try{
+        $pointOfSale = $this->get('tianos.repository.pointofsale')->find($pointOfSaleId);
+        $user = $this->get('tianos.repository.user')->find($userId);
 
-                if ($form->isValid()) {
-                    $this->persist($entity);
-                    $entity = $this->getSerializeDecode($entity, $vars['serialize_group_name']);
-                    $status = self::STATUS_SUCCESS;
-                }else{
-                    foreach ($form->getErrors(true) as $key => $error) {
-                        if ($form->isRoot()) {
-                            $errors[] = $error->getMessage();
-                        } else {
-                            $errors[] = $error->getMessage();
-                        }
-                    }
-                }
+        foreach ($quantities as $key => $quantity) {
 
-            }catch (\Exception $e){
-                $errors[] = $e->getMessage();
+            $productId = isset($products[$key]) ? $products[$key] : 0;
+
+            if ( (int)$quantity <= 0 || (int)$productId <= 0 ) {
+                continue;
             }
 
-            return $this->json([
-                'status' => $status,
-                'errors' => $errors,
-                'entity' => $entity,
-            ]);
-        }
+            $order = $this->get('tianos.repository.orderin')->findObjectUpsert(
+                $pointOfSaleId,
+                $userId,
+                $orderDate,
+                $productId
+            );
 
-        return $this->render(
-            $template,
-            [
-                'action' => $action,
-                'form' => $form->createView(),
-            ]
-        );
-    }
+            if (is_null($order)) {
+                $order = new $entity();
+                $order->setPointOfSale($pointOfSale);
+                $order->setUser($user);
+                $order->setOrderDate(new \DateTime($orderDate));
+                $order->setType(Order::IN);
 
-    /**
-     * @param Request $request
-     * @return Response
-     */
-    public function editAction(Request $request): Response
-    {
-        if (!$this->isXmlHttpRequest()) {
-            throw $this->createAccessDeniedException(self::ACCESS_DENIED_MSG);
-        }
-
-        $parameters = [
-            'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
-        ];
-        $applicationName = $this->container->getParameter('application_name');
-        $this->metadata = new Metadata('tianos', $applicationName, $parameters);
-
-        //CONFIGURATION
-        $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
-        $repository = $configuration->getRepositoryService();
-        $method = $configuration->getRepositoryMethod();
-        $template = $configuration->getTemplate('');
-        $action = $configuration->getAction();
-        $formType = $configuration->getFormType();
-        $vars = $configuration->getVars();
-
-        //REPOSITORY
-        $id = $request->get('id');
-        $entity = $this->get($repository)->$method($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('CRUD: Unable to find  entity.');
-        }
-
-        $form = $this->createForm($formType, $entity, ['form_data' => []]);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted()) {
-
-            $errors = [];
-            $status = self::STATUS_ERROR;
-
-            try{
-
-                if ($form->isValid()) {
-                    $this->persist($entity);
-                    $entity = $this->getSerializeDecode($entity, $vars['serialize_group_name']);
-                    $status = self::STATUS_SUCCESS;
-                }else{
-                    foreach ($form->getErrors(true) as $key => $error) {
-                        if ($form->isRoot()) {
-                            $errors[] = $error->getMessage();
-                        } else {
-                            $errors[] = $error->getMessage();
-                        }
-                    }
-                }
-
-            }catch (\Exception $e){
-                $errors[] = $e->getMessage();
+                $product = $this->get('tianos.repository.product')->find($productId);
+                $order->setProduct($product);
             }
 
-            return $this->json([
-                'id' => $id,
-                'status' => $status,
-                'errors' => $errors,
-                'entity' => $entity,
-            ]);
+            $order->setQuantity($quantity);
+            $this->persist($order);
         }
 
-        return $this->render(
-            $template,
-            [
-                'id' => $id,
-                'action' => $action,
-                'form' => $form->createView(),
-            ]
-        );
+        return $this->json([
+            'status' => true,
+            'errors' => [],
+        ]);
     }
-
-
-    /*
-    public function deleteAction(Request $request): Response
-    {
-        if (!$this->isXmlHttpRequest()) {
-            throw $this->createAccessDeniedException(self::ACCESS_DENIED_MSG);
-        }
-
-        $parameters = [
-            'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
-        ];
-        $applicationName = $this->container->getParameter('application_name');
-        $this->metadata = new Metadata('tianos', $applicationName, $parameters);
-
-        //CONFIGURATION
-        $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
-        $template = $configuration->getTemplate('');
-        $action = $configuration->getAction();
-
-        $errors = [];
-        $status = self::STATUS_ERROR;
-        $id = $request->get('id');
-
-        if ($request->isMethod('DELETE')) {
-
-            //REPOSITORY
-            $repository = $configuration->getRepositoryService();
-            $method = $configuration->getRepositoryMethod();
-            $entity = $this->get($repository)->$method($id);
-
-            try {
-                if($entity){
-                    $entity->setIsActive(false);
-                    //$this->remove($entity);
-                    $this->persist($entity);
-                    $status = self::STATUS_SUCCESS;
-                }
-            }catch (\Exception $e){
-                $errors[] = $e->getMessage();
-            }
-
-            return $this->json([
-                'id' => $id,
-                'status' => $status,
-                'errors' => $errors,
-            ]);
-        }
-
-        return $this->render(
-            $template,
-            [
-                'id' => $id,
-                'action' => $action,
-            ]
-        );
-    }
-
-    public function viewAction(Request $request): Response
-    {
-        if (!$this->isXmlHttpRequest()) {
-            throw $this->createAccessDeniedException(self::ACCESS_DENIED_MSG);
-        }
-
-        $parameters = [
-            'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
-        ];
-        $applicationName = $this->container->getParameter('application_name');
-        $this->metadata = new Metadata('tianos', $applicationName, $parameters);
-
-        //CONFIGURATION
-        $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
-        $template = $configuration->getTemplate('');
-        $action = $configuration->getAction();
-
-        //REPOSITORY
-        $id = $request->get('id');
-        $repository = $configuration->getRepositoryService();
-        $method = $configuration->getRepositoryMethod();
-        $entity = $this->get($repository)->$method($id);
-
-        if (!$entity) {
-            throw $this->createNotFoundException('CRUD: Unable to find  entity.');
-        }
-
-        return $this->render(
-            $template,
-            [
-                'action' => $action,
-                'entity' => $entity,
-            ]
-        );
-    }
-    */
 
     public function infoAction(Request $request): Response
     {

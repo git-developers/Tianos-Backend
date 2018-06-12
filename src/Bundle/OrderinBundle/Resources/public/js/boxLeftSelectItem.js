@@ -12,6 +12,7 @@
         var base = this;
         var boxLeft = null;
         var boxCenter = null;
+        var boxRight = null;
         var msgLoading = '<p align="center"><i class="fa fa-1x fa-refresh fa-spin"></i></p>';
         var msgError = '<i class="fa fa-fw fa-warning"></i> Buscador izquierda Error: reintentar';
         var msgSuccess = '<i class="fa fa-fw fa-info"></i> Selecciono item con id: ';
@@ -24,6 +25,7 @@
             var totalButtons = 0;
             boxLeft = $('div#' + options.boxLeftId);
             boxCenter = $('div#' + options.boxCenterId);
+            boxRight = $('div#' + options.boxRightId);
             // base.$el.append('<button name="public" style="'+base.options.buttonStyle+'">Private</button>');
         };
 
@@ -43,7 +45,8 @@
             // base.options.buttonPress.call( this );
 
             var radioLeft = $(context).find('input[type=radio]');
-            var boxUl = boxCenter.find('ul');
+            var boxUlCenter = boxCenter.find('ul');
+            var boxUlRight = boxRight.find('.box-body');
             var id = $(context).data('id');
 
             $.ajax({
@@ -56,10 +59,13 @@
                 cache: true,
                 beforeSend: function(jqXHR, settings) {
                     base.setMessageCallout(msgLoading);
+                    boxUlCenter.html('<li style="text-align: center"><span class="text"><i class="fa fa-2x fa-refresh fa-spin"></i></span></li>');
                 },
                 success: function(data, textStatus, jqXHR) {
 
-                    boxUl.html(data);
+                    boxUlCenter.html(data);
+                    boxUlRight.html('<ul class="todo-list ui-sortable"><li><span class="text">Seleccione un usuario.</span></li></ul>');
+
                     radioLeft.prop('checked', true);
 
                     base.addClassCallout('success');

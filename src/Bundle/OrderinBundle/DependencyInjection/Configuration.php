@@ -17,7 +17,7 @@ use Bundle\OrderinBundle\Form\Type\OrderinVariantTranslationType;
 use Bundle\OrderinBundle\Form\Type\OrderinVariantType;
 use Bundle\ResourceBundle\Controller\ResourceController;
 use Bundle\ResourceBundle\ResourceBundle;
-use Component\Orderin\Model\Orderin;
+use Component\Orderin\Model\Order;
 use Component\Orderin\Model\OrderinAssociation;
 use Component\Orderin\Model\OrderinAssociationInterface;
 use Component\Orderin\Model\OrderinAssociationType as OrderinAssociationTypeModel;

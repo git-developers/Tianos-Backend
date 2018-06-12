@@ -39,6 +39,18 @@ class ProductType extends AbstractType
                     'placeholder' => 'nombre',
                 ],
             ])
+            ->add('image', TextType::class, [
+                'label' => 'image',
+                'required' => true,
+                'label_attr' => [
+                    'class' => ''
+                ],
+                'attr' => [
+                    'class' => 'form-control',
+                    'placeholder' => 'http://www.example.net/images/product-icon.png',
+//                    http://www.free-icons-download.net/images/product-icon-27962.png
+                ],
+            ])
         ;
     }
     

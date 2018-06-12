@@ -31,12 +31,46 @@ services:
     tianos.repository.orderin:
         class: Dummy
         factory: ['@doctrine.orm.entity_manager', getRepository]
-        arguments: [ Bundle\OrderinBundle\Entity\Orderin ]
+        arguments: [ Bundle\OrderinBundle\Entity\Order ]
 
 
 
-#    tianos.controller.grid:
-#        class: Bundle\GridBundle\Controller\GridController
-#        arguments: [ Bundle\GridBundle\Controller\RequestConfigurationFactoryInterface ]
-#        tags:
-#            - { name: tianos.controller.grid, alias: tianos.controller.grid }
+
+    #TO-DO ESTO PARA CREAR EL TWIG
+    tianos.form_registry.orderin_filter:
+        class: Bundle\OrderinBundle\Form\Registry\FormTypeRegistry
+        public: false
+
+    tianos.registry.orderin_field:
+        class: Component\Registry\ServiceRegistry
+        arguments: [ Component\Orderin\FieldTypes\FieldTypeInterface, "grid field" ]
+
+    tianos.expression_language:
+        class: Bundle\ResourceBundle\ExpressionLanguage\ExpressionLanguage
+        public: false
+
+    tianos.orderin_options_parser:
+        class: Bundle\ResourceBundle\Orderin\Parser\OptionsParser
+        arguments: [ "@service_container", "@tianos.expression_language", "@property_accessor" ]
+        public: false
+
+    tianos.custom_orderin_renderer.twig.inner:
+        class: Bundle\OrderinBundle\Renderer\TwigOrderinRenderer
+        arguments: [ "@twig", "@tianos.registry.orderin_field", "@form.factory", "@tianos.form_registry.orderin_filter", SyliusOneToManyBundle::_grid.html.twig ]
+        public: false
+
+    tianos.custom_orderin_renderer.twig:
+        class: Bundle\ResourceBundle\Orderin\Renderer\TwigOrderinRenderer
+        arguments: [ "@tianos.custom_orderin_renderer.twig.inner", "@twig", "@tianos.orderin_options_parser" ]
+
+    tianos.templating.helper.order:
+        class: Bundle\OrderinBundle\Templating\Helper\OrderinHelper
+        arguments: [ "@tianos.custom_orderin_renderer.twig" ]
+
+    twig.extension.order:
+        class: Bundle\OrderinBundle\Twig\OrderExtension
+        arguments: ['@tianos.templating.helper.order']
+        public: false
+        tags:
+         - { name: twig.extension }
+    #TO-DO ESTO PARA CREAR EL TWIG

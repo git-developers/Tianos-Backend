@@ -29,24 +29,28 @@ class Load_7_ProductData extends AbstractFixture implements OrderedFixtureInterf
         $entity->setCode('555');
         $entity->setName('Ojo');
         $entity->setSlug('product-5');
+        $entity->setImage('http://www.free-icons-download.net/images/product-icon-27962.png');
         $manager->persist($entity);
 
         $entity = new Product();
         $entity->setCode('999');
         $entity->setName('El Bocón');
         $entity->setSlug('product-9');
+        $entity->setImage('http://www.free-icons-download.net/images/product-icon-27962.png');
         $manager->persist($entity);
 
         $entity = new Product();
         $entity->setCode('222');
         $entity->setName('Correo');
         $entity->setSlug('product-2');
+        $entity->setImage('http://www.free-icons-download.net/images/product-icon-27962.png');
         $manager->persist($entity);
 
         $entity = new Product();
         $entity->setCode('111');
         $entity->setName('El Comercio');
         $entity->setSlug('product-1');
+        $entity->setImage('http://www.free-icons-download.net/images/product-icon-27962.png');
         $manager->persist($entity);
 
 
@@ -59,24 +63,28 @@ class Load_7_ProductData extends AbstractFixture implements OrderedFixtureInterf
         $entity->setCode('1010');
         $entity->setName('Gestión');
         $entity->setSlug('product-10');
+        $entity->setImage('http://www.free-icons-download.net/images/product-icon-27962.png');
         $manager->persist($entity);
 
         $entity = new Product();
         $entity->setCode('444');
         $entity->setName('Trome');
         $entity->setSlug('product-4');
+        $entity->setImage('http://www.free-icons-download.net/images/product-icon-27962.png');
         $manager->persist($entity);
 
         $entity = new Product();
         $entity->setCode('333');
         $entity->setName('Perú 21');
         $entity->setSlug('product-3');
+        $entity->setImage('http://www.free-icons-download.net/images/product-icon-27962.png');
         $manager->persist($entity);
 
         $entity = new Product();
         $entity->setCode('888');
         $entity->setName('Depor');
         $entity->setSlug('product-8');
+        $entity->setImage('http://www.free-icons-download.net/images/product-icon-27962.png');
         $manager->persist($entity);
 
 

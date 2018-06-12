@@ -9,7 +9,7 @@ use Doctrine\ORM\Event\LifecycleEventArgs;
 use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
-use Bundle\OrderinBundle\Entity\Orderin;
+use Bundle\OrderinBundle\Entity\Order;
 use Cocur\Slugify\Slugify;
 
 // https://coderwall.com/p/es3zkw/symfony2-listen-doctrine-events
@@ -60,9 +60,9 @@ class DoctrineListenerService implements EventSubscriber
 //        $entityManager = $args->getEntityManager();
 //        $className = $entityManager->getClassMetadata(get_class($entity))->getName();
 
-        if ($entity instanceof Orderin){
-            $name = $entity->getName();
-            $entity->setSlug($this->slugify($name));
+        if ($entity instanceof Order){
+//            $name = $entity->getName();
+//            $entity->setSlug($this->slugify($name));
             $entity->setCreatedAt($this->dateTime);
 
             return;
@@ -76,7 +76,7 @@ class DoctrineListenerService implements EventSubscriber
     {
         $entity = $args->getEntity();
 
-        if ($entity instanceof Orderin){
+        if ($entity instanceof Order){
             $entity->setUpdatedAt($this->dateTime);
 
             return;
@@ -103,7 +103,7 @@ class DoctrineListenerService implements EventSubscriber
     {
         $entity = $args->getEntity();
 
-        if ($entity instanceof Orderin){
+        if ($entity instanceof Order){
 
             return;
         }
@@ -116,7 +116,7 @@ class DoctrineListenerService implements EventSubscriber
     {
         $entity = $args->getEntity();
 
-        if ($entity instanceof Orderin){
+        if ($entity instanceof Order){
 
             return;
         }

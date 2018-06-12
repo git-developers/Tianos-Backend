@@ -48,7 +48,7 @@ class OrderinType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-//            'data_class' => Orderin::class,
+//            'data_class' => Order::class,
         ]);
 
         $resolver->setRequired(['form_data']);

@@ -18,8 +18,9 @@ backend_orderin_index:
                     class: primary
                     box_class: primary
                     form_name: main-form
-                    title: Devolución de periódicos por los Canillitas
-                    route_info: backend_associative_profile_has_role_info
+                    title: Devolución de periódicos por los Canillitas <i class="fa fa-arrow-circle-left"></i>
+                    route_submit: backend_orderin_upsert
+                    route_info: backend_orderin_info
                     table_button_header:
                         - create
                         - info
@@ -29,8 +30,8 @@ backend_orderin_index:
                     id: box-left-id
                     title: Puntos de venta
                     li_class: box-left-li
-                    li_badge_class: bg-blue
-                    li_input_name: box-lefts-selected-value
+                    li_badge_class: bg-green
+                    li_input_name: box_left_selected_value
                     search_input_name: search-input-name-left
                     route_search: backend_orderin_search
                     route_select_item: backend_orderin_boxleft_select_item
@@ -41,11 +42,8 @@ backend_orderin_index:
                     title: Usuarios
                     li_class: box-center-li
                     li_badge_class: bg-orange-active
-                    li_input_name: box-center-selected-value
-                    route_select_item: backend_orderin_boxleft_select_item
-#                    search_input_name: search-input-name-right
-#                    route_search: backend_associative_profile_has_role_boxright_search
-#                    route_select_item: backend_associative_profile_has_role_boxright_select_item
+                    li_input_name: box_center_selected_value
+                    route_select_item: backend_orderin_boxcenter_select_item
                 box_right:
                     icon: newspaper-o
                     class: primary
@@ -54,9 +52,6 @@ backend_orderin_index:
                     li_class: box-right-li
                     li_badge_class: bg-orange-active
                     li_input_name: box-right-selected-value
-#                    search_input_name: search-input-name-right
-#                    route_search: backend_associative_profile_has_role_boxright_search
-#                    route_select_item: backend_associative_profile_has_role_boxright_select_item
             grid:
 #                icon: cube
 #                box_class: primary
@@ -80,36 +75,20 @@ backend_orderin_index:
                         limit: 20
                     vars:
                         serialize_group_name: order-in-left
-#                box_center:
-#                    service: tianos.repository.user
-#                    method: findAllOffsetLimit
-#                    arguments:
-#                        limit: 20
-#                    vars:
-#                        serialize_group_name: order-in-center
-#                box_right:
-#                    service: tianos.repository.user
-#                    method: findAllOffsetLimit
-#                    arguments:
-#                        limit: 20
-#                    vars:
-#                        serialize_group_name: order-in-right
 
 backend_orderin_search:
     path: /orderin-search
     methods: [POST]
     defaults:
-#        _controller: tianos.profilehasrole.controller.associative:boxLeftSearchAction
         _controller: tianos.backend.controller.orderin:boxLeftSearchAction
         _tianos:
             action: left_search
-#            template: OneToManyBundle:Li:box_left.html.twig
             template: OrderinBundle:OrderinBackend/Li:box_left.html.twig
             vars:
                 box_left:
                     li_class: box-left-li
                     li_badge_class: bg-blue
-                    li_input_name: box-lefts-selected-value
+                    li_input_name: box-left-selected-value
                     search_input_name: search-input-name-left
             repository:
                 box_left:
@@ -121,106 +100,70 @@ backend_orderin_search:
                         serialize_group_name: order-in-left
 
 backend_orderin_boxleft_select_item:
-    path: /orderin-select-item
+    path: /orderin-boxleft-select-item
     methods: [POST]
     defaults:
         _controller: tianos.backend.controller.orderin:boxLeftSelectItemAction
         _tianos:
-#            template: OneToManyBundle:Li:box_right_select_item.html.twig
             template: OrderinBundle:OrderinBackend/Li:box_center_select_item.html.twig
             vars:
                 box_center:
                     icon: expeditedssl
                     class: primary
                     id: box-center-id
-                    title: Role
+                    title: user2
                     entity: user2
-                    li_class: box-right-li
+                    li_class: box-center-li
                     li_badge_class: bg-blue
-                    li_input_name: box-right-selected-value
-                    search_input_name: search-input-name-right
+                    li_input_name: box_center_selected_value
+                    search_input_name: search-input-name-center
             repository:
                 box_left:
                     service: tianos.repository.pointofsale
                     method: find
                     vars:
                         serialize_group_name: order-in-left-select-item
-#                        serialize_group_name: one-to-many-left-profilehasrole
-#                box_center:
-#                    service: tianos.repository.user
-#                    method: find
-#                    vars:
-#                        serialize_group_name: one-to-many-right
 
-
-
-
-
-
-
-
-
-
-
-
-backend_orderin_create:
-    path: /create
+backend_orderin_boxcenter_select_item:
+    path: /orderin-boxcenter-select-item
     methods: [POST]
     defaults:
-        _controller: tianos.backend.controller.orderin:createAction
+        _controller: tianos.backend.controller.orderin:boxCenterSelectItemAction
+        _tianos:
+            template: OrderinBundle:OrderinBackend/Li:box_right_select_item.html.twig
+            vars:
+                box_right:
+                    icon: expeditedssl
+                    class: primary
+                    id: box-right-id
+                    title: product
+                    entity: product
+                    li_class: box-right-li
+                    li_badge_class: bg-blue
+                    li_input_name: box-right-selected-value
+                    search_input_name: search-input-name-right
+            repository:
+                box_right:
+                    service: tianos.repository.product
+                    method: findAllOffsetLimit
+                    arguments:
+                        limit: 20
+                    vars:
+                        serialize_group_name: order-in-right
+
+backend_orderin_upsert:
+    path: /upsert
+    methods: [POST]
+    defaults:
+        _controller: tianos.backend.controller.orderin:upsertAction
         _tianos:
             action: create
             template: OrderinBundle:OrderinBackend/Form:form.html.twig
-            entity: Bundle\OrderinBundle\Entity\Orderin
+            entity: Bundle\OrderinBundle\Entity\Order
             form:
                 type: Bundle\OrderinBundle\Form\Type\OrderinType
             vars:
-                serialize_group_name: crud
-
-backend_orderin_edit:
-    path: /edit
-    methods: [PUT, POST]
-    defaults:
-        _controller: tianos.backend.controller.orderin:editAction
-        _tianos:
-            action: edit
-            template: OrderinBundle:OrderinBackend/Form:form.html.twig
-            repository:
-                service: tianos.repository.orderin
-                method: find
-                arguments: [$orderinId]
-            form:
-                type: Bundle\OrderinBundle\Form\Type\OrderinType
-            vars:
-                serialize_group_name: crud
-
-backend_orderin_delete:
-    path: /delete
-    methods: [POST, DELETE]
-    defaults:
-        _controller: tianos.backend.controller.orderin:deleteAction
-        _tianos:
-            action: delete
-            template: GridBundle:Template:delete.html.twig
-            repository:
-                service: tianos.repository.orderin
-                method: find
-                arguments: [$orderinId]
-            vars:
-#                body_css: grid-body-css
-
-backend_orderin_view:
-    path: /view
-    methods: [POST]
-    defaults:
-        _controller: tianos.backend.controller.orderin:viewAction
-        _tianos:
-            action: view
-            template: OrderinBundle:OrderinBackend/Informative:view.html.twig
-            repository:
-                service: tianos.repository.orderin
-                method: find
-                arguments: [$orderinId]
+                serialize_group_name: order-in
 
 backend_orderin_info:
     path: /info
@@ -230,56 +173,3 @@ backend_orderin_info:
         _tianos:
             action: info
             template: OrderinBundle:OrderinBackend/Informative:info.html.twig
-
-
-
-
-
-#/var/www/html/Sylius/sylius/vendor/sylius/sylius/docs/customization/factory.rst
-#
-#    sylius_admin_product_create_simple:
-#        path: /products/new/simple
-#        methods: [GET, POST]
-#        defaults:
-#            _controller: sylius.controller.product:createAction
-#            _sylius:
-#                section: admin
-#                factory:
-#                    method: createDisabled # like here for example
-#                template: SyliusAdminBundle:Crud:create.html.twig
-#                redirect: sylius_admin_product_update
-#                vars:
-#                    subheader: sylius.ui.manage_your_product_catalog
-#                    templates:
-#                        form: SyliusAdminBundle:CRUDDUMMY:_form.html.twig
-#                    route:
-#                        name: sylius_admin_product_create_simple
-
-
-
-#            template: "@SyliusAdmin/ProductVariant/generate.html.twig"
-#            section: admin
-#            permission: true
-#            redirect:
-#                route: sylius_admin_product_variant_index
-#                parameters: { productId: $productId }
-#            form:
-#                type: Sylius\Bundle\ProductBundle\Form\Type\ProductGenerateVariantsType
-#            repository:
-#                method: find
-#                arguments: [$productId]
-#            flash: sylius.product_variant.generate
-
-#sylius_admin_product_index:
-#    path: /products/
-#    methods: [GET]
-#    defaults:
-#        _controller: sylius.controller.product:indexAction
-#        _sylius:
-#            section: admin
-#            permission: true
-#            grid: sylius_admin_product
-#            template: SyliusAdminBundle:CRUDDUMMY:index.html.twig
-#            vars:
-#                subheader: sylius.ui.manage_your_product_catalog
-#                icon: cube

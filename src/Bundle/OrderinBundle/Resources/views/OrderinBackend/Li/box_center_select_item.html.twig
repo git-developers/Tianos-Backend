@@ -29,44 +29,6 @@
             {#</div>#}
         </li>
 
-
-
-
-
-
-
-        {#
-
-        <li
-            class="{{ boxCenter.li_class }} x-hand"
-            data-id="{{ id }}"
-        >
-
-            <span class="handle ui-sortable-handle">
-                <i class="fa fa-ellipsis-v"></i>
-                <i class="fa fa-ellipsis-v"></i>
-            </span>
-
-            <input
-                name="{{ boxCenter.li_input_name }}"
-                type="radio"
-                data-id="{{ id }}"
-                value="{{ id }}">
-
-            <span class="badge {{ boxCenter.li_badge_class }}">
-                {{ id }}
-            </span>
-
-            <span class="text">
-                {{ entity.name_box|default('< missing name_box >') }}
-            </span>
-
-            <div class="tools">
-                <i class="fa fa-edit"></i>
-            </div>
-        </li>
-        #}
-
     {% else %}
         <li>
             <span class="text">

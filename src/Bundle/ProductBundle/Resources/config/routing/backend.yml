@@ -13,7 +13,6 @@ backend_product_index:
                 icon: cube
                 body_css: grid-body-css
                 serialize_group_name: crud
-#            grid: sylius_admin_product
             grid:
                 icon: cube
                 box_class: primary
@@ -43,10 +42,10 @@ backend_product_index:
                     columns:
                         - name: '#'
                           obj: " '<span class=\"badge bg-blue\">' + obj.id + '</span>' "
-#                        - name: code
-#                          obj: obj.code
-#                          options:
-#                              icon: map-marker
+                        - name: imagen
+                          obj: " '<img class=\"img-thumbnail img-circle\" style=\"max-height: 60px\" src=\"' + obj.image + '\">' "
+                          options:
+                              icon: image
                         - name: Name
                           obj: obj.name
 #                        - name: slug

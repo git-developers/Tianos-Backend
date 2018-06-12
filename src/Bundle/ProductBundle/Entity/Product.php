@@ -15,7 +15,13 @@ class Product
     /**
      * @var integer
      *
-     * @JMSS\Groups({"api", "crud", "tree-one-to-many-right", "tree-one-to-many-search-categoryhasproduct"})
+     * @JMSS\Groups({
+     *     "api",
+     *     "crud",
+     *     "tree-one-to-many-right",
+     *     "tree-one-to-many-search-categoryhasproduct",
+     *     "order-in-right"
+     * })
      */
     private $id;
 
@@ -35,6 +41,14 @@ class Product
      * @var string
      */
     private $slug;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="image", type="text", length=65535, nullable=true)
+     * @JMSS\Groups({"crud"})
+     */
+    private $image;
 
     /**
      * @var \DateTime
@@ -68,7 +82,10 @@ class Product
      * @var string
      *
      * @JMSS\Accessor(getter="getNameBox", setter="setNameBox")
-     * @JMSS\Groups({"tree-one-to-many-right"})
+     * @JMSS\Groups({
+     *     "tree-one-to-many-right",
+     *     "order-in-right"
+     * })
      */
     private $nameBox;
 
@@ -152,6 +169,30 @@ class Product
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     *
+     * @return Product
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 
     /**

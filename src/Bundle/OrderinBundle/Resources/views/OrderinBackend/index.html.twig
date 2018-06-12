@@ -54,15 +54,64 @@
             $('div#{{ boxLeft.id }}').boxLeftSelectItem({
                 boxLeftId: '{{ boxLeft.id }}',
                 boxCenterId: '{{ boxCenter.id }}',
+                boxRightId: '{{ boxRight.id }}',
                 liClass: '{{ boxLeft.li_class }}',
                 routeSelectItem: '{{ path(boxLeft.route_select_item) }}',
             });
 
             $('div#{{ boxCenter.id }}').boxCenterSelectItem({
+                boxLeftId: '{{ boxLeft.id }}',
                 boxCenterId: '{{ boxCenter.id }}',
                 boxRightId: '{{ boxRight.id }}',
                 liClass: '{{ boxCenter.li_class }}',
+                boxLeftLiInputName: '{{ boxLeft.li_input_name }}',
                 routeSelectItem: '{{ path(boxCenter.route_select_item) }}',
+            });
+
+            $( "form" ).submit(function( event ) {
+                event.preventDefault();
+
+                var infoBox = $('#info-box');
+                var infoBoxSpan = infoBox.find('span');
+                var boxIconDefault = $('#box-icon-default');
+                var boxIconRefresh = $('#box-icon-refresh');
+                var boxIconThumbsUp = $('#box-icon-thumbs-up');
+                var fields = $(this).serializeArray();
+
+                console.log(fields);
+
+                $.ajax({
+                    url: '{{ path(box.route_submit) }}',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: fields,
+                    beforeSend: function(jqXHR, settings) {
+                        $('button[type="submit"]').prop('disabled', true);
+                        boxIconDefault.hide();
+                        boxIconRefresh.show();
+                    },
+                    success: function(data, textStatus, jqXHR) {
+
+                        $('button[type="submit"]').prop('disabled', false);
+                        boxIconRefresh.hide();
+                        boxIconThumbsUp.show();
+                        infoBoxSpan.removeClass('bg-aqua').addClass('bg-green');
+
+                        setTimeout(function(){
+                            boxIconThumbsUp.hide();
+                            boxIconDefault.show();
+                            infoBoxSpan.removeClass('bg-green').addClass('bg-aqua');
+                        }, 1500);
+
+                    },
+                    error: function(jqXHR, exception) {
+                        $('button[type="submit"]').prop('disabled', false);
+                        boxIconRefresh.hide();
+                        boxIconDefault.show();
+                    }
+                });
+
+
             });
 
         });
@@ -93,12 +142,12 @@
 
     <section class="content">
 
-        <form name="{{ box.form_name }}">
+        <form name="{{ box.form_name }}" method="post">
 
             <div class="row">
 
                 {#LEFT#}
-                <div id="{{ boxLeft.id }}" class="col-md-4">
+                <div id="{{ boxLeft.id }}" class="col-md-3">
                     <div class="box box-success box-solid">
                         <div class="box-header with-border">
                             <h3 class="box-title">
@@ -141,7 +190,11 @@
                         </div>
                         <div class="box-body">
                             <ul class="todo-list ui-sortable">
-                                {#{{ include('OrderinBundle:OrderinBackend/Li:box_center.html.twig') }}#}
+                                <li>
+                                    <span class="text">
+                                        Seleccione un PDV.
+                                    </span>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -149,7 +202,7 @@
                 {#CENTER#}
 
                 {#RIGHT#}
-                <div class="col-md-4">
+                <div id="{{ boxRight.id }}" class="col-md-5">
                     <div class="box box-warning box-solid">
                         <div class="box-header with-border">
                             <h3 class="box-title">
@@ -159,7 +212,11 @@
                         </div>
                         <div class="box-body">
                             <ul class="todo-list ui-sortable">
-
+                                <li>
+                                    <span class="text">
+                                        Seleccione un usuario.
+                                    </span>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -172,10 +229,6 @@
 
     </section>
 
-    {#{{ include('GridBundle:Modal:create.html.twig') }}#}
-    {#{{ include('GridBundle:Modal:edit.html.twig') }}#}
-    {#{{ include('GridBundle:Modal:delete.html.twig') }}#}
-    {#{{ include('GridBundle:Modal:view.html.twig') }}#}
     {{ include('GridBundle:Modal:info.html.twig') }}
 
 {% endblock %}
