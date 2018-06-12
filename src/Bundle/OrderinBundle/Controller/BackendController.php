@@ -71,11 +71,6 @@ class BackendController extends BaseController
         $varsLeft = $configuration->getRepositoryVarsLeft();
         $objectsLeft = $this->getSerializeDecode($objectsLeft, $varsLeft['serialize_group_name']);
 
-        //REPOSITORY CENTER
-//        $objectsCenter = $this->get($repositoryCenter)->$methodCenter();
-//        $varsCenter = $configuration->getRepositoryVarsCenter();
-//        $objectsCenter = $this->getSerializeDecode($objectsCenter, $varsCenter['serialize_group_name']);
-
         //CRUD
         $crud = $this->get('tianos.one_to_many');
         $modal = $crud->getModalMapper()->getDefaults();
@@ -100,11 +95,6 @@ class BackendController extends BaseController
             ->resetGridVariable()
         ;
 
-//        echo "POLLO:: <pre>";
-//        print_r($dataTable);
-//        exit;
-
-
         return $this->render(
             $template,
             [
@@ -115,12 +105,10 @@ class BackendController extends BaseController
                 'boxCenter' => $boxCenter,
                 'boxRight' => $boxRight,
                 'objectsLeft' => $objectsLeft,
-//                'objectsCenter' => $objectsCenter,
                 'formMapper' => $formMapper,
                 'dataTable' => $dataTable,
             ]
         );
-
     }
 
     /**
@@ -175,9 +163,6 @@ class BackendController extends BaseController
             throw $this->createAccessDeniedException(self::ACCESS_DENIED_MSG);
         }
 
-//        $boxLeftValue = $request->get('boxLeftValue');
-//        $boxRightValues = $request->get('boxRightValues');
-
         $parameters = [
             'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
         ];
@@ -192,7 +177,6 @@ class BackendController extends BaseController
         $template = $configuration->getTemplate('');
 
 //        $boxRight = $configuration->oneToManyBoxRight();
-
         $vars = $configuration->getVars();
         $boxCenter = $vars['box_center'];
         $boxCenter = json_decode(json_encode($boxCenter));
@@ -201,12 +185,6 @@ class BackendController extends BaseController
         $objectsLeft = $this->get($repositoryLeft)->$methodLeft($id);
         $varsLeft = $configuration->getRepositoryVarsLeft();
         $objectsLeft = $this->getSerializeDecode($objectsLeft, $varsLeft['serialize_group_name']);
-
-
-//        echo "POLLO:: <pre>";
-//        print_r($boxCenter);
-//        exit;
-
 
         return $this->render(
             $template,
@@ -241,7 +219,6 @@ class BackendController extends BaseController
         $template = $configuration->getTemplate('');
 
 //        $boxRight = $configuration->oneToManyBoxRight();
-
         $vars = $configuration->getVars();
         $boxRight = $vars['box_right'];
         $boxRight = json_decode(json_encode($boxRight));
@@ -259,15 +236,6 @@ class BackendController extends BaseController
             $userId,
             $orderDate
         );
-
-//        foreach ($orders as $key => $order) {
-//            echo "POLLO:: <pre>";
-//            print_r($order->getProduct()->getId());
-//        }
-//
-//
-//        exit;
-
 
         return $this->render(
             $template,
