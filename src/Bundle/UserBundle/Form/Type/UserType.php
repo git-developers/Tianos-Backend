@@ -195,9 +195,19 @@ class UserType extends AbstractType
                 ],
                 'attr' => [
                     'class' => 'form-control required',
-                    'placeholder' => 'test@test.com',
+                    'placeholder' => 'test@example.com',
                 ],
                 //'error_bubbling' => true
+            ])
+            ->add('isActive', CheckboxType::class, [
+                'label' => 'Activo',
+                'label_attr' => [
+                    'class' => ''
+                ],
+                'attr' => [
+                    'class' => '',
+                    'placeholder' => 'Activo',
+                ],
             ])
         ;
 

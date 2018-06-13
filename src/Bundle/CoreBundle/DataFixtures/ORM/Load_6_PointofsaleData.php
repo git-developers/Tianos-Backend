@@ -21,6 +21,7 @@ class Load_6_PointofsaleData extends AbstractFixture implements OrderedFixtureIn
 
     public function load(ObjectManager $manager)
     {
+        $dateCreatedAt = "2018-05-11";
 
         $entity = new Pointofsale();
         $entity->setCode('111');
@@ -30,6 +31,7 @@ class Load_6_PointofsaleData extends AbstractFixture implements OrderedFixtureIn
         $entity->setSlug('point-of-sale-1');
         $entity->setLatitude('-12.0240716');
         $entity->setLongitude('-77.1120326');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new Pointofsale();
@@ -40,6 +42,7 @@ class Load_6_PointofsaleData extends AbstractFixture implements OrderedFixtureIn
         $entity->setSlug('point-of-sale-2');
         $entity->setLatitude('-12.1476123');
         $entity->setLongitude('-77.021375');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new Pointofsale();
@@ -50,6 +53,7 @@ class Load_6_PointofsaleData extends AbstractFixture implements OrderedFixtureIn
         $entity->setSlug('point-of-sale-3');
         $entity->setLatitude('-12.0982821');
         $entity->setLongitude('-76.9620132');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new Pointofsale();
@@ -60,6 +64,7 @@ class Load_6_PointofsaleData extends AbstractFixture implements OrderedFixtureIn
         $entity->setSlug('point-of-sale-4');
         $entity->setLatitude('-12.0625411');
         $entity->setLongitude('-77.0167905');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new Pointofsale();
@@ -70,6 +75,7 @@ class Load_6_PointofsaleData extends AbstractFixture implements OrderedFixtureIn
         $entity->setSlug('point-of-sale-5');
         $entity->setLatitude('-12.0660291');
         $entity->setLongitude('-76.959109');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new Pointofsale();
@@ -80,6 +86,7 @@ class Load_6_PointofsaleData extends AbstractFixture implements OrderedFixtureIn
         $entity->setSlug('point-of-sale-6');
         $entity->setLatitude('-12.0301596');
         $entity->setLongitude('-77.0109891');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new Pointofsale();
@@ -90,6 +97,7 @@ class Load_6_PointofsaleData extends AbstractFixture implements OrderedFixtureIn
         $entity->setSlug('point-of-sale-7');
         $entity->setLatitude('-12.0923916');
         $entity->setLongitude('-77.0707495');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new Pointofsale();
@@ -100,6 +108,7 @@ class Load_6_PointofsaleData extends AbstractFixture implements OrderedFixtureIn
         $entity->setSlug('point-of-sale-8');
         $entity->setLatitude('-12.1358307');
         $entity->setLongitude('-77.0178832');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new Pointofsale();
@@ -110,6 +119,7 @@ class Load_6_PointofsaleData extends AbstractFixture implements OrderedFixtureIn
         $entity->setSlug('point-of-sale-9');
         $entity->setLatitude('-12.0706228');
         $entity->setLongitude('-77.0004553');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new Pointofsale();
@@ -120,6 +130,7 @@ class Load_6_PointofsaleData extends AbstractFixture implements OrderedFixtureIn
         $entity->setSlug('point-of-sale-10');
         $entity->setLatitude('-11.861255');
         $entity->setLongitude('-77.0785308');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new Pointofsale();
@@ -130,6 +141,7 @@ class Load_6_PointofsaleData extends AbstractFixture implements OrderedFixtureIn
         $entity->setSlug('point-of-sale-11');
         $entity->setLatitude('-12.0745763');
         $entity->setLongitude('-76.993367');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new Pointofsale();
@@ -140,6 +152,7 @@ class Load_6_PointofsaleData extends AbstractFixture implements OrderedFixtureIn
         $entity->setSlug('point-of-sale-12');
         $entity->setLatitude('-12.0913748');
         $entity->setLongitude('-77.0029586');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new Pointofsale();
@@ -150,6 +163,7 @@ class Load_6_PointofsaleData extends AbstractFixture implements OrderedFixtureIn
         $entity->setSlug('point-of-sale-13');
         $entity->setLatitude('-12.0306604');
         $entity->setLongitude('-77.0690611');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new Pointofsale();
@@ -160,6 +174,7 @@ class Load_6_PointofsaleData extends AbstractFixture implements OrderedFixtureIn
         $entity->setSlug('point-of-sale-14');
         $entity->setLatitude('-12.1167489');
         $entity->setLongitude('-77.0256055');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new Pointofsale();
@@ -170,6 +185,7 @@ class Load_6_PointofsaleData extends AbstractFixture implements OrderedFixtureIn
         $entity->setSlug('point-of-sale-15');
         $entity->setLatitude('-11.8253926');
         $entity->setLongitude('-77.1328608');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new Pointofsale();
@@ -180,6 +196,7 @@ class Load_6_PointofsaleData extends AbstractFixture implements OrderedFixtureIn
         $entity->setSlug('point-of-sale-16');
         $entity->setLatitude('-12.0306636');
         $entity->setLongitude('-77.0575724');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new Pointofsale();
@@ -190,6 +207,7 @@ class Load_6_PointofsaleData extends AbstractFixture implements OrderedFixtureIn
         $entity->setSlug('point-of-sale-17');
         $entity->setLatitude('-12.1186511');
         $entity->setLongitude('-77.0078432');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new Pointofsale();
@@ -200,6 +218,7 @@ class Load_6_PointofsaleData extends AbstractFixture implements OrderedFixtureIn
         $entity->setSlug('point-of-sale-18');
         $entity->setLatitude('-12.1052368');
         $entity->setLongitude('-76.9708808');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new Pointofsale();
@@ -210,6 +229,7 @@ class Load_6_PointofsaleData extends AbstractFixture implements OrderedFixtureIn
         $entity->setSlug('point-of-sale-19');
         $entity->setLatitude('-11.9424768');
         $entity->setLongitude('-77.0717141');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new Pointofsale();
@@ -220,6 +240,7 @@ class Load_6_PointofsaleData extends AbstractFixture implements OrderedFixtureIn
         $entity->setSlug('point-of-sale-20');
         $entity->setLatitude('-12.0746298');
         $entity->setLongitude('-77.0225325');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
 

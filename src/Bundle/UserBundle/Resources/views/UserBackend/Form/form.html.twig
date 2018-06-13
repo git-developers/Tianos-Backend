@@ -2,7 +2,7 @@
 
 {% block crud_modal_content %}
 
-    {{ form_start(form) }}
+    {#{{ form_start(form) }}#}
 
     {% if id is defined %}
         <input type="hidden" value="{{ id }}" name="id">
@@ -62,16 +62,31 @@
     </div>
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-8">
             <div class="form-group">
                 <i class="fa fa-fw fa-envelope-o"></i>
                 {{ form_label(form.email) }}
                 {{ form_widget(form.email) }}
             </div>
         </div>
+        <div class="col-md-2">
+            <div class="form-group">
+
+                <i class="fa fa-fw fa-check-square-o"></i>
+                {{ form_label(form.isActive) }}
+
+                <div class="clearfix"></div>
+
+                <label class="switch">
+                    {{ form_widget(form.isActive) }}
+                    <span class="slider round {{ sliderBgColor() }}"></span>
+                </label>
+
+            </div>
+        </div>
     </div>
 
     {{ form_widget(form) }}
-    {{ form_end(form) }}
+    {#{{ form_end(form) }}#}
 
 {% endblock %}

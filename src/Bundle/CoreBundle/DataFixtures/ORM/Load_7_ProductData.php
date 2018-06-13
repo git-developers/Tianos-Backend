@@ -21,6 +21,7 @@ class Load_7_ProductData extends AbstractFixture implements OrderedFixtureInterf
 
     public function load(ObjectManager $manager)
     {
+        $dateCreatedAt = "2018-05-11";
 
         /**
          * Marca PrenSmart
@@ -30,6 +31,7 @@ class Load_7_ProductData extends AbstractFixture implements OrderedFixtureInterf
         $entity->setName('Ojo');
         $entity->setSlug('product-5');
         $entity->setImage('http://www.free-icons-download.net/images/product-icon-27962.png');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new Product();
@@ -37,6 +39,7 @@ class Load_7_ProductData extends AbstractFixture implements OrderedFixtureInterf
         $entity->setName('El Bocón');
         $entity->setSlug('product-9');
         $entity->setImage('http://www.free-icons-download.net/images/product-icon-27962.png');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new Product();
@@ -44,6 +47,7 @@ class Load_7_ProductData extends AbstractFixture implements OrderedFixtureInterf
         $entity->setName('Correo');
         $entity->setSlug('product-2');
         $entity->setImage('http://www.free-icons-download.net/images/product-icon-27962.png');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new Product();
@@ -51,6 +55,7 @@ class Load_7_ProductData extends AbstractFixture implements OrderedFixtureInterf
         $entity->setName('El Comercio');
         $entity->setSlug('product-1');
         $entity->setImage('http://www.free-icons-download.net/images/product-icon-27962.png');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
 
@@ -64,6 +69,7 @@ class Load_7_ProductData extends AbstractFixture implements OrderedFixtureInterf
         $entity->setName('Gestión');
         $entity->setSlug('product-10');
         $entity->setImage('http://www.free-icons-download.net/images/product-icon-27962.png');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new Product();
@@ -71,6 +77,7 @@ class Load_7_ProductData extends AbstractFixture implements OrderedFixtureInterf
         $entity->setName('Trome');
         $entity->setSlug('product-4');
         $entity->setImage('http://www.free-icons-download.net/images/product-icon-27962.png');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new Product();
@@ -78,6 +85,7 @@ class Load_7_ProductData extends AbstractFixture implements OrderedFixtureInterf
         $entity->setName('Perú 21');
         $entity->setSlug('product-3');
         $entity->setImage('http://www.free-icons-download.net/images/product-icon-27962.png');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new Product();
@@ -85,6 +93,7 @@ class Load_7_ProductData extends AbstractFixture implements OrderedFixtureInterf
         $entity->setName('Depor');
         $entity->setSlug('product-8');
         $entity->setImage('http://www.free-icons-download.net/images/product-icon-27962.png');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
 

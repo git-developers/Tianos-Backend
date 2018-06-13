@@ -13,45 +13,54 @@ class Load_9_RouteData extends AbstractFixture implements OrderedFixtureInterfac
 {
     public function load(ObjectManager $manager)
     {
+        $dateCreatedAt = "2018-05-11";
 
         $entity = new Route();
         $entity->setCode('111');
         $entity->setName('Ruta centro');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new Route();
         $entity->setCode('222');
         $entity->setName('Ruta sur');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new Route();
         $entity->setCode('333');
         $entity->setName('Ruta norte');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new Route();
         $entity->setCode('444');
         $entity->setName('Ruta central 4');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new Route();
         $entity->setCode('555');
         $entity->setName('Ruta  central 5');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new Route();
         $entity->setCode('666');
         $entity->setName('Ruta  central 6');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new Route();
         $entity->setCode('777');
         $entity->setName('Ruta  central 7');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new Route();
         $entity->setCode('888');
         $entity->setName('Ruta  central 8');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
 

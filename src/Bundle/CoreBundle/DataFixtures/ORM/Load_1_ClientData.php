@@ -13,26 +13,31 @@ class Load_1_ClientData extends AbstractFixture implements OrderedFixtureInterfa
 {
     public function load(ObjectManager $manager)
     {
+        $dateCreatedAt = "2018-05-11";
 
         $entity = new Client();
         $entity->setCode('111');
         $entity->setName('Planta norte chiclayo');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new Client();
         $entity->setCode('222');
         $entity->setName('Planta centro Huancayo');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new Client();
         $entity->setCode('333');
         $entity->setName('Planta centro Pando');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
         $this->addReference('cliente-planta-centro-pando', $entity);
 
         $entity = new Client();
         $entity->setCode('444');
         $entity->setName('Planta sur Arequipa');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
 

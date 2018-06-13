@@ -80,7 +80,7 @@ class GridController extends BaseController
 
 
 //        echo "POLLO:: <pre>";
-//        print_r($objects);
+//        print_r($formMapper);
 //        exit;
 
 
@@ -108,6 +108,12 @@ class GridController extends BaseController
     public function createAction(Request $request): Response
     {
 
+
+//        echo "POLLO:wwwwww:::: <pre>";
+//        print_r($request->request->all());
+//        exit;
+
+
         if (!$this->isXmlHttpRequest()) {
             throw $this->createAccessDeniedException(self::ACCESS_DENIED_MSG);
         }
@@ -129,6 +135,20 @@ class GridController extends BaseController
 
         $form = $this->createForm($formType, $entity, ['form_data' => []]);
         $form->handleRequest($request);
+
+
+//        $errors = [];
+//        foreach ($form->getErrors(true) as $key => $error) {
+//            if ($form->isRoot()) {
+//                $errors[] = $error->getMessage();
+//            } else {
+//                $errors[] = $error->getMessage();
+//            }
+//        }
+
+//        echo "POLLO:: <pre>";
+//        print_r($request);
+//        exit;
 
         if ($form->isSubmitted()) {
 

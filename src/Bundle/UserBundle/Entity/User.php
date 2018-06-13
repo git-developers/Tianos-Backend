@@ -134,6 +134,11 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     protected $enabled = '1';
 
     /**
+     * @var boolean
+     */
+    private $isActive = true;
+
+    /**
      * @var \DateTime|null
      *
      */
@@ -821,6 +826,30 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     public function getRoute()
     {
         return $this->route;
+    }
+
+    /**
+     * Set isActive
+     *
+     * @param boolean $isActive
+     *
+     * @return Client
+     */
+    public function setIsActive($isActive)
+    {
+        $this->isActive = $isActive;
+
+        return $this;
+    }
+
+    /**
+     * Get isActive
+     *
+     * @return boolean
+     */
+    public function getIsActive()
+    {
+        return $this->isActive;
     }
 
     /**

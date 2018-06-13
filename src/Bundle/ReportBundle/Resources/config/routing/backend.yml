@@ -12,7 +12,7 @@ backend_report_pedido_vs_devolucion:
                 icon: pie-chart
                 title: 'Puntos de venta: pedidos y devoluciones de periódicos'
                 body_css: report-body-css
-                box_class: success
+                box_class: danger
             grid:
                 modal:
                     title: Crear xxxxx
@@ -36,10 +36,10 @@ backend_report_roturastock:
             entity: Bundle\ReportBundle\Entity\Report
             vars:
                 subheader: sylius.ui.manage_your_product_catalog
-                icon: bar-chart-o
+                icon: area-chart
                 title: Rotura de Stock
                 body_css: report-body-css
-                box_class: success
+                box_class: warning
             grid:
                 modal:
                     title: Crear xxxx
@@ -66,7 +66,7 @@ backend_report_productos_entregados_a_pdv:
                 icon: bar-chart-o
                 title: Productos entregados a Puntos de venta
                 body_css: report-body-css
-                box_class: success
+                box_class: primary
             grid:
                 modal:
                     title: Crear xxxxxx

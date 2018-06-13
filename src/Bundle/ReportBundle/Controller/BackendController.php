@@ -281,13 +281,6 @@ class BackendController extends BaseController
         }
         //JSON ARRAY
 
-
-//        echo "POLLO:: <pre>";
-//        print_r($jsonArray);
-//        exit;
-
-
-
         return $this->render(
             $template,
             [

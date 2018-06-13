@@ -13,20 +13,24 @@ class Load_8_GroupofusersData extends AbstractFixture implements OrderedFixtureI
 {
     public function load(ObjectManager $manager)
     {
+        $dateCreatedAt = "2018-05-11";
 
         $entity = new Groupofusers();
         $entity->setCode('111');
         $entity->setName('Grupo 1');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new Groupofusers();
         $entity->setCode('222');
         $entity->setName('Grupo 2');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new Groupofusers();
         $entity->setCode('333');
         $entity->setName('Grupo 3');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
 

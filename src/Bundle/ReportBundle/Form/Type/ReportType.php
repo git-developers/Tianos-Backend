@@ -21,6 +21,7 @@ class ReportType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->setMethod('GET')
             ->add('dateStart', DateType::class, [
                 'label' =>' Fecha inicio',
                 'label_attr' => [

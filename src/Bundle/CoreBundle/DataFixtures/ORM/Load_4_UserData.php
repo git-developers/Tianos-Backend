@@ -22,21 +22,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
     public function load(ObjectManager $manager)
     {
 
-
-        $dniArray = [];
-        for ($i = 0; $i <= 100; $i++){
-            $dniArray = 11;
-        }
-
-
-//        echo "POLLO:: <pre>";
-//        print_r($dniArray);
-//        exit;
-
-
-
-
-
+        $dateCreatedAt = "2018-05-11";
         $clientePlantaCentroPando = $this->getReference('cliente-planta-centro-pando');
 
         $profileAdmin = $this->getReference('profile-admin');
@@ -56,7 +42,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setName('Alfredo');
         $entity->setLastName('Bringas');
         $entity->setEmail('abringas@' . $this->applicationUrl);
-        $entity->setEnabled(true);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileAdmin);
         $manager->persist($entity);
@@ -71,7 +57,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setName('Ricardo');
         $entity->setLastName('Masias');
         $entity->setEmail('rmasias@' . $this->applicationUrl);
-        $entity->setEnabled(true);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileJefeAdministracionComercial);
         $manager->persist($entity);
@@ -88,7 +74,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('mcardenas@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileAsistenteDistribucionTransporte);
-        $entity->setEnabled(true);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
 
@@ -104,8 +90,9 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('aquillay@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileGerenteVentas);
-        $entity->setEnabled(true);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+
 
         /**
          * SUPERVISOR DE VENTA
@@ -118,8 +105,9 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('jdominguez@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileSupervisorVenta);
-        $entity->setEnabled(true);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+
 
         /**
          * JEFE DE VENTA
@@ -132,8 +120,9 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('amelendez@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileJefeVenta);
-        $entity->setEnabled(true);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+
 
         /**
          * JEFE DE ALMACEN
@@ -146,7 +135,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('respinoza@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileJefeAlmacen);
-        $entity->setEnabled(true);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
 
@@ -163,7 +152,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('lhuamani@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileTransportista);
-        $entity->setEnabled(true);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new User();
@@ -174,7 +163,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('cmaldonado@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileTransportista);
-        $entity->setEnabled(true);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new User();
@@ -185,7 +174,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('hruiz@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileTransportista);
-        $entity->setEnabled(true);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new User();
@@ -196,7 +185,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('jlinares@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileTransportista);
-        $entity->setEnabled(true);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new User();
@@ -207,7 +196,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('sgarcia@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileTransportista);
-        $entity->setEnabled(true);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new User();
@@ -218,7 +207,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('gcampos@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileTransportista);
-        $entity->setEnabled(true);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new User();
@@ -229,7 +218,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('jpalomares@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileTransportista);
-        $entity->setEnabled(true);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new User();
@@ -240,7 +229,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('jolivera@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileTransportista);
-        $entity->setEnabled(true);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
         /**
          * TRANSPORTISTAS
@@ -259,7 +248,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('asantander@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileDistribuidor);
-        $entity->setEnabled(true);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new User(); // Barranco
@@ -270,7 +259,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('fmiranda@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileDistribuidor);
-        $entity->setEnabled(true);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new User(); // Chorrillos
@@ -281,7 +270,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('fpaucar@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileDistribuidor);
-        $entity->setEnabled(true);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new User(); // El Porvenir
@@ -292,7 +281,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('fmoreno@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileDistribuidor);
-        $entity->setEnabled(true);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new User(); // La Molina
@@ -303,7 +292,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('privera@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileDistribuidor);
-        $entity->setEnabled(true);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new User(); // Lurigancho
@@ -314,7 +303,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('raguirre@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileDistribuidor);
-        $entity->setEnabled(true);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new User(); // Magdalena
@@ -325,7 +314,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('jcatalina@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileDistribuidor);
-        $entity->setEnabled(true);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new User(); // Miraflores
@@ -336,7 +325,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('pespinoza@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileDistribuidor);
-        $entity->setEnabled(true);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new User(); // Plaza Grau
@@ -347,7 +336,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('emendez@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileDistribuidor);
-        $entity->setEnabled(true);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new User(); // Puente Piedra II
@@ -358,7 +347,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('fsanchez@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileDistribuidor);
-        $entity->setEnabled(true);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new User(); // Salamanca
@@ -369,7 +358,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('mtrujillo@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileDistribuidor);
-        $entity->setEnabled(true);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new User(); // San Borja
@@ -380,7 +369,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('mrojas@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileDistribuidor);
-        $entity->setEnabled(true);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new User(); // San Martin De Porres
@@ -391,7 +380,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('mperez@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileDistribuidor);
-        $entity->setEnabled(true);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new User(); // Surquillo
@@ -402,7 +391,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('bmarin@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileDistribuidor);
-        $entity->setEnabled(true);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new User(); // Ventanilla II
@@ -413,7 +402,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('esarmiento@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileDistribuidor);
-        $entity->setEnabled(true);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new User(); // Zarumilla
@@ -424,7 +413,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('jflores@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileDistribuidor);
-        $entity->setEnabled(true);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new User(); // Tomas Marsano
@@ -435,7 +424,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('nflores@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileDistribuidor);
-        $entity->setEnabled(true);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new User(); // Chacarilla
@@ -446,7 +435,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('aparco@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileDistribuidor);
-        $entity->setEnabled(true);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new User(); // Comas
@@ -457,7 +446,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('eleon@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileDistribuidor);
-        $entity->setEnabled(true);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new User(); // Plaza Mexico
@@ -468,7 +457,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('hpatazca@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileDistribuidor);
-        $entity->setEnabled(true);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
         /**
          * DISTRIBUIDORES
@@ -476,51 +465,668 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
 
 
 
+
         /**
          * CANILLITAS
          */
         $entity = new User();
-        $entity->setDni('23748239');
+        $entity->setDni('11112222');
         $entity->setPassword('1q2w3e4r');
         $entity->setName('Pedro');
         $entity->setLastName('Zavaleta');
         $entity->setEmail('pzavaleta@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileCanillita);
-        $entity->setEnabled(true);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new User();
-        $entity->setDni('22334465');
+        $entity->setDni('11112222');
         $entity->setPassword('1q2w3e4r');
         $entity->setName('Carlos');
         $entity->setLastName('Gonzales');
         $entity->setEmail('cgonzales@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileCanillita);
-        $entity->setEnabled(true);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new User();
-        $entity->setDni('45887766');
+        $entity->setDni('11112222');
         $entity->setPassword('1q2w3e4r');
         $entity->setName('Hector');
         $entity->setLastName('Galvan');
         $entity->setEmail('hgalvan@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileCanillita);
-        $entity->setEnabled(true);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new User();
-        $entity->setDni('74645332');
+        $entity->setDni('11112222');
         $entity->setPassword('1q2w3e4r');
         $entity->setName('Jorge');
         $entity->setLastName('Castaña');
         $entity->setEmail('jcastaña@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileCanillita);
-        $entity->setEnabled(true);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Miguel');
+        $entity->setLastName('Andrade');
+        $entity->setEmail('mandrade@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Martin');
+        $entity->setLastName('Alayza');
+        $entity->setEmail('malayza@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Enrique');
+        $entity->setLastName('Larrabure');
+        $entity->setEmail('elarrabure@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('David');
+        $entity->setLastName('Wong');
+        $entity->setEmail('dwong@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('xxxxx');
+        $entity->setLastName('xxxxxx');
+        $entity->setEmail('xxxxxxx@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Mario');
+        $entity->setLastName('Mujica');
+        $entity->setEmail('mmujica@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Raimundo');
+        $entity->setLastName('Morales');
+        $entity->setEmail('rmorales@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Alvaro');
+        $entity->setLastName('Garcia');
+        $entity->setEmail('agarcia@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Miguel');
+        $entity->setLastName('Cruchaga');
+        $entity->setEmail('mcruchaga@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Enrique');
+        $entity->setLastName('Quevedo');
+        $entity->setEmail('equevedo@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Felipe');
+        $entity->setLastName('Bentin');
+        $entity->setEmail('fbentin@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Oscar');
+        $entity->setLastName('Tendler');
+        $entity->setEmail('otendler@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Pedro');
+        $entity->setLastName('Rubio');
+        $entity->setEmail('prubio@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Jaime');
+        $entity->setLastName('Pardo');
+        $entity->setEmail('jpardo@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Javier');
+        $entity->setLastName('Otero');
+        $entity->setEmail('jotero@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Juan');
+        $entity->setLastName('Quispe');
+        $entity->setEmail('jquispe@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Augusto');
+        $entity->setLastName('Perez');
+        $entity->setEmail('aperez@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Manuel');
+        $entity->setLastName('Velarde');
+        $entity->setEmail('mvelarde@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Miguel');
+        $entity->setLastName('Puga');
+        $entity->setEmail('mpuga@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Jesus');
+        $entity->setLastName('Martinez');
+        $entity->setEmail('jmartinez@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Jorge');
+        $entity->setLastName('Silva');
+        $entity->setEmail('jsilva@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Antonio');
+        $entity->setLastName('Leon');
+        $entity->setEmail('aleon@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Manuel');
+        $entity->setLastName('Cueto');
+        $entity->setEmail('mcueto@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Elias');
+        $entity->setLastName('Peral');
+        $entity->setEmail('eperal@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Lidia');
+        $entity->setLastName('Medina');
+        $entity->setEmail('lmedina@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Silvia');
+        $entity->setLastName('Lazo');
+        $entity->setEmail('slazo@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Veronica');
+        $entity->setLastName('Lopez');
+        $entity->setEmail('vlopez@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Ernesto');
+        $entity->setLastName('Ramos');
+        $entity->setEmail('eramos@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Bernardo');
+        $entity->setLastName('Llanos');
+        $entity->setEmail('bllanos@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Martha');
+        $entity->setLastName('Rodriguez');
+        $entity->setEmail('mrodriguez@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Carlos');
+        $entity->setLastName('Belgrano');
+        $entity->setEmail('cbelgrano@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Jacobo');
+        $entity->setLastName('Rebaza');
+        $entity->setEmail('jrebaza@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Guillermo');
+        $entity->setLastName('Ramirez');
+        $entity->setEmail('gramirez@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Estuardo');
+        $entity->setLastName('Cavenago');
+        $entity->setEmail('ecavenago@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Alberto');
+        $entity->setLastName('Torres');
+        $entity->setEmail('atorres@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Manuel');
+        $entity->setLastName('Castro');
+        $entity->setEmail('mcastro@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Alfonso');
+        $entity->setLastName('Espinoza');
+        $entity->setEmail('aespinoza@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Vicente');
+        $entity->setLastName('Mamani');
+        $entity->setEmail('vmamani@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User(); //44
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Elena');
+        $entity->setLastName('Ruiz');
+        $entity->setEmail('eruiz@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Agustin');
+        $entity->setLastName('Reyes');
+        $entity->setEmail('areyes@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Claudia');
+        $entity->setLastName('León');
+        $entity->setEmail('cleon@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Eulogio');
+        $entity->setLastName('Gutiérrez');
+        $entity->setEmail('egutierrez@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Blanca');
+        $entity->setLastName('Huamán');
+        $entity->setEmail('bhuaman@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Rodolfo');
+        $entity->setLastName('Vásquez');
+        $entity->setEmail('rvasquez@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User(); // 50
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Salvador');
+        $entity->setLastName('Espinoza');
+        $entity->setEmail('sespinoza@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Santiago');
+        $entity->setLastName('Sánchez');
+        $entity->setEmail('ssanchez@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('David');
+        $entity->setLastName('Gonzáles');
+        $entity->setEmail('dgonzales@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Gerardo');
+        $entity->setLastName('Rodríguez');
+        $entity->setEmail('grodriguez@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Raimundo');
+        $entity->setLastName('Chávez');
+        $entity->setEmail('rchavez@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Agustin');
+        $entity->setLastName('Díaz');
+        $entity->setEmail('adiaz@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Marcela');
+        $entity->setLastName('Mendoza');
+        $entity->setEmail('mmendoza@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Olivia');
+        $entity->setLastName('Castillo');
+        $entity->setEmail('ocastillo@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Amada');
+        $entity->setLastName('Romero');
+        $entity->setEmail('aromero@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Max');
+        $entity->setLastName('Fernandez');
+        $entity->setEmail('mfernandez@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Jacobo');
+        $entity->setLastName('Vargas');
+        $entity->setEmail('mvargas@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $manager->persist($entity);
+
+        $entity = new User();
+        $entity->setDni('11112222');
+        $entity->setPassword('1q2w3e4r');
+        $entity->setName('Manuel');
+        $entity->setLastName('Colmenares');
+        $entity->setEmail('mcolmenares@' . $this->applicationUrl);
+        $entity->setClient($clientePlantaCentroPando);
+        $entity->setProfile($profileCanillita);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
         /**
          * CANILLITAS
@@ -555,7 +1161,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setName('Alfredo');
         $entity->setLastName('Bringas');
         $entity->setEmail('abringas@' . $this->applicationUrl);
-        $entity->setEnabled(true);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $entity->setClient($plantaCentroPando);
         $entity->setProfile($profileAdmin);
         $manager->persist($entity);
@@ -566,7 +1172,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setName('Ricardo');
         $entity->setLastName('Masias');
         $entity->setEmail('agarcia-' . uniqid() . '@' . $this->applicationUrl);
-        $entity->setEnabled(true);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $entity->setClient($plantaCentroPando);
         $entity->setProfile($profileAdmin);
         $manager->persist($entity);
@@ -579,7 +1185,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('aeinstein-' . uniqid() . '@' . $this->applicationUrl);
         $entity->setClient($plantaCentroPando);
         $entity->setProfile($profileAdmin);
-        $entity->setEnabled(true);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new User();
@@ -590,7 +1196,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('sjobs-' . uniqid() . '@' . $this->applicationUrl);
         $entity->setClient($client2);
         $entity->setProfile($profileAdmin);
-        $entity->setEnabled(true);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new User();
@@ -601,7 +1207,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('bgates-' . uniqid() . '@' . $this->applicationUrl);
         $entity->setClient($client2);
         $entity->setProfile($profileAdmin);
-        $entity->setEnabled(true);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
         $entity = new User();
@@ -612,7 +1218,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('inewton-' . uniqid() . '@' . $this->applicationUrl);
         $entity->setClient($client2);
         $entity->setProfile($profileAdmin);
-        $entity->setEnabled(true);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
 

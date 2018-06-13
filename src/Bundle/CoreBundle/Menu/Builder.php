@@ -507,10 +507,11 @@ class Builder implements ContainerAwareInterface
             ->setAttribute('allow_angle', true)
             ->setAttribute('class', 'treeview')
             ->setAttribute('class', $this->activeRoute([
-                'backend_pdvhasproduct_index',
                 'backend_visit_index',
-                'backend_report_pedido_vs_devolucion',
                 'backend_report_roturastock',
+                'backend_pdvhasproduct_index',
+                'backend_report_pedido_vs_devolucion',
+                'backend_report_productos_entregados_a_pdv',
             ]))
             ->setAttribute('icon', 'fa-fw fa-line-chart')
             ->setDisplay($isGranted)

@@ -14,6 +14,8 @@ class Load_3_ProfileData extends AbstractFixture implements OrderedFixtureInterf
     public function load(ObjectManager $manager)
     {
 
+        $dateCreatedAt = "2018-05-11";
+
         $roleUserCreate = $this->getReference('role-user-create');
         $roleUserEdit = $this->getReference('role-user-edit');
         $roleUserView = $this->getReference('role-user-view');
@@ -25,52 +27,62 @@ class Load_3_ProfileData extends AbstractFixture implements OrderedFixtureInterf
         $entity->addRole($roleUserEdit);
         $entity->addRole($roleUserView);
         $entity->addRole($roleUserDelete);
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
         $this->addReference('profile-admin', $entity);
 
 
         $entity = new Profile();
         $entity->setName('Jefe de Administración Comercial');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
         $this->addReference('profile-jefe-administracion-comercial', $entity);
 
         $entity = new Profile();
         $entity->setName('Asistente de Distribución y Transporte');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
         $this->addReference('profile-asistente-distribucion-transporte', $entity);
 
         $entity = new Profile();
         $entity->setName('Gerente de ventas');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
         $this->addReference('profile-gerente-ventas', $entity);
 
         $entity = new Profile();
         $entity->setName('Supervisor de venta');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
         $this->addReference('profile-supervisor-venta', $entity);
 
         $entity = new Profile();
         $entity->setName('Jefe de venta');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
         $this->addReference('profile-jefe-venta', $entity);
 
         $entity = new Profile();
         $entity->setName('Jefe de almacén');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
         $this->addReference('profile-jefe-almacen', $entity);
 
         $entity = new Profile();
         $entity->setName('Transportista');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
         $this->addReference('profile-transportista', $entity);
 
         $entity = new Profile();
         $entity->setName('Distribuidor');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
         $this->addReference('profile-distribuidor', $entity);
 
         $entity = new Profile();
         $entity->setName('Canillita');
+        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
         $this->addReference('profile-canillita', $entity);
 

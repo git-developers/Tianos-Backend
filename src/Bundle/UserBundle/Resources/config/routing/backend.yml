@@ -51,7 +51,7 @@ backend_user_index:
                           obj: obj.email
                           options:
                               icon: envelope-o
-                        - name: Name
+                        - name: Nombre
                           obj: " obj.name + ' ' + obj.last_name "
 #                        - name: slug
 #                          obj: obj.slug

@@ -43,42 +43,41 @@
 
 
         google.charts.load('current', {packages: ['corechart', 'bar']});
-        google.charts.setOnLoadCallback(drawBasic);
+        google.charts.setOnLoadCallback(drawChart);
 
-        function drawBasic() {
+        function drawChart() {
 
-            var data = new google.visualization.DataTable();
-            data.addColumn('timeofday', 'Time of Day');
-            data.addColumn('number', 'Motivation Level');
+            var data = google.visualization.arrayToDataTable([
 
-            data.addRows([
+                ['Puntos de venta', 'Cantidad', {role: 'style'}],
 
-                {% for key, value in jsonArrayOut %}
-                    [{v: [{{ value }}, 0, 0], f: '{{ key }}'}, 1],
+                {% for key, value in jsonArray %}
+                    ['{{ key }}', {{ value }}, 'color: #4B3DCD'],
                 {% endfor %}
+
+                {#
+                ['Year', 'Visitations', {role: 'style'}],
+                ['2010', 10, 'color: gray'],
+                ['2020', 14, 'color: #76A7FA'],
+                ['2030', 16, 'opacity: 0.2'],
+                ['2040', 22, 'stroke-color: #703593; stroke-width: 4; fill-color: #C5A5CF'],
+                ['2050', 28, 'stroke-color: #871B47; stroke-opacity: 0.6; stroke-width: 8; fill-color: #BC5679; fill-opacity: 0.2'],
+                #}
             ]);
 
             var options = {
-                title: 'Motivation Level Throughout the Day',
+                title: 'Productos entregados a los PDV',
                 hAxis: {
-                    title: 'Time of Day',
-                    format: 'h:mm a',
-                    viewWindow: {
-                        min: [7, 30, 0],
-                        max: [17, 30, 0]
-                    }
+                    title: 'Puntos de venta'
                 },
                 vAxis: {
-                    title: 'Rating (scale of 1-10)'
+                    title: 'Cantidad de productos'
                 }
             };
 
-            var chart = new google.visualization.ColumnChart(
-                document.getElementById('chart_div'));
-
+            var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
             chart.draw(data, options);
         }
-
     </script>
 
 
