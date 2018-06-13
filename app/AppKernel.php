@@ -13,7 +13,9 @@ class AppKernel extends Kernel
             new \Bundle\RoleBundle\RoleBundle(),
             new \Bundle\VisitBundle\VisitBundle(),
             new \Bundle\RouteBundle\RouteBundle(),
+            new \Bundle\OrderBundle\OrderBundle(),
             new \Bundle\ClientBundle\ClientBundle(),
+            new \Bundle\ReportBundle\ReportBundle(),
             new \Bundle\ProfileBundle\ProfileBundle(),
             new \Bundle\ProductBundle\ProductBundle(),
             new \Bundle\SessionBundle\SessionBundle(),
@@ -21,7 +23,6 @@ class AppKernel extends Kernel
             new \Bundle\PointofsaleBundle\PointofsaleBundle(),
             new \Bundle\GroupofusersBundle\GroupofusersBundle(),
             new \Bundle\PdvhasproductBundle\PdvhasproductBundle(),
-            new \Bundle\OrderBundle\OrderBundle(),
         ];
 
         return array_merge(parent::registerBundles(), $bundles);

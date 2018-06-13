@@ -1,0 +1,80 @@
+backend_report_pedido_vs_devolucion:
+    path: /pedido-vs-devolucion
+    methods: [GET, POST]
+    defaults:
+        _controller: tianos.backend.controller.report:pedidoDevolucionAction
+        _tianos:
+            action: xxxxx
+            template: ReportBundle:ReportBackend:pedido-vs-devolucion.html.twig
+            entity: Bundle\ReportBundle\Entity\Report
+            vars:
+                subheader: sylius.ui.manage_your_product_catalog
+                icon: pie-chart
+                title: 'Puntos de venta: pedidos y devoluciones de periódicos'
+                body_css: report-body-css
+                box_class: success
+            grid:
+                modal:
+                    title: Crear xxxxx
+            repository:
+                service: tianos.repository.order
+                method: findByPointOfSaleAndDateAndType
+                arguments: [$reportId]
+            form:
+                type: Bundle\ReportBundle\Form\Type\ReportType
+            vars:
+                serialize_group_name: crud
+
+backend_report_roturastock:
+    path: /rotura-de-stock
+    methods: [GET, POST]
+    defaults:
+        _controller: tianos.backend.controller.report:roturastockAction
+        _tianos:
+            action: xxxxx
+            template: ReportBundle:ReportBackend:rotura-de-stock.html.twig
+            entity: Bundle\ReportBundle\Entity\Report
+            vars:
+                subheader: sylius.ui.manage_your_product_catalog
+                icon: bar-chart-o
+                title: Rotura de Stock
+                body_css: report-body-css
+                box_class: success
+            grid:
+                modal:
+                    title: Crear xxxx
+            repository:
+                service: tianos.repository.order
+                method: findByPointOfSaleAndDate
+                arguments: [$reportId]
+            form:
+                type: Bundle\ReportBundle\Form\Type\ReportType
+            vars:
+                serialize_group_name: crud
+
+backend_report_productos_entregados_a_pdv:
+    path: /productos-entregados-a-pdv
+    methods: [GET, POST]
+    defaults:
+        _controller: tianos.backend.controller.report:productosEntregadosPdvAction
+        _tianos:
+            action: xxxxx
+            template: ReportBundle:ReportBackend:productos-entregados-a-pdv.html.twig
+            entity: Bundle\ReportBundle\Entity\Report
+            vars:
+                subheader: sylius.ui.manage_your_product_catalog
+                icon: bar-chart-o
+                title: Productos entregados a Puntos de venta
+                body_css: report-body-css
+                box_class: success
+            grid:
+                modal:
+                    title: Crear xxxxxx
+            repository:
+                service: tianos.repository.pdvhasproduct
+                method: findByPointOfSale
+                arguments: [$reportId]
+            form:
+                type: Bundle\ReportBundle\Form\Type\ReportType
+            vars:
+                serialize_group_name: crud

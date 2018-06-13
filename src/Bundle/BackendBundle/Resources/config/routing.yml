@@ -58,3 +58,6 @@ backend_orderin:
 backend_orderout:
     resource: '@OrderBundle/Resources/config/routing/backend_out.yml'
     prefix: /order/out
+backend_report:
+    resource: '@ReportBundle/Resources/config/routing/backend.yml'
+    prefix: /report

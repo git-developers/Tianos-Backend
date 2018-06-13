@@ -61,15 +61,15 @@ class BackendInController extends BaseController
 
         $grid = $configuration->getGrid();
         $vars = $configuration->getVars();
-        $box = $vars['box'];
-        $boxLeft = $vars['box_left'];
-        $boxCenter = $vars['box_center'];
-        $boxRight = $vars['box_right'];
+        $box = $vars->box;
+        $boxLeft = $vars->box_left;
+        $boxCenter = $vars->box_center;
+        $boxRight = $vars->box_right;
 
         //REPOSITORY LEFT
         $objectsLeft = $this->get($repositoryLeft)->$methodLeft();
         $varsLeft = $configuration->getRepositoryVarsLeft();
-        $objectsLeft = $this->getSerializeDecode($objectsLeft, $varsLeft['serialize_group_name']);
+        $objectsLeft = $this->getSerializeDecode($objectsLeft, $varsLeft->serialize_group_name);
 
         //CRUD
         $crud = $this->get('tianos.one_to_many');
@@ -132,7 +132,7 @@ class BackendInController extends BaseController
         $template = $configuration->getTemplate('');
 
         $vars = $configuration->getVars();
-        $boxLeft = $vars['box_left'];
+        $boxLeft = $vars->box_left;
 
         $repositoryLeft = $configuration->getRepositoryServiceLeft();
         $methodLeft = $configuration->getRepositoryMethodLeft();
@@ -140,7 +140,7 @@ class BackendInController extends BaseController
         //REPOSITORY LEFT
         $objectsLeft = $this->get($repositoryLeft)->$methodLeft($request->get('q'));
         $varsLeft = $configuration->getRepositoryVarsLeft();
-        $objectsLeft = $this->getSerializeDecode($objectsLeft, $varsLeft['serialize_group_name']);
+        $objectsLeft = $this->getSerializeDecode($objectsLeft, $varsLeft->serialize_group_name);
 
         return $this->render(
             $template,
@@ -178,13 +178,13 @@ class BackendInController extends BaseController
 
 //        $boxRight = $configuration->oneToManyBoxRight();
         $vars = $configuration->getVars();
-        $boxCenter = $vars['box_center'];
-        $boxCenter = json_decode(json_encode($boxCenter));
+        $boxCenter = $vars->box_center;
+//        $boxCenter = json_decode(json_encode($boxCenter));
 
         //REPOSITORY
         $objectsLeft = $this->get($repositoryLeft)->$methodLeft($id);
         $varsLeft = $configuration->getRepositoryVarsLeft();
-        $objectsLeft = $this->getSerializeDecode($objectsLeft, $varsLeft['serialize_group_name']);
+        $objectsLeft = $this->getSerializeDecode($objectsLeft, $varsLeft->serialize_group_name);
 
         return $this->render(
             $template,
@@ -220,13 +220,13 @@ class BackendInController extends BaseController
 
 //        $boxRight = $configuration->oneToManyBoxRight();
         $vars = $configuration->getVars();
-        $boxRight = $vars['box_right'];
-        $boxRight = json_decode(json_encode($boxRight));
+        $boxRight = $vars->box_right;
+//        $boxRight = json_decode(json_encode($boxRight));
 
         //REPOSITORY
         $objectsRight = $this->get($repositoryRight)->$methodRight();
         $varsRight = $configuration->getRepositoryVarsRight();
-        $objectsRight = $this->getSerializeDecode($objectsRight, $varsRight['serialize_group_name']);
+        $objectsRight = $this->getSerializeDecode($objectsRight, $varsRight->serialize_group_name);
 
         //ORDERS
         $datetime = new \DateTime("now");

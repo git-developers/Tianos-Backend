@@ -66,12 +66,12 @@ class OneToManyController extends BaseController
         //REPOSITORY LEFT
         $objectsLeft = $this->get($repositoryLeft)->$methodLeft();
         $varsLeft = $configuration->getRepositoryVarsLeft();
-        $objectsLeft = $this->getSerializeDecode($objectsLeft, $varsLeft['serialize_group_name']);
+        $objectsLeft = $this->getSerializeDecode($objectsLeft, $varsLeft->serialize_group_name);
 
         //REPOSITORY RIGHT
         $objectsRight = $this->get($repositoryRight)->$methodRight();
         $varsRight = $configuration->getRepositoryVarsRight();
-        $objectsRight = $this->getSerializeDecode($objectsRight, $varsRight['serialize_group_name']);
+        $objectsRight = $this->getSerializeDecode($objectsRight, $varsRight->serialize_group_name);
 
         //CRUD
         $crud = $this->get('tianos.one_to_many');
@@ -137,7 +137,7 @@ class OneToManyController extends BaseController
         //REPOSITORY
         $objectsLeft = $this->get($repositoryLeft)->$methodLeft($request->get('q'));
         $varsLeft = $configuration->getRepositoryVarsLeft();
-        $objectsLeft = $this->getSerializeDecode($objectsLeft, $varsLeft['serialize_group_name']);
+        $objectsLeft = $this->getSerializeDecode($objectsLeft, $varsLeft->serialize_group_name);
 
         return $this->render(
             $template,
@@ -175,11 +175,11 @@ class OneToManyController extends BaseController
 
         //OneToMany Value
         $oneToManyLeftIds = $this->get($repositoryLeft)->$methodLeft($request->get('radioLeftValue'));
-        $oneToManyLeftIds = $this->getSerializeDecode($oneToManyLeftIds, $varsLeft['serialize_group_name']);
+        $oneToManyLeftIds = $this->getSerializeDecode($oneToManyLeftIds, $varsLeft->serialize_group_name);
 
         //REPOSITORY
         $objectsRight = $this->get($repositoryRight)->$methodRight($request->get('q'));
-        $objectsRight = $this->getSerializeDecode($objectsRight, $varsRight['serialize_group_name']);
+        $objectsRight = $this->getSerializeDecode($objectsRight, $varsRight->serialize_group_name);
 
 
 //        echo "POLLO:xxxxxx: <pre>";
@@ -285,7 +285,7 @@ class OneToManyController extends BaseController
         //REPOSITORY
         $objectsLeft = $this->get($repositoryLeft)->$methodLeft($id);
         $varsLeft = $configuration->getRepositoryVarsLeft();
-        $objectsLeft = $this->getSerializeDecode($objectsLeft, $varsLeft['serialize_group_name']);
+        $objectsLeft = $this->getSerializeDecode($objectsLeft, $varsLeft->serialize_group_name);
 
 
 //        echo "POLLO:: <pre>";

@@ -57,7 +57,7 @@ class GridController extends BaseController
 
         //REPOSITORY
         $objects = $this->get($repository)->$method();
-        $objects = $this->getSerialize($objects, $vars['serialize_group_name']);
+        $objects = $this->getSerialize($objects, $vars->serialize_group_name);
 
         //GRID
         $gridService = $this->get('tianos.grid');
@@ -108,15 +108,6 @@ class GridController extends BaseController
     public function createAction(Request $request): Response
     {
 
-
-
-//        echo "POLLO:: <pre>";
-//        print_r($request);
-//        exit;
-
-
-
-
         if (!$this->isXmlHttpRequest()) {
             throw $this->createAccessDeniedException(self::ACCESS_DENIED_MSG);
         }
@@ -149,7 +140,7 @@ class GridController extends BaseController
 
                 if ($form->isValid()) {
                     $this->persist($entity);
-                    $entity = $this->getSerializeDecode($entity, $vars['serialize_group_name']);
+                    $entity = $this->getSerializeDecode($entity, $vars->serialize_group_name);
                     $status = self::STATUS_SUCCESS;
                 }else{
                     foreach ($form->getErrors(true) as $key => $error) {
@@ -226,7 +217,7 @@ class GridController extends BaseController
 
                 if ($form->isValid()) {
                     $this->persist($entity);
-                    $entity = $this->getSerializeDecode($entity, $vars['serialize_group_name']);
+                    $entity = $this->getSerializeDecode($entity, $vars->serialize_group_name);
                     $status = self::STATUS_SUCCESS;
                 }else{
                     foreach ($form->getErrors(true) as $key => $error) {

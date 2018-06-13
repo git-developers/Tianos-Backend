@@ -13,6 +13,56 @@ class OrderRepository extends TianosEntityRepository implements OrderRepositoryI
     /**
      * {@inheritdoc}
      */
+    public function findByPointOfSaleAndDate($pointOfSaleId, $dateStart, $dateEnd)
+    {
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT order_
+            FROM OrderBundle:Order order_
+            WHERE
+            order_.pointOfSale = :pointOfSaleId AND
+            (order_.orderDate BETWEEN :dateStart AND :dateEnd) AND
+            order_.isActive = :active
+            ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+        $query->setParameter('pointOfSaleId', $pointOfSaleId);
+        $query->setParameter('dateStart', $dateStart);
+        $query->setParameter('dateEnd', $dateEnd);
+
+        return $query->getResult();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function findByPointOfSaleAndDateAndType($pointOfSaleId, $dateStart, $dateEnd, $type)
+    {
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT order_
+            FROM OrderBundle:Order order_
+            WHERE
+            order_.pointOfSale = :pointOfSaleId AND
+            (order_.orderDate BETWEEN :dateStart AND :dateEnd) AND
+            order_.type = :type_ AND
+            order_.isActive = :active
+            ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+        $query->setParameter('pointOfSaleId', $pointOfSaleId);
+        $query->setParameter('dateStart', $dateStart);
+        $query->setParameter('dateEnd', $dateEnd);
+        $query->setParameter('type_', $type);
+
+        return $query->getResult();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function findObjectUpsert($pointOfSaleId, $userId, $orderDate, $productId, $type)
     {
         $em = $this->getEntityManager();

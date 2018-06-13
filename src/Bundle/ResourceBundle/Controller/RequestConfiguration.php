@@ -676,7 +676,8 @@ class RequestConfiguration
 
     public function getVars()
     {
-        return $this->parameters->get('vars', []);
+        $vars = $this->parameters->get('vars', []);
+        return json_decode(json_encode($vars));
     }
 
     public function getRepositoryVarsLeft()
@@ -686,8 +687,9 @@ class RequestConfiguration
         }
 
         $repository = $this->parameters->get('repository');
+        $repository = json_decode(json_encode($repository));
 
-        return is_array($repository) ? $repository['box_left']['vars'] : $repository;
+        return is_object($repository) ? $repository->box_left->vars : $repository;
     }
 
     public function getRepositoryVarsCenter()
@@ -697,8 +699,9 @@ class RequestConfiguration
         }
 
         $repository = $this->parameters->get('repository');
+        $repository = json_decode(json_encode($repository));
 
-        return is_array($repository) ? $repository['box_center']['vars'] : $repository;
+        return is_object($repository) ? $repository->box_center->vars : $repository;
     }
 
     public function getRepositoryVarsRight()
@@ -708,8 +711,9 @@ class RequestConfiguration
         }
 
         $repository = $this->parameters->get('repository');
+        $repository = json_decode(json_encode($repository));
 
-        return is_array($repository) ? $repository['box_right']['vars'] : $repository;
+        return is_object($repository) ? $repository->box_right->vars : $repository;
     }
 
     /**

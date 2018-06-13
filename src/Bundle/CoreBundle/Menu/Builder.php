@@ -509,6 +509,8 @@ class Builder implements ContainerAwareInterface
             ->setAttribute('class', $this->activeRoute([
                 'backend_pdvhasproduct_index',
                 'backend_visit_index',
+                'backend_report_pedido_vs_devolucion',
+                'backend_report_roturastock',
             ]))
             ->setAttribute('icon', 'fa-fw fa-line-chart')
             ->setDisplay($isGranted)
@@ -535,6 +537,42 @@ class Builder implements ContainerAwareInterface
         ])
             ->setAttribute('icon', self::CIRCLE_2)
             ->setAttribute('class', $this->activeRoute('backend_visit_index'))
+            ->setDisplay($isGranted)
+        ;
+
+        $menu['Reportes']->addChild('Pedido vs Devolución', [
+            'route' => 'backend_report_pedido_vs_devolucion',
+            'extras' => ['safe_label' => true],
+            'childrenAttributes' => [
+                'class' => 'treeview-menu',
+            ],
+        ])
+            ->setAttribute('icon', self::CIRCLE_3)
+            ->setAttribute('class', $this->activeRoute('backend_report_pedido_vs_devolucion'))
+            ->setDisplay($isGranted)
+        ;
+
+        $menu['Reportes']->addChild('Rotura de Stock', [
+            'route' => 'backend_report_roturastock',
+            'extras' => ['safe_label' => true],
+            'childrenAttributes' => [
+                'class' => 'treeview-menu',
+            ],
+        ])
+            ->setAttribute('icon', self::CIRCLE_4)
+            ->setAttribute('class', $this->activeRoute('backend_report_roturastock'))
+            ->setDisplay($isGranted)
+        ;
+
+        $menu['Reportes']->addChild('Productos a PDV', [
+            'route' => 'backend_report_productos_entregados_a_pdv',
+            'extras' => ['safe_label' => true],
+            'childrenAttributes' => [
+                'class' => 'treeview-menu',
+            ],
+        ])
+            ->setAttribute('icon', self::CIRCLE_5)
+            ->setAttribute('class', $this->activeRoute('backend_report_productos_entregados_a_pdv'))
             ->setDisplay($isGranted)
         ;
         /**
