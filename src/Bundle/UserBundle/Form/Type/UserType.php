@@ -58,7 +58,7 @@ class UserType extends AbstractType
                 },
                 'placeholder' => '[ Escoge una opción ]',
                 'empty_data' => null,
-                'required' => false,
+                'required' => true,
                 'label' => 'Cliente',
                 'label_attr' => [
                     'class' => ''
@@ -82,7 +82,7 @@ class UserType extends AbstractType
                 },
                 'placeholder' => '[ Escoge una opción ]',
                 'empty_data' => null,
-                'required' => false,
+                'required' => true,
                 'label' => 'Profile',
                 'label_attr' => [
                     'class' => ''

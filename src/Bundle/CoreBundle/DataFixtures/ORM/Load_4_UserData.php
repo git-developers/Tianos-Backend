@@ -154,6 +154,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileTransportista);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('transportista-1', $entity);
 
         $entity = new User();
         $entity->setDni('34252311');
@@ -165,6 +166,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileTransportista);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('transportista-2', $entity);
 
         $entity = new User();
         $entity->setDni('99887736');
@@ -176,6 +178,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileTransportista);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('transportista-3', $entity);
 
         $entity = new User();
         $entity->setDni('74645346');
@@ -187,6 +190,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileTransportista);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('transportista-4', $entity);
 
         $entity = new User();
         $entity->setDni('74645347');
@@ -198,6 +202,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileTransportista);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('transportista-5', $entity);
 
         $entity = new User();
         $entity->setDni('74645348');
@@ -209,6 +214,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileTransportista);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('transportista-6', $entity);
 
         $entity = new User();
         $entity->setDni('74645349');
@@ -220,6 +226,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileTransportista);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('transportista-7', $entity);
 
         $entity = new User();
         $entity->setDni('74645342');
@@ -231,9 +238,13 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileTransportista);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('transportista-8', $entity);
         /**
          * TRANSPORTISTAS
          */
+
+
+
 
 
 
@@ -466,6 +477,12 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
 
 
 
+
+
+
+
+
+
         /**
          * CANILLITAS
          */
@@ -479,6 +496,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-1', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -490,6 +508,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-2', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -501,6 +520,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-3', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -512,6 +532,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-4', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -523,6 +544,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-5', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -534,6 +556,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-6', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -545,6 +568,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-7', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -556,17 +580,19 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-8', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
         $entity->setPassword('1q2w3e4r');
-        $entity->setName('xxxxx');
-        $entity->setLastName('xxxxxx');
-        $entity->setEmail('xxxxxxx@' . $this->applicationUrl);
+        $entity->setName('Javier');
+        $entity->setLastName('Apaza');
+        $entity->setEmail('japaza@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-9', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -578,6 +604,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-10', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -589,6 +616,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-11', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -600,6 +628,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-12', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -611,6 +640,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-13', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -622,6 +652,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-14', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -633,6 +664,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-15', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -644,6 +676,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-16', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -655,6 +688,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-17', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -666,6 +700,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-18', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -677,6 +712,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-19', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -688,6 +724,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-20', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -699,6 +736,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-21', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -710,6 +748,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-22', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -721,6 +760,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-23', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -732,6 +772,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-24', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -743,6 +784,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-25', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -754,6 +796,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-26', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -765,6 +808,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-27', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -776,6 +820,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-28', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -787,6 +832,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-29', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -798,6 +844,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-30', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -809,6 +856,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-31', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -820,6 +868,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-32', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -831,6 +880,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-33', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -842,6 +892,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-34', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -853,6 +904,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-35', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -864,6 +916,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-36', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -875,6 +928,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-37', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -886,6 +940,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-38', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -897,6 +952,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-39', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -908,6 +964,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-40', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -919,6 +976,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-41', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -930,6 +988,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-42', $entity);
 
         $entity = new User(); //44
         $entity->setDni('11112222');
@@ -941,6 +1000,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-43', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -952,6 +1012,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-44', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -963,6 +1024,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-45', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -974,6 +1036,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-46', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -985,6 +1048,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-47', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -996,6 +1060,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-48', $entity);
 
         $entity = new User(); // 50
         $entity->setDni('11112222');
@@ -1007,6 +1072,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-49', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -1018,6 +1084,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-50', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -1029,6 +1096,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-51', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -1040,6 +1108,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-52', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -1051,6 +1120,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-53', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -1062,6 +1132,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-54', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -1073,6 +1144,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-55', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -1084,6 +1156,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-56', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -1095,6 +1168,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-57', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -1106,6 +1180,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-58', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -1117,6 +1192,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-59', $entity);
 
         $entity = new User();
         $entity->setDni('11112222');
@@ -1128,6 +1204,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileCanillita);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('canillita-60', $entity);
         /**
          * CANILLITAS
          */

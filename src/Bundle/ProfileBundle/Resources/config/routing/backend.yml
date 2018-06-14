@@ -21,6 +21,7 @@ backend_profile_index:
                 modal:
                     title: Crear perfil
                     create_size: modal-lg
+                    edit_size: modal-lg
                 data_table:
                     route:
                         info: backend_profile_info

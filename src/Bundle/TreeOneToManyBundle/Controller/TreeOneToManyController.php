@@ -68,12 +68,12 @@ class TreeOneToManyController extends BaseController
         //REPOSITORY LEFT
         $objectsLeft = $this->get($repositoryLeft)->$methodLeft();
         $varsLeft = $configuration->getRepositoryVarsLeft();
-        $objectsLeft = $this->getTreeEntities($objectsLeft, $configuration, $varsLeft['serialize_group_name']);
+        $objectsLeft = $this->getTreeEntities($objectsLeft, $configuration, $varsLeft->serialize_group_name);
 
         //REPOSITORY RIGHT
         $objectsRight = $this->get($repositoryRight)->$methodRight();
         $varsRight = $configuration->getRepositoryVarsRight();
-        $objectsRight = $this->getSerializeDecode($objectsRight, $varsRight['serialize_group_name']);
+        $objectsRight = $this->getSerializeDecode($objectsRight, $varsRight->serialize_group_name);
 
 
 
@@ -155,7 +155,7 @@ class TreeOneToManyController extends BaseController
         //REPOSITORY
         $objectsLeft = $this->get($repositoryLeft)->$methodLeft($request->get('q'));
         $varsLeft = $configuration->getRepositoryVarsLeft();
-        $objectsLeft = $this->getSerializeDecode($objectsLeft, $varsLeft['serialize_group_name']);
+        $objectsLeft = $this->getSerializeDecode($objectsLeft, $varsLeft->serialize_group_name);
 
         return $this->render(
             $template,
@@ -193,11 +193,11 @@ class TreeOneToManyController extends BaseController
 
         //OneToMany Value
         $oneToManyLeftIds = $this->get($repositoryLeft)->$methodLeft($request->get('radioLeftValue'));
-        $oneToManyLeftIds = $this->getSerializeDecode($oneToManyLeftIds, $varsLeft['serialize_group_name']);
+        $oneToManyLeftIds = $this->getSerializeDecode($oneToManyLeftIds, $varsLeft->serialize_group_name);
 
         //REPOSITORY
         $objectsRight = $this->get($repositoryRight)->$methodRight($request->get('q'));
-        $objectsRight = $this->getSerializeDecode($objectsRight, $varsRight['serialize_group_name']);
+        $objectsRight = $this->getSerializeDecode($objectsRight, $varsRight->serialize_group_name);
 
 
 
@@ -246,7 +246,7 @@ class TreeOneToManyController extends BaseController
         //REPOSITORY
         $objectsRight = $this->get($repositoryLeft)->$methodLeft($id);
         $varsRight = $configuration->getRepositoryVarsRight();
-        $objectsRight = $this->getSerializeDecode($objectsRight, $varsRight['serialize_group_name']);
+        $objectsRight = $this->getSerializeDecode($objectsRight, $varsRight->serialize_group_name);
 
 
 //        echo "POLLO: objectsRight: <pre>";
@@ -295,7 +295,7 @@ class TreeOneToManyController extends BaseController
         //DELETE
         $result = $this->get($repositoryLeft)->$methodDeleteAssociativeLeft($boxLeftValue);
 
-        if(!$result){
+        if( !$result || empty($boxRightValues) ) {
             return $this->json([
                 'status' => false,
                 'response' => [

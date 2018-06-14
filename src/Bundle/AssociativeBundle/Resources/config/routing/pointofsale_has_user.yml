@@ -53,7 +53,7 @@ backend_associative_pointofsale_has_user_index:
                         serialize_group_name: one-to-many-left
                 box_right:
                     service: tianos.repository.user
-                    method: findAllOffsetLimit
+                    method: findAllOffsetLimitCanillita
                     arguments:
                         limit: 20
                     vars:
@@ -108,7 +108,7 @@ backend_associative_pointofsale_has_user_boxright_search:
                         serialize_group_name: one-to-many-search-pointofsalehasuser
                 box_right:
                     service: tianos.repository.user
-                    method: searchBoxRight
+                    method: searchBoxRightCanillita
                     arguments:
                         limit: 20
                     vars:

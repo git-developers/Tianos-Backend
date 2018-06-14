@@ -60,7 +60,7 @@ class DoctrineListenerService extends BaseDoctrineListenerService implements Eve
 
             return;
         } elseif ($entity instanceof CategoryHasProduct) {
-            $entity->setCreatedAt($this->dateTime);
+            $entity->setCreatedAt($this->setupCreatedAt($entity));
 
             return;
         }

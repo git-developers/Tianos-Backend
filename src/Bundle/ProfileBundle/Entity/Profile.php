@@ -14,6 +14,15 @@ class Profile
 
     const ADMIN = 'administrator';
     const GUEST = 'guest';
+    const JEFE_DE_ADMINISTRACION_COMERCIAL = 'JEFE_DE_ADMINISTRACION_COMERCIAL';
+    const ASISTENTE_DE_DISTRIBUCION_TRANSPORTE = 'ASISTENTE_DE_DISTRIBUCION_TRANSPORTE';
+    const GERENTE_DE_VENTAS = 'GERENTE_DE_VENTAS';
+    const SUPERVISOR_DE_VENTA = 'SUPERVISOR_DE_VENTA';
+    const JEFE_DE_VENTA = 'JEFE_DE_VENTA';
+    const JEFE_DE_ALMACEN = 'JEFE_DE_ALMACEN';
+    const TRANSPORTISTA = 'TRANSPORTISTA';
+    const DISTRIBUIDOR = 'DISTRIBUIDOR';
+    const CANILLITA = 'CANILLITA';
 
     /**
      * @var integer
@@ -32,9 +41,16 @@ class Profile
     /**
      * @var string
      *
-     * @JMSS\Groups({"crud", "login", "one-to-many-left"})
+     * @JMSS\Groups({"crud", "login"})
      */
     private $name;
+
+    /**
+     * @var string
+     *
+     * @JMSS\Groups({"crud", "login"})
+     */
+    private $nameCanonical;
 
     /**
      * @var string
@@ -174,6 +190,22 @@ class Profile
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNameCanonical()
+    {
+        return $this->nameCanonical;
+    }
+
+    /**
+     * @param string $nameCanonical
+     */
+    public function setNameCanonical($nameCanonical)
+    {
+        $this->nameCanonical = $nameCanonical;
     }
 
     /**

@@ -8,10 +8,19 @@ use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
 use JMS\Serializer\Annotation as JMSS;
 use JMS\Serializer\Annotation\Type as TypeJMS;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * User
  *
+ * @UniqueEntity(
+ *     fields={"email"},
+ *     message="El email fue registrado por otro usuario"
+ * )
+ * @UniqueEntity(
+ *     fields={"username"},
+ *     message="El username fue registrado por otro usuario"
+ * )
  */
 class User extends BaseUser // implements UserInterface, DomainObjectInterface, \Serializable
 {

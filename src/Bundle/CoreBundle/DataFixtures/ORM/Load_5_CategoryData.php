@@ -30,6 +30,7 @@ class Load_5_CategoryData extends AbstractFixture implements OrderedFixtureInter
         $entity->setSlug('marca-prensmart');
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('category-prensmart', $entity);
 
         $entity = new Category();
         $entity->setCode('elcomercio-1113');
@@ -37,6 +38,7 @@ class Load_5_CategoryData extends AbstractFixture implements OrderedFixtureInter
         $entity->setSlug('marca-el-comercio');
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('category-elcomercio', $entity);
 
 
         /*

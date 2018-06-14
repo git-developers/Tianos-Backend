@@ -17,13 +17,13 @@ backend_associative_user_has_route_index:
                     icon: exchange
                     class: primary
                     form_name: main-form
-                    title: Distribuidor<i class="fa fa-fw fa-angle-double-right"></i>tiene<i class="fa fa-fw fa-angle-double-right"></i>Ruta
+                    title: Transportista<i class="fa fa-fw fa-angle-double-right"></i>tiene<i class="fa fa-fw fa-angle-double-right"></i>Ruta
                     route_info: backend_associative_user_has_route_info
                 box_left:
                     icon: user
                     class: primary
                     id: box-left-id
-                    title: Distribuidores
+                    title: Transportistas
                     li_class: box-left-li
                     li_badge_class: bg-blue
                     li_input_name: box-lefts-selected-value
@@ -46,7 +46,7 @@ backend_associative_user_has_route_index:
             repository:
                 box_left:
                     service: tianos.repository.user
-                    method: findAllOffsetLimit
+                    method: findAllOffsetLimitTransportista
                     arguments:
                         limit: 20
                     vars:
@@ -76,7 +76,7 @@ backend_associative_user_has_route_boxleft_search:
             repository:
                 box_left:
                     service: tianos.repository.user
-                    method: searchBoxLeft
+                    method: searchBoxLeftTransportista
                     arguments:
                         limit: 20
                     vars:

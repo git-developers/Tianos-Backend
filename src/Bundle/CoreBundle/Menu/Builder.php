@@ -421,7 +421,7 @@ class Builder implements ContainerAwareInterface
         ->setDisplay($isGranted)
         ;
 
-        $menu['Asociación']->addChild('Distribuidor <i class="fa fa-fw fa-arrow-right"></i> Ruta', [
+        $menu['Asociación']->addChild('Transportista <i class="fa fa-fw fa-arrow-right"></i> Ruta', [
             'route' => 'backend_associative_user_has_route_index',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [

@@ -24,6 +24,12 @@ Bundle\ProfileBundle\Entity\Profile:
             length: 100
             options:
                 fixed: false
+        nameCanonical:
+            type: string
+            nullable: false
+            length: 100
+            options:
+                fixed: false
         slug:
             type: string
             nullable: false
