@@ -54,21 +54,48 @@ class ApiController extends BaseController
 
             if(isset($pdvHasProduct['username'])){
                 $user = $this->em()->getRepository(User::class)->findOneByUsername($pdvHasProduct['username']);
+
+                if(is_null($user)){
+                    return $this->json([
+                        'status' => false,
+                        'errors' => ['User not found'],
+                    ]);
+                }
+
                 $pdvhasproductObject->setUser($user);
             }
 
             if(isset($pdvHasProduct['point_of_sale_id'])){
                 $pdv = $this->em()->getRepository(Pointofsale::class)->find($pdvHasProduct['point_of_sale_id']);
+
+                if(is_null($pdv)){
+                    return $this->json([
+                        'status' => false,
+                        'errors' => ['PDV not found'],
+                    ]);
+                }
+
                 $pdvhasproductObject->setPointOfSale($pdv);
             }
 
             if(isset($pdvHasProduct['product_id'])){
                 $product = $this->em()->getRepository(Product::class)->find($pdvHasProduct['product_id']);
+
+                if(is_null($product)){
+                    return $this->json([
+                        'status' => false,
+                        'errors' => ['Product not found'],
+                    ]);
+                }
+
                 $pdvhasproductObject->setProduct($product);
             }
 
             if(isset($pdvHasProduct['quantity'])){
-                $pdvhasproductObject->setQuantity((int) $pdvHasProduct['quantity']);
+
+                $quantity = isset($pdvHasProduct['quantity']) ? (int) $pdvHasProduct['quantity'] : 0;
+
+                $pdvhasproductObject->setQuantity($quantity);
             }
 
             $this->persist($pdvhasproductObject);

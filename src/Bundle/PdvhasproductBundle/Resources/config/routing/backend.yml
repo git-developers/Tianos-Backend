@@ -17,14 +17,14 @@ backend_pdvhasproduct_index:
             grid:
                 icon: bar-chart
                 box_class: primary
-                title: Gestionar puntos de venta -> productos
+                title: Productos distribuidos por Transportistas a los Puntos de venta
                 data_table:
                     route:
                         info: backend_pdvhasproduct_info
                         view: backend_pdvhasproduct_view
-                        edit: backend_pdvhasproduct_edit
-                        create: backend_pdvhasproduct_create
-                        delete: backend_pdvhasproduct_delete
+#                        edit: backend_pdvhasproduct_edit
+#                        create: backend_pdvhasproduct_create
+#                        delete: backend_pdvhasproduct_delete
                     table_button:
 #                        - edit
 #                        - delete
@@ -41,7 +41,7 @@ backend_pdvhasproduct_index:
                     columns:
                         - name: '#'
                           obj: " '<span class=\"badge bg-blue\">' + obj.id + '</span>' "
-                        - name: Usuario
+                        - name: Transportista
                           obj: " obj.user.name + ' ' + obj.user.last_name "
                           options:
                               icon: user
@@ -66,51 +66,51 @@ backend_pdvhasproduct_index:
                 method: findAll
                 arguments: [$pdvhasproductId]
 
-backend_pdvhasproduct_create:
-    path: /create
-    methods: [POST]
-    defaults:
-        _controller: tianos.backend.controller.pdvhasproduct:createAction
-        _tianos:
-            action: create
-            template: PdvhasproductBundle:PdvhasproductBackend/Form:form.html.twig
-            entity: Bundle\PdvhasproductBundle\Entity\Pdvhasproduct
-            form:
-                type: Bundle\PdvhasproductBundle\Form\Type\PdvhasproductType
-            vars:
-                serialize_group_name: crud
-
-backend_pdvhasproduct_edit:
-    path: /edit
-    methods: [PUT, POST]
-    defaults:
-        _controller: tianos.backend.controller.pdvhasproduct:editAction
-        _tianos:
-            action: edit
-            template: PdvhasproductBundle:PdvhasproductBackend/Form:form.html.twig
-            repository:
-                service: tianos.repository.pdvhasproduct
-                method: find
-                arguments: [$pdvhasproductId]
-            form:
-                type: Bundle\PdvhasproductBundle\Form\Type\PdvhasproductType
-            vars:
-                serialize_group_name: crud
-
-backend_pdvhasproduct_delete:
-    path: /delete
-    methods: [POST, DELETE]
-    defaults:
-        _controller: tianos.backend.controller.pdvhasproduct:deleteAction
-        _tianos:
-            action: delete
-            template: GridBundle:Template:delete.html.twig
-            repository:
-                service: tianos.repository.pdvhasproduct
-                method: find
-                arguments: [$pdvhasproductId]
-            vars:
-#                body_css: grid-body-css
+#backend_pdvhasproduct_create:
+#    path: /create
+#    methods: [POST]
+#    defaults:
+#        _controller: tianos.backend.controller.pdvhasproduct:createAction
+#        _tianos:
+#            action: create
+#            template: PdvhasproductBundle:PdvhasproductBackend/Form:form.html.twig
+#            entity: Bundle\PdvhasproductBundle\Entity\Pdvhasproduct
+#            form:
+#                type: Bundle\PdvhasproductBundle\Form\Type\PdvhasproductType
+#            vars:
+#                serialize_group_name: crud
+#
+#backend_pdvhasproduct_edit:
+#    path: /edit
+#    methods: [PUT, POST]
+#    defaults:
+#        _controller: tianos.backend.controller.pdvhasproduct:editAction
+#        _tianos:
+#            action: edit
+#            template: PdvhasproductBundle:PdvhasproductBackend/Form:form.html.twig
+#            repository:
+#                service: tianos.repository.pdvhasproduct
+#                method: find
+#                arguments: [$pdvhasproductId]
+#            form:
+#                type: Bundle\PdvhasproductBundle\Form\Type\PdvhasproductType
+#            vars:
+#                serialize_group_name: crud
+#
+#backend_pdvhasproduct_delete:
+#    path: /delete
+#    methods: [POST, DELETE]
+#    defaults:
+#        _controller: tianos.backend.controller.pdvhasproduct:deleteAction
+#        _tianos:
+#            action: delete
+#            template: GridBundle:Template:delete.html.twig
+#            repository:
+#                service: tianos.repository.pdvhasproduct
+#                method: find
+#                arguments: [$pdvhasproductId]
+#            vars:
+##                body_css: grid-body-css
 
 backend_pdvhasproduct_view:
     path: /view
