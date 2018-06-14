@@ -453,7 +453,6 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
         return $this->phone;
     }
 
-
     /**
      * Set createdAt
      *
@@ -694,10 +693,10 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
         return $this->pointOfSale;
     }
 
-
-
-
-
+    
+    
+    
+    
     /**
      * Punto de venta tiene canillita
      *
@@ -737,10 +736,6 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     {
         return $this->pointOfSale2;
     }
-
-
-
-
 
     /**
      * Returns the roles granted to the user.

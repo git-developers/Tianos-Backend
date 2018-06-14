@@ -99,7 +99,6 @@ class ApiController extends BaseController
             }
 
             $this->persist($pdvhasproductObject);
-//            $saveEntity[] = $this->getSerializeDecode($pdvhasproductObject, $vars['serialize_group_name']);
             $saveEntity[$key]['uuid'] = $pdvHasProduct['uuid'];
             $saveEntity[$key]['id_backend'] = $pdvhasproductObject->getId();
         }

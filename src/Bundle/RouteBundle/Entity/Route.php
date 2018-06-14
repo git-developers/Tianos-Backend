@@ -17,7 +17,13 @@ class Route
     /**
      * @var integer
      *
-     * @JMSS\Groups({"crud", "one-to-many-left", "one-to-many-right", "one-to-many-left-userhasroute", "one-to-many-search-userhasroute"})
+     * @JMSS\Groups({
+     *     "crud",
+     *     "one-to-many-left",
+     *     "one-to-many-right",
+     *     "one-to-many-left-userhasroute",
+     *     "one-to-many-search-userhasroute"
+     * })
      */
     private $id;
 
@@ -79,7 +85,10 @@ class Route
      *   }
      * )
      *
-     * @JMSS\Groups({"one-to-many-left", "one-to-many-search"})
+     * @JMSS\Groups({
+     *     "one-to-many-left",
+     *     "one-to-many-search"
+     * })
      */
     private $pointOfSale;
 
@@ -96,7 +105,11 @@ class Route
      * @var string
      *
      * @JMSS\Accessor(getter="getNameBox", setter="setNameBox")
-     * @JMSS\Groups({"one-to-many-left", "one-to-many-right", "one-to-many-left-userhasroute"})
+     * @JMSS\Groups({
+     *     "one-to-many-left",
+     *     "one-to-many-right",
+     *     "one-to-many-left-userhasroute"
+     * })
      */
     private $nameBox;
 

@@ -208,4 +208,6 @@ migrate_delete:
 	@echo =========== Migrations: delete all ===========;
 	rm -rf $$PWD/app/DoctrineMigrations
 
-
+pointofsale-and-product:
+	@echo ======================;
+	php bin/console tianos:pointofsale:and:product $(date-start) $(date-end)
