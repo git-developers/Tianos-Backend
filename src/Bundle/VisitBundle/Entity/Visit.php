@@ -38,7 +38,7 @@ class Visit
      * @Assert\DateTime()
      *
      * @JMSS\Groups({"crud"})
-     * @JMSS\Type("DateTime<'Y-m-d H:i:s'>")
+     * @JMSS\Type("DateTime<'Y-m-d H:i'>")
      */
     private $visitEnd;
 

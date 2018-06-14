@@ -43,16 +43,24 @@ backend_visit_index:
                           obj: " '<span class=\"badge bg-blue\">' + obj.id + '</span>' "
                         - name: Usuario
                           obj: " obj.user.name + ' ' + obj.user.last_name "
+                          options:
+                              icon: user
                         - name: Punto de venta
-                          obj: obj.point_of_sale.name
+                          obj: " '<small class=\"label bg-blue\">' + obj.point_of_sale.id + '</small> ' + obj.point_of_sale.name"
+                          options:
+                              icon: map-marker
                         - name: Inicio de visita
                           obj: " '<small class=\"label bg-green\" style=\"font-size:13px\">' + obj.visit_start + '</small>' "
+                          options:
+                              icon: calendar
                         - name: Fin de visita
                           obj: " '<small class=\"label bg-orange\" style=\"font-size:13px\">' + obj.visit_end + '</small>' "
+                          options:
+                              icon: calendar
                         - name: Uuid
                           obj: obj.uuid
                           options:
-                              icon: calendar
+                              icon: feed
 #                        - name: Creado
 #                          obj: obj.created_at
             form:

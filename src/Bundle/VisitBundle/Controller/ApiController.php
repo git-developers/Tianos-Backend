@@ -9,7 +9,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Component\Resource\Metadata\Metadata;
 use Bundle\ResourceBundle\ResourceBundle;
 use Bundle\CoreBundle\Controller\BaseController;
-use Bundle\VisitBundle\Entity\Visit;
 use Bundle\PointofsaleBundle\Entity\Pointofsale;
 use Bundle\UserBundle\Entity\User;
 
@@ -55,11 +54,27 @@ class ApiController extends BaseController
 
             if(isset($visit['username'])){
                 $user = $this->em()->getRepository(User::class)->findOneByUsername($visit['username']);
+
+                if(is_null($user)){
+                    return $this->json([
+                        'status' => false,
+                        'errors' => ['User not found'],
+                    ]);
+                }
+
                 $visitObject->setUser($user);
             }
 
             if(isset($visit['pointOfSale'])){
                 $pdv = $this->em()->getRepository(Pointofsale::class)->find($visit['pointOfSale']);
+
+                if(is_null($pdv)){
+                    return $this->json([
+                        'status' => false,
+                        'errors' => ['PDV not found'],
+                    ]);
+                }
+
                 $visitObject->setPointOfSale($pdv);
             }
 

@@ -13,6 +13,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Bundle\PdvhasproductBundle\Entity\Pdvhasproduct;
+use Bundle\VisitBundle\Entity\Visit;
 
 //https://symfony.com/doc/current/components/yaml.html
 //https://symfony.com/doc/current/doctrine/reverse_engineering.html
@@ -47,7 +48,7 @@ class PointofsaleAndProductCommand extends ContainerAwareCommand
         $dateEnd   = new \DateTime($dateEndStr);
 
         $output->writeln([
-            '<comment>===========<question>Productos distribuidos por Transportistas a los Puntos de venta</question>===========</comment>',
+            '<comment>=========== <question>Productos distribuidos por Transportistas a los Puntos de venta</question> ===========</comment>',
             '--',
         ]);
 
@@ -55,23 +56,25 @@ class PointofsaleAndProductCommand extends ContainerAwareCommand
 
 
         //DELETE OBJECTS
+        $output->writeln('<comment>===<question>Delete table:</question> point_of_sale_has_product ===</comment>');
         $sql = "DELETE FROM point_of_sale_has_product;";
         $stmt = $em->getConnection()->prepare($sql);
         $stmt->execute();
+        usleep(500);
 
+        $output->writeln('<comment>===<question>Delete table:</question> visit ===</comment>');
+        $sql = "DELETE FROM visit;";
+        $stmt = $em->getConnection()->prepare($sql);
+        $stmt->execute();
 
+        $output->writeln('--');
 
         // GET OBJECTS
         $transportistas = $this->getContainer()->get('tianos.repository.user')->findAllOffsetLimitTransportista();
         $productos = $this->getContainer()->get('tianos.repository.product')->findAll();
 
+
         for ($i = $dateStart; $i <= $dateEnd; $i->modify('+1 day')) {
-
-
-//            echo "POLLO:: <pre>";
-//            print_r($i);
-//            exit;
-
 
             $output->writeln('<comment>===<question>Fecha:</question> ' . $i->format("Y-m-d") . ' ===</comment>');
 
@@ -82,6 +85,12 @@ class PointofsaleAndProductCommand extends ContainerAwareCommand
                     foreach ($route->getPointOfSale() as $key => $pointOfSale) {
 
                         foreach ($productos as $key => $product) {
+
+                            // PDV HAS PRODUCT
+                            $randHour = rand(4, 5);
+                            $randMin = rand(0, 59);
+                            $randSec = rand(0, 59);
+                            $i->setTime($randHour, $randMin, $randSec);
 
                             $min = 10;
                             $max = 100;
@@ -95,12 +104,27 @@ class PointofsaleAndProductCommand extends ContainerAwareCommand
                             $em->persist($entity);
                             $em->flush();
                         }
+
+
+                        // VISIT
+                        $visitEnd = clone $i;
+                        $visitEnd = $visitEnd->add(new \DateInterval('PT' . rand(10, 15) . 'M'));
+
+                        $visit = new Visit();
+                        $visit->setUser($transportista);
+                        $visit->setPointOfSale($pointOfSale);
+                        $visit->setVisitStart($i);
+                        $visit->setVisitEnd($visitEnd);
+                        $visit->setUuid(uniqid("", true));
+                        $visit->setCreatedAt($i);
+                        $em->persist($visit);
+                        $em->flush();
+
                     }
                 }
             }
 
             usleep(500);
-
         }
 
 
