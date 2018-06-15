@@ -10,6 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Component\Resource\Metadata\Metadata;
 use Bundle\ResourceBundle\ResourceBundle;
 use Bundle\OrderBundle\Entity\Order;
+use Bundle\ProfileBundle\Entity\Profile;
 
 class BackendInController extends BaseController
 {
@@ -66,10 +67,18 @@ class BackendInController extends BaseController
         $boxCenter = $vars->box_center;
         $boxRight = $vars->box_right;
 
+
         //REPOSITORY LEFT
-        $objectsLeft = $this->get($repositoryLeft)->$methodLeft();
         $varsLeft = $configuration->getRepositoryVarsLeft();
+        $objectsLeft = $this->get($repositoryLeft)->$methodLeft();
+
+        if($this->isGranted(['ROLE_' . Profile::DISTRIBUIDOR,])) {
+            $objectsLeft = $this->getUser()->getPointOfSale();
+        }
+
         $objectsLeft = $this->getSerializeDecode($objectsLeft, $varsLeft->serialize_group_name);
+        //REPOSITORY LEFT
+
 
         //CRUD
         $crud = $this->get('tianos.one_to_many');

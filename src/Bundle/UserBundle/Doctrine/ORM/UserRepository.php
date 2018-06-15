@@ -17,6 +17,21 @@ class UserRepository extends EntityRepository
     /**
      * {@inheritdoc}
      */
+    public function userCount()
+    {
+        $em = $this->getEntityManager();
+        $sql = "SELECT COUNT(id) AS ID FROM user WHERE is_active = :is_active;";
+        $params = array('is_active' => 1);
+
+        $stmt = $em->getConnection()->prepare($sql);
+        $stmt->execute($params);
+
+        return $stmt->fetchColumn();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function findAllOffsetLimitDistribuidor($offset = 0, $limit = 50): array
     {
         $em = $this->getEntityManager();

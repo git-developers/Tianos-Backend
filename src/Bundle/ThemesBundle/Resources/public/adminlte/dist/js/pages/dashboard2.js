@@ -7,6 +7,7 @@ $(function () {
    * Here we will create a few charts using ChartJS
    */
 
+
   //-----------------------
   //- MONTHLY SALES CHART -
   //-----------------------
@@ -17,27 +18,27 @@ $(function () {
   var salesChart = new Chart(salesChartCanvas);
 
   var salesChartData = {
-    labels: ["January", "February", "March", "April", "May", "June", "July"],
+    labels: ["Dia 1", "Dia 2", "Dia 3", "Dia 4", "Dia 5", "Dia 6", "Dia 7"],
     datasets: [
       {
-        label: "Electronics",
+        label: "Periódicos",
         fillColor: "rgb(210, 214, 222)",
         strokeColor: "rgb(210, 214, 222)",
         pointColor: "rgb(210, 214, 222)",
         pointStrokeColor: "#c1c7d1",
         pointHighlightFill: "#fff",
         pointHighlightStroke: "rgb(220,220,220)",
-        data: [65, 59, 80, 81, 56, 55, 40]
+        data: [12000, 9000, 8000, 12000, 6000, 55, 12000]
       },
       {
-        label: "Digital Goods",
+        label: "Periódicos 2",
         fillColor: "rgba(60,141,188,0.9)",
         strokeColor: "rgba(60,141,188,0.8)",
         pointColor: "#3b8bba",
         pointStrokeColor: "rgba(60,141,188,1)",
         pointHighlightFill: "#fff",
         pointHighlightStroke: "rgba(60,141,188,1)",
-        data: [28, 48, 40, 19, 86, 27, 90]
+        data: CHART_DATA
       }
     ]
   };
@@ -83,6 +84,9 @@ $(function () {
 
   //Create the line chart
   salesChart.Line(salesChartData, salesChartOptions);
+
+
+
 
   //---------------------------
   //- END MONTHLY SALES CHART -
@@ -165,68 +169,65 @@ $(function () {
   //- END PIE CHART -
   //-----------------
 
-  /* jVector Maps
-   * ------------
-   * Create a world map with markers
-   */
-  $('#world-map-markers').vectorMap({
+    /* jVector Maps
+    * ------------
+    * Create a world map with markers
+    */
+    $('#world-map-markers').vectorMap({
     map: 'world_mill_en',
     normalizeFunction: 'polynomial',
     hoverOpacity: 0.7,
     hoverColor: false,
     backgroundColor: 'transparent',
     regionStyle: {
-      initial: {
-        fill: 'rgba(210, 214, 222, 1)',
-        "fill-opacity": 1,
-        stroke: 'none',
-        "stroke-width": 0,
-        "stroke-opacity": 1
-      },
-      hover: {
-        "fill-opacity": 0.7,
-        cursor: 'pointer'
-      },
-      selected: {
-        fill: 'yellow'
-      },
-      selectedHover: {}
+        initial: {
+            fill: 'rgba(210, 214, 222, 1)',
+            "fill-opacity": 1,
+            stroke: 'none',
+            "stroke-width": 0,
+            "stroke-opacity": 1
+        },
+        hover: {
+            "fill-opacity": 0.7,
+            cursor: 'pointer'
+        },
+        selected: {
+            fill: 'yellow'
+        },
+        selectedHover: {}
     },
     markerStyle: {
-      initial: {
-        fill: '#00a65a',
-        stroke: '#111'
-      }
+        initial: {
+            fill: '#00a65a',
+            stroke: '#111'
+        }
     },
     markers: [
-      {latLng: [41.90, 12.45], name: 'Vatican City'},
-      {latLng: [43.73, 7.41], name: 'Monaco'},
-      {latLng: [-0.52, 166.93], name: 'Nauru'},
-      {latLng: [-8.51, 179.21], name: 'Tuvalu'},
-      {latLng: [43.93, 12.46], name: 'San Marino'},
-      {latLng: [47.14, 9.52], name: 'Liechtenstein'},
-      {latLng: [7.11, 171.06], name: 'Marshall Islands'},
-      {latLng: [17.3, -62.73], name: 'Saint Kitts and Nevis'},
-      {latLng: [3.2, 73.22], name: 'Maldives'},
-      {latLng: [35.88, 14.5], name: 'Malta'},
-      {latLng: [12.05, -61.75], name: 'Grenada'},
-      {latLng: [13.16, -61.23], name: 'Saint Vincent and the Grenadines'},
-      {latLng: [13.16, -59.55], name: 'Barbados'},
-      {latLng: [17.11, -61.85], name: 'Antigua and Barbuda'},
-      {latLng: [-4.61, 55.45], name: 'Seychelles'},
-      {latLng: [7.35, 134.46], name: 'Palau'},
-      {latLng: [42.5, 1.51], name: 'Andorra'},
-      {latLng: [14.01, -60.98], name: 'Saint Lucia'},
-      {latLng: [6.91, 158.18], name: 'Federated States of Micronesia'},
-      {latLng: [1.3, 103.8], name: 'Singapore'},
-      {latLng: [1.46, 173.03], name: 'Kiribati'},
-      {latLng: [-21.13, -175.2], name: 'Tonga'},
-      {latLng: [15.3, -61.38], name: 'Dominica'},
-      {latLng: [-20.2, 57.5], name: 'Mauritius'},
-      {latLng: [26.02, 50.55], name: 'Bahrain'},
-      {latLng: [0.33, 6.73], name: 'São Tomé and Príncipe'}
-    ]
-  });
+        {latLng: [-12.07462980, -77.02253250], name: 'Plaza Mexico'},
+        {latLng: [-11.94247680, -77.07171410], name: 'Comas'},
+        {latLng: [-12.10523680, -76.97088080], name: 'Chacarilla'},
+        {latLng: [-12.11865110, -77.00784320], name: 'Tomas Marsano'},
+        {latLng: [-12.03066360, -77.05757240], name: 'Zarumilla'},
+        {latLng: [-11.82539260, -77.13286080], name: 'Ventanilla II'},
+        {latLng: [-12.11674890, -77.02560550], name: 'Surquillo'},
+        {latLng: [-12.03066040, -77.06906110], name: 'San Martin De Porres'},
+        {latLng: [-12.09137480, -77.00295860], name: 'San Borja'},
+        {latLng: [-12.07457630, -76.99336700], name: 'Salamanca'},
+        {latLng: [-11.86125500, -77.07853080], name: 'Puente Piedra II'},
+        {latLng: [-12.07062280, -77.00045530], name: 'Plaza Grau'},
+        {latLng: [-12.13583070, -77.01788320], name: 'Miraflores'},
+        {latLng: [-12.03015960, -77.01098910], name: 'Lurigancho'},
+        {latLng: [-12.06602910, -76.95910900], name: 'La Molina'},
+        {latLng: [-12.06254110, -77.01679050], name: 'El Porvenir'},
+        {latLng: [-12.09828210, -76.96201320], name: 'Chorrillos'},
+        {latLng: [-12.14761230, -77.02137500], name: 'Barranco'},
+        {latLng: [-12.02407160, -77.11203260], name: 'Aeropuerto'},
+        ]
+    });
+
+
+
+
 
   /* SPARKLINE CHARTS
    * ----------------
@@ -271,4 +272,5 @@ $(function () {
       spotColor: $this.data('spotcolor')
     });
   });
+
 });

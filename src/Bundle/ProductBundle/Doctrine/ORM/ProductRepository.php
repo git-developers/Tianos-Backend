@@ -15,6 +15,25 @@ class ProductRepository extends TianosEntityRepository
     /**
      * {@inheritdoc}
      */
+    public function productCount()
+    {
+        $date = new \DateTime("now");
+        $date->sub(new \DateInterval('P1D'));
+        $todayDate = $date->format('Y-m-d');
+
+        $em = $this->getEntityManager();
+        $sql = "SELECT count(id) AS ID FROM product WHERE is_active = :isActive;";
+        $params = array('isActive' => 1);
+
+        $stmt = $em->getConnection()->prepare($sql);
+        $stmt->execute($params);
+
+        return $stmt->fetchColumn();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function searchBoxRight($q, $offset = 0, $limit = 50): array
     {
         $em = $this->getEntityManager();

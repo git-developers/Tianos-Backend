@@ -7,6 +7,7 @@ namespace Bundle\CoreBundle\Menu;
 use Knp\Menu\FactoryInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
+use Bundle\ProfileBundle\Entity\Profile;
 
 class Builder implements ContainerAwareInterface
 {
@@ -43,10 +44,21 @@ class Builder implements ContainerAwareInterface
         ;
 
 
+
+//        $user = $this->getUser();
+//        echo 'GATO:::<pre>';
+//        print_r($user->getRoles());
+//        exit;
+
+
+
+
         /**
          * CRUD
          */
-        $isGranted = true; //$this->isGranted('ROLE_CLIENT_VIEW');
+        $isGranted = $this->isGranted([
+            'ROLE_' . Profile::JEFE_DE_ADMINISTRACION_COMERCIAL,
+        ]);
 
         $menu->addChild('Master', [
             'route' => 'backend_default_dashboard',
@@ -208,9 +220,12 @@ class Builder implements ContainerAwareInterface
 
 
         /**
-         * USER
+         * ACCOUNTS
          */
-        $isGranted = true; //$this->isGranted('ROLE_CLIENT_VIEW');
+        $isGranted = $this->isGranted([
+            'ROLE_' . Profile::JEFE_DE_ADMINISTRACION_COMERCIAL,
+        ]);
+
         $menu->addChild('Cuentas', [
             'route' => 'backend_default_dashboard',
             'extras' => ['safe_label' => true],
@@ -341,7 +356,7 @@ class Builder implements ContainerAwareInterface
             ->setDisplay($isGranted)
         ;
         /**
-         * USER
+         * ACCOUNTS
          */
 
 
@@ -352,7 +367,10 @@ class Builder implements ContainerAwareInterface
         /**
          * ASSOCIATION
          */
-        $isGranted = true; //$this->isGranted('ROLE_CLIENT_VIEW');
+        $isGranted = $this->isGranted([
+            'ROLE_' . Profile::JEFE_DE_ADMINISTRACION_COMERCIAL,
+        ]);
+
         $menu->addChild('Asociación', [
             'route' => 'backend_default_dashboard',
             'extras' => ['safe_label' => true],
@@ -456,7 +474,12 @@ class Builder implements ContainerAwareInterface
         /**
          * ORDENES
          */
-        $isGranted = true; //$this->isGranted('ROLE_CLIENT_VIEW');
+        $isGranted = $this->isGranted([
+            'ROLE_' . Profile::JEFE_DE_ADMINISTRACION_COMERCIAL,
+            'ROLE_' . Profile::ASISTENTE_DE_DISTRIBUCION_TRANSPORTE,
+            'ROLE_' . Profile::DISTRIBUIDOR,
+        ]);
+
         $menu->addChild('Ordenes', [
             'route' => 'backend_default_dashboard',
             'extras' => ['safe_label' => true],
@@ -509,7 +532,10 @@ class Builder implements ContainerAwareInterface
         /**
          * REPORTS
          */
-        $isGranted = true; //$this->isGranted('ROLE_CLIENT_VIEW');
+        $isGranted = $this->isGranted([
+            'ROLE_' . Profile::JEFE_DE_ADMINISTRACION_COMERCIAL,
+        ]);
+
         $menu->addChild('Reportes', [
             'route' => 'backend_default_dashboard',
             'extras' => ['safe_label' => true],

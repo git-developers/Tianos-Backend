@@ -13,6 +13,21 @@ class VisitRepository extends TianosEntityRepository implements VisitRepositoryI
     /**
      * {@inheritdoc}
      */
+    public function visitCount()
+    {
+        $em = $this->getEntityManager();
+        $sql = "SELECT COUNT(id) AS ID FROM visit WHERE is_active = :is_active;";
+        $params = array('is_active' => 1);
+
+        $stmt = $em->getConnection()->prepare($sql);
+        $stmt->execute($params);
+
+        return $stmt->fetchColumn();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function findByUuid($uuid)
     {
         $em = $this->getEntityManager();

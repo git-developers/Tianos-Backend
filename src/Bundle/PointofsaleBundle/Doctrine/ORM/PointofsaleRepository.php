@@ -17,6 +17,57 @@ class PointofsaleRepository extends TianosEntityRepository
     /**
      * {@inheritdoc}
      */
+    public function pdvHasProductLastWeekCount()
+    {
+
+        $now = new \DateTime('now');
+        $now->sub(new \DateInterval('P7D'));
+
+        $nextSevenDays = new \DatePeriod(
+            $now, // Start date of the period
+            new \DateInterval('P1D'), // Define the intervals as Periods of 1 Day
+            6 // Apply the interval 6 times on top of the starting date
+        );
+
+        $count = [];
+        $em = $this->getEntityManager();
+
+        foreach ($nextSevenDays as $key => $day)
+        {
+            $sql = "SELECT SUM(quantity) AS quantity FROM point_of_sale_has_product WHERE SUBSTRING(created_at, 1, 10) = :today_date;";
+            $params = ['today_date' => $day->format('Y-m-d')];
+
+            $stmt = $em->getConnection()->prepare($sql);
+            $stmt->execute($params);
+
+            $count[] = $stmt->fetchColumn();
+        }
+
+        return $count;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function pdvHasProductCount()
+    {
+        $date = new \DateTime("now");
+        $date->sub(new \DateInterval('P1D'));
+        $todayDate = $date->format('Y-m-d');
+
+        $em = $this->getEntityManager();
+        $sql = "SELECT SUM(quantity) AS quantity FROM point_of_sale_has_product WHERE SUBSTRING(created_at, 1, 10) = :today_date;";
+        $params = array('today_date' => $todayDate);
+
+        $stmt = $em->getConnection()->prepare($sql);
+        $stmt->execute($params);
+
+        return $stmt->fetchColumn();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function deleteAssociativeTableById($id): bool
     {
 //        return $em->getConnection()
