@@ -28,6 +28,19 @@ class DefaultController extends BaseController
      */
     public function dashboardAction(Request $request): Response
     {
+
+
+//        foreach ($this->getUser()->getPointOfSale() as $key => $xxx) {
+//            echo "POLLO:: <pre>";
+//            print_r($xxx->getName());
+//        }
+//
+//
+//        exit;
+
+
+
+
         $options = $request->attributes->get('_tianos');
 
         $template = $options['template'] ?? null;

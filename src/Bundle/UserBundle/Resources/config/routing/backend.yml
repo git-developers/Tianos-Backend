@@ -47,6 +47,8 @@ backend_user_index:
                           obj: obj.profile.name
                         - name: Username
                           obj: " '<span class=\"badge bg-green\">' + obj.username + '</span>' "
+                          options:
+                              icon: feed
                         - name: Email
                           obj: obj.email
                           options:

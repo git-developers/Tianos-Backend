@@ -43,14 +43,22 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     /**
      * @var string
      *
-     * @JMSS\Groups({"login", "crud", "one-to-many-right"})
+     * @JMSS\Groups({
+     *     "login",
+     *     "crud",
+     *     "one-to-many-right"
+     * })
      */
     protected $username;
 
     /**
      * @var string
      *
-     * @JMSS\Groups({"login", "crud", "one-to-many-right"})
+     * @JMSS\Groups({
+     *     "login",
+     *     "crud",
+     *     "one-to-many-right"
+     * })
      */
     protected $email;
 
@@ -182,6 +190,8 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     private $groupOfUsers;
 
     /**
+     * Distribuidor -> tiene -> Punto de venta
+     *
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="Bundle\PointofsaleBundle\Entity\Pointofsale", inversedBy="user")
@@ -664,6 +674,7 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
 
 
     /**
+     * Distribuidor -> tiene -> Punto de venta
      *
      * Add pointOfSale
      *
@@ -679,6 +690,8 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     }
 
     /**
+     * Distribuidor -> tiene -> Punto de venta
+     *
      * Remove pointOfSale
      *
      * @param \Bundle\PointofsaleBundle\Entity\Pointofsale $pointOfSale
@@ -689,6 +702,8 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     }
 
     /**
+     * Distribuidor -> tiene -> Punto de venta
+     *
      * Get pointOfSale
      *
      * @return \Doctrine\Common\Collections\Collection
