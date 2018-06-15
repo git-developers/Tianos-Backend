@@ -2,7 +2,7 @@ backend_report_pedido_vs_devolucion:
     path: /pedido-vs-devolucion
     methods: [GET, POST]
     defaults:
-        _controller: tianos.backend.controller.report:pedidoDevolucionAction
+        _controller: tianos.backend.controller.report:pedidoVsDevolucionAction
         _tianos:
             action: xxxxx
             template: ReportBundle:ReportBackend:pedido-vs-devolucion.html.twig
@@ -25,19 +25,46 @@ backend_report_pedido_vs_devolucion:
             vars:
                 serialize_group_name: crud
 
-backend_report_roturastock:
-    path: /rotura-de-stock
+backend_report_roturastock_area_chart:
+    path: /rotura-de-stock-area-chart
     methods: [GET, POST]
     defaults:
-        _controller: tianos.backend.controller.report:roturastockAction
+        _controller: tianos.backend.controller.report:roturaStockAreaChartAction
         _tianos:
             action: xxxxx
-            template: ReportBundle:ReportBackend:rotura-de-stock.html.twig
+            template: ReportBundle:ReportBackend:rotura-de-stock-area-chart.html.twig
             entity: Bundle\ReportBundle\Entity\Report
             vars:
                 subheader: sylius.ui.manage_your_product_catalog
                 icon: area-chart
-                title: Rotura de Stock
+                title: Rotura de Stock de los Puntos de venta
+                body_css: report-body-css
+                box_class: warning
+            grid:
+                modal:
+                    title: Crear xxxx
+            repository:
+                service: tianos.repository.order
+                method: findByPointOfSaleAndDate
+                arguments: [$reportId]
+            form:
+                type: Bundle\ReportBundle\Form\Type\ReportType
+            vars:
+                serialize_group_name: crud
+
+backend_report_roturastock_line_chart:
+    path: /rotura-de-stock-line-chart
+    methods: [GET, POST]
+    defaults:
+        _controller: tianos.backend.controller.report:roturaStockLineChartAction
+        _tianos:
+            action: xxxxx
+            template: ReportBundle:ReportBackend:rotura-de-stock-line-chart.html.twig
+            entity: Bundle\ReportBundle\Entity\Report
+            vars:
+                subheader: sylius.ui.manage_your_product_catalog
+                icon: area-chart
+                title: Rotura de Stock de los Puntos de venta
                 body_css: report-body-css
                 box_class: warning
             grid:

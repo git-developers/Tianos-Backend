@@ -56,7 +56,13 @@
 
             var optionsOut = {
                 title: 'Pedido de periódicos por los Canillitas',
-                pieHole: 0.4,
+                pieHole: 0.2,
+                'legend':'left',
+                'is3D':true,
+                chartArea: {
+                    width:680,
+                    height:500
+                }
             };
 
             var chartOut = new google.visualization.PieChart(document.getElementById('donutchart-out'));
@@ -79,7 +85,13 @@
 
             var optionsIn = {
                 title: 'Devolución de periódicos por los Canillitas',
-                pieHole: 0.4,
+                pieHole: 0.2,
+                'legend':'left',
+                'is3D':true,
+                chartArea: {
+                    width:680,
+                    height:500
+                }
             };
 
             var chartIn = new google.visualization.PieChart(document.getElementById('donutchart-in'));

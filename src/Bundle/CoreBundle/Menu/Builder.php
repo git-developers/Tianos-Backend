@@ -508,9 +508,10 @@ class Builder implements ContainerAwareInterface
             ->setAttribute('class', 'treeview')
             ->setAttribute('class', $this->activeRoute([
                 'backend_visit_index',
-                'backend_report_roturastock',
                 'backend_pdvhasproduct_index',
                 'backend_report_pedido_vs_devolucion',
+                'backend_report_roturastock_area_chart',
+                'backend_report_roturastock_line_chart',
                 'backend_report_productos_entregados_a_pdv',
             ]))
             ->setAttribute('icon', 'fa-fw fa-line-chart')
@@ -553,15 +554,27 @@ class Builder implements ContainerAwareInterface
             ->setDisplay($isGranted)
         ;
 
-        $menu['Reportes']->addChild('Rotura de Stock', [
-            'route' => 'backend_report_roturastock',
+        $menu['Reportes']->addChild('Rotura de Stock (Area)', [
+            'route' => 'backend_report_roturastock_area_chart',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
                 'class' => 'treeview-menu',
             ],
         ])
             ->setAttribute('icon', self::CIRCLE_4)
-            ->setAttribute('class', $this->activeRoute('backend_report_roturastock'))
+            ->setAttribute('class', $this->activeRoute('backend_report_roturastock_area_chart'))
+            ->setDisplay($isGranted)
+        ;
+
+        $menu['Reportes']->addChild('Rotura de Stock (Line)', [
+            'route' => 'backend_report_roturastock_line_chart',
+            'extras' => ['safe_label' => true],
+            'childrenAttributes' => [
+                'class' => 'treeview-menu',
+            ],
+        ])
+            ->setAttribute('icon', self::CIRCLE_4)
+            ->setAttribute('class', $this->activeRoute('backend_report_roturastock_line_chart'))
             ->setDisplay($isGranted)
         ;
 

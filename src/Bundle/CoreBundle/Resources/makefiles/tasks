@@ -211,3 +211,7 @@ migrate_delete:
 pointofsale-and-product:
 	@echo ======================;
 	php bin/console tianos:pointofsale:and:product $(date-start) $(date-end)
+
+order-and-return:
+	@echo ======================;
+	php bin/console tianos:order-and-return $(date-start) $(date-end)

@@ -127,6 +127,7 @@ class PointofsaleAndProductCommand extends ContainerAwareCommand
             usleep(500);
         }
 
+//        $em->flush();
 
         //=============================================
         $output->writeln('--');

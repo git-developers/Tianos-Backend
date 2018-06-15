@@ -39,7 +39,7 @@ backend_orderin_index:
                     icon: user
                     class: primary
                     id: box-center-id
-                    title: Usuarios
+                    title: Canillitas
                     li_class: box-center-li
                     li_badge_class: bg-orange-active
                     li_input_name: box_center_selected_value
