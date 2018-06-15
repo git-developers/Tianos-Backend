@@ -32,37 +32,30 @@ class Load_11_UserHasRouteData extends AbstractFixture implements OrderedFixture
         $route_7 = $this->getReference('route-7');
         $route_8 = $this->getReference('route-8');
 
-        $entity = $transportista_1;
-        $entity->addRoute($route_1);
-        $manager->persist($entity);
 
-        $entity = $transportista_2;
-        $entity->addRoute($route_2);
-        $manager->persist($entity);
+        $transportista_1->addRoute($route_1);
+        $manager->persist($transportista_1);
 
-        $entity = $transportista_3;
-        $entity->addRoute($route_3);
-        $manager->persist($entity);
+        $transportista_2->addRoute($route_2);
+        $manager->persist($transportista_2);
 
-        $entity = $transportista_4;
-        $entity->addRoute($route_4);
-        $manager->persist($entity);
+        $transportista_3->addRoute($route_3);
+        $manager->persist($transportista_3);
 
-        $entity = $transportista_5;
-        $entity->addRoute($route_5);
-        $manager->persist($entity);
+        $transportista_4->addRoute($route_4);
+        $manager->persist($transportista_4);
 
-        $entity = $transportista_6;
-        $entity->addRoute($route_6);
-        $manager->persist($entity);
+        $transportista_5->addRoute($route_5);
+        $manager->persist($transportista_5);
 
-        $entity = $transportista_7;
-        $entity->addRoute($route_7);
-        $manager->persist($entity);
+        $transportista_6->addRoute($route_6);
+        $manager->persist($transportista_6);
 
-        $entity = $transportista_8;
-        $entity->addRoute($route_8);
-        $manager->persist($entity);
+        $transportista_7->addRoute($route_7);
+        $manager->persist($transportista_7);
+
+        $transportista_8->addRoute($route_8);
+        $manager->persist($transportista_8);
 
         $manager->flush();
 
@@ -72,6 +65,6 @@ class Load_11_UserHasRouteData extends AbstractFixture implements OrderedFixture
     {
         // the order in which fixtures will be loaded
         // the lower the number, the sooner that this fixture is loaded
-        return 10;
+        return 11;
     }
 }

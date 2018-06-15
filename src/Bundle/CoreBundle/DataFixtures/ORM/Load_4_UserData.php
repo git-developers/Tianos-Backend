@@ -261,6 +261,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileDistribuidor);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('distribuidor-1', $entity);
 
         $entity = new User(); // Barranco
         $entity->setDni('63738499');
@@ -272,6 +273,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileDistribuidor);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('distribuidor-2', $entity);
 
         $entity = new User(); // Chorrillos
         $entity->setDni('45637482');
@@ -283,6 +285,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileDistribuidor);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('distribuidor-3', $entity);
 
         $entity = new User(); // El Porvenir
         $entity->setDni('34568498');
@@ -294,6 +297,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileDistribuidor);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('distribuidor-4', $entity);
 
         $entity = new User(); // La Molina
         $entity->setDni('98574657');
@@ -305,6 +309,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileDistribuidor);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('distribuidor-5', $entity);
 
         $entity = new User(); // Lurigancho
         $entity->setDni('34344556');
@@ -316,6 +321,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileDistribuidor);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('distribuidor-6', $entity);
 
         $entity = new User(); // Magdalena
         $entity->setDni('76523423');
@@ -327,6 +333,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileDistribuidor);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('distribuidor-7', $entity);
 
         $entity = new User(); // Miraflores
         $entity->setDni('45362374');
@@ -338,6 +345,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileDistribuidor);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('distribuidor-8', $entity);
 
         $entity = new User(); // Plaza Grau
         $entity->setDni('76542398');
@@ -349,6 +357,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileDistribuidor);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('distribuidor-9', $entity);
 
         $entity = new User(); // Puente Piedra II
         $entity->setDni('55883245');
@@ -360,6 +369,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileDistribuidor);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('distribuidor-10', $entity);
 
         $entity = new User(); // Salamanca
         $entity->setDni('55434538');
@@ -371,6 +381,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileDistribuidor);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('distribuidor-11', $entity);
 
         $entity = new User(); // San Borja
         $entity->setDni('65287633');
@@ -382,6 +393,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileDistribuidor);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('distribuidor-12', $entity);
 
         $entity = new User(); // San Martin De Porres
         $entity->setDni('65432789');
@@ -393,6 +405,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileDistribuidor);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('distribuidor-13', $entity);
 
         $entity = new User(); // Surquillo
         $entity->setDni('63523498');
@@ -404,6 +417,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileDistribuidor);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('distribuidor-14', $entity);
 
         $entity = new User(); // Ventanilla II
         $entity->setDni('34527832');
@@ -415,6 +429,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileDistribuidor);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('distribuidor-15', $entity);
 
         $entity = new User(); // Zarumilla
         $entity->setDni('76534562');
@@ -426,6 +441,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileDistribuidor);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('distribuidor-16', $entity);
 
         $entity = new User(); // Tomas Marsano
         $entity->setDni('37482392');
@@ -437,6 +453,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileDistribuidor);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('distribuidor-17', $entity);
 
         $entity = new User(); // Chacarilla
         $entity->setDni('57363723');
@@ -448,6 +465,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileDistribuidor);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('distribuidor-18', $entity);
 
         $entity = new User(); // Comas
         $entity->setDni('58693784');
@@ -459,6 +477,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileDistribuidor);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('distribuidor-19', $entity);
 
         $entity = new User(); // Plaza Mexico
         $entity->setDni('25436423');
@@ -470,6 +489,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profileDistribuidor);
         $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
+        $this->addReference('distribuidor-20', $entity);
         /**
          * DISTRIBUIDORES
          */

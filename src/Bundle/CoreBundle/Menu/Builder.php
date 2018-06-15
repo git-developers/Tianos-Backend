@@ -368,6 +368,7 @@ class Builder implements ContainerAwareInterface
             'backend_associative_category_has_product_index',
             'backend_associative_pointofsale_has_user_index',
             'backend_associative_route_has_pointofsale_index',
+            'backend_associative_user_has_pointofsale_index',
         ]))
         ->setAttribute('icon', 'fa-fw fa-exchange')
         ->setDisplay($isGranted)
@@ -430,6 +431,18 @@ class Builder implements ContainerAwareInterface
         ])
         ->setAttribute('icon', self::CIRCLE_5)
         ->setAttribute('class', $this->activeRoute('backend_associative_user_has_route_index'))
+        ->setDisplay($isGranted)
+        ;
+
+        $menu['Asociación']->addChild('Distribuidor <i class="fa fa-fw fa-arrow-right"></i> PDV', [
+            'route' => 'backend_associative_user_has_pointofsale_index',
+            'extras' => ['safe_label' => true],
+            'childrenAttributes' => [
+                'class' => 'treeview-menu',
+            ],
+        ])
+        ->setAttribute('icon', self::CIRCLE_6)
+        ->setAttribute('class', $this->activeRoute('backend_associative_user_has_pointofsale_index'))
         ->setDisplay($isGranted)
         ;
         /**

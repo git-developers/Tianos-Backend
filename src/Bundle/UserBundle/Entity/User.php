@@ -193,6 +193,11 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
      *     @ORM\JoinColumn(name="point_of_sale_id", referencedColumnName="id")
      *   }
      * )
+     *
+     * @JMSS\Groups({
+     *     "one-to-many-search-userhaspointofsale",
+     *     "one-to-many-left-userhaspointofsale"
+     * })
      */
     private $pointOfSale;
 

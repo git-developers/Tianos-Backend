@@ -13,3 +13,6 @@ backend_associative_route_has_pointofsale:
 backend_associative_user_has_route:
     resource: '@AssociativeBundle/Resources/config/routing/user_has_route.yml'
     prefix: /user-has-route
+backend_associative_user_has_pointofsale:
+    resource: '@AssociativeBundle/Resources/config/routing/user_has_pointofsale.yml'
+    prefix: /user-has-pointofsale

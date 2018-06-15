@@ -113,6 +113,8 @@ class OrderAndReturnCommand extends ContainerAwareCommand
                     }
 
                     usleep(200);
+
+//                    $em->clear();
                 }
             }
 

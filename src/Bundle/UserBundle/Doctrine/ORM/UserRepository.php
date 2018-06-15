@@ -17,6 +17,30 @@ class UserRepository extends EntityRepository
     /**
      * {@inheritdoc}
      */
+    public function findAllOffsetLimitDistribuidor($offset = 0, $limit = 50): array
+    {
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT user_, profile
+            FROM UserBundle:User user_
+            INNER JOIN user_.profile profile
+            WHERE
+            user_.enabled = :active AND
+            profile.nameCanonical = :nameCanonical
+            ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+        $query->setParameter('nameCanonical', Profile::DISTRIBUIDOR);
+        $query->setFirstResult($offset);
+        $query->setMaxResults($limit);
+
+        return $query->getResult();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function findAllOffsetLimitTransportista($offset = 0, $limit = 50): array
     {
         $em = $this->getEntityManager();
@@ -214,6 +238,32 @@ class UserRepository extends EntityRepository
 
         $query = $em->createQuery($dql);
         $query->setParameter('active', 1);
+        $query->setParameter('q', '%' . $q . '%');
+        $query->setFirstResult($offset);
+        $query->setMaxResults($limit);
+
+        return $query->getResult();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function searchBoxLeftDistribuidor($q, $offset = 0, $limit = 50): array
+    {
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT user_, profile
+            FROM UserBundle:User user_
+            INNER JOIN user_.profile profile
+            WHERE
+            ( user_.name LIKE :q OR user_.lastName LIKE :q ) AND
+            profile.nameCanonical = :nameCanonical AND
+            user_.enabled = :active
+            ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+        $query->setParameter('nameCanonical', Profile::DISTRIBUIDOR);
         $query->setParameter('q', '%' . $q . '%');
         $query->setFirstResult($offset);
         $query->setMaxResults($limit);

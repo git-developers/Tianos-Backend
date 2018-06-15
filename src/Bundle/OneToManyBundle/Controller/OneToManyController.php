@@ -292,12 +292,15 @@ class OneToManyController extends BaseController
 //        print_r($objectsLeft);
 //        exit;
 
+        if ( !isset($objectsLeft[$boxRight->entity]) ) {
+            throw $this->createNotFoundException('Tianos: validar el key "entity", este key se usa para enviar el array de objectos "objectsRight" ');
+        }
 
         return $this->render(
             $template,
             [
                 'boxRight' => $boxRight,
-                'objectsRight' => isset($objectsLeft[$boxRight->entity]) ? $objectsLeft[$boxRight->entity] : [],
+                'objectsRight' => $objectsLeft[$boxRight->entity],
             ]
         );
     }
