@@ -28,7 +28,7 @@ $(function () {
         pointStrokeColor: "#c1c7d1",
         pointHighlightFill: "#fff",
         pointHighlightStroke: "rgb(220,220,220)",
-        data: [12000, 9000, 8000, 12000, 6000, 55, 12000]
+        data: [15000, 9000, 8000, 12000, 6000, 55, 12000]
       },
       {
         label: "Periódicos 2",

@@ -93,7 +93,7 @@ class PointofsaleAndProductCommand extends ContainerAwareCommand
                             $i->setTime($randHour, $randMin, $randSec);
 
                             $min = 10;
-                            $max = 100;
+                            $max = 150;
                             $entity = new Pdvhasproduct();
                             $entity->setUser($transportista);
                             $entity->setPointOfSale($pointOfSale);
