@@ -74,6 +74,11 @@
 
                 <i class="fa fa-fw fa-check-square-o"></i>
                 {{ form_label(form.isActive) }}
+                {{ form_widget(form.isActive) }}
+
+                {#
+                <i class="fa fa-fw fa-check-square-o"></i>
+                {{ form_label(form.isActive) }}
 
                 <div class="clearfix"></div>
 
@@ -81,6 +86,7 @@
                     {{ form_widget(form.isActive) }}
                     <span class="slider round {{ sliderBgColor() }}"></span>
                 </label>
+                #}
 
             </div>
         </div>

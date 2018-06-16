@@ -29,7 +29,6 @@ class DefaultController extends BaseController
     public function dashboardAction(Request $request): Response
     {
         $pdvHasProductLastWeekCount = $this->get('tianos.repository.pointofsale')->pdvHasProductLastWeekCount();
-        $pdvHasProductLastWeekCount = $this->get('tianos.repository.pointofsale')->pdvHasProductLastWeekCount();
         $pdvHasProductCount = $this->get('tianos.repository.pointofsale')->pdvHasProductCount();
         $userCount = $this->get('tianos.repository.user')->userCount();
         $visitCount = $this->get('tianos.repository.visit')->visitCount();

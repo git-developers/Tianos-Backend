@@ -62,7 +62,7 @@ class PointofsaleRepository extends TianosEntityRepository
         $stmt = $em->getConnection()->prepare($sql);
         $stmt->execute($params);
 
-        return $stmt->fetchColumn();
+        return ($stmt->fetchColumn() > 0) ? $stmt->fetchColumn() : 0;
     }
 
     /**

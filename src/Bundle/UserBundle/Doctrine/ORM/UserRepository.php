@@ -169,30 +169,6 @@ class UserRepository extends EntityRepository
     /**
      * {@inheritdoc}
      */
-    public function login(\stdClass $data)
-    {
-        $username = strtolower($data->username);
-
-        $em = $this->getEntityManager();
-        $dql = '
-            SELECT UserTianos
-            FROM UserBundle:User UserTianos
-            WHERE
-            (UserTianos.email = :email OR UserTianos.username = :username) AND
-            UserTianos.enabled = :active
-        ';
-
-        return $em->createQuery($dql)
-                ->setParameter('active', 1)
-                ->setParameter('email', $username)
-                ->setParameter('username', $username)
-                ->getOneOrNullResult()
-        ;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function oneToManyLeft($leftValue)
     {
         $em = $this->getEntityManager();
@@ -356,4 +332,29 @@ class UserRepository extends EntityRepository
         // puesto provisional
         return true;
     }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function login(\stdClass $data)
+    {
+        $username = strtolower($data->username);
+
+        $em = $this->getEntityManager();
+        $dql = '
+            SELECT UserTianos
+            FROM UserBundle:User UserTianos
+            WHERE
+            (UserTianos.email = :email OR UserTianos.username = :username) AND
+            UserTianos.enabled = :active
+        ';
+
+        return $em->createQuery($dql)
+            ->setParameter('active', 1)
+            ->setParameter('email', $username)
+            ->setParameter('username', $username)
+            ->getOneOrNullResult()
+            ;
+    }
+
 }

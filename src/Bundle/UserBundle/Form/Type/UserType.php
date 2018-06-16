@@ -201,6 +201,7 @@ class UserType extends AbstractType
             ])
             ->add('isActive', CheckboxType::class, [
                 'label' => 'Activo',
+                'required' => false,
                 'label_attr' => [
                     'class' => ''
                 ],

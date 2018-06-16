@@ -20,8 +20,8 @@ class GroupofusersRepository extends TianosEntityRepository implements Groupofus
             SELECT groupofusers
             FROM GroupofusersBundle:Groupofusers groupofusers
             WHERE
-            product.id = :id AND
-            product.isActive = :active
+            groupofusers.id = :id AND
+            groupofusers.isActive = :active
             ";
 
         $query = $em->createQuery($dql);
