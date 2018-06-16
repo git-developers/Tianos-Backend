@@ -357,4 +357,25 @@ class UserRepository extends EntityRepository
             ;
     }
 
+    /**
+     * {@inheritdoc}
+     */
+    public function findOneByUsername($username)
+    {
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT user_
+            FROM UserBundle:User user_
+            WHERE
+            user_.enabled = :active AND
+            user_.username = :username
+            ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+        $query->setParameter('username', $username);
+
+        return $query->getOneOrNullResult();
+    }
+
 }
