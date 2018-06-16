@@ -37,7 +37,7 @@ class ApiController extends BaseController
 
         //REPOSITORY
         $objects = $this->get($repository)->$method();
-        $objects = $this->getSerializeDecode($objects, $vars['serialize_group_name']);
+        $objects = $this->getSerializeDecode($objects, $vars->serialize_group_name);
 
 
         return $this->json([

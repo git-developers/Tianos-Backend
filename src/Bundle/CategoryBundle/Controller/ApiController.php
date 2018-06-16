@@ -29,7 +29,7 @@ class ApiController extends BaseController
 
         //REPOSITORY
         $objects = $this->get($repository)->$method();
-        $objects = $this->getTreeEntities($objects, $configuration, $vars['serialize_group_name']);
+        $objects = $this->getTreeEntities($objects, $configuration, $vars->serialize_group_name);
 
         return $this->json([
             'status' => self::STATUS_SUCCESS_API,
