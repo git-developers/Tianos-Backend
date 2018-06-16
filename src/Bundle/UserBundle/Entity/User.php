@@ -235,7 +235,10 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
      *   }
      * )
      *
-     * @JMSS\Groups({"one-to-many-left-userhasroute", "one-to-many-search-userhasroute"})
+     * @JMSS\Groups({
+     *     "one-to-many-left-userhasroute",
+     *     "one-to-many-search-userhasroute"
+     * })
      */
     private $route;
 

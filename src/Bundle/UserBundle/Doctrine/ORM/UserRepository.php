@@ -345,7 +345,7 @@ class UserRepository extends EntityRepository
             SELECT UserTianos
             FROM UserBundle:User UserTianos
             WHERE
-            (UserTianos.email = :email OR UserTianos.username = :username) AND
+            (LOWER(UserTianos.email) = :email OR LOWER(UserTianos.username) = :username) AND
             UserTianos.enabled = :active
         ';
 
@@ -360,12 +360,13 @@ class UserRepository extends EntityRepository
     /**
      * {@inheritdoc}
      */
-    public function findOneByUsername($username)
+    public function findRouteByUsername($username)
     {
         $em = $this->getEntityManager();
         $dql = "
-            SELECT user_
+            SELECT user_, route
             FROM UserBundle:User user_
+            LEFT JOIN user_.route route
             WHERE
             user_.enabled = :active AND
             user_.username = :username

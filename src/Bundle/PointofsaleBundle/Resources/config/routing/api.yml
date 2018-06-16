@@ -16,5 +16,5 @@ api_pointofsale_index:
                 type: Bundle\PointofsaleBundle\Form\Type\PointofsaleType
             repository:
                 service: tianos.repository.user
-                method: findOneByUsername
+                method: findRouteByUsername
                 arguments: [$pointofsaleId]
