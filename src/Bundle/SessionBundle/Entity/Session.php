@@ -31,6 +31,7 @@ class Session
      * @var \DateTime
      *
      * @JMSS\Groups({"crud"})
+     * @JMSS\Type("DateTime<'Y-m-d H:i'>")
      */
     private $createdAt;
 

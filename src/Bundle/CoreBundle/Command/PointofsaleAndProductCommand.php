@@ -14,6 +14,7 @@ use Symfony\Component\Process\Process;
 use Symfony\Component\Process\Exception\ProcessFailedException;
 use Bundle\PdvhasproductBundle\Entity\Pdvhasproduct;
 use Bundle\VisitBundle\Entity\Visit;
+use Bundle\SessionBundle\Entity\Session;
 
 //https://symfony.com/doc/current/components/yaml.html
 //https://symfony.com/doc/current/doctrine/reverse_engineering.html
@@ -67,6 +68,11 @@ class PointofsaleAndProductCommand extends ContainerAwareCommand
         $stmt = $em->getConnection()->prepare($sql);
         $stmt->execute();
 
+        $output->writeln('<comment>===<question>Delete table:</question> session ===</comment>');
+        $sql = "DELETE FROM session;";
+        $stmt = $em->getConnection()->prepare($sql);
+        $stmt->execute();
+
         $output->writeln('--');
 
         // GET OBJECTS
@@ -86,7 +92,9 @@ class PointofsaleAndProductCommand extends ContainerAwareCommand
 
                         foreach ($productos as $key => $product) {
 
-                            // PDV HAS PRODUCT
+                            /**
+                             * PDV HAS PRODUCT
+                             */
                             $randHour = rand(4, 5);
                             $randMin = rand(0, 59);
                             $randSec = rand(0, 59);
@@ -106,7 +114,20 @@ class PointofsaleAndProductCommand extends ContainerAwareCommand
                         }
 
 
-                        // VISIT
+                        /**
+                         * SAVE SESSION - LOGIN END-USER
+                         */
+                        $session = new Session();
+                        $session->setToken(uniqid("token-", true));
+                        $session->setUser($transportista);
+                        $session->setCreatedAt($i);
+                        $em->persist($session);
+                        $em->flush();
+
+
+                        /**
+                         * VISIT
+                         */
                         $visitEnd = clone $i;
                         $visitEnd = $visitEnd->add(new \DateInterval('PT' . rand(10, 15) . 'M'));
 
