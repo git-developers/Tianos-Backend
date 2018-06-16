@@ -225,7 +225,7 @@ class Load_2_RoleData extends AbstractFixture implements OrderedFixtureInterface
          * CANONICAL ROLES
          */
         $entity = new Role();
-        $entity->setName('Jefe de Administración Comercial');
+        $entity->setName('Rol Jefe de Administración Comercial');
         $entity->setSlug('ROLE_' . Profile::JEFE_DE_ADMINISTRACION_COMERCIAL);
         $entity->setGroupRol('canonical roles');
         $entity->setGroupRolTag('group-canonical-roles');
@@ -234,7 +234,7 @@ class Load_2_RoleData extends AbstractFixture implements OrderedFixtureInterface
         $this->addReference('role-canonical-jefe-administracion-comercial', $entity);
 
         $entity = new Role();
-        $entity->setName('Asistente de Distribución y Transporte');
+        $entity->setName('Rol Asistente de Distribución y Transporte');
         $entity->setSlug('ROLE_' . Profile::ASISTENTE_DE_DISTRIBUCION_TRANSPORTE);
         $entity->setGroupRol('canonical roles');
         $entity->setGroupRolTag('group-canonical-roles');
@@ -243,7 +243,7 @@ class Load_2_RoleData extends AbstractFixture implements OrderedFixtureInterface
         $this->addReference('role-canonical-asistente-distribucion-transporte', $entity);
 
         $entity = new Role();
-        $entity->setName('Gerente de ventas');
+        $entity->setName('Rol Gerente de ventas');
         $entity->setSlug('ROLE_' . Profile::GERENTE_DE_VENTAS);
         $entity->setGroupRol('canonical roles');
         $entity->setGroupRolTag('group-canonical-roles');
@@ -252,7 +252,7 @@ class Load_2_RoleData extends AbstractFixture implements OrderedFixtureInterface
         $this->addReference('role-canonical-gerente-ventas', $entity);
 
         $entity = new Role();
-        $entity->setName('Supervisor de venta');
+        $entity->setName('Rol Supervisor de venta');
         $entity->setSlug('ROLE_' . Profile::SUPERVISOR_DE_VENTA);
         $entity->setGroupRol('canonical roles');
         $entity->setGroupRolTag('group-canonical-roles');
@@ -261,7 +261,7 @@ class Load_2_RoleData extends AbstractFixture implements OrderedFixtureInterface
         $this->addReference('role-canonical-supervisor-venta', $entity);
 
         $entity = new Role();
-        $entity->setName('Jefe de venta');
+        $entity->setName('Rol Jefe de venta');
         $entity->setSlug('ROLE_' . Profile::JEFE_DE_VENTA);
         $entity->setGroupRol('canonical roles');
         $entity->setGroupRolTag('group-canonical-roles');
@@ -270,7 +270,7 @@ class Load_2_RoleData extends AbstractFixture implements OrderedFixtureInterface
         $this->addReference('role-canonical-jefe-venta', $entity);
 
         $entity = new Role();
-        $entity->setName('Jefe de almacén');
+        $entity->setName('Rol Jefe de almacén');
         $entity->setSlug('ROLE_' . Profile::JEFE_DE_ALMACEN);
         $entity->setGroupRol('canonical roles');
         $entity->setGroupRolTag('group-canonical-roles');
@@ -279,7 +279,7 @@ class Load_2_RoleData extends AbstractFixture implements OrderedFixtureInterface
         $this->addReference('role-canonical-jefe-almacen', $entity);
 
         $entity = new Role();
-        $entity->setName('Transportista');
+        $entity->setName('Rol Transportista');
         $entity->setSlug('ROLE_' . Profile::TRANSPORTISTA);
         $entity->setGroupRol('canonical roles');
         $entity->setGroupRolTag('group-canonical-roles');
@@ -288,7 +288,7 @@ class Load_2_RoleData extends AbstractFixture implements OrderedFixtureInterface
         $this->addReference('role-canonical-transportista', $entity);
 
         $entity = new Role();
-        $entity->setName('Distribuidor');
+        $entity->setName('Rol Distribuidor');
         $entity->setSlug('ROLE_' . Profile::DISTRIBUIDOR);
         $entity->setGroupRol('canonical roles');
         $entity->setGroupRolTag('group-canonical-roles');
@@ -297,7 +297,7 @@ class Load_2_RoleData extends AbstractFixture implements OrderedFixtureInterface
         $this->addReference('role-canonical-distribuidor', $entity);
 
         $entity = new Role();
-        $entity->setName('Canillita');
+        $entity->setName('Rol Canillita');
         $entity->setSlug('ROLE_' . Profile::CANILLITA);
         $entity->setGroupRol('canonical roles');
         $entity->setGroupRolTag('group-canonical-roles');

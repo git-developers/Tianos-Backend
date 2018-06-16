@@ -41,7 +41,7 @@ backend_visit_index:
                     columns:
                         - name: '#'
                           obj: " '<span class=\"badge bg-blue\">' + obj.id + '</span>' "
-                        - name: Usuario
+                        - name: Transportista
                           obj: " obj.user.name + ' ' + obj.user.last_name "
                           options:
                               icon: user

@@ -56,7 +56,7 @@ class TreeController extends BaseController
 
         //REPOSITORY
         $objects = $this->get($repository)->$method();
-        $objects = $this->getTreeEntities($objects, $configuration, $vars['serialize_group_name']);
+        $objects = $this->getTreeEntities($objects, $configuration, $vars->serialize_group_name);
 
         //CRUD
         $crud = $this->get('tianos.tree');
@@ -157,7 +157,7 @@ class TreeController extends BaseController
 
                 if ($form->isValid()) {
                     $this->persist($entity);
-                    $entity = $this->getSerializeDecode($entity, $vars['serialize_group_name']);
+                    $entity = $this->getSerializeDecode($entity, $vars->serialize_group_name);
                     $status = self::STATUS_SUCCESS;
                 }else{
                     foreach ($form->getErrors(true) as $key => $error) {
@@ -229,7 +229,7 @@ class TreeController extends BaseController
 
                 if ($form->isValid()) {
                     $this->persist($entity);
-                    $entity = $this->getSerializeDecode($entity, $vars['serialize_group_name']);
+                    $entity = $this->getSerializeDecode($entity, $vars->serialize_group_name);
                     $status = self::STATUS_SUCCESS;
                 }else{
                     foreach ($form->getErrors(true) as $key => $error) {
@@ -308,7 +308,7 @@ class TreeController extends BaseController
 
                 if ($form->isValid()) {
                     $this->persist($entity);
-                    $entity = $this->getSerializeDecode($entity, $vars['serialize_group_name']);
+                    $entity = $this->getSerializeDecode($entity, $vars->serialize_group_name);
                     $status = self::STATUS_SUCCESS;
                 }else{
                     foreach ($form->getErrors(true) as $key => $error) {

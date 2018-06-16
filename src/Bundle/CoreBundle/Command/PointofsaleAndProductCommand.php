@@ -95,11 +95,12 @@ class PointofsaleAndProductCommand extends ContainerAwareCommand
                             /**
                              * PDV HAS PRODUCT
                              */
-                            $randHour = rand(4, 5);
-                            $randMin = rand(0, 59);
+                            $randHour = rand(4, 5); // HORAS DE ENTREGA
+                            $randMin = rand(0, 20);
                             $randSec = rand(0, 59);
                             $i->setTime($randHour, $randMin, $randSec);
 
+                            //PRODUCTOS ENTREGAS
                             $min = 10;
                             $max = 150;
                             $entity = new Pdvhasproduct();

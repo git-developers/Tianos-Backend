@@ -76,6 +76,7 @@ class Builder implements ContainerAwareInterface
             'backend_pointofsale_index',
             'backend_category_tree_index',
             'backend_pointofsale_map_index',
+            'backend_route_index',
         ]))
         ->setAttribute('icon', 'fa-fw fa-code-fork')
         ->setDisplay($isGranted)

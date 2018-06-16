@@ -210,6 +210,15 @@ class BackendOutController extends BaseController
         $pointOfSaleId = $request->get('pointOfSaleId');
         $userId = $request->get('userId');
 
+
+//        echo "POLLO:: <pre>";
+//        print_r($pointOfSaleId);
+//        print_r("************");
+//        print_r($userId);
+//        exit;
+
+
+
         if (!$this->isXmlHttpRequest() || is_null($userId) || is_null($pointOfSaleId)) {
             throw $this->createAccessDeniedException(self::ACCESS_DENIED_MSG);
         }
