@@ -38,7 +38,9 @@ class ApiController extends BaseController
 
         if ($object) {
             foreach ($object->getRoute() as $key => $route) {
-                $pointOfSales[] = $route->getPointOfSale();
+                foreach ($route->getPointOfSale() as $key => $pointOfSale) {
+                    $pointOfSales[] = $pointOfSale;
+                }
             }
         }
 
