@@ -35,8 +35,11 @@ class ApiController extends BaseController
         $object = $this->get($repository)->$method($data->username);
 
         $pointOfSales = [];
-        foreach ($object->getRoute() as $key => $route) {
-            $pointOfSales[] = $route->getPointOfSale();
+
+        if ($object) {
+            foreach ($object->getRoute() as $key => $route) {
+                $pointOfSales[] = $route->getPointOfSale();
+            }
         }
 
         $object = $this->getSerializeDecode($pointOfSales, $vars->serialize_group_name);
