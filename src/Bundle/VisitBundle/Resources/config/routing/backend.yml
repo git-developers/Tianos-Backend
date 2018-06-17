@@ -12,8 +12,6 @@ backend_visit_index:
                 subheader: sylius.ui.manage_your_visit_catalog
                 icon: cube
                 body_css: grid-body-css
-                serialize_group_name: crud
-#            grid: sylius_admin_product
             grid:
                 icon: area-chart
                 box_class: primary
@@ -22,9 +20,6 @@ backend_visit_index:
                     route:
                         info: backend_visit_info
                         view: backend_visit_view
-#                        edit: backend_visit_edit
-#                        create: backend_visit_create
-#                        delete: backend_visit_delete
                     table_button:
 #                        - edit
 #                        - delete
@@ -61,14 +56,14 @@ backend_visit_index:
                           obj: obj.uuid
                           options:
                               icon: feed
-#                        - name: Creado
-#                          obj: obj.created_at
             form:
                 type: Bundle\VisitBundle\Form\Type\VisitType
             repository:
                 service: tianos.repository.visit
                 method: findAll
                 arguments: [$visitId]
+                vars:
+                    serialize_group_name: crud
 
 backend_visit_view:
     path: /view
@@ -91,17 +86,3 @@ backend_visit_info:
         _tianos:
             action: info
             template: VisitBundle:VisitBackend/Informative:info.html.twig
-
-#backend_visit_create:
-#    path: /create
-#    methods: [POST]
-#    defaults:
-#        _controller: tianos.backend.controller.visit:createAction
-#        _tianos:
-#            action: create
-#            template: VisitBundle:VisitBackend/Form:form.html.twig
-#            entity: Bundle\VisitBundle\Entity\Visit
-#            form:
-#                type: Bundle\VisitBundle\Form\Type\VisitType
-#            vars:
-#                serialize_group_name: crud

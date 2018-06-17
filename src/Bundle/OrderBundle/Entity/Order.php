@@ -20,37 +20,37 @@ class Order
     /**
      * @var integer
      *
-     * @JMSS\Groups({"crud"})
+     * @JMSS\Groups({"crud", "order-report"})
      */
     private $id;
 
     /**
      * @var integer
      *
-     * @JMSS\Groups({"crud"})
+     * @JMSS\Groups({"order-report"})
      */
     private $quantity;
 
     /**
      * @var string
      *
-     * @JMSS\Groups({"crud"})
+     * @JMSS\Groups({"order-report"})
      */
     private $type;
 
     /**
      * @var \DateTime
      *
-     * @JMSS\Groups({"crud"})
      * @JMSS\Type("DateTime<'Y-m-d H:i'>")
+     * @JMSS\Groups({"order-report"})
      */
     private $orderDate;
 
     /**
      * @var \DateTime
      *
-     * @JMSS\Groups({"crud"})
      * @JMSS\Type("DateTime<'Y-m-d H:i'>")
+     *
      */
     private $createdAt;
 
@@ -73,6 +73,8 @@ class Order
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="point_of_sale_id", referencedColumnName="id")
      * })
+     *
+     * @JMSS\Groups({"order-report"})
      */
     private $pointOfSale;
 
@@ -83,16 +85,22 @@ class Order
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="product_id", referencedColumnName="id")
      * })
+     *
+     * @JMSS\Groups({"order-report"})
      */
     private $product;
 
     /**
+     * Canillita
+     *
      * @var \Bundle\UserBundle\Entity\User
      *
      * @ORM\ManyToOne(targetEntity="Bundle\UserBundle\Entity\User")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      * })
+     *
+     * @JMSS\Groups({"order-report"})
      */
     private $user;
 

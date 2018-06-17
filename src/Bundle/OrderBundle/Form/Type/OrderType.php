@@ -9,7 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Doctrine\ORM\EntityManager;
 
 
-class OrderinType extends AbstractType
+class OrderType extends AbstractType
 {
 
     /**

@@ -35,7 +35,8 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
      *     "one-to-many-right",
      *     "one-to-many-search",
      *     "one-to-many-search-pointofsalehasuser",
-     *     "order-in-left-select-item"
+     *     "order-in-left-select-item",
+     *     "order-report"
      * })
      */
     protected $id;
@@ -250,7 +251,8 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
      *     "one-to-many-left",
      *     "one-to-many-right",
      *     "order-in-center",
-     *     "order-in-left-select-item"
+     *     "order-in-left-select-item",
+     *     "order-report"
      * })
      */
     private $nameBox;

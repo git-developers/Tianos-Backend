@@ -57,7 +57,8 @@ class GridController extends BaseController
 
         //REPOSITORY
         $objects = $this->get($repository)->$method();
-        $objects = $this->getSerialize($objects, $vars->serialize_group_name);
+        $varsRepository = $configuration->getRepositoryVars();
+        $objects = $this->getSerialize($objects, $varsRepository->serialize_group_name);
 
         //GRID
         $gridService = $this->get('tianos.grid');
@@ -159,8 +160,11 @@ class GridController extends BaseController
             try{
 
                 if ($form->isValid()) {
+
                     $this->persist($entity);
-                    $entity = $this->getSerializeDecode($entity, $vars->serialize_group_name);
+
+                    $varsRepository = $configuration->getRepositoryVars();
+                    $entity = $this->getSerializeDecode($entity, $varsRepository->serialize_group_name);
                     $status = self::STATUS_SUCCESS;
                 }else{
                     foreach ($form->getErrors(true) as $key => $error) {
@@ -236,8 +240,11 @@ class GridController extends BaseController
             try{
 
                 if ($form->isValid()) {
+
                     $this->persist($entity);
-                    $entity = $this->getSerializeDecode($entity, $vars->serialize_group_name);
+
+                    $varsRepository = $configuration->getRepositoryVars();
+                    $entity = $this->getSerializeDecode($entity, $varsRepository->serialize_group_name);
                     $status = self::STATUS_SUCCESS;
                 }else{
                     foreach ($form->getErrors(true) as $key => $error) {

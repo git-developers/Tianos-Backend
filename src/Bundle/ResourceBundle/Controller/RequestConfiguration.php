@@ -680,6 +680,21 @@ class RequestConfiguration
         return json_decode(json_encode($vars));
     }
 
+    public function getRepositoryVars()
+    {
+        if (!$this->parameters->has('repository')) {
+            return null;
+        }
+
+        $repository = array_replace([
+            'vars' => null
+        ], $this->parameters->get('repository'));
+
+        $repository = json_decode(json_encode($repository));
+
+        return $repository->vars;
+    }
+
     public function getRepositoryVarsLeft()
     {
         if (!$this->parameters->has('repository')) {

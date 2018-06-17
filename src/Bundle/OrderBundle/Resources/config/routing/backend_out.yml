@@ -18,7 +18,7 @@ backend_orderout_index:
                     class: primary
                     box_class: primary
                     form_name: main-form
-                    title: Pedido de periódicos por los Canillitas <i class="fa fa-arrow-circle-right"></i>
+                    title: Pedido de periódicos por los Canillitas <i class="fa fa-sign-out"></i>
                     route_submit: backend_orderout_upsert
                     route_info: backend_orderout_info
                     table_button_header:

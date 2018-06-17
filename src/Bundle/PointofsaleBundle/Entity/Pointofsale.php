@@ -25,7 +25,8 @@ class Pointofsale
      *     "one-to-many-search",
      *     "order-in-left",
      *     "one-to-many-search-userhaspointofsale",
-     *     "one-to-many-left-userhaspointofsale"
+     *     "one-to-many-left-userhaspointofsale",
+     *     "order-report"
      * })
      */
     private $id;
@@ -171,7 +172,8 @@ class Pointofsale
      *     "one-to-many-left",
      *     "one-to-many-right",
      *     "order-in-left",
-     *     "one-to-many-left-userhaspointofsale"
+     *     "one-to-many-left-userhaspointofsale",
+     *     "order-report"
      * })
      */
     private $nameBox;

@@ -553,12 +553,13 @@ class Builder implements ContainerAwareInterface
                 'backend_report_roturastock_area_chart',
                 'backend_report_roturastock_line_chart',
                 'backend_report_productos_entregados_a_pdv',
+                'backend_order_report_index',
             ]))
             ->setAttribute('icon', 'fa-fw fa-line-chart')
             ->setDisplay($isGranted)
         ;
 
-        $menu['Reportes']->addChild('Punto de venta <i class="fa fa-fw fa-angle-double-right"></i> producto', [
+        $menu['Reportes']->addChild('Productos<i class="fa fa-fw fa-angle-double-right"></i>PDV (Grid)', [
             'route' => 'backend_pdvhasproduct_index',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
@@ -570,19 +571,31 @@ class Builder implements ContainerAwareInterface
             ->setDisplay($isGranted)
         ;
 
-        $menu['Reportes']->addChild('Visita', [
-            'route' => 'backend_visit_index',
+        $menu['Reportes']->addChild('Productos<i class="fa fa-fw fa-angle-double-right"></i>PDV (Chart)', [
+            'route' => 'backend_report_productos_entregados_a_pdv',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
                 'class' => 'treeview-menu',
             ],
         ])
-            ->setAttribute('icon', self::CIRCLE_2)
-            ->setAttribute('class', $this->activeRoute('backend_visit_index'))
+            ->setAttribute('icon', self::CIRCLE_5)
+            ->setAttribute('class', $this->activeRoute('backend_report_productos_entregados_a_pdv'))
             ->setDisplay($isGranted)
         ;
 
-        $menu['Reportes']->addChild('Pedido vs Devolución', [
+        $menu['Reportes']->addChild('Pedido vs Devolución (Grid)', [
+            'route' => 'backend_order_report_index',
+            'extras' => ['safe_label' => true],
+            'childrenAttributes' => [
+                'class' => 'treeview-menu',
+            ],
+        ])
+            ->setAttribute('icon', self::CIRCLE_3)
+            ->setAttribute('class', $this->activeRoute('backend_order_report_index'))
+            ->setDisplay($isGranted)
+        ;
+
+        $menu['Reportes']->addChild('Pedido vs Devolución (Chart)', [
             'route' => 'backend_report_pedido_vs_devolucion',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
@@ -618,15 +631,15 @@ class Builder implements ContainerAwareInterface
             ->setDisplay($isGranted)
         ;
 
-        $menu['Reportes']->addChild('Productos a PDV', [
-            'route' => 'backend_report_productos_entregados_a_pdv',
+        $menu['Reportes']->addChild('Visitas (Grid)', [
+            'route' => 'backend_visit_index',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
                 'class' => 'treeview-menu',
             ],
         ])
-            ->setAttribute('icon', self::CIRCLE_5)
-            ->setAttribute('class', $this->activeRoute('backend_report_productos_entregados_a_pdv'))
+            ->setAttribute('icon', self::CIRCLE_2)
+            ->setAttribute('class', $this->activeRoute('backend_visit_index'))
             ->setDisplay($isGranted)
         ;
         /**

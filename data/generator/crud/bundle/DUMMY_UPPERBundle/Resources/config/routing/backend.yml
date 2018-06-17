@@ -41,14 +41,8 @@ backend_DUMMY_LOWER_index:
                     columns:
                         - name: '#'
                           obj: " '<span class=\"badge bg-blue\">' + obj.id + '</span>' "
-#                        - name: code
-#                          obj: obj.code
-#                          options:
-#                              icon: map-marker
                         - name: Name
                           obj: obj.name
-#                        - name: slug
-#                          obj: obj.slug
                         - name: Creado
                           obj: obj.created_at
                           options:
@@ -59,6 +53,8 @@ backend_DUMMY_LOWER_index:
                 service: tianos.repository.DUMMY_LOWER
                 method: findAll
                 arguments: [$DUMMY_LOWERId]
+                vars:
+                    serialize_group_name: crud
 
 backend_DUMMY_LOWER_create:
     path: /create
@@ -71,8 +67,9 @@ backend_DUMMY_LOWER_create:
             entity: Bundle\DUMMY_UPPERBundle\Entity\DUMMY_UPPER
             form:
                 type: Bundle\DUMMY_UPPERBundle\Form\Type\DUMMY_UPPERType
-            vars:
-                serialize_group_name: crud
+            repository:
+                vars:
+                    serialize_group_name: crud
 
 backend_DUMMY_LOWER_edit:
     path: /edit
@@ -82,14 +79,14 @@ backend_DUMMY_LOWER_edit:
         _tianos:
             action: edit
             template: DUMMY_UPPERBundle:DUMMY_UPPERBackend/Form:form.html.twig
+            form:
+                type: Bundle\DUMMY_UPPERBundle\Form\Type\DUMMY_UPPERType
             repository:
                 service: tianos.repository.DUMMY_LOWER
                 method: find
                 arguments: [$DUMMY_LOWERId]
-            form:
-                type: Bundle\DUMMY_UPPERBundle\Form\Type\DUMMY_UPPERType
-            vars:
-                serialize_group_name: crud
+                vars:
+                    serialize_group_name: crud
 
 backend_DUMMY_LOWER_delete:
     path: /delete
@@ -118,6 +115,8 @@ backend_DUMMY_LOWER_view:
                 service: tianos.repository.DUMMY_LOWER
                 method: find
                 arguments: [$DUMMY_LOWERId]
+                vars:
+                    serialize_group_name: crud
 
 backend_DUMMY_LOWER_info:
     path: /info

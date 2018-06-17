@@ -80,7 +80,7 @@ class OrderAndReturnCommand extends ContainerAwareCommand
                     foreach ($productos as $key => $product) {
 
                         // ORDER-OUT
-                        $randHour = rand(4, 5);
+                        $randHour = rand(7, 12);
                         $randMin = rand(0, 59);
                         $randSec = rand(0, 59);
                         $i->setTime($randHour, $randMin, $randSec);

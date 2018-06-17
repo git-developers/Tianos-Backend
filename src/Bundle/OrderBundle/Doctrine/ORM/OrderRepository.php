@@ -145,7 +145,7 @@ class OrderRepository extends TianosEntityRepository implements OrderRepositoryI
         $em = $this->getEntityManager();
         $dql = "
             SELECT order_
-            FROM OrderBundle:Order_ order_
+            FROM OrderBundle:Order order_
             WHERE
             order_.isActive = :active
             ";

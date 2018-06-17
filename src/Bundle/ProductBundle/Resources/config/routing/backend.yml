@@ -12,7 +12,6 @@ backend_product_index:
                 subheader: sylius.ui.manage_your_product_catalog
                 icon: cube
                 body_css: grid-body-css
-                serialize_group_name: crud
             grid:
                 icon: cube
                 box_class: primary
@@ -48,8 +47,6 @@ backend_product_index:
                               icon: image
                         - name: Name
                           obj: obj.name
-#                        - name: slug
-#                          obj: obj.slug
                         - name: Creado
                           obj: obj.created_at
                           options:
@@ -60,6 +57,8 @@ backend_product_index:
                 service: tianos.repository.product
                 method: findAll
                 arguments: [$productId]
+                vars:
+                    serialize_group_name: crud
 
 backend_product_create:
     path: /create
@@ -72,8 +71,9 @@ backend_product_create:
             entity: Bundle\ProductBundle\Entity\Product
             form:
                 type: Bundle\ProductBundle\Form\Type\ProductType
-            vars:
-                serialize_group_name: crud
+            repository:
+                vars:
+                    serialize_group_name: crud
 
 backend_product_edit:
     path: /edit
@@ -83,14 +83,14 @@ backend_product_edit:
         _tianos:
             action: edit
             template: ProductBundle:ProductBackend/Form:form.html.twig
+            form:
+                type: Bundle\ProductBundle\Form\Type\ProductType
             repository:
                 service: tianos.repository.product
                 method: find
                 arguments: [$productId]
-            form:
-                type: Bundle\ProductBundle\Form\Type\ProductType
-            vars:
-                serialize_group_name: crud
+                vars:
+                    serialize_group_name: crud
 
 backend_product_delete:
     path: /delete
@@ -119,6 +119,8 @@ backend_product_view:
                 service: tianos.repository.product
                 method: find
                 arguments: [$productId]
+                vars:
+                    serialize_group_name: crud
 
 backend_product_info:
     path: /info

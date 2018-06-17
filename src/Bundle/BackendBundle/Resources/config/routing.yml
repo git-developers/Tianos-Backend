@@ -55,6 +55,9 @@ backend_route:
 backend_orderin:
     resource: '@OrderBundle/Resources/config/routing/backend_in.yml'
     prefix: /order/in
+backend_order_report:
+    resource: '@OrderBundle/Resources/config/routing/backend_report.yml'
+    prefix: /order/report
 backend_orderout:
     resource: '@OrderBundle/Resources/config/routing/backend_out.yml'
     prefix: /order/out

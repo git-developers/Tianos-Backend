@@ -76,11 +76,12 @@
                                 {% set property = value.options.property|default() %}
 
                                 {% if property %}
-                                {% set obj = property %}
+                                    {{ property|raw }} {# ESTO SE USA PARA MOSTRAR CODIGO DIRECTAMENTE #}
+                                {% else %}
+                                    return {{ obj|raw }};
                                 {% endif %}
-
-                                return {{ obj|raw }};
                             }
+
                             return '';
                         },
                     },

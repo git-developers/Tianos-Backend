@@ -28,6 +28,12 @@ services:
         tags:
             - { name: tianos.backend.out.controller.order, alias: tianos.backend.out.controller.order }
 
+    tianos.backend.report.controller.order:
+        class: Bundle\OrderBundle\Controller\BackendReportController
+        arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
+        tags:
+            - { name: tianos.backend.report.controller.order, alias: tianos.backend.report.controller.order }
+
     tianos.frontend.controller.order:
         class: Bundle\OrderBundle\Controller\FrontendController
         arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]

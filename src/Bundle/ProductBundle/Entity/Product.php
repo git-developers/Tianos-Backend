@@ -20,7 +20,8 @@ class Product
      *     "crud",
      *     "tree-one-to-many-right",
      *     "tree-one-to-many-search-categoryhasproduct",
-     *     "order-in-right"
+     *     "order-in-right",
+     *     "order-report"
      * })
      */
     private $id;
@@ -84,7 +85,8 @@ class Product
      * @JMSS\Accessor(getter="getNameBox", setter="setNameBox")
      * @JMSS\Groups({
      *     "tree-one-to-many-right",
-     *     "order-in-right"
+     *     "order-in-right",
+     *     "order-report"
      * })
      */
     private $nameBox;

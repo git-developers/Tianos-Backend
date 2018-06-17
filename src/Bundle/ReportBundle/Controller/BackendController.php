@@ -155,6 +155,11 @@ class BackendController extends BaseController
 
         $jsonArray = $this->getJsonArray($configuration, $dateStart, $dateEnd);
 
+//        echo "POLLO:: <pre>";
+//        print_r($jsonArray);
+//        exit;
+
+
         return $this->render(
             $template,
             [
@@ -344,6 +349,10 @@ class BackendController extends BaseController
 
             foreach ($orders as $key => $order) {
 
+//                echo "POLLO:: <pre>";
+//                print_r("FECHA::" . $order->getOrderDate()->format("Y-m-d") ."--". $order->getType() . "--" . $order->getQuantity());
+
+
                 if ($order->getType() == Order::IN) {
                     $quantityIN = $quantityIN + $order->getQuantity();
                 } elseif ($order->getType() == Order::OUT){
@@ -361,6 +370,8 @@ class BackendController extends BaseController
                     'rotura_stock' => round($roturaStock, 2),
                 ];
             }
+
+//            exit;
         }
 
         return $jsonArray;
