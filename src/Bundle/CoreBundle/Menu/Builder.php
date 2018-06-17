@@ -578,7 +578,7 @@ class Builder implements ContainerAwareInterface
                 'class' => 'treeview-menu',
             ],
         ])
-            ->setAttribute('icon', self::CIRCLE_5)
+            ->setAttribute('icon', self::CIRCLE_2)
             ->setAttribute('class', $this->activeRoute('backend_report_productos_entregados_a_pdv'))
             ->setDisplay($isGranted)
         ;
@@ -602,7 +602,7 @@ class Builder implements ContainerAwareInterface
                 'class' => 'treeview-menu',
             ],
         ])
-            ->setAttribute('icon', self::CIRCLE_3)
+            ->setAttribute('icon', self::CIRCLE_4)
             ->setAttribute('class', $this->activeRoute('backend_report_pedido_vs_devolucion'))
             ->setDisplay($isGranted)
         ;
@@ -614,7 +614,7 @@ class Builder implements ContainerAwareInterface
                 'class' => 'treeview-menu',
             ],
         ])
-            ->setAttribute('icon', self::CIRCLE_4)
+            ->setAttribute('icon', self::CIRCLE_5)
             ->setAttribute('class', $this->activeRoute('backend_report_roturastock_area_chart'))
             ->setDisplay($isGranted)
         ;
@@ -626,7 +626,7 @@ class Builder implements ContainerAwareInterface
                 'class' => 'treeview-menu',
             ],
         ])
-            ->setAttribute('icon', self::CIRCLE_4)
+            ->setAttribute('icon', self::CIRCLE_6)
             ->setAttribute('class', $this->activeRoute('backend_report_roturastock_line_chart'))
             ->setDisplay($isGranted)
         ;
@@ -638,7 +638,7 @@ class Builder implements ContainerAwareInterface
                 'class' => 'treeview-menu',
             ],
         ])
-            ->setAttribute('icon', self::CIRCLE_2)
+            ->setAttribute('icon', self::CIRCLE_7)
             ->setAttribute('class', $this->activeRoute('backend_visit_index'))
             ->setDisplay($isGranted)
         ;
