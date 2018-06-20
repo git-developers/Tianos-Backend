@@ -154,14 +154,27 @@ class OrderRepository extends TianosEntityRepository implements OrderRepositoryI
         $query->setParameter('active', 1);
 
         return $query->getResult();
+    }
 
-//        return $this->createQueryBuilder('o')
-//            ->select('o.id, o.code, o.name, o.createdAt')
-//            ->andWhere('o.isActive = :active')
-//            ->setParameter('active', 1)
-//            ->getQuery()
-//            ->getResult()
-//            ;
+    /**
+     * {@inheritdoc}
+     */
+    public function findAllOrderReport(): array
+    {
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT order_
+            FROM OrderBundle:Order order_
+            WHERE
+            order_.isActive = :active
+            ORDER BY order_.id DESC
+            ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+        $query->setMaxResults(10000);
+
+        return $query->getResult();
     }
 
     /**
