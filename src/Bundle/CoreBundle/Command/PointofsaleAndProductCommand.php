@@ -33,6 +33,7 @@ class PointofsaleAndProductCommand extends ContainerAwareCommand
 //            ->addArgument('status', InputArgument::OPTIONAL, 'El status: e.g. TRUE - FALSE', false)
             ->addArgument('date-start', InputArgument::OPTIONAL, 'Fecha inicio', false)
             ->addArgument('date-end', InputArgument::OPTIONAL, 'Fecha fin', false)
+            ->addArgument('delete', InputArgument::OPTIONAL, 'Delete', null)
         ;
     }
 
@@ -42,6 +43,8 @@ class PointofsaleAndProductCommand extends ContainerAwareCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $delete = $input->getArgument('delete');
+
         $dateStartStr = $input->getArgument('date-start');
         $dateStart = new \DateTime($dateStartStr);
 
@@ -55,23 +58,7 @@ class PointofsaleAndProductCommand extends ContainerAwareCommand
 
         $em = $this->getContainer()->get('doctrine')->getManager();
 
-
-        //DELETE OBJECTS
-        $output->writeln('<comment>===<question>Delete table:</question> point_of_sale_has_product ===</comment>');
-        $sql = "DELETE FROM point_of_sale_has_product;";
-        $stmt = $em->getConnection()->prepare($sql);
-        $stmt->execute();
-        usleep(500);
-
-        $output->writeln('<comment>===<question>Delete table:</question> visit ===</comment>');
-        $sql = "DELETE FROM visit;";
-        $stmt = $em->getConnection()->prepare($sql);
-        $stmt->execute();
-
-        $output->writeln('<comment>===<question>Delete table:</question> session ===</comment>');
-        $sql = "DELETE FROM session;";
-        $stmt = $em->getConnection()->prepare($sql);
-        $stmt->execute();
+        $this->deleteTables($delete, $output, $em);
 
         $output->writeln('--');
 
@@ -141,7 +128,6 @@ class PointofsaleAndProductCommand extends ContainerAwareCommand
                         $visit->setCreatedAt($i);
                         $em->persist($visit);
                         $em->flush();
-
                     }
                 }
             }
@@ -158,7 +144,33 @@ class PointofsaleAndProductCommand extends ContainerAwareCommand
         $output->writeln('--');
     }
 
+    public function deleteTables($delete, $output, $em)
+    {
 
+        if(is_null($delete)) {
+            return;
+        }
+
+
+        //DELETE OBJECTS
+        $output->writeln('<comment>===<question>Delete table:</question> point_of_sale_has_product ===</comment>');
+        $sql = "DELETE FROM point_of_sale_has_product;";
+        $stmt = $em->getConnection()->prepare($sql);
+        $stmt->execute();
+        usleep(500);
+
+        $output->writeln('<comment>===<question>Delete table:</question> visit ===</comment>');
+        $sql = "DELETE FROM visit;";
+        $stmt = $em->getConnection()->prepare($sql);
+        $stmt->execute();
+        usleep(500);
+
+        $output->writeln('<comment>===<question>Delete table:</question> session ===</comment>');
+        $sql = "DELETE FROM session;";
+        $stmt = $em->getConnection()->prepare($sql);
+        $stmt->execute();
+        usleep(500);
+    }
 }
 
 

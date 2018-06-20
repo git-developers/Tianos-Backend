@@ -31,6 +31,7 @@ class OrderAndReturnCommand extends ContainerAwareCommand
 //            ->addArgument('status', InputArgument::OPTIONAL, 'El status: e.g. TRUE - FALSE', false)
             ->addArgument('date-start', InputArgument::OPTIONAL, 'Fecha inicio', false)
             ->addArgument('date-end', InputArgument::OPTIONAL, 'Fecha fin', false)
+            ->addArgument('delete', InputArgument::OPTIONAL, 'Delete', null)
         ;
     }
 
@@ -40,6 +41,8 @@ class OrderAndReturnCommand extends ContainerAwareCommand
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $delete = $input->getArgument('delete');
+
         $dateStartStr = $input->getArgument('date-start');
         $dateStart = new \DateTime($dateStartStr);
 
@@ -53,16 +56,7 @@ class OrderAndReturnCommand extends ContainerAwareCommand
 
         $em = $this->getContainer()->get('doctrine')->getManager();
 
-
-        //DELETE OBJECTS
-        $output->writeln('<comment>===<question>Delete table:</question> order_ ===</comment>');
-        $sql = "DELETE FROM order_;";
-        $stmt = $em->getConnection()->prepare($sql);
-        $stmt->execute();
-        $output->writeln('--');
-
-        usleep(500);
-
+        $this->deleteTables($delete, $output, $em);
 
         // GET OBJECTS
         $pointOfSales = $this->getContainer()->get('tianos.repository.pointofsale')->findAll();
@@ -131,6 +125,22 @@ class OrderAndReturnCommand extends ContainerAwareCommand
     }
 
 
+    public function deleteTables($delete, $output, $em)
+    {
+
+        if(is_null($delete)) {
+            return;
+        }
+
+
+        //DELETE OBJECTS
+        $output->writeln('<comment>===<question>Delete table:</question> order_ ===</comment>');
+        $sql = "DELETE FROM order_;";
+        $stmt = $em->getConnection()->prepare($sql);
+        $stmt->execute();
+        $output->writeln('--');
+        usleep(500);
+    }
 }
 
 
