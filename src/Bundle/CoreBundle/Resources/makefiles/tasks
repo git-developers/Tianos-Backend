@@ -47,7 +47,7 @@ save:
 ifeq ($(http), 1)
 	git push origin_http master
 else
-	git push origin master
+	git push github master
 endif
 
 #READ: https://eole-io.github.io/sandstone/install-zmq-php-linux.html
