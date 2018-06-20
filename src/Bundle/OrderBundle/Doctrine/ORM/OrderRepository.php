@@ -173,7 +173,6 @@ class OrderRepository extends TianosEntityRepository implements OrderRepositoryI
         $query = $em->createQuery($dql);
         $query->setParameter('active', 1);
         $query->setMaxResults(10000);
-
         
         return $query->getResult();
     }
