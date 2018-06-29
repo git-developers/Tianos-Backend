@@ -3,9 +3,8 @@
 - hosts: webservers
 #  sudo: yes
   vars:
-    - app_name: tianos
-#    - repo_url: https://jafeth-bendezu:123456abC@bitbucket.org/jafeth-bendezu/tianos-backend.git
     - repo_url: https://github.com/git-developers/Tianos-Backend.git
+    - app_name: tianos
     - repo_remote: origin
     - repo_version: tianos
     - webapps_dir: /var/www/html
@@ -15,7 +14,6 @@
   tasks:
     - name: Git Pull Project
       git: repo={{repo_url}} dest={{webapps_dir}}/{{app_name}} version={{repo_version}} force=yes
-
 
 #accept_hostkey=no
 #    - repo_url: git@gitlab.ec.pe:jafeth.bendezu/tianos.git
