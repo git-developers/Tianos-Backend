@@ -649,6 +649,62 @@ class Builder implements ContainerAwareInterface
 
 
 
+
+
+        /**
+         * GOOGLE DRIVE
+         */
+        $isGranted = $this->isGranted([
+            'ROLE_' . Profile::JEFE_DE_ADMINISTRACION_COMERCIAL,
+        ]);
+
+        $menu->addChild('Google', [
+            'route' => 'backend_default_dashboard',
+            'extras' => ['safe_label' => true],
+            'childrenAttributes' => [
+                'class' => 'treeview-menu',
+            ],
+        ])
+            ->setAttribute('allow_angle', true)
+            ->setAttribute('class', 'treeview')
+            ->setAttribute('class', $this->activeRoute([
+                'backend_google_drive_index',
+                'backend_google_drive_account_permissions',
+            ]))
+            ->setAttribute('icon', 'fa-fw fa-google')
+            ->setDisplay($isGranted)
+        ;
+
+        $menu['Google']->addChild('Drive', [
+            'route' => 'backend_google_drive_index',
+            'extras' => ['safe_label' => true],
+            'childrenAttributes' => [
+                'class' => 'treeview-menu',
+            ],
+        ])
+            ->setAttribute('icon', 'fa-fw fa-plus-circle')
+            ->setAttribute('class', $this->activeRoute([
+                'backend_google_drive_index',
+                'backend_google_drive_account_permissions'
+            ]))
+            ->setDisplay($isGranted)
+        ;
+
+        $menu['Google']['Drive']->addChild('Gestionar', [
+            'route' => 'backend_google_drive_index'
+        ])
+            ->setAttribute('icon', self::CIRCLE_1)
+            ->setAttribute('class', $this->activeRoute('backend_google_drive_index'))
+            ->setDisplay($isGranted)
+        ;
+
+        /**
+         * GOOGLE DRIVE
+         */
+
+
+
+
         /**
          * FRONTEND
          */
@@ -672,14 +728,16 @@ class Builder implements ContainerAwareInterface
             ->setAttribute('class', $this->activeRoute('frontend_default_index'))
             ->setDisplay($isGranted)
         ;
+        /**
+         * FRONTEND
+         */
+
 
 
 
         /**
          * SETTINGS
          */
-
-        /*
         $isGranted = true; //$this->isGranted('ROLE_CLIENT_VIEW');
         $menu->addChild('Settings', [
             'route' => 'backend_default_dashboard',
@@ -703,16 +761,6 @@ class Builder implements ContainerAwareInterface
             ->setAttribute('class', $this->activeRoute('backend_core_loadfixtures'))
             ->setDisplay($isGranted)
         ;
-
-        $menu['Settings']->addChild('GoogleDrive mimetype', [
-            'route' => 'backend_default_dashboard'
-        ])
-            ->setAttribute('icon', self::CIRCLE_2)
-//            ->setAttribute('class', $this->activeRoute('backend_default_dashboard'))
-            ->setDisplay($isGranted)
-        ;
-        */
-
 
         return $menu;
     }

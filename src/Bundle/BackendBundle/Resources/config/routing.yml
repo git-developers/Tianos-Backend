@@ -64,3 +64,6 @@ backend_orderout:
 backend_report:
     resource: '@ReportBundle/Resources/config/routing/backend.yml'
     prefix: /report
+backend_google_drive:
+    resource: '@GoogleBundle/Resources/config/routing/google_drive.yml'
+    prefix: /google-drive

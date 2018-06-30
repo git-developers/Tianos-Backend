@@ -25,3 +25,4 @@ imports:
     - { resource: '@RouteBundle/Resources/config/services.yml' }
     - { resource: '@OrderBundle/Resources/config/services.yml' }
     - { resource: '@ReportBundle/Resources/config/services.yml' }
+    - { resource: '@GoogleBundle/Resources/config/services.yml' }

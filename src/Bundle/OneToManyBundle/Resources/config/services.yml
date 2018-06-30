@@ -6,13 +6,17 @@ services:
         tags:
             - { name: tianos.one_to_many, alias: tianos.one_to_many }
 
-    tianos.form_registry.onetomany_filter:
-        class: Bundle\OneToManyBundle\Form\Registry\FormTypeRegistry
-        public: false
 
+
+
+#    TWIG EXTENSION
     tianos.registry.onetomany_field:
         class: Component\Registry\ServiceRegistry
         arguments: [ Component\OneToMany\FieldTypes\FieldTypeInterface, "grid field" ]
+
+    tianos.form_registry.onetomany_filter:
+        class: Bundle\OneToManyBundle\Form\Registry\FormTypeRegistry
+        public: false
 
     tianos.expression_language:
         class: Bundle\ResourceBundle\ExpressionLanguage\ExpressionLanguage
