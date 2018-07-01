@@ -69,7 +69,7 @@ backend_google_drive_account_permissions:
                 icon: cube
                 body_css: grid-body-css
                 serialize_group_name: crud
-            entity: Bundle\GoogleBundle\Entity\GoogleDrive
+            entity: Bundle\GoogleBundle\Entity\GoogleDriveFile
             form:
                 type: Bundle\GoogleBundle\Form\Type\GoogleType
             repository:
@@ -83,14 +83,14 @@ backend_google_drive_save:
     path: /save
     methods: [PUT, POST]
     defaults:
-        _controller: tianos.backend.controller.google:saveAction
+        _controller: tianos.google.drive.controller.google:saveAction
         _tianos:
             action: edit
             template: GoogleBundle:GoogleBackend/Form:form.html.twig
             form:
                 type: Bundle\GoogleBundle\Form\Type\GoogleType
             repository:
-                service: tianos.repository.google
+                service: tianos.repository.google.drive
                 method: find
                 arguments: [$googleId]
                 vars:

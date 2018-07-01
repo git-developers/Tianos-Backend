@@ -213,8 +213,9 @@
                     <i class="fa fa-dashboard"></i> Google drive
                 </a>
             </li>
-            {#<li class="active"><a href="{{ path('backend_googledrive_index', {id:id}) }}">{{ name }}</a></li>#}
         </ol>
+
+        {#<li class="active"><a href="{{ path('backend_googledrive_index', {id:id}) }}">{{ name }}</a></li>#}
         {#{{ render(controller('BackendBundle:GoogleDrive:breadcrumb', {'files': files})) }}#}
     </section>
 
@@ -233,20 +234,22 @@
 
                         <div class="row ">
                             <div class="col-xs-12 col-md-12 margin-bottom-5">
-                                <div class="col-xs-2 col-md-1">
+                                <div class="col-xs-4 col-md-1">
                                     <div class="input-group input-group-sm" style="margin-left: -3px">
                                         <input id="check-all" type="checkbox">
                                     </div>
                                 </div>
-                                <div class="col-xs-4 col-md-5 margin-bottom-5">
-                                    <button id="save-files" class="btn bg-olive btn-sm" data-toggle="tooltip" title="subir archivo">
-                                        <i class="fa fa-fw fa-upload"></i>
-                                    </button>
-                                    <button id="delete-files" class="btn bg-red btn-sm" data-toggle="tooltip" title="borrar">
-                                        <i class="fa fa-fw fa-trash"></i>
+                                <div class="col-xs-4 col-md-1 margin-bottom-5">
+                                    <button id="save-files" class="btn bg-olive " data-toggle="tooltip" title="subir archivo">
+                                        Subir <i class="fa fa-fw fa-upload"></i>
                                     </button>
                                 </div>
-                                <div class="col-xs-6 col-md-6 margin-bottom-5">
+                                <div class="col-xs-4 col-md-1 margin-bottom-5">
+                                    <button id="delete-files" class="btn bg-red " data-toggle="tooltip" title="borrar">
+                                        Eliminar <i class="fa fa-fw fa-trash"></i>
+                                    </button>
+                                </div>
+                                <div class="col-xs-12 col-md-9 margin-bottom-5">
                                     <form action="{{ path('backend_google_drive_index') }}" method="get" role="form">
                                         <div class="input-group input-group">
                                             <input type="text" name="search" class="form-control" value="{{ search }}">
@@ -276,41 +279,46 @@
                                 {% endif %}
 
                                 <form id="{{ vars.form_name }}">
+
                                     <ul class="todo-list ui-sortable">
-                                        {% for key,value in files %}
+
+                                        {% for key,file in files %}
                                             <li>
-                                                <div class="row" >
+                                                <div class="row">
+
+                                                    {#{{ dump(file) }}#}
+
                                                     <div class="col-xs-3 col-md-1">
                                                         <div class="row">
                                                             <div class="col-xs-6 col-md-6">
                                                                 <div class="input-group input-group-sm">
                                                                     <input
-                                                                        id="{{ value.id }}"
+                                                                        id="{{ file.id }}"
                                                                         class="file"
                                                                         type="checkbox"
-                                                                        value="{{ value|tianos_google_file_values }}"
+                                                                        value="{{ file|tianos_google_file_values }}"
                                                                         data-active="1">
                                                                 </div>
                                                             </div>
                                                             <div class="col-xs-6 col-md-6">
-                                                                <i id="loading-{{ value.id }}" data-toggle="tooltip" class="hidden fa fa-spinner fa-spin"></i>
-                                                                <i id="ok-{{ value.id }}" data-toggle="tooltip" class="success hidden fa fa-fw fa-check-circle"></i>
-                                                                <i id="fail-{{ value.id }}" data-toggle="tooltip" class="danger hidden fa fa-fw fa-warning"></i>
-                                                                <i id="delete-{{ value.id }}" data-toggle="tooltip" class="danger hidden fa fa-fw fa-trash"></i>
+                                                                <i id="loading-{{ file.id }}" data-toggle="tooltip" class="hidden fa fa-spinner fa-spin"></i>
+                                                                <i id="ok-{{ file.id }}" data-toggle="tooltip" class="success hidden fa fa-fw fa-check-circle"></i>
+                                                                <i id="fail-{{ file.id }}" data-toggle="tooltip" class="danger hidden fa fa-fw fa-warning"></i>
+                                                                <i id="delete-{{ file.id }}" data-toggle="tooltip" class="danger hidden fa fa-fw fa-trash"></i>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-xs-9 col-md-11">
 
                                                         <span
-                                                            class="text file-name {{ value.mimeType|tianos_google_span_class }}"
-                                                            onclick="location.href='{{ value|tianos_google_span_url_filter }}';"
+                                                            class="text file-name {{ file.mimeType|tianos_google_span_class }}"
+                                                            onclick="location.href='{{ file|tianos_google_span_url_filter }}';"
                                                             data-toggle="tooltip"
-                                                            title="{{ value.name }}" >
+                                                            title="{{ file.name }}" >
 
                                                             {#{{ value.mimeType|tianos_google_mimetype_icon }}#}
-                                                            <img src="{{ value.iconLink }}" >
-                                                            {{ value.name }}
+                                                            <img src="{{ file.iconLink }}" >
+                                                            {{ file.name }}
                                                         </span>
 
                                                         {#<small class="label label-success">v</small>#}
@@ -322,6 +330,7 @@
                                                 </div>
                                             </li>
                                         {% endfor %}
+
                                     </ul>
                                 </form>
 

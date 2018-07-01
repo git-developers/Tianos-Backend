@@ -7,7 +7,7 @@ namespace Bundle\GoogleBundle\Doctrine\ORM;
 use Bundle\CoreBundle\Doctrine\ORM\EntityRepository as TianosEntityRepository;
 use Component\Google\Repository\GoogleRepositoryInterface;
 
-class GoogleDriveRepository extends TianosEntityRepository implements GoogleRepositoryInterface
+class GoogleDriveFileRepository extends TianosEntityRepository implements GoogleRepositoryInterface
 {
 
     /**
@@ -18,7 +18,7 @@ class GoogleDriveRepository extends TianosEntityRepository implements GoogleRepo
         $em = $this->getEntityManager();
         $dql = "
             SELECT google
-            FROM GoogleBundle:GoogleDrive google
+            FROM GoogleBundle:GoogleDriveFile google
             WHERE
             google.id = :id AND
             google.isActive = :active
@@ -39,7 +39,7 @@ class GoogleDriveRepository extends TianosEntityRepository implements GoogleRepo
         $em = $this->getEntityManager();
         $dql = "
             SELECT google
-            FROM GoogleBundle:GoogleDrive google
+            FROM GoogleBundle:GoogleDriveFile google
             WHERE
             google.isActive = :active
             ";

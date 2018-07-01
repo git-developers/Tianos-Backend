@@ -67,3 +67,6 @@ backend_report:
 backend_google_drive:
     resource: '@GoogleBundle/Resources/config/routing/google_drive.yml'
     prefix: /google-drive
+backend_google_drive_list:
+    resource: '@GoogleBundle/Resources/config/routing/google_drive_list.yml'
+    prefix: /google-drive-list

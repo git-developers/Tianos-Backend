@@ -9,11 +9,18 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Component\Resource\Metadata\Metadata;
 use Bundle\ResourceBundle\ResourceBundle;
-use Bundle\OrderBundle\Entity\Order;
+use Bundle\GoogleBundle\Entity\GoogleDriveFile;
+use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 
 class GoogleDriveController extends BaseController
 {
 
+    const STATUS_SUCCESS = 1;
+    const STATUS_WARNING = 2;
+    const STATUS_ERROR = 3;
+    const STATUS_LOADING = 4;
+    const STATUS_DELETE = 5;
+    const STATUS_DUPLICATE_ENTRY = 1062;
 
     public function indexAction(Request $request): Response
     {
@@ -41,17 +48,6 @@ class GoogleDriveController extends BaseController
 
         $google = $this->get('tianos.service.google.drive.service');
         $authUrl = $google->getAuthUrl();
-
-
-
-//        echo "POLLO:::111::: <pre>";
-//        print_r($authUrl);
-//        exit;
-
-
-
-
-
 
         if(!$authUrl['status']){
             return $this->redirect($this->generateUrl('backend_google_drive_account_permissions'));
@@ -113,15 +109,6 @@ class GoogleDriveController extends BaseController
 
         $google = $this->get('tianos.service.google.drive.service');
         $authUrl = $google->getAuthUrl();
-
-
-
-
-//        echo "POLLO::accountPermissions::: getAuthUrl::: <pre>";
-//        print_r($authUrl);
-//        exit;
-
-
 
         if ($authUrl['status']) {
             return $this->redirect($this->generateUrl('backend_google_drive_index', ['id' => 'my-drive']));
@@ -201,7 +188,6 @@ class GoogleDriveController extends BaseController
         );
     }
 
-
     public function watchAction(Request $request, $slug)
     {
 //        if (!$this->get('security.authorization_checker')->isGranted('ROLE_EDIT_USER')) {
@@ -227,10 +213,11 @@ class GoogleDriveController extends BaseController
     public function saveAction(Request $request)
     {
 
+//        $pusher = $this->container->get('gos_web_socket.zmq.pusher');
         $user = $this->getUser();
         $em = $this->getDoctrine()->getManager();
         $response = new \stdClass();
-        $pusher = $this->container->get('gos_web_socket.zmq.pusher');
+
         $files = $request->get('files', []);
 
         if(empty($files)){
@@ -242,72 +229,57 @@ class GoogleDriveController extends BaseController
             $file = isset($file['file']) ? $file['file'] : '';
             $file = json_decode(base64_decode($file));
 
-            $idFile = isset($file[0]) ? $file[0] : '';
-            $name = isset($file[1]) ? $file[1] : '';
-            $iconLink = isset($file[2]) ? $file[2] : '';
-            $mimeType = isset($file[3]) ? $file[3] : '';
-            $size = isset($file[4]) ? $file[4] : '';
+            $fileId = isset($file[0]) ? $file[0] : '';
+            $fileName = isset($file[1]) ? $file[1] : '';
+            $fileIconLink = isset($file[2]) ? $file[2] : '';
+            $fileMimeType = isset($file[3]) ? $file[3] : '';
+            $fileSize = isset($file[4]) ? $file[4] : '';
 
-            $response->id = $idFile;
+            $response->id = $fileId;
             $response->status = self::STATUS_LOADING;
             $response->message = 'loading';
-            $pusher->push(['msg' => json_encode($response)], 'googledrive_topic');
+//            $pusher->push(['msg' => json_encode($response)], 'googledrive_topic');
 
-            // sleep for 2 seconds
-            sleep(2);
+//            sleep(1);
 
             try {
 
-                //files mime type
-                $mimeTypeEntity = $em->getRepository('CoreBundle:FileMimeType')->findOneByName($mimeType);
+                $entity = $this->get('tianos.repository.google.drive')->findOneByFileId($fileId);
 
-                if(!$mimeTypeEntity){
-                    $mimeTypeEntity = new FileMimeType();
-                    $mimeTypeEntity->setName($mimeType);
-                    $this->save($mimeTypeEntity);
-
-                    // sleep for 2 seconds
-                    sleep(2);
-                }
-
-                //file
-                $fileEntity = $em->getRepository('CoreBundle:Files')->findOneByIdFile($idFile);
-
-                if(is_null($fileEntity)){
-                    $fileEntity = new Files;
+                if (is_null($entity)) {
+                    $entity = new GoogleDriveFile;
                     $response->message = 'Se agrego el archivo';
-                }else{
-                    $fileEntity->setIsActive(true);
+                } else {
+                    $entity->setIsActive(true);
                     $response->message = 'Se actualizo el archivo';
                 }
 
-
-                $fileEntity->setUniqueId(uniqid());
-                $fileEntity->setIdFile($idFile);
-                $fileEntity->setName($name);
-                $fileEntity->setIconLink($iconLink);
-                $fileEntity->setSize($size);
-//                $fileEntity->setSize($size);
-//                $fileEntity->setIdMimeType($mimeTypeEntity);
-                $this->save($fileEntity);
+                $entity->setUniqueId(uniqid());
+                $entity->setFileId($fileId);
+                $entity->setFileName($fileName);
+                $entity->setFileSize($fileSize);
+                $entity->setFileIconLink($fileIconLink);
+                $entity->setFileMimeType($fileMimeType);
+                $entity->setUser($user);
+                $this->persist($entity);
 
                 sleep(1);
 
                 //user
-                $user->removeFile($fileEntity);
-                $user->addFile($fileEntity);
-                $this->save($user);
+//                $user->removeFile($entity);
+//                $user->addFile($entity);
+//                $this->save($user);
 
-                $response->id = $idFile;
+                $response->id = $fileId;
                 $response->status = self::STATUS_SUCCESS;
 
             } catch(UniqueConstraintViolationException $e) {
-                $response->id = $idFile;
+                $response->id = $fileId;
                 $response->status = self::STATUS_DUPLICATE_ENTRY;
                 $response->message = 'El archivo ya fue incluido anteriormente.';
             }
 
-            $pusher->push(['msg' => json_encode($response)], 'googledrive_topic');
+//            $pusher->push(['msg' => json_encode($response)], 'googledrive_topic');
 
         }
 

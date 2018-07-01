@@ -22,6 +22,12 @@ services:
         tags:
             - { name: tianos.google.drive.controller.google, alias: tianos.google.drive.controller.google }
 
+    tianos.google.drive.list.controller.google:
+        class: Bundle\GoogleBundle\Controller\GoogleDriveListController
+        arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
+        tags:
+            - { name: tianos.google.drive.list.controller.google, alias: tianos.google.drive.list.controller.google }
+
     tianos.frontend.controller.google:
         class: Bundle\GoogleBundle\Controller\FrontendController
         arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
@@ -31,7 +37,7 @@ services:
     tianos.repository.google.drive:
         class: Dummy
         factory: ['@doctrine.orm.entity_manager', getRepository]
-        arguments: [ Bundle\GoogleBundle\Entity\GoogleDrive ]
+        arguments: [ Bundle\GoogleBundle\Entity\GoogleDriveFile ]
 
     tianos.service.google.drive.service:
         class: Bundle\GoogleBundle\Services\Google\GoogleService

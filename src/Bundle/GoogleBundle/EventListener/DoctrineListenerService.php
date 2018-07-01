@@ -6,10 +6,8 @@ namespace Bundle\GoogleBundle\EventListener;
 
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\LifecycleEventArgs;
-use Symfony\Component\Config\Definition\Exception\Exception;
-use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
-use Bundle\GoogleBundle\Entity\Google;
+use Bundle\GoogleBundle\Entity\GoogleDriveFile;
 use Cocur\Slugify\Slugify;
 use Bundle\CoreBundle\EventListener\BaseDoctrineListenerService;
 
@@ -53,8 +51,8 @@ class DoctrineListenerService extends BaseDoctrineListenerService implements Eve
 //        $entityManager = $args->getEntityManager();
 //        $className = $entityManager->getClassMetadata(get_class($entity))->getName();
 
-        if ($entity instanceof Google){
-            $name = $entity->getName();
+        if ($entity instanceof GoogleDriveFile){
+            $name = $entity->getFileName();
             $entity->setSlug($this->slugify($name));
             $entity->setCreatedAt($this->setupCreatedAt($entity));
 
@@ -69,7 +67,7 @@ class DoctrineListenerService extends BaseDoctrineListenerService implements Eve
     {
         $entity = $args->getEntity();
 
-        if ($entity instanceof Google){
+        if ($entity instanceof GoogleDriveFile){
             $entity->setUpdatedAt($this->dateTime);
 
             return;
@@ -83,7 +81,7 @@ class DoctrineListenerService extends BaseDoctrineListenerService implements Eve
     {
         $entity = $args->getEntity();
 
-        if ($entity instanceof Google){
+        if ($entity instanceof GoogleDriveFile){
 
             return;
         }
@@ -96,7 +94,7 @@ class DoctrineListenerService extends BaseDoctrineListenerService implements Eve
     {
         $entity = $args->getEntity();
 
-        if ($entity instanceof Google){
+        if ($entity instanceof GoogleDriveFile){
 
             return;
         }
@@ -109,7 +107,7 @@ class DoctrineListenerService extends BaseDoctrineListenerService implements Eve
     {
         $entity = $args->getEntity();
 
-        if ($entity instanceof Google){
+        if ($entity instanceof GoogleDriveFile){
 
             return;
         }

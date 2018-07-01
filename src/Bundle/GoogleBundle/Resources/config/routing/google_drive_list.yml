@@ -1,0 +1,81 @@
+backend_google_drive_list_index:
+    path: /
+    methods: [GET]
+    defaults:
+        _controller: tianos.google.drive.list.controller.google:indexAction
+        _tianos:
+            action: index
+            section: admin
+            permission: true
+            template: GridBundle::index.html.twig
+            vars:
+                subheader: sylius.ui.manage_your_client_catalog
+                icon: cube
+                body_css: grid-body-css
+            grid:
+                icon: google
+                box_class: primary
+                title: Google Drive archivos
+                modal:
+                    title: Crear cliente
+                data_table:
+                    route:
+                        info: backend_google_drive_list_info
+                        view: backend_google_drive_list_view
+#                        edit: backend_client_edit
+#                        create: backend_client_create
+#                        delete: backend_client_delete
+                    table_button:
+#                        - edit
+#                        - delete
+                    table_button_header:
+#                        - create
+                        - info
+                    row_call_back:
+                        - key: id
+                          value: aData.id
+                        - key: data-id
+                          value: aData.id
+                        - key: class
+                          value: "'alert'"
+                    columns:
+                        - name: '#'
+                          obj: " '<span class=\"badge bg-blue\">' + obj.id + '</span>' "
+                        - name: Nombre
+                          obj: obj.file_name
+                        - name: Creado
+                          obj: obj.created_at
+                          options:
+                              icon: calendar
+            form:
+                type: Bundle\ClientBundle\Form\Type\ClientType
+            repository:
+                service: tianos.repository.google.drive
+                method: findAll
+                arguments: [$clientId]
+                vars:
+                    serialize_group_name: google-drive-file
+
+backend_google_drive_list_view:
+    path: /view
+    methods: [POST]
+    defaults:
+        _controller: tianos.backend.controller.client:viewAction
+        _tianos:
+            action: view
+            template: ClientBundle:ClientBackend/Informative:view.html.twig
+            repository:
+                service: tianos.repository.client
+                method: find
+                arguments: [$clientId]
+                vars:
+                    serialize_group_name: crud
+
+backend_google_drive_list_info:
+    path: /info
+    methods: [POST]
+    defaults:
+        _controller: tianos.backend.controller.client:infoAction
+        _tianos:
+            action: info
+            template: ClientBundle:ClientBackend/Informative:info.html.twig

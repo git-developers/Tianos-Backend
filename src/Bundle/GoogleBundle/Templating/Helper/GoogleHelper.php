@@ -11,7 +11,7 @@ use Component\Google\Renderer\GoogleRendererInterface;
 use Component\Google\View\GoogleView;
 use Bundle\CoreBundle\Services\Button;
 use Symfony\Component\Templating\Helper\Helper;
-use Bundle\GoogleBundle\Entity\GoogleDrive;
+use Bundle\GoogleBundle\Entity\GoogleDriveFile;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
 
 class GoogleHelper extends Helper
@@ -36,7 +36,7 @@ class GoogleHelper extends Helper
     public function googleSpanClass($mimeType)
     {
 
-        if ($mimeType == GoogleDrive::GOOGLE_FOLDER) {
+        if ($mimeType == GoogleDriveFile::GOOGLE_FOLDER) {
             return 'x-hand';
         }
 
@@ -45,14 +45,14 @@ class GoogleHelper extends Helper
 
     public function googleMimeTypeIcon($mimeType)
     {
-        $class = isset(GoogleDrive::MIME_TYPES[$mimeType]) ? GoogleDrive::MIME_TYPES[$mimeType] : 'file';
+        $class = isset(GoogleDriveFile::MIME_TYPES[$mimeType]) ? GoogleDriveFile::MIME_TYPES[$mimeType] : 'file';
 
         return '<i class="fa fa-2x fa-fw fa-' . $class . '"></i>';
     }
 
     public function googleSpanUrlFilter($value)
     {
-        if (isset($value['mimeType']) && ($value['mimeType'] == GoogleDrive::GOOGLE_FOLDER)) {
+        if (isset($value['mimeType']) && ($value['mimeType'] == GoogleDriveFile::GOOGLE_FOLDER)) {
 
             return $this->router->generate(
                 'backend_google_drive_index',
@@ -75,6 +75,7 @@ class GoogleHelper extends Helper
 //            'mimeType' => '',
 //            'size' => '',
 //        ], $value);
+
 
         $value = [
             isset($value['id']) ? $value['id'] : '',
