@@ -107,6 +107,13 @@ class GoogleDriveFile
     private $fileSize;
 
     /**
+     * @var string
+     *
+     * @JMSS\Groups({"google-drive-file"})
+     */
+    private $fileImage;
+
+    /**
      * @var \DateTime
      *
      * @JMSS\Groups({"google-drive-file"})
@@ -327,6 +334,22 @@ class GoogleDriveFile
     public function getFileSize()
     {
         return $this->fileSize;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFileImage()
+    {
+        return $this->fileImage;
+    }
+
+    /**
+     * @param string $fileImage
+     */
+    public function setFileImage(string $fileImage): void
+    {
+        $this->fileImage = $fileImage;
     }
 
     /**

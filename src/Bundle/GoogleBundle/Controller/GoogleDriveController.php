@@ -84,7 +84,7 @@ class GoogleDriveController extends BaseController
         );
     }
 
-    public function accountPermissionsAction(Request $request)
+    public function accountPermissionsAction(Request $request): Response
     {
         $parameters = [
             'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
@@ -138,25 +138,17 @@ class GoogleDriveController extends BaseController
         );
     }
 
-    public function revokeTokenAction(Request $request)
+    public function revokeTokenAction(Request $request): Response
     {
-        $google = $this->get('core.service.google_service_drive');
+        $google = $this->get('tianos.service.google.drive.service');
         $google->revokeToken();
-        return $this->redirect($this->generateUrl('backend_googledrive_index', ['id' => 'my-drive']));
+
+//        , ['id' => 'my-drive']
+        return $this->redirect($this->generateUrl('backend_google_drive_account_permissions'));
     }
 
-    public function mimetypeAction(Request $request)
+    public function breadcrumbAction($files): Response
     {
-
-        return $this->render(
-            'BackendBundle:Googledrivesettings:index.html.twig',
-            [
-                'auth_url' => '',
-            ]
-        );
-    }
-
-    public function breadcrumbAction($files) {
 
         $file = array_shift($files);
         $name = isset($file['name']) ? $file['name'] : '(no disponible)';
@@ -188,29 +180,7 @@ class GoogleDriveController extends BaseController
         );
     }
 
-    public function watchAction(Request $request, $slug)
-    {
-//        if (!$this->get('security.authorization_checker')->isGranted('ROLE_EDIT_USER')) {
-//            return $this->redirectToRoute('frontend_default_access_denied');
-//        }
-
-        $em = $this->getDoctrine()->getManager();
-        $entity = $em->getRepository('CoreBundle:Files')->findOneBySlug($slug);
-
-        if(!$entity){
-            throw $this->createNotFoundException('el archivo que busca no existe');
-        }
-
-        return $this->render(
-            'BackendBundle:Files/Watch:index.html.twig',
-            [
-                'small_text' => '',
-                'entity' => $entity,
-            ]
-        );
-    }
-
-    public function saveAction(Request $request)
+    public function saveAction(Request $request): Response
     {
 
 //        $pusher = $this->container->get('gos_web_socket.zmq.pusher');
@@ -287,6 +257,7 @@ class GoogleDriveController extends BaseController
 
     }
 
+    /*
     public function deleteOneAction(Request $request)
     {
 
@@ -370,5 +341,7 @@ class GoogleDriveController extends BaseController
         return new Response(1);
 
     }
+
+    */
 
 }

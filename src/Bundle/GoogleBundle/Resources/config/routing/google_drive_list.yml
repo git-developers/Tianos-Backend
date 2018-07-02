@@ -41,6 +41,11 @@ backend_google_drive_list_index:
                     columns:
                         - name: '#'
                           obj: " '<span class=\"badge bg-blue\">' + obj.id + '</span>' "
+                        - name: Thumbnail
+                          obj: " '<img class=\" img-thumbnail img-responsive \" src=\" ' + obj.file_image + ' \" >' "
+                          options:
+                              icon: image
+                              property: " return (obj.file_image == null) ? '<img class=\" img-thumbnail img-responsive \" src=\" ' + obj.file_image + ' \" >' : '<img class=\" img-thumbnail img-responsive \" src=\" ' + obj.file_image + ' \" >' "
                         - name: Nombre
                           obj: obj.file_name
                         - name: Creado

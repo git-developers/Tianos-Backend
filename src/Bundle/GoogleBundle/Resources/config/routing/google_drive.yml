@@ -100,7 +100,7 @@ backend_google_drive_delete:
     path: /delete
     methods: [PUT, POST]
     defaults:
-        _controller: tianos.backend.controller.google:deleteAction
+        _controller: tianos.google.drive.controller.google:deleteAction
         _tianos:
             action: edit
             template: GoogleBundle:GoogleBackend/Form:form.html.twig
@@ -113,11 +113,11 @@ backend_google_drive_delete:
                 vars:
                     serialize_group_name: crud
 
-backend_google_drive_edit:
-    path: /edit
-    methods: [PUT, POST]
+backend_google_drive_revoke_token:
+    path: /revoke-token
+    methods: [GET]
     defaults:
-        _controller: tianos.backend.controller.google:editAction
+        _controller: tianos.google.drive.controller.google:revokeTokenAction
         _tianos:
             action: edit
             template: GoogleBundle:GoogleBackend/Form:form.html.twig

@@ -64,6 +64,13 @@ Bundle\GoogleBundle\Entity\GoogleDriveFile:
             options:
                 fixed: false
             column: file_size
+        fileImage:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+            column: file_image
         createdAt:
             type: datetime
             nullable: false
