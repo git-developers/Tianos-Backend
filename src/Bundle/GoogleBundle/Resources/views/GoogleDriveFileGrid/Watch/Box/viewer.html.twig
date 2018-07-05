@@ -1,0 +1,84 @@
+<div class="box-body">
+    {{ tianos_google_watch_viewer(entity.fileId, entity.fileMimeType) }}
+</div>
+
+<div class="box-header with-border">
+    <h3 class="box-title" data-toggle="tooltip" title="{{ entity.fileName }}">
+        <img src="{{ entity.fileIconLink }}" class="img-thumbnail"> {{ entity.fileName|slice(0, 250) }}
+    </h3>
+</div>
+
+<div class="box-footer clearfix">
+    <div class="col-md-6">
+        <div class="user-block">
+            <img class="img-circle" src="https://almsaeedstudio.com/themes/AdminLTE/dist/img/user1-128x128.jpg" alt="User Image">
+            <span class="username">
+                <a href="#">{{ entity.user.name ~' '~ entity.user.lastName |slice(0, 200) }}</a>
+            </span>
+            <span class="description">Compartido el {{ entity.createdAt|date("Y-m-d H:i:s")  }}</span>
+        </div>
+    </div>
+    <div class="col-md-2 border-right">
+        <div class="description-block">
+            <h5 class="description-header">{{ entity.fileSize }}</h5>
+            <span class="description-text">tamaño</span>
+        </div>
+    </div>
+    <div class="col-md-2 border-right">
+        <div class="description-block">
+            <h5 class="description-header">3,200</h5>
+            <span class="description-text">compartido</span>
+        </div>
+    </div>
+    <div class="col-md-2">
+        <div class="description-block">
+            <h5 class="description-header">13,000</h5>
+            <span class="description-text">vistas</span>
+        </div>
+    </div>
+</div>
+
+<div class="box-footer clearfix">
+
+    <div class="col-md-6" >
+        <button type="button" class="btn btn-default btn-xs">
+            <i class="fa fa-fw fa-tag"></i> Ingenieria
+        </button>
+        <button type="button" class="btn btn-default btn-xs">
+            <i class="fa fa-fw fa-tag"></i> Tautologia
+        </button>
+        <button type="button" class="btn btn-default btn-xs">
+            <i class="fa fa-fw fa-tag"></i> Gallinazo
+        </button>
+    </div>
+
+    <div class="col-md-2 border-right">
+        <div id="share-qr" class="description-block" >
+            <button type="button" class="btn btn-default" data-toggle="tooltip" title="scanear desde movil">
+                <i class="fa fa-qrcode"></i> Qr
+            </button>
+        </div>
+    </div>
+
+    <div class="col-md-2 border-right">
+        <div class="description-block">
+            <button type="button" class="btn btn-default" title="descargar archivo" data-toggle="modal" data-target="#modal-download">
+                <i class="fa fa-download"></i> Descargar
+            </button>
+        </div>
+    </div>
+
+    <div class="col-md-2">
+        <div class="description-block">
+            <div class="btn-group">
+                <button type="button" class="btn btn-default thumbs-down" data-vote="0">
+                    <i class="fa fa-fw fa-thumbs-o-down"></i>
+                </button>
+                <button type="button" class="btn btn-default thumbs-up" data-vote="1">
+                    <i class="fa fa-fw fa-thumbs-o-up"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+</div>
