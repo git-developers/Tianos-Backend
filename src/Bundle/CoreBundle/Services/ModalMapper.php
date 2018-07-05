@@ -21,6 +21,7 @@ class ModalMapper
     const DELETE_ID = 'modal-delete';
     const VIEW_ID = 'modal-view';
     const INFO_ID = 'modal-info';
+    const WATCH_ID = 'watch-button-id';
 
     public function __construct(Router $router)
     {
@@ -47,6 +48,8 @@ class ModalMapper
 
             'info_id' => self::INFO_ID,
             'info_size' => self::SIZE_LARGE,
+
+            'watch_id' => self::WATCH_ID,
         ];
     }
 

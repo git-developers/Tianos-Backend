@@ -28,7 +28,7 @@ final class GoogleExtension extends \Twig_Extension
     public function getFunctions(): array
     {
         return [
-            new \Twig_SimpleFunction('tianos_google_xxxxxxxx', [$this->googleHelper, 'renderFunctionXxxx'], ['is_safe' => ['html']]),
+            new \Twig_SimpleFunction('tianos_google_watch_viewer', [$this->googleHelper, 'googleWatchViewer'], ['is_safe' => ['html']]),
         ];
     }
 

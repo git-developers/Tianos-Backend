@@ -38,6 +38,7 @@
         '@GridBundle/Resources/public/common/js/formInfo.js'
         '@GridBundle/Resources/public/common/js/formCreate.js'
         '@GridBundle/Resources/public/common/js/formDelete.js'
+        '@GridBundle/Resources/public/common/js/formWatch.js'
         '@GridBundle/Resources/public/plugins/datatables/jquery.dataTables.min.js'
         '@GridBundle/Resources/public/plugins/datatables/dataTables.bootstrap.min.js'
     %}
@@ -58,7 +59,7 @@
 
             var tableJson = $('#{{ dataTable.tableOptions.table_name }}').DataTable({
                 {% for key, value in dataTable.options %}
-                '{{ key }}': {{ value|raw }},
+                    '{{ key }}': {{ value|raw }},
                 {% endfor %}
                 'data': {{ dataTable.data|raw }},
                 'language': {

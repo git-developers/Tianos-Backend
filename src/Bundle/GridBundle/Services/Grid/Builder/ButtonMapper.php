@@ -4,6 +4,7 @@ namespace Bundle\GridBundle\Services\Grid\Builder;
 
 use Bundle\CoreBundle\Services\Button;
 use Bundle\CoreBundle\Services\ModalMapper;
+use Symfony\Component\Debug\Exception\UndefinedMethodException;
 
 class ButtonMapper
 {
@@ -41,8 +42,20 @@ class ButtonMapper
         $out = [];
         $buttons = $this->grid[DataTableMapper::DATATABLE][DataTableMapper::TABLE_BUTTON];
 
-        foreach ($buttons as $key => $button){
-            $out[$button] = $this->$button();
+
+//        echo "POLLO:: <pre>";
+//        print_r($buttons);
+//        exit;
+
+        foreach ($buttons as $key => $button) {
+
+            try {
+
+                $out[$button] = $this->$button();
+
+            } catch (\Throwable $e) {
+
+            }
         }
 
         return $out;
@@ -54,6 +67,7 @@ class ButtonMapper
             'alt' => 'Crear item',
             'title' => 'Crear item',
             'icon' => '<i class="fa fa-fw fa-plus"></i>',
+            'data-toggle' => 'modal',
             'data-target' => ModalMapper::CREATE_ID,
             'class' => 'btn-success ' . ModalMapper::CREATE_ID,
         ]);
@@ -65,6 +79,7 @@ class ButtonMapper
             'alt' => 'Editar',
             'title' => 'Editar',
             'icon' => '<i class="fa fa-fw fa-pencil"></i>',
+            'data-toggle' => 'modal',
             'data-target' => ModalMapper::EDIT_ID,
             'class' => 'btn-warning ' . ModalMapper::EDIT_ID,
         ]);
@@ -76,6 +91,7 @@ class ButtonMapper
             'alt' => 'Eliminar',
             'title' => 'Eliminar',
             'icon' => '<i class="fa fa-fw fa-trash"></i>',
+            'data-toggle' => 'modal',
             'data-target' => ModalMapper::DELETE_ID,
             'class' => 'btn-danger ' . ModalMapper::DELETE_ID,
         ]);
@@ -86,9 +102,21 @@ class ButtonMapper
         return new Button([
             'alt' => 'Info',
             'title' => 'Info',
+            'data-toggle' => 'modal',
             'data-target' => ModalMapper::INFO_ID,
             'icon' => '<i class="fa fa-fw fa-info-circle"></i>',
             'class' => 'btn-info ' . ModalMapper::INFO_ID,
+        ]);
+    }
+
+    private function watch()
+    {
+        return new Button([
+            'alt' => 'Ver archivo',
+            'title' => 'Ver archivo',
+//            'data-target' => ModalMapper::WATCH_ID,
+            'icon' => '<i class="fa fa-fw fa-file-text-o"></i>',
+            'class' => 'btn-info ' . ModalMapper::WATCH_ID,
         ]);
     }
 

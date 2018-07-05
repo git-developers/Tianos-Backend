@@ -50,6 +50,41 @@ class GoogleDriveFile
         'application/vnd.ms-project' => 'code',
     ];
 
+    const MIME_TYPES_VIEWER = [
+        'application/vnd.google-apps.audio' => 'file-audio-o',
+        'application/vnd.google-apps.document' => 'google_viewer',
+        'application/vnd.google-apps.drawing' => 'object-group',
+        'application/vnd.google-apps.file' => '',
+        'application/vnd.google-apps.folder' => 'folder',
+        'application/vnd.google-apps.form' => '',
+        'application/vnd.google-apps.fusiontable' => '',
+        'application/vnd.google-apps.map' => '',
+        'application/vnd.google-apps.photo' => 'image',
+        'image/png' => 'image',
+        'image/jpeg' => 'image',
+        'image/x-icon' => 'file-image-o',
+        'application/vnd.google-apps.presentation' => 'google_viewer',
+        'application/vnd.openxmlformats-officedocument.presentationml.presentation' => 'google_viewer',
+        'application/vnd.google-apps.script' => 'code',
+        'application/vnd.google-apps.sites' => '',
+        'application/vnd.google-apps.spreadsheet' => 'file-excel-o',
+        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' => 'file-excel-o',
+        'application/vnd.google-apps.unknown' => 'file-o',
+        'application/vnd.google-apps.video' => 'video',
+        'video/mp4' => 'video',
+        'video/x-msvideo' => 'video',
+        'application/gzip' => 'file-zip-o',
+        'application/x-rar' => 'file-zip-o',
+        'application/x-compressed-tar' => 'file-zip-o',
+        'application/pdf' => 'google_viewer',
+        'application/msword' => 'google_viewer',
+        'application/vnd.openxmlformats-officedocument.wordprocessingml.document' => 'google_viewer',
+        'application/vnd.mysql-workbench-model' => 'code',
+        'application/x-httpd-php' => 'code',
+        'application/sql' => 'code',
+        'application/vnd.ms-project' => 'code',
+    ];
+
     /**
      * @var integer
      *
@@ -90,6 +125,13 @@ class GoogleDriveFile
      *
      * @JMSS\Groups({"google-drive-file"})
      */
+    private $fileMimeTypeShort;
+
+    /**
+     * @var string
+     *
+     * @JMSS\Groups({"google-drive-file"})
+     */
     private $fileIconLink;
 
     /**
@@ -98,6 +140,13 @@ class GoogleDriveFile
      * @JMSS\Groups({"google-drive-file"})
      */
     private $fileName;
+
+    /**
+     * @var string
+     *
+     * @JMSS\Groups({"google-drive-file"})
+     */
+    private $fileNameOriginal;
 
     /**
      * @var string
@@ -255,6 +304,22 @@ class GoogleDriveFile
     }
 
     /**
+     * @return string
+     */
+    public function getFileMimeTypeShort()
+    {
+        return $this->fileMimeTypeShort;
+    }
+
+    /**
+     * @param string $fileMimeTypeShort
+     */
+    public function setFileMimeTypeShort($fileMimeTypeShort)
+    {
+        $this->fileMimeTypeShort = isset(self::MIME_TYPES[$fileMimeTypeShort]) ? self::MIME_TYPES[$fileMimeTypeShort] : '';;
+    }
+
+    /**
      * Get fileMimeType
      *
      * @return string
@@ -310,6 +375,22 @@ class GoogleDriveFile
     public function getFileName()
     {
         return $this->fileName;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFileNameOriginal()
+    {
+        return $this->fileNameOriginal;
+    }
+
+    /**
+     * @param string $fileNameOriginal
+     */
+    public function setFileNameOriginal($fileNameOriginal)
+    {
+        $this->fileNameOriginal = $fileNameOriginal;
     }
 
     /**

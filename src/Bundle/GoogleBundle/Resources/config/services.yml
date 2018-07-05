@@ -17,16 +17,22 @@ services:
             - { name: tianos.api.controller.google, alias: tianos.api.controller.google }
 
     tianos.google.drive.controller.google:
-        class: Bundle\GoogleBundle\Controller\GoogleDriveController
+        class: Bundle\GoogleBundle\Controller\GoogleDriveFileController
         arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
         tags:
             - { name: tianos.google.drive.controller.google, alias: tianos.google.drive.controller.google }
 
     tianos.google.drive.list.controller.google:
-        class: Bundle\GoogleBundle\Controller\GoogleDriveListController
+        class: Bundle\GoogleBundle\Controller\GoogleDriveFileListController
         arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
         tags:
             - { name: tianos.google.drive.list.controller.google, alias: tianos.google.drive.list.controller.google }
+
+    tianos.google.drive.vote.controller.google:
+        class: Bundle\GoogleBundle\Controller\GoogleDriveFileVoteController
+        arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
+        tags:
+            - { name: tianos.google.drive.vote.controller.google, alias: tianos.google.drive.vote.controller.google }
 
     tianos.frontend.controller.google:
         class: Bundle\GoogleBundle\Controller\FrontendController
@@ -38,6 +44,11 @@ services:
         class: Dummy
         factory: ['@doctrine.orm.entity_manager', getRepository]
         arguments: [ Bundle\GoogleBundle\Entity\GoogleDriveFile ]
+
+    tianos.repository.google.drive.vote:
+        class: Dummy
+        factory: ['@doctrine.orm.entity_manager', getRepository]
+        arguments: [ Bundle\GoogleBundle\Entity\GoogleDriveFileVote ]
 
     tianos.service.google.drive.service:
         class: Bundle\GoogleBundle\Services\Google\GoogleService

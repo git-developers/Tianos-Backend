@@ -28,6 +28,14 @@ interface GoogleRendererInterface
 
     /**
      * @param GoogleViewInterface $gridView
+     * @param string|null $template
+     *
+     * @return mixed
+     */
+    public function renderViewer(?string $fileId = null, ?string $fileMimeType = null);
+
+    /**
+     * @param GoogleViewInterface $gridView
      * @param Field $field
      * @param mixed $data
      *

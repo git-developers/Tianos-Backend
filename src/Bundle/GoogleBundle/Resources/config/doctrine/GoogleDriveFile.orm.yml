@@ -43,6 +43,13 @@ Bundle\GoogleBundle\Entity\GoogleDriveFile:
             options:
                 fixed: false
             column: file_mime_type
+        fileMimeTypeShort:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
+            column: file_mime_type_short
         fileIconLink:
             type: string
             nullable: true
@@ -57,6 +64,13 @@ Bundle\GoogleBundle\Entity\GoogleDriveFile:
             options:
                 fixed: false
             column: file_name
+        fileNameOriginal:
+            type: text
+            nullable: false
+            length: 65535
+            options:
+                fixed: false
+            column: file_name_original
         fileSize:
             type: string
             nullable: true

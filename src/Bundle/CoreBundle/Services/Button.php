@@ -15,6 +15,8 @@ class Button
 
     protected $dataTarget;
 
+    protected $onClickHref;
+
     protected $style;
 
     protected $icon;
@@ -26,9 +28,10 @@ class Button
             'alt' => '',
             'title' => '',
             'icon' => '<i class="fa fa-fw"></i>',
-            'data-toggle' => 'modal',
-            'data-target' => '#',
+            'data-toggle' => '',
+            'data-target' => '',
             'style' => 'margin-right: 5px',
+            'on-click-href' => '',
         ], $options);
 
 
@@ -39,6 +42,7 @@ class Button
         $this->class = $options['class'];
         $this->dataToggle = $options['data-toggle'];
         $this->dataTarget = $options['data-target'];
+        $this->onClickHref = $options['on-click-href'];
 
     }
 
@@ -152,6 +156,22 @@ class Button
     public function setIcon($icon)
     {
         $this->icon = $icon;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getOnClickHref()
+    {
+        return $this->onClickHref;
+    }
+
+    /**
+     * @param mixed $onClickHref
+     */
+    public function setOnClickHref($onClickHref): void
+    {
+        $this->onClickHref = $onClickHref;
     }
 
 }

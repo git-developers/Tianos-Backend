@@ -668,8 +668,9 @@ class Builder implements ContainerAwareInterface
             ->setAttribute('allow_angle', true)
             ->setAttribute('class', 'treeview')
             ->setAttribute('class', $this->activeRoute([
+                'backend_google_drive_grid_watch',
                 'backend_google_drive_index',
-                'backend_google_drive_list_index',
+                'backend_google_drive_grid_index',
                 'backend_google_drive_account_permissions',
             ]))
             ->setAttribute('icon', 'fa-fw fa-google')
@@ -685,8 +686,9 @@ class Builder implements ContainerAwareInterface
         ])
             ->setAttribute('icon', 'fa-fw fa-plus-circle')
             ->setAttribute('class', $this->activeRoute([
+                'backend_google_drive_grid_watch',
                 'backend_google_drive_index',
-                'backend_google_drive_list_index',
+                'backend_google_drive_grid_index',
                 'backend_google_drive_account_permissions',
             ]))
             ->setDisplay($isGranted)
@@ -701,10 +703,13 @@ class Builder implements ContainerAwareInterface
         ;
 
         $menu['Google']['Drive']->addChild('Listar', [
-            'route' => 'backend_google_drive_list_index'
+            'route' => 'backend_google_drive_grid_index'
         ])
             ->setAttribute('icon', self::CIRCLE_2)
-            ->setAttribute('class', $this->activeRoute('backend_google_drive_list_index'))
+            ->setAttribute('class', $this->activeRoute([
+                'backend_google_drive_grid_index',
+                'backend_google_drive_grid_watch'
+            ]))
             ->setDisplay($isGranted)
         ;
 

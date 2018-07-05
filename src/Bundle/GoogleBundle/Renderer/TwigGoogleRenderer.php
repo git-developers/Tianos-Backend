@@ -174,4 +174,9 @@ final class TwigGoogleRenderer implements GoogleRendererInterface
     {
         // TODO: Implement render() method.
     }
+
+    public function renderViewer(?string $fileId = NULL, ?string $fileMimeType = null)
+    {
+
+    }
 }

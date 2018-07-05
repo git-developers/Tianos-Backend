@@ -106,4 +106,11 @@ final class TwigGoogleRenderer implements GoogleRendererInterface
     {
         return (string) $this->gridRenderer->renderFilter($gridView, $filter);
     }
+
+    public function renderViewer(?string $fileId = null, ?string $template = null)
+    {
+        return $this->twig->render($template, [
+            'fileId' => $fileId,
+        ]);
+    }
 }

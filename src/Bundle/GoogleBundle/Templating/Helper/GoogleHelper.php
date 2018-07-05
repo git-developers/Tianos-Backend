@@ -19,24 +19,60 @@ class GoogleHelper extends Helper
     /**
      * @var GoogleRendererInterface
      */
-    private $gridRenderer;
+    private $googleRenderer;
 
     private $router;
 
     /**
-     * @param GoogleRendererInterface $gridRenderer
+     * @param GoogleRendererInterface $googleRenderer
      */
-    public function __construct(GoogleRendererInterface $gridRenderer, Router $router)
+    public function __construct(GoogleRendererInterface $googleRenderer, Router $router)
     {
-        $this->gridRenderer = $gridRenderer;
+        $this->googleRenderer = $googleRenderer;
         $this->router = $router;
     }
 
     //    JAFETH
-    public function googleSpanClass($mimeType)
+    public function googleWatchViewer($fileId, $fileMimeType)
     {
 
-        if ($mimeType == GoogleDriveFile::GOOGLE_FOLDER) {
+        $fileMimeTypeViewer = isset(GoogleDriveFile::MIME_TYPES_VIEWER[$fileMimeType]) ? GoogleDriveFile::MIME_TYPES_VIEWER[$fileMimeType] : 'exception-no-mime-type';
+
+
+//        echo "POLLO::fileMimeTypeViewer:: <pre>";
+//        print_r($fileMimeTypeViewer);
+//        exit;
+
+
+
+        switch ($fileMimeTypeViewer) {
+            case 'image';
+                $template = '@GoogleBundle/Resources/views/GoogleDriveFileGrid/Watch/ViewersTemplate/image.html.twig';
+            break;
+            case 'google_viewer';
+                $template = '@GoogleBundle/Resources/views/GoogleDriveFileGrid/Watch/ViewersTemplate/google_viewer.html.twig';
+            break;
+            case 'folder';
+                $template = '@GoogleBundle/Resources/views/GoogleDriveFileGrid/Watch/ViewersTemplate/folder.html.twig';
+            break;
+            case 'video';
+                $template = '@GoogleBundle/Resources/views/GoogleDriveFileGrid/Watch/ViewersTemplate/video.html.twig';
+            break;
+            case 'code';
+                $template = '@GoogleBundle/Resources/views/GoogleDriveFileGrid/Watch/ViewersTemplate/code.html.twig';
+            break;
+            default:
+                $template = '@GoogleBundle/Resources/views/GoogleDriveFileGrid/Watch/ViewersTemplate/default.html.twig';
+                $template = '';
+        }
+
+        return $this->googleRenderer->renderViewer($fileId, $template);
+    }
+
+    public function googleSpanClass($fileMimeType)
+    {
+
+        if ($fileMimeType == GoogleDriveFile::GOOGLE_FOLDER) {
             return 'x-hand';
         }
 
@@ -112,7 +148,7 @@ class GoogleHelper extends Helper
     public function renderGoogle(GoogleView $gridView, ?string $template = null)
     {
         //JAFETH
-        return $this->gridRenderer->render($gridView, $template);
+        return $this->googleRenderer->render($gridView, $template);
     }
 
     /**
@@ -124,7 +160,7 @@ class GoogleHelper extends Helper
      */
     public function renderField(GoogleView $gridView, Field $field, $data)
     {
-        return $this->gridRenderer->renderField($gridView, $field, $data);
+        return $this->googleRenderer->renderField($gridView, $field, $data);
     }
 
     /**
@@ -136,7 +172,7 @@ class GoogleHelper extends Helper
      */
     public function renderAction(GoogleView $gridView, Action $action, $data = null)
     {
-        return $this->gridRenderer->renderAction($gridView, $action, $data);
+        return $this->googleRenderer->renderAction($gridView, $action, $data);
     }
 
     /**
@@ -147,7 +183,7 @@ class GoogleHelper extends Helper
      */
     public function renderFilter(GoogleView $gridView, Filter $filter)
     {
-        return $this->gridRenderer->renderFilter($gridView, $filter);
+        return $this->googleRenderer->renderFilter($gridView, $filter);
     }
 
     /**

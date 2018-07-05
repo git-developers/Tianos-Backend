@@ -65,8 +65,11 @@ backend_report:
     resource: '@ReportBundle/Resources/config/routing/backend.yml'
     prefix: /report
 backend_google_drive:
-    resource: '@GoogleBundle/Resources/config/routing/google_drive.yml'
+    resource: '@GoogleBundle/Resources/config/routing/google_drive_file.yml'
     prefix: /google-drive
-backend_google_drive_list:
-    resource: '@GoogleBundle/Resources/config/routing/google_drive_list.yml'
-    prefix: /google-drive-list
+backend_google_drive_grid:
+    resource: '@GoogleBundle/Resources/config/routing/google_drive_file_grid.yml'
+    prefix: /google-drive-grid
+backend_google_drive_vote:
+    resource: '@GoogleBundle/Resources/config/routing/google_drive_file_vote.yml'
+    prefix: /google-drive-vote
