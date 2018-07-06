@@ -50,6 +50,7 @@ twig:
         application_name_html: '%application_name_html%'
         application_version: '%application_version%'
         application_url: '%application_url%'
+        application_via: '%application_via%'
         application_url_canonical: '%application_url_canonical%'
         application_description: '%application_description%'
         application_theme_color: '%application_theme_color%'

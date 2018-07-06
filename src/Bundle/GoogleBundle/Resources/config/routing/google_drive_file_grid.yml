@@ -2,7 +2,7 @@ backend_google_drive_grid_index:
     path: /
     methods: [GET]
     defaults:
-        _controller: tianos.google.drive.list.controller.google:indexAction
+        _controller: tianos.google.drive.grid.controller.google:indexAction
         _tianos:
             action: index
             section: admin
@@ -77,7 +77,7 @@ backend_google_drive_grid_edit:
     path: /edit
     methods: [PUT, POST]
     defaults:
-        _controller: tianos.google.drive.list.controller.google:editAction
+        _controller: tianos.google.drive.grid.controller.google:editAction
         _tianos:
             action: edit
             template: GoogleBundle:GoogleDriveFileGrid/Form:form.html.twig
@@ -94,7 +94,7 @@ backend_google_drive_grid_view:
     path: /view
     methods: [POST]
     defaults:
-        _controller: tianos.google.drive.list.controller.google:viewAction
+        _controller: tianos.google.drive.grid.controller.google:viewAction
         _tianos:
             action: view
             template: GoogleBundle:GoogleDriveFileGrid/Informative:view.html.twig
@@ -109,7 +109,7 @@ backend_google_drive_grid_info:
     path: /info
     methods: [POST]
     defaults:
-        _controller: tianos.google.drive.list.controller.google:infoAction
+        _controller: tianos.google.drive.grid.controller.google:infoAction
         _tianos:
             action: info
             template: GoogleBundle:GoogleDriveFileGrid/Informative:info.html.twig
@@ -118,7 +118,7 @@ backend_google_drive_grid_watch:
     path: /watch
     methods: [GET]
     defaults:
-        _controller: tianos.google.drive.list.controller.google:watchAction
+        _controller: tianos.google.drive.grid.controller.google:watchAction
         _tianos:
             action: edit
             template: GoogleBundle:GoogleDriveFileGrid/Watch:index.html.twig
@@ -137,7 +137,7 @@ backend_google_drive_grid_qr:
     path: /qr
     methods: [POST]
     defaults:
-        _controller: tianos.google.drive.list.controller.google:qrAction
+        _controller: tianos.google.drive.grid.controller.google:qrAction
         _tianos:
             action: xxx
             template: GoogleBundle:GoogleDriveFileGrid/Watch/Box:qr.html.twig

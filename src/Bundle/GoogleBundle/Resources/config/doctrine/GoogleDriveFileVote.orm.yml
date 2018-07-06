@@ -19,7 +19,7 @@ Bundle\GoogleBundle\Entity\GoogleDriveFileVote:
             generator:
                 strategy: IDENTITY
     fields:
-        like:
+        vote:
             type: boolean
             nullable: true
             options:
@@ -39,16 +39,6 @@ Bundle\GoogleBundle\Entity\GoogleDriveFileVote:
                 default: '1'
             column: is_active
     manyToOne:
-        googleDriveFile:
-            targetEntity: Bundle\GoogleBundle\Entity\GoogleDriveFile
-            cascade: {  }
-            fetch: LAZY
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                google_drive_file_id:
-                    referencedColumnName: id
-            orphanRemoval: false
         user:
             targetEntity: Bundle\UserBundle\Entity\User
             cascade: {  }
@@ -57,6 +47,16 @@ Bundle\GoogleBundle\Entity\GoogleDriveFileVote:
             inversedBy: null
             joinColumns:
                 user_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        googleDriveFile:
+            targetEntity: Bundle\GoogleBundle\Entity\GoogleDriveFile
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                google_drive_file_id:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

@@ -97,7 +97,7 @@
                 type: 'POST',
                 cache: true,
                 data: {
-                    fileId: '{{ entity.fileId }}',
+                    googleDriveId: '{{ entity.id }}',
                     vote: $(this).data('vote')
                 },
                 beforeSend:function () {

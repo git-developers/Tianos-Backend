@@ -22,8 +22,8 @@ services:
         tags:
             - { name: tianos.google.drive.controller.google, alias: tianos.google.drive.controller.google }
 
-    tianos.google.drive.list.controller.google:
-        class: Bundle\GoogleBundle\Controller\GoogleDriveFileListController
+    tianos.google.drive.grid.controller.google:
+        class: Bundle\GoogleBundle\Controller\GoogleDriveFileGridController
         arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
         tags:
             - { name: tianos.google.drive.list.controller.google, alias: tianos.google.drive.list.controller.google }

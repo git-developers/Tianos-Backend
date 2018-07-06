@@ -8,7 +8,7 @@ use Doctrine\DBAL\Schema\Schema;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-class Version20180704064423 extends AbstractMigration
+class Version20180706021215 extends AbstractMigration
 {
     public function up(Schema $schema)
     {
@@ -23,6 +23,7 @@ class Version20180704064423 extends AbstractMigration
         $this->addSql('CREATE TABLE route (id INT AUTO_INCREMENT NOT NULL, code VARCHAR(45) DEFAULT NULL, name VARCHAR(150) NOT NULL, slug VARCHAR(150) DEFAULT NULL, created_at DATETIME NOT NULL, user_create INT DEFAULT NULL, updated_at DATETIME DEFAULT NULL, user_update INT DEFAULT NULL, is_active TINYINT(1) DEFAULT \'1\', PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE route_has_point_of_sale (route_id INT NOT NULL, point_of_sale_id INT NOT NULL, INDEX IDX_8807235A34ECB4E6 (route_id), INDEX IDX_8807235A6B7E9A73 (point_of_sale_id), PRIMARY KEY(route_id, point_of_sale_id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE order_ (id INT AUTO_INCREMENT NOT NULL, point_of_sale_id INT DEFAULT NULL, user_id INT DEFAULT NULL, product_id INT DEFAULT NULL, quantity INT DEFAULT NULL, type VARCHAR(45) DEFAULT NULL, order_date DATETIME NOT NULL, created_at DATETIME DEFAULT NULL, updated_at DATETIME DEFAULT NULL, is_active TINYINT(1) DEFAULT NULL, INDEX fk_order_in_point_of_sale1_idx (point_of_sale_id), INDEX fk_order_in_product1_idx (product_id), INDEX fk_order_in_user1_idx (user_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE google_drive_file_vote (id INT AUTO_INCREMENT NOT NULL, user_id INT DEFAULT NULL, google_drive_file_id INT DEFAULT NULL, vote TINYINT(1) DEFAULT \'0\', created_at DATETIME DEFAULT NULL, updated_at DATETIME DEFAULT NULL, is_active TINYINT(1) DEFAULT \'1\', INDEX fk_google_drive_file_like_google_drive_file1_idx (google_drive_file_id), INDEX fk_google_drive_file_like_user1_idx (user_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE google_drive_file (id INT AUTO_INCREMENT NOT NULL, user_id INT DEFAULT NULL, unique_id VARCHAR(50) NOT NULL, slug VARCHAR(150) NOT NULL, file_id VARCHAR(45) NOT NULL, file_mime_type VARCHAR(250) DEFAULT NULL, file_mime_type_short VARCHAR(45) DEFAULT NULL, file_icon_link VARCHAR(250) DEFAULT NULL, file_name TEXT NOT NULL, file_name_original TEXT NOT NULL, file_size VARCHAR(45) DEFAULT NULL, file_image VARCHAR(255) DEFAULT NULL, created_at DATETIME NOT NULL, updated_at DATETIME DEFAULT NULL, is_active TINYINT(1) DEFAULT \'1\' NOT NULL, INDEX fk_google_drive_file_user_idx (user_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE client (id INT AUTO_INCREMENT NOT NULL, code VARCHAR(45) DEFAULT NULL, name VARCHAR(150) NOT NULL, slug VARCHAR(150) DEFAULT NULL, created_at DATETIME NOT NULL, user_create INT DEFAULT NULL, updated_at DATETIME DEFAULT NULL, user_update INT DEFAULT NULL, is_active TINYINT(1) DEFAULT \'1\', PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE profile (id INT AUTO_INCREMENT NOT NULL, code VARCHAR(45) DEFAULT NULL, name VARCHAR(100) NOT NULL, name_canonical VARCHAR(100) NOT NULL, slug VARCHAR(100) NOT NULL, created_at DATETIME NOT NULL, user_create INT DEFAULT NULL, updated_at DATETIME DEFAULT NULL, user_update INT DEFAULT NULL, is_active TINYINT(1) DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
@@ -48,6 +49,8 @@ class Version20180704064423 extends AbstractMigration
         $this->addSql('ALTER TABLE order_ ADD CONSTRAINT FK_D7F7910D6B7E9A73 FOREIGN KEY (point_of_sale_id) REFERENCES point_of_sale (id)');
         $this->addSql('ALTER TABLE order_ ADD CONSTRAINT FK_D7F7910DA76ED395 FOREIGN KEY (user_id) REFERENCES user (id)');
         $this->addSql('ALTER TABLE order_ ADD CONSTRAINT FK_D7F7910D4584665A FOREIGN KEY (product_id) REFERENCES product (id)');
+        $this->addSql('ALTER TABLE google_drive_file_vote ADD CONSTRAINT FK_35D550BFA76ED395 FOREIGN KEY (user_id) REFERENCES user (id)');
+        $this->addSql('ALTER TABLE google_drive_file_vote ADD CONSTRAINT FK_35D550BF77A02D92 FOREIGN KEY (google_drive_file_id) REFERENCES google_drive_file (id)');
         $this->addSql('ALTER TABLE google_drive_file ADD CONSTRAINT FK_148FFCAAA76ED395 FOREIGN KEY (user_id) REFERENCES user (id)');
         $this->addSql('ALTER TABLE profile_has_role ADD CONSTRAINT FK_F35F3084CCFA12B8 FOREIGN KEY (profile_id) REFERENCES profile (id)');
         $this->addSql('ALTER TABLE profile_has_role ADD CONSTRAINT FK_F35F3084D60322AC FOREIGN KEY (role_id) REFERENCES role (id)');
@@ -72,6 +75,7 @@ class Version20180704064423 extends AbstractMigration
         $this->addSql('ALTER TABLE user_has_route DROP FOREIGN KEY FK_F9ADBD23A76ED395');
         $this->addSql('ALTER TABLE visit DROP FOREIGN KEY FK_437EE939A76ED395');
         $this->addSql('ALTER TABLE order_ DROP FOREIGN KEY FK_D7F7910DA76ED395');
+        $this->addSql('ALTER TABLE google_drive_file_vote DROP FOREIGN KEY FK_35D550BFA76ED395');
         $this->addSql('ALTER TABLE google_drive_file DROP FOREIGN KEY FK_148FFCAAA76ED395');
         $this->addSql('ALTER TABLE session DROP FOREIGN KEY FK_D044D5D4A76ED395');
         $this->addSql('ALTER TABLE point_of_sale_has_user DROP FOREIGN KEY FK_6D10130AA76ED395');
@@ -79,6 +83,7 @@ class Version20180704064423 extends AbstractMigration
         $this->addSql('ALTER TABLE profile_has_role DROP FOREIGN KEY FK_F35F3084D60322AC');
         $this->addSql('ALTER TABLE user_has_route DROP FOREIGN KEY FK_F9ADBD2334ECB4E6');
         $this->addSql('ALTER TABLE route_has_point_of_sale DROP FOREIGN KEY FK_8807235A34ECB4E6');
+        $this->addSql('ALTER TABLE google_drive_file_vote DROP FOREIGN KEY FK_35D550BF77A02D92');
         $this->addSql('ALTER TABLE user DROP FOREIGN KEY FK_8D93D64919EB6921');
         $this->addSql('ALTER TABLE user DROP FOREIGN KEY FK_8D93D649CCFA12B8');
         $this->addSql('ALTER TABLE profile_has_role DROP FOREIGN KEY FK_F35F3084CCFA12B8');
@@ -102,6 +107,7 @@ class Version20180704064423 extends AbstractMigration
         $this->addSql('DROP TABLE route');
         $this->addSql('DROP TABLE route_has_point_of_sale');
         $this->addSql('DROP TABLE order_');
+        $this->addSql('DROP TABLE google_drive_file_vote');
         $this->addSql('DROP TABLE google_drive_file');
         $this->addSql('DROP TABLE client');
         $this->addSql('DROP TABLE profile');

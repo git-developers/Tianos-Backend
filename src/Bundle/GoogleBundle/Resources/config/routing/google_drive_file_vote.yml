@@ -10,7 +10,7 @@ backend_google_drive_vote_like_dislike:
                 type: Bundle\GoogleBundle\Form\Type\GoogleType
             repository:
                 service: tianos.repository.google.drive.vote
-                method: find
+                method: vote
                 arguments: [$clientId]
                 vars:
                     serialize_group_name: google-drive-file-vote

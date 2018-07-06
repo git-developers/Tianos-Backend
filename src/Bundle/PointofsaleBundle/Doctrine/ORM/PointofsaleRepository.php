@@ -57,7 +57,7 @@ class PointofsaleRepository extends TianosEntityRepository
 
         $em = $this->getEntityManager();
         $sql = "SELECT SUM(quantity) AS quantity FROM point_of_sale_has_product WHERE SUBSTRING(created_at, 1, 10) = :today_date;";
-        $params = array('today_date' => $todayDate);
+        $params = ['today_date' => $todayDate];
 
         $stmt = $em->getConnection()->prepare($sql);
         $stmt->execute($params);
@@ -78,7 +78,7 @@ class PointofsaleRepository extends TianosEntityRepository
 
         $em = $this->getEntityManager();
         $sql = "DELETE FROM point_of_sale_has_user WHERE point_of_sale_id = :id;";
-        $params = array('id' => $id);
+        $params = ['id' => $id];
 
         $stmt = $em->getConnection()->prepare($sql);
         $stmt->execute($params);

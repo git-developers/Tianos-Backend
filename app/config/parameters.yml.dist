@@ -21,6 +21,7 @@ parameters:
     application_theme_color: '#FF9C00'
     application_version: 2.4.1
     application_url: tianos.xyz
+    application_via: tianos
     application_url_canonical: http://tianos.xyz
     application_skin: 'skin-yellow'
     application_name: 'Tianos'

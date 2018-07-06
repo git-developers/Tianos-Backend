@@ -13,6 +13,47 @@ class GoogleDriveFileVoteRepository extends TianosEntityRepository implements Go
     /**
      * {@inheritdoc}
      */
+    public function vote($userId, $googleDriveId, $vote): bool
+    {
+        /**
+         * DELETE
+         */
+        $em = $this->getEntityManager();
+        $sql = "DELETE FROM google_drive_file_vote WHERE user_id = :userId AND google_drive_file_id = :googleDriveId;";
+        $params = [
+            'userId' => $userId,
+            'googleDriveId' => $googleDriveId,
+        ];
+
+        $stmt = $em->getConnection()->prepare($sql);
+        $stmt->execute($params);
+
+
+        /**
+         * INSERT
+         */
+        $datetime = new \DateTime("now");
+        $now = $datetime->format('Y-m-d H:i:s');
+
+        $em = $this->getEntityManager();
+        $sql = "INSERT INTO google_drive_file_vote (user_id, google_drive_file_id, vote, created_at) VALUES (:userId, :googleDriveId, :vote, :now);";
+        $params = [
+            'userId' => $userId,
+            'googleDriveId' => $googleDriveId,
+            'vote' => $vote,
+            'now' => $now,
+        ];
+
+        $stmt = $em->getConnection()->prepare($sql);
+        $stmt->execute($params);
+
+        // puesto provisional
+        return true;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function find($id)
     {
         $em = $this->getEntityManager();

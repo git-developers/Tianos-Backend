@@ -26,7 +26,7 @@ class GoogleDriveFileVote
      *
      * @JMSS\Groups({"google-drive-file-vote"})
      */
-    private $like = '0';
+    private $vote = '0';
 
     /**
      * @var \DateTime
@@ -82,27 +82,19 @@ class GoogleDriveFileVote
     }
 
     /**
-     * Set like
-     *
-     * @param boolean $like
-     *
-     * @return GoogleDriveFileVote
+     * @return bool
      */
-    public function setLike($like)
+    public function isVote()
     {
-        $this->like = $like;
-
-        return $this;
+        return $this->vote;
     }
 
     /**
-     * Get like
-     *
-     * @return boolean
+     * @param bool $vote
      */
-    public function getLike()
+    public function setVote($vote)
     {
-        return $this->like;
+        $this->vote = $vote;
     }
 
     /**

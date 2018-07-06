@@ -20,6 +20,16 @@ class GoogleDriveFileVoteController extends BaseController
 //            return $this->redirectToRoute('frontend_default_access_denied');
 //        }
 
+        $user = $this->getUser();
+
+        if (is_null($user)) {
+            return $this->json(
+                [
+                    'status' => false
+                ]
+            );
+        }
+
         $parameters = [
             'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
         ];
@@ -34,18 +44,11 @@ class GoogleDriveFileVoteController extends BaseController
         $template = $configuration->getTemplate('');
         $vars = $configuration->getVars();
 
-        $fileId = $request->get('fileId', null);
+        $userId = $user->getId();
+        $googleDriveId = $request->get('googleDriveId', null);
         $vote = $request->get('vote', null);
 
-
-        echo "POLLO:: <pre>";
-        print_r($vote);
-        exit;
-
-
-
-
-//        $entity = $this->get($repository)->$method($slug);
+        $entity = $this->get($repository)->$method($userId, $googleDriveId, $vote);
 //
 //
 //        if(!$entity){

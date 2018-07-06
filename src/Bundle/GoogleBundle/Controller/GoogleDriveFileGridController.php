@@ -12,7 +12,7 @@ use Bundle\ResourceBundle\ResourceBundle;
 use Bundle\GoogleBundle\Entity\GoogleDriveFile;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 
-class GoogleDriveFileListController extends GridController
+class GoogleDriveFileGridController extends GridController
 {
 
     public function watchAction(Request $request): Response
@@ -39,8 +39,7 @@ class GoogleDriveFileListController extends GridController
 
         $entity = $this->get($repository)->$method($slug);
 
-
-        if(!$entity){
+        if (!$entity) {
             throw $this->createNotFoundException('el archivo que busca no existe');
         }
 
