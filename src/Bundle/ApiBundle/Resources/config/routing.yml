@@ -2,17 +2,9 @@ api_default:
     resource: '@ApiBundle/Resources/config/routing/default.yml'
     prefix: /
 
-api_pointofsale:
-    resource: '@PointofsaleBundle/Resources/config/routing/api.yml'
-    prefix: /point-of-sale
-
 api_category:
     resource: '@CategoryBundle/Resources/config/routing/api.yml'
     prefix: /category
-
-api_product:
-    resource: '@ProductBundle/Resources/config/routing/api.yml'
-    prefix: /product
 
 api_user:
     resource: '@UserBundle/Resources/config/routing/api.yml'
@@ -21,7 +13,3 @@ api_user:
 api_visit:
     resource: '@VisitBundle/Resources/config/routing/api.yml'
     prefix: /visit
-
-api_pdvhasproduct:
-    resource: '@PdvhasproductBundle/Resources/config/routing/api.yml'
-    prefix: /pdv-has-product

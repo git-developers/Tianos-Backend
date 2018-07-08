@@ -1,7 +1,8 @@
 backend_google_drive_index:
-    path: /
+    path: /{field}
     methods: [GET]
     defaults:
+        field: my-drive
         _controller: tianos.google.drive.controller.google:indexAction
         _tianos:
             action: index

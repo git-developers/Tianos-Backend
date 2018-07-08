@@ -125,11 +125,6 @@ class GoogleService extends BaseGoogle
         $accessToken = $client->fetchAccessTokenWithAuthCode($authCode);
         $credentialsPath = $this->expandHomeDirectory($this->getCredentialsJson());
 
-
-
-
-
-
         $status = isset($accessToken['error']) ? $accessToken['error'] : '';
 
         if($status == 'invalid_grant'){
@@ -155,27 +150,18 @@ class GoogleService extends BaseGoogle
         }
     }
 
-    public function clientSecret()
+//    public function clientSecret()
+//    {
+//        return $this->twig->render(
+//            'BackendBundle:Twig/Googledrive:client_secret.json.twig',
+//            [
+//                'test' => '',
+//            ]
+//        );
+//    }
+
+    public function getGoogleFiles($field, $parents, $search, $pageToken)
     {
-        return $this->twig->render(
-            'BackendBundle:Twig/Googledrive:client_secret.json.twig',
-            [
-                'test' => '',
-            ]
-        );
-    }
-
-    public function getGoogleFiles($id, $search, $pageToken)
-    {
-
-        $q = $this->createQ($id);
-        $orderBy = ['orderBy' => 'folder'];
-
-        if(!empty($search)){
-            $q = "fullText contains '".$search."' AND trashed = false";
-            $orderBy = [];
-        }
-
         // Get the API client and construct the service object.
         $client = $this->getClient();
         $service = new \Google_Service_Drive($client);
@@ -186,12 +172,13 @@ class GoogleService extends BaseGoogle
             'corpus' => 'user',
             'pageToken' => $pageToken,
             'fields' => 'nextPageToken, files(id, name, mimeType, size, iconLink, parents)',
-            'q' => $q,
+            'q' => $this->createQ($field, $parents, $search),
+            'orderBy' => $this->getOrderBy($search),
         ];
 
-        $optParams = array_merge($optParams, $orderBy);
-        $results = $service->files->listFiles($optParams);
-        return $results;
+//        $optParams = array_merge($optParams, $this->getOrderBy());
+
+        return $service->files->listFiles($optParams);
     }
 
 

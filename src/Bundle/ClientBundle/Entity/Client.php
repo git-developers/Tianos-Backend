@@ -35,6 +35,13 @@ class Client
 
     /**
      * @var string
+     *
+     * @JMSS\Groups({"crud"})
+     */
+    private $abbreviation;
+
+    /**
+     * @var string
      */
     private $slug;
 
@@ -126,6 +133,22 @@ class Client
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAbbreviation(): string
+    {
+        return $this->abbreviation;
+    }
+
+    /**
+     * @param string $abbreviation
+     */
+    public function setAbbreviation(string $abbreviation): void
+    {
+        $this->abbreviation = $abbreviation;
     }
 
     /**

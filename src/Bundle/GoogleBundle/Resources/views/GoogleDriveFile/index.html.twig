@@ -203,10 +203,31 @@
 {% block content %}
 
     <section class="content-header">
+
         <h1>
             <i class="fa fa-google"></i> Google drive
-            <small>{{ small_text }}</small>
+
+            {% if field is not empty %}
+                <a href="{{ path('backend_google_drive_index', { 'field':field }) }}">
+                    <small>
+                        <i class="fa fa-fw fa-angle-double-right"></i> {{  small_text }}
+                    </small>
+                </a>
+            {% endif %}
+
+            {% if parents is not empty %}
+                <a
+                    href="{{ path('backend_google_drive_index', {
+                        'field':field, 'parents':parents, 'folder_name':folder_name
+                    }) }}"
+                >
+                    <small>
+                        <i class="fa fa-fw fa-angle-double-right"></i> {{ folder_name }}
+                    </small>
+                </a>
+            {% endif %}
         </h1>
+
         <ol class="breadcrumb">
             <li>
                 <a href="{{ path('backend_google_drive_index') }}">
@@ -317,7 +338,7 @@
 
                                                         <span
                                                             class="text file-name {{ file.mimeType|tianos_google_span_class }}"
-                                                            onclick="location.href='{{ file|tianos_google_span_url_filter }}';"
+                                                            onclick="location.href='{{ file|tianos_google_span_url_filter(field) }}';"
                                                             data-toggle="tooltip"
                                                             title="{{ file.name }}" >
 

@@ -28,15 +28,8 @@ class DefaultController extends BaseController
      */
     public function dashboardAction(Request $request): Response
     {
-        $pdvHasProductLastWeekCount = $this->get('tianos.repository.pointofsale')->pdvHasProductLastWeekCount();
-        $pdvHasProductCount = $this->get('tianos.repository.pointofsale')->pdvHasProductCount();
         $userCount = $this->get('tianos.repository.user')->userCount();
         $visitCount = $this->get('tianos.repository.visit')->visitCount();
-        $productCount = $this->get('tianos.repository.product')->productCount();
-
-
-
-
 
 
         /**
@@ -52,9 +45,9 @@ class DefaultController extends BaseController
             'lastWeekdates' => $this->lastWeekdates(),
             'userCount' => $userCount,
             'visitCount' => $visitCount,
-            'pdvHasProductCount' => $pdvHasProductCount,
-            'pdvHasProductLastWeekCount' => $pdvHasProductLastWeekCount,
-            'productCount' => $productCount,
+            'pdvHasProductCount' => 555,
+            'pdvHasProductLastWeekCount' => 555,
+            'productCount' => 555,
         ]);
     }
 

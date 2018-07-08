@@ -1,18 +1,3 @@
 backend_associative_profile_has_role:
     resource: '@AssociativeBundle/Resources/config/routing/profile_has_role.yml'
     prefix: /profile-has-role
-backend_associative_category_has_product:
-    resource: '@AssociativeBundle/Resources/config/routing/category_has_product.yml'
-    prefix: /category-has-product
-backend_associative_pointofsale_has_user:
-    resource: '@AssociativeBundle/Resources/config/routing/pointofsale_has_user.yml'
-    prefix: /pointofsale-has-user
-backend_associative_route_has_pointofsale:
-    resource: '@AssociativeBundle/Resources/config/routing/route_has_pointofsale.yml'
-    prefix: /route-has-pointofsale
-backend_associative_user_has_route:
-    resource: '@AssociativeBundle/Resources/config/routing/user_has_route.yml'
-    prefix: /user-has-route
-backend_associative_user_has_pointofsale:
-    resource: '@AssociativeBundle/Resources/config/routing/user_has_pointofsale.yml'
-    prefix: /user-has-pointofsale

@@ -213,37 +213,6 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     private $pointOfSale;
 
     /**
-     * Punto de venta tiene canillita
-     *
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Bundle\PointofsaleBundle\Entity\Pointofsale", mappedBy="user2")
-     */
-    private $pointOfSale2;
-
-    /**
-     * Distribuidor tiene Rutas
-     *
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Bundle\RouteBundle\Entity\Route", inversedBy="user")
-     * @ORM\JoinTable(name="user_has_route",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="route_id", referencedColumnName="id")
-     *   }
-     * )
-     *
-     * @JMSS\Groups({
-     *     "one-to-many-left-userhasroute",
-     *     "one-to-many-search-userhasroute"
-     * })
-     */
-    private $route;
-
-    /**
      * @var string
      *
      * @JMSS\Accessor(getter="getNameBox", setter="setNameBox")
@@ -264,8 +233,6 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     {
         $this->groupOfUsers = new \Doctrine\Common\Collections\ArrayCollection();
         $this->pointOfSale = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->pointOfSale2 = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->route = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -718,50 +685,6 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
         return $this->pointOfSale;
     }
 
-    
-    
-    
-    
-    /**
-     * Punto de venta tiene canillita
-     *
-     * Add pointOfSale
-     *
-     * @param \Bundle\PointofsaleBundle\Entity\Pointofsale $pointOfSale
-     *
-     * @return User
-     */
-    public function addPointOfSale2(\Bundle\PointofsaleBundle\Entity\Pointofsale $pointOfSale)
-    {
-        $this->pointOfSale2[] = $pointOfSale;
-
-        return $this;
-    }
-
-    /**
-     * Punto de venta tiene canillita
-     *
-     * Remove pointOfSale
-     *
-     * @param \Bundle\PointofsaleBundle\Entity\Pointofsale $pointOfSale
-     */
-    public function removePointOfSale2(\Bundle\PointofsaleBundle\Entity\Pointofsale $pointOfSale)
-    {
-        $this->pointOfSale2->removeElement($pointOfSale);
-    }
-
-    /**
-     * Punto de venta tiene canillita
-     *
-     * Get pointOfSale
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getPointOfSale2()
-    {
-        return $this->pointOfSale2;
-    }
-
     /**
      * Returns the roles granted to the user.
      *
@@ -815,46 +738,6 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     public function getObjectIdentifier()
     {
         return 'usuario-210'; //$this->username;
-    }
-
-    /**
-     * Distribuidor tiene Rutas
-     *
-     * Add route
-     *
-     * @param \Bundle\RouteBundle\Entity\Route $route
-     *
-     * @return User
-     */
-    public function addRoute(\Bundle\RouteBundle\Entity\Route $route)
-    {
-        $this->route[] = $route;
-
-        return $this;
-    }
-
-    /**
-     * Distribuidor tiene Rutas
-     *
-     * Remove route
-     *
-     * @param \Bundle\RouteBundle\Entity\Route $route
-     */
-    public function removeRoute(\Bundle\RouteBundle\Entity\Route $route)
-    {
-        $this->route->removeElement($route);
-    }
-
-    /**
-     * Distribuidor tiene Rutas
-     *
-     * Get route
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getRoute()
-    {
-        return $this->route;
     }
 
     /**

@@ -28,6 +28,12 @@ Bundle\ClientBundle\Entity\Client:
             length: 150
             options:
                 fixed: false
+        abbreviation:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
         slug:
             type: string
             nullable: true

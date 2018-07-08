@@ -86,15 +86,16 @@ class GoogleHelper extends Helper
         return '<i class="fa fa-2x fa-fw fa-' . $class . '"></i>';
     }
 
-    public function googleSpanUrlFilter($value)
+    public function googleSpanUrlFilter($value, $field)
     {
         if (isset($value['mimeType']) && ($value['mimeType'] == GoogleDriveFile::GOOGLE_FOLDER)) {
 
             return $this->router->generate(
                 'backend_google_drive_index',
                 [
-                    'id' => $value['id'],
-                    'name' => $value['name']
+                    'field' => $field,
+                    'parents' => $value['id'],
+                    'folder_name' => $value['name']
                 ]
             );
         }

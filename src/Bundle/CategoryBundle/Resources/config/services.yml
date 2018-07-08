@@ -39,20 +39,8 @@ services:
         factory: ['@doctrine.orm.entity_manager', getRepository]
         arguments: [ Bundle\CategoryBundle\Entity\Category ]
 
-    tianos.repository.category.has.product:
-        class: Dummy
-        factory: ['@doctrine.orm.entity_manager', getRepository]
-        arguments: [ Bundle\CategoryBundle\Entity\CategoryHasProduct ]
-
     tianos.type.category:
         class: Bundle\CategoryBundle\Form\Type\CategoryType
         arguments: ['@doctrine.orm.entity_manager']
         tags:
             - { name: form.type, alias: tianos.type.category }
-
-
-#    tianos.controller.grid:
-#        class: Bundle\GridBundle\Controller\GridController
-#        arguments: [ Bundle\GridBundle\Controller\RequestConfigurationFactoryInterface ]
-#        tags:
-#            - { name: tianos.controller.grid, alias: tianos.controller.grid }

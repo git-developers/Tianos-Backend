@@ -23,7 +23,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
     {
 
         $dateCreatedAt = "2018-05-11";
-        $clientePlantaCentroPando = $this->getReference('cliente-planta-centro-pando');
+        $clientePlantaCentroPando = $this->getReference('client-default');
 
         $profileAdmin = $this->getReference('profile-admin');
         $profileJefeAdministracionComercial = $this->getReference('profile-jefe-administracion-comercial');

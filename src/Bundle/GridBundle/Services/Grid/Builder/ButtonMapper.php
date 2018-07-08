@@ -115,7 +115,7 @@ class ButtonMapper
             'alt' => 'Ver archivo',
             'title' => 'Ver archivo',
 //            'data-target' => ModalMapper::WATCH_ID,
-            'icon' => '<i class="fa fa-fw fa-file-text-o"></i>',
+            'icon' => '<i class="fa fa-fw fa-eye"></i>',
             'class' => 'btn-info ' . ModalMapper::WATCH_ID,
         ]);
     }

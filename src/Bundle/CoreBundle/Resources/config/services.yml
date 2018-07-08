@@ -23,27 +23,11 @@ services:
         arguments: [ '%application_url%' ]
         tags: [doctrine.fixture.orm]
 
-    Bundle\CoreBundle\DataFixtures\ORM\Load_6_ProductData:
-        arguments: [ '%application_url%' ]
-        tags: [doctrine.fixture.orm]
-
-    Bundle\CoreBundle\DataFixtures\ORM\Load_7_CategoryHasProductData:
-        arguments: [ '%application_url%' ]
-        tags: [doctrine.fixture.orm]
-
     Bundle\CoreBundle\DataFixtures\ORM\Load_8_GroupofusersData:
         arguments: [ '%application_url%' ]
         tags: [doctrine.fixture.orm]
 
     Bundle\CoreBundle\DataFixtures\ORM\Load_9_PointofsaleData:
-        arguments: [ '%application_url%' ]
-        tags: [doctrine.fixture.orm]
-
-    Bundle\CoreBundle\DataFixtures\ORM\Load_10_RouteData:
-        arguments: [ '%application_url%' ]
-        tags: [doctrine.fixture.orm]
-
-    Bundle\CoreBundle\DataFixtures\ORM\Load_11_UserHasRouteData:
         arguments: [ '%application_url%' ]
         tags: [doctrine.fixture.orm]
 

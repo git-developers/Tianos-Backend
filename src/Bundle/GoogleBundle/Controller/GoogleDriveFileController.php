@@ -42,7 +42,9 @@ class GoogleDriveFileController extends BaseController
         /**
          * OLD
          */
-        $id = $request->get('id');
+        $field = $request->get('field');
+        $parents = $request->get('parents');
+        $folderName = $request->get('folder_name');
         $search = $request->get('search');
         $pageToken = $request->get('page', null);
 
@@ -53,12 +55,16 @@ class GoogleDriveFileController extends BaseController
             return $this->redirect($this->generateUrl('backend_google_drive_account_permissions'));
         }
 
-        $results = $google->getGoogleFiles($id, $search, $pageToken);
+        $results = $google->getGoogleFiles($field, $parents, $search, $pageToken);
         $files = $results->getFiles();
-        $smallText = $google->createSmallText($id);
+        $smallText = $google->createSmallText($field);
         /**
          * OLD
          */
+
+
+
+
 
         /*
         //**************************
@@ -75,8 +81,10 @@ class GoogleDriveFileController extends BaseController
             $template,
             [
                 'vars' => $vars,
-                'id' => $id,
+                'field' => $field,
+                'parents' => $parents,
                 'files' => $files,
+                'folder_name' => $folderName,
                 'search' => $search,
                 'small_text' => $smallText,
                 'next_page_token' => $results->nextPageToken,

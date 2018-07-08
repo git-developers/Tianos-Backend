@@ -9,6 +9,7 @@ class DataTableMapper
     const COLUMN = 'columns';
     const DATATABLE = 'data_table';
     const TABLE_BUTTON = 'table_button';
+    const TABLE_OPTION = 'table_option';
     const TABLE_BUTTON_HEADER = 'table_button_header';
     const ROW_CALL_BACK = 'row_call_back';
 
@@ -24,7 +25,7 @@ class DataTableMapper
     public $columns;
     public $rowCallBack;
     public $tableOptions;
-    public $tableButton;
+    public $tableOption;
     public $columnsTargets;
     public $tableHeaderButton;
 
@@ -66,14 +67,20 @@ class DataTableMapper
     /**
      * @param mixed $options
      */
-    public function setOptions(array $options = [])
+    public function setOptions()
     {
+
+        if (!isset($this->grid[self::DATATABLE][self::TABLE_OPTION])) {
+
+            return $this;
+        }
+
         $this->options = array_replace(
             [
                 'pageLength' => 10,
                 'lengthMenu' => json_encode([
-                    [10, 50, 100, 150, -1],
-                    [10, 50, 100, 150, 'Todos']
+                    [10, 20, 50, 100, 150, -1],
+                    [10, 20, 50, 100, 150, 'Todos']
                 ]),
                 'order' => json_encode([
                     [
@@ -86,7 +93,7 @@ class DataTableMapper
                 'info' => true,
                 'autoWidth' => true,
                 'filter' => true,
-            ], $options);
+            ], $this->grid[self::DATATABLE][self::TABLE_OPTION]);
 
         return $this;
     }

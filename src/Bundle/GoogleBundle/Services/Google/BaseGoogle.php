@@ -16,6 +16,8 @@ class BaseGoogle extends \Twig_Extension
 
     const STATUS_SUCCESS = true;
     const STATUS_ERROR = false;
+    const MY_DRIVE = 'my-drive';
+    const SHARE_WITH_ME = 'shared-with-me';
 
     private $user;
     private $container;
@@ -49,30 +51,46 @@ class BaseGoogle extends \Twig_Extension
         return $this->clientSecretPath . 'AcessToken/access-token-' . $this->user->getUsername() . '.json';
     }
 
-    public function createQ($id)
+    public function createQ($field, $parents, $search)
     {
-        switch($id){
-            case 'my-drive':
+
+        if(!empty($search)){
+            return "fullText contains '".$search."' AND trashed = false";
+        }
+
+        if (!empty($parents)) {
+            return "'".$parents."' in parents AND trashed = false";
+        }
+
+        switch($field){
+            case self::MY_DRIVE:
                 $q = "'root' in parents AND trashed = false";
                 break;
-            case 'shared-with-me':
+            case self::SHARE_WITH_ME:
                 $q = "sharedWithMe AND trashed = false";
                 break;
             default:
                 $q = "'root' in parents AND trashed = false";
-                if(!empty($id)){
-                    $q = "'".$id."' in parents AND trashed = false";
-                }
                 break;
         }
 
         return $q;
-
     }
 
-    public function createSmallText($id)
+    public function getOrderBy($search)
     {
-        switch($id){
+        if(!empty($search)){
+//            return [];
+            return null;
+        }
+
+//        return ['orderBy' => 'folder'];
+        return 'folder';
+    }
+
+    public function createSmallText($field)
+    {
+        switch($field){
             case 'my-drive':
                 $smallText = "my drive";
                 break;
