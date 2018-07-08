@@ -163,6 +163,20 @@ class GoogleDriveFile
     private $fileImage;
 
     /**
+     * @var integer
+     *
+     * @JMSS\Groups({"google-drive-file"})
+     */
+    private $countShare;
+
+    /**
+     * @var integer
+     *
+     * @JMSS\Groups({"google-drive-file"})
+     */
+    private $countView;
+
+    /**
      * @var \DateTime
      *
      * @JMSS\Groups({"google-drive-file"})
@@ -431,6 +445,38 @@ class GoogleDriveFile
     public function setFileImage(string $fileImage): void
     {
         $this->fileImage = $fileImage;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCountShare(): int
+    {
+        return $this->countShare;
+    }
+
+    /**
+     * @param int $countShare
+     */
+    public function setCountShare(int $countShare): void
+    {
+        $this->countShare = $countShare;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCountView(): int
+    {
+        return $this->countView;
+    }
+
+    /**
+     * @param int $countView
+     */
+    public function setCountView(int $countView): void
+    {
+        $this->countView = $countView;
     }
 
     /**

@@ -85,6 +85,20 @@ Bundle\GoogleBundle\Entity\GoogleDriveFile:
             options:
                 fixed: false
             column: file_image
+        countShare:
+            type: integer
+            nullable: false
+            length: 11
+            options:
+                fixed: false
+            column: count_share
+        countView:
+            type: integer
+            nullable: false
+            length: 11
+            options:
+                fixed: false
+            column: count_view
         createdAt:
             type: datetime
             nullable: false

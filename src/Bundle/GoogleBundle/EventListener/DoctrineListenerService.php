@@ -9,7 +9,6 @@ use Doctrine\ORM\Event\LifecycleEventArgs;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Bundle\GoogleBundle\Entity\GoogleDriveFile;
 use Bundle\GoogleBundle\Entity\GoogleDriveFileVote;
-use Cocur\Slugify\Slugify;
 use Bundle\CoreBundle\EventListener\BaseDoctrineListenerService;
 
 // https://coderwall.com/p/es3zkw/symfony2-listen-doctrine-events
@@ -55,6 +54,8 @@ class DoctrineListenerService extends BaseDoctrineListenerService implements Eve
         if ($entity instanceof GoogleDriveFile) {
             $name = $entity->getFileName();
             $entity->setSlug($this->slugify($name));
+            $entity->setCountShare(0);
+            $entity->setCountView(0);
             $entity->setCreatedAt($this->setupCreatedAt($entity));
 
             return;
@@ -116,12 +117,6 @@ class DoctrineListenerService extends BaseDoctrineListenerService implements Eve
 
             return;
         }
-    }
-
-    private function slugify($string, $separator = '-')
-    {
-        $slugify = new Slugify(['lowercase' => true, 'separator' => $separator, 'ruleset' => 'default']);
-        return $slugify->slugify($string);
     }
 
 }

@@ -122,12 +122,6 @@ class DoctrineListenerService implements EventSubscriber
         }
     }
 
-    private function slugify($string, $separator = '-')
-    {
-        $slugify = new Slugify(['lowercase' => true, 'separator' => $separator, 'ruleset' => 'default']);
-        return $slugify->slugify($string);
-    }
-
 }
 
 

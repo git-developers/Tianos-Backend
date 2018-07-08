@@ -112,12 +112,6 @@ class DoctrineListenerService extends BaseDoctrineListenerService implements Eve
         }
     }
 
-    private function slugify($string, $separator = '-')
-    {
-        $slugify = new Slugify(['lowercase' => true, 'separator' => $separator, 'ruleset' => 'default']);
-        return $slugify->slugify($string);
-    }
-
 }
 
 

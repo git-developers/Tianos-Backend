@@ -14,13 +14,18 @@ use Twig_Environment;
 class BaseGoogle extends \Twig_Extension
 {
 
+    const STATUS_SUCCESS = true;
+    const STATUS_ERROR = false;
+
     private $user;
     private $container;
+    protected $clientSecretPath;
 
     public function __construct(Container $container)
     {
         $this->container = $container;
         $this->user = $this->container->get('security.token_storage')->getToken()->getUser();
+        $this->clientSecretPath = $this->container->get('kernel')->getRootDir() . '/../src/Bundle/GoogleBundle/ClientSecret/';
     }
 
     /**
@@ -41,10 +46,7 @@ class BaseGoogle extends \Twig_Extension
     }
 
     protected function getCredentialsJson() {
-        return $this->container->get('kernel')->getRootDir() .
-                '/../src/Bundle/GoogleBundle/ClientSecret/access-token-' .
-                $this->user->getUsername() .
-                '.json';
+        return $this->clientSecretPath . 'AcessToken/access-token-' . $this->user->getUsername() . '.json';
     }
 
     public function createQ($id)

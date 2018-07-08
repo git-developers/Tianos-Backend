@@ -11,8 +11,6 @@ use Bundle\GoogleBundle\Services\Google\BaseGoogle;
 
 class GoogleService extends BaseGoogle
 {
-    const STATUS_SUCCESS = true;
-    const STATUS_ERROR = false;
 
     /** @var ObjectManager  */
     private $manager;
@@ -75,7 +73,7 @@ class GoogleService extends BaseGoogle
             ]
         );
 
-        $authConfig = $this->container->get('kernel')->getRootDir().'/../src/Bundle/GoogleBundle/ClientSecret/client_secret.json.twig';
+        $authConfig = $this->clientSecretPath . 'client_secret.json.twig';
 
 
 //        $authConfig = $this->clientSecret();
