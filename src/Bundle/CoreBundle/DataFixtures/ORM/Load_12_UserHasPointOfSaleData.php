@@ -14,33 +14,29 @@ class Load_12_UserHasPointOfSaleData extends AbstractFixture implements OrderedF
     public function load(ObjectManager $manager)
     {
 
-        $distribuidor_1 = $this->getReference('distribuidor-1');
-        $distribuidor_2 = $this->getReference('distribuidor-2');
-        $distribuidor_3 = $this->getReference('distribuidor-3');
-        $distribuidor_4 = $this->getReference('distribuidor-4');
-        $distribuidor_5 = $this->getReference('distribuidor-5');
+        $user_1 = $this->getReference('user-1');
+        $user_2 = $this->getReference('user-2');
+        $user_3 = $this->getReference('user-3');
 
         $pointofsale_1 = $this->getReference('pointofsale-1');
         $pointofsale_2 = $this->getReference('pointofsale-2');
         $pointofsale_3 = $this->getReference('pointofsale-3');
-        $pointofsale_4 = $this->getReference('pointofsale-4');
-        $pointofsale_5 = $this->getReference('pointofsale-5');
 
 
-        $distribuidor_1->addPointOfSale($pointofsale_1);
-        $manager->persist($distribuidor_1);
+        $user_1->addPointOfSale($pointofsale_1);
+        $manager->persist($user_1);
 
-        $distribuidor_2->addPointOfSale($pointofsale_2);
-        $manager->persist($distribuidor_2);
+        $user_2->addPointOfSale($pointofsale_2);
+        $manager->persist($user_2);
 
-        $distribuidor_3->addPointOfSale($pointofsale_3);
-        $manager->persist($distribuidor_3);
+        $user_3->addPointOfSale($pointofsale_3);
+        $manager->persist($user_3);
 
-        $distribuidor_4->addPointOfSale($pointofsale_4);
-        $manager->persist($distribuidor_4);
+        $user_3->addPointOfSale($pointofsale_1);
+        $manager->persist($user_3);
 
-        $distribuidor_5->addPointOfSale($pointofsale_5);
-        $manager->persist($distribuidor_5);
+        $user_3->addPointOfSale($pointofsale_2);
+        $manager->persist($user_3);
 
 
         $manager->flush();

@@ -21,13 +21,8 @@ class Load_9_PointofsaleData extends AbstractFixture implements OrderedFixtureIn
 
     public function load(ObjectManager $manager)
     {
-        $dateCreatedAt = "2018-05-11";
 
-        $canillita_1 = $this->getReference('canillita-1');
-        $canillita_2 = $this->getReference('canillita-2');
-        $canillita_3 = $this->getReference('canillita-3');
-        $canillita_4 = $this->getReference('canillita-4');
-        $canillita_5 = $this->getReference('canillita-5');
+//        $canillita_1 = $this->getReference('canillita-1');
 
 
         $entity = new Pointofsale();

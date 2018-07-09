@@ -439,6 +439,59 @@ class Builder implements ContainerAwareInterface
 
 
 
+
+        /**
+         * SETTINGS
+         */
+        $isGranted = $this->isGranted([
+            'ROLE_' . Profile::ADMIN,
+        ]);
+        $menu->addChild('Settings', [
+            'route' => 'backend_default_dashboard',
+            'extras' => ['safe_label' => true],
+            'childrenAttributes' => [
+                'class' => 'treeview-menu',
+            ],
+        ])
+            ->setAttribute('class', 'treeview')
+            ->setAttribute('class', $this->activeRoute([
+                'backend_core_loadfixtures',
+            ]))
+            ->setAttribute('icon', 'fa-fw fa-cog')
+            ->setDisplay($isGranted)
+        ;
+
+        $menu['Settings']->addChild('Load Fixtures', [
+            'route' => 'backend_core_loadfixtures'
+        ])
+            ->setAttribute('icon', self::CIRCLE_1)
+            ->setAttribute('class', $this->activeRoute('backend_core_loadfixtures'))
+            ->setDisplay($isGranted)
+        ;
+
+
+
+        /**
+         * ACCOUNTS - REGULAR_USER
+         */
+        $isGranted = $this->isGranted([
+            'ROLE_' . Profile::REGULAR_USER,
+        ]);
+        $menu->addChild('Front-end', [
+            'route' => 'backend_user_index',
+            'extras' => ['safe_label' => true],
+            'childrenAttributes' => [
+                'class' => 'treeview-menu',
+            ],
+        ])
+            ->setAttribute('class', 'treeview')
+            ->setAttribute('icon', 'fa-fw fa-user')
+            ->setAttribute('class', $this->activeRoute('backend_user_index'))
+            ->setDisplay($isGranted)
+        ;
+
+
+
         /**
          * FRONTEND
          */
@@ -469,32 +522,11 @@ class Builder implements ContainerAwareInterface
 
 
 
-        /**
-         * SETTINGS
-         */
-        $isGranted = true; //$this->isGranted('ROLE_CLIENT_VIEW');
-        $menu->addChild('Settings', [
-            'route' => 'backend_default_dashboard',
-            'extras' => ['safe_label' => true],
-            'childrenAttributes' => [
-                'class' => 'treeview-menu',
-            ],
-        ])
-            ->setAttribute('class', 'treeview')
-            ->setAttribute('class', $this->activeRoute([
-                'backend_core_loadfixtures',
-            ]))
-            ->setAttribute('icon', 'fa-fw fa-cog')
-            ->setDisplay($isGranted)
-        ;
 
-        $menu['Settings']->addChild('Load Fixtures', [
-            'route' => 'backend_core_loadfixtures'
-        ])
-            ->setAttribute('icon', self::CIRCLE_1)
-            ->setAttribute('class', $this->activeRoute('backend_core_loadfixtures'))
-            ->setDisplay($isGranted)
-        ;
+
+
+
+
 
         return $menu;
     }
