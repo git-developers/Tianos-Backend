@@ -56,6 +56,10 @@
 
     {{ include('ThemesBundle::Adminlte/2_header_security.html.twig') }}
 
+    {{ html.flash_message_success }}
+    {{ html.flash_message_warning }}
+    {{ html.flash_message_error }}
+
     {% block content %}
     {% endblock %}
 

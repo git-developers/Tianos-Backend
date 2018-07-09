@@ -27,21 +27,16 @@
             <ul class="nav navbar-nav">
 
                 <li>
-                    {#<a href="{{ url('frontend_security_login') }}">#}
-                    <a href="">
+                    <a href="{{ path('backend_security_login') }}">
                         <i class="fa fa-key"></i> Iniciar sesión
                     </a>
                 </li>
 
-
-                {#{{ url('frontend_security_register') }}#}
-                {#
                 <li>
-                    <a href="" title="Crea tu nueva cuenta">
+                    <a href="{{ path('backend_security_register') }}" title="Crea tu nueva cuenta">
                         <i class="fa fa-user-plus"></i> Crear cuenta
                     </a>
                 </li>
-                #}
 
             </ul>
         </div>

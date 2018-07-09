@@ -57,7 +57,7 @@ class Builder implements ContainerAwareInterface
          * CRUD
          */
         $isGranted = $this->isGranted([
-            'ROLE_' . Profile::JEFE_DE_ADMINISTRACION_COMERCIAL,
+            'ROLE_' . Profile::ADMIN,
         ]);
 
         $menu->addChild('Master', [
@@ -115,7 +115,7 @@ class Builder implements ContainerAwareInterface
          * ACCOUNTS
          */
         $isGranted = $this->isGranted([
-            'ROLE_' . Profile::JEFE_DE_ADMINISTRACION_COMERCIAL,
+            'ROLE_' . Profile::ADMIN,
         ]);
 
         $menu->addChild('Cuentas', [
@@ -260,7 +260,7 @@ class Builder implements ContainerAwareInterface
          * ASSOCIATION
          */
         $isGranted = $this->isGranted([
-            'ROLE_' . Profile::JEFE_DE_ADMINISTRACION_COMERCIAL,
+            'ROLE_' . Profile::ADMIN,
         ]);
 
         $menu->addChild('Asociación', [
@@ -305,7 +305,7 @@ class Builder implements ContainerAwareInterface
          * REPORTS
          */
         $isGranted = $this->isGranted([
-            'ROLE_' . Profile::JEFE_DE_ADMINISTRACION_COMERCIAL,
+            'ROLE_' . Profile::ADMIN,
         ]);
 
         $menu->addChild('Reportes', [
@@ -364,7 +364,7 @@ class Builder implements ContainerAwareInterface
          * GOOGLE DRIVE
          */
         $isGranted = $this->isGranted([
-            'ROLE_' . Profile::JEFE_DE_ADMINISTRACION_COMERCIAL,
+            'ROLE_' . Profile::ADMIN,
         ]);
 
         $menu->addChild('Google', [

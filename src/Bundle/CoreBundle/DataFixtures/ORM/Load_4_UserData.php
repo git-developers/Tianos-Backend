@@ -21,8 +21,6 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
 
     public function load(ObjectManager $manager)
     {
-
-        $dateCreatedAt = "2018-05-11";
         $clientePlantaCentroPando = $this->getReference('client-default');
 
         $profileAdmin = $this->getReference('profile-admin');
@@ -35,6 +33,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $profileTransportista = $this->getReference('profile-transportista');
         $profileDistribuidor = $this->getReference('profile-distribuidor');
         $profileCanillita = $this->getReference('profile-canillita');
+        $profileGuest = $this->getReference('profile-guest');
 
         $entity = new User();
         $entity->setDni('12345688');
@@ -42,7 +41,6 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setName('Alfredo');
         $entity->setLastName('Bringas');
         $entity->setEmail('abringas@' . $this->applicationUrl);
-        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileAdmin);
         $manager->persist($entity);
@@ -57,7 +55,6 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setName('Ricardo');
         $entity->setLastName('Masias');
         $entity->setEmail('rmasias@' . $this->applicationUrl);
-        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileJefeAdministracionComercial);
         $manager->persist($entity);
@@ -74,7 +71,6 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('mcardenas@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileAsistenteDistribucionTransporte);
-        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
 
@@ -90,7 +86,6 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('aquillay@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileGerenteVentas);
-        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
 
@@ -105,7 +100,6 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('jdominguez@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileSupervisorVenta);
-        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
 
@@ -120,7 +114,6 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('amelendez@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileJefeVenta);
-        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
 
@@ -135,7 +128,6 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('respinoza@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileJefeAlmacen);
-        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
 
 
@@ -152,7 +144,6 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('lhuamani@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileTransportista);
-        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
         $this->addReference('transportista-1', $entity);
 
@@ -164,7 +155,6 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('cmaldonado@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileTransportista);
-        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
         $this->addReference('transportista-2', $entity);
 
@@ -176,7 +166,6 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('hruiz@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileTransportista);
-        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
         $this->addReference('transportista-3', $entity);
 
@@ -188,7 +177,6 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('jlinares@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileTransportista);
-        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
         $this->addReference('transportista-4', $entity);
 
@@ -200,7 +188,6 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('sgarcia@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileTransportista);
-        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
         $this->addReference('transportista-5', $entity);
 
@@ -212,7 +199,6 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('gcampos@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileTransportista);
-        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
         $this->addReference('transportista-6', $entity);
 
@@ -224,7 +210,6 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('jpalomares@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileTransportista);
-        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
         $this->addReference('transportista-7', $entity);
 
@@ -236,7 +221,6 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('jolivera@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileTransportista);
-        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
         $this->addReference('transportista-8', $entity);
         /**
@@ -259,7 +243,6 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('asantander@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileDistribuidor);
-        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
         $this->addReference('distribuidor-1', $entity);
 
@@ -271,7 +254,6 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('fmiranda@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileDistribuidor);
-        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
         $this->addReference('distribuidor-2', $entity);
 
@@ -283,7 +265,6 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('fpaucar@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileDistribuidor);
-        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
         $this->addReference('distribuidor-3', $entity);
 
@@ -295,7 +276,6 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('fmoreno@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileDistribuidor);
-        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
         $this->addReference('distribuidor-4', $entity);
 
@@ -307,7 +287,6 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('privera@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileDistribuidor);
-        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
         $this->addReference('distribuidor-5', $entity);
         /**
@@ -334,7 +313,6 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('pzavaleta@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileCanillita);
-        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
         $this->addReference('canillita-1', $entity);
 
@@ -346,7 +324,6 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('cgonzales@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileCanillita);
-        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
         $this->addReference('canillita-2', $entity);
 
@@ -358,7 +335,6 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('hgalvan@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileCanillita);
-        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
         $this->addReference('canillita-3', $entity);
 
@@ -370,7 +346,6 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('jcastaña@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileCanillita);
-        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
         $this->addReference('canillita-4', $entity);
 
@@ -382,7 +357,6 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('mandrade@' . $this->applicationUrl);
         $entity->setClient($clientePlantaCentroPando);
         $entity->setProfile($profileCanillita);
-        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
         $manager->persist($entity);
         $this->addReference('canillita-5', $entity);
         /**

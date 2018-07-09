@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
 use JMS\Serializer\Annotation as JMSS;
 use JMS\Serializer\Annotation\Type as TypeJMS;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
@@ -46,11 +47,16 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
      *
      * @JMSS\Groups({
      *     "login",
-     *     "crud",
-     *     "one-to-many-right"
+     *     "crud"
      * })
+     * @Assert\Regex(
+     *     pattern="/[^a-zA-Z ]+/",
+     *     match=false,
+     *     message="user.name.regex"
+     * )
+     * @Assert\NotBlank(message="user.name.not_blank", groups={"registration_admin", "registration"})
      */
-    protected $username;
+    private $name;
 
     /**
      * @var string
@@ -60,6 +66,36 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
      *     "crud",
      *     "one-to-many-right"
      * })
+     */
+    protected $username;
+
+    /**
+     * @var string
+     *
+     * @Assert\Length(
+     *      min = 6,
+     *      max = 500,
+     *      minMessage = "Su contraseña debe de ser por lo menos de {{ limit }} caracteres",
+     *      maxMessage = "Su contraseña no puede ser mayor a {{ limit }} caracteres"
+     * )
+     * @Assert\NotBlank(message="password no vacio", groups={"registration"})
+     */
+    protected $password;
+
+    /**
+     * @var string
+     *
+     * @JMSS\Groups({
+     *     "login",
+     *     "crud",
+     *     "one-to-many-right"
+     * })
+     *
+     * @Assert\Email(
+     *     message = "El email '{{ value }}' no es valido.",
+     *     checkMX = false,
+     *     groups={"registration"}
+     * )
      */
     protected $email;
 
@@ -80,13 +116,6 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
      *
      */
     private $dni;
-
-    /**
-     * @var string
-     *
-     * @JMSS\Groups({"login", "crud"})
-     */
-    private $name;
 
     /**
      * @var string|null
@@ -211,6 +240,13 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
      * })
      */
     private $pointOfSale;
+
+    /**
+     * @var boolean
+     *
+     * @Assert\IsTrue(message="Tiene que aceptar los terminos y condiciones. 333", groups={"registration"})
+     */
+    private $termsAccepted;
 
     /**
      * @var string
@@ -762,6 +798,22 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     public function getIsActive()
     {
         return $this->isActive;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isTermsAccepted()
+    {
+        return $this->termsAccepted;
+    }
+
+    /**
+     * @param boolean $termsAccepted
+     */
+    public function setTermsAccepted($termsAccepted)
+    {
+        $this->termsAccepted = $termsAccepted;
     }
 
     /**
