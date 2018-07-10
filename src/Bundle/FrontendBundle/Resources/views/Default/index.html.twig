@@ -14,16 +14,22 @@
     <section class="content">
         <div class="row">
 
-            {% for i in 0..10 %}
+            {% for gdFile in googleDriveFiles %}
 
-                <div class="col-md-3">
+                <div class="col-md-3" onclick="location.href='{{ path('backend_google_drive_grid_watch', { slug:gdFile.slug }) }}';">
                     <div class="box box-widget">
 
                         <div class="box-header with-border">
                             <div class="user-block">
                                 <img class="img-circle" src="https://almsaeedstudio.com/themes/AdminLTE/dist/img/user1-128x128.jpg" alt="User Image">
-                                <span class="username"><a href="#">Jonathan Burke</a></span>
-                                <span class="description">Shared publicly - 7:30 PM Today</span>
+                                <span class="username">
+                                    <a href="#">
+                                        {{ gdFile.user.name ~' '~ gdFile.user.lastName|slice(0, 200) }}
+                                    </a>
+                                </span>
+                                <span class="description">
+                                    Compartido {{ gdFile.createdAt|date("Y-m-d H:i")  }}
+                                </span>
                             </div>
                             <div class="box-tools">
                                 <button type="button" class="btn btn-box-tool" data-toggle="tooltip" title="Mark as read">
@@ -40,7 +46,7 @@
 
                         <div class="box-body">
                             <img class="img-responsive pad" src="https://almsaeedstudio.com/themes/AdminLTE/dist/img/photo2.png" alt="Photo">
-                            <p>I took this photo this morning. What do you guys think?</p>
+                            <p title="{{ gdFile.fileName }}">{{ gdFile.fileName|slice(0, 27) }}</p>
                             <button type="button" class="btn btn-default btn-xs"><i class="fa fa-share"></i> Share</button>
                             <button type="button" class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-up"></i> Like</button>
                             <span class="pull-right text-muted">127 likes - 3 comments</span>

@@ -52,8 +52,11 @@ class DoctrineListenerService extends BaseDoctrineListenerService implements Eve
 //        $className = $entityManager->getClassMetadata(get_class($entity))->getName();
 
         if ($entity instanceof GoogleDriveFile) {
+
             $name = $entity->getFileName();
-            $entity->setSlug($this->slugify($name));
+            $uniqueId = $entity->getUniqueId();
+
+            $entity->setSlug($uniqueId .'-'. $this->slugify($name));
             $entity->setCountShare(0);
             $entity->setCountView(0);
             $entity->setCreatedAt($this->setupCreatedAt($entity));

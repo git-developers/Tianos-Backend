@@ -15,7 +15,7 @@ backend_google_drive_grid_index:
             grid:
                 icon: google
                 box_class: primary
-                title: Archivos Google Drive gestionados en Tianos
+                title: Mis archivos Google Drive gestionados en Tianos
                 modal:
                     title: Crear cliente
                 data_table:
@@ -131,11 +131,11 @@ backend_google_drive_grid_delete:
             vars:
 #                body_css: grid-body-css
 
-
 backend_google_drive_grid_watch:
-    path: /watch
+    path: /watch/{slug}
     methods: [GET]
     defaults:
+        slug: null
         _controller: tianos.google.drive.grid.controller.google:watchAction
         _tianos:
             action: edit

@@ -45,10 +45,25 @@ class Builder implements ContainerAwareInterface
 
 
 
-//        $user = $this->getUser();
-//        echo 'GATO:::<pre>';
-//        print_r($user->getRoles());
-//        exit;
+        /**
+         * FRONTEND
+         */
+        $isGranted = true;
+        $menu->addChild('Inicio', [
+            'route' => 'frontend_default_index',
+            'extras' => ['safe_label' => true],
+            'childrenAttributes' => [
+                'class' => 'treeview-menu',
+            ],
+        ])
+            ->setAttribute('class', 'treeview')
+            ->setAttribute('icon', 'fa-fw fa-tv')
+            ->setAttribute('class', $this->activeRoute('frontend_default_index'))
+            ->setDisplay($isGranted)
+        ;
+        /**
+         * FRONTEND
+         */
 
 
 
@@ -366,7 +381,6 @@ class Builder implements ContainerAwareInterface
         $isGranted = $this->isGranted([
             'ROLE_' . Profile::ADMIN,
         ]);
-
         $menu->addChild('Google', [
             'route' => 'backend_default_dashboard',
             'extras' => ['safe_label' => true],
@@ -374,16 +388,16 @@ class Builder implements ContainerAwareInterface
                 'class' => 'treeview-menu',
             ],
         ])
-            ->setAttribute('allow_angle', true)
-            ->setAttribute('class', 'treeview')
-            ->setAttribute('class', $this->activeRoute([
-                'backend_google_drive_grid_watch',
-                'backend_google_drive_index',
-                'backend_google_drive_grid_index',
-                'backend_google_drive_account_permissions',
-            ]))
-            ->setAttribute('icon', 'fa-fw fa-google')
-            ->setDisplay($isGranted)
+        ->setAttribute('allow_angle', true)
+        ->setAttribute('class', 'treeview')
+        ->setAttribute('class', $this->activeRoute([
+            'backend_google_drive_grid_watch',
+            'backend_google_drive_index',
+            'backend_google_drive_grid_index',
+            'backend_google_drive_account_permissions',
+        ]))
+        ->setAttribute('icon', 'fa-fw fa-google')
+        ->setDisplay($isGranted)
         ;
 
         $menu['Google']->addChild('Drive', [
@@ -393,45 +407,44 @@ class Builder implements ContainerAwareInterface
                 'class' => 'treeview-menu',
             ],
         ])
-            ->setAttribute('icon', 'fa-fw fa-plus-circle')
-            ->setAttribute('class', $this->activeRoute([
-                'backend_google_drive_grid_watch',
-                'backend_google_drive_index',
-                'backend_google_drive_grid_index',
-                'backend_google_drive_account_permissions',
-            ]))
-            ->setDisplay($isGranted)
+        ->setAttribute('icon', 'fa-fw fa-plus-circle')
+        ->setAttribute('class', $this->activeRoute([
+            'backend_google_drive_grid_watch',
+            'backend_google_drive_index',
+            'backend_google_drive_grid_index',
+            'backend_google_drive_account_permissions',
+        ]))
+        ->setDisplay($isGranted)
         ;
 
         $menu['Google']['Drive']->addChild('My drive', [
             'route' => 'backend_google_drive_index',
             'routeParameters' => ['field' => 'my-drive']
         ])
-            ->setAttribute('icon', self::CIRCLE_1)
-            ->setAttribute('class', $this->activeRoute('backend_google_drive_index'))
-            ->setDisplay($isGranted)
+        ->setAttribute('icon', self::CIRCLE_1)
+        ->setAttribute('class', $this->activeRoute('backend_google_drive_index'))
+        ->setDisplay($isGranted)
         ;
 
         $menu['Google']['Drive']->addChild('Shared with me', [
             'route' => 'backend_google_drive_index',
             'routeParameters' => ['field' => 'shared-with-me']
         ])
-            ->setAttribute('icon', self::CIRCLE_1)
-            ->setAttribute('class', $this->activeRoute('backend_google_drive_index'))
-            ->setDisplay($isGranted)
+        ->setAttribute('icon', self::CIRCLE_1)
+        ->setAttribute('class', $this->activeRoute('backend_google_drive_index'))
+        ->setDisplay($isGranted)
         ;
 
         $menu['Google']['Drive']->addChild('Gestionar en Tianos', [
             'route' => 'backend_google_drive_grid_index'
         ])
-            ->setAttribute('icon', self::CIRCLE_2)
-            ->setAttribute('class', $this->activeRoute([
-                'backend_google_drive_grid_index',
-                'backend_google_drive_grid_watch'
-            ]))
-            ->setDisplay($isGranted)
+        ->setAttribute('icon', self::CIRCLE_2)
+        ->setAttribute('class', $this->activeRoute([
+            'backend_google_drive_grid_index',
+            'backend_google_drive_grid_watch'
+        ]))
+        ->setDisplay($isGranted)
         ;
-
         /**
          * GOOGLE DRIVE
          */
@@ -468,6 +481,10 @@ class Builder implements ContainerAwareInterface
             ->setAttribute('class', $this->activeRoute('backend_core_loadfixtures'))
             ->setDisplay($isGranted)
         ;
+        /**
+         * SETTINGS
+         */
+
 
 
 
@@ -477,7 +494,7 @@ class Builder implements ContainerAwareInterface
         $isGranted = $this->isGranted([
             'ROLE_' . Profile::REGULAR_USER,
         ]);
-        $menu->addChild('Front-end', [
+        $menu->addChild('Usuarios', [
             'route' => 'backend_user_index',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
@@ -489,14 +506,43 @@ class Builder implements ContainerAwareInterface
             ->setAttribute('class', $this->activeRoute('backend_user_index'))
             ->setDisplay($isGranted)
         ;
+        /**
+         * ACCOUNTS - REGULAR_USER
+         */
 
 
 
         /**
-         * FRONTEND
+         * GOOGLE DRIVE FILES - REGULAR_USER
          */
-        $isGranted = true; //$this->isGranted('ROLE_CLIENT_VIEW');
-        $menu->addChild('Front-end', [
+        $isGranted = $this->isGranted([
+            'ROLE_' . Profile::REGULAR_USER,
+        ]);
+        $menu->addChild('Mis archivos', [
+            'route' => 'backend_google_drive_grid_index',
+            'extras' => ['safe_label' => true],
+            'childrenAttributes' => [
+                'class' => 'treeview-menu',
+            ],
+        ])
+            ->setAttribute('class', 'treeview')
+            ->setAttribute('icon', 'fa-fw fa-file-text-o')
+            ->setAttribute('class', $this->activeRoute('backend_google_drive_grid_index'))
+            ->setDisplay($isGranted)
+        ;
+        /**
+         * GOOGLE DRIVE FILES - REGULAR_USER
+         */
+
+
+
+        /**
+         * GOOGLE DRIVE - REGULAR_USER
+         */
+        $isGranted = $this->isGranted([
+            'ROLE_' . Profile::REGULAR_USER,
+        ]);
+        $menu->addChild('Google Drive', [
             'route' => 'backend_default_dashboard',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
@@ -504,28 +550,35 @@ class Builder implements ContainerAwareInterface
             ],
         ])
             ->setAttribute('class', 'treeview')
-            ->setAttribute('icon', 'fa-fw fa-tv')
+            ->setAttribute('icon', 'fa-fw fa-google')
+            ->setAttribute('class', $this->activeRoute([
+                'backend_google_drive_grid_watch',
+                'backend_google_drive_index',
+                'backend_google_drive_account_permissions',
+            ]))
             ->setDisplay($isGranted)
         ;
 
-        $menu['Front-end']->addChild('inicio', [
-            'route' => 'frontend_default_index'
+        $menu['Google Drive']->addChild('My drive', [
+            'route' => 'backend_google_drive_index',
+            'routeParameters' => ['field' => 'my-drive']
         ])
             ->setAttribute('icon', self::CIRCLE_1)
-            ->setAttribute('class', $this->activeRoute('frontend_default_index'))
+            ->setAttribute('class', $this->activeRoute('backend_google_drive_index'))
+            ->setDisplay($isGranted)
+        ;
+
+        $menu['Google Drive']->addChild('Shared with me', [
+            'route' => 'backend_google_drive_index',
+            'routeParameters' => ['field' => 'shared-with-me']
+        ])
+            ->setAttribute('icon', self::CIRCLE_2)
+            ->setAttribute('class', $this->activeRoute('backend_google_drive_index'))
             ->setDisplay($isGranted)
         ;
         /**
-         * FRONTEND
+         * GOOGLE DRIVE - REGULAR_USER
          */
-
-
-
-
-
-
-
-
 
 
         return $menu;

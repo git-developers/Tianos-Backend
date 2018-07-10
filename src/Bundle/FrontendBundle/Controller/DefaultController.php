@@ -24,8 +24,10 @@ class DefaultController extends Controller
         $template = $options['template'] ?? null;
         Assert::notNull($template, 'Template is not configured.');
 
+        $googleDriveFiles = $this->get('tianos.repository.google.drive')->findAll();
+
         return $this->render($template, [
-            'form' => null
+            'googleDriveFiles' => $googleDriveFiles
         ]);
 
 //        return $this->render('default/index.html.twig', [

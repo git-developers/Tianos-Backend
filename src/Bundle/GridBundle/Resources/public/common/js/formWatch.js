@@ -24,7 +24,7 @@
 
             var slug = $(context).parent().parent().data('slug');
 
-            window.location.href = options.route + "?slug=" + slug;
+            window.location.href = options.route + "/" + slug;
 
         };
 

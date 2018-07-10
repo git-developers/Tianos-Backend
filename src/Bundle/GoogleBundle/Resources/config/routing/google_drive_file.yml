@@ -1,5 +1,5 @@
 backend_google_drive_index:
-    path: /{field}
+    path: /files/{field}
     methods: [GET]
     defaults:
         field: my-drive
