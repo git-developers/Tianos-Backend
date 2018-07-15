@@ -16,9 +16,6 @@ backend_role:
 backend_profile:
     resource: '@ProfileBundle/Resources/config/routing/backend.yml'
     prefix: /profile
-backend_user:
-    resource: '@UserBundle/Resources/config/routing/backend.yml'
-    prefix: /user
 backend_security:
     resource: '@UserBundle/Resources/config/routing/security.yml'
     prefix: /security
@@ -43,3 +40,9 @@ backend_google_drive_grid:
 backend_google_drive_vote:
     resource: '@GoogleBundle/Resources/config/routing/google_drive_file_vote.yml'
     prefix: /google-drive-vote
+backend_user:
+    resource: '@UserBundle/Resources/config/routing/backend.yml'
+    prefix: /user
+backend_anonymous_user:
+    resource: '@UserBundle/Resources/config/routing/backend_anonymous.yml'
+    prefix: /user-anonymous

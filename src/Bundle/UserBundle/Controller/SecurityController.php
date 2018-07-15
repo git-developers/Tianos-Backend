@@ -63,7 +63,7 @@ class SecurityController extends BaseController
         $validator = $this->container->get('validator');
         $validator->validate($entity, null, ['registration']);
 
-        $profile = $this->get('tianos.repository.profile')->findOneBySlug(Profile::REGULAR_USER);
+        $profile = $this->get('tianos.repository.profile')->findOneBySlug(Profile::REGULAR_USER_SLUG);
         $entity->setProfile($profile);
 
         if ($form->isSubmitted() && $form->isValid()) {

@@ -61,6 +61,9 @@ class GoogleHelper extends Helper
             case 'code';
                 $template = '@GoogleBundle/Resources/views/GoogleDriveFileGrid/Watch/ViewersTemplate/code.html.twig';
             break;
+            case 'zip';
+                $template = '@GoogleBundle/Resources/views/GoogleDriveFileGrid/Watch/ViewersTemplate/zip.html.twig';
+            break;
             default:
                 $template = '@GoogleBundle/Resources/views/GoogleDriveFileGrid/Watch/ViewersTemplate/default.html.twig';
                 $template = '';

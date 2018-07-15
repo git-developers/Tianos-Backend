@@ -15,6 +15,7 @@ class Profile
     const ADMIN = 'Administrator';
     const GUEST = 'Guest (invitado)';
     const REGULAR_USER = 'Regular User';
+    const REGULAR_USER_SLUG = 'regular-user';
 
     /**
      * @var integer

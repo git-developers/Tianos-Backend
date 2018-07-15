@@ -26,11 +26,13 @@ class UserExtension extends \Twig_Extension
 
     public function appUserNameFunction(User $user, $start, $length = null)
     {
-
         $name = $user->getName();
-        $lastName = $user->getLastName();
+        $name = !is_null($name) ? substr($name, $start, $length) : '';
 
-        return substr($name, $start, $length).' '.substr($lastName, $start, $length);
+        $lastName = $user->getLastName();
+        $lastName = !is_null($lastName) ? substr($lastName, $start, $length) : '';
+
+        return $name .' '. $lastName;
     }
 
     public function getName()

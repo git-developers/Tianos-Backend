@@ -495,7 +495,7 @@ class Builder implements ContainerAwareInterface
             'ROLE_' . Profile::REGULAR_USER,
         ]);
         $menu->addChild('Usuarios', [
-            'route' => 'backend_user_index',
+            'route' => 'backend_anonymous_user_index',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
                 'class' => 'treeview-menu',
@@ -503,7 +503,7 @@ class Builder implements ContainerAwareInterface
         ])
             ->setAttribute('class', 'treeview')
             ->setAttribute('icon', 'fa-fw fa-user')
-            ->setAttribute('class', $this->activeRoute('backend_user_index'))
+            ->setAttribute('class', $this->activeRoute('backend_anonymous_user_index'))
             ->setDisplay($isGranted)
         ;
         /**
