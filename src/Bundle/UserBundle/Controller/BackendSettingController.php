@@ -19,6 +19,48 @@ class BackendSettingController extends BaseController
      */
     public function indexAction(Request $request): Response
     {
+//        if (!$this->get('security.authorization_checker')->isGranted('ROLE_EDIT_USER')) {
+//            return $this->redirectToRoute('frontend_default_access_denied');
+//        }
+
+        $parameters = [
+            'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
+        ];
+        $applicationName = $this->container->getParameter('application_name');
+        $this->metadata = new Metadata('tianos', $applicationName, $parameters);
+
+        //CONFIGURATION
+        $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
+
+        $repository = $configuration->getRepositoryService();
+        $method = $configuration->getRepositoryMethod();
+        $template = $configuration->getTemplate('');
+        $vars = $configuration->getVars();
+
+        $slug = $request->get('slug', null);
+
+        $entity = $this->get($repository)->$method($slug);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('el archivo que busca no existe');
+        }
+
+        return $this->render(
+            $template,
+            [
+                'vars' => $vars,
+                'small_text' => '',
+                'entity' => $entity,
+            ]
+        );
+    }
+
+
+
+
+    /*
+    public function indexAction(Request $request): Response
+    {
         if (!$this->isXmlHttpRequest()) {
             throw $this->createAccessDeniedException(self::ACCESS_DENIED_MSG);
         }
@@ -51,4 +93,6 @@ class BackendSettingController extends BaseController
             ]
         );
     }
+    */
+
 }

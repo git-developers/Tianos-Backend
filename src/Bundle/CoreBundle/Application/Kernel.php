@@ -46,6 +46,7 @@ class Kernel extends HttpKernel
             new \FOS\UserBundle\FOSUserBundle(),
             new \FOS\RestBundle\FOSRestBundle(),
             new \Knp\Bundle\MenuBundle\KnpMenuBundle(),
+            new \Liip\ImagineBundle\LiipImagineBundle(),
             new \JMS\SerializerBundle\JMSSerializerBundle(),
             new \Symfony\Bundle\AsseticBundle\AsseticBundle(),
             new \Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle(),

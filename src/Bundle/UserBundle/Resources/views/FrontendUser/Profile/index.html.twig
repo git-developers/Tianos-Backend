@@ -1,0 +1,62 @@
+{% extends "ThemesBundle:Adminlte:1_template.html.twig" %}
+
+
+{#IMAGEN AVATAR#}
+
+{% if(entity.image is defined and entity.image is not null) %}
+    {% set profile_avatar = asset('../../uploads/user/' ~ entity.image) | imagine_filter('filter_160') %} {# ~'?'~ random()#}
+{% else %}
+    {% set profile_avatar = asset('bundles/user/images/no_avatar.jpg') %} {# | imagine_filter('filter_160')#}
+{% endif %}
+
+{% if(entity.image is defined and entity.image is not null) %}
+    {% set profile_avatar_modal = asset('../../uploads/user/' ~ entity.image) | imagine_filter('filter_500') %}
+{% else %}
+    {% set profile_avatar_modal = asset('bundles/user/images/no_avatar.jpg') %}
+{% endif %}
+
+{#IMAGEN AVATAR#}
+
+
+
+{% block stylesheets %}
+    {{ parent() }}
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    {#<script src="{{ asset('bundles/main/dist/js/pages/dashboard.js')}}"></script>#}
+
+{% endblock %}
+
+{% block content %}
+
+    <section class="content-header">
+        <h1>{{ entity.name }} {{ entity.lastName }}</h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li><a href="#">Examples</a></li>
+            <li class="active">User profile</li>
+        </ol>
+    </section>
+
+    <section class="content">
+
+        <div class="row">
+
+            <div class="col-md-3">
+                {{ include("UserBundle:FrontendUser:Profile/Box/left.html.twig") }}
+            </div>
+
+            <div class="col-md-9">
+                {{ include("UserBundle:FrontendUser:Profile/Box/right.html.twig") }}
+            </div>
+
+        </div>
+    </section>
+
+    {{ include("UserBundle:FrontendUser:Profile/Modal/modal_avatar.html.twig") }}
+
+{% endblock %}

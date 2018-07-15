@@ -1,19 +1,19 @@
-frontend_product_index:
-    path: /
+frontend_user_index:
+    path: /{slug}
     methods: [GET]
     defaults:
-        _controller: tianos.frontend.controller.product:indexAction
+        slug: null
+        _controller: tianos.frontend.controller.user:indexAction
         _tianos:
-            section: admin
-            permission: true
-            grid: sylius_admin_product
-            template: ProductBundle:Product:index.html.twig
+            action: edit
+            template: UserBundle:FrontendUser/Profile:index.html.twig
             vars:
-                subheader: sylius.ui.manage_your_product_catalog
-                icon: cube
+                body_css: tianos-file-watch
             form:
-                type: Bundle\ProductBundle\Form\Type\ProductType
+                type: Bundle\GoogleBundle\Form\Type\GoogleType
             repository:
-                service: tianos.repository.product
-                method: findAll
-                arguments: [$productId]
+                service: tianos.repository.user
+                method: findOneBySlug
+                arguments: [$userId]
+                vars:
+                    serialize_group_name: user

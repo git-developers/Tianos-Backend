@@ -5,3 +5,7 @@ frontend_default:
 frontend_pages:
     resource: '@PagesBundle/Resources/config/routing.yml'
     prefix: /pages
+
+frontend_user:
+    resource: '@UserBundle/Resources/config/routing/frontend.yml'
+    prefix: /user
