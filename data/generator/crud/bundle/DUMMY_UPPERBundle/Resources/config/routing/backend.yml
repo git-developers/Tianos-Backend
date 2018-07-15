@@ -63,7 +63,7 @@ backend_DUMMY_LOWER_create:
         _controller: tianos.backend.controller.DUMMY_LOWER:createAction
         _tianos:
             action: create
-            template: DUMMY_UPPERBundle:DUMMY_UPPERBackend/Form:form.html.twig
+            template: DUMMY_UPPERBundle:BackendDUMMY_UPPER/Form:form.html.twig
             entity: Bundle\DUMMY_UPPERBundle\Entity\DUMMY_UPPER
             form:
                 type: Bundle\DUMMY_UPPERBundle\Form\Type\DUMMY_UPPERType
@@ -78,7 +78,7 @@ backend_DUMMY_LOWER_edit:
         _controller: tianos.backend.controller.DUMMY_LOWER:editAction
         _tianos:
             action: edit
-            template: DUMMY_UPPERBundle:DUMMY_UPPERBackend/Form:form.html.twig
+            template: DUMMY_UPPERBundle:BackendDUMMY_UPPER/Form:form.html.twig
             form:
                 type: Bundle\DUMMY_UPPERBundle\Form\Type\DUMMY_UPPERType
             repository:
@@ -110,7 +110,7 @@ backend_DUMMY_LOWER_view:
         _controller: tianos.backend.controller.DUMMY_LOWER:viewAction
         _tianos:
             action: view
-            template: DUMMY_UPPERBundle:DUMMY_UPPERBackend/Informative:view.html.twig
+            template: DUMMY_UPPERBundle:BackendDUMMY_UPPER/Informative:view.html.twig
             repository:
                 service: tianos.repository.DUMMY_LOWER
                 method: find
@@ -125,7 +125,7 @@ backend_DUMMY_LOWER_info:
         _controller: tianos.backend.controller.DUMMY_LOWER:infoAction
         _tianos:
             action: info
-            template: DUMMY_UPPERBundle:DUMMY_UPPERBackend/Informative:info.html.twig
+            template: DUMMY_UPPERBundle:BackendDUMMY_UPPER/Informative:info.html.twig
 
 
 

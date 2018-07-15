@@ -96,21 +96,21 @@ class Builder implements ContainerAwareInterface
         ->setDisplay($isGranted)
         ;
 
-        $menu['Master']->addChild('Cliente', [
+        $menu['Master']->addChild('Universidades', [
             'route' => 'backend_default_dashboard',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
                 'class' => 'treeview-menu',
             ],
         ])
-        ->setAttribute('icon', 'fa-fw fa-odnoklassniki')
+        ->setAttribute('icon', 'fa-fw fa-building')
         ->setAttribute('class', $this->activeRoute([
             'backend_client_index',
         ]))
         ->setDisplay($isGranted)
         ;
 
-        $menu['Master']['Cliente']->addChild('Gestionar', [
+        $menu['Master']['Universidades']->addChild('Gestionar', [
             'route' => 'backend_client_index'
         ])
         ->setAttribute('icon', self::CIRCLE_1)

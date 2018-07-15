@@ -22,6 +22,12 @@ services:
         tags:
             - { name: tianos.backend.controller.user, alias: tianos.backend.controller.user }
 
+    tianos.backend.setting.controller.user:
+        class: Bundle\UserBundle\Controller\BackendSettingController
+        arguments: [ Bundle\ResourceBundle\Factory\RequestConfigurationFactoryInterface ]
+        tags:
+            - { name: tianos.backend.setting.controller.user, alias: tianos.backend.setting.controller.user }
+
     tianos.frontend.controller.user:
         class: Bundle\UserBundle\Controller\FrontendController
         arguments: [ Bundle\ResourceBundle\Factory\RequestConfigurationFactoryInterface ]

@@ -5,7 +5,7 @@ backend_security_login:
         _controller: tianos.security.controller.user:loginAction
         _tianos:
             action: create
-            template: UserBundle:UserBackend/Security:login.html.twig
+            template: UserBundle:BackendUser/Security:login.html.twig
 
 backend_security_register:
     path: /register
@@ -14,7 +14,7 @@ backend_security_register:
         _controller: tianos.security.controller.user:registerAction
         _tianos:
             action: create
-            template: UserBundle:UserBackend/Security:register.html.twig
+            template: UserBundle:BackendUser/Security:register.html.twig
 
 fos_user_security:
     resource: "@FOSUserBundle/Resources/config/routing/security.xml"

@@ -65,7 +65,7 @@ backend_profile_create:
         _controller: tianos.backend.controller.profile:createAction
         _tianos:
             action: create
-            template: ProfileBundle:ProfileBackend/Form:form.html.twig
+            template: ProfileBundle:BackendProfile/Form:form.html.twig
             entity: Bundle\ProfileBundle\Entity\Profile
             form:
                 type: Bundle\ProfileBundle\Form\Type\ProfileType
@@ -80,7 +80,7 @@ backend_profile_edit:
         _controller: tianos.backend.controller.profile:editAction
         _tianos:
             action: edit
-            template: ProfileBundle:ProfileBackend/Form:form.html.twig
+            template: ProfileBundle:BackendProfile/Form:form.html.twig
             form:
                 type: Bundle\ProfileBundle\Form\Type\ProfileType
             repository:
@@ -112,7 +112,7 @@ backend_profile_view:
         _controller: tianos.backend.controller.profile:viewAction
         _tianos:
             action: view
-            template: ProfileBundle:ProfileBackend/Informative:view.html.twig
+            template: ProfileBundle:BackendProfile/Informative:view.html.twig
             repository:
                 service: tianos.repository.profile
                 method: find
@@ -127,4 +127,4 @@ backend_profile_info:
         _controller: tianos.backend.controller.profile:infoAction
         _tianos:
             action: info
-            template: ProfileBundle:ProfileBackend/Informative:info.html.twig
+            template: ProfileBundle:BackendProfile/Informative:info.html.twig

@@ -67,7 +67,7 @@ backend_category_create:
         _controller: tianos.backend.controller.category:createAction
         _tianos:
             action: create
-            template: CategoryBundle:CategoryBackend/Form:form.html.twig
+            template: CategoryBundle:BackendCategory/Form:form.html.twig
             entity: Bundle\CategoryBundle\Entity\Category
             form:
                 type: Bundle\CategoryBundle\Form\Type\CategoryType
@@ -82,7 +82,7 @@ backend_category_edit:
         _controller: tianos.backend.controller.category:editAction
         _tianos:
             action: edit
-            template: CategoryBundle:CategoryBackend/Form:form.html.twig
+            template: CategoryBundle:BackendCategory/Form:form.html.twig
             form:
                 type: Bundle\CategoryBundle\Form\Type\CategoryType
             repository:
@@ -114,7 +114,7 @@ backend_category_view:
         _controller: tianos.backend.controller.category:viewAction
         _tianos:
             action: view
-            template: CategoryBundle:CategoryBackend/Informative:view.html.twig
+            template: CategoryBundle:BackendCategory/Informative:view.html.twig
             repository:
                 service: tianos.repository.category
                 method: find

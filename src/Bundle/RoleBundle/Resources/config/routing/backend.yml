@@ -63,7 +63,7 @@ backend_role_create:
         _controller: tianos.backend.controller.role:createAction
         _tianos:
             action: create
-            template: RoleBundle:RoleBackend/Form:form.html.twig
+            template: RoleBundle:BackendRole/Form:form.html.twig
             entity: Bundle\RoleBundle\Entity\Role
             form:
                 type: Bundle\RoleBundle\Form\Type\RoleType
@@ -78,7 +78,7 @@ backend_role_edit:
         _controller: tianos.backend.controller.role:editAction
         _tianos:
             action: edit
-            template: RoleBundle:RoleBackend/Form:form.html.twig
+            template: RoleBundle:BackendRole/Form:form.html.twig
             form:
                 type: Bundle\RoleBundle\Form\Type\RoleType
             repository:
@@ -110,7 +110,7 @@ backend_role_view:
         _controller: tianos.backend.controller.role:viewAction
         _tianos:
             action: view
-            template: RoleBundle:RoleBackend/Informative:view.html.twig
+            template: RoleBundle:BackendRole/Informative:view.html.twig
             repository:
                 service: tianos.repository.role
                 method: find
@@ -125,4 +125,4 @@ backend_role_info:
         _controller: tianos.backend.controller.role:infoAction
         _tianos:
             action: info
-            template: RoleBundle:RoleBackend/Informative:info.html.twig
+            template: RoleBundle:BackendRole/Informative:info.html.twig

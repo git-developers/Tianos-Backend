@@ -14,9 +14,9 @@ backend_client_index:
                 icon: cube
                 body_css: grid-body-css
             grid:
-                icon: odnoklassniki
+                icon: building
                 box_class: primary
-                title: Gestionar clientes
+                title: Gestionar universidades
                 modal:
                     title: Crear cliente
                 data_table:
@@ -64,7 +64,7 @@ backend_client_create:
         _controller: tianos.backend.controller.client:createAction
         _tianos:
             action: create
-            template: ClientBundle:ClientBackend/Form:form.html.twig
+            template: ClientBundle:BackendClient/Form:form.html.twig
             entity: Bundle\ClientBundle\Entity\Client
             form:
                 type: Bundle\ClientBundle\Form\Type\ClientType
@@ -79,7 +79,7 @@ backend_client_edit:
         _controller: tianos.backend.controller.client:editAction
         _tianos:
             action: edit
-            template: ClientBundle:ClientBackend/Form:form.html.twig
+            template: ClientBundle:BackendClient/Form:form.html.twig
             form:
                 type: Bundle\ClientBundle\Form\Type\ClientType
             repository:
@@ -111,7 +111,7 @@ backend_client_view:
         _controller: tianos.backend.controller.client:viewAction
         _tianos:
             action: view
-            template: ClientBundle:ClientBackend/Informative:view.html.twig
+            template: ClientBundle:BackendClient/Informative:view.html.twig
             repository:
                 service: tianos.repository.client
                 method: find
@@ -126,4 +126,4 @@ backend_client_info:
         _controller: tianos.backend.controller.client:infoAction
         _tianos:
             action: info
-            template: ClientBundle:ClientBackend/Informative:info.html.twig
+            template: ClientBundle:BackendClient/Informative:info.html.twig

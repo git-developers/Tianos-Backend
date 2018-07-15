@@ -62,7 +62,7 @@ backend_session_view:
         _controller: tianos.backend.controller.session:viewAction
         _tianos:
             action: view
-            template: SessionBundle:SessionBackend/Informative:view.html.twig
+            template: SessionBundle:BackendSession/Informative:view.html.twig
             repository:
                 service: tianos.repository.session
                 method: find
@@ -75,4 +75,4 @@ backend_session_info:
         _controller: tianos.backend.controller.session:infoAction
         _tianos:
             action: info
-            template: SessionBundle:SessionBackend/Informative:info.html.twig
+            template: SessionBundle:BackendSession/Informative:info.html.twig

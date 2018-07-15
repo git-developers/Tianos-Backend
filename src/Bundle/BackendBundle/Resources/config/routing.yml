@@ -46,3 +46,9 @@ backend_user:
 backend_anonymous_user:
     resource: '@UserBundle/Resources/config/routing/backend_anonymous.yml'
     prefix: /user-anonymous
+backend_profile_user:
+    resource: '@UserBundle/Resources/config/routing/backend_profile.yml'
+    prefix: /user-profile
+backend_setting_user:
+    resource: '@UserBundle/Resources/config/routing/backend_setting.yml'
+    prefix: /user-setting

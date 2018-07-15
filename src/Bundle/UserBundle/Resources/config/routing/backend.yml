@@ -75,7 +75,7 @@ backend_user_create:
         _controller: tianos.backend.controller.user:createAction
         _tianos:
             action: create
-            template: UserBundle:UserBackend/Form:form.html.twig
+            template: UserBundle:BackendUser/Form:form.html.twig
             entity: Bundle\UserBundle\Entity\User
             form:
                 type: Bundle\UserBundle\Form\Type\UserType
@@ -90,7 +90,7 @@ backend_user_edit:
         _controller: tianos.backend.controller.user:editAction
         _tianos:
             action: edit
-            template: UserBundle:UserBackend/Form:form.html.twig
+            template: UserBundle:BackendUser/Form:form.html.twig
             form:
                 type: Bundle\UserBundle\Form\Type\UserType
             repository:
@@ -122,7 +122,7 @@ backend_user_view:
         _controller: tianos.backend.controller.user:viewAction
         _tianos:
             action: view
-            template: UserBundle:UserBackend/Informative:view.html.twig
+            template: UserBundle:BackendUser/Informative:view.html.twig
             repository:
                 service: tianos.repository.user
                 method: find
@@ -137,5 +137,5 @@ backend_user_info:
         _controller: tianos.backend.controller.user:infoAction
         _tianos:
             action: info
-            template: UserBundle:UserBackend/Informative:info.html.twig
+            template: UserBundle:BackendUser/Informative:info.html.twig
 

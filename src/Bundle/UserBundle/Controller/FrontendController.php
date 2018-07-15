@@ -18,6 +18,8 @@ class FrontendController extends BaseController
 ////        parent::__construct($requestConfigurationFactory);
 //    }
 
+
+
     public function indexAction(Request $request): Response
     {
         $parameters = [

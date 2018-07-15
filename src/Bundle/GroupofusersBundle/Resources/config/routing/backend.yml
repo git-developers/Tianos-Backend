@@ -63,7 +63,7 @@ backend_groupofusers_create:
         _controller: tianos.backend.controller.groupofusers:createAction
         _tianos:
             action: create
-            template: GroupofusersBundle:GroupofusersBackend/Form:form.html.twig
+            template: GroupofusersBundle:BackendGroupofusers/Form:form.html.twig
             entity: Bundle\GroupofusersBundle\Entity\Groupofusers
             form:
                 type: Bundle\GroupofusersBundle\Form\Type\GroupofusersType
@@ -78,7 +78,7 @@ backend_groupofusers_edit:
         _controller: tianos.backend.controller.groupofusers:editAction
         _tianos:
             action: edit
-            template: GroupofusersBundle:GroupofusersBackend/Form:form.html.twig
+            template: GroupofusersBundle:BackendGroupofusers/Form:form.html.twig
             form:
                 type: Bundle\GroupofusersBundle\Form\Type\GroupofusersType
             repository:
@@ -110,7 +110,7 @@ backend_groupofusers_view:
         _controller: tianos.backend.controller.groupofusers:viewAction
         _tianos:
             action: view
-            template: GroupofusersBundle:GroupofusersBackend/Informative:view.html.twig
+            template: GroupofusersBundle:BackendGroupofusers/Informative:view.html.twig
             repository:
                 service: tianos.repository.groupofusers
                 method: find
@@ -125,4 +125,4 @@ backend_groupofusers_info:
         _controller: tianos.backend.controller.groupofusers:infoAction
         _tianos:
             action: info
-            template: GroupofusersBundle:GroupofusersBackend/Informative:info.html.twig
+            template: GroupofusersBundle:BackendGroupofusers/Informative:info.html.twig
