@@ -57,7 +57,10 @@ class SecurityController extends BaseController
         Assert::notNull($template, 'Template is not configured.');
 
         $entity = new User();
-        $form = $this->createForm(UserRegisterType::class, $entity, ['attr' => ['class' => '']]);
+        $form = $this->createForm(UserRegisterType::class, $entity, [
+            'application_url' => $this->container->getParameter('application_url')
+        ]);
+
         $form->handleRequest($request);
 
         $validator = $this->container->get('validator');

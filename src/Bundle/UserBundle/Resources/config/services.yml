@@ -46,10 +46,9 @@ services:
         factory: ['@doctrine.orm.entity_manager', getRepository]
         arguments: [ Bundle\UserBundle\Entity\User ]
 
-
-
-#    tianos.controller.grid:
-#        class: Bundle\GridBundle\Controller\GridController
-#        arguments: [ Bundle\GridBundle\Controller\RequestConfigurationFactoryInterface ]
+#    tianos.form.type.user.register:
+#        class: Bundle\UserBundle\Form\Type\UserRegisterType
+#        arguments: [ '%application_url%' ]
 #        tags:
-#            - { name: tianos.controller.grid, alias: tianos.controller.grid }
+#            - { name: tianos.form.type.user.register, alias: tianos.form.type.user.register }
+

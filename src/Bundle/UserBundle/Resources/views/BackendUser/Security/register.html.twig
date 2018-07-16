@@ -7,12 +7,12 @@
 {% block stylesheets %}
     {{ parent() }}
 
-    {#{% stylesheets#}
-        {#filter='cssrewrite'#}
-        {#'@AppBundle/Resources/public/css/switch.css'#}
-    {#%}#}
-        {#<link rel="stylesheet" href="{{ asset_url }}" />#}
-    {#{% endstylesheets %}#}
+    {% stylesheets
+        filter='cssrewrite'
+        '@UserBundle/Resources/public/css/tianos.css'
+    %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
 
 {% endblock %}
 
@@ -72,6 +72,7 @@
                             <label class="">
                                 {{ form_widget(form.termsAccepted) }}
                                 {{ form_label(form.termsAccepted) }}
+                                <a data-toggle="modal" data-target="#modal-terms-and-conditions"> terms y conds.</a>
                             </label>
                         </div>
                     </div>
@@ -79,8 +80,6 @@
                         {{ form_widget(form.submit) }}
                     </div>
                 </div>
-
-            {#<a data-toggle="modal" data-target="#modal-terms-and-conditions"> terms y conds.</a>#}
 
             {{ form_end(form)}}
 
@@ -99,6 +98,6 @@
         </div>
     </div>
 
-    {#{{ include('FrontendBundle:Security:Modal/terms_and_conditions.html.twig') }}#}
+    {{ include('UserBundle:BackendUser:Security/Modal/terms_and_conditions.html.twig') }}
 
 {% endblock %}

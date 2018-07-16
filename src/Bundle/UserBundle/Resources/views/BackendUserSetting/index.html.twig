@@ -1,4 +1,4 @@
-{% extends "CoreBundle::template.html.twig" %}
+{% extends "ThemesBundle:Adminlte:1_template.html.twig" %}
 
 {% block stylesheets %}
     {{ parent() }}
@@ -24,11 +24,11 @@
                 var reader = new FileReader();
 
                 reader.onload = function (e) {
-                    {#get loaded data and render thumbnail#}
+                    get loaded data and render thumbnail
                     document.getElementById("image").src = e.target.result;
                 };
 
-                {#read the image file as a data URL.#}
+                read the image file as a data URL.
                 reader.readAsDataURL(this.files[0]);
             };
         {% endif %}
@@ -68,25 +68,31 @@
                                 <div class="nav-tabs-custom">
                                     <ul class="nav nav-tabs">
                                         <li class="{{ (active == 1) ? 'active' : '' }}">
-                                            <a href="#tab_1" data-toggle="tab" title="actualizar foto de perfil">foto de perfil</a>
+                                            <a href="#tab_1" data-toggle="tab" title="actualizar foto de perfil">
+                                                <i class="fa fa-fw fa-{{ boxLeft.icon }}"></i> foto de perfil
+                                            </a>
                                         </li>
                                         <li class="{{ (active == 2) ? 'active' : '' }}">
-                                            <a href="#tab_2" data-toggle="tab" title="informaci&oacute;n general">informaci&oacute;n general</a>
+                                            <a href="#tab_2" data-toggle="tab" title="informaci&oacute;n general">
+                                                <i class="fa fa-fw fa-{{ boxCenter.icon }}"></i> informaci&oacute;n general
+                                            </a>
                                         </li>
                                         <li class="{{ (active == 3) ? 'active' : '' }}">
-                                            <a href="#tab_3" data-toggle="tab">cambiar password</a>
+                                            <a href="#tab_3" data-toggle="tab">
+                                                <i class="fa fa-fw fa-{{ boxRight.icon }}"></i> cambiar password
+                                            </a>
                                         </li>
                                         {#<li class="pull-right"><a href="#" class="text-muted"><i class="fa fa-gear"></i></a></li>#}
                                     </ul>
                                     <div class="tab-content">
                                         <div class="tab-pane {{ (active == 1) ? 'active' : '' }}" id="tab_1">
-                                            {{ include("UserBundle:UserProfileBackend:Form/avatar/avatar.html.twig") }}
+                                            {{ include("UserBundle:BackendUserSetting:Form/avatar/avatar.html.twig") }}
                                         </div>
                                         <div class="tab-pane {{ (active == 2) ? 'active' : '' }}" id="tab_2">
-                                            {{ include("UserBundle:UserProfileBackend:Form/form.html.twig") }}
+                                            {{ include("UserBundle:BackendUserSetting:Form/form.html.twig") }}
                                         </div>
                                         <div class="tab-pane {{ (active == 3) ? 'active' : '' }}" id="tab_3">
-                                            {{ include("UserBundle:UserProfileBackend:Form/change_password.html.twig") }}
+                                            {{ include("UserBundle:BackendUserSetting:Form/change_password.html.twig") }}
                                         </div>
                                     </div>
                                 </div>

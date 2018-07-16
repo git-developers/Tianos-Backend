@@ -49,7 +49,7 @@ class UserRegisterType extends AbstractType
                 'label_attr' => ['class' => 'control-label'],
                 'attr' => [
                     'class' => 'form-control',
-                    'placeholder' => 'example@tianos.com',
+                    'placeholder' => 'example@' . $options['application_url'],
                 ],
                 'error_bubbling' => true
             ])
@@ -64,7 +64,7 @@ class UserRegisterType extends AbstractType
                 'error_bubbling' => true
             ])
             ->add('termsAccepted', CheckboxType::class, [
-                'label' => 'Acepto terminos',
+                'label' => 'Acepto',
                 'label_attr' => [
                     'class' => 'control-label',
                 ],
@@ -96,7 +96,8 @@ class UserRegisterType extends AbstractType
         $resolver->setDefaults([
             'data_class' => User::class,
         ]);
-//        $resolver->setRequired('entity_manager');
+
+        $resolver->setRequired('application_url');
     }
 
 }

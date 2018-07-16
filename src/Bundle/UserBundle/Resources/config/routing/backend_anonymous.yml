@@ -73,7 +73,7 @@ backend_anonymous_user_view:
         _controller: tianos.backend.controller.user:viewAction
         _tianos:
             action: view
-            template: UserBundle:UserBackend/Informative:view_anonymous.html.twig
+            template: UserBundle:BackendUser/Informative:view_anonymous.html.twig
             repository:
                 service: tianos.repository.user
                 method: find
