@@ -35,14 +35,8 @@ class BackendSettingController extends BaseController
         //CONFIGURATION
         $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
 
-//        $repositoryLeft = $configuration->getRepositoryServiceLeft();
-//        $methodLeft = $configuration->getRepositoryMethodLeft();
-//
-//        $repositoryCenter = $configuration->getRepositoryServiceCenter();
-//        $methodCenter = $configuration->getRepositoryMethodCenter();
-//
-//        $repositoryRight = $configuration->getRepositoryServiceRight();
-//        $methodRight = $configuration->getRepositoryMethodRight();
+        $repository = $configuration->getRepositoryService();
+        $method = $configuration->getRepositoryMethod();
 
         $template = $configuration->getTemplate('');
         $grid = $configuration->getGrid();
@@ -56,7 +50,7 @@ class BackendSettingController extends BaseController
         $active = $request->get('active', null);
 
         $user = $this->getUser();
-//        $entity = $this->get($repository)->$method($user->getId());
+//        $user = $this->get($repository)->$method($user->getId());
 
         if (!$user) {
             throw $this->createNotFoundException('el archivo que busca no existe');
@@ -161,45 +155,5 @@ class BackendSettingController extends BaseController
             ]
         );
     }
-
-
-
-
-    /*
-    public function indexAction(Request $request): Response
-    {
-        if (!$this->isXmlHttpRequest()) {
-            throw $this->createAccessDeniedException(self::ACCESS_DENIED_MSG);
-        }
-
-        $parameters = [
-            'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
-        ];
-
-        $applicationName = $this->container->getParameter('application_name');
-        $this->metadata = new Metadata('tianos', $applicationName, $parameters);
-
-        //CONFIGURATION
-        $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
-        $template = $configuration->getTemplate('');
-        $vars = $configuration->getVars();
-        $boxLeft = $vars->box_left;
-        $repositoryLeft = $configuration->getRepositoryServiceLeft();
-        $methodLeft = $configuration->getRepositoryMethodLeft();
-
-        //REPOSITORY LEFT
-        $objectsLeft = $this->get($repositoryLeft)->$methodLeft($request->get('q'));
-        $varsLeft = $configuration->getRepositoryVarsLeft();
-        $objectsLeft = $this->getSerializeDecode($objectsLeft, $varsLeft->serialize_group_name);
-
-        return $this->render(
-            $template,
-            [
-                'boxLeft' => $boxLeft,
-                'objectsLeft' => $objectsLeft,
-            ]
-        );
-    }
-    */
 
 }

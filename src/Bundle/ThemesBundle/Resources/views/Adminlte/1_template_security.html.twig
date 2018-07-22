@@ -28,7 +28,7 @@
             'bundles/themes/adminlte/plugins/iCheck/square/pink.css'
             'bundles/themes/adminlte/bootstrap/css/bootstrap.min.css'
             'bundles/themes/common/css/tianos.css'
-            '@ThemesBundle/Resources/public/adminlte/dist/css/AdminLTE.min.css'
+            'bundles/themes/adminlte/dist/css/AdminLTE.min.css'
             '@ThemesBundle/Resources/public/adminlte/dist/css/skins/skin-yellow.min.css'
             '@ThemesBundle/Resources/public/adminlte/plugins/morris/morris.css'
             '@ThemesBundle/Resources/public/adminlte/plugins/jvectormap/jquery-jvectormap-1.2.2.css'
@@ -53,6 +53,10 @@
     {% endblock %}
 
     <body class="{{ application_skin }} hold-transition sidebar-mini login-page {% block bodyclass %}{% endblock %}">
+
+    {% block javascriptSdk %}
+
+    {% endblock %}
 
     {{ include('ThemesBundle::Adminlte/2_header_security.html.twig') }}
 
@@ -87,8 +91,7 @@
                         '{{ asset('bundles/themes/adminlte/images/bg-image/bg-2.jpg')}}',
                         '{{ asset('bundles/themes/adminlte/images/bg-image/bg-3.jpg')}}',
                         '{{ asset('bundles/themes/adminlte/images/bg-image/bg-4.jpg')}}',
-                        '{{ asset('bundles/themes/adminlte/images/bg-image/bg-5.jpg')}}',
-                        '{{ asset('bundles/themes/adminlte/images/bg-image/bg-1.png')}}'
+                        '{{ asset('bundles/themes/adminlte/images/bg-image/bg-5.jpg')}}'
                     ],
                     fadeSpeed: 1500,
                     duration: 3000,

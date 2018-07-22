@@ -1,7 +1,10 @@
 backend_setting_user_index:
     path: /{active}
     methods: [GET, POST]
+    requirements:
+        active: \d+
     defaults:
+        active: 1
         _controller: tianos.backend.setting.controller.user:indexAction
         _tianos:
             action: view

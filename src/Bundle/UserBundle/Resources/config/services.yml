@@ -46,9 +46,3 @@ services:
         factory: ['@doctrine.orm.entity_manager', getRepository]
         arguments: [ Bundle\UserBundle\Entity\User ]
 
-#    tianos.form.type.user.register:
-#        class: Bundle\UserBundle\Form\Type\UserRegisterType
-#        arguments: [ '%application_url%' ]
-#        tags:
-#            - { name: tianos.form.type.user.register, alias: tianos.form.type.user.register }
-

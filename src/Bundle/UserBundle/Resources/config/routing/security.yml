@@ -7,6 +7,38 @@ backend_security_login:
             action: create
             template: UserBundle:BackendUser/Security:login.html.twig
 
+backend_security_login_facebook_callback:
+    path: /login-facebook-callback
+    methods: [GET, POST]
+    defaults:
+        _controller: tianos.security.controller.user:loginFacebookCallbackAction
+        _tianos:
+            action: create
+            template: UserBundle:BackendUser/Security:login-facebook.html.twig
+            vars:
+                subheader: sylius.ui.manage_your_orderin_catalog
+                icon: cube
+                body_css: grid-body-css
+                serialize_group_name: crud
+                box:
+                    icon: newspaper-o
+                    class: primary
+
+backend_security_forgot_password:
+    path: /forgot-password
+    methods: [GET, POST]
+    defaults:
+        _controller: tianos.security.controller.user:forgotPasswordAction
+        _tianos:
+            action: create
+            template: UserBundle:BackendUser/Security:forgot-password.html.twig
+            vars:
+                icon: cube
+                body_css: grid-body-css
+                serialize_group_name: crud
+                form:
+                    type: Bundle\UserBundle\Form\Type\UserForgotPasswordType
+
 backend_security_register:
     path: /register
     methods: [GET, POST]

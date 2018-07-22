@@ -28,7 +28,62 @@
         {#Home tab content#}
         <div class="tab-pane" id="control-sidebar-home-tab">
 
-            <h3 class="control-sidebar-heading">Recent Activity</h3>
+
+            <h3 class="control-sidebar-heading">Actividad reciente</h3>
+            <ul class="control-sidebar-menu">
+                <li>
+                    <a href="javascript:void(0)">
+                        <h4 class="control-sidebar-subheading">
+                            Diseño personalizado
+                            <span class="label label-danger pull-right">70%</span>
+                        </h4>
+
+                        <div class="progress progress-xxs">
+                            <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)">
+                        <h4 class="control-sidebar-subheading">
+                            Actualizar resumen
+                            <span class="label label-success pull-right">95%</span>
+                        </h4>
+
+                        <div class="progress progress-xxs">
+                            <div class="progress-bar progress-bar-success" style="width: 95%"></div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)">
+                        <h4 class="control-sidebar-subheading">
+                            Laravel Integración
+                            <span class="label label-warning pull-right">50%</span>
+                        </h4>
+
+                        <div class="progress progress-xxs">
+                            <div class="progress-bar progress-bar-warning" style="width: 50%"></div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0)">
+                        <h4 class="control-sidebar-subheading">
+                            Back End Framework
+                            <span class="label label-primary pull-right">68%</span>
+                        </h4>
+
+                        <div class="progress progress-xxs">
+                            <div class="progress-bar progress-bar-primary" style="width: 68%"></div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+
+
+            {#
+            <h3 class="control-sidebar-heading">Tasks Progress</h3>
             <ul class="control-sidebar-menu">
                 <li>
                     <a href="javascript:void(0)">
@@ -75,58 +130,7 @@
                     </a>
                 </li>
             </ul>
-
-            <h3 class="control-sidebar-heading">Tasks Progress</h3>
-            <ul class="control-sidebar-menu">
-                <li>
-                    <a href="javascript:void(0)">
-                        <h4 class="control-sidebar-subheading">
-                            Custom Template Design
-                            <span class="label label-danger pull-right">70%</span>
-                        </h4>
-
-                        <div class="progress progress-xxs">
-                            <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:void(0)">
-                        <h4 class="control-sidebar-subheading">
-                            Update Resume
-                            <span class="label label-success pull-right">95%</span>
-                        </h4>
-
-                        <div class="progress progress-xxs">
-                            <div class="progress-bar progress-bar-success" style="width: 95%"></div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:void(0)">
-                        <h4 class="control-sidebar-subheading">
-                            Laravel Integration
-                            <span class="label label-warning pull-right">50%</span>
-                        </h4>
-
-                        <div class="progress progress-xxs">
-                            <div class="progress-bar progress-bar-warning" style="width: 50%"></div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:void(0)">
-                        <h4 class="control-sidebar-subheading">
-                            Back End Framework
-                            <span class="label label-primary pull-right">68%</span>
-                        </h4>
-
-                        <div class="progress progress-xxs">
-                            <div class="progress-bar progress-bar-primary" style="width: 68%"></div>
-                        </div>
-                    </a>
-                </li>
-            </ul>
+            #}
 
         </div>
 
@@ -134,6 +138,15 @@
             <h3 class="control-sidebar-heading">Configuraci&oacute;n</h3>
 
             <ul class="control-sidebar-menu">
+                <li>
+                    <a href="{{ path('backend_setting_user_index', { 'active':'1' }) }}">
+                        <i class="menu-icon fa fa-photo bg-yellow"></i>
+                        <div class="menu-info">
+                            <h4 class="control-sidebar-subheading">foto de perfil</h4>
+                            <p>actualizar</p>
+                        </div>
+                    </a>
+                </li>
                 <li>
                     <a href="{{ path('backend_setting_user_index', { 'active':'2' }) }}">
                         <i class="menu-icon fa fa-user bg-light-blue"></i>
@@ -144,18 +157,7 @@
                     </a>
                 </li>
                 <li>
-                    {#<a href="{{ path('backend_user_index', { 'active':'1' }) }}">#}
-                    <a href="">
-                        <i class="menu-icon fa fa-photo bg-yellow"></i>
-                        <div class="menu-info">
-                            <h4 class="control-sidebar-subheading">foto de perfil</h4>
-                            <p>actualizar</p>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    {#<a href="{{ path('backend_user_index', { 'active':'3' }) }}">#}
-                    <a href="">
+                    <a href="{{ path('backend_setting_user_index', { 'active':'3' }) }}">
                         <i class="menu-icon fa fa-lock bg-green"></i>
                         <div class="menu-info">
                             <h4 class="control-sidebar-subheading">cambiar password</h4>
@@ -163,6 +165,7 @@
                         </div>
                     </a>
                 </li>
+                {#
                 <li>
                     <a href="javascript:void(0)">
                         <i class="menu-icon fa fa-file-code-o bg-green"></i>
@@ -172,6 +175,7 @@
                         </div>
                     </a>
                 </li>
+                #}
             </ul>
 
             </div>

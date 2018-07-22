@@ -85,15 +85,21 @@
 
             <div class="social-auth-links text-center">
                 <p>-</p>
-                <a href="#" class="btn btn-block btn-social btn-facebook btn-flat">
-                    <i class="fa fa-facebook"></i> Registrarse Facebook
+                <a href="{{ loginUrl|raw }}" class="btn btn-block btn-social btn-facebook btn-flat">
+                    <i class="fa fa-facebook"></i> Login Facebook
                 </a>
+
+                {#
                 <a href="#" class="btn btn-block btn-social btn-google btn-flat">
                     <i class="fa fa-google-plus"></i> Registrarse Google+
                 </a>
+                #}
             </div>
 
-            <a href="#">Olvidaste tu password?</a><br>
+            <a href="{{ path('backend_security_forgot_password') }}">
+                Olvidaste tu password?
+            </a>
+            <br>
 
         </div>
     </div>
