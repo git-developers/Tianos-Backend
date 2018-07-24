@@ -169,6 +169,27 @@ class UserRepository extends EntityRepository
     /**
      * {@inheritdoc}
      */
+    public function findOneByEmail2(string $email)
+    {
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT user_
+            FROM UserBundle:User user_
+            WHERE
+            user_.email = :email AND
+            user_.enabled = :active
+            ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+        $query->setParameter('email', $email);
+
+        return $query->getOneOrNullResult();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function oneToManyLeft($leftValue)
     {
         $em = $this->getEntityManager();

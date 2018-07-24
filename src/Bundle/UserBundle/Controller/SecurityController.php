@@ -244,6 +244,8 @@ class SecurityController extends BaseController
 //            return $this->redirect($this->generateUrl('backend_default_index'));
 //        }
 
+//        https://myaccount.google.com/lesssecureapps
+
         $options = $request->attributes->get('_tianos');
 
         $template = $options['template'] ?? null;
@@ -258,10 +260,34 @@ class SecurityController extends BaseController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
+            $user = $this->get('tianos.repository.user')->findOneByEmail2($entity->getEmail());
 
+            if (is_null($user)) {
 
+                $this->flashWarning('Usuario con email: ' . $entity->getEmail() . ' , no existe.');
 
-            $this->flashSuccess('Si la cuenta existe. Se le enviara un email a: ' . $entity->getEmail() . '.');
+            } else {
+
+                $message = (new \Swift_Message())
+                    ->setSubject('Tianos: olvide mi password')
+                    ->setFrom('no-reply@' . $this->container->getParameter('application_url'))
+                    ->setTo($entity->getEmail())
+                    ->setBody(
+                        $this->renderView(
+                            '@UserBundle/Resources/views/BackendUser/Security/forgot-password-email.html.twig',
+                            [
+                                'user' => $user,
+                            ]
+                        ),
+                        'text/html'
+                    )
+                ;
+
+                $this->get('mailer')->send($message);
+
+                $this->flashSuccess('Si la cuenta existe. Se le enviara un email a: ' . $entity->getEmail() . '.');
+
+            }
         }
 
         return $this->render($template, [
