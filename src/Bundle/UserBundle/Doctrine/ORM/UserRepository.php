@@ -190,6 +190,27 @@ class UserRepository extends EntityRepository
     /**
      * {@inheritdoc}
      */
+    public function findOneByUniqid(string $uniqid)
+    {
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT user_
+            FROM UserBundle:User user_
+            WHERE
+            user_.resetPasswordHash = :uniqid AND
+            user_.enabled = :active
+            ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+        $query->setParameter('uniqid', $uniqid);
+
+        return $query->getOneOrNullResult();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function oneToManyLeft($leftValue)
     {
         $em = $this->getEntityManager();

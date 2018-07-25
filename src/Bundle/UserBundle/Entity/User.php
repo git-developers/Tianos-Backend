@@ -192,6 +192,20 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     private $lastAccess;
 
     /**
+     * @var string
+     *
+     */
+    protected $resetPasswordHash;
+
+    /**
+     * @var \DateTime
+     *
+     * @JMSS\Type("DateTime<'Y-m-d H:i'>")
+     *
+     */
+    private $resetPasswordDate;
+
+    /**
      * @var \Bundle\ProfileBundle\Entity\Profile
      *
      * @ORM\ManyToOne(targetEntity="Bundle\ProfileBundle\Entity\Profile")
@@ -594,6 +608,38 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     public function getLastAccess()
     {
         return $this->lastAccess;
+    }
+
+    /**
+     * @return string
+     */
+    public function getResetPasswordHash(): string
+    {
+        return $this->resetPasswordHash;
+    }
+
+    /**
+     * @param string $resetPasswordHash
+     */
+    public function setResetPasswordHash(string $resetPasswordHash): void
+    {
+        $this->resetPasswordHash = $resetPasswordHash;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getResetPasswordDate(): \DateTime
+    {
+        return $this->resetPasswordDate;
+    }
+
+    /**
+     * @param \DateTime $resetPasswordDate
+     */
+    public function setResetPasswordDate(\DateTime $resetPasswordDate): void
+    {
+        $this->resetPasswordDate = $resetPasswordDate;
     }
 
     /**

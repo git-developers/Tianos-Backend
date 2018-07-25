@@ -50,7 +50,8 @@ security:
     access_control:
         - { path: ^/backend/security/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/backend/security/login-facebook-callback$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/backend/security/forgot-password$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/backend/security/reset-password-step-one$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/backend/security/reset-password-step-two$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/backend/security/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/backend/, role: ROLE_USER }

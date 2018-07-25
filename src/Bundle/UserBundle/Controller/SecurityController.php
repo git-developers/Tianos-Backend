@@ -9,11 +9,13 @@ use Bundle\CoreBundle\Controller\BaseController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Webmozart\Assert\Assert;
-use Bundle\UserBundle\Entity\User;
-use Bundle\UserBundle\Entity\ForgotPassword;
 use Bundle\ProfileBundle\Entity\Profile;
+use Bundle\UserBundle\Entity\User;
+use Bundle\UserBundle\Entity\ResetPassword;
+use Bundle\UserBundle\Entity\ChangePassword2;
 use Bundle\UserBundle\Form\Type\UserRegisterType;
-use Bundle\UserBundle\Form\Type\UserForgotPasswordType;
+use Bundle\UserBundle\Form\Type\UserResetPasswordType;
+use Bundle\UserBundle\Form\Type\UserChangePasswordType2;
 use Component\Resource\Metadata\Metadata;
 use Bundle\ResourceBundle\ResourceBundle;
 use JMS\Serializer\SerializationContext;
@@ -236,7 +238,7 @@ class SecurityController extends BaseController
      * @param Request $request
      * @return Response
      */
-    public function forgotPasswordAction(Request $request): Response
+    public function resetPasswordStepOneAction(Request $request): Response
     {
 
 //        if ($this->isGranted('IS_AUTHENTICATED_FULLY'))
@@ -246,13 +248,14 @@ class SecurityController extends BaseController
 
 //        https://myaccount.google.com/lesssecureapps
 
+        $email = $request->get('email');
         $options = $request->attributes->get('_tianos');
 
         $template = $options['template'] ?? null;
         Assert::notNull($template, 'Template is not configured.');
 
-        $entity = new ForgotPassword();
-        $form = $this->createForm(UserForgotPasswordType::class, $entity, [
+        $entity = new ResetPassword();
+        $form = $this->createForm(UserResetPasswordType::class, $entity, [
             'application_url' => $this->container->getParameter('application_url')
         ]);
 
@@ -263,31 +266,91 @@ class SecurityController extends BaseController
             $user = $this->get('tianos.repository.user')->findOneByEmail2($entity->getEmail());
 
             if (is_null($user)) {
-
                 $this->flashWarning('Usuario con email: ' . $entity->getEmail() . ' , no existe.');
-
-            } else {
-
-                $message = (new \Swift_Message())
-                    ->setSubject('Tianos: olvide mi password')
-                    ->setFrom('no-reply@' . $this->container->getParameter('application_url'))
-                    ->setTo($entity->getEmail())
-                    ->setBody(
-                        $this->renderView(
-                            '@UserBundle/Resources/views/BackendUser/Security/forgot-password-email.html.twig',
-                            [
-                                'user' => $user,
-                            ]
-                        ),
-                        'text/html'
-                    )
-                ;
-
-                $this->get('mailer')->send($message);
-
-                $this->flashSuccess('Si la cuenta existe. Se le enviara un email a: ' . $entity->getEmail() . '.');
-
+                return $this->redirectToRoute('backend_security_reset_password_step_one', ['email' => $entity->getEmail()]);
             }
+
+            $uniqid = uniqid("reset-", true) . '-' . $this->generateRandomString(5);
+
+            $user->setResetPasswordHash($uniqid);
+            $user->setResetPasswordDate(new \Datetime());
+            $this->persist($user);
+
+            $message = (new \Swift_Message())
+                ->setSubject('Tianos: olvide mi password')
+                ->setFrom('no-reply@' . $this->container->getParameter('application_url'))
+                ->setTo($entity->getEmail())
+                ->setBody(
+                    $this->renderView(
+                        '@UserBundle/Resources/views/BackendUser/Security/forgot-password-email.html.twig',
+                        [
+                            'user' => $user,
+                            'uniqid' => $uniqid,
+                        ]
+                    ),
+                    'text/html'
+                )
+            ;
+
+            $this->get('mailer')->send($message);
+
+            $this->flashSuccess('Si la cuenta existe. Se le enviara un email a: ' . $entity->getEmail() . '.');
+
+        }
+
+        return $this->render($template, [
+            'email' => $email,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function resetPasswordStepTwoAction(Request $request): Response
+    {
+
+//        if ($this->isGranted('IS_AUTHENTICATED_FULLY'))
+//        {
+//            return $this->redirect($this->generateUrl('backend_default_index'));
+//        }
+
+//        https://myaccount.google.com/lesssecureapps
+
+
+        $uniqid = $request->get('uniqid');
+        $options = $request->attributes->get('_tianos');
+
+        $template = $options['template'] ?? null;
+        Assert::notNull($template, 'Template is not configured.');
+
+        $user = $this->get('tianos.repository.user')->findOneByUniqid($uniqid);
+
+        if (is_null($user)) {
+            $this->flashWarning('Usuario no existe. Re-intentar.');
+            return $this->redirectToRoute('backend_security_reset_password_step_one');
+        }
+
+        $entity = new ChangePassword2();
+        $form = $this->createForm(UserChangePasswordType2::class, $entity, [
+            'application_url' => $this->container->getParameter('application_url')
+        ]);
+
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+
+            echo "POLLO:: <pre>";
+            print_r($entity);
+            exit;
+
+
+            $user->setResetPasswordHash($uniqid);
+            $user->setResetPasswordDate(new \Datetime());
+            $this->persist($user);
+
         }
 
         return $this->render($template, [

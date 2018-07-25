@@ -132,6 +132,17 @@ Bundle\UserBundle\Entity\User:
             type: datetime
             nullable: true
             column: last_access
+        resetPasswordHash:
+            type: string
+            nullable: true
+            length: 100
+            options:
+                fixed: false
+            column: reset_password_hash
+        resetPasswordDate:
+            type: datetime
+            nullable: true
+            column: reset_password_date
         isActive:
             type: boolean
             nullable: true

@@ -7,7 +7,7 @@ namespace Bundle\UserBundle\Entity;
 use Symfony\Component\Security\Core\Validator\Constraints as SecurityAssert;
 use Symfony\Component\Validator\Constraints as Assert;
 
-class ForgotPassword
+class ResetPassword
 {
 
     protected $email;
