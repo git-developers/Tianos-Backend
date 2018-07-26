@@ -1,0 +1,19 @@
+frontend_facultad_index:
+    path: /
+    methods: [GET]
+    defaults:
+        _controller: tianos.frontend.controller.facultad:indexAction
+        _tianos:
+            section: admin
+            permission: true
+            grid: sylius_admin_facultad
+            template: FacultadBundle:Facultad:index.html.twig
+            vars:
+                subheader: sylius.ui.manage_your_facultad_catalog
+                icon: cube
+            form:
+                type: Bundle\FacultadBundle\Form\Type\FacultadType
+            repository:
+                service: tianos.repository.facultad
+                method: findAll
+                arguments: [$facultadId]
