@@ -9,7 +9,7 @@ use Doctrine\ORM\Event\LifecycleEventArgs;
 use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
-use Bundle\ClientBundle\Entity\Client;
+use Bundle\ClientBundle\Entity\University;
 use Cocur\Slugify\Slugify;
 use Bundle\CoreBundle\EventListener\BaseDoctrineListenerService;
 
@@ -53,7 +53,7 @@ class DoctrineListenerService extends BaseDoctrineListenerService implements Eve
 //        $entityManager = $args->getEntityManager();
 //        $className = $entityManager->getClassMetadata(get_class($entity))->getName();
 
-        if ($entity instanceof Client){
+        if ($entity instanceof University){
             $name = $entity->getName();
             $entity->setSlug($this->slugify($name));
             $entity->setCreatedAt($this->setupCreatedAt($entity));
@@ -69,7 +69,7 @@ class DoctrineListenerService extends BaseDoctrineListenerService implements Eve
     {
         $entity = $args->getEntity();
 
-        if ($entity instanceof Client){
+        if ($entity instanceof University){
             $entity->setUpdatedAt($this->dateTime);
 
             return;
@@ -83,7 +83,7 @@ class DoctrineListenerService extends BaseDoctrineListenerService implements Eve
     {
         $entity = $args->getEntity();
 
-        if ($entity instanceof Client){
+        if ($entity instanceof University){
 
             return;
         }
@@ -96,7 +96,7 @@ class DoctrineListenerService extends BaseDoctrineListenerService implements Eve
     {
         $entity = $args->getEntity();
 
-        if ($entity instanceof Client){
+        if ($entity instanceof University){
 
             return;
         }
@@ -109,7 +109,7 @@ class DoctrineListenerService extends BaseDoctrineListenerService implements Eve
     {
         $entity = $args->getEntity();
 
-        if ($entity instanceof Client){
+        if ($entity instanceof University){
 
             return;
         }

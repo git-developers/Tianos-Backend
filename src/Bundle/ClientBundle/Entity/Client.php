@@ -9,9 +9,9 @@ use JMS\Serializer\Annotation as JMSS;
 use JMS\Serializer\Annotation\Type as TypeJMS;
 
 /**
- * Client
+ * University
  */
-class Client
+class University
 {
 
     /**
@@ -92,7 +92,7 @@ class Client
      *
      * @param string $code
      *
-     * @return Client
+     * @return University
      */
     public function setCode($code)
     {
@@ -116,7 +116,7 @@ class Client
      *
      * @param string $name
      *
-     * @return Client
+     * @return University
      */
     public function setName($name)
     {
@@ -156,7 +156,7 @@ class Client
      *
      * @param string $slug
      *
-     * @return Client
+     * @return University
      */
     public function setSlug($slug)
     {
@@ -180,7 +180,7 @@ class Client
      *
      * @param \DateTime $createdAt
      *
-     * @return Client
+     * @return University
      */
     public function setCreatedAt($createdAt)
     {
@@ -204,7 +204,7 @@ class Client
      *
      * @param integer $userCreate
      *
-     * @return Client
+     * @return University
      */
     public function setUserCreate($userCreate)
     {
@@ -228,7 +228,7 @@ class Client
      *
      * @param \DateTime $updatedAt
      *
-     * @return Client
+     * @return University
      */
     public function setUpdatedAt($updatedAt)
     {
@@ -252,7 +252,7 @@ class Client
      *
      * @param integer $userUpdate
      *
-     * @return Client
+     * @return University
      */
     public function setUserUpdate($userUpdate)
     {
@@ -276,7 +276,7 @@ class Client
      *
      * @param boolean $isActive
      *
-     * @return Client
+     * @return University
      */
     public function setIsActive($isActive)
     {

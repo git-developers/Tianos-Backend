@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Bundle\ClientBundle\Doctrine\ORM;
 
 use Bundle\CoreBundle\Doctrine\ORM\EntityRepository as TianosEntityRepository;
-use Component\Client\Repository\ClientRepositoryInterface;
+use Component\University\Repository\ClientRepositoryInterface;
 
 class ClientRepository extends TianosEntityRepository implements ClientRepositoryInterface
 {
@@ -17,11 +17,11 @@ class ClientRepository extends TianosEntityRepository implements ClientRepositor
     {
         $em = $this->getEntityManager();
         $dql = "
-            SELECT client
-            FROM ClientBundle:Client client
+            SELECT university
+            FROM ClientBundle:University university
             WHERE
-            client.id = :id AND
-            client.isActive = :active
+            university.id = :id AND
+            university.isActive = :active
             ";
 
         $query = $em->createQuery($dql);
@@ -38,10 +38,10 @@ class ClientRepository extends TianosEntityRepository implements ClientRepositor
     {
         $em = $this->getEntityManager();
         $dql = "
-            SELECT client
-            FROM ClientBundle:Client client
+            SELECT university
+            FROM ClientBundle:University university
             WHERE
-            client.isActive = :active
+            university.isActive = :active
             ";
 
         $query = $em->createQuery($dql);

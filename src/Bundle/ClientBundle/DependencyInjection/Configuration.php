@@ -17,28 +17,28 @@ use Bundle\ClientBundle\Form\Type\ClientVariantTranslationType;
 use Bundle\ClientBundle\Form\Type\ClientVariantType;
 use Bundle\ResourceBundle\Controller\ResourceController;
 use Bundle\ResourceBundle\ResourceBundle;
-use Component\Client\Model\Client;
-use Component\Client\Model\ClientAssociation;
-use Component\Client\Model\ClientAssociationInterface;
-use Component\Client\Model\ClientAssociationType as ClientAssociationTypeModel;
-use Component\Client\Model\ClientAssociationTypeInterface as ClientAssociationTypeModelInterface;
-use Component\Client\Model\ClientAssociationTypeTranslation;
-use Component\Client\Model\ClientAssociationTypeTranslationInterface;
-use Component\Client\Model\ClientInterface;
-use Component\Client\Model\ClientOption;
-use Component\Client\Model\ClientOptionInterface;
-use Component\Client\Model\ClientOptionTranslation;
-use Component\Client\Model\ClientOptionTranslationInterface;
-use Component\Client\Model\ClientOptionValue;
-use Component\Client\Model\ClientOptionValueInterface;
-use Component\Client\Model\ClientOptionValueTranslation;
-use Component\Client\Model\ClientOptionValueTranslationInterface;
-use Component\Client\Model\ClientTranslation;
-use Component\Client\Model\ClientTranslationInterface;
-use Component\Client\Model\ClientVariant;
-use Component\Client\Model\ClientVariantInterface;
-use Component\Client\Model\ClientVariantTranslation;
-use Component\Client\Model\ClientVariantTranslationInterface;
+use Component\University\Model\University;
+use Component\University\Model\ClientAssociation;
+use Component\University\Model\ClientAssociationInterface;
+use Component\University\Model\ClientAssociationType as ClientAssociationTypeModel;
+use Component\University\Model\ClientAssociationTypeInterface as ClientAssociationTypeModelInterface;
+use Component\University\Model\ClientAssociationTypeTranslation;
+use Component\University\Model\ClientAssociationTypeTranslationInterface;
+use Component\University\Model\ClientInterface;
+use Component\University\Model\ClientOption;
+use Component\University\Model\ClientOptionInterface;
+use Component\University\Model\ClientOptionTranslation;
+use Component\University\Model\ClientOptionTranslationInterface;
+use Component\University\Model\ClientOptionValue;
+use Component\University\Model\ClientOptionValueInterface;
+use Component\University\Model\ClientOptionValueTranslation;
+use Component\University\Model\ClientOptionValueTranslationInterface;
+use Component\University\Model\ClientTranslation;
+use Component\University\Model\ClientTranslationInterface;
+use Component\University\Model\ClientVariant;
+use Component\University\Model\ClientVariantInterface;
+use Component\University\Model\ClientVariantTranslation;
+use Component\University\Model\ClientVariantTranslationInterface;
 use Component\Resource\Factory\Factory;
 use Component\Resource\Factory\TranslatableFactory;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
@@ -84,7 +84,7 @@ final class Configuration implements ConfigurationInterface
                                 ->arrayNode('classes')
                                     ->addDefaultsIfNotSet()
                                     ->children()
-                                        ->scalarNode('model')->defaultValue(Client::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('model')->defaultValue(University::class)->cannotBeEmpty()->end()
                                         ->scalarNode('interface')->defaultValue(ClientInterface::class)->cannotBeEmpty()->end()
                                         ->scalarNode('controller')->defaultValue(ResourceController::class)->cannotBeEmpty()->end()
                                         ->scalarNode('repository')->cannotBeEmpty()->end()

@@ -1,6 +1,6 @@
 services:
 
-    tianos.listener.doctrine.client:
+    tianos.listener.doctrine.university:
         class: Bundle\ClientBundle\EventListener\DoctrineListenerService
         arguments: ["@security.token_storage"]
         tags:
@@ -10,25 +10,25 @@ services:
           - { name: doctrine.event_listener, event: postLoad }
           - { name: doctrine.event_listener, event: postRemove }
 
-    tianos.api.controller.client:
+    tianos.api.controller.university:
         class: Bundle\ClientBundle\Controller\ApiController
         arguments: [ Bundle\ResourceBundle\Factory\RequestConfigurationFactoryInterface ]
         tags:
-            - { name: tianos.api.controller.client, alias: tianos.api.controller.client }
+            - { name: tianos.api.controller.university, alias: tianos.api.controller.university }
 
-    tianos.backend.controller.client:
+    tianos.backend.controller.university:
         class: Bundle\ClientBundle\Controller\BackendController
         arguments: [ Bundle\ResourceBundle\Factory\RequestConfigurationFactoryInterface ]
         tags:
-            - { name: tianos.backend.controller.client, alias: tianos.backend.controller.client }
+            - { name: tianos.backend.controller.university, alias: tianos.backend.controller.university }
 
-    tianos.frontend.controller.client:
+    tianos.frontend.controller.university:
         class: Bundle\ClientBundle\Controller\FrontendController
         arguments: [ Bundle\ResourceBundle\Factory\RequestConfigurationFactoryInterface ]
         tags:
-            - { name: tianos.frontend.controller.client, alias: tianos.frontend.controller.client }
+            - { name: tianos.frontend.controller.university, alias: tianos.frontend.controller.university }
 
-    tianos.repository.client:
+    tianos.repository.university:
         class: Dummy
         factory: ['@doctrine.orm.entity_manager', getRepository]
-        arguments: [ Bundle\ClientBundle\Entity\Client ]
+        arguments: [ Bundle\ClientBundle\Entity\University ]

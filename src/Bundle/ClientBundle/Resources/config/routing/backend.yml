@@ -2,7 +2,7 @@ backend_client_index:
     path: /
     methods: [GET]
     defaults:
-        _controller: tianos.backend.controller.client:indexAction
+        _controller: tianos.backend.controller.university:indexAction
         _tianos:
             action: index
             section: admin
@@ -14,7 +14,7 @@ backend_client_index:
                 icon: cube
                 body_css: grid-body-css
             grid:
-                icon: building
+                icon: building-o
                 box_class: primary
                 title: Gestionar universidades
                 modal:
@@ -42,7 +42,7 @@ backend_client_index:
                     columns:
                         - name: '#'
                           obj: " '<span class=\"badge bg-blue\">' + obj.id + '</span>' "
-                        - name: Name
+                        - name: Nombre
                           obj: obj.name
                         - name: Creado
                           obj: obj.created_at
@@ -51,7 +51,7 @@ backend_client_index:
             form:
                 type: Bundle\ClientBundle\Form\Type\ClientType
             repository:
-                service: tianos.repository.client
+                service: tianos.repository.university
                 method: findAll
                 arguments: [$clientId]
                 vars:
@@ -61,11 +61,11 @@ backend_client_create:
     path: /create
     methods: [POST]
     defaults:
-        _controller: tianos.backend.controller.client:createAction
+        _controller: tianos.backend.controller.university:createAction
         _tianos:
             action: create
             template: ClientBundle:BackendClient/Form:form.html.twig
-            entity: Bundle\ClientBundle\Entity\Client
+            entity: Bundle\ClientBundle\Entity\University
             form:
                 type: Bundle\ClientBundle\Form\Type\ClientType
             repository:
@@ -76,14 +76,14 @@ backend_client_edit:
     path: /edit
     methods: [PUT, POST]
     defaults:
-        _controller: tianos.backend.controller.client:editAction
+        _controller: tianos.backend.controller.university:editAction
         _tianos:
             action: edit
             template: ClientBundle:BackendClient/Form:form.html.twig
             form:
                 type: Bundle\ClientBundle\Form\Type\ClientType
             repository:
-                service: tianos.repository.client
+                service: tianos.repository.university
                 method: find
                 arguments: [$clientId]
                 vars:
@@ -93,12 +93,12 @@ backend_client_delete:
     path: /delete
     methods: [POST, DELETE]
     defaults:
-        _controller: tianos.backend.controller.client:deleteAction
+        _controller: tianos.backend.controller.university:deleteAction
         _tianos:
             action: delete
             template: GridBundle:Template:delete.html.twig
             repository:
-                service: tianos.repository.client
+                service: tianos.repository.university
                 method: find
                 arguments: [$clientId]
             vars:
@@ -108,12 +108,12 @@ backend_client_view:
     path: /view
     methods: [POST]
     defaults:
-        _controller: tianos.backend.controller.client:viewAction
+        _controller: tianos.backend.controller.university:viewAction
         _tianos:
             action: view
             template: ClientBundle:BackendClient/Informative:view.html.twig
             repository:
-                service: tianos.repository.client
+                service: tianos.repository.university
                 method: find
                 arguments: [$clientId]
                 vars:
@@ -123,7 +123,7 @@ backend_client_info:
     path: /info
     methods: [POST]
     defaults:
-        _controller: tianos.backend.controller.client:infoAction
+        _controller: tianos.backend.controller.university:infoAction
         _tianos:
             action: info
             template: ClientBundle:BackendClient/Informative:info.html.twig

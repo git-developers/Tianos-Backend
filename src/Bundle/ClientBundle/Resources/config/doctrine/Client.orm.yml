@@ -1,10 +1,10 @@
 #http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/reference/yaml-mapping.html
 
-Bundle\ClientBundle\Entity\Client:
+Bundle\ClientBundle\Entity\University:
     type: entity
 #    type: mappedSuperclass
 #    mappedSuperclass: Component\CRUDDUMMY\Model\CRUDDUMMY
-    table: client
+    table: university
     repositoryClass: Bundle\ClientBundle\Doctrine\ORM\ClientRepository
     id:
         id:
