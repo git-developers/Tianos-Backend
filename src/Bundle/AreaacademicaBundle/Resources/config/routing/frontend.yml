@@ -1,0 +1,19 @@
+frontend_areaacademica_index:
+    path: /
+    methods: [GET]
+    defaults:
+        _controller: tianos.frontend.controller.areaacademica:indexAction
+        _tianos:
+            section: admin
+            permission: true
+            grid: sylius_admin_areaacademica
+            template: AreaacademicaBundle:Areaacademica:index.html.twig
+            vars:
+                subheader: sylius.ui.manage_your_areaacademica_catalog
+                icon: cube
+            form:
+                type: Bundle\AreaacademicaBundle\Form\Type\AreaacademicaType
+            repository:
+                service: tianos.repository.areaacademica
+                method: findAll
+                arguments: [$areaacademicaId]

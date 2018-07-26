@@ -113,7 +113,7 @@ class Builder implements ContainerAwareInterface
                 'class' => 'treeview-menu',
             ],
         ])
-        ->setAttribute('icon', 'fa-fw fa-building')
+        ->setAttribute('icon', 'fa-fw fa-bookmark')
         ->setAttribute('class', $this->activeRoute([
             'backend_areaacademica_index',
         ]))

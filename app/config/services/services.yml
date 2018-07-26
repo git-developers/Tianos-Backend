@@ -22,3 +22,4 @@ imports:
     - { resource: '@GoogleBundle/Resources/config/services.yml' }
     - { resource: '@PointofsaleBundle/Resources/config/services.yml' }
     - { resource: '@UniversityBundle/Resources/config/services.yml' }
+    - { resource: '@AreaacademicaBundle/Resources/config/services.yml' }

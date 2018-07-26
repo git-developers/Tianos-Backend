@@ -1,0 +1,42 @@
+services:
+
+    tianos.listener.doctrine.areaacademica:
+        class: Bundle\AreaacademicaBundle\EventListener\DoctrineListenerService
+        arguments: ["@security.token_storage"]
+        tags:
+          - { name: doctrine.event_listener, event: postUpdate }
+          - { name: doctrine.event_listener, event: preUpdate }
+          - { name: doctrine.event_listener, event: prePersist }
+          - { name: doctrine.event_listener, event: postLoad }
+          - { name: doctrine.event_listener, event: postRemove }
+
+    tianos.api.controller.areaacademica:
+        class: Bundle\AreaacademicaBundle\Controller\ApiController
+        arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
+        tags:
+            - { name: tianos.api.controller.areaacademica, alias: tianos.api.controller.areaacademica }
+
+    tianos.backend.controller.areaacademica:
+        class: Bundle\AreaacademicaBundle\Controller\BackendController
+        arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
+        tags:
+            - { name: tianos.backend.controller.areaacademica, alias: tianos.backend.controller.areaacademica }
+
+    tianos.frontend.controller.areaacademica:
+        class: Bundle\AreaacademicaBundle\Controller\FrontendController
+        arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
+        tags:
+            - { name: tianos.frontend.controller.areaacademica, alias: tianos.frontend.controller.areaacademica }
+
+    tianos.repository.areaacademica:
+        class: Dummy
+        factory: ['@doctrine.orm.entity_manager', getRepository]
+        arguments: [ Bundle\AreaacademicaBundle\Entity\Areaacademica ]
+
+
+
+#    tianos.controller.grid:
+#        class: Bundle\GridBundle\Controller\GridController
+#        arguments: [ Bundle\GridBundle\Controller\RequestConfigurationFactoryInterface ]
+#        tags:
+#            - { name: tianos.controller.grid, alias: tianos.controller.grid }

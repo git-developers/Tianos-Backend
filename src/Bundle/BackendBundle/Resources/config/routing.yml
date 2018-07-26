@@ -49,3 +49,6 @@ backend_setting_user:
 backend_university:
     resource: '@UniversityBundle/Resources/config/routing/backend.yml'
     prefix: /university
+backend_areaacademica:
+    resource: '@AreaacademicaBundle/Resources/config/routing/backend.yml'
+    prefix: /areaacademica
