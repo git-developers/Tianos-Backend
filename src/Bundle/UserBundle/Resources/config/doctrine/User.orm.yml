@@ -8,9 +8,9 @@ Bundle\UserBundle\Entity\User:
         FK_8D93D649CCFA12B8:
             columns:
                 - profile_id
-        fk_user_client1_idx:
+        fk_user_university1_idx:
             columns:
-                - client_id
+                - university_id
     uniqueConstraints:
         email_UNIQUE:
             columns:
@@ -160,14 +160,14 @@ Bundle\UserBundle\Entity\User:
                 profile_id:
                     referencedColumnName: id
             orphanRemoval: false
-        client:
+        university:
             targetEntity: Bundle\ClientBundle\Entity\Client
             cascade: {  }
             fetch: LAZY
             mappedBy: null
             inversedBy: null
             joinColumns:
-                client_id:
+                university_id:
                     referencedColumnName: id
             orphanRemoval: false
     manyToMany:

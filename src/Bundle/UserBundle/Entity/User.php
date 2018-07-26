@@ -217,14 +217,14 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     private $profile;
 
     /**
-     * @var \Bundle\ClientBundle\Entity\Client
+     * @var \Bundle\UniversityBundle\Entity\University
      *
-     * @ORM\ManyToOne(targetEntity="Bundle\ClientBundle\Entity\Client")
+     * @ORM\ManyToOne(targetEntity="Bundle\UniversityBundle\Entity\University")
      * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="client_id", referencedColumnName="id")
+     *   @ORM\JoinColumn(name="university_id", referencedColumnName="id")
      * })
      */
-    private $client;
+    private $university;
 
     /**
      * @var \Doctrine\Common\Collections\Collection
@@ -667,27 +667,27 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     }
 
     /**
-     * Set client
+     * Set university
      *
-     * @param \Bundle\ClientBundle\Entity\Client $client
+     * @param \Bundle\UniversityBundle\Entity\University $university
      *
      * @return User
      */
-    public function setClient(\Bundle\ClientBundle\Entity\Client $client = null)
+    public function setUniversity(\Bundle\UniversityBundle\Entity\University $university = null)
     {
-        $this->client = $client;
+        $this->university = $university;
 
         return $this;
     }
 
     /**
-     * Get client
+     * Get university
      *
-     * @return \Bundle\ClientBundle\Entity\Client
+     * @return \Bundle\UniversityBundle\Entity\University
      */
-    public function getClient()
+    public function getUniversity()
     {
-        return $this->client;
+        return $this->university;
     }
 
     /**
@@ -827,7 +827,7 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
      *
      * @param boolean $isActive
      *
-     * @return Client
+     * @return University
      */
     public function setIsActive($isActive)
     {

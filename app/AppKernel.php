@@ -13,11 +13,11 @@ class AppKernel extends Kernel
             new \Bundle\RoleBundle\RoleBundle(),
             new \Bundle\VisitBundle\VisitBundle(),
             new \Bundle\GoogleBundle\GoogleBundle(),
-            new \Bundle\ClientBundle\ClientBundle(),
             new \Bundle\ReportBundle\ReportBundle(),
             new \Bundle\ProfileBundle\ProfileBundle(),
             new \Bundle\SessionBundle\SessionBundle(),
             new \Bundle\CategoryBundle\CategoryBundle(),
+            new \Bundle\UniversityBundle\UniversityBundle(),
             new \Bundle\PointofsaleBundle\PointofsaleBundle(),
             new \Bundle\GroupofusersBundle\GroupofusersBundle(),
         ];

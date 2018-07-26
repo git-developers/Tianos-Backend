@@ -7,7 +7,6 @@ imports:
     - { resource: '@UserBundle/Resources/config/services.yml' }
     - { resource: '@RoleBundle/Resources/config/services.yml' }
     - { resource: '@PagesBundle/Resources/config/services.yml' }
-    - { resource: '@ClientBundle/Resources/config/services.yml' }
     - { resource: '@BackendBundle/Resources/config/services.yml' }
     - { resource: '@SessionBundle/Resources/config/services.yml' }
     - { resource: '@ProfileBundle/Resources/config/services.yml' }
@@ -22,3 +21,4 @@ imports:
     - { resource: '@ReportBundle/Resources/config/services.yml' }
     - { resource: '@GoogleBundle/Resources/config/services.yml' }
     - { resource: '@PointofsaleBundle/Resources/config/services.yml' }
+    - { resource: '@UniversityBundle/Resources/config/services.yml' }

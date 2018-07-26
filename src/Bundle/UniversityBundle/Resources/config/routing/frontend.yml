@@ -1,0 +1,19 @@
+frontend_university_index:
+    path: /
+    methods: [GET]
+    defaults:
+        _controller: tianos.frontend.controller.university:indexAction
+        _tianos:
+            section: admin
+            permission: true
+            grid: sylius_admin_university
+            template: UniversityBundle:University:index.html.twig
+            vars:
+                subheader: sylius.ui.manage_your_university_catalog
+                icon: cube
+            form:
+                type: Bundle\UniversityBundle\Form\Type\UniversityType
+            repository:
+                service: tianos.repository.university
+                method: findAll
+                arguments: [$universityId]
