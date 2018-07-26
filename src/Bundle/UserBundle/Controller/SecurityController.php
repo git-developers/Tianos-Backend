@@ -23,6 +23,7 @@ use Bundle\UserBundle\Entity\ChangePassword;
 use Bundle\CoreBundle\Vendor\Facebook\Facebook;
 use Bundle\CoreBundle\Vendor\Facebook\Exceptions\FacebookSDKException;
 use Bundle\CoreBundle\Vendor\Facebook\Exceptions\FacebookResponseException;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 class SecurityController extends BaseController
 {
@@ -294,7 +295,7 @@ class SecurityController extends BaseController
 
             $this->get('mailer')->send($message);
 
-            $this->flashSuccess('Si la cuenta existe. Se le enviara un email a: ' . $entity->getEmail() . '.');
+            $this->flashSuccess('Se envio un link para re-establecer su password a: ' . $entity->getEmail() . '. Duracion del link: 24 horas.');
 
         }
 
@@ -318,6 +319,16 @@ class SecurityController extends BaseController
 
 //        https://myaccount.google.com/lesssecureapps
 
+        $parameters = [
+            'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
+        ];
+        $applicationName = $this->container->getParameter('application_name');
+        $this->metadata = new Metadata('tianos', $applicationName, $parameters);
+
+        //CONFIGURATION
+        $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
+        $vars = $configuration->getVars();
+
 
         $uniqid = $request->get('uniqid');
         $options = $request->attributes->get('_tianos');
@@ -334,26 +345,34 @@ class SecurityController extends BaseController
 
         $entity = new ChangePassword2();
         $form = $this->createForm(UserChangePasswordType2::class, $entity, [
-            'application_url' => $this->container->getParameter('application_url')
+//            'application_url' => $this->container->getParameter('application_url')
         ]);
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
+            //password
+            $plainPassword = $entity->getNewPassword();
+            $encoder = $this->get('security.password_encoder');
+            $encoded = $encoder->encodePassword($user, $plainPassword);
 
-            echo "POLLO:: <pre>";
-            print_r($entity);
-            exit;
+            //datetime yesterday
+            $yesterday = new \DateTime();
+            $yesterday->sub(new \DateInterval('P1D'));
 
-
-            $user->setResetPasswordHash($uniqid);
-            $user->setResetPasswordDate(new \Datetime());
+            $user->setPassword($encoded);
+            $user->setResetPasswordHash('');
+            $user->setResetPasswordDate($yesterday);
             $this->persist($user);
+
+            $this->flashSuccess('Password cambiado, puede iniciar sesión.');
+            return $this->redirectToRoute('backend_security_login');
 
         }
 
         return $this->render($template, [
+            'vars' => $vars,
             'form' => $form->createView(),
         ]);
     }

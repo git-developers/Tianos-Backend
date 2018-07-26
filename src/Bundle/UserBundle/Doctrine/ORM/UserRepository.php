@@ -198,12 +198,17 @@ class UserRepository extends EntityRepository
             FROM UserBundle:User user_
             WHERE
             user_.resetPasswordHash = :uniqid AND
+            SUBSTRING(user_.resetPasswordDate, 1, 10) = :resetDate AND
             user_.enabled = :active
             ";
+
+        $resetDate = new \DateTime();
+        $resetDate = $resetDate->format('Y-m-d');
 
         $query = $em->createQuery($dql);
         $query->setParameter('active', 1);
         $query->setParameter('uniqid', $uniqid);
+        $query->setParameter('resetDate', $resetDate);
 
         return $query->getOneOrNullResult();
     }

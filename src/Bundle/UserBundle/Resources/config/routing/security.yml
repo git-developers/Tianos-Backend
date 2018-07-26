@@ -49,7 +49,7 @@ backend_security_reset_password_step_two:
             template: UserBundle:BackendUser/Security:reset-password-step-two.html.twig
             vars:
                 icon: cube
-                body_css: grid-body-css
+                body_css: password-body-css
                 serialize_group_name: crud
                 form:
                     type: Bundle\UserBundle\Form\Type\UserForgotPasswordType

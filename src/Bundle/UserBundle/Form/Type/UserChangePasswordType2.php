@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 namespace Bundle\UserBundle\Form\Type;
 
-use Bundle\ResourceBundle\Form\Type\AbstractResourceType;
+use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 
-final class UserChangePasswordType2 extends AbstractResourceType
+final class UserChangePasswordType2 extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -19,9 +21,49 @@ final class UserChangePasswordType2 extends AbstractResourceType
         $builder
             ->add('newPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
-                'first_options' => ['label' => 'sylius.form.user_change_password.new'],
-                'second_options' => ['label' => 'sylius.form.user_change_password.confirmation'],
-                'invalid_message' => 'sylius.user.plainPassword.mismatch',
+                'label' => false,
+                'invalid_message' => 'Los passwords no coincide.',
+                'options' => [
+                    'attr' => [
+                        'class' => 'GATO',
+                    ],
+                    'label_attr' => [
+                        'class' => 'control-label required'
+                    ],
+                ],
+                'required' => true,
+                'first_options'  => [
+                    'label' => 'Nuevo password',
+                    'attr' => [
+                        'class' => 'form-control password-field',
+                        'placeholder' => '****',
+                    ],
+                ],
+                'second_options' => [
+                    'label' => 'Confirmar password',
+                    'attr' => [
+                        'class' => 'form-control',
+                        'placeholder' => '****',
+                    ],
+                ],
+            ])
+            ->add('togglePassword', CheckboxType::class, [
+                'label' =>' Mostrar password',
+                'required' => false,
+                'label_attr' => [
+                    'class' => ''
+                ],
+                'attr' => [
+                    'class' => 'pull-left',
+                    'style' => 'width:20px; height:20px; margin-right:5px',
+                    'placeholder' => '',
+                ],
+            ])
+            ->add('submit', SubmitType::class, [
+                'label' => 'Cambiar password',
+                'attr' => [
+                    'class' => 'btn bg-yellow btn-block btn-flat',
+                ],
             ])
         ;
     }

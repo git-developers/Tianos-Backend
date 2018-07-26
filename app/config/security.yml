@@ -3,7 +3,8 @@
 security:
 
     encoders:
-        FOS\UserBundle\Model\UserInterface: bcrypt
+        Bundle\UserBundle\Entity\User: bcrypt
+#        FOS\UserBundle\Model\UserInterface: bcrypt
 
     role_hierarchy:
         ROLE_ADMIN:       ROLE_USER
