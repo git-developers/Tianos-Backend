@@ -86,6 +86,7 @@ class Builder implements ContainerAwareInterface
         ->setAttribute('class', 'treeview')
         ->setAttribute('class', $this->activeRoute([
             'backend_university_index',
+            'backend_areaacademica_index',
         ]))
         ->setAttribute('icon', 'fa-fw fa-code-fork')
         ->setDisplay($isGranted)
@@ -101,6 +102,20 @@ class Builder implements ContainerAwareInterface
         ->setAttribute('icon', 'fa-fw fa-building')
         ->setAttribute('class', $this->activeRoute([
             'backend_university_index',
+        ]))
+        ->setDisplay($isGranted)
+        ;
+
+        $menu['Master']->addChild('Áreas académicas', [
+            'route' => 'backend_areaacademica_index',
+            'extras' => ['safe_label' => true],
+            'childrenAttributes' => [
+                'class' => 'treeview-menu',
+            ],
+        ])
+        ->setAttribute('icon', 'fa-fw fa-building')
+        ->setAttribute('class', $this->activeRoute([
+            'backend_areaacademica_index',
         ]))
         ->setDisplay($isGranted)
         ;
