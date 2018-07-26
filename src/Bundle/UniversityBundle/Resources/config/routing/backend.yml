@@ -15,9 +15,9 @@ backend_university_index:
                 serialize_group_name: crud
 #            grid: sylius_admin_product
             grid:
-                icon: cube
+                icon: building
                 box_class: primary
-                title: Gestionar university
+                title: Gestionar universidades
                 data_table:
                     route:
                         info: backend_university_info
@@ -41,7 +41,7 @@ backend_university_index:
                     columns:
                         - name: '#'
                           obj: " '<span class=\"badge bg-blue\">' + obj.id + '</span>' "
-                        - name: Name
+                        - name: Nombre
                           obj: obj.name
                         - name: Creado
                           obj: obj.created_at

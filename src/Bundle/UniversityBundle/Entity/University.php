@@ -28,6 +28,11 @@ class University
 
     /**
      * @var string
+     */
+    private $abbreviation;
+
+    /**
+     * @var string
      *
      * @JMSS\Groups({"crud"})
      */
@@ -99,6 +104,22 @@ class University
     public function getCode()
     {
         return $this->code;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAbbreviation(): string
+    {
+        return $this->abbreviation;
+    }
+
+    /**
+     * @param string $abbreviation
+     */
+    public function setAbbreviation(string $abbreviation): void
+    {
+        $this->abbreviation = $abbreviation;
     }
 
     /**

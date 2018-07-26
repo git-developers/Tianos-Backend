@@ -161,7 +161,7 @@ Bundle\UserBundle\Entity\User:
                     referencedColumnName: id
             orphanRemoval: false
         university:
-            targetEntity: Bundle\ClientBundle\Entity\Client
+            targetEntity: Bundle\UniversityBundle\Entity\University
             cascade: {  }
             fetch: LAZY
             mappedBy: null

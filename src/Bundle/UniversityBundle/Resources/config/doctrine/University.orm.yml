@@ -22,6 +22,12 @@ Bundle\UniversityBundle\Entity\University:
             length: 45
             options:
                 fixed: false
+        abbreviation:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
         name:
             type: string
             nullable: false

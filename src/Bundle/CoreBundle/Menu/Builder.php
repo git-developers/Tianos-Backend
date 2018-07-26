@@ -85,19 +85,14 @@ class Builder implements ContainerAwareInterface
         ->setAttribute('allow_angle', true)
         ->setAttribute('class', 'treeview')
         ->setAttribute('class', $this->activeRoute([
-            'backend_client_index',
-            'backend_product_index',
-            'backend_pointofsale_index',
-            'backend_category_tree_index',
-            'backend_pointofsale_map_index',
-            'backend_route_index',
+            'backend_university_index',
         ]))
         ->setAttribute('icon', 'fa-fw fa-code-fork')
         ->setDisplay($isGranted)
         ;
 
         $menu['Master']->addChild('Universidades', [
-            'route' => 'backend_default_dashboard',
+            'route' => 'backend_university_index',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
                 'class' => 'treeview-menu',
@@ -105,16 +100,8 @@ class Builder implements ContainerAwareInterface
         ])
         ->setAttribute('icon', 'fa-fw fa-building')
         ->setAttribute('class', $this->activeRoute([
-            'backend_client_index',
+            'backend_university_index',
         ]))
-        ->setDisplay($isGranted)
-        ;
-
-        $menu['Master']['Universidades']->addChild('Gestionar', [
-            'route' => 'backend_client_index'
-        ])
-        ->setAttribute('icon', self::CIRCLE_1)
-        ->setAttribute('class', $this->activeRoute('backend_client_index'))
         ->setDisplay($isGranted)
         ;
 

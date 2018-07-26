@@ -6,7 +6,7 @@ services:
         tags:
             - { name: sylius.form.type.admin_user, alias: sylius.form.type.admin_user }
 
-    Bundle\CoreBundle\DataFixtures\ORM\Load_1_ClientData:
+    Bundle\CoreBundle\DataFixtures\ORM\Load_1_UniversityData:
         tags: [doctrine.fixture.orm]
 
     Bundle\CoreBundle\DataFixtures\ORM\Load_2_RoleData:

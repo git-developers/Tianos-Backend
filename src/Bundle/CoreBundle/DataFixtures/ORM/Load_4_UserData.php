@@ -34,7 +34,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setName('Albert');
         $entity->setLastName('Einstein');
         $entity->setEmail('aeinstein-' . uniqid() . '@' . $this->applicationUrl);
-        $entity->setClient($clienteDefault);
+        $entity->setUniversity($clienteDefault);
         $entity->setProfile($profileRegularUser);
         $manager->persist($entity);
         $this->addReference('user-2', $entity);
@@ -45,7 +45,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setName('Bill');
         $entity->setLastName('Gates');
         $entity->setEmail('bgates-' . uniqid() . '@' . $this->applicationUrl);
-        $entity->setClient($clienteDefault);
+        $entity->setUniversity($clienteDefault);
         $entity->setProfile($profileRegularUser);
         $manager->persist($entity);
         $this->addReference('user-4', $entity);
@@ -56,7 +56,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setName('Isaac');
         $entity->setLastName('Newton');
         $entity->setEmail('inewton-' . uniqid() . '@' . $this->applicationUrl);
-        $entity->setClient($clienteDefault);
+        $entity->setUniversity($clienteDefault);
         $entity->setProfile($profileRegularUser);
         $manager->persist($entity);
         $this->addReference('user-5', $entity);
@@ -67,7 +67,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setName('Alfredo');
         $entity->setLastName('Bringas');
         $entity->setEmail('abringas@' . $this->applicationUrl);
-        $entity->setClient($clienteDefault);
+        $entity->setUniversity($clienteDefault);
         $entity->setProfile($profileAdmin);
         $manager->persist($entity);
         $this->addReference('user-1', $entity);
@@ -78,7 +78,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setName('Steve');
         $entity->setLastName('Jobs');
         $entity->setEmail('sjobs@' . $this->applicationUrl);
-        $entity->setClient($clienteDefault);
+        $entity->setUniversity($clienteDefault);
         $entity->setProfile($profileRegularUser);
         $manager->persist($entity);
         $this->addReference('user-3', $entity);
