@@ -28,11 +28,11 @@ backend_user_index:
                     table_button:
                         - edit
                         - delete
-                    table_option:
-                        pageLength: 50
                     table_button_header:
                         - create
                         - info
+                    table_option:
+                        pageLength: 50
                     row_call_back:
                         - key: id
                           value: aData.id

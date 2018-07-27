@@ -1,0 +1,19 @@
+api_escuela_index:
+    path: /
+    methods: [GET]
+    defaults:
+        _controller: tianos.api.controller.escuela:indexAction
+        _tianos:
+            section: admin
+            permission: true
+            grid: sylius_admin_escuela
+            template: EscuelaBundle:Escuela:index.html.twig
+            vars:
+                subheader: sylius.ui.manage_your_product_catalog
+                icon: cube
+            form:
+                type: Bundle\EscuelaBundle\Form\Type\EscuelaType
+            repository:
+                service: tianos.repository.escuela
+                method: findAll
+                arguments: [$escuelaId]

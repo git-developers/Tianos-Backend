@@ -23,3 +23,5 @@ imports:
     - { resource: '@PointofsaleBundle/Resources/config/services.yml' }
     - { resource: '@UniversityBundle/Resources/config/services.yml' }
     - { resource: '@AreaacademicaBundle/Resources/config/services.yml' }
+    - { resource: '@FacultadBundle/Resources/config/services.yml' }
+    - { resource: '@EscuelaBundle/Resources/config/services.yml' }

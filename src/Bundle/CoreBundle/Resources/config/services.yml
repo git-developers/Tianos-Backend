@@ -35,6 +35,18 @@ services:
         arguments: [ '%application_url%' ]
         tags: [doctrine.fixture.orm]
 
+    Bundle\CoreBundle\DataFixtures\ORM\Load_13_AreaacademicaData:
+        arguments: [ '%application_url%' ]
+        tags: [doctrine.fixture.orm]
+
+    Bundle\CoreBundle\DataFixtures\ORM\Load_14_FacultadData:
+        arguments: [ '%application_url%' ]
+        tags: [doctrine.fixture.orm]
+
+    Bundle\CoreBundle\DataFixtures\ORM\Load_15_EscuelaData:
+        arguments: [ '%application_url%' ]
+        tags: [doctrine.fixture.orm]
+
     tianos.core.controller.default:
         class: Bundle\CoreBundle\Controller\DefaultController
         tags:

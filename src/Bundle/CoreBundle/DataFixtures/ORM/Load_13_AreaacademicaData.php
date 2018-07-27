@@ -46,7 +46,7 @@ class Load_13_AreaacademicaData extends AbstractFixture implements OrderedFixtur
         $manager->persist($entity);
 
 
-        $this->addReference('client-default', $entity);
+        $this->addReference('client-default-2', $entity);
 
         $manager->flush();
 

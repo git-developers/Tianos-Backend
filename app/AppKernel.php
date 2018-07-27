@@ -16,6 +16,8 @@ class AppKernel extends Kernel
             new \Bundle\ReportBundle\ReportBundle(),
             new \Bundle\ProfileBundle\ProfileBundle(),
             new \Bundle\SessionBundle\SessionBundle(),
+            new \Bundle\EscuelaBundle\EscuelaBundle(),
+            new \Bundle\FacultadBundle\FacultadBundle(),
             new \Bundle\CategoryBundle\CategoryBundle(),
             new \Bundle\UniversityBundle\UniversityBundle(),
             new \Bundle\PointofsaleBundle\PointofsaleBundle(),
