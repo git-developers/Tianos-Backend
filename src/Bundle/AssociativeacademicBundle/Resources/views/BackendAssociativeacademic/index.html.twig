@@ -30,13 +30,13 @@
     {{ parent() }}
 
 
-{#    '@AssociativeacademicBundle/Resources/public/js/boxOneSearch.js'
+{#
     '@AssociativeacademicBundle/Resources/public/js/boxOneSelectItem.js'
     '@AssociativeacademicBundle/Resources/public/js/boxTwoSelectItem.js'#}
 
     {% javascripts
         '@AssociativeacademicBundle/Resources/public/js/boxInfo.js'
-
+        '@AssociativeacademicBundle/Resources/public/js/boxOneSearch.js'
     %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
@@ -45,11 +45,11 @@
     <script type="text/javascript">
         $(function() {
 
-            {#$('div#{{ boxOne.id }}').boxOneSearch({#}
-                {#boxId: '{{ boxOne.id }}',#}
-                {#searchInputName: '{{ boxOne.search_input_name }}',#}
-                {#routeSearch: '{{ path(boxOne.route_search) }}',#}
-            {#});#}
+            $('div#{{ boxOne.id }}').boxOneSearch({
+                boxId: '{{ boxOne.id }}',
+                searchInputName: '{{ boxOne.search_input_name }}',
+                routeSearch: '{{ path(boxOne.route_search) }}',
+            });
 
             {#$('div#{{ boxOne.id }}').boxOneSelectItem({#}
                 {#boxOneId: '{{ boxOne.id }}',#}
@@ -192,6 +192,16 @@
                             <div class="box-tools pull-right"></div>
                         </div>
                         <div class="box-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="input-group">
+                                        <input name="{{ boxTwo.search_input_name }}" type="search" class="form-control" maxlength="50">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-fw fa-search"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
                             <ul class="todo-list ui-sortable">
                                 <li>
                                     <span class="text">
@@ -214,6 +224,16 @@
                             <div class="box-tools pull-right"></div>
                         </div>
                         <div class="box-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="input-group">
+                                        <input name="{{ boxThree.search_input_name }}" type="search" class="form-control" maxlength="50">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-fw fa-search"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
                             <ul class="todo-list ui-sortable">
                                 <li>
                                     <span class="text">
@@ -236,6 +256,16 @@
                             <div class="box-tools pull-right"></div>
                         </div>
                         <div class="box-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="input-group">
+                                        <input name="{{ boxFour.search_input_name }}" type="search" class="form-control" maxlength="50">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-fw fa-search"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
                             <ul class="todo-list ui-sortable">
                                 <li>
                                     <span class="text">

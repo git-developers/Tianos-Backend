@@ -4,7 +4,7 @@
     // Global Variables
     var MAX_HEIGHT = 100;
 
-    $.boxLeftSearch = function(el, options) {
+    $.boxOneSearch = function(el, options) {
 
         // Global Private Variables
         var MAX_WIDTH = 200;
@@ -17,7 +17,7 @@
 
         base.$el = $(el);
         base.el = el;
-        base.$el.data('boxLeftSearch', base);
+        base.$el.data('boxOneSearch', base);
 
         base.init = function(){
             var totalButtons = 0;
@@ -91,16 +91,16 @@
         base.init();
     };
 
-    // $.boxLeftSearch.defaultOptions = {
+    // $.boxOneSearch.defaultOptions = {
     //     buttonStyle: "border: 1px solid #fff; background-color:#000; color:#fff; padding:20px 50px",
     //     buttonPress: function () {}
     // };
 
-    $.fn.boxLeftSearch = function(options){
+    $.fn.boxOneSearch = function(options){
 
         return this.each(function(){
 
-            var bp = new $.boxLeftSearch(this, options);
+            var bp = new $.boxOneSearch(this, options);
 
             $('div#' + options.boxId + ' input[name=' + options.searchInputName + ']').keyup(function() {
                 bp.searchBox(this);

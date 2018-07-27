@@ -59,34 +59,15 @@ class BackendController extends BaseController
 
         //REPOSITORY LEFT
         $varsLeft = $configuration->getRepositoryVarsLeft();
-        $objectsLeft = $this->get($repositoryLeft)->$methodLeft();
-        $objectsLeft = $this->getSerializeDecode($objectsLeft, $varsLeft->serialize_group_name);
+        $objectsOne = $this->get($repositoryLeft)->$methodLeft();
+        $objectsOne = $this->getSerializeDecode($objectsOne, $varsLeft->serialize_group_name);
         //REPOSITORY LEFT
 
 
         //CRUD
         $crud = $this->get('tianos.one_to_many');
         $modal = $crud->getModalMapper()->getDefaults();
-        $formMapper = $crud->getFormMapper()->getDefaults();
-
-        //GRID
-        $gridService = $this->get('tianos.grid');
-        $modal = $gridService->getModalMapper()->getDefaults($modal);
-        $formMapper = $gridService->getFormMapper()->getDefaults();
-
-        //DATATABLE
-//        $dataTable = $gridService->getDataTableMapper($grid)
-//            ->setRoute()
-//            ->setColumns()
-//            ->setOptions()
-//            ->setRowCallBack()
-////            ->setData($objects)
-//            ->setTableOptions()
-//            ->setTableButton()
-//            ->setTableHeaderButton()
-//            ->setColumnsTargets()
-//            ->resetGridVariable()
-        ;
+//        $formMapper = $crud->getFormMapper()->getDefaults();
 
         return $this->render(
             $template,
@@ -98,9 +79,48 @@ class BackendController extends BaseController
                 'boxTwo' => $boxTwo,
                 'boxThree' => $boxThree,
                 'boxFour' => $boxFour,
+                'objectsOne' => $objectsOne,
+//                'formMapper' => $formMapper,
+            ]
+        );
+    }
+
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function boxOneSearchAction(Request $request): Response
+    {
+        if (!$this->isXmlHttpRequest()) {
+            throw $this->createAccessDeniedException(self::ACCESS_DENIED_MSG);
+        }
+
+        $parameters = [
+            'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
+        ];
+        $applicationName = $this->container->getParameter('application_name');
+        $this->metadata = new Metadata('tianos', $applicationName, $parameters);
+
+        //CONFIGURATION
+        $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
+        $template = $configuration->getTemplate('');
+
+        $vars = $configuration->getVars();
+        $boxLeft = $vars->box_left;
+
+        $repositoryLeft = $configuration->getRepositoryServiceLeft();
+        $methodLeft = $configuration->getRepositoryMethodLeft();
+
+        //REPOSITORY LEFT
+        $objectsLeft = $this->get($repositoryLeft)->$methodLeft($request->get('q'));
+        $varsLeft = $configuration->getRepositoryVarsLeft();
+        $objectsLeft = $this->getSerializeDecode($objectsLeft, $varsLeft->serialize_group_name);
+
+        return $this->render(
+            $template,
+            [
+                'boxLeft' => $boxLeft,
                 'objectsLeft' => $objectsLeft,
-                'formMapper' => $formMapper,
-//                'dataTable' => $dataTable,
             ]
         );
     }

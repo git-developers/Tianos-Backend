@@ -31,8 +31,8 @@ backend_associativeacademic_index:
                     li_class: box-left-li
                     li_badge_class: bg-green
                     li_input_name: box_left_selected_value
-                    search_input_name: search-input-name-left
-                    route_search: backend_orderin_search
+                    search_input_name: search-input-name-one
+                    route_search: backend_associativeacademic_one_search
                     route_select_item: backend_orderin_boxleft_select_item
                 box_two:
                     icon: bookmark
@@ -42,6 +42,8 @@ backend_associativeacademic_index:
                     li_class: box-center-li
                     li_badge_class: bg-orange-active
                     li_input_name: box_center_selected_value
+                    search_input_name: search-input-name-two
+                    route_search: backend_orderin_search
                     route_select_item: backend_orderin_boxcenter_select_item
                 box_three:
                     icon: building-o
@@ -51,6 +53,9 @@ backend_associativeacademic_index:
                     li_class: box-right-li
                     li_badge_class: bg-orange-active
                     li_input_name: box-right-selected-value
+                    search_input_name: search-input-name-three
+                    route_search: backend_orderin_search
+                    route_select_item: backend_orderin_boxcenter_select_item
                 box_four:
                     icon: bell-o
                     class: primary
@@ -59,6 +64,9 @@ backend_associativeacademic_index:
                     li_class: box-right-li
                     li_badge_class: bg-orange-active
                     li_input_name: box-right-selected-value
+                    search_input_name: search-input-name-four
+                    route_search: backend_orderin_search
+                    route_select_item: backend_orderin_boxcenter_select_item
             form:
                 type: Bundle\AssociativeacademicBundle\Form\Type\AssociativeacademicType
             repository:
@@ -70,11 +78,38 @@ backend_associativeacademic_index:
                     vars:
                         serialize_group_name: associative-academic
 
+backend_associativeacademic_one_search:
+    path: /one-search
+    methods: [POST]
+    defaults:
+        _controller: tianos.backend.in.controller.order:boxOneSearchAction
+        _tianos:
+            action: left_search
+            template: OrderBundle:OrderInBackend/Li:box_left.html.twig
+            template: AssociativeacademicBundle:BackendAssociativeacademic/Li:1_box_one.html.twig
+            vars:
+                box_left:
+                    li_class: box-one-li
+                    li_badge_class: bg-blue
+                    li_input_name: box-one-selected-value
+                    search_input_name: search-input-name-one
+            repository:
+                box_left:
+                    service: tianos.repository.university
+                    method: searchBox
+                    arguments:
+                        limit: 20
+                    vars:
+                        serialize_group_name: one-search
 
-
-
-
-
+backend_associativeacademic_info:
+    path: /info
+    methods: [POST]
+    defaults:
+        _controller: tianos.backend.controller.associativeacademic:infoAction
+        _tianos:
+            action: info
+            template: AssociativeacademicBundle:BackendAssociativeacademic/Informative:info.html.twig
 
 
 
@@ -147,12 +182,5 @@ backend_associativeacademic_index:
 #                vars:
 #                    serialize_group_name: crud
 
-backend_associativeacademic_info:
-    path: /info
-    methods: [POST]
-    defaults:
-        _controller: tianos.backend.controller.associativeacademic:infoAction
-        _tianos:
-            action: info
-            template: AssociativeacademicBundle:BackendAssociativeacademic/Informative:info.html.twig
+
 
