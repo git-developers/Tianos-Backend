@@ -12,6 +12,16 @@
             height: 16px;
             width: 16px;
         }
+        .col-md-3 {
+            padding-right: 5px !important;
+            padding-left: 5px !important;
+        }
+        .box-one-truncate {
+            /*width: 350px;*/
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
     </style>
 
 {% endblock %}
@@ -19,11 +29,14 @@
 {% block javascripts %}
     {{ parent() }}
 
+
+{#    '@AssociativeacademicBundle/Resources/public/js/boxOneSearch.js'
+    '@AssociativeacademicBundle/Resources/public/js/boxOneSelectItem.js'
+    '@AssociativeacademicBundle/Resources/public/js/boxTwoSelectItem.js'#}
+
     {% javascripts
         '@AssociativeacademicBundle/Resources/public/js/boxInfo.js'
-        '@AssociativeacademicBundle/Resources/public/js/boxOneSearch.js'
-        '@AssociativeacademicBundle/Resources/public/js/boxOneSelectItem.js'
-        '@AssociativeacademicBundle/Resources/public/js/boxTwoSelectItem.js'
+
     %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
@@ -32,29 +45,31 @@
     <script type="text/javascript">
         $(function() {
 
-            $('div#{{ boxOne.id }}').boxOneSearch({
-                boxId: '{{ boxOne.id }}',
-                searchInputName: '{{ boxOne.search_input_name }}',
-                routeSearch: '{{ path(boxOne.route_search) }}',
-            });
+            {#$('div#{{ boxOne.id }}').boxOneSearch({#}
+                {#boxId: '{{ boxOne.id }}',#}
+                {#searchInputName: '{{ boxOne.search_input_name }}',#}
+                {#routeSearch: '{{ path(boxOne.route_search) }}',#}
+            {#});#}
 
-            $('div#{{ boxOne.id }}').boxOneSelectItem({
-                boxOneId: '{{ boxOne.id }}',
-                boxTwoId: '{{ boxTwo.id }}',
-                boxThreeId: '{{ boxThree.id }}',
-                liClass: '{{ boxOne.li_class }}',
-                routeSelectItem: '{{ path(boxOne.route_select_item) }}',
-            });
+            {#$('div#{{ boxOne.id }}').boxOneSelectItem({#}
+                {#boxOneId: '{{ boxOne.id }}',#}
+                {#boxTwoId: '{{ boxTwo.id }}',#}
+                {#boxThreeId: '{{ boxThree.id }}',#}
+                {#liClass: '{{ boxOne.li_class }}',#}
+                {#routeSelectItem: '{{ path(boxOne.route_select_item) }}',#}
+            {#});#}
 
-            $('div#{{ boxTwo.id }}').boxTwoSelectItem({
-                boxOneId: '{{ boxOne.id }}',
-                boxTwoId: '{{ boxTwo.id }}',
-                boxThreeId: '{{ boxThree.id }}',
-                liClass: '{{ boxTwo.li_class }}',
-                boxOneLiInputName: '{{ boxOne.li_input_name }}',
-                routeSelectItem: '{{ path(boxTwo.route_select_item) }}',
-            });
+            {#$('div#{{ boxTwo.id }}').boxTwoSelectItem({#}
+                {#boxOneId: '{{ boxOne.id }}',#}
+                {#boxTwoId: '{{ boxTwo.id }}',#}
+                {#boxThreeId: '{{ boxThree.id }}',#}
+                {#liClass: '{{ boxTwo.li_class }}',#}
+                {#boxOneLiInputName: '{{ boxOne.li_input_name }}',#}
+                {#routeSelectItem: '{{ path(boxTwo.route_select_item) }}',#}
+            {#});#}
 
+
+            {#
             $( "form" ).submit(function( event ) {
                 event.preventDefault();
 
@@ -98,8 +113,8 @@
                     }
                 });
 
-
             });
+            #}
 
         });
     </script>
@@ -113,7 +128,7 @@
     <section class="content-header">
         <h1>
             <i class="fa fa-fw fa-{{ box.icon }}"></i> {{ box.title|raw }}
-            <small>newspaper</small>
+            <small>association</small>
         </h1>
         <ol class="breadcrumb">
             {#<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>#}
@@ -146,26 +161,21 @@
                             <h3 class="box-title">
                                 <i class="fa fa-fw fa-{{ boxOne.icon }}"></i> {{ boxOne.title }}
                             </h3>
-                            <div class="box-tools pull-right">
-                                <div class="row">
-                                    <div class="col-md-offset-6 col-md-6">
-                                        <div class="input-group">
-                                            <input name="{{ boxOne.search_input_name }}" type="search" class="form-control" maxlength="50">
-                                            <span class="input-group-addon">
-                                                <i class="fa fa-fw fa-search"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                {#<ul class="pagination pagination-sm inline">#}
-                                {#<li><a href="#">«</a></li>#}
-                                {#<li><a href="#">1</a></li>#}
-                                {#</ul>#}
-                            </div>
+                            <div class="box-tools pull-right"></div>
                         </div>
                         <div class="box-body">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="input-group">
+                                        <input name="{{ boxOne.search_input_name }}" type="search" class="form-control" maxlength="50">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-fw fa-search"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
                             <ul class="todo-list ui-sortable">
-                                {{ include('AssociativeacademicBundle:BackendAssociativeacademic/Li:box_left.html.twig') }}
+                                {{ include('AssociativeacademicBundle:BackendAssociativeacademic/Li:1_box_one.html.twig') }}
                             </ul>
                         </div>
                     </div>
@@ -185,7 +195,7 @@
                             <ul class="todo-list ui-sortable">
                                 <li>
                                     <span class="text">
-                                        Seleccione un PDV.
+                                        Seleccione una universidad.
                                     </span>
                                 </li>
                             </ul>
@@ -207,7 +217,7 @@
                             <ul class="todo-list ui-sortable">
                                 <li>
                                     <span class="text">
-                                        Seleccione un usuario.
+                                        Seleccione un Área académica.
                                     </span>
                                 </li>
                             </ul>
@@ -218,7 +228,7 @@
 
                 {#FOUR#}
                 <div id="{{ boxFour.id }}" class="col-md-3">
-                    <div class="box box-warning box-solid">
+                    <div class="box box-info box-solid">
                         <div class="box-header with-border">
                             <h3 class="box-title">
                                 <i class="fa fa-fw fa-{{ boxFour.icon }}"></i> {{ boxFour.title }}
@@ -229,7 +239,7 @@
                             <ul class="todo-list ui-sortable">
                                 <li>
                                     <span class="text">
-                                        Seleccione un usuario.
+                                        Seleccione una facultad.
                                     </span>
                                 </li>
                             </ul>

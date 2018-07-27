@@ -465,7 +465,6 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
         return $this->address;
     }
 
-
     /**
      * Set phone
      *

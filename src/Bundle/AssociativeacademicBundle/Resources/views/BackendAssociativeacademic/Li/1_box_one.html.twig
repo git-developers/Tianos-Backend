@@ -3,8 +3,14 @@
     {% for entity in objectsLeft %}
 
         {% set id = entity.id|default('< missing ID >') %}
+        {% set name = entity.name_box|default('< missing name_box >') %}
 
-        <li class="{{ boxLeft.li_class }} x-hand" data-id="{{ id }}">
+        <li
+            class="{{ boxOne.li_class }} x-hand box-one-truncate"
+            data-id="{{ id }}"
+            data-toggle="tooltip"
+            data-original-title="{{ name }}"
+        >
 
             <span class="handle ui-sortable-handle">
                 <i class="fa fa-ellipsis-v"></i>
@@ -12,15 +18,15 @@
             </span>
 
             <input type="radio"
-                   name="{{ boxLeft.li_input_name }}"
+                   name="{{ boxOne.li_input_name }}"
                    value="{{ id }}">
             &nbsp;
-            <span class="badge {{ boxLeft.li_badge_class }}">
+            <span class="badge {{ boxOne.li_badge_class }}">
                 {{ id }}
             </span>
 
             <span class="text">
-                {{ entity.name_box|default('< missing name_box >') }}
+                {{ name }}
             </span>
 
             {#<div class="tools">#}

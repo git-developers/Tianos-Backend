@@ -14,21 +14,20 @@ backend_associativeacademic_index:
                 body_css: grid-body-css
                 serialize_group_name: crud
                 box:
-                    icon: newspaper-o
+                    icon: book
                     class: primary
                     box_class: primary
                     form_name: main-form
-                    title: Devolución de periódicos por los Canillitas <i class="fa fa-sign-in"></i>
+                    title: Asociación del bloque académico <i class="fa fa-angle-double-right"></i>
                     route_submit: backend_orderin_upsert
-                    route_info: backend_orderin_info
+                    route_info: backend_associativeacademic_info
                     table_button_header:
-                        - create
                         - info
                 box_one:
-                    icon: map-marker
+                    icon: building
                     class: primary
-                    id: box-left-id
-                    title: Puntos de venta
+                    id: box-one-id
+                    title: Universidades
                     li_class: box-left-li
                     li_badge_class: bg-green
                     li_input_name: box_left_selected_value
@@ -36,27 +35,27 @@ backend_associativeacademic_index:
                     route_search: backend_orderin_search
                     route_select_item: backend_orderin_boxleft_select_item
                 box_two:
-                    icon: user
+                    icon: bookmark
                     class: primary
-                    id: box-center-id
-                    title: Canillitas
+                    id: box-two-id
+                    title: Áreas académicas
                     li_class: box-center-li
                     li_badge_class: bg-orange-active
                     li_input_name: box_center_selected_value
                     route_select_item: backend_orderin_boxcenter_select_item
                 box_three:
-                    icon: newspaper-o
+                    icon: building-o
                     class: primary
-                    id: box-right-id
-                    title: Periódicos
+                    id: box-three-id
+                    title: Facultades
                     li_class: box-right-li
                     li_badge_class: bg-orange-active
                     li_input_name: box-right-selected-value
                 box_four:
-                    icon: newspaper-o
+                    icon: bell-o
                     class: primary
-                    id: box-right-id
-                    title: Periódicos
+                    id: box-four-id
+                    title: Escuelas
                     li_class: box-right-li
                     li_badge_class: bg-orange-active
                     li_input_name: box-right-selected-value
@@ -64,12 +63,12 @@ backend_associativeacademic_index:
                 type: Bundle\AssociativeacademicBundle\Form\Type\AssociativeacademicType
             repository:
                 box_left:
-                    service: tianos.repository.associativeacademic
+                    service: tianos.repository.university
                     method: findAll
                     arguments:
                         limit: 20
                     vars:
-                        serialize_group_name: associativeacademic
+                        serialize_group_name: associative-academic
 
 
 
@@ -157,55 +156,3 @@ backend_associativeacademic_info:
             action: info
             template: AssociativeacademicBundle:BackendAssociativeacademic/Informative:info.html.twig
 
-
-
-
-
-#/var/www/html/Sylius/sylius/vendor/sylius/sylius/docs/customization/factory.rst
-#
-#    sylius_admin_product_create_simple:
-#        path: /products/new/simple
-#        methods: [GET, POST]
-#        defaults:
-#            _controller: sylius.controller.product:createAction
-#            _sylius:
-#                section: admin
-#                factory:
-#                    method: createDisabled # like here for example
-#                template: SyliusAdminBundle:Crud:create.html.twig
-#                redirect: sylius_admin_product_update
-#                vars:
-#                    subheader: sylius.ui.manage_your_product_catalog
-#                    templates:
-#                        form: SyliusAdminBundle:CRUDDUMMY:_form.html.twig
-#                    route:
-#                        name: sylius_admin_product_create_simple
-
-
-
-#            template: "@SyliusAdmin/ProductVariant/generate.html.twig"
-#            section: admin
-#            permission: true
-#            redirect:
-#                route: sylius_admin_product_variant_index
-#                parameters: { productId: $productId }
-#            form:
-#                type: Sylius\Bundle\ProductBundle\Form\Type\ProductGenerateVariantsType
-#            repository:
-#                method: find
-#                arguments: [$productId]
-#            flash: sylius.product_variant.generate
-
-#sylius_admin_product_index:
-#    path: /products/
-#    methods: [GET]
-#    defaults:
-#        _controller: sylius.controller.product:indexAction
-#        _sylius:
-#            section: admin
-#            permission: true
-#            grid: sylius_admin_product
-#            template: SyliusAdminBundle:CRUDDUMMY:index.html.twig
-#            vars:
-#                subheader: sylius.ui.manage_your_product_catalog
-#                icon: cube

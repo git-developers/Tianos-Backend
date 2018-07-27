@@ -56,16 +56,13 @@ class BackendController extends BaseController
         $boxThree = $vars->box_three;
         $boxFour = $vars->box_four;
 
+
         //REPOSITORY LEFT
         $varsLeft = $configuration->getRepositoryVarsLeft();
         $objectsLeft = $this->get($repositoryLeft)->$methodLeft();
-
-//        if($this->isGranted(['ROLE_' . Profile::DISTRIBUIDOR,])) {
-//            $objectsLeft = $this->getUser()->getPointOfSale();
-//        }
-
         $objectsLeft = $this->getSerializeDecode($objectsLeft, $varsLeft->serialize_group_name);
         //REPOSITORY LEFT
+
 
         //CRUD
         $crud = $this->get('tianos.one_to_many');

@@ -17,7 +17,10 @@ class University
     /**
      * @var integer
      *
-     * @JMSS\Groups({"crud"})
+     * @JMSS\Groups({
+     *     "crud",
+     *     "associative-academic"
+     * })
      */
     private $id;
 
@@ -34,7 +37,9 @@ class University
     /**
      * @var string
      *
-     * @JMSS\Groups({"crud"})
+     * @JMSS\Groups({
+     *     "crud"
+     * })
      */
     private $name;
 
@@ -70,6 +75,16 @@ class University
      * @var boolean
      */
     private $isActive = '1';
+
+    /**
+     * @var string
+     *
+     * @JMSS\Accessor(getter="getNameBox", setter="setNameBox")
+     * @JMSS\Groups({
+     *     "associative-academic"
+     * })
+     */
+    private $nameBox;
 
     public function __toString() {
         return sprintf('%s - %s', $this->id, $this->name);
@@ -291,6 +306,24 @@ class University
     public function getIsActive()
     {
         return $this->isActive;
+    }
+
+    /**
+     *
+     * @return string
+     */
+    public function getNameBox()
+    {
+//        return sprintf('%s %s', $this->id, $this->name);
+        return $this->name;
+    }
+
+    /**
+     * @param string $nameBox
+     */
+    public function setNameBox($nameBox)
+    {
+        $this->nameBox = $nameBox;
     }
 }
 
