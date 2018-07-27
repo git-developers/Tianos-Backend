@@ -20,10 +20,10 @@
     {{ parent() }}
 
     {% javascripts
-        '@OrderBundle/Resources/public/js/boxInfo.js'
-        '@OrderBundle/Resources/public/js/boxOneSearch.js'
-        '@OrderBundle/Resources/public/js/boxOneSelectItem.js'
-        '@OrderBundle/Resources/public/js/boxTwoSelectItem.js'
+        '@AssociativeacademicBundle/Resources/public/js/boxInfo.js'
+        '@AssociativeacademicBundle/Resources/public/js/boxOneSearch.js'
+        '@AssociativeacademicBundle/Resources/public/js/boxOneSelectItem.js'
+        '@AssociativeacademicBundle/Resources/public/js/boxTwoSelectItem.js'
     %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
@@ -119,11 +119,17 @@
             {#<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>#}
             {#<li class="active">Dashboard</li>#}
 
-            {% for key, button in dataTable.tableHeaderButton %}
-                <li>
-                    {{ tianos_grid_render_button(button, '@Ui/Grid/Button/Header/_table_header_button.html.twig') }}
-                </li>
-            {% endfor %}
+            <li>
+                <button
+                    class="btn btn-xs btn-info modal-info"
+                    alt="Info"
+                    title="Info"
+                    data-toggle="modal"
+                    data-target="#modal-info"
+                    style="margin-right: 5px">
+                    <i class="fa fa-fw fa-info-circle"></i> Info
+                </button>
+            </li>
         </ol>
     </section>
 
@@ -159,7 +165,7 @@
                         </div>
                         <div class="box-body">
                             <ul class="todo-list ui-sortable">
-                                {{ include('OrderBundle:OrderInBackend/Li:box_left.html.twig') }}
+                                {{ include('AssociativeacademicBundle:BackendAssociativeacademic/Li:box_left.html.twig') }}
                             </ul>
                         </div>
                     </div>
