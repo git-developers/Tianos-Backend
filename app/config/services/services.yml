@@ -25,3 +25,4 @@ imports:
     - { resource: '@AreaacademicaBundle/Resources/config/services.yml' }
     - { resource: '@FacultadBundle/Resources/config/services.yml' }
     - { resource: '@EscuelaBundle/Resources/config/services.yml' }
+    - { resource: '@AssociativeacademicBundle/Resources/config/services.yml' }

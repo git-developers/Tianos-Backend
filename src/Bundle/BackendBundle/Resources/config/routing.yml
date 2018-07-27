@@ -58,3 +58,6 @@ backend_facultad:
 backend_escuela:
     resource: '@EscuelaBundle/Resources/config/routing/backend.yml'
     prefix: /escuela
+backend_associativeacademic:
+    resource: '@AssociativeacademicBundle/Resources/config/routing/backend.yml'
+    prefix: /associativeacademic

@@ -30,7 +30,7 @@ use Symfony\Component\Form\FormEvents;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityRepository;
 
-use Bundle\ClientBundle\Entity\Client;
+use Bundle\UniversityBundle\Entity\University;
 use Bundle\ProfileBundle\Entity\Profile;
 
 //abstract
@@ -44,8 +44,8 @@ class UserType extends AbstractType
     {
 
         $builder
-            ->add('client', EntityType::class, array(
-                'class' => Client::class,
+            ->add('university', EntityType::class, array(
+                'class' => University::class,
                 'query_builder' => function(EntityRepository $a) {
                     return $a->createQueryBuilder('a')
                         ->where('a.isActive = :active')
@@ -59,7 +59,7 @@ class UserType extends AbstractType
                 'placeholder' => '[ Escoge una opción ]',
                 'empty_data' => null,
                 'required' => true,
-                'label' => 'Cliente',
+                'label' => 'Universidad',
                 'label_attr' => [
                     'class' => ''
                 ],
@@ -83,7 +83,7 @@ class UserType extends AbstractType
                 'placeholder' => '[ Escoge una opción ]',
                 'empty_data' => null,
                 'required' => true,
-                'label' => 'Profile',
+                'label' => 'Perfil',
                 'label_attr' => [
                     'class' => ''
                 ],

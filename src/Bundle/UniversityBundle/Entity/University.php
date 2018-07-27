@@ -71,6 +71,9 @@ class University
      */
     private $isActive = '1';
 
+    public function __toString() {
+        return sprintf('%s - %s', $this->id, $this->name);
+    }
 
     /**
      * Get id

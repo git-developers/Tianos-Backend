@@ -75,7 +75,7 @@ class Builder implements ContainerAwareInterface
             'ROLE_' . Profile::ADMIN,
         ]);
 
-        $menu->addChild('Master', [
+        $menu->addChild('Bloque académico', [
             'route' => 'backend_default_dashboard',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
@@ -89,12 +89,13 @@ class Builder implements ContainerAwareInterface
             'backend_areaacademica_index',
             'backend_facultad_index',
             'backend_escuela_index',
+            'backend_associativeacademic_index',
         ]))
         ->setAttribute('icon', 'fa-fw fa-code-fork')
         ->setDisplay($isGranted)
         ;
 
-        $menu['Master']->addChild('Universidades', [
+        $menu['Bloque académico']->addChild('Universidades', [
             'route' => 'backend_university_index',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
@@ -108,7 +109,7 @@ class Builder implements ContainerAwareInterface
         ->setDisplay($isGranted)
         ;
 
-        $menu['Master']->addChild('Áreas académicas', [
+        $menu['Bloque académico']->addChild('Áreas académicas', [
             'route' => 'backend_areaacademica_index',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
@@ -122,7 +123,7 @@ class Builder implements ContainerAwareInterface
         ->setDisplay($isGranted)
         ;
 
-        $menu['Master']->addChild('Facultades', [
+        $menu['Bloque académico']->addChild('Facultades', [
             'route' => 'backend_facultad_index',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
@@ -136,7 +137,7 @@ class Builder implements ContainerAwareInterface
         ->setDisplay($isGranted)
         ;
 
-        $menu['Master']->addChild('Escuela', [
+        $menu['Bloque académico']->addChild('Escuelas', [
             'route' => 'backend_escuela_index',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
@@ -146,6 +147,20 @@ class Builder implements ContainerAwareInterface
         ->setAttribute('icon', 'fa-fw fa-bell-o')
         ->setAttribute('class', $this->activeRoute([
             'backend_escuela_index',
+        ]))
+        ->setDisplay($isGranted)
+        ;
+
+        $menu['Bloque académico']->addChild('Asociación académico', [
+            'route' => 'backend_associativeacademic_index',
+            'extras' => ['safe_label' => true],
+            'childrenAttributes' => [
+                'class' => 'treeview-menu',
+            ],
+        ])
+        ->setAttribute('icon', 'fa-fw fa-exchange')
+        ->setAttribute('class', $this->activeRoute([
+            'backend_associativeacademic_index',
         ]))
         ->setDisplay($isGranted)
         ;
@@ -186,7 +201,7 @@ class Builder implements ContainerAwareInterface
         ;
 
         $menu['Cuentas']->addChild('Usuario', [
-            'route' => 'backend_default_dashboard',
+            'route' => 'backend_user_index',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
                 'class' => 'treeview-menu',
@@ -199,16 +214,8 @@ class Builder implements ContainerAwareInterface
         ->setDisplay($isGranted)
         ;
 
-        $menu['Cuentas']['Usuario']->addChild('Gestionar', [
-            'route' => 'backend_user_index'
-        ])
-        ->setAttribute('icon', self::CIRCLE_1)
-        ->setAttribute('class', $this->activeRoute('backend_user_index'))
-        ->setDisplay($isGranted)
-        ;
-
         $menu['Cuentas']->addChild('Grupo de usuarios', [
-            'route' => 'backend_default_dashboard',
+            'route' => 'backend_groupofusers_index',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
                 'class' => 'treeview-menu',
@@ -221,16 +228,8 @@ class Builder implements ContainerAwareInterface
             ->setDisplay($isGranted)
         ;
 
-        $menu['Cuentas']['Grupo de usuarios']->addChild('Gestionar', [
-            'route' => 'backend_groupofusers_index'
-        ])
-            ->setAttribute('icon', self::CIRCLE_1)
-            ->setAttribute('class', $this->activeRoute('backend_groupofusers_index'))
-            ->setDisplay($isGranted)
-        ;
-
         $menu['Cuentas']->addChild('Perfil', [
-            'route' => 'backend_default_dashboard',
+            'route' => 'backend_profile_index',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
                 'class' => 'treeview-menu',
@@ -243,16 +242,8 @@ class Builder implements ContainerAwareInterface
         ->setDisplay($isGranted)
         ;
 
-        $menu['Cuentas']['Perfil']->addChild('Gestionar', [
-            'route' => 'backend_profile_index'
-        ])
-        ->setAttribute('icon', self::CIRCLE_1)
-        ->setAttribute('class', $this->activeRoute('backend_profile_index'))
-        ->setDisplay($isGranted)
-        ;
-
         $menu['Cuentas']->addChild('Rol', [
-            'route' => 'backend_default_dashboard',
+            'route' => 'backend_role_index',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
                 'class' => 'treeview-menu',
@@ -265,34 +256,18 @@ class Builder implements ContainerAwareInterface
         ->setDisplay($isGranted)
         ;
 
-        $menu['Cuentas']['Rol']->addChild('Gestionar', [
-            'route' => 'backend_role_index'
-        ])
-        ->setAttribute('icon', self::CIRCLE_1)
-        ->setAttribute('class', $this->activeRoute('backend_role_index'))
-        ->setDisplay($isGranted)
-        ;
-
         $menu['Cuentas']->addChild('Sesión', [
-            'route' => 'backend_default_dashboard',
+            'route' => 'backend_session_index',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
                 'class' => 'treeview-menu',
             ],
         ])
-            ->setAttribute('icon', 'fa-fw fa-history')
-            ->setAttribute('class', $this->activeRoute([
-                'backend_session_index',
-            ]))
-            ->setDisplay($isGranted)
-        ;
-
-        $menu['Cuentas']['Sesión']->addChild('Gestionar', [
-            'route' => 'backend_session_index'
-        ])
-            ->setAttribute('icon', self::CIRCLE_1)
-            ->setAttribute('class', $this->activeRoute('backend_session_index'))
-            ->setDisplay($isGranted)
+        ->setAttribute('icon', 'fa-fw fa-history')
+        ->setAttribute('class', $this->activeRoute([
+            'backend_session_index',
+        ]))
+        ->setDisplay($isGranted)
         ;
         /**
          * ACCOUNTS
