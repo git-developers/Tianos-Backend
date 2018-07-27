@@ -48,7 +48,7 @@ class BackendController extends BaseController
 //        $methodCenter = $configuration->getRepositoryMethodCenter();
         $template = $configuration->getTemplate('');
 
-        $grid = $configuration->getGrid();
+//        $grid = $configuration->getGrid();
         $vars = $configuration->getVars();
         $box = $vars->box;
         $boxOne = $vars->box_one;
