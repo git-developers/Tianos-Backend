@@ -42,6 +42,7 @@
         '@AssociativeacademicBundle/Resources/public/js/1_boxOneSearch.js'
         '@AssociativeacademicBundle/Resources/public/js/1_boxOneSelectItem.js'
         '@AssociativeacademicBundle/Resources/public/js/2_boxTwoSearch.js'
+        '@AssociativeacademicBundle/Resources/public/js/2_boxTwoSelectItem.js'
         '@AssociativeacademicBundle/Resources/public/js/3_boxThreeSearch.js'
         '@AssociativeacademicBundle/Resources/public/js/4_boxFourSearch.js'
     %}
@@ -78,6 +79,15 @@
 
             $('div#{{ boxOne.id }}').boxOneSelectItem({
                 boxOneId: '{{ boxOne.id }}',
+                boxTwoId: '{{ boxTwo.id }}',
+                boxThreeId: '{{ boxThree.id }}',
+                boxFourId: '{{ boxFour.id }}',
+                liClass: '{{ boxOne.li_class }}',
+                routeSelectItem: '{{ path(boxOne.route_select_item) }}',
+            });
+
+            $('div#{{ boxOne.id }}').boxTwoSelectItem({
+                {#boxOneId: '{{ boxOne.id }}',#}
                 boxTwoId: '{{ boxTwo.id }}',
                 boxThreeId: '{{ boxThree.id }}',
                 boxFourId: '{{ boxFour.id }}',
@@ -263,7 +273,7 @@
                             <ul class="todo-list ui-sortable">
                                 <li>
                                     <span class="text">
-                                        Seleccione un Área académica.
+                                        Seleccione un área académica.
                                     </span>
                                 </li>
                             </ul>

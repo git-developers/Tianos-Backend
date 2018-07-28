@@ -253,11 +253,48 @@ class BackendController extends BaseController
     {
         $id = $request->get('id');
 
+        if (!$this->isXmlHttpRequest() || is_null($id)) {
+            throw $this->createAccessDeniedException(self::ACCESS_DENIED_MSG);
+        }
 
-        echo "POLLO:: <pre>";
-        print_r($id);
-        exit;
+        $parameters = [
+            'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
+        ];
+        $applicationName = $this->container->getParameter('application_name');
+        $this->metadata = new Metadata('tianos', $applicationName, $parameters);
 
+        //CONFIGURATION
+        $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
+        $template = $configuration->getTemplate('');
+
+        $vars = $configuration->getVars();
+        $boxTwo = $vars->box_two;
+
+        //REPOSITORY
+        $repository = $configuration->getRepositoryService();
+        $method = $configuration->getRepositoryMethod();
+        $vars = $configuration->getRepositoryVars();
+
+        $objects = $this->get($repository)->$method($id);
+        $objects = $this->getSerializeDecode($objects, $vars->serialize_group_name);
+
+        return $this->render(
+            $template,
+            [
+                'boxTwo' => $boxTwo,
+                'objectsTwo' => isset($objects[$boxTwo->entity]) ? $objects[$boxTwo->entity] : [],
+            ]
+        );
+    }
+
+
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function boxTwoSelectItemAction(Request $request): Response
+    {
+        $id = $request->get('id');
 
         if (!$this->isXmlHttpRequest() || is_null($id)) {
             throw $this->createAccessDeniedException(self::ACCESS_DENIED_MSG);
@@ -271,13 +308,10 @@ class BackendController extends BaseController
 
         //CONFIGURATION
         $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
-
-        $repositoryLeft = $configuration->getRepositoryServiceLeft();
-        $methodLeft = $configuration->getRepositoryMethodLeft();
         $template = $configuration->getTemplate('');
 
         $vars = $configuration->getVars();
-        $boxOne = $vars->box_one;
+        $boxThree = $vars->box_one;
 
         //REPOSITORY
         $repository = $configuration->getRepositoryService();
@@ -287,14 +321,19 @@ class BackendController extends BaseController
         $objects = $this->get($repository)->$method($id);
         $objects = $this->getSerializeDecode($objects, $vars->serialize_group_name);
 
+
+        echo "POLLO:: <pre>";
+        print_r($objects);
+        exit;
+
+
+
+
         return $this->render(
             $template,
             [
-                'boxOne' => $boxOne,
-                'objectsOne' => $objects,
-
-//                'boxCenter' => $boxCenter,
-//                'objectsCenter' => isset($objectsLeft[$boxCenter->entity]) ? $objectsLeft[$boxCenter->entity] : [],
+                'boxThree' => $boxThree,
+                'objectsTwo' => isset($objects[$boxThree->entity]) ? $objects[$boxThree->entity] : [],
             ]
         );
     }

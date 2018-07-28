@@ -98,6 +98,9 @@ class University
      *     @ORM\JoinColumn(name="areaacademica_id", referencedColumnName="id")
      *   }
      * )
+     * @JMSS\Groups({
+     *     "associative-academic"
+     * })
      */
     private $areaacademica;
 

@@ -4,13 +4,13 @@
     // Global Variables
     var MAX_HEIGHT = 100;
 
-    $.boxOneSelectItem = function(el, options) {
+    $.boxTwoSelectItem = function(el, options) {
 
         // Global Private Variables
         var MAX_WIDTH = 200;
         var DELAY = 400;
         var base = this;
-        var boxOne = null;
+        // var boxOne = null;
         var boxTwo = null;
         var boxThree = null;
         var boxFour = null;
@@ -20,11 +20,11 @@
 
         base.$el = $(el);
         base.el = el;
-        base.$el.data('boxOneSelectItem', base);
+        base.$el.data('boxTwoSelectItem', base);
 
         base.init = function(){
             var totalButtons = 0;
-            boxOne = $('div#' + options.boxOneId);
+            // boxOne = $('div#' + options.boxOneId);
             boxTwo = $('div#' + options.boxTwoId);
             boxThree = $('div#' + options.boxThreeId);
             boxFour = $('div#' + options.boxFourId);
@@ -46,7 +46,7 @@
             // debug(e);
             // base.options.buttonPress.call( this );
 
-            var radioOne = $(context).find('input[type=radio]');
+            var radioTwo = $(context).find('input[type=radio]');
 
             var boxUlTwo = boxTwo.find('ul');
             var boxUlThree = boxThree.find('ul');
@@ -69,7 +69,7 @@
                     boxUlTwo.html(data);
                     boxUlThree.html('<li><span class="text">Seleccione un área académica.</span></li>');
 
-                    radioOne.prop('checked', true);
+                    radioTwo.prop('checked', true);
 
                     base.addClassCallout('success');
                     base.setMessageCallout(msgSuccess + '<span class="badge bg-green-active">' + id + '</span>');
@@ -102,16 +102,16 @@
         base.init();
     };
 
-    // $.boxOneSelectItem.defaultOptions = {
+    // $.boxTwoSelectItem.defaultOptions = {
     //     buttonStyle: "border: 1px solid #fff; background-color:#000; color:#fff; padding:20px 50px",
     //     buttonPress: function () {}
     // };
 
-    $.fn.boxOneSelectItem = function(options){
+    $.fn.boxTwoSelectItem = function(options){
 
         return this.each(function(){
 
-            var bp = new $.boxOneSelectItem(this, options);
+            var bp = new $.boxTwoSelectItem(this, options);
 
             $(document).on('click', 'li.' + options.liClass, function(event) {
                 bp.selectItem(this);

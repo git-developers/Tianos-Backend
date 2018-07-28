@@ -39,12 +39,12 @@ backend_associativeacademic_index:
                     class: primary
                     id: box-two-id
                     title: Áreas académicas
-                    li_class: box-center-li
+                    li_class: box-two-li
                     li_badge_class: bg-orange-active
                     li_input_name: box-two-selected-value
                     search_input_name: search-input-name-two
                     route_search: backend_associativeacademic_two_search
-                    route_select_item: backend_orderin_boxcenter_select_item
+                    route_select_item: backend_associativeacademic_two_select_item
                 box_three:
                     icon: building-o
                     class: primary
@@ -55,7 +55,7 @@ backend_associativeacademic_index:
                     li_input_name: box-three-selected-value
                     search_input_name: search-input-name-three
                     route_search: backend_associativeacademic_three_search
-                    route_select_item: backend_orderin_boxcenter_select_item
+                    route_select_item: backend_associativeacademic_three_select_item
                 box_four:
                     icon: bell-o
                     class: primary
@@ -66,7 +66,7 @@ backend_associativeacademic_index:
                     li_input_name: box-four-selected-value
                     search_input_name: search-input-name-four
                     route_search: backend_associativeacademic_four_search
-                    route_select_item: backend_orderin_boxcenter_select_item
+                    route_select_item: backend_associativeacademic_four_select_item
             form:
                 type: Bundle\AssociativeacademicBundle\Form\Type\AssociativeacademicType
             repository:
@@ -111,7 +111,7 @@ backend_associativeacademic_two_search:
             vars:
                 box_two:
                     li_class: box-two-li
-                    li_badge_class: bg-green
+                    li_badge_class: bg-blue
                     li_input_name: box-two-selected-value
                     search_input_name: search-input-name-two
             repository:
@@ -172,39 +172,51 @@ backend_associativeacademic_one_select_item:
     defaults:
         _controller: tianos.backend.controller.associativeacademic:boxOneSelectItemAction
         _tianos:
-            template: AssociativeacademicBundle:BackendAssociativeacademic/Li:1_box_one.html.twig
+            template: AssociativeacademicBundle:BackendAssociativeacademic/Li:2_box_two.html.twig
             vars:
                 box_one:
                     li_class: box-one-li
                     li_badge_class: bg-green
                     li_input_name: box-one-selected-value
                     search_input_name: search-input-name-one
+                box_two:
+                    entity: areaacademica
+                    li_class: box-two-li
+                    li_badge_class: bg-blue
+                    li_input_name: box-two-selected-value
             repository:
                 service: tianos.repository.university
-                method: searchBox
+                method: find
                 arguments:
                     limit: 20
                 vars:
                     serialize_group_name: associative-academic
 
-
-#            vars:
-#                box_center:
-#                    icon: expeditedssl
-#                    class: primary
-#                    id: box-center-id
-#                    title: user2
-#                    entity: user2
-#                    li_class: box-center-li
-#                    li_badge_class: bg-blue
-#                    li_input_name: box_center_selected_value
-#                    search_input_name: search-input-name-center
-#            repository:
-#                box_left:
-#                    service: tianos.repository.pointofsale
-#                    method: find
-#                    vars:
-#                        serialize_group_name: order-in-left-select-item
+backend_associativeacademic_two_select_item:
+    path: /two-select-item
+    methods: [POST]
+    defaults:
+        _controller: tianos.backend.controller.associativeacademic:boxTwoSelectItemAction
+        _tianos:
+            template: AssociativeacademicBundle:BackendAssociativeacademic/Li:3_box_three.html.twig
+            vars:
+                box_two:
+                    entity: areaacademica
+                    li_class: box-two-li
+                    li_badge_class: bg-blue
+                    li_input_name: box-two-selected-value
+                box_three:
+                    entity: areaacademica
+                    li_class: box-three-li
+                    li_badge_class: bg-orange-active
+                    li_input_name: box-three-selected-value
+            repository:
+                service: tianos.repository.university
+                method: find
+                arguments:
+                    limit: 20
+                vars:
+                    serialize_group_name: associative-academic
 
 backend_associativeacademic_info:
     path: /info
