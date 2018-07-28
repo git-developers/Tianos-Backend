@@ -80,6 +80,37 @@ class Areaacademica
     private $nameBox;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Bundle\FacultadBundle\Entity\Facultad", inversedBy="areaacademica")
+     * @ORM\JoinTable(name="areaacademica_has_facultad",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="areaacademica_id", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="facultad_id", referencedColumnName="id")
+     *   }
+     * )
+     */
+    private $facultad;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Bundle\UniversityBundle\Entity\University", mappedBy="areaacademica")
+     */
+    private $university;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->facultad = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->university = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
      * Get id
      *
      * @return integer
@@ -296,6 +327,75 @@ class Areaacademica
     public function setNameBox($nameBox)
     {
         $this->nameBox = $nameBox;
+    }
+
+
+    /**
+     * Add facultad
+     *
+     * @param \Bundle\FacultadBundle\Entity\Facultad $facultad
+     *
+     * @return Areaacademica
+     */
+    public function addFacultad(\Bundle\FacultadBundle\Entity\Facultad $facultad)
+    {
+        $this->facultad[] = $facultad;
+
+        return $this;
+    }
+
+    /**
+     * Remove facultad
+     *
+     * @param \Bundle\FacultadBundle\Entity\Facultad $facultad
+     */
+    public function removeFacultad(\Bundle\FacultadBundle\Entity\Facultad $facultad)
+    {
+        $this->facultad->removeElement($facultad);
+    }
+
+    /**
+     * Get facultad
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getFacultad()
+    {
+        return $this->facultad;
+    }
+
+    /**
+     * Add university
+     *
+     * @param \Bundle\UniversityBundle\Entity\University $university
+     *
+     * @return Areaacademica
+     */
+    public function addUniversity(\Bundle\UniversityBundle\Entity\University $university)
+    {
+        $this->university[] = $university;
+
+        return $this;
+    }
+
+    /**
+     * Remove university
+     *
+     * @param \Bundle\UniversityBundle\Entity\University $university
+     */
+    public function removeUniversity(\Bundle\UniversityBundle\Entity\University $university)
+    {
+        $this->university->removeElement($university);
+    }
+
+    /**
+     * Get university
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUniversity()
+    {
+        return $this->university;
     }
 }
 

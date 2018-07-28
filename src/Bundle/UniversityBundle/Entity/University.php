@@ -86,6 +86,29 @@ class University
      */
     private $nameBox;
 
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Bundle\AreaacademicaBundle\Entity\Areaacademica", inversedBy="university")
+     * @ORM\JoinTable(name="university_has_areaacademica",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="university_id", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="areaacademica_id", referencedColumnName="id")
+     *   }
+     * )
+     */
+    private $areaacademica;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->areaacademica = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
     public function __toString() {
         return sprintf('%s - %s', $this->id, $this->name);
     }
@@ -323,6 +346,40 @@ class University
     public function setNameBox($nameBox)
     {
         $this->nameBox = $nameBox;
+    }
+
+    /**
+     * Add areaacademica
+     *
+     * @param \Bundle\AreaacademicaBundle\Entity\Areaacademica $areaacademica
+     *
+     * @return University
+     */
+    public function addAreaacademica(\Bundle\AreaacademicaBundle\Entity\Areaacademica $areaacademica)
+    {
+        $this->areaacademica[] = $areaacademica;
+
+        return $this;
+    }
+
+    /**
+     * Remove areaacademica
+     *
+     * @param \Bundle\AreaacademicaBundle\Entity\Areaacademica $areaacademica
+     */
+    public function removeAreaacademica(\Bundle\AreaacademicaBundle\Entity\Areaacademica $areaacademica)
+    {
+        $this->areaacademica->removeElement($areaacademica);
+    }
+
+    /**
+     * Get areaacademica
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getAreaacademica()
+    {
+        return $this->areaacademica;
     }
 }
 

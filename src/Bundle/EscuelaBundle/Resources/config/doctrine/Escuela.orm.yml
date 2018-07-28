@@ -69,6 +69,15 @@ Bundle\EscuelaBundle\Entity\Escuela:
             options:
                 default: '1'
             column: is_active
+    manyToMany:
+        facultad:
+            targetEntity: Bundle\FacultadBundle\Entity\Facultad
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: escuela
+            inversedBy: null
+            joinTable: null
+            orderBy: null
     lifecycleCallbacks: {  }
 #    lifecycleCallbacks:
 #        prePersist: [ doStuffOnPrePersist, doOtherStuffOnPrePersistToo ]

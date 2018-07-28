@@ -8,7 +8,7 @@ use Doctrine\DBAL\Schema\Schema;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-class Version20180727052401 extends AbstractMigration
+class Version20180728132709 extends AbstractMigration
 {
     public function up(Schema $schema)
     {
@@ -26,11 +26,14 @@ class Version20180727052401 extends AbstractMigration
         $this->addSql('CREATE TABLE session (id INT AUTO_INCREMENT NOT NULL, user_id INT DEFAULT NULL, token VARCHAR(45) DEFAULT NULL, created_at DATETIME NOT NULL, updated_at DATETIME DEFAULT NULL, is_active TINYINT(1) NOT NULL, INDEX IDX_D044D5D4A76ED395 (user_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE escuela (id INT AUTO_INCREMENT NOT NULL, code VARCHAR(45) DEFAULT NULL, name VARCHAR(150) NOT NULL, slug VARCHAR(150) DEFAULT NULL, created_at DATETIME NOT NULL, user_create INT DEFAULT NULL, updated_at DATETIME DEFAULT NULL, user_update INT DEFAULT NULL, is_active TINYINT(1) DEFAULT \'1\', PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE facultad (id INT AUTO_INCREMENT NOT NULL, code VARCHAR(45) DEFAULT NULL, name VARCHAR(150) NOT NULL, slug VARCHAR(150) DEFAULT NULL, created_at DATETIME NOT NULL, user_create INT DEFAULT NULL, updated_at DATETIME DEFAULT NULL, user_update INT DEFAULT NULL, is_active TINYINT(1) DEFAULT \'1\', PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE facultad_has_escuela (facultad_id INT NOT NULL, escuela_id INT NOT NULL, INDEX IDX_FC4F1A7F392EEB81 (facultad_id), INDEX IDX_FC4F1A7FE33F8867 (escuela_id), PRIMARY KEY(facultad_id, escuela_id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE category (id INT AUTO_INCREMENT NOT NULL, category_id INT DEFAULT NULL, code VARCHAR(45) DEFAULT NULL, name VARCHAR(150) DEFAULT NULL, slug VARCHAR(150) DEFAULT NULL, created_at DATETIME DEFAULT NULL, user_create INT DEFAULT NULL, updated_at DATETIME DEFAULT NULL, user_update INT DEFAULT NULL, is_active TINYINT(1) DEFAULT \'1\', INDEX fk_category_category1_idx (category_id), UNIQUE INDEX code_UNIQUE (code), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE university (id INT AUTO_INCREMENT NOT NULL, code VARCHAR(45) DEFAULT NULL, abbreviation VARCHAR(45) DEFAULT NULL, name VARCHAR(150) NOT NULL, slug VARCHAR(150) DEFAULT NULL, created_at DATETIME NOT NULL, user_create INT DEFAULT NULL, updated_at DATETIME DEFAULT NULL, user_update INT DEFAULT NULL, is_active TINYINT(1) DEFAULT \'1\', PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE university_has_areaacademica (university_id INT NOT NULL, areaacademica_id INT NOT NULL, INDEX IDX_9353040A309D1878 (university_id), INDEX IDX_9353040AD2A1EDE8 (areaacademica_id), PRIMARY KEY(university_id, areaacademica_id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE point_of_sale (id INT AUTO_INCREMENT NOT NULL, point_of_sale_id INT DEFAULT NULL, code VARCHAR(45) DEFAULT NULL, name VARCHAR(100) DEFAULT NULL, slug VARCHAR(100) NOT NULL, latitude NUMERIC(11, 8) DEFAULT NULL, longitude NUMERIC(11, 8) DEFAULT NULL, description TEXT DEFAULT NULL, address TEXT DEFAULT NULL, phone TINYTEXT DEFAULT NULL, created_at DATETIME NOT NULL, user_create INT DEFAULT NULL, updated_at DATETIME DEFAULT NULL, user_update INT DEFAULT NULL, is_active TINYINT(1) DEFAULT \'1\', INDEX fk_point_of_sale_point_of_sale1_idx (point_of_sale_id), UNIQUE INDEX code_UNIQUE (code), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE groupofusers (id INT AUTO_INCREMENT NOT NULL, code VARCHAR(45) DEFAULT NULL, name VARCHAR(150) NOT NULL, slug VARCHAR(150) DEFAULT NULL, created_at DATETIME NOT NULL, user_create INT DEFAULT NULL, updated_at DATETIME DEFAULT NULL, user_update INT DEFAULT NULL, is_active TINYINT(1) DEFAULT \'1\', PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE areaacademica (id INT AUTO_INCREMENT NOT NULL, code VARCHAR(45) DEFAULT NULL, name VARCHAR(150) NOT NULL, slug VARCHAR(150) DEFAULT NULL, created_at DATETIME NOT NULL, user_create INT DEFAULT NULL, updated_at DATETIME DEFAULT NULL, user_update INT DEFAULT NULL, is_active TINYINT(1) DEFAULT \'1\', PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE areaacademica_has_facultad (areaacademica_id INT NOT NULL, facultad_id INT NOT NULL, INDEX IDX_9C3C6D96D2A1EDE8 (areaacademica_id), INDEX IDX_9C3C6D96392EEB81 (facultad_id), PRIMARY KEY(areaacademica_id, facultad_id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE associativeacademic (id INT AUTO_INCREMENT NOT NULL, code VARCHAR(45) DEFAULT NULL, name VARCHAR(150) NOT NULL, slug VARCHAR(150) DEFAULT NULL, created_at DATETIME NOT NULL, user_create INT DEFAULT NULL, updated_at DATETIME DEFAULT NULL, user_update INT DEFAULT NULL, is_active TINYINT(1) DEFAULT \'1\', PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
         $this->addSql('ALTER TABLE user ADD CONSTRAINT FK_8D93D649CCFA12B8 FOREIGN KEY (profile_id) REFERENCES profile (id)');
         $this->addSql('ALTER TABLE user ADD CONSTRAINT FK_8D93D649309D1878 FOREIGN KEY (university_id) REFERENCES university (id)');
@@ -44,8 +47,14 @@ class Version20180727052401 extends AbstractMigration
         $this->addSql('ALTER TABLE profile_has_role ADD CONSTRAINT FK_F35F3084CCFA12B8 FOREIGN KEY (profile_id) REFERENCES profile (id)');
         $this->addSql('ALTER TABLE profile_has_role ADD CONSTRAINT FK_F35F3084D60322AC FOREIGN KEY (role_id) REFERENCES role (id)');
         $this->addSql('ALTER TABLE session ADD CONSTRAINT FK_D044D5D4A76ED395 FOREIGN KEY (user_id) REFERENCES user (id)');
+        $this->addSql('ALTER TABLE facultad_has_escuela ADD CONSTRAINT FK_FC4F1A7F392EEB81 FOREIGN KEY (facultad_id) REFERENCES facultad (id)');
+        $this->addSql('ALTER TABLE facultad_has_escuela ADD CONSTRAINT FK_FC4F1A7FE33F8867 FOREIGN KEY (escuela_id) REFERENCES escuela (id)');
         $this->addSql('ALTER TABLE category ADD CONSTRAINT FK_64C19C112469DE2 FOREIGN KEY (category_id) REFERENCES category (id)');
+        $this->addSql('ALTER TABLE university_has_areaacademica ADD CONSTRAINT FK_9353040A309D1878 FOREIGN KEY (university_id) REFERENCES university (id)');
+        $this->addSql('ALTER TABLE university_has_areaacademica ADD CONSTRAINT FK_9353040AD2A1EDE8 FOREIGN KEY (areaacademica_id) REFERENCES areaacademica (id)');
         $this->addSql('ALTER TABLE point_of_sale ADD CONSTRAINT FK_F7A7B1FA6B7E9A73 FOREIGN KEY (point_of_sale_id) REFERENCES point_of_sale (id)');
+        $this->addSql('ALTER TABLE areaacademica_has_facultad ADD CONSTRAINT FK_9C3C6D96D2A1EDE8 FOREIGN KEY (areaacademica_id) REFERENCES areaacademica (id)');
+        $this->addSql('ALTER TABLE areaacademica_has_facultad ADD CONSTRAINT FK_9C3C6D96392EEB81 FOREIGN KEY (facultad_id) REFERENCES facultad (id)');
     }
 
     public function down(Schema $schema)
@@ -62,11 +71,17 @@ class Version20180727052401 extends AbstractMigration
         $this->addSql('ALTER TABLE google_drive_file_vote DROP FOREIGN KEY FK_35D550BF77A02D92');
         $this->addSql('ALTER TABLE user DROP FOREIGN KEY FK_8D93D649CCFA12B8');
         $this->addSql('ALTER TABLE profile_has_role DROP FOREIGN KEY FK_F35F3084CCFA12B8');
+        $this->addSql('ALTER TABLE facultad_has_escuela DROP FOREIGN KEY FK_FC4F1A7FE33F8867');
+        $this->addSql('ALTER TABLE facultad_has_escuela DROP FOREIGN KEY FK_FC4F1A7F392EEB81');
+        $this->addSql('ALTER TABLE areaacademica_has_facultad DROP FOREIGN KEY FK_9C3C6D96392EEB81');
         $this->addSql('ALTER TABLE category DROP FOREIGN KEY FK_64C19C112469DE2');
         $this->addSql('ALTER TABLE user DROP FOREIGN KEY FK_8D93D649309D1878');
+        $this->addSql('ALTER TABLE university_has_areaacademica DROP FOREIGN KEY FK_9353040A309D1878');
         $this->addSql('ALTER TABLE user_has_point_of_sale DROP FOREIGN KEY FK_AD4176D66B7E9A73');
         $this->addSql('ALTER TABLE visit DROP FOREIGN KEY FK_437EE9396B7E9A73');
         $this->addSql('ALTER TABLE point_of_sale DROP FOREIGN KEY FK_F7A7B1FA6B7E9A73');
+        $this->addSql('ALTER TABLE university_has_areaacademica DROP FOREIGN KEY FK_9353040AD2A1EDE8');
+        $this->addSql('ALTER TABLE areaacademica_has_facultad DROP FOREIGN KEY FK_9C3C6D96D2A1EDE8');
         $this->addSql('DROP TABLE user');
         $this->addSql('DROP TABLE user_has_point_of_sale');
         $this->addSql('DROP TABLE role');
@@ -78,11 +93,14 @@ class Version20180727052401 extends AbstractMigration
         $this->addSql('DROP TABLE session');
         $this->addSql('DROP TABLE escuela');
         $this->addSql('DROP TABLE facultad');
+        $this->addSql('DROP TABLE facultad_has_escuela');
         $this->addSql('DROP TABLE category');
         $this->addSql('DROP TABLE university');
+        $this->addSql('DROP TABLE university_has_areaacademica');
         $this->addSql('DROP TABLE point_of_sale');
         $this->addSql('DROP TABLE groupofusers');
         $this->addSql('DROP TABLE areaacademica');
+        $this->addSql('DROP TABLE areaacademica_has_facultad');
         $this->addSql('DROP TABLE associativeacademic');
     }
 }

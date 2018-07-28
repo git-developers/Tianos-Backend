@@ -80,6 +80,21 @@ class Escuela
     private $nameBox;
 
     /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Bundle\FacultadBundle\Entity\Facultad", mappedBy="escuela")
+     */
+    private $facultad;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->facultad = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
      * Get id
      *
      * @return integer
@@ -296,6 +311,41 @@ class Escuela
     public function setNameBox($nameBox)
     {
         $this->nameBox = $nameBox;
+    }
+
+
+    /**
+     * Add facultad
+     *
+     * @param \Bundle\FacultadBundle\Entity\Facultad $facultad
+     *
+     * @return Escuela
+     */
+    public function addFacultad(\Bundle\FacultadBundle\Entity\Facultad $facultad)
+    {
+        $this->facultad[] = $facultad;
+
+        return $this;
+    }
+
+    /**
+     * Remove facultad
+     *
+     * @param \Bundle\FacultadBundle\Entity\Facultad $facultad
+     */
+    public function removeFacultad(\Bundle\FacultadBundle\Entity\Facultad $facultad)
+    {
+        $this->facultad->removeElement($facultad);
+    }
+
+    /**
+     * Get facultad
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getFacultad()
+    {
+        return $this->facultad;
     }
 }
 

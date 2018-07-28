@@ -69,6 +69,32 @@ Bundle\AreaacademicaBundle\Entity\Areaacademica:
             options:
                 default: '1'
             column: is_active
+    manyToMany:
+        facultad:
+            targetEntity: Bundle\FacultadBundle\Entity\Facultad
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: areaacademica
+            joinTable:
+                name: areaacademica_has_facultad
+                joinColumns:
+                    -
+                        name: areaacademica_id
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    -
+                        name: facultad_id
+                        referencedColumnName: id
+            orderBy: null
+        university:
+            targetEntity: Bundle\UniversityBundle\Entity\University
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: areaacademica
+            inversedBy: null
+            joinTable: null
+            orderBy: null
     lifecycleCallbacks: {  }
 #    lifecycleCallbacks:
 #        prePersist: [ doStuffOnPrePersist, doOtherStuffOnPrePersistToo ]
