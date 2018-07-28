@@ -13,6 +13,29 @@ class EscuelaRepository extends TianosEntityRepository implements EscuelaReposit
     /**
      * {@inheritdoc}
      */
+    public function searchBox($q, $offset = 0, $limit = 50): array
+    {
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT escuela
+            FROM EscuelaBundle:Escuela escuela
+            WHERE
+            escuela.name LIKE :q AND
+            escuela.isActive = :active
+            ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+        $query->setParameter('q', '%' . $q . '%');
+        $query->setFirstResult($offset);
+        $query->setMaxResults($limit);
+
+        return $query->getResult();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function find($id)
     {
         $em = $this->getEntityManager();

@@ -314,7 +314,6 @@ class University
      */
     public function getNameBox()
     {
-//        return sprintf('%s %s', $this->id, $this->name);
         return $this->name;
     }
 

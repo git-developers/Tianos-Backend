@@ -1,0 +1,45 @@
+{% spaceless %}
+
+    {% for entity in objectsTwo %}
+
+        {% set id = entity.id|default('< missing ID >') %}
+        {% set name = entity.name_box|default('< missing name_box >') %}
+
+        <li
+            class="{{ boxTwo.li_class }} x-hand box-one-truncate"
+            data-id="{{ id }}"
+            data-toggle="tooltip"
+            data-original-title="{{ name }}"
+        >
+
+            <span class="handle ui-sortable-handle">
+                <i class="fa fa-ellipsis-v"></i>
+                <i class="fa fa-ellipsis-v"></i>
+            </span>
+
+            <input type="radio"
+                   name="{{ boxTwo.li_input_name }}"
+                   value="{{ id }}">
+            &nbsp;
+            <span class="badge {{ boxTwo.li_badge_class }}">
+                {{ id }}
+            </span>
+
+            <span class="text">
+                {{ name }}
+            </span>
+
+            {#<div class="tools">#}
+            {#<i class="fa fa-edit"></i>#}
+            {#<i class="fa fa-trash-o"></i>#}
+            {#</div>#}
+        </li>
+    {% else %}
+        <li>
+            <span class="text">
+                No hay resultados.
+            </span>
+        </li>
+    {% endfor %}
+
+{% endspaceless %}

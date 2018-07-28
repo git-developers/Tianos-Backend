@@ -17,7 +17,10 @@ class Escuela
     /**
      * @var integer
      *
-     * @JMSS\Groups({"crud"})
+     * @JMSS\Groups({
+     *     "crud",
+     *     "associative-academic"
+     * })
      */
     private $id;
 
@@ -66,6 +69,15 @@ class Escuela
      */
     private $isActive = '1';
 
+    /**
+     * @var string
+     *
+     * @JMSS\Accessor(getter="getNameBox", setter="setNameBox")
+     * @JMSS\Groups({
+     *     "associative-academic"
+     * })
+     */
+    private $nameBox;
 
     /**
      * Get id
@@ -267,6 +279,23 @@ class Escuela
     public function getIsActive()
     {
         return $this->isActive;
+    }
+
+    /**
+     *
+     * @return string
+     */
+    public function getNameBox()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param string $nameBox
+     */
+    public function setNameBox($nameBox)
+    {
+        $this->nameBox = $nameBox;
     }
 }
 

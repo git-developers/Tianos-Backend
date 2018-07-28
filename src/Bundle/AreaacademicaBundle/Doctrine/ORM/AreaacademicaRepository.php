@@ -13,6 +13,29 @@ class AreaacademicaRepository extends TianosEntityRepository implements Areaacad
     /**
      * {@inheritdoc}
      */
+    public function searchBox($q, $offset = 0, $limit = 50): array
+    {
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT areaacademica
+            FROM AreaacademicaBundle:Areaacademica areaacademica
+            WHERE
+            areaacademica.name LIKE :q AND
+            areaacademica.isActive = :active
+            ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+        $query->setParameter('q', '%' . $q . '%');
+        $query->setFirstResult($offset);
+        $query->setMaxResults($limit);
+
+        return $query->getResult();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function find($id)
     {
         $em = $this->getEntityManager();

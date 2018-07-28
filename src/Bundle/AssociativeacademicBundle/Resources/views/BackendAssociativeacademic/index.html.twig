@@ -22,6 +22,9 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
+        .search-row {
+            margin-bottom: 5px;
+        }
     </style>
 
 {% endblock %}
@@ -36,7 +39,11 @@
 
     {% javascripts
         '@AssociativeacademicBundle/Resources/public/js/boxInfo.js'
-        '@AssociativeacademicBundle/Resources/public/js/boxOneSearch.js'
+        '@AssociativeacademicBundle/Resources/public/js/1_boxOneSearch.js'
+        '@AssociativeacademicBundle/Resources/public/js/1_boxOneSelectItem.js'
+        '@AssociativeacademicBundle/Resources/public/js/2_boxTwoSearch.js'
+        '@AssociativeacademicBundle/Resources/public/js/3_boxThreeSearch.js'
+        '@AssociativeacademicBundle/Resources/public/js/4_boxFourSearch.js'
     %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
@@ -51,13 +58,32 @@
                 routeSearch: '{{ path(boxOne.route_search) }}',
             });
 
-            {#$('div#{{ boxOne.id }}').boxOneSelectItem({#}
-                {#boxOneId: '{{ boxOne.id }}',#}
-                {#boxTwoId: '{{ boxTwo.id }}',#}
-                {#boxThreeId: '{{ boxThree.id }}',#}
-                {#liClass: '{{ boxOne.li_class }}',#}
-                {#routeSelectItem: '{{ path(boxOne.route_select_item) }}',#}
-            {#});#}
+            $('div#{{ boxTwo.id }}').boxTwoSearch({
+                boxId: '{{ boxTwo.id }}',
+                searchInputName: '{{ boxTwo.search_input_name }}',
+                routeSearch: '{{ path(boxTwo.route_search) }}',
+            });
+
+            $('div#{{ boxThree.id }}').boxThreeSearch({
+                boxId: '{{ boxThree.id }}',
+                searchInputName: '{{ boxThree.search_input_name }}',
+                routeSearch: '{{ path(boxThree.route_search) }}',
+            });
+
+            $('div#{{ boxFour.id }}').boxFourSearch({
+                boxId: '{{ boxFour.id }}',
+                searchInputName: '{{ boxFour.search_input_name }}',
+                routeSearch: '{{ path(boxFour.route_search) }}',
+            });
+
+            $('div#{{ boxOne.id }}').boxOneSelectItem({
+                boxOneId: '{{ boxOne.id }}',
+                boxTwoId: '{{ boxTwo.id }}',
+                boxThreeId: '{{ boxThree.id }}',
+                boxFourId: '{{ boxFour.id }}',
+                liClass: '{{ boxOne.li_class }}',
+                routeSelectItem: '{{ path(boxOne.route_select_item) }}',
+            });
 
             {#$('div#{{ boxTwo.id }}').boxTwoSelectItem({#}
                 {#boxOneId: '{{ boxOne.id }}',#}
@@ -164,7 +190,7 @@
                             <div class="box-tools pull-right"></div>
                         </div>
                         <div class="box-body">
-                            <div class="row">
+                            <div class="row search-row">
                                 <div class="col-md-12">
                                     <div class="input-group">
                                         <input name="{{ boxOne.search_input_name }}" type="search" class="form-control" maxlength="50">
@@ -192,7 +218,7 @@
                             <div class="box-tools pull-right"></div>
                         </div>
                         <div class="box-body">
-                            <div class="row">
+                            <div class="row search-row">
                                 <div class="col-md-12">
                                     <div class="input-group">
                                         <input name="{{ boxTwo.search_input_name }}" type="search" class="form-control" maxlength="50">
@@ -224,7 +250,7 @@
                             <div class="box-tools pull-right"></div>
                         </div>
                         <div class="box-body">
-                            <div class="row">
+                            <div class="row search-row">
                                 <div class="col-md-12">
                                     <div class="input-group">
                                         <input name="{{ boxThree.search_input_name }}" type="search" class="form-control" maxlength="50">
@@ -256,7 +282,7 @@
                             <div class="box-tools pull-right"></div>
                         </div>
                         <div class="box-body">
-                            <div class="row">
+                            <div class="row search-row">
                                 <div class="col-md-12">
                                     <div class="input-group">
                                         <input name="{{ boxFour.search_input_name }}" type="search" class="form-control" maxlength="50">

@@ -13,6 +13,29 @@ class FacultadRepository extends TianosEntityRepository implements FacultadRepos
     /**
      * {@inheritdoc}
      */
+    public function searchBox($q, $offset = 0, $limit = 50): array
+    {
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT facultad
+            FROM FacultadBundle:Facultad facultad
+            WHERE
+            facultad.name LIKE :q AND
+            facultad.isActive = :active
+            ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+        $query->setParameter('q', '%' . $q . '%');
+        $query->setFirstResult($offset);
+        $query->setMaxResults($limit);
+
+        return $query->getResult();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function find($id)
     {
         $em = $this->getEntityManager();
