@@ -115,7 +115,6 @@ class BackendController extends BaseController
         return $this->render(
             $template,
             [
-                'boxOneId' => $request->get('boxOneId'),
                 'boxOne' => $boxOne,
                 'objectsOne' => $objects,
             ]
@@ -350,9 +349,8 @@ class BackendController extends BaseController
         //CONFIGURATION
         $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
 //        $template = $configuration->getTemplate('');
-
-        $vars = $configuration->getVars();
-        $boxThree = $vars->box_three;
+//        $vars = $configuration->getVars();
+//        $boxThree = $vars->box_three;
 
         //REPOSITORY
         $repositoryOne = $configuration->getRepositoryServiceOne();
@@ -386,9 +384,9 @@ class BackendController extends BaseController
      */
     public function boxThreeSelectItemAction(Request $request): Response
     {
-        $id = $request->get('id');
+        $boxThreeId = $request->get('boxThreeId');
 
-        if (!$this->isXmlHttpRequest() || is_null($id)) {
+        if (!$this->isXmlHttpRequest() || is_null($boxThreeId)) {
             throw $this->createAccessDeniedException(self::ACCESS_DENIED_MSG);
         }
 
@@ -401,7 +399,6 @@ class BackendController extends BaseController
         //CONFIGURATION
         $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
         $template = $configuration->getTemplate('');
-
         $vars = $configuration->getVars();
         $boxFour = $vars->box_four;
 
@@ -410,7 +407,7 @@ class BackendController extends BaseController
         $method = $configuration->getRepositoryMethod();
         $vars = $configuration->getRepositoryVars();
 
-        $objects = $this->get($repository)->$method($id);
+        $objects = $this->get($repository)->$method($boxThreeId);
         $objects = $this->getSerializeDecode($objects, $vars->serialize_group_name);
 
         return $this->render(
@@ -418,6 +415,61 @@ class BackendController extends BaseController
             [
                 'boxFour' => $boxFour,
                 'objectsFour' => isset($objects[$boxFour->entity]) ? $objects[$boxFour->entity] : [],
+            ]
+        );
+    }
+
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function boxThreeUpSertingAction(Request $request): Response
+    {
+        $boxTwoId = $request->get('boxTwoId');
+        $boxThreeId = $request->get('boxThreeId');
+        $isChecked = $request->get('isChecked');
+
+        if (!$this->isXmlHttpRequest() || is_null($boxTwoId) || is_null($boxThreeId)) {
+            throw $this->createAccessDeniedException(self::ACCESS_DENIED_MSG);
+        }
+
+        $parameters = [
+            'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
+        ];
+        $applicationName = $this->container->getParameter('application_name');
+        $this->metadata = new Metadata('tianos', $applicationName, $parameters);
+
+        //CONFIGURATION
+        $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
+//        $template = $configuration->getTemplate('');
+//        $vars = $configuration->getVars();
+//        $boxThree = $vars->box_three;
+
+        //REPOSITORY
+        $repositoryTwo = $configuration->getRepositoryServiceTwo();
+        $methodTwo = $configuration->getRepositoryMethodTwo();
+        $repositoryThree = $configuration->getRepositoryServiceThree();
+        $methodThree = $configuration->getRepositoryMethodThree();
+
+        $objectOne = $this->get($repositoryTwo)->$methodTwo($boxTwoId, $boxThreeId);
+        $objectTwo = $this->get($repositoryThree)->$methodThree($boxThreeId);
+
+        if ((bool) is_null($objectOne) && $isChecked) {
+
+
+
+
+            $objectOne = $this->get($repositoryTwo)->find($boxTwoId);
+            $objectOne->addFacultad($objectTwo);
+            $this->persist($objectOne);
+        } else {
+            $objectOne->removeFacultad($objectTwo);
+            $this->persist($objectOne);
+        }
+
+        return $this->json(
+            [
+                'status' => true
             ]
         );
     }

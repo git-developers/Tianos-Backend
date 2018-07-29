@@ -1,13 +1,13 @@
 {% spaceless %}
 
-    {% for entity in objectsFour %}
+    {% for entity in objectsThree %}
 
         {% set id = entity.id|default('< missing ID >') %}
         {% set name = entity.name_box|default('< missing name_box >') %}
 
         <li
-            class="{{ boxFour.li_class }} x-hand box-one-truncate"
-            data-id="{{ id }}"
+            class="{{ boxThree.li_class }}"
+            data-box-three-id="{{ id }}"
             data-toggle="tooltip"
             data-original-title="{{ name }}"
         >
@@ -17,22 +17,25 @@
                 <i class="fa fa-ellipsis-v"></i>
             </span>
 
+            <input type="radio"
+                   name="{{ boxThree.li_input_radio_name }}"
+                   value="{{ id }}">
+
             <input type="checkbox"
-                   name="{{ boxFour.li_input_name }}"
+                   name="{{ boxThree.li_input_checkbox_name }}"
                    value="{{ id }}">
             &nbsp;
-            <span class="badge {{ boxFour.li_badge_class }}">
+            <span class="badge {{ boxThree.li_badge_class }}">
                 {{ id }}
             </span>
 
-            <span class="text">
+            <span class="text box-truncate">
                 {{ name }}
             </span>
 
-            {#<div class="tools">#}
-            {#<i class="fa fa-edit"></i>#}
-            {#<i class="fa fa-trash-o"></i>#}
-            {#</div>#}
+            <div class="tools">
+                <i class="fa fa-arrow-circle-right x-hand"></i>
+            </div>
         </li>
     {% else %}
         <li>

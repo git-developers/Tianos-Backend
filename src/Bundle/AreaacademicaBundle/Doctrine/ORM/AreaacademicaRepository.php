@@ -10,28 +10,29 @@ use Component\Areaacademica\Repository\AreaacademicaRepositoryInterface;
 class AreaacademicaRepository extends TianosEntityRepository implements AreaacademicaRepositoryInterface
 {
 
-//    /**
-//     * {@inheritdoc}
-//     */
-//    public function associative($boxOneId, $boxTwoId): array
-//    {
-//        $em = $this->getEntityManager();
-//        $dql = "
-//            SELECT areaacademica
-//            FROM AreaacademicaBundle:Areaacademica areaacademica
-//            WHERE
-//            areaacademica.name LIKE :q AND
-//            areaacademica.isActive = :active
-//            ";
-//
-//        $query = $em->createQuery($dql);
-//        $query->setParameter('active', 1);
-//        $query->setParameter('q', '%' . $q . '%');
-//        $query->setFirstResult($offset);
-//        $query->setMaxResults($limit);
-//
-//        return $query->getResult();
-//    }
+    /**
+     * {@inheritdoc}
+     */
+    public function associative($boxTwoId, $boxThreeId)
+    {
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT areaacademica
+            FROM AreaacademicaBundle:Areaacademica areaacademica
+            LEFT JOIN areaacademica.facultad facultad
+            WHERE
+            areaacademica.id = :boxTwoId AND
+            facultad.id = :boxThreeId AND
+            areaacademica.isActive = :active
+            ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('boxTwoId', $boxTwoId);
+        $query->setParameter('boxThreeId', $boxThreeId);
+        $query->setParameter('active', 1);
+
+        return $query->getOneOrNullResult();
+    }
 
     /**
      * {@inheritdoc}

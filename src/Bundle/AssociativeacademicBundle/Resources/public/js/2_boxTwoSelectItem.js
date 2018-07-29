@@ -10,6 +10,8 @@
         var MAX_WIDTH = 200;
         var DELAY = 400;
         var base = this;
+        var errorMsg = null;
+        var successMsg = null;
         var boxOne = null;
         var boxTwo = null;
         var boxThree = null;
@@ -24,6 +26,8 @@
 
         base.init = function(){
             var totalButtons = 0;
+            errorMsg = $('small.error');
+            successMsg = $('small.success');
             boxOne = $('div#' + options.boxOneId);
             boxTwo = $('div#' + options.boxTwoId);
             boxThree = $('div#' + options.boxThreeId);
@@ -50,6 +54,7 @@
             var boxUlFour = boxFour.find('ul');
 
             var boxTwoId = $(context).parent().parent().data('box-two-id');
+            var radioTwo = $(context).parent().parent().find('input[type=radio]');
 
             $.ajax({
                 url: options.routeSelectItem,
@@ -60,16 +65,18 @@
                 },
                 cache: true,
                 beforeSend: function(jqXHR, settings) {
-                    base.setMessageCallout(msgLoading);
+                    // base.setMessageCallout(msgLoading);
                     boxUlThree.html('<li style="text-align: center"><span class="text"><i class="fa fa-2x fa-refresh fa-spin"></i></span></li>');
                 },
                 success: function(data, textStatus, jqXHR) {
 
+                    radioTwo.prop('checked', true);
+
                     boxUlThree.html(data);
                     boxUlFour.html('<li><span class="text">Seleccione una facultad.</span></li>');
 
-                    base.addClassCallout('success');
-                    base.setMessageCallout(msgSuccess + '<span class="badge bg-green-active">' + boxTwoId + '</span>');
+                    // base.addClassCallout('success');
+                    // base.setMessageCallout(msgSuccess + '<span class="badge bg-green-active">' + boxTwoId + '</span>');
 
                 },
                 error: function(jqXHR, exception) {
@@ -77,24 +84,37 @@
                     base.setMessageCallout(msgError);
                 }
             });
-
         };
 
         base.upSerting = function(context) {
             // debug(e);
             // base.options.buttonPress.call( this );
 
+            var boxUlOne = boxOne.find('ul');
             var boxUlTwo = boxTwo.find('ul');
             var boxUlThree = boxThree.find('ul');
             var boxUlFour = boxFour.find('ul');
 
-            var boxOneId = $(context).parent().data('box-one-id');
+            var boxOneId = boxUlOne.find('input:checked').val();
             var boxTwoId = $(context).parent().data('box-two-id');
+
+            if (typeof boxOneId == 'undefined'){
+
+                errorMsg.html('<i class="fa fa-fw fa-warning"></i> Seleccione una universidad.');
+
+                setTimeout(function(){
+                    errorMsg.html('');
+                }, 1000);
+
+                boxUlTwo.find('input:checkbox').attr('checked', false);
+
+                return false;
+            }
 
             $.ajax({
                 url: options.routeUpSerting,
                 type: 'POST',
-                dataType: 'html',
+                dataType: 'json',
                 data: {
                     boxOneId: boxOneId,
                     boxTwoId: boxTwoId,
@@ -106,13 +126,13 @@
                 },
                 success: function(data, textStatus, jqXHR) {
 
-                    // if (checkboxTwo.is(':checked')) {
-                    //     console.log("SI - checked");
-                    //     checkboxTwo.prop('checked', false);
-                    // } else {
-                    //     console.log("NO - checked");
-                    //     checkboxTwo.prop('checked', true);
-                    // }
+                    if (data.status) {
+                        successMsg.html('<i class="fa fa-fw fa-check"></i> Se guardo.');
+
+                        setTimeout(function(){
+                            successMsg.html('');
+                        }, 1000);
+                    }
 
                 },
                 error: function(jqXHR, exception) {
@@ -134,7 +154,6 @@
             isUserSelected = value;
         }
         */
-
 
         base.init();
     };

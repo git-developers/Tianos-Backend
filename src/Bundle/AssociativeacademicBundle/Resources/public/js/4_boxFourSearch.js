@@ -10,7 +10,7 @@
         var MAX_WIDTH = 200;
         var DELAY = 400;
         var base = this;
-        var box = null;
+        var boxFour = null;
         var globalTimeout = null;
         var msg_default = '<p><i class="fa fa-fw fa-info"></i> Seleccione un item.</p>';
         var msg_error = '<i class="fa fa-fw fa-warning"></i> Buscador izquierda Error: reintentar';
@@ -21,7 +21,7 @@
 
         base.init = function(){
             var totalButtons = 0;
-            box = $('div#' + options.boxId);
+            boxFour = $('div#' + options.boxFourId);
             // base.$el.append('<button name="public" style="'+base.options.buttonStyle+'">Private</button>');
         };
 
@@ -40,7 +40,7 @@
             // debug(e);
             // base.options.buttonPress.call( this );
 
-            var boxUl = box.find('ul');
+            var boxUlFour = boxFour.find('ul');
             var q = $(context).val();
 
             if(globalTimeout != null){
@@ -58,11 +58,13 @@
                     },
                     cache: true,
                     beforeSend: function(jqXHR, settings) {
-                        base.addClassCallout('info');
-                        base.setMessageCallout(msg_default);
+                        // base.addClassCallout('info');
+                        // base.setMessageCallout(msg_default);
+
+                        boxUlFour.html('<li style="text-align: center"><span class="text"><i class="fa fa-2x fa-refresh fa-spin"></i></span></li>');
                     },
                     success: function(data, textStatus, jqXHR) {
-                        boxUl.html(data);
+                        boxUlFour.html(data);
                     },
                     error: function(jqXHR, exception) {
                         base.addClassCallout('danger');
@@ -102,7 +104,7 @@
 
             var bp = new $.boxFourSearch(this, options);
 
-            $('div#' + options.boxId + ' input[name=' + options.searchInputName + ']').keyup(function() {
+            $('div#' + options.boxFourId + ' input[name=' + options.searchInputName + ']').keyup(function() {
                 bp.searchBox(this);
             });
 

@@ -1,13 +1,13 @@
 {% spaceless %}
 
-    {% for entity in objectsOne %}
+    {% for entity in objectsFour %}
 
         {% set id = entity.id|default('< missing ID >') %}
         {% set name = entity.name_box|default('< missing name_box >') %}
 
         <li
-            class="{{ boxOne.li_class }}"
-            data-box-one-id="{{ id }}"
+            class="{{ boxFour.li_class }}"
+            data-id="{{ id }}"
             data-toggle="tooltip"
             data-original-title="{{ name }}"
         >
@@ -17,11 +17,12 @@
                 <i class="fa fa-ellipsis-v"></i>
             </span>
 
-            <input type="radio"
-                   name="{{ boxOne.li_input_radio_name }}"
+            <input type="checkbox"
+                   name="{{ boxFour.li_input_name }}"
+                   checked="checked"
                    value="{{ id }}">
             &nbsp;
-            <span class="badge {{ boxOne.li_badge_class }}">
+            <span class="badge {{ boxFour.li_badge_class }}">
                 {{ id }}
             </span>
 
@@ -29,9 +30,10 @@
                 {{ name }}
             </span>
 
-            <div class="tools">
-                <i class="fa fa-arrow-circle-right x-hand"></i>
-            </div>
+            {#<div class="tools">#}
+            {#<i class="fa fa-edit"></i>#}
+            {#<i class="fa fa-trash-o"></i>#}
+            {#</div>#}
         </li>
     {% else %}
         <li>

@@ -46,11 +46,13 @@
             // debug(e);
             // base.options.buttonPress.call( this );
 
-            var radioOne = $(context).find('input[type=radio]');
-
             var boxUlTwo = boxTwo.find('ul');
             var boxUlThree = boxThree.find('ul');
-            var boxOneId = $(context).data('box-one-id');
+            var boxUlFour = boxFour.find('ul');
+
+            // var boxOneLi = $(context).parent().parent().find('li');
+            var boxOneId = $(context).parent().parent().data('box-one-id');
+            var radioOne = $(context).parent().parent().find('input[type=radio]');
 
             $.ajax({
                 url: options.routeSelectItem,
@@ -67,12 +69,14 @@
                 success: function(data, textStatus, jqXHR) {
 
                     radioOne.prop('checked', true);
+                    // boxOneLi.css('background-color', '#ddd');
 
                     boxUlTwo.html(data);
                     boxUlThree.html('<li><span class="text">Seleccione un área académica.</span></li>');
+                    boxUlFour.html('<li><span class="text">Seleccione una facultad.</span></li>');
 
-                    base.addClassCallout('success');
-                    base.setMessageCallout(msgSuccess + '<span class="badge bg-green-active">' + boxOneId + '</span>');
+                    // base.addClassCallout('success');
+                    // base.setMessageCallout(msgSuccess + '<span class="badge bg-green-active">' + boxOneId + '</span>');
 
                     // boxOne.find('li').removeClass(options.box_li_class);
                     // $(context).addClass(options.box_li_class);
@@ -112,7 +116,7 @@
 
             var bp = new $.boxOneSelectItem(this, options);
 
-            $(document).on('click', 'li.' + options.liClass, function(event) {
+            $(document).on('click', 'li.' + options.liClass + ' > .tools > i', function(event) {
                 bp.selectItem(this);
             });
 

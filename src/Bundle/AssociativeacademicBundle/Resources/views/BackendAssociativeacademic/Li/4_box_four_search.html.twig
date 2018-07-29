@@ -1,14 +1,13 @@
 {% spaceless %}
 
-    {% for entity in objectsTwo %}
+    {% for entity in objectsFour %}
 
         {% set id = entity.id|default('< missing ID >') %}
         {% set name = entity.name_box|default('< missing name_box >') %}
 
         <li
-            class="{{ boxTwo.li_class }} box-one-truncate"
-            data-box-one-id="{{ boxOneId }}"
-            data-box-two-id="{{ id }}"
+            class="{{ boxFour.li_class }}"
+            data-id="{{ id }}"
             data-toggle="tooltip"
             data-original-title="{{ name }}"
         >
@@ -19,21 +18,21 @@
             </span>
 
             <input type="checkbox"
-                   name="{{ boxTwo.li_input_name }}"
-                   checked="checked"
+                   name="{{ boxFour.li_input_name }}"
                    value="{{ id }}">
             &nbsp;
-            <span class="badge {{ boxTwo.li_badge_class }}">
+            <span class="badge {{ boxFour.li_badge_class }}">
                 {{ id }}
             </span>
 
-            <span class="text">
+            <span class="text box-truncate">
                 {{ name }}
             </span>
 
-            <div class="tools">
-                <i class="fa fa-arrow-circle-right x-hand"></i>
-            </div>
+            {#<div class="tools">#}
+            {#<i class="fa fa-edit"></i>#}
+            {#<i class="fa fa-trash-o"></i>#}
+            {#</div>#}
         </li>
     {% else %}
         <li>

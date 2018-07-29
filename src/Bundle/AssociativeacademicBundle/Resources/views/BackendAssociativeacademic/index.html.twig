@@ -6,19 +6,26 @@
 
 {% block stylesheets %}
     {{ parent() }}
+
+    {% stylesheets
+        filter='cssrewrite'
+        '@AssociativeacademicBundle/Resources/public/css/tianos.css'
+    %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
     
     <style>
-        input[type=checkbox] {
-            height: 16px;
-            width: 16px;
+        input[type=radio], input[type=checkbox] {
+            height: 17px;
+            width: 17px;
         }
         .col-md-3 {
             padding-right: 5px !important;
             padding-left: 5px !important;
         }
-        .box-one-truncate {
-            /*width: 350px;*/
+        .box-truncate {
             white-space: nowrap;
+            width: 220px;
             overflow: hidden;
             text-overflow: ellipsis;
         }
@@ -55,25 +62,32 @@
         $(function() {
 
             $('div#{{ boxOne.id }}').boxOneSearch({
-                boxId: '{{ boxOne.id }}',
+                boxOneId: '{{ boxOne.id }}',
+                boxTwoId: '{{ boxTwo.id }}',
+                boxThreeId: '{{ boxThree.id }}',
+                boxFourId: '{{ boxFour.id }}',
                 searchInputName: '{{ boxOne.search_input_name }}',
                 routeSearch: '{{ path(boxOne.route_search) }}'
             });
 
             $('div#{{ boxTwo.id }}').boxTwoSearch({
-                boxId: '{{ boxTwo.id }}',
+                boxOneId: '{{ boxOne.id }}',
+                boxTwoId: '{{ boxTwo.id }}',
+                boxThreeId: '{{ boxThree.id }}',
+                boxFourId: '{{ boxFour.id }}',
                 searchInputName: '{{ boxTwo.search_input_name }}',
                 routeSearch: '{{ path(boxTwo.route_search) }}'
             });
 
             $('div#{{ boxThree.id }}').boxThreeSearch({
-                boxId: '{{ boxThree.id }}',
+                boxThreeId: '{{ boxThree.id }}',
+                boxFourId: '{{ boxFour.id }}',
                 searchInputName: '{{ boxThree.search_input_name }}',
                 routeSearch: '{{ path(boxThree.route_search) }}'
             });
 
             $('div#{{ boxFour.id }}').boxFourSearch({
-                boxId: '{{ boxFour.id }}',
+                boxFourId: '{{ boxFour.id }}',
                 searchInputName: '{{ boxFour.search_input_name }}',
                 routeSearch: '{{ path(boxFour.route_search) }}'
             });
@@ -88,7 +102,7 @@
             });
 
             $('div#{{ boxTwo.id }}').boxTwoSelectItem({
-                {#boxOneId: '{{ boxOne.id }}',#}
+                boxOneId: '{{ boxOne.id }}',
                 boxTwoId: '{{ boxTwo.id }}',
                 boxThreeId: '{{ boxThree.id }}',
                 boxFourId: '{{ boxFour.id }}',
@@ -98,12 +112,13 @@
             });
 
             $('div#{{ boxThree.id }}').boxThreeSelectItem({
-                {#boxOneId: '{{ boxOne.id }}',#}
+                boxOneId: '{{ boxOne.id }}',
                 boxTwoId: '{{ boxTwo.id }}',
                 boxThreeId: '{{ boxThree.id }}',
                 boxFourId: '{{ boxFour.id }}',
                 liClass: '{{ boxThree.li_class }}',
-                routeSelectItem: '{{ path(boxThree.route_select_item) }}'
+                routeSelectItem: '{{ path(boxThree.route_select_item) }}',
+                routeUpSerting: '{{ path(boxThree.route_up_serting) }}'
             });
 
             {#$('div#{{ boxTwo.id }}').boxTwoSelectItem({#}
@@ -176,6 +191,8 @@
         <h1>
             <i class="fa fa-fw fa-{{ box.icon }}"></i> {{ box.title|raw }}
             <small>association</small>
+            <small class="error"></small>
+            <small class="success"></small>
         </h1>
         <ol class="breadcrumb">
             {#<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>#}

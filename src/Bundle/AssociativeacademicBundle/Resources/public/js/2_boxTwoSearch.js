@@ -10,7 +10,10 @@
         var MAX_WIDTH = 200;
         var DELAY = 400;
         var base = this;
-        var box = null;
+        var boxOne = null;
+        var boxTwo = null;
+        var boxThree = null;
+        var boxFour = null;
         var globalTimeout = null;
         var msg_default = '<p><i class="fa fa-fw fa-info"></i> Seleccione un item.</p>';
         var msg_error = '<i class="fa fa-fw fa-warning"></i> Buscador izquierda Error: reintentar';
@@ -21,8 +24,10 @@
 
         base.init = function(){
             var totalButtons = 0;
-            box = $('div#' + options.boxId);
-            // base.$el.append('<button name="public" style="'+base.options.buttonStyle+'">Private</button>');
+            boxOne = $('div#' + options.boxOneId);
+            boxTwo = $('div#' + options.boxTwoId);
+            boxThree = $('div#' + options.boxThreeId);
+            boxFour = $('div#' + options.boxFourId);
         };
 
         base.setMessageCallout = function(message){
@@ -40,8 +45,13 @@
             // debug(e);
             // base.options.buttonPress.call( this );
 
-            var boxUl = box.find('ul');
+            var boxUlOne = boxOne.find('ul');
+            var boxUlTwo = boxTwo.find('ul');
+            var boxUlThree = boxThree.find('ul');
+            var boxUlFour = boxFour.find('ul');
+
             var q = $(context).val();
+            var boxOneId = boxUlOne.find('input:checked').val();
 
             if(globalTimeout != null){
                 clearTimeout(globalTimeout);
@@ -54,15 +64,20 @@
                     type: 'POST',
                     dataType: 'html',
                     data: {
-                        q:q
+                        q: q,
+                        boxOneId: boxOneId
                     },
                     cache: true,
                     beforeSend: function(jqXHR, settings) {
-                        base.addClassCallout('info');
-                        base.setMessageCallout(msg_default);
+                        // base.addClassCallout('info');
+                        // base.setMessageCallout(msg_default);
+
+                        boxUlTwo.html('<li style="text-align: center"><span class="text"><i class="fa fa-2x fa-refresh fa-spin"></i></span></li>');
+                        boxUlThree.html('<li><span class="text">Seleccione un área académica.</span></li>');
+                        boxUlFour.html('<li><span class="text">Seleccione una facultad.</span></li>');
                     },
                     success: function(data, textStatus, jqXHR) {
-                        boxUl.html(data);
+                        boxUlTwo.html(data);
                     },
                     error: function(jqXHR, exception) {
                         base.addClassCallout('danger');
@@ -102,7 +117,7 @@
 
             var bp = new $.boxTwoSearch(this, options);
 
-            $('div#' + options.boxId + ' input[name=' + options.searchInputName + ']').keyup(function() {
+            $('div#' + options.boxTwoId + ' input[name=' + options.searchInputName + ']').keyup(function() {
                 bp.searchBox(this);
             });
 
