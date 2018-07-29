@@ -44,6 +44,7 @@
         '@AssociativeacademicBundle/Resources/public/js/2_boxTwoSearch.js'
         '@AssociativeacademicBundle/Resources/public/js/2_boxTwoSelectItem.js'
         '@AssociativeacademicBundle/Resources/public/js/3_boxThreeSearch.js'
+        '@AssociativeacademicBundle/Resources/public/js/3_boxThreeSelectItem.js'
         '@AssociativeacademicBundle/Resources/public/js/4_boxFourSearch.js'
     %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
@@ -56,25 +57,25 @@
             $('div#{{ boxOne.id }}').boxOneSearch({
                 boxId: '{{ boxOne.id }}',
                 searchInputName: '{{ boxOne.search_input_name }}',
-                routeSearch: '{{ path(boxOne.route_search) }}',
+                routeSearch: '{{ path(boxOne.route_search) }}'
             });
 
             $('div#{{ boxTwo.id }}').boxTwoSearch({
                 boxId: '{{ boxTwo.id }}',
                 searchInputName: '{{ boxTwo.search_input_name }}',
-                routeSearch: '{{ path(boxTwo.route_search) }}',
+                routeSearch: '{{ path(boxTwo.route_search) }}'
             });
 
             $('div#{{ boxThree.id }}').boxThreeSearch({
                 boxId: '{{ boxThree.id }}',
                 searchInputName: '{{ boxThree.search_input_name }}',
-                routeSearch: '{{ path(boxThree.route_search) }}',
+                routeSearch: '{{ path(boxThree.route_search) }}'
             });
 
             $('div#{{ boxFour.id }}').boxFourSearch({
                 boxId: '{{ boxFour.id }}',
                 searchInputName: '{{ boxFour.search_input_name }}',
-                routeSearch: '{{ path(boxFour.route_search) }}',
+                routeSearch: '{{ path(boxFour.route_search) }}'
             });
 
             $('div#{{ boxOne.id }}').boxOneSelectItem({
@@ -83,16 +84,26 @@
                 boxThreeId: '{{ boxThree.id }}',
                 boxFourId: '{{ boxFour.id }}',
                 liClass: '{{ boxOne.li_class }}',
-                routeSelectItem: '{{ path(boxOne.route_select_item) }}',
+                routeSelectItem: '{{ path(boxOne.route_select_item) }}'
             });
 
-            $('div#{{ boxOne.id }}').boxTwoSelectItem({
+            $('div#{{ boxTwo.id }}').boxTwoSelectItem({
                 {#boxOneId: '{{ boxOne.id }}',#}
                 boxTwoId: '{{ boxTwo.id }}',
                 boxThreeId: '{{ boxThree.id }}',
                 boxFourId: '{{ boxFour.id }}',
-                liClass: '{{ boxOne.li_class }}',
-                routeSelectItem: '{{ path(boxOne.route_select_item) }}',
+                liClass: '{{ boxTwo.li_class }}',
+                routeSelectItem: '{{ path(boxTwo.route_select_item) }}',
+                routeUpSerting: '{{ path(boxTwo.route_up_serting) }}'
+            });
+
+            $('div#{{ boxThree.id }}').boxThreeSelectItem({
+                {#boxOneId: '{{ boxOne.id }}',#}
+                boxTwoId: '{{ boxTwo.id }}',
+                boxThreeId: '{{ boxThree.id }}',
+                boxFourId: '{{ boxFour.id }}',
+                liClass: '{{ boxThree.li_class }}',
+                routeSelectItem: '{{ path(boxThree.route_select_item) }}'
             });
 
             {#$('div#{{ boxTwo.id }}').boxTwoSelectItem({#}

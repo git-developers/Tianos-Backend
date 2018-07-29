@@ -15,14 +15,15 @@ class Load_13_AreaacademicaData extends AbstractFixture implements OrderedFixtur
 {
     public function load(ObjectManager $manager)
     {
-        $university_uni = $this->getReference('university-uni');
+        $universityUni = $this->getReference('university-uni');
+
 
         $entity = new Areaacademica();
         $entity->setCode('111');
         $entity->setName('Ciencias Básicas');
+        $universityUni->addAreaacademica($entity);
         $manager->persist($entity);
-        $university_uni->addAreaacademica($entity);
-        $manager->persist($university_uni);
+        $manager->persist($universityUni);
         $this->addReference('areaacademica-ciencia-basica', $entity);
 
         $entity = new Areaacademica();
@@ -43,10 +44,10 @@ class Load_13_AreaacademicaData extends AbstractFixture implements OrderedFixtur
         $entity = new Areaacademica();
         $entity->setCode('555');
         $entity->setName('Ingeniería');
+        $universityUni->addAreaacademica($entity);
         $manager->persist($entity);
-        $university_uni->addAreaacademica($entity);
-        $manager->persist($university_uni);
-        $this->addReference('areaacademica-2', $entity);
+        $manager->persist($universityUni);
+        $this->addReference('areaacademica-ingenieria', $entity);
 
         $entity = new Areaacademica();
         $entity->setCode('666');

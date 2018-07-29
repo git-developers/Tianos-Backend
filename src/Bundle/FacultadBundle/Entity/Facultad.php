@@ -98,6 +98,9 @@ class Facultad
      *     @ORM\JoinColumn(name="escuela_id", referencedColumnName="id")
      *   }
      * )
+     * @JMSS\Groups({
+     *     "associative-academic"
+     * })
      */
     private $escuela;
 

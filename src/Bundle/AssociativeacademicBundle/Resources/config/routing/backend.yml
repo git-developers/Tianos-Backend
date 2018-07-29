@@ -45,6 +45,7 @@ backend_associativeacademic_index:
                     search_input_name: search-input-name-two
                     route_search: backend_associativeacademic_two_search
                     route_select_item: backend_associativeacademic_two_select_item
+                    route_up_serting: backend_associativeacademic_two_up_serting
                 box_three:
                     icon: building-o
                     class: primary
@@ -70,13 +71,12 @@ backend_associativeacademic_index:
             form:
                 type: Bundle\AssociativeacademicBundle\Form\Type\AssociativeacademicType
             repository:
-                box_left:
-                    service: tianos.repository.university
-                    method: findAll
-                    arguments:
-                        limit: 20
-                    vars:
-                        serialize_group_name: associative-academic
+                service: tianos.repository.university
+                method: findAll
+                arguments:
+                    limit: 20
+                vars:
+                    serialize_group_name: associative-academic
 
 backend_associativeacademic_one_search:
     path: /one-search
@@ -201,17 +201,73 @@ backend_associativeacademic_two_select_item:
             template: AssociativeacademicBundle:BackendAssociativeacademic/Li:3_box_three.html.twig
             vars:
                 box_two:
-                    entity: areaacademica
                     li_class: box-two-li
                     li_badge_class: bg-blue
                     li_input_name: box-two-selected-value
                 box_three:
-                    entity: areaacademica
+                    entity: facultad
                     li_class: box-three-li
                     li_badge_class: bg-orange-active
                     li_input_name: box-three-selected-value
             repository:
-                service: tianos.repository.university
+                service: tianos.repository.areaacademica
+                method: find
+                arguments:
+                    limit: 20
+                vars:
+                    serialize_group_name: associative-academic
+
+backend_associativeacademic_two_up_serting:
+    path: /two-up-serting
+    methods: [POST]
+    defaults:
+        _controller: tianos.backend.controller.associativeacademic:boxTwoUpSertingAction
+        _tianos:
+            vars:
+                box_two:
+                    li_class: box-two-li
+                    li_badge_class: bg-blue
+                    li_input_name: box-two-selected-value
+                box_three:
+                    entity: facultad
+                    li_class: box-three-li
+                    li_badge_class: bg-orange-active
+                    li_input_name: box-three-selected-value
+            repository:
+                box_one:
+                    service: tianos.repository.university
+                    method: associative
+                    arguments:
+                        limit: 20
+                    vars:
+                        serialize_group_name: associative-academic
+                box_two:
+                    service: tianos.repository.areaacademica
+                    method: find
+                    arguments:
+                        limit: 20
+                    vars:
+                        serialize_group_name: associative-academic
+
+backend_associativeacademic_three_select_item:
+    path: /three-select-item
+    methods: [POST]
+    defaults:
+        _controller: tianos.backend.controller.associativeacademic:boxThreeSelectItemAction
+        _tianos:
+            template: AssociativeacademicBundle:BackendAssociativeacademic/Li:4_box_four.html.twig
+            vars:
+                box_three:
+                    li_class: box-three-li
+                    li_badge_class: bg-orange-active
+                    li_input_name: box-three-selected-value
+                box_four:
+                    entity: escuela
+                    li_class: box-four-li
+                    li_badge_class: bg-orange-active
+                    li_input_name: box-four-selected-value
+            repository:
+                service: tianos.repository.facultad
                 method: find
                 arguments:
                     limit: 20
@@ -226,77 +282,3 @@ backend_associativeacademic_info:
         _tianos:
             action: info
             template: AssociativeacademicBundle:BackendAssociativeacademic/Informative:info.html.twig
-
-
-
-
-
-
-
-
-
-#
-#backend_associativeacademic_create:
-#    path: /create
-#    methods: [POST]
-#    defaults:
-#        _controller: tianos.backend.controller.associativeacademic:createAction
-#        _tianos:
-#            action: create
-#            template: AssociativeacademicBundle:BackendAssociativeacademic/Form:form.html.twig
-#            entity: Bundle\AssociativeacademicBundle\Entity\Associativeacademic
-#            form:
-#                type: Bundle\AssociativeacademicBundle\Form\Type\AssociativeacademicType
-#            repository:
-#                vars:
-#                    serialize_group_name: crud
-#
-#backend_associativeacademic_edit:
-#    path: /edit
-#    methods: [PUT, POST]
-#    defaults:
-#        _controller: tianos.backend.controller.associativeacademic:editAction
-#        _tianos:
-#            action: edit
-#            template: AssociativeacademicBundle:BackendAssociativeacademic/Form:form.html.twig
-#            form:
-#                type: Bundle\AssociativeacademicBundle\Form\Type\AssociativeacademicType
-#            repository:
-#                service: tianos.repository.associativeacademic
-#                method: find
-#                arguments: [$associativeacademicId]
-#                vars:
-#                    serialize_group_name: crud
-#
-#backend_associativeacademic_delete:
-#    path: /delete
-#    methods: [POST, DELETE]
-#    defaults:
-#        _controller: tianos.backend.controller.associativeacademic:deleteAction
-#        _tianos:
-#            action: delete
-#            template: GridBundle:Template:delete.html.twig
-#            repository:
-#                service: tianos.repository.associativeacademic
-#                method: find
-#                arguments: [$associativeacademicId]
-#            vars:
-##                body_css: grid-body-css
-#
-#backend_associativeacademic_view:
-#    path: /view
-#    methods: [POST]
-#    defaults:
-#        _controller: tianos.backend.controller.associativeacademic:viewAction
-#        _tianos:
-#            action: view
-#            template: AssociativeacademicBundle:BackendAssociativeacademic/Informative:view.html.twig
-#            repository:
-#                service: tianos.repository.associativeacademic
-#                method: find
-#                arguments: [$associativeacademicId]
-#                vars:
-#                    serialize_group_name: crud
-
-
-

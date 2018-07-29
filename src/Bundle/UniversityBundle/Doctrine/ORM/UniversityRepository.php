@@ -13,6 +13,30 @@ class UniversityRepository extends TianosEntityRepository implements UniversityR
     /**
      * {@inheritdoc}
      */
+    public function associative($boxOneId, $boxTwoId)
+    {
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT university, areaacademica
+            FROM UniversityBundle:University university
+            LEFT JOIN university.areaacademica areaacademica
+            WHERE
+            university.id = :boxOneId AND
+            areaacademica.id = :boxTwoId AND
+            university.isActive = :active
+            ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('boxOneId', $boxOneId);
+        $query->setParameter('boxTwoId', $boxTwoId);
+        $query->setParameter('active', 1);
+
+        return $query->getOneOrNullResult();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function searchBox($q, $offset = 0, $limit = 50): array
     {
         $em = $this->getEntityManager();

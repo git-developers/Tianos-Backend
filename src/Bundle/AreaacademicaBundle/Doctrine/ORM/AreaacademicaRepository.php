@@ -10,6 +10,29 @@ use Component\Areaacademica\Repository\AreaacademicaRepositoryInterface;
 class AreaacademicaRepository extends TianosEntityRepository implements AreaacademicaRepositoryInterface
 {
 
+//    /**
+//     * {@inheritdoc}
+//     */
+//    public function associative($boxOneId, $boxTwoId): array
+//    {
+//        $em = $this->getEntityManager();
+//        $dql = "
+//            SELECT areaacademica
+//            FROM AreaacademicaBundle:Areaacademica areaacademica
+//            WHERE
+//            areaacademica.name LIKE :q AND
+//            areaacademica.isActive = :active
+//            ";
+//
+//        $query = $em->createQuery($dql);
+//        $query->setParameter('active', 1);
+//        $query->setParameter('q', '%' . $q . '%');
+//        $query->setFirstResult($offset);
+//        $query->setMaxResults($limit);
+//
+//        return $query->getResult();
+//    }
+
     /**
      * {@inheritdoc}
      */

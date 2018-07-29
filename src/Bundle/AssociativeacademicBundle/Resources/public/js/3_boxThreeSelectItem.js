@@ -4,7 +4,7 @@
     // Global Variables
     var MAX_HEIGHT = 100;
 
-    $.boxTwoSelectItem = function(el, options) {
+    $.boxThreeSelectItem = function(el, options) {
 
         // Global Private Variables
         var MAX_WIDTH = 200;
@@ -20,7 +20,7 @@
 
         base.$el = $(el);
         base.el = el;
-        base.$el.data('boxTwoSelectItem', base);
+        base.$el.data('boxThreeSelectItem', base);
 
         base.init = function(){
             var totalButtons = 0;
@@ -46,31 +46,37 @@
             // debug(e);
             // base.options.buttonPress.call( this );
 
+            var checkboxTwo = $(context).find('input[type=checkbox]');
+
+            var boxUlTwo = boxTwo.find('ul');
             var boxUlThree = boxThree.find('ul');
             var boxUlFour = boxFour.find('ul');
-
-            var boxTwoId = $(context).parent().parent().data('box-two-id');
+            var id = $(context).data('id');
 
             $.ajax({
                 url: options.routeSelectItem,
                 type: 'POST',
                 dataType: 'html',
                 data: {
-                    boxTwoId: boxTwoId
+                    id:id
                 },
                 cache: true,
                 beforeSend: function(jqXHR, settings) {
                     base.setMessageCallout(msgLoading);
-                    boxUlThree.html('<li style="text-align: center"><span class="text"><i class="fa fa-2x fa-refresh fa-spin"></i></span></li>');
+                    boxUlFour.html('<li style="text-align: center"><span class="text"><i class="fa fa-2x fa-refresh fa-spin"></i></span></li>');
                 },
                 success: function(data, textStatus, jqXHR) {
 
-                    boxUlThree.html(data);
-                    boxUlFour.html('<li><span class="text">Seleccione una facultad.</span></li>');
+                    // checkboxTwo.prop('checked', true);
+
+                    boxUlFour.html(data);
+                    // boxUlFour.html('<li><span class="text">Seleccione una facultad dddd.</span></li>');
 
                     base.addClassCallout('success');
-                    base.setMessageCallout(msgSuccess + '<span class="badge bg-green-active">' + boxTwoId + '</span>');
+                    base.setMessageCallout(msgSuccess + '<span class="badge bg-green-active">' + id + '</span>');
 
+                    // boxOne.find('li').removeClass(options.box_li_class);
+                    // $(context).addClass(options.box_li_class);
                 },
                 error: function(jqXHR, exception) {
                     base.addClassCallout('danger');
@@ -78,48 +84,6 @@
                 }
             });
 
-        };
-
-        base.upSerting = function(context) {
-            // debug(e);
-            // base.options.buttonPress.call( this );
-
-            var boxUlTwo = boxTwo.find('ul');
-            var boxUlThree = boxThree.find('ul');
-            var boxUlFour = boxFour.find('ul');
-
-            var boxOneId = $(context).parent().data('box-one-id');
-            var boxTwoId = $(context).parent().data('box-two-id');
-
-            $.ajax({
-                url: options.routeUpSerting,
-                type: 'POST',
-                dataType: 'html',
-                data: {
-                    boxOneId: boxOneId,
-                    boxTwoId: boxTwoId,
-                    isChecked: $(context).is(':checked')
-                },
-                cache: true,
-                beforeSend: function(jqXHR, settings) {
-
-                },
-                success: function(data, textStatus, jqXHR) {
-
-                    // if (checkboxTwo.is(':checked')) {
-                    //     console.log("SI - checked");
-                    //     checkboxTwo.prop('checked', false);
-                    // } else {
-                    //     console.log("NO - checked");
-                    //     checkboxTwo.prop('checked', true);
-                    // }
-
-                },
-                error: function(jqXHR, exception) {
-                    // base.addClassCallout('danger');
-                    // base.setMessageCallout(msgError);
-                }
-            });
         };
 
         // Private Functions
@@ -139,23 +103,19 @@
         base.init();
     };
 
-    // $.boxTwoSelectItem.defaultOptions = {
+    // $.boxThreeSelectItem.defaultOptions = {
     //     buttonStyle: "border: 1px solid #fff; background-color:#000; color:#fff; padding:20px 50px",
     //     buttonPress: function () {}
     // };
 
-    $.fn.boxTwoSelectItem = function(options){
+    $.fn.boxThreeSelectItem = function(options){
 
         return this.each(function(){
 
-            var bp = new $.boxTwoSelectItem(this, options);
+            var bp = new $.boxThreeSelectItem(this, options);
 
-            $(document).on('click', 'li.' + options.liClass + ' > .tools > i', function(event) {
+            $(document).on('click', 'li.' + options.liClass, function(event) {
                 bp.selectItem(this);
-            });
-
-            $(document).on('click', 'li.' + options.liClass + ' > input[type=checkbox]', function(event) {
-                bp.upSerting(this);
             });
 
         });

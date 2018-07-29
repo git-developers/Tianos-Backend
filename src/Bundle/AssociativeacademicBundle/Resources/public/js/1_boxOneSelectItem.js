@@ -50,14 +50,14 @@
 
             var boxUlTwo = boxTwo.find('ul');
             var boxUlThree = boxThree.find('ul');
-            var id = $(context).data('id');
+            var boxOneId = $(context).data('box-one-id');
 
             $.ajax({
                 url: options.routeSelectItem,
                 type: 'POST',
                 dataType: 'html',
                 data: {
-                    id:id
+                    boxOneId: boxOneId
                 },
                 cache: true,
                 beforeSend: function(jqXHR, settings) {
@@ -66,13 +66,13 @@
                 },
                 success: function(data, textStatus, jqXHR) {
 
+                    radioOne.prop('checked', true);
+
                     boxUlTwo.html(data);
                     boxUlThree.html('<li><span class="text">Seleccione un área académica.</span></li>');
 
-                    radioOne.prop('checked', true);
-
                     base.addClassCallout('success');
-                    base.setMessageCallout(msgSuccess + '<span class="badge bg-green-active">' + id + '</span>');
+                    base.setMessageCallout(msgSuccess + '<span class="badge bg-green-active">' + boxOneId + '</span>');
 
                     // boxOne.find('li').removeClass(options.box_li_class);
                     // $(context).addClass(options.box_li_class);
@@ -97,7 +97,6 @@
             isUserSelected = value;
         }
         */
-
 
         base.init();
     };

@@ -14,6 +14,7 @@ class Load_14_FacultadData extends AbstractFixture implements OrderedFixtureInte
     public function load(ObjectManager $manager)
     {
 
+
         /**
          * Ciencias de la Salud
          */
@@ -74,25 +75,39 @@ class Load_14_FacultadData extends AbstractFixture implements OrderedFixtureInte
         /**
          * Ciencias Básicas
          */
+        $areaAcademicaCienciaBasica = $this->getReference('areaacademica-ciencia-basica');
+
         $entity = new Facultad();
         $entity->setCode('1010');
         $entity->setName('Facultad de Química e Ingeniería Química');
+        $areaAcademicaCienciaBasica->addFacultad($entity);
         $manager->persist($entity);
+        $manager->persist($areaAcademicaCienciaBasica);
+        $this->addReference('facultad-quimica', $entity);
 
         $entity = new Facultad();
         $entity->setCode('1111');
         $entity->setName('Facultad de Ciencias Biológicas');
+        $areaAcademicaCienciaBasica->addFacultad($entity);
         $manager->persist($entity);
+        $manager->persist($areaAcademicaCienciaBasica);
+        $this->addReference('facultad-biologicas', $entity);
 
         $entity = new Facultad();
         $entity->setCode('1212');
         $entity->setName('Facultad de Ciencias Físicas');
+        $areaAcademicaCienciaBasica->addFacultad($entity);
         $manager->persist($entity);
+        $manager->persist($areaAcademicaCienciaBasica);
+        $this->addReference('facultad-fisicas', $entity);
 
         $entity = new Facultad();
         $entity->setCode('1313');
         $entity->setName('Facultad de Ciencias Matemáticas');
+        $areaAcademicaCienciaBasica->addFacultad($entity);
         $manager->persist($entity);
+        $manager->persist($areaAcademicaCienciaBasica);
+        $this->addReference('facultad-matematicas', $entity);
 
 
         /**

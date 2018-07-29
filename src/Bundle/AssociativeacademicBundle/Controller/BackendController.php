@@ -41,11 +41,8 @@ class BackendController extends BaseController
 
         //CONFIGURATION
         $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
-//        $repository = $configuration->getRepositoryService();
-        $repositoryLeft = $configuration->getRepositoryServiceLeft();
-        $methodLeft = $configuration->getRepositoryMethodLeft();
-//        $repositoryCenter = $configuration->getRepositoryServiceCenter();
-//        $methodCenter = $configuration->getRepositoryMethodCenter();
+        $repository = $configuration->getRepositoryService();
+        $method = $configuration->getRepositoryMethod();
         $template = $configuration->getTemplate('');
 
 //        $grid = $configuration->getGrid();
@@ -57,11 +54,10 @@ class BackendController extends BaseController
         $boxFour = $vars->box_four;
 
 
-        //REPOSITORY LEFT
-        $varsLeft = $configuration->getRepositoryVarsLeft();
-        $objectsOne = $this->get($repositoryLeft)->$methodLeft();
-        $objectsOne = $this->getSerializeDecode($objectsOne, $varsLeft->serialize_group_name);
-        //REPOSITORY LEFT
+        //REPOSITORY ONE
+        $varsRepo = $configuration->getRepositoryVars();
+        $objectsOne = $this->get($repository)->$method();
+        $objectsOne = $this->getSerializeDecode($objectsOne, $varsRepo->serialize_group_name);
 
 
         //CRUD
@@ -119,6 +115,7 @@ class BackendController extends BaseController
         return $this->render(
             $template,
             [
+                'boxOneId' => $request->get('boxOneId'),
                 'boxOne' => $boxOne,
                 'objectsOne' => $objects,
             ]
@@ -251,9 +248,9 @@ class BackendController extends BaseController
      */
     public function boxOneSelectItemAction(Request $request): Response
     {
-        $id = $request->get('id');
+        $boxOneId = $request->get('boxOneId');
 
-        if (!$this->isXmlHttpRequest() || is_null($id)) {
+        if (!$this->isXmlHttpRequest() || is_null($boxOneId)) {
             throw $this->createAccessDeniedException(self::ACCESS_DENIED_MSG);
         }
 
@@ -275,24 +272,119 @@ class BackendController extends BaseController
         $method = $configuration->getRepositoryMethod();
         $vars = $configuration->getRepositoryVars();
 
-        $objects = $this->get($repository)->$method($id);
+        $objects = $this->get($repository)->$method($boxOneId);
         $objects = $this->getSerializeDecode($objects, $vars->serialize_group_name);
 
         return $this->render(
             $template,
             [
+                'boxOneId' => $boxOneId,
                 'boxTwo' => $boxTwo,
                 'objectsTwo' => isset($objects[$boxTwo->entity]) ? $objects[$boxTwo->entity] : [],
             ]
         );
     }
 
-
     /**
      * @param Request $request
      * @return Response
      */
     public function boxTwoSelectItemAction(Request $request): Response
+    {
+        $boxTwoId = $request->get('boxTwoId');
+
+        if (!$this->isXmlHttpRequest() || is_null($boxTwoId)) {
+            throw $this->createAccessDeniedException(self::ACCESS_DENIED_MSG);
+        }
+
+        $parameters = [
+            'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
+        ];
+        $applicationName = $this->container->getParameter('application_name');
+        $this->metadata = new Metadata('tianos', $applicationName, $parameters);
+
+        //CONFIGURATION
+        $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
+        $template = $configuration->getTemplate('');
+
+        $vars = $configuration->getVars();
+        $boxThree = $vars->box_three;
+
+        //REPOSITORY
+        $repository = $configuration->getRepositoryService();
+        $method = $configuration->getRepositoryMethod();
+        $vars = $configuration->getRepositoryVars();
+
+        $objects = $this->get($repository)->$method($boxTwoId);
+        $objects = $this->getSerializeDecode($objects, $vars->serialize_group_name);
+
+        return $this->render(
+            $template,
+            [
+                'boxThree' => $boxThree,
+                'objectsThree' => isset($objects[$boxThree->entity]) ? $objects[$boxThree->entity] : [],
+            ]
+        );
+    }
+
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function boxTwoUpSertingAction(Request $request): Response
+    {
+        $boxOneId = $request->get('boxOneId');
+        $boxTwoId = $request->get('boxTwoId');
+        $isChecked = $request->get('isChecked');
+
+        if (!$this->isXmlHttpRequest() || is_null($boxOneId) || is_null($boxTwoId)) {
+            throw $this->createAccessDeniedException(self::ACCESS_DENIED_MSG);
+        }
+
+        $parameters = [
+            'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
+        ];
+        $applicationName = $this->container->getParameter('application_name');
+        $this->metadata = new Metadata('tianos', $applicationName, $parameters);
+
+        //CONFIGURATION
+        $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
+//        $template = $configuration->getTemplate('');
+
+        $vars = $configuration->getVars();
+        $boxThree = $vars->box_three;
+
+        //REPOSITORY
+        $repositoryOne = $configuration->getRepositoryServiceOne();
+        $methodOne = $configuration->getRepositoryMethodOne();
+        $repositoryTwo = $configuration->getRepositoryServiceTwo();
+        $methodTwo = $configuration->getRepositoryMethodTwo();
+//        $vars = $configuration->getRepositoryVarsOne();
+
+        $objectOne = $this->get($repositoryOne)->$methodOne($boxOneId, $boxTwoId);
+        $objectTwo = $this->get($repositoryTwo)->$methodTwo($boxTwoId);
+
+        if (is_null($objectOne) && $isChecked) {
+            $objectOne = $this->get($repositoryOne)->find($boxOneId);
+            $objectOne->addAreaacademica($objectTwo);
+            $this->persist($objectOne);
+        } else {
+            $objectOne->removeAreaacademica($objectTwo);
+            $this->persist($objectOne);
+        }
+
+        return $this->json(
+            [
+                'status' => true
+            ]
+        );
+    }
+
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function boxThreeSelectItemAction(Request $request): Response
     {
         $id = $request->get('id');
 
@@ -311,7 +403,7 @@ class BackendController extends BaseController
         $template = $configuration->getTemplate('');
 
         $vars = $configuration->getVars();
-        $boxThree = $vars->box_one;
+        $boxFour = $vars->box_four;
 
         //REPOSITORY
         $repository = $configuration->getRepositoryService();
@@ -321,19 +413,11 @@ class BackendController extends BaseController
         $objects = $this->get($repository)->$method($id);
         $objects = $this->getSerializeDecode($objects, $vars->serialize_group_name);
 
-
-        echo "POLLO:: <pre>";
-        print_r($objects);
-        exit;
-
-
-
-
         return $this->render(
             $template,
             [
-                'boxThree' => $boxThree,
-                'objectsTwo' => isset($objects[$boxThree->entity]) ? $objects[$boxThree->entity] : [],
+                'boxFour' => $boxFour,
+                'objectsFour' => isset($objects[$boxFour->entity]) ? $objects[$boxFour->entity] : [],
             ]
         );
     }

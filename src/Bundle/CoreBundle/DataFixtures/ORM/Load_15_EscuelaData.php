@@ -243,77 +243,109 @@ class Load_15_EscuelaData extends AbstractFixture implements OrderedFixtureInter
         /**
          * Facultad de Química e Ingeniería Química
          */
+        $facultadQuimica = $this->getReference('facultad-quimica');
+
         $entity = new Escuela();
         $entity->setCode('3333');
         $entity->setName('Química');
+        $facultadQuimica->addEscuela($entity);
         $manager->persist($entity);
+        $manager->persist($facultadQuimica);
 
         $entity = new Escuela();
         $entity->setCode('3434');
         $entity->setName('Ingeniería Química');
+        $facultadQuimica->addEscuela($entity);
         $manager->persist($entity);
+        $manager->persist($facultadQuimica);
 
         $entity = new Escuela();
         $entity->setCode('3535');
         $entity->setName('Ingeniería Agroindustrial');
+        $facultadQuimica->addEscuela($entity);
         $manager->persist($entity);
+        $manager->persist($facultadQuimica);
 
 
         /**
          * Facultad de Ciencias Biológicas
          */
+        $facultadBiologicas = $this->getReference('facultad-biologicas');
+
         $entity = new Escuela();
         $entity->setCode('3636');
         $entity->setName('Ciencias Biológicas');
+        $facultadBiologicas->addEscuela($entity);
         $manager->persist($entity);
+        $manager->persist($facultadBiologicas);
 
         $entity = new Escuela();
         $entity->setCode('3737');
         $entity->setName('Genética y Biotecnología');
+        $facultadBiologicas->addEscuela($entity);
         $manager->persist($entity);
+        $manager->persist($facultadBiologicas);
 
         $entity = new Escuela();
         $entity->setCode('3838');
         $entity->setName('Microbiología y Parasitología');
+        $facultadBiologicas->addEscuela($entity);
         $manager->persist($entity);
+        $manager->persist($facultadBiologicas);
 
 
         /**
          * Facultad de Ciencias Físicas
          */
+        $facultadFisicas = $this->getReference('facultad-fisicas');
+
         $entity = new Escuela();
         $entity->setCode('3939');
         $entity->setName('Física');
+        $facultadFisicas->addEscuela($entity);
         $manager->persist($entity);
+        $manager->persist($facultadFisicas);
 
         $entity = new Escuela();
         $entity->setCode('4040');
         $entity->setName('Ingeniería Mecánica de Fluidos');
+        $facultadFisicas->addEscuela($entity);
         $manager->persist($entity);
+        $manager->persist($facultadFisicas);
 
 
         /**
          * Facultad de Ciencias Matemáticas
          */
+        $facultadMatematicas = $this->getReference('facultad-matematicas');
+
         $entity = new Escuela();
         $entity->setCode('4141');
         $entity->setName('Matemática');
+        $facultadMatematicas->addEscuela($entity);
         $manager->persist($entity);
+        $manager->persist($facultadMatematicas);
 
         $entity = new Escuela();
         $entity->setCode('4242');
         $entity->setName('Estadística');
+        $facultadMatematicas->addEscuela($entity);
         $manager->persist($entity);
+        $manager->persist($facultadMatematicas);
 
         $entity = new Escuela();
         $entity->setCode('4343');
         $entity->setName('Investigación Operativa');
+        $facultadMatematicas->addEscuela($entity);
         $manager->persist($entity);
+        $manager->persist($facultadMatematicas);
 
         $entity = new Escuela();
         $entity->setCode('4444');
         $entity->setName('Computación Científica');
+        $facultadMatematicas->addEscuela($entity);
         $manager->persist($entity);
+        $manager->persist($facultadMatematicas);
 
 
 
