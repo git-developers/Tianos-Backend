@@ -39,11 +39,6 @@
 {% block javascripts %}
     {{ parent() }}
 
-
-{#
-    '@AssociativeacademicBundle/Resources/public/js/boxOneSelectItem.js'
-    '@AssociativeacademicBundle/Resources/public/js/boxTwoSelectItem.js'#}
-
     {% javascripts
         '@AssociativeacademicBundle/Resources/public/js/boxInfo.js'
         '@AssociativeacademicBundle/Resources/public/js/1_boxOneSearch.js'
@@ -57,7 +52,6 @@
     %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
-
 
     <script type="text/javascript">
         $(function() {

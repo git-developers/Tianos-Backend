@@ -73,6 +73,8 @@
                 success: function(data, textStatus, jqXHR) {
 
                     radioThree.prop('checked', true);
+                    boxUlThree.find('li').css('background-color', 'unset');
+                    $(context).parent().parent().css('background-color', '#ddd');
 
                     boxUlFour.html(data);
                     // boxUlFour.html('<li><span class="text">Seleccione una facultad dddd.</span></li>');
@@ -152,14 +154,12 @@
             console.log(e);
         }
 
-        /*
-        var isUserSelected = false;
+        base.radioButtonClick = function(context) {
+            var boxUlThree = boxThree.find('ul');
 
-        function setUserSelected(value) {
-            isUserSelected = value;
-        }
-        */
-
+            boxUlThree.find('li').css('background-color', 'unset');
+            $(context).parent().css('background-color', '#ddd');
+        };
 
         base.init();
     };
@@ -181,6 +181,10 @@
 
             $(document).on('click', 'li.' + options.liClass + ' > input[type=checkbox]', function(event) {
                 bp.upSerting(this);
+            });
+
+            $(document).on('click', 'li.' + options.liClass + ' > input[type=radio]', function(event) {
+                bp.radioButtonClick(this);
             });
 
         });

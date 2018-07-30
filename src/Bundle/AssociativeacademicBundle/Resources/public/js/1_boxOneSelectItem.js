@@ -46,11 +46,11 @@
             // debug(e);
             // base.options.buttonPress.call( this );
 
+            var boxUlOne = boxOne.find('ul');
             var boxUlTwo = boxTwo.find('ul');
             var boxUlThree = boxThree.find('ul');
             var boxUlFour = boxFour.find('ul');
 
-            // var boxOneLi = $(context).parent().parent().find('li');
             var boxOneId = $(context).parent().parent().data('box-one-id');
             var radioOne = $(context).parent().parent().find('input[type=radio]');
 
@@ -69,7 +69,8 @@
                 success: function(data, textStatus, jqXHR) {
 
                     radioOne.prop('checked', true);
-                    // boxOneLi.css('background-color', '#ddd');
+                    boxUlOne.find('li').css('background-color', 'unset');
+                    $(context).parent().parent().css('background-color', '#ddd');
 
                     boxUlTwo.html(data);
                     boxUlThree.html('<li><span class="text">Seleccione un área académica.</span></li>');
@@ -77,7 +78,6 @@
 
                     // base.addClassCallout('success');
                     // base.setMessageCallout(msgSuccess + '<span class="badge bg-green-active">' + boxOneId + '</span>');
-
                     // boxOne.find('li').removeClass(options.box_li_class);
                     // $(context).addClass(options.box_li_class);
                 },
@@ -86,21 +86,19 @@
                     base.setMessageCallout(msgError);
                 }
             });
+        };
 
+        base.radioButtonClick = function(context) {
+            var boxUlOne = boxOne.find('ul');
+
+            boxUlOne.find('li').css('background-color', 'unset');
+            $(context).parent().css('background-color', '#ddd');
         };
 
         // Private Functions
         function debug(e) {
             console.log(e);
         }
-
-        /*
-        var isUserSelected = false;
-
-        function setUserSelected(value) {
-            isUserSelected = value;
-        }
-        */
 
         base.init();
     };
@@ -118,6 +116,10 @@
 
             $(document).on('click', 'li.' + options.liClass + ' > .tools > i', function(event) {
                 bp.selectItem(this);
+            });
+
+            $(document).on('click', 'li.' + options.liClass + ' > input[type=radio]', function(event) {
+                bp.radioButtonClick(this);
             });
 
         });
