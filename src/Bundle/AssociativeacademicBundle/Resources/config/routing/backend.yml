@@ -67,10 +67,12 @@ backend_associativeacademic_index:
                     title: Escuelas
                     li_class: box-four-li
                     li_badge_class: bg-orange-active
-                    li_input_name: box-four-selected-value
+                    li_input_radio_name: box-four-selected-radio
+                    li_input_checkbox_name: box-four-selected-checkbox
                     search_input_name: search-input-name-four
                     route_search: backend_associativeacademic_four_search
-                    route_select_item: backend_associativeacademic_four_select_item
+#                    route_select_item: backend_associativeacademic_four_select_item
+                    route_up_serting: backend_associativeacademic_four_up_serting
             form:
                 type: Bundle\AssociativeacademicBundle\Form\Type\AssociativeacademicType
             repository:
@@ -93,7 +95,8 @@ backend_associativeacademic_one_search:
                 box_one:
                     li_class: box-one-li
                     li_badge_class: bg-green
-                    li_input_name: box-one-selected-value
+                    li_input_radio_name: box-one-selected-radio
+                    li_input_checkbox_name: box-one-selected-checkbox
                     search_input_name: search-input-name-one
             repository:
                 service: tianos.repository.university
@@ -161,7 +164,8 @@ backend_associativeacademic_four_search:
                 box_four:
                     li_class: box-four-li
                     li_badge_class: bg-green
-                    li_input_name: box-four-selected-value
+                    li_input_radio_name: box-four-selected-radio
+                    li_input_checkbox_name: box-four-selected-checkbox
                     search_input_name: search-input-name-four
             repository:
                 service: tianos.repository.escuela
@@ -231,15 +235,6 @@ backend_associativeacademic_two_up_serting:
         _controller: tianos.backend.controller.associativeacademic:boxTwoUpSertingAction
         _tianos:
             vars:
-#                box_two:
-#                    li_class: box-two-li
-#                    li_badge_class: bg-blue
-#                    li_input_name: box-two-selected-value
-#                box_three:
-#                    entity: facultad
-#                    li_class: box-three-li
-#                    li_badge_class: bg-orange-active
-#                    li_input_name: box-three-selected-value
             repository:
                 box_one:
                     service: tianos.repository.university
@@ -272,7 +267,8 @@ backend_associativeacademic_three_select_item:
                     entity: escuela
                     li_class: box-four-li
                     li_badge_class: bg-teal-active
-                    li_input_name: box-four-selected-value
+                    li_input_radio_name: box-four-selected-radio
+                    li_input_checkbox_name: box-four-selected-checkbox
             repository:
                 service: tianos.repository.facultad
                 method: find
@@ -288,15 +284,6 @@ backend_associativeacademic_three_up_serting:
         _controller: tianos.backend.controller.associativeacademic:boxThreeUpSertingAction
         _tianos:
             vars:
-#                box_three:
-#                    li_class: box-three-li
-#                    li_badge_class: bg-orange-active
-#                    li_input_name: box-three-selected-value
-#                box_four:
-#                    entity: escuela
-#                    li_class: box-four-li
-#                    li_badge_class: bg-teal-active
-#                    li_input_name: box-four-selected-value
             repository:
                 box_two:
                     service: tianos.repository.areaacademica
@@ -307,6 +294,29 @@ backend_associativeacademic_three_up_serting:
                         serialize_group_name: associative-academic
                 box_three:
                     service: tianos.repository.facultad
+                    method: find
+                    arguments:
+                        limit: 20
+                    vars:
+                        serialize_group_name: associative-academic
+
+backend_associativeacademic_four_up_serting:
+    path: /four-up-serting
+    methods: [POST]
+    defaults:
+        _controller: tianos.backend.controller.associativeacademic:boxFourUpSertingAction
+        _tianos:
+            vars:
+            repository:
+                box_three:
+                    service: tianos.repository.facultad
+                    method: associative
+                    arguments:
+                        limit: 20
+                    vars:
+                        serialize_group_name: associative-academic
+                box_four:
+                    service: tianos.repository.escuela
                     method: find
                     arguments:
                         limit: 20

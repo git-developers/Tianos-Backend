@@ -440,7 +440,7 @@ class RequestConfiguration
         return is_array($repository) ? $repository['box_three']['method'] : $repository;
     }
 
-    public function getAddEntityLeft()
+    public function getRepositoryMethodFour()
     {
         if (!$this->parameters->has('repository')) {
             return null;
@@ -448,19 +448,30 @@ class RequestConfiguration
 
         $repository = $this->parameters->get('repository');
 
-        return is_array($repository) ? $repository['box_left']['add_entity'] : $repository;
+        return is_array($repository) ? $repository['box_four']['method'] : $repository;
     }
 
-    public function getRemoveEntityLeft()
-    {
-        if (!$this->parameters->has('repository')) {
-            return null;
-        }
-
-        $repository = $this->parameters->get('repository');
-
-        return is_array($repository) ? $repository['box_left']['remove_entity'] : $repository;
-    }
+//    public function getAddEntityLeft()
+//    {
+//        if (!$this->parameters->has('repository')) {
+//            return null;
+//        }
+//
+//        $repository = $this->parameters->get('repository');
+//
+//        return is_array($repository) ? $repository['box_left']['add_entity'] : $repository;
+//    }
+//
+//    public function getRemoveEntityLeft()
+//    {
+//        if (!$this->parameters->has('repository')) {
+//            return null;
+//        }
+//
+//        $repository = $this->parameters->get('repository');
+//
+//        return is_array($repository) ? $repository['box_left']['remove_entity'] : $repository;
+//    }
 
 //    public function getRepositoryMethodDeleteAssociativeLeft()
 //    {
@@ -515,6 +526,17 @@ class RequestConfiguration
         $repository = $this->parameters->get('repository');
 
         return is_array($repository) ? $repository['box_three']['service'] : $repository;
+    }
+
+    public function getRepositoryServiceFour()
+    {
+        if (!$this->parameters->has('repository')) {
+            return null;
+        }
+
+        $repository = $this->parameters->get('repository');
+
+        return is_array($repository) ? $repository['box_four']['service'] : $repository;
     }
 
 //    public function hasOneToMany($key)

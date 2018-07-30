@@ -53,6 +53,7 @@
         '@AssociativeacademicBundle/Resources/public/js/3_boxThreeSearch.js'
         '@AssociativeacademicBundle/Resources/public/js/3_boxThreeSelectItem.js'
         '@AssociativeacademicBundle/Resources/public/js/4_boxFourSearch.js'
+        '@AssociativeacademicBundle/Resources/public/js/4_boxFourSelectItem.js'
     %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
@@ -121,14 +122,15 @@
                 routeUpSerting: '{{ path(boxThree.route_up_serting) }}'
             });
 
-            {#$('div#{{ boxTwo.id }}').boxTwoSelectItem({#}
-                {#boxOneId: '{{ boxOne.id }}',#}
-                {#boxTwoId: '{{ boxTwo.id }}',#}
-                {#boxThreeId: '{{ boxThree.id }}',#}
-                {#liClass: '{{ boxTwo.li_class }}',#}
-                {#boxOneLiInputName: '{{ boxOne.li_input_name }}',#}
-                {#routeSelectItem: '{{ path(boxTwo.route_select_item) }}',#}
-            {#});#}
+            $('div#{{ boxFour.id }}').boxFourSelectItem({
+                boxOneId: '{{ boxOne.id }}',
+                boxTwoId: '{{ boxTwo.id }}',
+                boxThreeId: '{{ boxThree.id }}',
+                boxFourId: '{{ boxFour.id }}',
+                liClass: '{{ boxFour.li_class }}',
+                {#routeSelectItem: '{{ path(boxFour.route_select_item) }}',#}
+                routeUpSerting: '{{ path(boxFour.route_up_serting) }}'
+            });
 
 
             {#

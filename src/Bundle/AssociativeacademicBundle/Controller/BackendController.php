@@ -454,16 +454,65 @@ class BackendController extends BaseController
         $objectOne = $this->get($repositoryTwo)->$methodTwo($boxTwoId, $boxThreeId);
         $objectTwo = $this->get($repositoryThree)->$methodThree($boxThreeId);
 
-        if ((bool) is_null($objectOne) && $isChecked) {
-
-
-
+        if (is_null($objectOne) && $isChecked) {
 
             $objectOne = $this->get($repositoryTwo)->find($boxTwoId);
             $objectOne->addFacultad($objectTwo);
             $this->persist($objectOne);
         } else {
             $objectOne->removeFacultad($objectTwo);
+            $this->persist($objectOne);
+        }
+
+        return $this->json(
+            [
+                'status' => true
+            ]
+        );
+    }
+
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function boxFourUpSertingAction(Request $request): Response
+    {
+        $boxThreeId = $request->get('boxThreeId');
+        $boxFourId = $request->get('boxFourId');
+        $isChecked = $request->get('isChecked');
+
+        if (!$this->isXmlHttpRequest() || is_null($boxThreeId) || is_null($boxFourId)) {
+            throw $this->createAccessDeniedException(self::ACCESS_DENIED_MSG);
+        }
+
+        $parameters = [
+            'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
+        ];
+        $applicationName = $this->container->getParameter('application_name');
+        $this->metadata = new Metadata('tianos', $applicationName, $parameters);
+
+        //CONFIGURATION
+        $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
+//        $template = $configuration->getTemplate('');
+//        $vars = $configuration->getVars();
+//        $boxThree = $vars->box_three;
+
+        //REPOSITORY
+        $repositoryThree = $configuration->getRepositoryServiceThree();
+        $methodThree = $configuration->getRepositoryMethodThree();
+        $repositoryFour = $configuration->getRepositoryServiceFour();
+        $methodFour = $configuration->getRepositoryMethodFour();
+
+        $objectOne = $this->get($repositoryThree)->$methodThree($boxThreeId, $boxFourId);
+        $objectTwo = $this->get($repositoryFour)->$methodFour($boxFourId);
+
+        if (is_null($objectOne) && $isChecked) {
+
+            $objectOne = $this->get($repositoryThree)->find($boxThreeId);
+            $objectOne->addEscuela($objectTwo);
+            $this->persist($objectOne);
+        } else {
+            $objectOne->removeEscuela($objectTwo);
             $this->persist($objectOne);
         }
 
