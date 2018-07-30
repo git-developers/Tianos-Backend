@@ -53,6 +53,7 @@ class Load_1_UniversityData extends AbstractFixture implements OrderedFixtureInt
         $entity->setAbbreviation('UNFV');
         $entity->setName('Universidad Nacional Federico Villarreal');
         $manager->persist($entity);
+        $this->addReference('university-unfv', $entity);
 
         $entity = new University();
         $entity->setCode('777');
