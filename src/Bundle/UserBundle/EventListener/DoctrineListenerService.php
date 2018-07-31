@@ -84,6 +84,9 @@ class DoctrineListenerService extends BaseDoctrineListenerService implements Eve
         $entity = $args->getEntity();
 
         if ($entity instanceof User){
+
+//            $aboutMe = $entity->getAboutMe();
+//            $entity->setAboutMe(nl2br($aboutMe));
             $entity->setUpdatedAt($this->dateTime);
 
             return;

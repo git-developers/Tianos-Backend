@@ -46,3 +46,43 @@ services:
         factory: ['@doctrine.orm.entity_manager', getRepository]
         arguments: [ Bundle\UserBundle\Entity\User ]
 
+
+
+#    TWIG EXTENSION
+#    TWIG EXTENSION
+    tianos.registry.user_field:
+        class: Component\Registry\ServiceRegistry
+        arguments: [ Component\User\FieldTypes\FieldTypeInterface, "grid field" ]
+
+    tianos.form_registry.user_filter:
+        class: Bundle\UserBundle\Form\Registry\FormTypeRegistry
+        public: false
+
+    tianos.expression_language:
+        class: Bundle\ResourceBundle\ExpressionLanguage\ExpressionLanguage
+        public: false
+
+    tianos.user_options_parser:
+        class: Bundle\ResourceBundle\User\Parser\OptionsParser
+        arguments: [ "@service_container", "@tianos.expression_language", "@property_accessor" ]
+        public: false
+
+    tianos.custom_user_renderer.twig.inner:
+        class: Bundle\UserBundle\Renderer\TwigUserRenderer
+        arguments: [ "@twig", "@tianos.registry.user_field", "@form.factory", "@tianos.form_registry.user_filter", SyliusOneToManyBundle::_grid.html.twig ]
+        public: false
+
+    tianos.custom_user_renderer.twig:
+        class: Bundle\ResourceBundle\User\Renderer\TwigUserRenderer
+        arguments: [ "@tianos.custom_user_renderer.twig.inner", "@twig", "@tianos.user_options_parser" ]
+
+    tianos.templating.helper.user:
+        class: Bundle\UserBundle\Templating\Helper\UserHelper
+        arguments: [ "@tianos.custom_user_renderer.twig" ]
+
+    twig.extension.user:
+        class: Bundle\UserBundle\Twig\UserExtension
+        arguments: ['@tianos.templating.helper.user']
+        public: false
+        tags:
+         - { name: twig.extension }
