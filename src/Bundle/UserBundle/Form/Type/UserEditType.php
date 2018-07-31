@@ -9,6 +9,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -70,6 +71,16 @@ class UserEditType extends AbstractType
                     'placeholder' => 'test@test.com',
                 ],
                 'error_bubbling' => true
+            ])
+            ->add('aboutMe', TextareaType::class, [
+                'label' => 'Sobre mi',
+                'label_attr' => [
+                    'class' => ''
+                ],
+                'attr' => [
+                    'class' => 'form-control',
+                    'placeholder' => 'Sobre mi',
+                ],
             ])
 //            ->add('image', FileType::class , array(
 //                'label' => '',

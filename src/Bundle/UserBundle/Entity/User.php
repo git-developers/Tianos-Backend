@@ -59,6 +59,13 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     private $name;
 
     /**
+     * @var string|null
+     *
+     * @JMSS\Groups({"login", "crud"})
+     */
+    private $lastName;
+
+    /**
      * @var string
      *
      * @JMSS\Groups({
@@ -120,9 +127,8 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     /**
      * @var string|null
      *
-     * @JMSS\Groups({"login", "crud"})
      */
-    private $lastName;
+    private $aboutMe;
 
     /**
      * @var \DateTime|null
@@ -367,6 +373,22 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     public function getDni()
     {
         return $this->dni;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getAboutMe(): ?string
+    {
+        return $this->aboutMe;
+    }
+
+    /**
+     * @param null|string $aboutMe
+     */
+    public function setAboutMe(?string $aboutMe): void
+    {
+        $this->aboutMe = $aboutMe;
     }
 
     /**

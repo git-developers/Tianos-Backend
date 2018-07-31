@@ -6,8 +6,8 @@
     {{ vars.body_css }}
 {% endspaceless %}{% endblock %}
 
-{% block javascriptSdk %}
-    {{ html.javascript_sdk }}
+{% block facebookSdk %}
+    {{ html.facebook_sdk }}
 {% endblock %}
 
 {% block stylesheets %}
@@ -127,32 +127,30 @@
 
 {% block content %}
 
-    {#{{ html.javascript_sdk }}#}
-
     <section id="section-watch" class="content">
         <div class="row">
             <div class="col-md-10">
                 <div class="box box-widget"> {#box-solid box-widget#}
-                    {{ include("GoogleBundle:GoogleDriveFileGrid/Watch/Box:viewer.html.twig") }}
+                    {{ include('GoogleBundle:GoogleDriveFileGrid/Watch/Box:viewer.html.twig') }}
                 </div>
                 <div class="box">
-                    {{ include("GoogleBundle:GoogleDriveFileGrid/Watch/Box:share.html.twig") }}
+                    {{ include('GoogleBundle:GoogleDriveFileGrid/Watch/Box:share.html.twig') }}
                 </div>
                 <div class="box">
-                    {{ include("GoogleBundle:GoogleDriveFileGrid/Watch/Box:videos.html.twig") }}
+                    {{ include('GoogleBundle:GoogleDriveFileGrid/Watch/Box:videos.html.twig') }}
                 </div>
                 <div class="box">
-                    {{ include("GoogleBundle:GoogleDriveFileGrid/Watch/Box:comments.html.twig") }}
+                    {{ include('GoogleBundle:GoogleDriveFileGrid/Watch/Box:comments.html.twig') }}
                 </div>
             </div>
             <div class="box-sidebar col-md-2">
-                {{ include ("GoogleBundle:GoogleDriveFileGrid/Watch/Box:sidebar.html.twig") }}
+                {{ include ('GoogleBundle:GoogleDriveFileGrid/Watch/Box:sidebar.html.twig') }}
             </div>
         </div>
     </section>
 
-    {{ include("GoogleBundle:GoogleDriveFileGrid:Watch/Modal/qr.html.twig") }}
-    {{ include("GoogleBundle:GoogleDriveFileGrid:Watch/Modal/download.html.twig") }}
+    {{ include('GoogleBundle:GoogleDriveFileGrid:Watch/Modal/qr.html.twig') }}
+    {{ include('GoogleBundle:GoogleDriveFileGrid:Watch/Modal/download.html.twig') }}
 
 {% endblock %}
 

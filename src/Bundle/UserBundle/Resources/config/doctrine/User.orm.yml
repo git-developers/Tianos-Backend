@@ -81,6 +81,13 @@ Bundle\UserBundle\Entity\User:
             options:
                 fixed: false
             column: last_name
+        aboutMe:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+            column: about_me
         dob:
             type: date
             nullable: true

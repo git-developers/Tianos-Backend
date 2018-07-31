@@ -67,7 +67,7 @@ class CommonExtension extends \Twig_Extension
     public function xxxxxxxxxFilter(\Twig_Environment $twig)
     {
         return $twig->render(
-            'CoreBundle:Twig/Common:javascript_sdk.html.twig',
+            'CoreBundle:Twig/Common:facebook_sdk.html.twig',
             [
                 'test' => '',
             ]

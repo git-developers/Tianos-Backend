@@ -52,7 +52,6 @@ class Load_13_AreaacademicaData extends AbstractFixture implements OrderedFixtur
         $universityPucp->addAreaacademica($entity);
         $universityUap->addAreaacademica($entity);
         $universityUcv->addAreaacademica($entity);
-        $manager->persist($entity);
         $manager->persist($universityUni);
         $manager->persist($universityUtp);
         $manager->persist($universityUrp);
@@ -69,6 +68,7 @@ class Load_13_AreaacademicaData extends AbstractFixture implements OrderedFixtur
         $manager->persist($universityPucp);
         $manager->persist($universityUap);
         $manager->persist($universityUcv);
+        $manager->persist($entity);
         $this->addReference('areaacademica-ciencia-basica', $entity);
 
         $entity = new Areaacademica();
@@ -90,7 +90,6 @@ class Load_13_AreaacademicaData extends AbstractFixture implements OrderedFixtur
         $universityPucp->addAreaacademica($entity);
         $universityUap->addAreaacademica($entity);
         $universityUcv->addAreaacademica($entity);
-        $manager->persist($entity);
         $manager->persist($universityUni);
         $manager->persist($universityUtp);
         $manager->persist($universityUrp);
@@ -107,6 +106,7 @@ class Load_13_AreaacademicaData extends AbstractFixture implements OrderedFixtur
         $manager->persist($universityPucp);
         $manager->persist($universityUap);
         $manager->persist($universityUcv);
+        $manager->persist($entity);
         $this->addReference('areaacademica-humanidades', $entity);
 
         $entity = new Areaacademica();
@@ -128,7 +128,6 @@ class Load_13_AreaacademicaData extends AbstractFixture implements OrderedFixtur
         $universityPucp->addAreaacademica($entity);
         $universityUap->addAreaacademica($entity);
         $universityUcv->addAreaacademica($entity);
-        $manager->persist($entity);
         $manager->persist($universityUni);
         $manager->persist($universityUtp);
         $manager->persist($universityUrp);
@@ -145,6 +144,7 @@ class Load_13_AreaacademicaData extends AbstractFixture implements OrderedFixtur
         $manager->persist($universityPucp);
         $manager->persist($universityUap);
         $manager->persist($universityUcv);
+        $manager->persist($entity);
         $this->addReference('areaacademica-sociales', $entity);
 
         $entity = new Areaacademica();
@@ -166,7 +166,6 @@ class Load_13_AreaacademicaData extends AbstractFixture implements OrderedFixtur
         $universityPucp->addAreaacademica($entity);
         $universityUap->addAreaacademica($entity);
         $universityUcv->addAreaacademica($entity);
-        $manager->persist($entity);
         $manager->persist($universityUni);
         $manager->persist($universityUtp);
         $manager->persist($universityUrp);
@@ -183,12 +182,12 @@ class Load_13_AreaacademicaData extends AbstractFixture implements OrderedFixtur
         $manager->persist($universityPucp);
         $manager->persist($universityUap);
         $manager->persist($universityUcv);
+        $manager->persist($entity);
         $this->addReference('areaacademica-salud', $entity);
 
         $entity = new Areaacademica();
         $entity->setCode('555');
         $entity->setName('Ingeniería');
-        $universityUni->addAreaacademica($entity);
         $universityUni->addAreaacademica($entity);
         $universityUtp->addAreaacademica($entity);
         $universityUrp->addAreaacademica($entity);
@@ -205,7 +204,6 @@ class Load_13_AreaacademicaData extends AbstractFixture implements OrderedFixtur
         $universityPucp->addAreaacademica($entity);
         $universityUap->addAreaacademica($entity);
         $universityUcv->addAreaacademica($entity);
-        $manager->persist($entity);
         $manager->persist($universityUni);
         $manager->persist($universityUtp);
         $manager->persist($universityUrp);
@@ -223,6 +221,7 @@ class Load_13_AreaacademicaData extends AbstractFixture implements OrderedFixtur
         $manager->persist($universityUap);
         $manager->persist($universityUcv);
         $manager->persist($universityUni);
+        $manager->persist($entity);
         $this->addReference('areaacademica-ingenieria', $entity);
 
         $entity = new Areaacademica();
@@ -244,7 +243,6 @@ class Load_13_AreaacademicaData extends AbstractFixture implements OrderedFixtur
         $universityPucp->addAreaacademica($entity);
         $universityUap->addAreaacademica($entity);
         $universityUcv->addAreaacademica($entity);
-        $manager->persist($entity);
         $manager->persist($universityUni);
         $manager->persist($universityUtp);
         $manager->persist($universityUrp);
@@ -261,6 +259,7 @@ class Load_13_AreaacademicaData extends AbstractFixture implements OrderedFixtur
         $manager->persist($universityPucp);
         $manager->persist($universityUap);
         $manager->persist($universityUcv);
+        $manager->persist($entity);
         $this->addReference('areaacademica-economico', $entity);
 
         $manager->flush();

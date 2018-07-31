@@ -14,6 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
@@ -185,6 +186,16 @@ class UserType extends AbstractType
                 'attr' => [
                     'class' => 'form-control required',
                     'placeholder' => 'apellidos',
+                ],
+            ])
+            ->add('aboutMe', TextareaType::class, [
+                'label' => 'Sobre mi',
+                'label_attr' => [
+                    'class' => ''
+                ],
+                'attr' => [
+                    'class' => 'form-control',
+                    'placeholder' => 'Sobre mi',
                 ],
             ])
             ->add('email', EmailType::class, [

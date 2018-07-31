@@ -2,7 +2,6 @@
 
 
 {#IMAGEN AVATAR#}
-
 {% if(entity.image is defined and entity.image is not null) %}
     {% set profile_avatar = asset('../../uploads/user/' ~ entity.image) | imagine_filter('filter_160') %} {# ~'?'~ random()#}
 {% else %}
@@ -14,7 +13,6 @@
 {% else %}
     {% set profile_avatar_modal = asset('bundles/user/images/no_avatar.jpg') %}
 {% endif %}
-
 {#IMAGEN AVATAR#}
 
 
