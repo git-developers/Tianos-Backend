@@ -131,6 +131,12 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     private $aboutMe;
 
     /**
+     * @var string|null
+     *
+     */
+    private $headline;
+
+    /**
      * @var \DateTime|null
      *
      */
@@ -389,6 +395,22 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     public function setAboutMe(?string $aboutMe): void
     {
         $this->aboutMe = $aboutMe;
+    }
+
+    /**
+     * @return null|string
+     */
+    public function getHeadline(): ?string
+    {
+        return $this->headline;
+    }
+
+    /**
+     * @param null|string $headline
+     */
+    public function setHeadline(?string $headline): void
+    {
+        $this->headline = $headline;
     }
 
     /**

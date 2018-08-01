@@ -60,11 +60,16 @@ class DoctrineListenerService extends BaseDoctrineListenerService implements Eve
 
             $uniqid = uniqid();
             $name = $entity->getName();
-            $entity->setSlug($uniqid . '-' . $this->slugify($name));
+            $name = $this->slugify($name);
+            $name = substr($name, 0, 35);
+
+            $entity->setSlug($uniqid . '-' . $name);
             $entity->setCreatedAt($this->setupCreatedAt($entity));
             $entity->setUsername($uniqid);
             $entity->setEnabled(true);
             $entity->setUsernameCanonical($uniqid);
+            $entity->setHeadline('Soy parte de Tianos!');
+            $entity->setAboutMe('Aún no he ingresado mi descripción.');
 
 
             //password
@@ -85,8 +90,12 @@ class DoctrineListenerService extends BaseDoctrineListenerService implements Eve
 
         if ($entity instanceof User){
 
-//            $aboutMe = $entity->getAboutMe();
-//            $entity->setAboutMe(nl2br($aboutMe));
+            $username = $entity->getUsername();
+            $name = $entity->getName();
+            $name = $this->slugify($name);
+            $name = substr($name, 0, 35);
+
+            $entity->setSlug($username . '-' . $name);
             $entity->setUpdatedAt($this->dateTime);
 
             return;

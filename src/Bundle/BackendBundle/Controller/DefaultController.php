@@ -31,7 +31,6 @@ class DefaultController extends BaseController
         $userCount = $this->get('tianos.repository.user')->userCount();
         $visitCount = $this->get('tianos.repository.visit')->visitCount();
 
-
         /**
          * TIANOS
          */

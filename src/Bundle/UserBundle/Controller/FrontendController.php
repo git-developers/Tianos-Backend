@@ -14,21 +14,24 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class FrontendController extends BaseController
 {
 
-//    public function __construct() {
-////        parent::__construct($requestConfigurationFactory);
-//    }
-
-
     /**
      * @param Request $request
      * @return Response
      */
     public function indexAction(Request $request): Response
     {
+        return $this->redirectUrl('frontend_default_index', 365);
+    }
+
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function profileAction(Request $request): Response
+    {
 //        if (!$this->get('security.authorization_checker')->isGranted('ROLE_EDIT_USER')) {
 //            return $this->redirectToRoute('frontend_default_access_denied');
 //        }
-
 
         $parameters = [
             'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
@@ -61,6 +64,5 @@ class FrontendController extends BaseController
             ]
         );
     }
-
 
 }

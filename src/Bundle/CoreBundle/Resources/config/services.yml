@@ -58,11 +58,11 @@ services:
          tags:
              - { name: twig.extension }
 
-    twig.extension.user:
-        class: Bundle\CoreBundle\Twig\Extension\UserExtension
-        public: false
-        tags:
-           - { name: twig.extension }
+#    twig.extension.user:
+#        class: Bundle\CoreBundle\Twig\Extension\UserExtension
+#        public: false
+#        tags:
+#           - { name: twig.extension }
 
 
 

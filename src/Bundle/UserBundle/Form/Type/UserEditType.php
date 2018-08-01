@@ -48,6 +48,7 @@ class UserEditType extends AbstractType
                 'attr' => [
                     'class' => 'form-control required',
                     'placeholder' => 'nombres',
+                    'maxlength' => '45',
 //                    'pattern' => '[a-zA-Z]+[ ][a-zA-Z]+',
                 ],
                 'error_bubbling' => true
@@ -58,6 +59,7 @@ class UserEditType extends AbstractType
                 'attr' => [
                     'class' => 'form-control required',
                     'placeholder' => 'apellidos',
+                    'maxlength' => '45',
 //                    'pattern' => '[a-zA-Z]+[ ][a-zA-Z]+',
                 ],
                 'error_bubbling' => true
@@ -74,12 +76,24 @@ class UserEditType extends AbstractType
             ])
             ->add('aboutMe', TextareaType::class, [
                 'label' => 'Sobre mi',
+                'required' => false,
                 'label_attr' => [
                     'class' => ''
                 ],
                 'attr' => [
                     'class' => 'form-control',
                     'placeholder' => 'Sobre mi',
+                ],
+            ])
+            ->add('headline', TextType::class, [
+                'label' => 'Introducción',
+                'required' => false,
+                'label_attr' => [
+                    'class' => ''
+                ],
+                'attr' => [
+                    'class' => 'form-control',
+                    'placeholder' => 'Introducción',
                 ],
             ])
 //            ->add('image', FileType::class , array(

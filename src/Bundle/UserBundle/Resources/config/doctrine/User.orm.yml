@@ -71,16 +71,23 @@ Bundle\UserBundle\Entity\User:
         name:
             type: string
             nullable: false
-            length: 100
+            length: 45
             options:
                 fixed: false
         lastName:
             type: string
             nullable: true
-            length: 100
+            length: 45
             options:
                 fixed: false
             column: last_name
+        headline:
+            type: string
+            nullable: true
+            length: 144
+            options:
+                fixed: false
+            column: headline
         aboutMe:
             type: text
             nullable: true

@@ -40,6 +40,7 @@ class UserRegisterType extends AbstractType
                 'attr' => [
                     'class' => 'form-control required',
                     'placeholder' => 'nombre',
+                    'maxlength' => '45',
                 ],
                 'error_bubbling' => true
             ])

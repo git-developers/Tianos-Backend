@@ -62,11 +62,18 @@
     </div>
 
     <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-6">
             <div class="form-group">
-                <i class="fa fa-fw fa-align-justify"></i>
-                {{ form_label(form.aboutMe) }}
-                {{ form_widget(form.aboutMe) }}
+                <i class="fa fa-fw fa-align-left"></i>
+                {{ form_label(form.headline) }}
+                {{ form_widget(form.headline) }}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <i class="fa fa-fw fa-envelope-o"></i>
+                {{ form_label(form.email) }}
+                {{ form_widget(form.email) }}
             </div>
         </div>
     </div>
@@ -74,9 +81,9 @@
     <div class="row">
         <div class="col-md-8">
             <div class="form-group">
-                <i class="fa fa-fw fa-envelope-o"></i>
-                {{ form_label(form.email) }}
-                {{ form_widget(form.email) }}
+                <i class="fa fa-fw fa-align-justify"></i>
+                {{ form_label(form.aboutMe) }}
+                {{ form_widget(form.aboutMe) }}
             </div>
         </div>
         <div class="col-md-2">

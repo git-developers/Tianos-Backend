@@ -10,6 +10,7 @@ use Component\Grid\Definition\Filter;
 use Component\User\Renderer\UserRendererInterface;
 use Component\Grid\View\GridView;
 use Symfony\Component\Templating\Helper\Helper;
+use Bundle\UserBundle\Entity\User;
 
 class UserHelper extends Helper
 {
@@ -30,6 +31,17 @@ class UserHelper extends Helper
     public function profileAboutMe(?string $template = null) // Button $button,
     {
         return $this->userRenderer->profileAboutMe($template); // $button,
+    }
+
+    public function appUserName(User $user, $start, $length = null)
+    {
+        $name = $user->getName();
+        $name = !is_null($name) ? substr($name, $start, $length) : '';
+
+        $lastName = $user->getLastName();
+        $lastName = !is_null($lastName) ? substr($lastName, $start, $length) : '';
+
+        return $name .' '. $lastName;
     }
 
 //

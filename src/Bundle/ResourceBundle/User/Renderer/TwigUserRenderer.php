@@ -12,6 +12,7 @@ use Component\Grid\Definition\Filter;
 use Component\User\Renderer\UserRendererInterface;
 use Component\Grid\View\GridViewInterface;
 use Bundle\GridBundle\Services\Grid\Builder\DataTableMapper;
+use Bundle\UserBundle\Entity\User;
 
 final class TwigUserRenderer implements UserRendererInterface
 {
@@ -54,8 +55,19 @@ final class TwigUserRenderer implements UserRendererInterface
     }
 
     //        JAFETH
-    public function profileAboutMe(?string $aboutMe = null) // Button $button,
+    public function profileAboutMe(?string $aboutMe = null)
     {
-        return $this->twig->render($aboutMe ?: $this->defaultTemplate, ['template' => $aboutMe]);
+        return is_null($aboutMe) ? '-' : nl2br($aboutMe);
+    }
+
+    public function appUserName(User $user, $start, $length = null)
+    {
+        $name = $user->getName();
+        $name = !is_null($name) ? substr($name, $start, $length) : '';
+
+        $lastName = $user->getLastName();
+        $lastName = !is_null($lastName) ? substr($lastName, $start, $length) : '';
+
+        return $name .' '. $lastName;
     }
 }

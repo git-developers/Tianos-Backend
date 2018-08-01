@@ -36,23 +36,31 @@
             </div>
         </div>
 
+        <div class="form-group">
+            {{ form_label(formEdit.dob) }}
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                {{ form_widget(formEdit.dob) }}
+            </div>
+        </div>
+
     </div>
 
     <div class="col-md-6">
+
+        <div class="form-group">
+            {{ form_label(formEdit.headline) }}
+            <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-fw fa-align-left"></i></span>
+                {{ form_widget(formEdit.headline) }}
+            </div>
+        </div>
 
         <div class="form-group">
             {{ form_label(formEdit.aboutMe) }}
             <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-fw fa-align-justify"></i></span>
                 {{ form_widget(formEdit.aboutMe) }}
-            </div>
-        </div>
-
-        <div class="form-group">
-            {{ form_label(formEdit.dob) }}
-            <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-                {{ form_widget(formEdit.dob) }}
             </div>
         </div>
 

@@ -188,6 +188,16 @@ class UserType extends AbstractType
                     'placeholder' => 'apellidos',
                 ],
             ])
+            ->add('headline', TextType::class, [
+                'label' => 'Introducción',
+                'label_attr' => [
+                    'class' => ''
+                ],
+                'attr' => [
+                    'class' => 'form-control',
+                    'placeholder' => 'Introducción',
+                ],
+            ])
             ->add('aboutMe', TextareaType::class, [
                 'label' => 'Sobre mi',
                 'label_attr' => [
