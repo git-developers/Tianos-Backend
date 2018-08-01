@@ -33,7 +33,6 @@
     });
 {% endif %}
 
-
 {% if dataTable.route.info is defined %}
     $('body.{{ vars.body_css }}').formInfo({
         modalId: '{{ modal.info_id }}',
@@ -41,9 +40,15 @@
     });
 {% endif %}
 
-
 {% if dataTable.route.watch is defined %}
     $('body.{{ vars.body_css }}').formWatch({
+        buttonId: '{{ modal.watch_id }}',
+        route: '{{ path(dataTable.route.watch) }}'
+    });
+{% endif %}
+
+{% if dataTable.route.view_profile is defined %}
+    $('body.{{ vars.body_css }}').formViewProfile({
         buttonId: '{{ modal.watch_id }}',
         route: '{{ path(dataTable.route.watch) }}'
     });

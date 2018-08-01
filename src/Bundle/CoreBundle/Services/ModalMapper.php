@@ -7,7 +7,6 @@ use CoreBundle\Services\Common\Base;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
 
-//class ModalMapper extends Base
 class ModalMapper
 {
 
@@ -22,11 +21,10 @@ class ModalMapper
     const VIEW_ID = 'modal-view';
     const INFO_ID = 'modal-info';
     const WATCH_ID = 'watch-button-id';
+    const PROFILE_ID = 'profile-button-id';
 
     public function __construct(Router $router)
     {
-
-//        parent::__construct($router, $requestStack);
 
         $this->defaults = [
 
@@ -58,12 +56,6 @@ class ModalMapper
         return array_replace($this->defaults, $defaults);
     }
 
-//    public function add($key, $value = null, array $options = [])
-//    {
-//        $this->isValidKey($key, $this->defaults);
-//        $this->defaults[$key] = $value;
-//        return $this;
-//    }
 }
 
 

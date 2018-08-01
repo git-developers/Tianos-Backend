@@ -17,6 +17,10 @@ class DefaultController extends BaseController
     public function loadFixturesAction(Request $request): Response
     {
 
+        if (!$this->get('security.authorization_checker')->isGranted('ROLE_Administrator')) {
+            return $this->redirectToRoute('frontend_default_index');
+        }
+
         if ($request->isMethod('POST')) {
 
             //truncate tables

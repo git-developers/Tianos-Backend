@@ -114,9 +114,18 @@ class ButtonMapper
         return new Button([
             'alt' => 'Ver archivo',
             'title' => 'Ver archivo',
-//            'data-target' => ModalMapper::WATCH_ID,
             'icon' => '<i class="fa fa-fw fa-eye"></i>',
             'class' => 'btn-info ' . ModalMapper::WATCH_ID,
+        ]);
+    }
+
+    private function view_profile()
+    {
+        return new Button([
+            'alt' => 'Ver perfil',
+            'title' => 'Ver perfil',
+            'icon' => '<i class="fa fa-fw fa-eye"></i>',
+            'class' => 'btn-info ' . ModalMapper::PROFILE_ID,
         ]);
     }
 

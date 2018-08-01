@@ -15,21 +15,21 @@ backend_anonymous_user_index:
             grid:
                 icon: user
                 box_class: primary
-                title: Usuarios del sistema
+                title: Ver todos los usuarios
                 modal:
                     title: Crear usuario
                 data_table:
                     route:
                         info: backend_anonymous_user_info
                         view: backend_anonymous_user_view
-#                        edit: backend_anonymous_user_edit
+                        view_profile: frontend_user_profile
 #                        create: backend_anonymous_user_create
 #                        delete: backend_anonymous_user_delete
                     table_button:
-#                        - edit
-#                        - delete
+                        - view_profile
                     table_option:
                         pageLength: 50
+                        dom: "'<\"top\"flp><\"clear\">rt<\"bottom\"flp>'"
                     table_button_header:
 #                        - create
                         - info
@@ -38,22 +38,18 @@ backend_anonymous_user_index:
                           value: aData.id
                         - key: data-id
                           value: aData.id
+                        - key: data-slug
+                          value: aData.slug
                         - key: class
                           value: "'alert'"
                     columns:
-                        - name: '#'
-                          obj: " '<span class=\"badge bg-blue\">' + obj.id + '</span>' "
                         - name: Nombre
                           obj: " obj.name + ' ' + obj.last_name "
-                        - name: Email
-                          obj: obj.email
-                          options:
-                              icon: envelope-o
                         - name: Username
                           obj: " '<span class=\"badge bg-green\">' + obj.username + '</span>' "
                           options:
                               icon: feed
-                        - name: Creado
+                        - name: Usuario desde
                           obj: obj.created_at
                           options:
                               icon: calendar
@@ -64,7 +60,7 @@ backend_anonymous_user_index:
                 method: findAll
                 arguments: [$userId]
                 vars:
-                    serialize_group_name: crud
+                    serialize_group_name: anonymous_user
 
 backend_anonymous_user_view:
     path: /view

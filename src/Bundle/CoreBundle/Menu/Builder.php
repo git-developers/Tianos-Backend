@@ -463,31 +463,31 @@ class Builder implements ContainerAwareInterface
         /**
          * SETTINGS
          */
-        $isGranted = $this->isGranted([
-            'ROLE_' . Profile::ADMIN,
-        ]);
-        $menu->addChild('Settings', [
-            'route' => 'backend_default_dashboard',
-            'extras' => ['safe_label' => true],
-            'childrenAttributes' => [
-                'class' => 'treeview-menu',
-            ],
-        ])
-            ->setAttribute('class', 'treeview')
-            ->setAttribute('class', $this->activeRoute([
-                'backend_core_loadfixtures',
-            ]))
-            ->setAttribute('icon', 'fa-fw fa-cog')
-            ->setDisplay($isGranted)
-        ;
-
-        $menu['Settings']->addChild('Load Fixtures', [
-            'route' => 'backend_core_loadfixtures'
-        ])
-            ->setAttribute('icon', self::CIRCLE_1)
-            ->setAttribute('class', $this->activeRoute('backend_core_loadfixtures'))
-            ->setDisplay($isGranted)
-        ;
+//        $isGranted = $this->isGranted([
+//            'ROLE_' . Profile::ADMIN,
+//        ]);
+//        $menu->addChild('Settings', [
+//            'route' => 'backend_default_dashboard',
+//            'extras' => ['safe_label' => true],
+//            'childrenAttributes' => [
+//                'class' => 'treeview-menu',
+//            ],
+//        ])
+//            ->setAttribute('class', 'treeview')
+//            ->setAttribute('class', $this->activeRoute([
+//                'backend_core_loadfixtures',
+//            ]))
+//            ->setAttribute('icon', 'fa-fw fa-cog')
+//            ->setDisplay($isGranted)
+//        ;
+//
+//        $menu['Settings']->addChild('Load Fixtures', [
+//            'route' => 'backend_core_loadfixtures'
+//        ])
+//            ->setAttribute('icon', self::CIRCLE_1)
+//            ->setAttribute('class', $this->activeRoute('backend_core_loadfixtures'))
+//            ->setDisplay($isGranted)
+//        ;
         /**
          * SETTINGS
          */
@@ -502,14 +502,48 @@ class Builder implements ContainerAwareInterface
             'ROLE_' . Profile::REGULAR_USER,
         ]);
         $menu->addChild('Usuarios', [
-            'route' => 'backend_anonymous_user_index',
+            'route' => 'backend_default_dashboard',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
                 'class' => 'treeview-menu',
             ],
         ])
-            ->setAttribute('class', 'treeview')
-            ->setAttribute('icon', 'fa-fw fa-user')
+        ->setAttribute('class', 'treeview')
+        ->setAttribute('class', $this->activeRoute([
+            'backend_anonymous_user_index',
+        ]))
+        ->setAttribute('icon', 'fa-fw fa-user')
+        ->setDisplay($isGranted)
+        ;
+
+        $menu['Usuarios']->addChild('Ver todos', [
+            'route' => 'backend_anonymous_user_index'
+        ])
+            ->setAttribute('icon', self::CIRCLE_1)
+            ->setAttribute('class', $this->activeRoute('backend_anonymous_user_index'))
+            ->setDisplay($isGranted)
+        ;
+
+        $menu['Usuarios']->addChild('Mis amigos', [
+            'route' => 'backend_anonymous_user_index'
+        ])
+            ->setAttribute('icon', self::CIRCLE_2)
+            ->setAttribute('class', $this->activeRoute('backend_anonymous_user_index'))
+            ->setDisplay($isGranted)
+        ;
+
+        $menu['Usuarios']->addChild('Mis seguidores', [
+            'route' => 'backend_anonymous_user_index'
+        ])
+            ->setAttribute('icon', self::CIRCLE_3)
+            ->setAttribute('class', $this->activeRoute('backend_anonymous_user_index'))
+            ->setDisplay($isGranted)
+        ;
+
+        $menu['Usuarios']->addChild('Siguiendo', [
+            'route' => 'backend_anonymous_user_index'
+        ])
+            ->setAttribute('icon', self::CIRCLE_4)
             ->setAttribute('class', $this->activeRoute('backend_anonymous_user_index'))
             ->setDisplay($isGranted)
         ;

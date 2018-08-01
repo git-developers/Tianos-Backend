@@ -39,9 +39,4 @@ class Grid
         return new DataTableMapper($grid);
     }
 
-//    public function getButtonHeaderMapper()
-//    {
-//        return new ButtonHeaderMapper();
-//    }
-
 }
