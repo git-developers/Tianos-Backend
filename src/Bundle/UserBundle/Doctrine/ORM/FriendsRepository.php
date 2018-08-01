@@ -42,6 +42,36 @@ class FriendsRepository extends EntityRepository implements UserRepositoryInterf
     /**
      * {@inheritdoc}
      */
+    public function isFriend(string $username, int $friendId): bool
+    {
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT friends, user_, friend_
+            FROM UserBundle:Friends friends
+            INNER JOIN friends.user user_
+            LEFT JOIN friends.friend friend_
+            WHERE
+            user_.username = :username AND
+            user_.enabled = :active AND
+            friend_.id = :friendId AND
+            friend_.enabled = :active
+            ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+        $query->setParameter('username', $username);
+        $query->setParameter('friendId', $friendId);
+
+        if ($query->getOneOrNullResult()) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function findAllOffsetLimit($offset = 0, $limit = 50): array
     {
         $em = $this->getEntityManager();

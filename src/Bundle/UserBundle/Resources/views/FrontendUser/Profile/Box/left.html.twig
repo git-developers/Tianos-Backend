@@ -17,10 +17,12 @@
                 <a class="friends pull-right">13,287</a>
             </li>
         </ul>
+
         <button
             class="btn btn-success btn-block {{ vars.button_add_friend }}"
             data-toggle="tooltip"
             data-original-title="Agregar a {{ entity.name|slice(0, 25) }} como amigo"
+            style="{{ isFriend ? 'display: none' : '' }}"
         >
             <b><i class="fa fa-fw fa-user-plus"></i> Agregar amigo</b>
         </button>
@@ -28,10 +30,11 @@
             class="btn btn-default btn-block {{ vars.button_remove_friend }}"
             data-toggle="tooltip"
             data-original-title="Remover amigo"
-            style="display: none"
+            style="{{ isFriend ? '' : 'display: none' }}"
         >
             <b><i class="fa fa-fw fa-check-square-o"></i> Amigos</b>
         </button>
+
         {#<button href="#" class="btn btn-primary btn-block">#}
             {#<b>Seguir</b>#}
         {#</button>#}

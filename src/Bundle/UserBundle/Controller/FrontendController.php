@@ -52,6 +52,8 @@ class FrontendController extends BaseController
 
         $entity = $this->get($repository)->$method($slug);
 
+        $isFriend = $this->get('tianos.repository.friends')->isFriend($entity->getUsername(), $this->getUser()->getId());
+
         if (!$entity) {
             throw $this->createNotFoundException('El usuario que busca no existe');
         }
@@ -62,6 +64,7 @@ class FrontendController extends BaseController
                 'vars' => $vars,
                 'small_text' => '',
                 'entity' => $entity,
+                'isFriend' => $isFriend,
             ]
         );
     }

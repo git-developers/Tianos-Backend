@@ -5,18 +5,6 @@ frontend_user_index:
         slug: null
         _controller: tianos.frontend.controller.user:indexAction
         _tianos:
-#            action: edit
-#            template: UserBundle:FrontendUser/Profile:index.html.twig
-#            vars:
-#                body_css: tianos-file-watch
-#            form:
-#                type: Bundle\GoogleBundle\Form\Type\GoogleType
-#            repository:
-#                service: tianos.repository.user
-#                method: findOneBySlug
-#                arguments: [$userId]
-#                vars:
-#                    serialize_group_name: user
 
 frontend_user_profile:
     path: /{slug}
