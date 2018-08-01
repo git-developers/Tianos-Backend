@@ -34,9 +34,12 @@
     <section class="content-header">
         <h1>{{ entity.name }} {{ entity.lastName }}</h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Examples</a></li>
-            <li class="active">User profile</li>
+            <li>
+                <a href="{{ path('frontend_default_index') }}">
+                    <i class="fa fa-dashboard"></i> Inicio
+                </a>
+            </li>
+            <li class="active">Perfil de usuario</li>
         </ol>
     </section>
 

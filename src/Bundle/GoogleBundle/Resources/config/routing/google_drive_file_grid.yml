@@ -22,9 +22,9 @@ backend_google_drive_grid_index:
                     route:
                         info: backend_google_drive_grid_info
                         view: backend_google_drive_grid_view
-                        watch: backend_google_drive_grid_watch
                         edit: backend_google_drive_grid_edit
                         delete: backend_google_drive_grid_delete
+                        watch: backend_google_drive_grid_watch
 #                        create: backend_client_create
                     table_option:
                         pageLength: 50

@@ -76,7 +76,7 @@ class Builder implements ContainerAwareInterface
         ]);
 
         $menu->addChild('Bloque académico', [
-            'route' => 'backend_default_dashboard',
+            'route' => 'frontend_default_index',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
                 'class' => 'treeview-menu',
@@ -181,7 +181,7 @@ class Builder implements ContainerAwareInterface
         ]);
 
         $menu->addChild('Cuentas', [
-            'route' => 'backend_default_dashboard',
+            'route' => 'frontend_default_index',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
                 'class' => 'treeview-menu',
@@ -286,7 +286,7 @@ class Builder implements ContainerAwareInterface
         ]);
 
         $menu->addChild('Asociación', [
-            'route' => 'backend_default_dashboard',
+            'route' => 'frontend_default_index',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
                 'class' => 'treeview-menu',
@@ -331,7 +331,7 @@ class Builder implements ContainerAwareInterface
         ]);
 
         $menu->addChild('Reportes', [
-            'route' => 'backend_default_dashboard',
+            'route' => 'frontend_default_index',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
                 'class' => 'treeview-menu',
@@ -389,7 +389,7 @@ class Builder implements ContainerAwareInterface
             'ROLE_' . Profile::ADMIN,
         ]);
         $menu->addChild('Google', [
-            'route' => 'backend_default_dashboard',
+            'route' => 'frontend_default_index',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
                 'class' => 'treeview-menu',
@@ -467,7 +467,7 @@ class Builder implements ContainerAwareInterface
 //            'ROLE_' . Profile::ADMIN,
 //        ]);
 //        $menu->addChild('Settings', [
-//            'route' => 'backend_default_dashboard',
+//            'route' => 'frontend_default_index',
 //            'extras' => ['safe_label' => true],
 //            'childrenAttributes' => [
 //                'class' => 'treeview-menu',
@@ -502,7 +502,7 @@ class Builder implements ContainerAwareInterface
             'ROLE_' . Profile::REGULAR_USER,
         ]);
         $menu->addChild('Usuarios', [
-            'route' => 'backend_default_dashboard',
+            'route' => 'frontend_default_index',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
                 'class' => 'treeview-menu',
@@ -510,6 +510,7 @@ class Builder implements ContainerAwareInterface
         ])
         ->setAttribute('class', 'treeview')
         ->setAttribute('class', $this->activeRoute([
+            'frontend_user_profile',
             'backend_anonymous_user_index',
         ]))
         ->setAttribute('icon', 'fa-fw fa-user')
@@ -532,7 +533,7 @@ class Builder implements ContainerAwareInterface
             ->setDisplay($isGranted)
         ;
 
-        $menu['Usuarios']->addChild('Mis seguidores', [
+        $menu['Usuarios']->addChild('Seguidores', [
             'route' => 'backend_anonymous_user_index'
         ])
             ->setAttribute('icon', self::CIRCLE_3)
@@ -584,7 +585,7 @@ class Builder implements ContainerAwareInterface
             'ROLE_' . Profile::REGULAR_USER,
         ]);
         $menu->addChild('Google Drive', [
-            'route' => 'backend_default_dashboard',
+            'route' => 'frontend_default_index',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
                 'class' => 'treeview-menu',

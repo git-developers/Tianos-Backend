@@ -18,7 +18,7 @@ class DefaultController extends BaseController
      */
     public function indexAction(Request $request): Response
     {
-        return $this->redirectUrl('backend_default_dashboard');
+        return $this->redirectUrl('frontend_default_index');
     }
 
 }

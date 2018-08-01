@@ -49,7 +49,7 @@
 
 {% if dataTable.route.view_profile is defined %}
     $('body.{{ vars.body_css }}').formViewProfile({
-        buttonId: '{{ modal.watch_id }}',
-        route: '{{ path(dataTable.route.watch) }}'
+        buttonId: '{{ modal.profile_id }}',
+        route: '{{ path(dataTable.route.view_profile) }}'
     });
 {% endif %}

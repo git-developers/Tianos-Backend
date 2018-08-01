@@ -5,12 +5,3 @@ backend_default_index:
         _controller: tianos.backend.controller.default:indexAction
         _tianos:
             template: BackendBundle:Default:index.html.twig
-
-backend_default_dashboard:
-    path: /dashboard
-    methods: [GET]
-    defaults:
-        _controller: tianos.backend.controller.default:dashboardAction
-        _tianos:
-            template: BackendBundle:Default:dashboard.html.twig
-

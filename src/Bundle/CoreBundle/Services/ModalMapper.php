@@ -48,6 +48,7 @@ class ModalMapper
             'info_size' => self::SIZE_LARGE,
 
             'watch_id' => self::WATCH_ID,
+            'profile_id' => self::PROFILE_ID,
         ];
     }
 
