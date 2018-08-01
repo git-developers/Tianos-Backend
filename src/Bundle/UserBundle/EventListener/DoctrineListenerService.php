@@ -11,6 +11,7 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Bundle\UserBundle\Entity\User;
+use Bundle\UserBundle\Entity\Friends;
 use Cocur\Slugify\Slugify;
 use Bundle\CoreBundle\EventListener\BaseDoctrineListenerService;
 
@@ -56,7 +57,7 @@ class DoctrineListenerService extends BaseDoctrineListenerService implements Eve
 //        $entityManager = $args->getEntityManager();
 //        $className = $entityManager->getClassMetadata(get_class($entity))->getName();
 
-        if ($entity instanceof User){
+        if ($entity instanceof User) {
 
             $uniqid = uniqid();
             $name = $entity->getName();
@@ -78,7 +79,10 @@ class DoctrineListenerService extends BaseDoctrineListenerService implements Eve
             $entity->setPassword($encoded);
 
             return;
+        } elseif ($entity instanceof Friends){
+            $entity->setCreatedAt($this->setupCreatedAt($entity));
         }
+
     }
 
     /**

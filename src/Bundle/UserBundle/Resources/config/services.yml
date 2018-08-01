@@ -46,6 +46,11 @@ services:
         factory: ['@doctrine.orm.entity_manager', getRepository]
         arguments: [ Bundle\UserBundle\Entity\User ]
 
+    tianos.repository.friends:
+        class: Dummy
+        factory: ['@doctrine.orm.entity_manager', getRepository]
+        arguments: [ Bundle\UserBundle\Entity\Friends ]
+
 
 
 #    TWIG EXTENSION

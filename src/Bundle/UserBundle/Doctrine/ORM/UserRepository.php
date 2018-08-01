@@ -10,95 +10,28 @@ use Component\User\Repository\UserRepositoryInterface;
 use Component\OneToMany\Repository\OneToManyLeftRepositoryInterface;
 use Bundle\ProfileBundle\Entity\Profile;
 
-class UserRepository extends EntityRepository
-    implements UserRepositoryInterface
+class UserRepository extends EntityRepository implements UserRepositoryInterface
 {
 
     /**
      * {@inheritdoc}
      */
-    public function userCount()
-    {
-        $em = $this->getEntityManager();
-        $sql = "SELECT COUNT(id) AS ID FROM user WHERE is_active = :is_active;";
-        $params = array('is_active' => 1);
-
-        $stmt = $em->getConnection()->prepare($sql);
-        $stmt->execute($params);
-
-        return $stmt->fetchColumn();
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function findAllOffsetLimitDistribuidor($offset = 0, $limit = 50): array
+    public function findOneByUsername(string $username)
     {
         $em = $this->getEntityManager();
         $dql = "
-            SELECT user_, profile
+            SELECT user_
             FROM UserBundle:User user_
-            INNER JOIN user_.profile profile
             WHERE
             user_.enabled = :active AND
-            profile.nameCanonical = :nameCanonical
+            user_.username = :username
             ";
 
         $query = $em->createQuery($dql);
         $query->setParameter('active', 1);
-        $query->setParameter('nameCanonical', Profile::DISTRIBUIDOR);
-        $query->setFirstResult($offset);
-        $query->setMaxResults($limit);
+        $query->setParameter('username', $username);
 
-        return $query->getResult();
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function findAllOffsetLimitTransportista($offset = 0, $limit = 50): array
-    {
-        $em = $this->getEntityManager();
-        $dql = "
-            SELECT user_, profile
-            FROM UserBundle:User user_
-            INNER JOIN user_.profile profile
-            WHERE
-            user_.enabled = :active AND
-            profile.nameCanonical = :nameCanonical
-            ";
-
-        $query = $em->createQuery($dql);
-        $query->setParameter('active', 1);
-        $query->setParameter('nameCanonical', Profile::TRANSPORTISTA);
-        $query->setFirstResult($offset);
-        $query->setMaxResults($limit);
-
-        return $query->getResult();
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function findAllOffsetLimitCanillita($offset = 0, $limit = 50): array
-    {
-        $em = $this->getEntityManager();
-        $dql = "
-            SELECT user_, profile
-            FROM UserBundle:User user_
-            INNER JOIN user_.profile profile
-            WHERE
-            user_.enabled = :active AND
-            profile.nameCanonical = :nameCanonical
-            ";
-
-        $query = $em->createQuery($dql);
-        $query->setParameter('active', 1);
-        $query->setParameter('nameCanonical', Profile::CANILLITA);
-        $query->setFirstResult($offset);
-        $query->setMaxResults($limit);
-
-        return $query->getResult();
+        return $query->getOneOrNullResult();
     }
 
     /**
@@ -237,32 +170,6 @@ class UserRepository extends EntityRepository
     /**
      * {@inheritdoc}
      */
-    public function searchBoxRightCanillita($q, $offset = 0, $limit = 50): array
-    {
-        $em = $this->getEntityManager();
-        $dql = "
-            SELECT user_, profile
-            FROM UserBundle:User user_
-            INNER JOIN user_.profile profile
-            WHERE
-            ( user_.name LIKE :q OR user_.lastName LIKE :q ) AND
-            user_.enabled = :active AND
-            profile.nameCanonical = :nameCanonical
-            ";
-
-        $query = $em->createQuery($dql);
-        $query->setParameter('active', 1);
-        $query->setParameter('q', '%' . $q . '%');
-        $query->setParameter('nameCanonical', Profile::CANILLITA);
-        $query->setFirstResult($offset);
-        $query->setMaxResults($limit);
-
-        return $query->getResult();
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function searchBoxRight($q, $offset = 0, $limit = 50): array
     {
         $em = $this->getEntityManager();
@@ -276,58 +183,6 @@ class UserRepository extends EntityRepository
 
         $query = $em->createQuery($dql);
         $query->setParameter('active', 1);
-        $query->setParameter('q', '%' . $q . '%');
-        $query->setFirstResult($offset);
-        $query->setMaxResults($limit);
-
-        return $query->getResult();
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function searchBoxLeftDistribuidor($q, $offset = 0, $limit = 50): array
-    {
-        $em = $this->getEntityManager();
-        $dql = "
-            SELECT user_, profile
-            FROM UserBundle:User user_
-            INNER JOIN user_.profile profile
-            WHERE
-            ( user_.name LIKE :q OR user_.lastName LIKE :q ) AND
-            profile.nameCanonical = :nameCanonical AND
-            user_.enabled = :active
-            ";
-
-        $query = $em->createQuery($dql);
-        $query->setParameter('active', 1);
-        $query->setParameter('nameCanonical', Profile::DISTRIBUIDOR);
-        $query->setParameter('q', '%' . $q . '%');
-        $query->setFirstResult($offset);
-        $query->setMaxResults($limit);
-
-        return $query->getResult();
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function searchBoxLeftTransportista($q, $offset = 0, $limit = 50): array
-    {
-        $em = $this->getEntityManager();
-        $dql = "
-            SELECT user_, profile
-            FROM UserBundle:User user_
-            INNER JOIN user_.profile profile
-            WHERE
-            ( user_.name LIKE :q OR user_.lastName LIKE :q ) AND
-            profile.nameCanonical = :nameCanonical AND
-            user_.enabled = :active
-            ";
-
-        $query = $em->createQuery($dql);
-        $query->setParameter('active', 1);
-        $query->setParameter('nameCanonical', Profile::TRANSPORTISTA);
         $query->setParameter('q', '%' . $q . '%');
         $query->setFirstResult($offset);
         $query->setMaxResults($limit);

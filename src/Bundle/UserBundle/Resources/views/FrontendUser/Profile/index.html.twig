@@ -16,6 +16,9 @@
 {#IMAGEN AVATAR#}
 
 
+{% block bodyclass %}{% spaceless %}
+    {{ vars.body_css }}
+{% endspaceless %}{% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
@@ -25,7 +28,24 @@
 {% block javascripts %}
     {{ parent() }}
 
-    {#<script src="{{ asset('bundles/main/dist/js/pages/dashboard.js')}}"></script>#}
+    {% javascripts
+        '@UserBundle/Resources/public/js/formProfile.js'
+    %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    <script type="text/javascript">
+        $(function() {
+
+            $('body.{{ vars.body_css }}').formProfile({
+                buttonAddFriend: '{{ vars.button_add_friend }}',
+                buttonRemoveFriend: '{{ vars.button_remove_friend }}',
+                routeAddFriend: '{{ path('frontend_user_add_friend', {username: entity.username}) }}',
+                routeRemoveFriend: '{{ path('frontend_user_remove_friend', {username: entity.username}) }}'
+            });
+
+        });
+    </script>
 
 {% endblock %}
 

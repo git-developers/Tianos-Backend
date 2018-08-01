@@ -193,6 +193,7 @@ class Builder implements ContainerAwareInterface
             'backend_user_index',
             'backend_role_index',
             'backend_session_index',
+            'frontend_user_profile',
             'backend_profile_index',
             'backend_groupofusers_index',
         ]))

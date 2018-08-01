@@ -116,6 +116,7 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
      * @var string|null
      *
      * @JMSS\Groups({
+     *     "crud",
      *     "anonymous_user"
      * })
      */

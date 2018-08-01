@@ -17,12 +17,24 @@
                 <a class="friends pull-right">13,287</a>
             </li>
         </ul>
-        <a href="#" class="btn btn-success btn-block">
+        <button
+            class="btn btn-success btn-block {{ vars.button_add_friend }}"
+            data-toggle="tooltip"
+            data-original-title="Agregar a {{ entity.name|slice(0, 25) }} como amigo"
+        >
             <b><i class="fa fa-fw fa-user-plus"></i> Agregar amigo</b>
-        </a>
-        <a href="#" class="btn btn-primary btn-block">
-            <b>Seguir</b>
-        </a>
+        </button>
+        <button
+            class="btn btn-default btn-block {{ vars.button_remove_friend }}"
+            data-toggle="tooltip"
+            data-original-title="Remover amigo"
+            style="display: none"
+        >
+            <b><i class="fa fa-fw fa-check-square-o"></i> Amigos</b>
+        </button>
+        {#<button href="#" class="btn btn-primary btn-block">#}
+            {#<b>Seguir</b>#}
+        {#</button>#}
     </div>
 </div>
 

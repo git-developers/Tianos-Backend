@@ -25,9 +25,11 @@ backend_user_index:
                         edit: backend_user_edit
                         create: backend_user_create
                         delete: backend_user_delete
+                        view_profile: frontend_user_profile
                     table_button:
                         - edit
                         - delete
+                        - view_profile
                     table_button_header:
                         - create
                         - info
@@ -38,6 +40,8 @@ backend_user_index:
                           value: aData.id
                         - key: data-id
                           value: aData.id
+                        - key: data-slug
+                          value: aData.slug
                         - key: class
                           value: "'alert'"
                     columns:
