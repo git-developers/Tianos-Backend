@@ -107,12 +107,6 @@ class GridController extends BaseController
     public function createAction(Request $request): Response
     {
 
-
-//        echo "POLLO:wwwwww:::: <pre>";
-//        print_r($request->request->all());
-//        exit;
-
-
         if (!$this->isXmlHttpRequest()) {
             throw $this->createAccessDeniedException(self::ACCESS_DENIED_MSG);
         }

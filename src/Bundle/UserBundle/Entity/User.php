@@ -31,6 +31,7 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
      * @JMSS\Groups({
      *     "login",
      *     "crud",
+     *     "anonymous_user",
      *     "order-in-center",
      *     "one-to-many-left",
      *     "one-to-many-right",

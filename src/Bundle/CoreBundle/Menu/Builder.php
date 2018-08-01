@@ -180,7 +180,7 @@ class Builder implements ContainerAwareInterface
             'ROLE_' . Profile::ADMIN,
         ]);
 
-        $menu->addChild('Cuentas', [
+        $menu->addChild('Cuentas back-end', [
             'route' => 'frontend_default_index',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
@@ -193,7 +193,6 @@ class Builder implements ContainerAwareInterface
             'backend_user_index',
             'backend_role_index',
             'backend_session_index',
-            'frontend_user_profile',
             'backend_profile_index',
             'backend_groupofusers_index',
         ]))
@@ -201,7 +200,7 @@ class Builder implements ContainerAwareInterface
         ->setDisplay($isGranted)
         ;
 
-        $menu['Cuentas']->addChild('Usuario', [
+        $menu['Cuentas back-end']->addChild('Usuario', [
             'route' => 'backend_user_index',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
@@ -215,7 +214,7 @@ class Builder implements ContainerAwareInterface
         ->setDisplay($isGranted)
         ;
 
-        $menu['Cuentas']->addChild('Grupo de usuarios', [
+        $menu['Cuentas back-end']->addChild('Grupo de usuarios', [
             'route' => 'backend_groupofusers_index',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
@@ -229,7 +228,7 @@ class Builder implements ContainerAwareInterface
             ->setDisplay($isGranted)
         ;
 
-        $menu['Cuentas']->addChild('Perfil', [
+        $menu['Cuentas back-end']->addChild('Perfil', [
             'route' => 'backend_profile_index',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
@@ -243,7 +242,7 @@ class Builder implements ContainerAwareInterface
         ->setDisplay($isGranted)
         ;
 
-        $menu['Cuentas']->addChild('Rol', [
+        $menu['Cuentas back-end']->addChild('Rol', [
             'route' => 'backend_role_index',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
@@ -257,7 +256,7 @@ class Builder implements ContainerAwareInterface
         ->setDisplay($isGranted)
         ;
 
-        $menu['Cuentas']->addChild('Sesión', [
+        $menu['Cuentas back-end']->addChild('Sesión', [
             'route' => 'backend_session_index',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
@@ -275,6 +274,65 @@ class Builder implements ContainerAwareInterface
          */
 
 
+
+
+        /**
+         * ACCOUNTS - REGULAR_USER
+         */
+        $isGranted = $this->isGranted([
+            'ROLE_' . Profile::REGULAR_USER,
+            'ROLE_' . Profile::ADMIN,
+        ]);
+        $menu->addChild('Usuarios', [
+            'route' => 'frontend_default_index',
+            'extras' => ['safe_label' => true],
+            'childrenAttributes' => [
+                'class' => 'treeview-menu',
+            ],
+        ])
+            ->setAttribute('class', 'treeview')
+            ->setAttribute('class', $this->activeRoute([
+                'frontend_user_profile',
+                'backend_anonymous_user_index',
+            ]))
+            ->setAttribute('icon', 'fa-fw fa-user')
+            ->setDisplay($isGranted)
+        ;
+
+        $menu['Usuarios']->addChild('Ver todos', [
+            'route' => 'backend_anonymous_user_index'
+        ])
+            ->setAttribute('icon', self::CIRCLE_1)
+            ->setAttribute('class', $this->activeRoute('backend_anonymous_user_index'))
+            ->setDisplay($isGranted)
+        ;
+
+        $menu['Usuarios']->addChild('Mis amigos', [
+            'route' => 'backend_anonymous_user_index'
+        ])
+            ->setAttribute('icon', self::CIRCLE_2)
+            ->setAttribute('class', $this->activeRoute('backend_anonymous_user_index'))
+            ->setDisplay($isGranted)
+        ;
+
+        $menu['Usuarios']->addChild('Seguidores', [
+            'route' => 'backend_anonymous_user_index'
+        ])
+            ->setAttribute('icon', self::CIRCLE_3)
+            ->setAttribute('class', $this->activeRoute('backend_anonymous_user_index'))
+            ->setDisplay($isGranted)
+        ;
+
+        $menu['Usuarios']->addChild('Siguiendo', [
+            'route' => 'backend_anonymous_user_index'
+        ])
+            ->setAttribute('icon', self::CIRCLE_4)
+            ->setAttribute('class', $this->activeRoute('backend_anonymous_user_index'))
+            ->setDisplay($isGranted)
+        ;
+        /**
+         * ACCOUNTS - REGULAR_USER
+         */
 
 
 
@@ -493,65 +551,6 @@ class Builder implements ContainerAwareInterface
          * SETTINGS
          */
 
-
-
-
-        /**
-         * ACCOUNTS - REGULAR_USER
-         */
-        $isGranted = $this->isGranted([
-            'ROLE_' . Profile::REGULAR_USER,
-        ]);
-        $menu->addChild('Usuarios', [
-            'route' => 'frontend_default_index',
-            'extras' => ['safe_label' => true],
-            'childrenAttributes' => [
-                'class' => 'treeview-menu',
-            ],
-        ])
-        ->setAttribute('class', 'treeview')
-        ->setAttribute('class', $this->activeRoute([
-            'frontend_user_profile',
-            'backend_anonymous_user_index',
-        ]))
-        ->setAttribute('icon', 'fa-fw fa-user')
-        ->setDisplay($isGranted)
-        ;
-
-        $menu['Usuarios']->addChild('Ver todos', [
-            'route' => 'backend_anonymous_user_index'
-        ])
-            ->setAttribute('icon', self::CIRCLE_1)
-            ->setAttribute('class', $this->activeRoute('backend_anonymous_user_index'))
-            ->setDisplay($isGranted)
-        ;
-
-        $menu['Usuarios']->addChild('Mis amigos', [
-            'route' => 'backend_anonymous_user_index'
-        ])
-            ->setAttribute('icon', self::CIRCLE_2)
-            ->setAttribute('class', $this->activeRoute('backend_anonymous_user_index'))
-            ->setDisplay($isGranted)
-        ;
-
-        $menu['Usuarios']->addChild('Seguidores', [
-            'route' => 'backend_anonymous_user_index'
-        ])
-            ->setAttribute('icon', self::CIRCLE_3)
-            ->setAttribute('class', $this->activeRoute('backend_anonymous_user_index'))
-            ->setDisplay($isGranted)
-        ;
-
-        $menu['Usuarios']->addChild('Siguiendo', [
-            'route' => 'backend_anonymous_user_index'
-        ])
-            ->setAttribute('icon', self::CIRCLE_4)
-            ->setAttribute('class', $this->activeRoute('backend_anonymous_user_index'))
-            ->setDisplay($isGranted)
-        ;
-        /**
-         * ACCOUNTS - REGULAR_USER
-         */
 
 
 
