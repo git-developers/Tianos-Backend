@@ -42,6 +42,28 @@ class FriendsRepository extends EntityRepository implements UserRepositoryInterf
     /**
      * {@inheritdoc}
      */
+    public function findAllFriends($userId): array
+    {
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT friends, user_
+            FROM UserBundle:Friends friends
+            INNER JOIN friends.user user_
+            WHERE
+            user_.id = :userId AND
+            user_.enabled = :active
+            ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+        $query->setParameter('userId', $userId);
+
+        return $query->getResult();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function isFriend(string $username, int $friendId): bool
     {
         $em = $this->getEntityManager();

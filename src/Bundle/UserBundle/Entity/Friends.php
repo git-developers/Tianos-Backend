@@ -51,6 +51,7 @@ class Friends
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      * })
+     *
      */
     private $user;
 
@@ -60,6 +61,10 @@ class Friends
      * @ORM\ManyToOne(targetEntity="Bundle\UserBundle\Entity\User")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="friend_id", referencedColumnName="id")
+     * })
+     *
+     * @JMSS\Groups({
+     *     "friends"
      * })
      */
     private $friend;

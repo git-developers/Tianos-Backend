@@ -106,7 +106,6 @@ class UserRepository extends EntityRepository implements UserRepositoryInterface
         return $query->getResult();
     }
 
-
     /**
      * {@inheritdoc}
      */

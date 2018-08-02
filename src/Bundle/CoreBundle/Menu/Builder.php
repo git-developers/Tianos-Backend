@@ -294,6 +294,7 @@ class Builder implements ContainerAwareInterface
             ->setAttribute('class', $this->activeRoute([
                 'frontend_user_profile',
                 'backend_anonymous_user_index',
+                'backend_friends_user_index',
             ]))
             ->setAttribute('icon', 'fa-fw fa-user')
             ->setDisplay($isGranted)
@@ -308,28 +309,28 @@ class Builder implements ContainerAwareInterface
         ;
 
         $menu['Usuarios']->addChild('Mis amigos', [
-            'route' => 'backend_anonymous_user_index'
+            'route' => 'backend_friends_user_index'
         ])
             ->setAttribute('icon', self::CIRCLE_2)
-            ->setAttribute('class', $this->activeRoute('backend_anonymous_user_index'))
+            ->setAttribute('class', $this->activeRoute('backend_friends_user_index'))
             ->setDisplay($isGranted)
         ;
 
-        $menu['Usuarios']->addChild('Seguidores', [
-            'route' => 'backend_anonymous_user_index'
-        ])
-            ->setAttribute('icon', self::CIRCLE_3)
-            ->setAttribute('class', $this->activeRoute('backend_anonymous_user_index'))
-            ->setDisplay($isGranted)
-        ;
-
-        $menu['Usuarios']->addChild('Siguiendo', [
-            'route' => 'backend_anonymous_user_index'
-        ])
-            ->setAttribute('icon', self::CIRCLE_4)
-            ->setAttribute('class', $this->activeRoute('backend_anonymous_user_index'))
-            ->setDisplay($isGranted)
-        ;
+//        $menu['Usuarios']->addChild('Seguidores', [
+//            'route' => 'backend_anonymous_user_index'
+//        ])
+//            ->setAttribute('icon', self::CIRCLE_3)
+//            ->setAttribute('class', $this->activeRoute('backend_anonymous_user_index'))
+//            ->setDisplay($isGranted)
+//        ;
+//
+//        $menu['Usuarios']->addChild('Siguiendo', [
+//            'route' => 'backend_anonymous_user_index'
+//        ])
+//            ->setAttribute('icon', self::CIRCLE_4)
+//            ->setAttribute('class', $this->activeRoute('backend_anonymous_user_index'))
+//            ->setDisplay($isGranted)
+//        ;
         /**
          * ACCOUNTS - REGULAR_USER
          */

@@ -28,6 +28,12 @@ services:
         tags:
             - { name: tianos.backend.setting.controller.user, alias: tianos.backend.setting.controller.user }
 
+    tianos.backend.friends.controller.user:
+        class: Bundle\UserBundle\Controller\BackendFriendsController
+        arguments: [ Bundle\ResourceBundle\Factory\RequestConfigurationFactoryInterface ]
+        tags:
+            - { name: tianos.backend.friends.controller.user, alias: tianos.backend.friends.controller.user }
+
     tianos.frontend.controller.user:
         class: Bundle\UserBundle\Controller\FrontendController
         arguments: [ Bundle\ResourceBundle\Factory\RequestConfigurationFactoryInterface ]

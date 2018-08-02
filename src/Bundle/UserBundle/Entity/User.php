@@ -38,7 +38,8 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
      *     "one-to-many-search",
      *     "one-to-many-search-pointofsalehasuser",
      *     "order-in-left-select-item",
-     *     "order-report"
+     *     "order-report",
+     *     "friends"
      * })
      */
     protected $id;
@@ -49,7 +50,8 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
      * @JMSS\Groups({
      *     "login",
      *     "crud",
-     *     "anonymous_user"
+     *     "anonymous_user",
+     *     "friends"
      * })
      * @Assert\Regex(
      *     pattern="/[^a-zA-Z ]+/",
@@ -66,7 +68,8 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
      * @JMSS\Groups({
      *     "login",
      *     "crud",
-     *     "anonymous_user"
+     *     "anonymous_user",
+     *     "friends"
      * })
      */
     private $lastName;
@@ -78,7 +81,8 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
      *     "login",
      *     "crud",
      *     "one-to-many-right",
-     *     "anonymous_user"
+     *     "anonymous_user",
+     *     "friends"
      * })
      */
     protected $username;
@@ -118,7 +122,8 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
      *
      * @JMSS\Groups({
      *     "crud",
-     *     "anonymous_user"
+     *     "anonymous_user",
+     *     "friends"
      * })
      */
     private $slug;
@@ -176,7 +181,8 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
      *
      * @JMSS\Groups({
      *     "crud",
-     *     "anonymous_user"
+     *     "anonymous_user",
+     *     "friends"
      * })
      * @JMSS\Type("DateTime<'Y-m-d H:i'>")
      *
