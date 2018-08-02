@@ -56,7 +56,7 @@ class GoogleDriveFileRepository extends TianosEntityRepository implements Google
     /**
      * {@inheritdoc}
      */
-    public function findAll(): array
+    public function findAll($maxResults = 30): array
     {
         $em = $this->getEntityManager();
         $dql = "
@@ -68,6 +68,7 @@ class GoogleDriveFileRepository extends TianosEntityRepository implements Google
 
         $query = $em->createQuery($dql);
         $query->setParameter('active', 1);
+        $query->setMaxResults($maxResults);
 
         return $query->getResult();
     }

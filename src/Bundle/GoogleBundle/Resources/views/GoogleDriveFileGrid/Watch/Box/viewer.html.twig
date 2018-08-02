@@ -11,9 +11,11 @@
 <div class="box-footer clearfix">
     <div class="col-md-6">
         <div class="user-block">
-            <img class="img-circle" src="https://almsaeedstudio.com/themes/AdminLTE/dist/img/user1-128x128.jpg" alt="User Image">
+            <img class="img-circle" src="{{ asset('bundles/user/images/no_avatar.jpg') }}" alt="User Image">
             <span class="username">
-                <a href="#">{{ entity.user.name ~' '~ entity.user.lastName |slice(0, 200) }}</a>
+                <a href="{{ path('frontend_user_profile', {slug: entity.user.slug}) }}">
+                    {{ entity.user.name|slice(0, 30) ~' '~ entity.user.lastName|slice(0, 30) }}
+                </a>
             </span>
             <span class="description">Compartido el {{ entity.createdAt|date("Y-m-d H:i:s")  }}</span>
         </div>

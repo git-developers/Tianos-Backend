@@ -66,7 +66,7 @@ class GoogleHelper extends Helper
             break;
             default:
                 $template = '@GoogleBundle/Resources/views/GoogleDriveFileGrid/Watch/ViewersTemplate/default.html.twig';
-                $template = '';
+//                $template = '';
         }
 
         return $this->googleRenderer->renderViewer($fileId, $template);
