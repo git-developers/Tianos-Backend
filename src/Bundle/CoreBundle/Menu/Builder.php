@@ -560,18 +560,37 @@ class Builder implements ContainerAwareInterface
          */
         $isGranted = $this->isGranted([
             'ROLE_' . Profile::REGULAR_USER,
+            'ROLE_' . Profile::ADMIN,
         ]);
-        $menu->addChild('Mis archivos', [
-            'route' => 'backend_google_drive_grid_index',
+        $menu->addChild('Archivos', [
+            'route' => 'frontend_default_index',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
                 'class' => 'treeview-menu',
             ],
         ])
-            ->setAttribute('class', 'treeview')
-            ->setAttribute('icon', 'fa-fw fa-file-text-o')
-            ->setAttribute('class', $this->activeRoute('backend_google_drive_grid_index'))
-            ->setDisplay($isGranted)
+        ->setAttribute('class', 'treeview')
+        ->setAttribute('class', $this->activeRoute([
+            'backend_google_drive_grid_index',
+        ]))
+        ->setAttribute('icon', 'fa-fw fa-file-text-o')
+        ->setDisplay($isGranted)
+        ;
+
+        $menu['Archivos']->addChild('Ver todos', [
+            'route' => 'backend_anonymous_user_index'
+        ])
+        ->setAttribute('icon', self::CIRCLE_1)
+        ->setAttribute('class', $this->activeRoute('backend_anonymous_user_index'))
+        ->setDisplay($isGranted)
+        ;
+
+        $menu['Archivos']->addChild('Mis archivos', [
+            'route' => 'backend_google_drive_grid_index'
+        ])
+        ->setAttribute('icon', self::CIRCLE_2)
+        ->setAttribute('class', $this->activeRoute('backend_google_drive_grid_index'))
+        ->setDisplay($isGranted)
         ;
         /**
          * GOOGLE DRIVE FILES - REGULAR_USER
