@@ -572,24 +572,25 @@ class Builder implements ContainerAwareInterface
         ->setAttribute('class', 'treeview')
         ->setAttribute('class', $this->activeRoute([
             'backend_google_drive_grid_index',
+            'backend_google_drive_grid_mis_archivos',
         ]))
         ->setAttribute('icon', 'fa-fw fa-file-text-o')
         ->setDisplay($isGranted)
         ;
 
         $menu['Archivos']->addChild('Ver todos', [
-            'route' => 'backend_anonymous_user_index'
+            'route' => 'backend_google_drive_grid_index'
         ])
         ->setAttribute('icon', self::CIRCLE_1)
-        ->setAttribute('class', $this->activeRoute('backend_anonymous_user_index'))
+        ->setAttribute('class', $this->activeRoute('backend_google_drive_grid_index'))
         ->setDisplay($isGranted)
         ;
 
         $menu['Archivos']->addChild('Mis archivos', [
-            'route' => 'backend_google_drive_grid_index'
+            'route' => 'backend_google_drive_grid_mis_archivos'
         ])
         ->setAttribute('icon', self::CIRCLE_2)
-        ->setAttribute('class', $this->activeRoute('backend_google_drive_grid_index'))
+        ->setAttribute('class', $this->activeRoute('backend_google_drive_grid_mis_archivos'))
         ->setDisplay($isGranted)
         ;
         /**

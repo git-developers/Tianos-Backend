@@ -13,6 +13,28 @@ class GoogleDriveFileRepository extends TianosEntityRepository implements Google
     /**
      * {@inheritdoc}
      */
+    public function findMisArchivos($userId): array
+    {
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT google, user_
+            FROM GoogleBundle:GoogleDriveFile google
+            INNER JOIN google.user user_
+            WHERE
+            google.isActive = :active AND
+            user_.id = :userId
+            ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+        $query->setParameter('userId', $userId);
+
+        return $query->getResult();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function find($id)
     {
         $em = $this->getEntityManager();
@@ -48,14 +70,6 @@ class GoogleDriveFileRepository extends TianosEntityRepository implements Google
         $query->setParameter('active', 1);
 
         return $query->getResult();
-
-//        return $this->createQueryBuilder('o')
-//            ->select('o.id, o.code, o.name, o.createdAt')
-//            ->andWhere('o.isActive = :active')
-//            ->setParameter('active', 1)
-//            ->getQuery()
-//            ->getResult()
-//            ;
     }
 
     /**

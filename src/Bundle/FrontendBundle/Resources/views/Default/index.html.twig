@@ -16,15 +16,18 @@
 
             {% for gdFile in googleDriveFiles %}
 
-                <div class="col-md-3 x-hand" onclick="location.href='{{ path('backend_google_drive_grid_watch', { slug:gdFile.slug }) }}';">
+                <div class="col-md-4 x-hand" onclick="location.href='{{ path('backend_google_drive_grid_watch', { slug:gdFile.slug }) }}';">
                     <div class="box box-widget">
 
                         <div class="box-header with-border">
                             <div class="user-block">
-                                <img class="img-circle" src="https://almsaeedstudio.com/themes/AdminLTE/dist/img/user1-128x128.jpg" alt="User Image">
+                                <img class="img-circle" src="{{ asset('bundles/user/images/no_avatar.jpg') }}" alt="">
                                 <span class="username">
-                                    <a href="#">
-                                        {{ gdFile.user.name ~' '~ gdFile.user.lastName|slice(0, 200) }}
+                                    <a
+                                        href="{{ path('frontend_user_profile', {slug: gdFile.user.slug}) }}"
+                                        title="{{ gdFile.user.name ~' '~ gdFile.user.lastName }}"
+                                    >
+                                        {{ gdFile.user.name|slice(0, 25)  ~' '~ gdFile.user.lastName|slice(0, 25) }}
                                     </a>
                                 </span>
                                 <span class="description">
@@ -45,7 +48,7 @@
                         </div>
 
                         <div class="box-body">
-                            <img class="img-responsive pad" src="https://almsaeedstudio.com/themes/AdminLTE/dist/img/photo2.png" alt="Photo">
+                            <img class="img-responsive pad" src="{{ asset('bundles/themes/adminlte/images/empty-image.png') }}" alt="">
                             <p title="{{ gdFile.fileName }}">{{ gdFile.fileName|slice(0, 27) }}</p>
                             <button type="button" class="btn btn-default btn-xs"><i class="fa fa-share"></i> Share</button>
                             <button type="button" class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-up"></i> Like</button>

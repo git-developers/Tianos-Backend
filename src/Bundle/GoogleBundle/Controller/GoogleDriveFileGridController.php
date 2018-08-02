@@ -15,6 +15,95 @@ use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 class GoogleDriveFileGridController extends GridController
 {
 
+
+    /**
+     * @var MetadataInterface
+     */
+    protected $metadata;
+
+    /**
+     * @var RequestConfigurationFactoryInterface
+     */
+    protected $requestConfigurationFactory;
+
+
+//    public function __construct(RequestConfigurationFactoryInterface $requestConfigurationFactory) {
+//        $this->requestConfigurationFactory = $requestConfigurationFactory;
+//    }
+
+    /**
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function misArchivosAction(Request $request): Response
+    {
+//        $configuration = $this->requestConfigurationFactory->create($this->metadata, $request);
+
+        $parameters = [
+            'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
+        ];
+        $applicationName = $this->container->getParameter('application_name');
+        $this->metadata = new Metadata('tianos', $applicationName, $parameters);
+
+        //CONFIGURATION
+        $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
+        $repository = $configuration->getRepositoryService();
+        $method = $configuration->getRepositoryMethod();
+        $template = $configuration->getTemplate('');
+        $grid = $configuration->getGrid();
+        $vars = $configuration->getVars();
+        $modal = $configuration->getModal();
+
+        //REPOSITORY
+        $objects = $this->get($repository)->$method($this->getUser()->getId());
+        $varsRepository = $configuration->getRepositoryVars();
+        $objects = $this->getSerialize($objects, $varsRepository->serialize_group_name);
+
+        //GRID
+        $gridService = $this->get('tianos.grid');
+        $modal = $gridService->getModalMapper()->getDefaults($modal);
+        $formMapper = $gridService->getFormMapper()->getDefaults();
+
+        //DATATABLE
+        $dataTable = $gridService->getDataTableMapper($grid)
+            ->setRoute()
+            ->setColumns()
+            ->setOptions()
+            ->setRowCallBack()
+            ->setData($objects)
+            ->setTableOptions()
+            ->setTableButton()
+            ->setTableHeaderButton()
+            ->setColumnsTargets()
+            ->resetGridVariable()
+        ;
+
+
+//        echo "POLLO:: <pre>";
+//        print_r($objects);
+//        exit;
+
+        return $this->render(
+            $template,
+            [
+                'vars' => $vars,
+                'grid' => $grid,
+                'modal' => $modal,
+                'dataTable' => $dataTable,
+                'form_mapper' => $formMapper,
+            ]
+        );
+
+//        return new JsonResponse([
+//            'slug' => $this->get('sylius.generator.slug')->generate($name),
+//        ]);
+    }
+
+    /**
+     * @param Request $request
+     * @return Response
+     */
     public function watchAction(Request $request): Response
     {
 //        if (!$this->get('security.authorization_checker')->isGranted('ROLE_EDIT_USER')) {
@@ -53,7 +142,11 @@ class GoogleDriveFileGridController extends GridController
         );
     }
 
-    public function qrAction(Request $request)
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function qrAction(Request $request): Response
     {
         $parameters = [
             'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
@@ -77,18 +170,6 @@ class GoogleDriveFileGridController extends GridController
                 'qr' => $qr,
             ]
         );
-
-
-//        $response = $this->render(
-//            'BackendBundle:Google:qr.html.twig',
-//            [
-//                'qr' => $qr,
-//            ]
-//        );
-//
-//        $response->setSharedMaxAge(self::MAX_AGE_WEEK);
-//        $response->headers->addCacheControlDirective('must-revalidate', true);
-//        return $response;
     }
 
 }
