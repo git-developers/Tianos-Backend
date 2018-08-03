@@ -45,6 +45,9 @@
             background-color: #25d366;
             border-color: rgba(0,0,0,0.2);
         }
+        .tag {
+            margin-right: 5px;
+        }
     </style>
 
 {% endblock %}
@@ -97,34 +100,45 @@
         });
 
         $('.thumbs-up, .thumbs-down').click(function() {
+
+            var vote = $(this).data('vote');
+
             $.ajax({
                 url: '{{ path('backend_google_drive_vote_like_dislike') }}',
                 type: 'POST',
                 cache: true,
                 data: {
                     googleDriveId: '{{ entity.id }}',
-                    vote: $(this).data('vote')
+                    vote: vote
                 },
                 beforeSend:function () {
-                    // $('#modal-qr').modal({show: true});
+
+                    $('.thumbs-up').removeClass('btn-success');
+                    $('.thumbs-down').removeClass('btn-danger');
+
+                    if (vote) {
+                        $('.thumbs-up').addClass('btn-success');
+                    } else {
+                        $('.thumbs-down').addClass('btn-danger');
+                    }
+
                 },
                 success:function (response) {
-                    // $('#modal-qr .modal-body').html(response);
+
                 },
                 error:function(){
-                    // $('#modal-qr .modal-body').html('error. reintentar');
-                    // $('#modal-qr').modal({show: true});
+
                 }
             });
         });
 
-        $('.thumbs-up').hover(function () {
-            $(this).toggleClass("btn-success");
-        });
-
-        $('.thumbs-down').hover(function () {
-            $(this).toggleClass("btn-danger");
-        });
+        // $('.thumbs-up').hover(function () {
+        //     $(this).toggleClass("btn-success");
+        // });
+        //
+        // $('.thumbs-down').hover(function () {
+        //     $(this).toggleClass("btn-danger");
+        // });
 
         $(window).load(function() {
             $('#relevance').load('{{ path('backend_google_drive_grid_relevance') }}', {
