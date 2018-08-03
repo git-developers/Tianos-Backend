@@ -106,6 +106,11 @@ class GoogleHelper extends Helper
         return 'javascript:void(0)';
     }
 
+    public function base64Encode($str)
+    {
+        return base64_encode($str);
+    }
+
     public function googleFileValues($value)
     {
 //        $value = array_replace([

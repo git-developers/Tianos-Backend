@@ -42,6 +42,7 @@ final class GoogleExtension extends \Twig_Extension
             new \Twig_SimpleFilter('tianos_google_mimetype_icon', [$this->googleHelper, 'googleMimeTypeIcon'], ['is_safe' => ['html']]),
             new \Twig_SimpleFilter('tianos_google_span_url_filter', [$this->googleHelper, 'googleSpanUrlFilter'], ['is_safe' => ['html']]),
             new \Twig_SimpleFilter('tianos_google_file_values', [$this->googleHelper, 'googleFileValues'], ['is_safe' => ['html']]),
+            new \Twig_SimpleFilter('tianos_base64_encode', [$this->googleHelper, 'base64Encode'], ['is_safe' => ['html']]),
         );
     }
 

@@ -14,10 +14,53 @@ class GoogleDriveFileRepository extends TianosEntityRepository implements Google
     /**
      * {@inheritdoc}
      */
+    public function relevance($id, $fileName): array
+    {
+        $em = $this->getEntityManager();
+        $sql = "SELECT 
+                    CONCAT(t2.name, ' ', t2.last_name) AS user_name,
+                    t2.slug AS user_slug,
+                    t1.slug,
+                    t1.file_name
+                FROM google_drive_file AS t1
+                INNER JOIN user AS t2 on t2.id = t1.user_id
+                WHERE 
+                    t2.id <> :id AND
+                    t2.is_active = :active
+                ORDER BY RAND()
+                LIMIT 20
+                ;
+                ";
+
+        $params = [
+            'id' => $id,
+            'active' => 1,
+//            'fileName' => '%' . $fileName . '%'
+        ];
+
+        $stmt = $em->getConnection()->prepare($sql);
+        $stmt->execute($params);
+
+        return $stmt->fetchAll();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function findAllNative(): array
     {
         $em = $this->getEntityManager();
-        $sql = "SELECT id, slug, file_icon_link, file_name, file_size FROM google_drive_file WHERE is_active = :active;";
+        $sql = "SELECT 
+                    id, 
+                    slug, 
+                    file_icon_link, 
+                    file_name, 
+                    file_size 
+                FROM google_drive_file 
+                WHERE is_active = :active
+                ORDER BY id DESC
+                ;
+                ";
         $params = ['active' => 1];
 
         $stmt = $em->getConnection()->prepare($sql);
@@ -32,20 +75,28 @@ class GoogleDriveFileRepository extends TianosEntityRepository implements Google
     public function findMisArchivos($userId): array
     {
         $em = $this->getEntityManager();
-        $dql = "
-            SELECT google, user_
-            FROM GoogleBundle:GoogleDriveFile google
-            INNER JOIN google.user user_
-            WHERE
-            google.isActive = :active AND
-            user_.id = :userId
-            ";
+        $sql = "SELECT 
+                    id, 
+                    slug, 
+                    file_icon_link, 
+                    file_name, 
+                    file_size 
+                FROM google_drive_file 
+                WHERE 
+                    is_active = :active AND
+                    user_id = :userId
+                ORDER BY id DESC
+                ;
+                ";
+        $params = [
+            'active' => 1,
+            'userId' => $userId,
+        ];
 
-        $query = $em->createQuery($dql);
-        $query->setParameter('active', 1);
-        $query->setParameter('userId', $userId);
+        $stmt = $em->getConnection()->prepare($sql);
+        $stmt->execute($params);
 
-        return $query->getResult();
+        return $stmt->fetchAll();
     }
 
     /**

@@ -126,6 +126,13 @@
             $(this).toggleClass("btn-danger");
         });
 
+        $(window).load(function() {
+            $('#relevance').load('{{ path('backend_google_drive_grid_relevance') }}', {
+                id: '{{ entity.id }}',
+                fileName: '{{ entity.fileName|tianos_base64_encode }}'
+            });
+        });
+
     </script>
 
 {% endblock %}

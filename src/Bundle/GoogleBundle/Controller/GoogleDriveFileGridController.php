@@ -94,10 +94,44 @@ class GoogleDriveFileGridController extends GridController
                 'form_mapper' => $formMapper,
             ]
         );
+    }
 
-//        return new JsonResponse([
-//            'slug' => $this->get('sylius.generator.slug')->generate($name),
-//        ]);
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function relevanceAction(Request $request): Response
+    {
+//        if (!$this->get('security.authorization_checker')->isGranted('ROLE_EDIT_USER')) {
+//            return $this->redirectToRoute('frontend_default_access_denied');
+//        }
+
+        $id = $request->get('id', null);
+        $fileName = $request->get('fileName', null);
+        $fileName = base64_decode($fileName);
+
+        $parameters = [
+            'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
+        ];
+        $applicationName = $this->container->getParameter('application_name');
+        $this->metadata = new Metadata('tianos', $applicationName, $parameters);
+
+        //CONFIGURATION
+        $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
+
+        $repository = $configuration->getRepositoryService();
+        $method = $configuration->getRepositoryMethod();
+        $template = $configuration->getTemplate('');
+        $vars = $configuration->getVars();
+
+        $objects = $this->get($repository)->$method($id, $fileName);
+
+        return $this->render(
+            $template,
+            [
+                'objects' => $objects,
+            ]
+        );
     }
 
     /**

@@ -142,6 +142,23 @@ backend_google_drive_grid_mis_archivos:
                 vars:
                     serialize_group_name: google-drive-file
 
+backend_google_drive_grid_relevance:
+    path: /relevance
+    methods: [POST]
+    defaults:
+        _controller: tianos.google.drive.grid.controller.google:relevanceAction
+        _tianos:
+            action: edit
+            template: GoogleBundle:GoogleDriveFileGrid/Watch/Box:relevance.html.twig
+            form:
+                type: Bundle\GoogleBundle\Form\Type\GoogleType
+            repository:
+                service: tianos.repository.google.drive
+                method: relevance
+                arguments: [$clientId]
+                vars:
+                    serialize_group_name: google-drive-file
+
 backend_google_drive_grid_edit:
     path: /edit
     methods: [PUT, POST]
