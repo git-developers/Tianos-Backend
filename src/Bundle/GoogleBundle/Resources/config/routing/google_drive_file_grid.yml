@@ -65,7 +65,8 @@ backend_google_drive_grid_index:
                 type: Bundle\UniversityBundle\Form\Type\UniversityType
             repository:
                 service: tianos.repository.google.drive
-                method: findAll
+#                method: findAll
+                method: findAllNative
                 arguments: [$clientId]
                 vars:
                     serialize_group_name: google-drive-file

@@ -8,33 +8,49 @@
 
         <div class="box-body">
 
-            <strong>
-                <i class="fa fa-book margin-r-5"></i> Nombre
-            </strong>
+            <div class="row">
+                <div class="col-md-6">
+                    <strong>
+                        <i class="fa fa-book margin-r-5"></i> Nombre
+                    </strong>
 
-            <p class="text-muted">
-                {{ entity.fileName }}
-            </p>
+                    <p class="text-muted">
+                        {{ entity.fileName }}
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <strong>
+                        <i class="fa fa-file-text-o margin-r-5"></i> File id
+                    </strong>
+
+                    <p>
+                        {{ entity.fileId }}
+                    </p>
+                </div>
+            </div>
 
             <hr>
 
-            <strong>
-                <i class="fa fa-file-text-o margin-r-5"></i> File id
-            </strong>
+            <div class="row">
+                <div class="col-md-6">
+                    <strong>
+                        <i class="fa fa-arrows-alt margin-r-5"></i> Tamaño
+                    </strong>
 
-            <p>
-                {{ entity.fileId }}
-            </p>
+                    <p>
+                        {{ entity.fileSize|default('-') }}
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <strong>
+                        <i class="fa fa-calendar margin-r-5"></i> Creado
+                    </strong>
 
-            <hr>
-
-            <strong>
-                <i class="fa fa-calendar margin-r-5"></i> Creado
-            </strong>
-
-            <p>
-                {{ entity.createdAt|date('Y-m-d H:i:s') }}
-            </p>
+                    <p>
+                        {{ entity.createdAt|date('Y-m-d H:i:s') }}
+                    </p>
+                </div>
+            </div>
 
 
             {#

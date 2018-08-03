@@ -10,6 +10,22 @@ use Component\Google\Repository\GoogleRepositoryInterface;
 class GoogleDriveFileRepository extends TianosEntityRepository implements GoogleRepositoryInterface
 {
 
+
+    /**
+     * {@inheritdoc}
+     */
+    public function findAllNative(): array
+    {
+        $em = $this->getEntityManager();
+        $sql = "SELECT id, slug, file_icon_link, file_name, file_size FROM google_drive_file WHERE is_active = :active;";
+        $params = ['active' => 1];
+
+        $stmt = $em->getConnection()->prepare($sql);
+        $stmt->execute($params);
+
+        return $stmt->fetchAll();
+    }
+
     /**
      * {@inheritdoc}
      */
