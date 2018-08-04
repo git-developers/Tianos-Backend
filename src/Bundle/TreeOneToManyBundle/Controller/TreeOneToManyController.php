@@ -51,7 +51,7 @@ class TreeOneToManyController extends BaseController
         $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
 //        $repository = $configuration->getRepositoryService();
 
-        $repositoryLeft = $configuration->getRepositoryServiceLeft();
+        $repositoryLeft = $configuration->getRepositoryServiceOne();
         $methodLeft = $configuration->getRepositoryMethodLeft();
 
         $repositoryRight = $configuration->getRepositoryServiceRight();
@@ -147,7 +147,7 @@ class TreeOneToManyController extends BaseController
         $template = $configuration->getTemplate('');
         $boxLeft = $configuration->treeOneToManyBoxLeft();
 
-        $repositoryLeft = $configuration->getRepositoryServiceLeft();
+        $repositoryLeft = $configuration->getRepositoryServiceOne();
         $methodLeft = $configuration->getRepositoryMethodLeft();
 
         $vars = $configuration->getVars();
@@ -183,7 +183,7 @@ class TreeOneToManyController extends BaseController
         $template = $configuration->getTemplate('');
         $boxRight = $configuration->treeOneToManyBoxRight();
 
-        $repositoryLeft = $configuration->getRepositoryServiceLeft();
+        $repositoryLeft = $configuration->getRepositoryServiceOne();
         $methodLeft = $configuration->getRepositoryMethodLeft();
         $varsLeft = $configuration->getRepositoryVarsLeft();
 
@@ -237,7 +237,7 @@ class TreeOneToManyController extends BaseController
         //CONFIGURATION
         $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
 
-        $repositoryLeft = $configuration->getRepositoryServiceLeft();
+        $repositoryLeft = $configuration->getRepositoryServiceOne();
         $methodLeft = $configuration->getRepositoryMethodLeft();
         $template = $configuration->getTemplate('');
         $boxRight = $configuration->treeOneToManyBoxRight();
@@ -287,7 +287,7 @@ class TreeOneToManyController extends BaseController
         $repositoryRight = $configuration->getRepositoryServiceRight();
         $methodRight = $configuration->getRepositoryMethodRight();
 
-        $repositoryLeft = $configuration->getRepositoryServiceLeft();
+        $repositoryLeft = $configuration->getRepositoryServiceOne();
         $methodLeft = $configuration->getRepositoryMethodLeft();
         $methodDeleteAssociativeLeft = $configuration->getRepositoryMethodDeleteAssociativeLeft();
         $vars = $configuration->getVars();

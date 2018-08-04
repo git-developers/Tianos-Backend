@@ -9,8 +9,8 @@ use Component\Resource\Model\ResourceInterface;
 
 interface RepositoryInterface extends ObjectRepository
 {
-    public const ORDER_ASCENDING = 'ASC';
-    public const ORDER_DESCENDING = 'DESC';
+    const ORDER_ASCENDING = 'ASC';
+    const ORDER_DESCENDING = 'DESC';
 
     /**
      * @param array $criteria
@@ -18,15 +18,15 @@ interface RepositoryInterface extends ObjectRepository
      *
      * @return iterable
      */
-    public function createPaginator(array $criteria = [], array $sorting = []): iterable;
+    public function createPaginator(array $criteria = [], array $sorting = []);
 
     /**
      * @param ResourceInterface $resource
      */
-    public function add(ResourceInterface $resource): void;
+    public function add(ResourceInterface $resource);
 
     /**
      * @param ResourceInterface $resource
      */
-    public function remove(ResourceInterface $resource): void;
+    public function remove(ResourceInterface $resource);
 }

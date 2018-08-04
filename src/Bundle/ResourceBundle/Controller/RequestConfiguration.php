@@ -914,7 +914,7 @@ class RequestConfiguration
         return (object) $this->parameters->getChild('tree_one_to_many', 'box_right');
     }
 
-    public function getGridDataTable(?string $key = null): array
+    public function getGridDataTable(string $key = null)
     {
         if (!$this->hasGrid()) {
             throw new \LogicException('Current action does not use grid.');

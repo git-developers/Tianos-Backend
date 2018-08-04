@@ -109,7 +109,7 @@ class UserRepository extends EntityRepository implements UserRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function findOneByEmail(string $email): ?UserInterface
+    public function findOneByEmail(string $email)
     {
         return $this->createQueryBuilder('o')
             ->andWhere('o.emailCanonical = :email')

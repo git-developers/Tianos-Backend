@@ -14,7 +14,7 @@ final class UserLoginType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function buildForm(FormBuilderInterface $builder, array $options): void
+    public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
             ->add('_username', TextType::class, [
@@ -29,7 +29,7 @@ final class UserLoginType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function getBlockPrefix(): string
+    public function getBlockPrefix()
     {
         return 'sylius_user_security_login';
     }

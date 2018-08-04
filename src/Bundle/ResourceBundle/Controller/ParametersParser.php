@@ -105,12 +105,12 @@ final class ParametersParser implements ParametersParserInterface
      */
     private function parseRequestValueTypecast($parameter, Request $request)
     {
-        [$typecast, $castedValue] = explode(' ', $parameter, 2);
-
-        $castFunctionName = substr($typecast, 2) . 'val';
-
-        Assert::oneOf($castFunctionName, ['intval', 'floatval', 'boolval'], 'Variable can be casted only to int, float or bool.');
-
-        return $castFunctionName($this->parseRequestValue($castedValue, $request));
+//        [$typecast, $castedValue] = explode(' ', $parameter, 2);
+//
+//        $castFunctionName = substr($typecast, 2) . 'val';
+//
+//        Assert::oneOf($castFunctionName, ['intval', 'floatval', 'boolval'], 'Variable can be casted only to int, float or bool.');
+//
+//        return $castFunctionName($this->parseRequestValue($castedValue, $request));
     }
 }

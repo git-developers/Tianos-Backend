@@ -50,7 +50,7 @@ class OneToManyController extends BaseController
         $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
 //        $repository = $configuration->getRepositoryService();
 
-        $repositoryLeft = $configuration->getRepositoryServiceLeft();
+        $repositoryLeft = $configuration->getRepositoryServiceOne();
         $methodLeft = $configuration->getRepositoryMethodLeft();
 
         $repositoryRight = $configuration->getRepositoryServiceRight();
@@ -129,7 +129,7 @@ class OneToManyController extends BaseController
         $template = $configuration->getTemplate('');
         $boxLeft = $configuration->oneToManyBoxLeft();
 
-        $repositoryLeft = $configuration->getRepositoryServiceLeft();
+        $repositoryLeft = $configuration->getRepositoryServiceOne();
         $methodLeft = $configuration->getRepositoryMethodLeft();
 
         $vars = $configuration->getVars();
@@ -165,7 +165,7 @@ class OneToManyController extends BaseController
         $template = $configuration->getTemplate('');
         $boxRight = $configuration->oneToManyBoxRight();
 
-        $repositoryLeft = $configuration->getRepositoryServiceLeft();
+        $repositoryLeft = $configuration->getRepositoryServiceOne();
         $methodLeft = $configuration->getRepositoryMethodLeft();
         $varsLeft = $configuration->getRepositoryVarsLeft();
 
@@ -219,7 +219,7 @@ class OneToManyController extends BaseController
         $repositoryRight = $configuration->getRepositoryServiceRight();
         $methodRight = $configuration->getRepositoryMethodRight();
 
-        $repositoryLeft = $configuration->getRepositoryServiceLeft();
+        $repositoryLeft = $configuration->getRepositoryServiceOne();
         $methodLeft = $configuration->getRepositoryMethodLeft();
         $methodDeleteAssociativeLeft = $configuration->getRepositoryMethodDeleteAssociativeLeft();
         $vars = $configuration->getVars();
@@ -276,7 +276,7 @@ class OneToManyController extends BaseController
         //CONFIGURATION
         $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
 
-        $repositoryLeft = $configuration->getRepositoryServiceLeft();
+        $repositoryLeft = $configuration->getRepositoryServiceOne();
         $methodLeft = $configuration->getRepositoryMethodLeft();
         $template = $configuration->getTemplate('');
         $boxRight = $configuration->oneToManyBoxRight();

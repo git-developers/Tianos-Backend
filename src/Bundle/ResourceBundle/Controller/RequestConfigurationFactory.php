@@ -9,11 +9,11 @@ use Symfony\Component\HttpFoundation\Request;
 
 final class RequestConfigurationFactory implements RequestConfigurationFactoryInterface
 {
-    private const API_VERSION_HEADER = 'Accept';
-    private const API_GROUPS_HEADER = 'Accept';
+    const API_VERSION_HEADER = 'Accept';
+    const API_GROUPS_HEADER = 'Accept';
 
-    private const API_VERSION_REGEXP = '/(v|version)=(?P<version>[0-9\.]+)/i';
-    private const API_GROUPS_REGEXP = '/(g|groups)=(?P<groups>[a-z,_\s]+)/i';
+    const API_VERSION_REGEXP = '/(v|version)=(?P<version>[0-9\.]+)/i';
+    const API_GROUPS_REGEXP = '/(g|groups)=(?P<groups>[a-z,_\s]+)/i';
 
     /**
      * @var ParametersParserInterface
@@ -45,7 +45,7 @@ final class RequestConfigurationFactory implements RequestConfigurationFactoryIn
     /**
      * {@inheritdoc}
      */
-    public function create(MetadataInterface $metadata, Request $request): RequestConfiguration
+    public function create(MetadataInterface $metadata, Request $request)
     {
         $parameters = array_merge($this->defaultParameters, $this->parseApiParameters($request));
         $parameters = $this->parametersParser->parseRequestValues($parameters, $request);
@@ -60,7 +60,7 @@ final class RequestConfigurationFactory implements RequestConfigurationFactoryIn
      *
      * @throws \InvalidArgumentException
      */
-    private function parseApiParameters(Request $request): array
+    private function parseApiParameters(Request $request)
     {
         $parameters = [];
 

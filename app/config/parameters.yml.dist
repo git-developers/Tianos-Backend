@@ -29,6 +29,7 @@ parameters:
     application_name: 'Tianos'
     application_name_html: '<b>Tia</b>nos'
     application_fb_app_id: '129906047219991'
+    application_fb_app_secret: 'ae71972046b58f1b6faba17a6971593d'
     application_google_api_key: 'AIzaSyBAsxwIhfRbFNd5NBO7WkRJupk5sEL9gbQ'
     application_google_plus: 'https://plus.google.com/u/0/101583248641629113892'
     application_facebook: 'https://www.facebook.com/Apptianos'

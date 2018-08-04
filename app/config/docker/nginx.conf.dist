@@ -8,7 +8,7 @@ server {
     }
 
     location ~ ^/(app_dev|config)\.php(/|$) {
-        fastcgi_pass unix:/run/php/php7.1-fpm.sock;
+        fastcgi_pass unix:/run/php/php7.0-fpm.sock;
         include fastcgi_params;
         fastcgi_split_path_info ^(.+\.php)(/.*)$;
         fastcgi_param  SCRIPT_FILENAME  $realpath_root$fastcgi_script_name;
