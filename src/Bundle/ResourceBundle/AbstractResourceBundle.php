@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Bundle\ResourceBundle;
 
 use Doctrine\Bundle\DoctrineBundle\DependencyInjection\Compiler\DoctrineOrmMappingsPass;
-use Doctrine\Bundle\MongoDBBundle\DependencyInjection\Compiler\DoctrineMongoDBMappingsPass;
-use Doctrine\Bundle\PHPCRBundle\DependencyInjection\Compiler\DoctrinePhpcrMappingsPass;
+//use Doctrine\Bundle\MongoDBBundle\DependencyInjection\Compiler\DoctrineMongoDBMappingsPass;
+//use Doctrine\Bundle\PHPCRBundle\DependencyInjection\Compiler\DoctrinePhpcrMappingsPass;
 use Bundle\ResourceBundle\DependencyInjection\Driver\Exception\UnknownDriverException;
 use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 use Symfony\Component\DependencyInjection\Container;
@@ -25,6 +25,8 @@ abstract class AbstractResourceBundle extends Bundle implements ResourceBundleIn
     /**
      * {@inheritdoc}
      */
+
+    /*
     public function build(ContainerBuilder $container): void
     {
         if (null !== $this->getModelNamespace()) {
@@ -62,6 +64,7 @@ abstract class AbstractResourceBundle extends Bundle implements ResourceBundleIn
             }
         }
     }
+    */
 
     /**
      * Return the prefix of the bundle.
@@ -88,7 +91,7 @@ abstract class AbstractResourceBundle extends Bundle implements ResourceBundleIn
      *
      * @return string
      */
-    protected function getModelNamespace(): ?string
+    protected function getModelNamespace()
     {
         return null;
     }
