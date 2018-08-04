@@ -15,6 +15,7 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 final class ThemeBundle extends Bundle
 {
+    
     /**
      * {@inheritdoc}
      */
