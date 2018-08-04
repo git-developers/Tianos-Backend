@@ -53,13 +53,13 @@ class TreeOneToManyHelper extends Helper
     }
 
     //        JAFETH
-    public function renderModalFooter(?string $template = null) // Button $button,
+    public function renderModalFooter(string $template = null) // Button $button,
     {
         return $this->gridRenderer->renderModalFooter($template); // $button,
     }
 
     //        JAFETH
-    public function renderButton(Button $button, ?string $template = null)
+    public function renderButton(Button $button, string $template = null)
     {
         return $this->gridRenderer->renderButton($button, $template);
     }
@@ -70,7 +70,7 @@ class TreeOneToManyHelper extends Helper
      *
      * @return mixed
      */
-    public function renderOneToMany(TreeOneToManyView $gridView, ?string $template = null)
+    public function renderOneToMany(TreeOneToManyView $gridView, string $template = null)
     {
         //JAFETH
         return $this->gridRenderer->render($gridView, $template);

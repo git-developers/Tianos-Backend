@@ -83,7 +83,7 @@ final class TwigGridRenderer implements GridRendererInterface
     }
 
     //        JAFETH
-    public function renderFormJs($vars, $modal, $formMapper, DataTableMapper $dataTable, ?string $template = null)
+    public function renderFormJs($vars, $modal, $formMapper, DataTableMapper $dataTable, string $template = null)
     {
         return $this->twig->render($template ?: $this->defaultTemplate, [
             'vars' => $vars,
@@ -94,14 +94,14 @@ final class TwigGridRenderer implements GridRendererInterface
     }
 
     //        JAFETH
-    public function renderModalFooter(?string $template = null) // Button $button,
+    public function renderModalFooter(string $template = null)
     {
 
         return $this->twig->render($template ?: $this->defaultTemplate, ['template' => $template]);
     }
 
 
-    public function renderButton(Button $button, ?string $template = null)
+    public function renderButton(Button $button, string $template = null)
     {
 //        JAFETH
         return $this->twig->render($template ?: $this->defaultTemplate, ['grid' => $button]);
@@ -110,7 +110,7 @@ final class TwigGridRenderer implements GridRendererInterface
     /**
      * {@inheritdoc}
      */
-    public function render(GridViewInterface $gridView, ?string $template = null)
+    public function render(GridViewInterface $gridView, string $template = null)
     {
 
 //        $template ---- @SyliusUi/Grid/_default.html.twig
@@ -193,7 +193,7 @@ final class TwigGridRenderer implements GridRendererInterface
      *
      * @throws \InvalidArgumentException
      */
-    private function getFilterTemplate(Filter $filter): string
+    private function getFilterTemplate(Filter $filter)
     {
         $template = $filter->getTemplate();
         if (null !== $template) {

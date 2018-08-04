@@ -89,13 +89,13 @@ final class TwigTreeOneToManyRenderer implements TreeOneToManyRendererInterface
     }
 
     //    JAFETH
-    public function renderModalFooter(?string $template = null) // Button $button,
+    public function renderModalFooter(string $template = null) // Button $button,
     {
         return $this->twig->render($template ?: $this->defaultTemplate, ['template' => $template]);
     }
 
     //    JAFETH
-    public function renderButton(Button $button, ?string $template = null)
+    public function renderButton(Button $button, string $template = null)
     {
         return $this->twig->render($template ?: $this->defaultTemplate, ['grid' => $button]);
     }
@@ -103,7 +103,7 @@ final class TwigTreeOneToManyRenderer implements TreeOneToManyRendererInterface
     /**
      * {@inheritdoc}
      */
-    public function render(TreeOneToManyViewInterface $gridView, ?string $template = null)
+    public function render(TreeOneToManyViewInterface $gridView, string $template = null)
     {
 
 //        $template ---- @SyliusUi/OneToMany/_default.html.twig

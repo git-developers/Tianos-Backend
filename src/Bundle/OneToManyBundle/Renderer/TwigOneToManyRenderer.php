@@ -93,13 +93,13 @@ final class TwigOneToManyRenderer implements OneToManyRendererInterface
     }
 
     //    JAFETH
-    public function renderModalFooter(?string $template = null) // Button $button,
+    public function renderModalFooter(string $template = null) // Button $button,
     {
         return $this->twig->render($template ?: $this->defaultTemplate, ['template' => $template]);
     }
 
     //    JAFETH
-    public function renderButton(Button $button, ?string $template = null)
+    public function renderButton(Button $button, string $template = null)
     {
         return $this->twig->render($template ?: $this->defaultTemplate, ['grid' => $button]);
     }
@@ -107,7 +107,7 @@ final class TwigOneToManyRenderer implements OneToManyRendererInterface
     /**
      * {@inheritdoc}
      */
-    public function render(OneToManyViewInterface $gridView, ?string $template = null)
+    public function render(OneToManyViewInterface $gridView, string $template = null)
     {
 
 //        $template ---- @SyliusUi/OneToMany/_default.html.twig

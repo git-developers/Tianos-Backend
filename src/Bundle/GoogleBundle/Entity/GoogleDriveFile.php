@@ -442,7 +442,7 @@ class GoogleDriveFile
     /**
      * @param string $fileImage
      */
-    public function setFileImage(string $fileImage): void
+    public function setFileImage(string $fileImage)
     {
         $this->fileImage = $fileImage;
     }
@@ -450,7 +450,7 @@ class GoogleDriveFile
     /**
      * @return int
      */
-    public function getCountShare(): int
+    public function getCountShare()
     {
         return $this->countShare;
     }
@@ -458,7 +458,7 @@ class GoogleDriveFile
     /**
      * @param int $countShare
      */
-    public function setCountShare(int $countShare): void
+    public function setCountShare(int $countShare)
     {
         $this->countShare = $countShare;
     }
@@ -466,7 +466,7 @@ class GoogleDriveFile
     /**
      * @return int
      */
-    public function getCountView(): int
+    public function getCountView()
     {
         return $this->countView;
     }
@@ -474,7 +474,7 @@ class GoogleDriveFile
     /**
      * @param int $countView
      */
-    public function setCountView(int $countView): void
+    public function setCountView(int $countView)
     {
         $this->countView = $countView;
     }

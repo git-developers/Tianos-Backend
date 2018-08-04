@@ -81,14 +81,14 @@ final class TwigTreeRenderer implements TreeRendererInterface
         $this->filterTemplates = $filterTemplates;
     }
 
-    public function renderModalFooter(?string $template = null) // Button $button,
+    public function renderModalFooter(string $template = null) // Button $button,
     {
 //        JAFETH
         return $this->twig->render($template ?: $this->defaultTemplate, ['template' => $template]);
     }
 
 
-    public function renderButton(Button $button, ?string $template = null)
+    public function renderButton(Button $button, string $template = null)
     {
 //        JAFETH
         return $this->twig->render($template ?: $this->defaultTemplate, ['grid' => $button]);
@@ -97,7 +97,7 @@ final class TwigTreeRenderer implements TreeRendererInterface
     /**
      * {@inheritdoc}
      */
-    public function render(TreeViewInterface $gridView, ?string $template = null)
+    public function render(TreeViewInterface $gridView, string $template = null)
     {
 
 //        $template ---- @SyliusUi/Tree/_default.html.twig

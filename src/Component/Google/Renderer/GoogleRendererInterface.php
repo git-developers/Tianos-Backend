@@ -24,7 +24,7 @@ interface GoogleRendererInterface
      *
      * @return mixed
      */
-    public function render(GoogleViewInterface $gridView, ?string $template = null);
+    public function render(GoogleViewInterface $gridView, string $template = null);
 
     /**
      * @param GoogleViewInterface $gridView
@@ -32,7 +32,7 @@ interface GoogleRendererInterface
      *
      * @return mixed
      */
-    public function renderViewer(?string $fileId = null, ?string $fileMimeType = null);
+    public function renderViewer(string $fileId = null, string $fileMimeType = null);
 
     /**
      * @param GoogleViewInterface $gridView

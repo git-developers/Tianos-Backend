@@ -154,7 +154,7 @@ class GoogleHelper extends Helper
      *
      * @return mixed
      */
-    public function renderGoogle(GoogleView $gridView, ?string $template = null)
+    public function renderGoogle(GoogleView $gridView, string $template = null)
     {
         //JAFETH
         return $this->googleRenderer->render($gridView, $template);

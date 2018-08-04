@@ -12,7 +12,7 @@ final class ExpressionLanguage extends BaseExpressionLanguage
     /**
      * {@inheritdoc}
      */
-    public function __construct(?ParserCacheInterface $parser = null, array $providers = [])
+    public function __construct(ParserCacheInterface $parser = null, array $providers = [])
     {
         array_unshift($providers, new NotNullExpressionFunctionProvider());
 

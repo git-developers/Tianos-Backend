@@ -127,7 +127,7 @@ class Visit
     /**
      * @param \DateTime $visitStart
      */
-    public function setVisitStart($visitStart): void
+    public function setVisitStart($visitStart)
     {
 
 //        //\DateTime
@@ -152,7 +152,7 @@ class Visit
     /**
      * @param \DateTime $visitEnd
      */
-    public function setVisitEnd($visitEnd): void
+    public function setVisitEnd($visitEnd)
     {
         $this->visitEnd = $visitEnd;
     }
@@ -168,7 +168,7 @@ class Visit
     /**
      * @param \DateTime $createdAt
      */
-    public function setCreatedAt(\DateTime $createdAt): void
+    public function setCreatedAt(\DateTime $createdAt)
     {
         $this->createdAt = $createdAt;
     }
@@ -176,7 +176,7 @@ class Visit
     /**
      * @return int
      */
-    public function getUserCreate(): int
+    public function getUserCreate()
     {
         return $this->userCreate;
     }
@@ -184,7 +184,7 @@ class Visit
     /**
      * @param int $userCreate
      */
-    public function setUserCreate(int $userCreate): void
+    public function setUserCreate(int $userCreate)
     {
         $this->userCreate = $userCreate;
     }
@@ -200,7 +200,7 @@ class Visit
     /**
      * @param \DateTime $updatedAt
      */
-    public function setUpdatedAt(\DateTime $updatedAt): void
+    public function setUpdatedAt(\DateTime $updatedAt)
     {
         $this->updatedAt = $updatedAt;
     }
@@ -216,7 +216,7 @@ class Visit
     /**
      * @param int $userUpdate
      */
-    public function setUserUpdate(int $userUpdate): void
+    public function setUserUpdate(int $userUpdate)
     {
         $this->userUpdate = $userUpdate;
     }
@@ -256,7 +256,7 @@ class Visit
     /**
      * @param \Bundle\PointofsaleBundle\Entity\Pointofsale $pointOfSale
      */
-    public function setPointOfSale(\Bundle\PointofsaleBundle\Entity\Pointofsale $pointOfSale): void
+    public function setPointOfSale(\Bundle\PointofsaleBundle\Entity\Pointofsale $pointOfSale)
     {
         $this->pointOfSale = $pointOfSale;
     }
@@ -272,16 +272,15 @@ class Visit
     /**
      * @param \Bundle\UserBundle\Entity\User $user
      */
-    public function setUser(\Bundle\UserBundle\Entity\User $user): void
+    public function setUser(\Bundle\UserBundle\Entity\User $user)
     {
         $this->user = $user;
     }
 
-
     /**
      * @return bool
      */
-    public function isActive(): bool
+    public function isActive()
     {
         return $this->isActive;
     }
@@ -289,7 +288,7 @@ class Visit
     /**
      * @param bool $isActive
      */
-    public function setIsActive(bool $isActive): void
+    public function setIsActive(bool $isActive)
     {
         $this->isActive = $isActive;
     }

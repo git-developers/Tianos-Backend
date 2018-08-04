@@ -142,8 +142,8 @@ restart_services:
 	service --status-all
 	service nginx restart
 	service mysql restart
-	service php7.1-fpm stop
-	service php7.1-fpm start
+	service php7.0-fpm stop
+	service php7.0-fpm start
 	@echo ---;
 
 step_1_mysql_permissions:

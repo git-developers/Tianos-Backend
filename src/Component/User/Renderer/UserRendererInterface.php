@@ -9,7 +9,7 @@ interface UserRendererInterface
 {
 
     // JAFETH
-    public function profileAboutMe(?string $aboutMe = null);
+    public function profileAboutMe(string $aboutMe = null);
     public function appUserName(User $user, $start, $length = null);
 
 }

@@ -53,19 +53,8 @@ final class TwigGridRenderer implements GridRendererInterface
         $this->actionTemplates = $actionTemplates;
     }
 
-
-    /*
-    const CLOSED_LEFT = '<button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Cerrar</button>';
-    const CLOSED_RIGHT_DEFAULT = '<button type="button" class="btn btn-default pull-right" data-dismiss="modal">Cerrar</button>';
-    const CLOSED_RIGHT_OUTLINE = '<button type="button" class="btn btn-outline pull-right" data-dismiss="modal">Cerrar</button>';
-    const SAVE = '<button type="submit" class="btn btn-outline">Guardar</button>';
-    const CHANGE_PASSWORD = '<button type="submit" class="btn btn-outline">Cambiar password</button>';
-    const DELETE = '<button type="submit" class="btn btn-outline">Eliminar</button>';
-     */
-
-
     //        JAFETH
-    public function renderFormJs($vars, $modal, $formMapper, DataTableMapper $dataTable, ?string $template = null)
+    public function renderFormJs($vars, $modal, $formMapper, DataTableMapper $dataTable, string $template = null)
     {
 
         return (string) $this->twig->render($template, [
@@ -78,7 +67,7 @@ final class TwigGridRenderer implements GridRendererInterface
 
 
     //JAFETH
-    public function renderModalFooter(?string $action = null)
+    public function renderModalFooter(string $action = null)
     {
         switch ($action){
             case Action::EDIT:
@@ -112,7 +101,7 @@ final class TwigGridRenderer implements GridRendererInterface
         ]);
     }
 
-    public function renderButton(Button $button, ?string $template = null)
+    public function renderButton(Button $button, string $template = null)
     {
         //JAFETH
         return (string) $this->twig->render($template, [
@@ -127,7 +116,7 @@ final class TwigGridRenderer implements GridRendererInterface
     /**
      * {@inheritdoc}
      */
-    public function render(GridViewInterface $gridView, ?string $template = null): string
+    public function render(GridViewInterface $gridView, string $template = null)
     {
         return (string) $this->gridRenderer->render($gridView, $template);
     }
@@ -135,7 +124,7 @@ final class TwigGridRenderer implements GridRendererInterface
     /**
      * {@inheritdoc}
      */
-    public function renderField(GridViewInterface $gridView, Field $field, $data): string
+    public function renderField(GridViewInterface $gridView, Field $field, $data)
     {
         return (string) $this->gridRenderer->renderField($gridView, $field, $data);
     }
@@ -143,7 +132,7 @@ final class TwigGridRenderer implements GridRendererInterface
     /**
      * {@inheritdoc}
      */
-    public function renderAction(GridViewInterface $gridView, Action $action, $data = null): string
+    public function renderAction(GridViewInterface $gridView, Action $action, $data = null)
     {
         $type = $action->getType();
         if (!isset($this->actionTemplates[$type])) {
@@ -167,7 +156,7 @@ final class TwigGridRenderer implements GridRendererInterface
     /**
      * {@inheritdoc}
      */
-    public function renderFilter(GridViewInterface $gridView, Filter $filter): string
+    public function renderFilter(GridViewInterface $gridView, Filter $filter)
     {
         return (string) $this->gridRenderer->renderFilter($gridView, $filter);
     }

@@ -84,7 +84,7 @@ final class TwigUserRenderer implements UserRendererInterface
     }
 
     //        JAFETH
-    public function profileAboutMe(?string $aboutMe = null)
+    public function profileAboutMe(string $aboutMe = null)
     {
         return $this->twig->render($aboutMe ?: $this->defaultTemplate, ['template' => $aboutMe]);
     }

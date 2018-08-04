@@ -26,42 +26,42 @@ final class ThemeAuthor
      */
     private $role;
 
-    public function getName(): ?string
+    public function getName()
     {
         return $this->name;
     }
 
-    public function setName(?string $name): void
+    public function setName(string $name)
     {
         $this->name = $name;
     }
 
-    public function getEmail(): ?string
+    public function getEmail()
     {
         return $this->email;
     }
 
-    public function setEmail(?string $email): void
+    public function setEmail(string $email)
     {
         $this->email = $email;
     }
 
-    public function getHomepage(): ?string
+    public function getHomepage()
     {
         return $this->homepage;
     }
 
-    public function setHomepage(?string $homepage): void
+    public function setHomepage(string $homepage)
     {
         $this->homepage = $homepage;
     }
 
-    public function getRole(): ?string
+    public function getRole()
     {
         return $this->role;
     }
 
-    public function setRole(?string $role): void
+    public function setRole(string $role)
     {
         $this->role = $role;
     }

@@ -63,7 +63,7 @@ final class TwigTreeRenderer implements TreeRendererInterface
      */
 
     //JAFETH
-    public function renderModalFooter(?string $action = null)
+    public function renderModalFooter(string $action = null)
     {
         switch ($action){
             case Action::EDIT:
@@ -98,7 +98,7 @@ final class TwigTreeRenderer implements TreeRendererInterface
     }
 
     //JAFETH
-    public function renderButton(Button $button, ?string $template = null)
+    public function renderButton(Button $button, string $template = null)
     {
         return (string) $this->twig->render($template, [
             'button' => $button,
@@ -112,7 +112,7 @@ final class TwigTreeRenderer implements TreeRendererInterface
     /**
      * {@inheritdoc}
      */
-    public function render(TreeViewInterface $gridView, ?string $template = null): string
+    public function render(TreeViewInterface $gridView, string $template = null)
     {
         return (string) $this->gridRenderer->render($gridView, $template);
     }

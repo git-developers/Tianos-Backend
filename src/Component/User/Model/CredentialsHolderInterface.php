@@ -9,12 +9,12 @@ interface CredentialsHolderInterface
     /**
      * @return string|null
      */
-    public function getPlainPassword(): ?string;
+    public function getPlainPassword();
 
     /**
      * @param string|null $plainPassword
      */
-    public function setPlainPassword(?string $plainPassword): void;
+    public function setPlainPassword(string $plainPassword);
 
     /**
      * Returns the password used to authenticate the user.
@@ -29,7 +29,7 @@ interface CredentialsHolderInterface
     /**
      * @param string|null $encodedPassword
      */
-    public function setPassword(?string $encodedPassword): void;
+    public function setPassword(string $encodedPassword);
 
     /**
      * Returns the salt that was originally used to encode the password.

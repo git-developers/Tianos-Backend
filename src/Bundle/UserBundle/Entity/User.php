@@ -404,7 +404,7 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     /**
      * @return null|string
      */
-    public function getAboutMe(): ?string
+    public function getAboutMe()
     {
         return $this->aboutMe;
     }
@@ -412,7 +412,7 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     /**
      * @param null|string $aboutMe
      */
-    public function setAboutMe(?string $aboutMe): void
+    public function setAboutMe(string $aboutMe)
     {
         $this->aboutMe = $aboutMe;
     }
@@ -420,7 +420,7 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     /**
      * @return null|string
      */
-    public function getHeadline(): ?string
+    public function getHeadline()
     {
         return $this->headline;
     }
@@ -428,7 +428,7 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     /**
      * @param null|string $headline
      */
-    public function setHeadline(?string $headline): void
+    public function setHeadline(string $headline)
     {
         $this->headline = $headline;
     }
@@ -676,7 +676,7 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     /**
      * @return string
      */
-    public function getResetPasswordHash(): string
+    public function getResetPasswordHash()
     {
         return $this->resetPasswordHash;
     }
@@ -684,7 +684,7 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     /**
      * @param string $resetPasswordHash
      */
-    public function setResetPasswordHash(string $resetPasswordHash): void
+    public function setResetPasswordHash(string $resetPasswordHash)
     {
         $this->resetPasswordHash = $resetPasswordHash;
     }
@@ -692,7 +692,7 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     /**
      * @return \DateTime
      */
-    public function getResetPasswordDate(): \DateTime
+    public function getResetPasswordDate()
     {
         return $this->resetPasswordDate;
     }
@@ -700,7 +700,7 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     /**
      * @param \DateTime $resetPasswordDate
      */
-    public function setResetPasswordDate(\DateTime $resetPasswordDate): void
+    public function setResetPasswordDate(\DateTime $resetPasswordDate)
     {
         $this->resetPasswordDate = $resetPasswordDate;
     }

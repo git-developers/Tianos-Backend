@@ -23,7 +23,7 @@ class PasswordResetRequest
     /**
      * @return string|null
      */
-    public function getEmail(): ?string
+    public function getEmail()
     {
         return $this->email;
     }
@@ -31,7 +31,7 @@ class PasswordResetRequest
     /**
      * @param string|null $email
      */
-    public function setEmail(?string $email): void
+    public function setEmail(string $email)
     {
         $this->email = $email;
     }

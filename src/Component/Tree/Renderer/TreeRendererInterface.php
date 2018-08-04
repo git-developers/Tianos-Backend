@@ -14,9 +14,9 @@ interface TreeRendererInterface
 {
 
     // JAFETH
-    public function renderModalFooter(?string $template = null); // Button $button,
+    public function renderModalFooter(string $template = null); // Button $button,
 
-    public function renderButton(Button $button, ?string $template = null);
+    public function renderButton(Button $button, string $template = null);
     // JAFETH
 
 
@@ -26,7 +26,7 @@ interface TreeRendererInterface
      *
      * @return mixed
      */
-    public function render(TreeViewInterface $gridView, ?string $template = null);
+    public function render(TreeViewInterface $gridView, string $template = null);
 
     /**
      * @param TreeViewInterface $gridView

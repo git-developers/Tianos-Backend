@@ -325,7 +325,7 @@ class Pointofsale
     /**
      * @param string $address
      */
-    public function setAddress(string $address): void
+    public function setAddress(string $address)
     {
         $this->address = $address;
     }
@@ -341,7 +341,7 @@ class Pointofsale
     /**
      * @param string $phone
      */
-    public function setPhone(string $phone): void
+    public function setPhone(string $phone)
     {
         $this->phone = $phone;
     }

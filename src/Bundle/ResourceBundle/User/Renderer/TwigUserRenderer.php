@@ -55,7 +55,7 @@ final class TwigUserRenderer implements UserRendererInterface
     }
 
     //        JAFETH
-    public function profileAboutMe(?string $aboutMe = null)
+    public function profileAboutMe(string $aboutMe = null)
     {
         return is_null($aboutMe) ? '-' : nl2br($aboutMe);
     }

@@ -14,8 +14,8 @@ interface TreeOneToManyRendererInterface
 {
 
     // JAFETH
-    public function renderModalFooter(?string $template = null); // Button $button,
-    public function renderButton(Button $button, ?string $template = null);
+    public function renderModalFooter(string $template = null); // Button $button,
+    public function renderButton(Button $button, string $template = null);
     public function boxRightIsAssigned(array $oneToManyLeft = [], $id);
     // JAFETH
 
@@ -26,7 +26,7 @@ interface TreeOneToManyRendererInterface
      *
      * @return mixed
      */
-    public function render(TreeOneToManyViewInterface $gridView, ?string $template = null);
+    public function render(TreeOneToManyViewInterface $gridView, string $template = null);
 
     /**
      * @param TreeOneToManyViewInterface $gridView

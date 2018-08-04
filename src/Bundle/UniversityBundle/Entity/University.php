@@ -153,7 +153,7 @@ class University
     /**
      * @return string
      */
-    public function getAbbreviation(): string
+    public function getAbbreviation()
     {
         return $this->abbreviation;
     }
@@ -161,7 +161,7 @@ class University
     /**
      * @param string $abbreviation
      */
-    public function setAbbreviation(string $abbreviation): void
+    public function setAbbreviation(string $abbreviation)
     {
         $this->abbreviation = $abbreviation;
     }

@@ -28,7 +28,7 @@ class ChangePassword
     /**
      * @return string|null
      */
-    public function getCurrentPassword(): ?string
+    public function getCurrentPassword()
     {
         return $this->currentPassword;
     }
@@ -36,7 +36,7 @@ class ChangePassword
     /**
      * @param string|null $password
      */
-    public function setCurrentPassword(?string $password): void
+    public function setCurrentPassword(string $password)
     {
         $this->currentPassword = $password;
     }
@@ -44,7 +44,7 @@ class ChangePassword
     /**
      * @return string
      */
-    public function getNewPassword(): ?string
+    public function getNewPassword()
     {
         return $this->newPassword;
     }
@@ -52,7 +52,7 @@ class ChangePassword
     /**
      * @param string $password
      */
-    public function setNewPassword(?string $password): void
+    public function setNewPassword(string $password)
     {
         $this->newPassword = $password;
     }

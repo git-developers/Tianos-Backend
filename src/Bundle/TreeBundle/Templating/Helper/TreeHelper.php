@@ -28,13 +28,13 @@ class TreeHelper extends Helper
     }
 
     //        JAFETH
-    public function renderModalFooter(?string $template = null) // Button $button,
+    public function renderModalFooter(string $template = null)
     {
-        return $this->gridRenderer->renderModalFooter($template); // $button,
+        return $this->gridRenderer->renderModalFooter($template);
     }
 
     //        JAFETH
-    public function renderButton(Button $button, ?string $template = null)
+    public function renderButton(Button $button, string $template = null)
     {
         return $this->gridRenderer->renderButton($button, $template);
     }
@@ -45,7 +45,7 @@ class TreeHelper extends Helper
      *
      * @return mixed
      */
-    public function renderTree(TreeView $gridView, ?string $template = null)
+    public function renderTree(TreeView $gridView, string $template = null)
     {
         //JAFETH
         return $this->gridRenderer->render($gridView, $template);

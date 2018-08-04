@@ -74,7 +74,7 @@ final class TwigTreeOneToManyRenderer implements TreeOneToManyRendererInterface
 //        return $this->twig->render($template ?: $this->defaultTemplate, ['template' => $template]);
     }
 
-    public function renderModalFooter(?string $action = null)
+    public function renderModalFooter(string $action = null)
     {
         switch ($action){
             case Action::EDIT:
@@ -108,7 +108,7 @@ final class TwigTreeOneToManyRenderer implements TreeOneToManyRendererInterface
         ]);
     }
 
-    public function renderButton(Button $button, ?string $template = null)
+    public function renderButton(Button $button, string $template = null)
     {
         //JAFETH
         return (string) $this->twig->render($template, [
@@ -123,7 +123,7 @@ final class TwigTreeOneToManyRenderer implements TreeOneToManyRendererInterface
     /**
      * {@inheritdoc}
      */
-    public function render(TreeOneToManyViewInterface $gridView, ?string $template = null): string
+    public function render(TreeOneToManyViewInterface $gridView, string $template = null)
     {
         return (string) $this->gridRenderer->render($gridView, $template);
     }

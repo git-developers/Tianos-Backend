@@ -15,12 +15,12 @@ interface GridRendererInterface
 {
 
     // JAFETH
-    public function renderFormJs($vars, $modal, $formMapper, DataTableMapper $dataTable, ?string $template = null);
+    public function renderFormJs($vars, $modal, $formMapper, DataTableMapper $dataTable, string $template = null);
 
     // JAFETH
-    public function renderModalFooter(?string $template = null); // Button $button,
+    public function renderModalFooter(string $template = null); // Button $button,
 
-    public function renderButton(Button $button, ?string $template = null);
+    public function renderButton(Button $button, string $template = null);
     // JAFETH
 
 
@@ -30,7 +30,7 @@ interface GridRendererInterface
      *
      * @return mixed
      */
-    public function render(GridViewInterface $gridView, ?string $template = null);
+    public function render(GridViewInterface $gridView, string $template = null);
 
     /**
      * @param GridViewInterface $gridView

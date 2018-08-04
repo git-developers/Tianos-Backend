@@ -170,12 +170,12 @@ final class TwigGoogleRenderer implements GoogleRendererInterface
         return $this->filterTemplates[$type];
     }
 
-    public function render(GoogleViewInterface $gridView, ?string $template = null)
+    public function render(GoogleViewInterface $gridView, string $template = null)
     {
         // TODO: Implement render() method.
     }
 
-    public function renderViewer(?string $fileId = NULL, ?string $fileMimeType = null)
+    public function renderViewer(string $fileId = NULL, string $fileMimeType = null)
     {
 
     }

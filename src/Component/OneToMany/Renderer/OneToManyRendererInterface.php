@@ -14,8 +14,8 @@ interface OneToManyRendererInterface
 {
 
     // JAFETH
-    public function renderModalFooter(?string $template = null); // Button $button,
-    public function renderButton(Button $button, ?string $template = null);
+    public function renderModalFooter(string $template = null); // Button $button,
+    public function renderButton(Button $button, string $template = null);
     public function boxRightIsAssigned(array $oneToManyLeft = [], $id);
     // JAFETH
 
@@ -26,7 +26,7 @@ interface OneToManyRendererInterface
      *
      * @return mixed
      */
-    public function render(OneToManyViewInterface $gridView, ?string $template = null);
+    public function render(OneToManyViewInterface $gridView, string $template = null);
 
     /**
      * @param OneToManyViewInterface $gridView

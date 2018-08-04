@@ -23,128 +23,128 @@ interface UserInterface extends
     /**
      * @return string|null
      */
-    public function getEmail(): ?string;
+    public function getEmail();
 
     /**
      * @param string|null $email
      */
-    public function setEmail(?string $email): void;
+    public function setEmail(string $email);
 
     /**
      * Gets normalized email (should be used in search and sort queries).
      *
      * @return string|null
      */
-    public function getEmailCanonical(): ?string;
+    public function getEmailCanonical();
 
     /**
      * @param string|null $emailCanonical
      */
-    public function setEmailCanonical(?string $emailCanonical): void;
+    public function setEmailCanonical(string $emailCanonical);
 
     /**
      * @param string|null $username
      */
-    public function setUsername(?string $username): void;
+    public function setUsername(string $username);
 
     /**
      * Gets normalized username (should be used in search and sort queries).
      *
      * @return string|null
      */
-    public function getUsernameCanonical(): ?string;
+    public function getUsernameCanonical();
 
     /**
      * @param string|null $usernameCanonical
      */
-    public function setUsernameCanonical(?string $usernameCanonical): void;
+    public function setUsernameCanonical(string $usernameCanonical);
 
     /**
      * @param bool $locked
      */
-    public function setLocked(bool $locked): void;
+    public function setLocked(bool $locked);
 
     /**
      * @return string|null
      */
-    public function getEmailVerificationToken(): ?string;
+    public function getEmailVerificationToken();
 
     /**
      * @param string|null $verificationToken
      */
-    public function setEmailVerificationToken(?string $verificationToken): void;
+    public function setEmailVerificationToken(string $verificationToken);
 
     /**
      * @return string|null
      */
-    public function getPasswordResetToken(): ?string;
+    public function getPasswordResetToken();
 
     /**
      * @param string|null $passwordResetToken
      */
-    public function setPasswordResetToken(?string $passwordResetToken): void;
+    public function setPasswordResetToken(string $passwordResetToken);
 
     /**
      * @return \DateTimeInterface|null
      */
-    public function getPasswordRequestedAt(): ?\DateTimeInterface;
+    public function getPasswordRequestedAt();
 
     /**
      * @param \DateTimeInterface|null $date
      */
-    public function setPasswordRequestedAt(?\DateTimeInterface $date): void;
+    public function setPasswordRequestedAt(\DateTimeInterface $date);
 
     /**
      * @param \DateInterval $ttl
      *
      * @return bool
      */
-    public function isPasswordRequestNonExpired(\DateInterval $ttl): bool;
+    public function isPasswordRequestNonExpired(\DateInterval $ttl);
 
     /**
      * @return bool
      */
-    public function isVerified(): bool;
+    public function isVerified();
 
     /**
      * @return \DateTimeInterface|null
      */
-    public function getVerifiedAt(): ?\DateTimeInterface;
+    public function getVerifiedAt();
 
     /**
      * @param \DateTimeInterface|null $verifiedAt
      */
-    public function setVerifiedAt(?\DateTimeInterface $verifiedAt): void;
+    public function setVerifiedAt(\DateTimeInterface $verifiedAt);
 
     /**
      * @return \DateTimeInterface|null
      */
-    public function getExpiresAt(): ?\DateTimeInterface;
+    public function getExpiresAt();
 
     /**
      * @param \DateTimeInterface|null $date
      */
-    public function setExpiresAt(?\DateTimeInterface $date): void;
+    public function setExpiresAt(\DateTimeInterface $date);
 
     /**
      * @return \DateTimeInterface|null
      */
-    public function getCredentialsExpireAt(): ?\DateTimeInterface;
+    public function getCredentialsExpireAt();
 
     /**
      * @param \DateTimeInterface|null $date
      */
-    public function setCredentialsExpireAt(?\DateTimeInterface $date): void;
+    public function setCredentialsExpireAt(\DateTimeInterface $date);
 
     /**
      * @return \DateTimeInterface|null
      */
-    public function getLastLogin(): ?\DateTimeInterface;
+    public function getLastLogin();
 
     /**
      * @param \DateTimeInterface|null $time
      */
-    public function setLastLogin(?\DateTimeInterface $time): void;
+    public function setLastLogin(\DateTimeInterface $time);
 
     /**
      * Never use this to check if this user has access to anything!
@@ -158,32 +158,32 @@ interface UserInterface extends
      *
      * @return bool
      */
-    public function hasRole(string $role): bool;
+    public function hasRole(string $role);
 
     /**
      * @param string $role
      */
-    public function addRole(string $role): void;
+    public function addRole(string $role);
 
     /**
      * @param string $role
      */
-    public function removeRole(string $role): void;
+    public function removeRole(string $role);
 
     /**
      * @return Collection|UserOAuthInterface[]
      */
-    public function getOAuthAccounts(): Collection;
+    public function getOAuthAccounts();
 
     /**
      * @param string $provider
      *
      * @return UserOAuthInterface|null
      */
-    public function getOAuthAccount(string $provider): ?UserOAuthInterface;
+    public function getOAuthAccount(string $provider);
 
     /**
      * @param UserOAuthInterface $oauth
      */
-    public function addOAuthAccount(UserOAuthInterface $oauth): void;
+    public function addOAuthAccount(UserOAuthInterface $oauth);
 }

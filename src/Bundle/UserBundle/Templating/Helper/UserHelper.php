@@ -28,9 +28,9 @@ class UserHelper extends Helper
     }
 
     // JAFETH
-    public function profileAboutMe(?string $template = null) // Button $button,
+    public function profileAboutMe(string $template = null)
     {
-        return $this->userRenderer->profileAboutMe($template); // $button,
+        return $this->userRenderer->profileAboutMe($template);
     }
 
     public function appUserName(User $user, $start, $length = null)

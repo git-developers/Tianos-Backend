@@ -62,7 +62,7 @@ final class TwigGoogleRenderer implements GoogleRendererInterface
     /**
      * {@inheritdoc}
      */
-    public function render(GoogleViewInterface $gridView, ?string $template = null): string
+    public function render(GoogleViewInterface $gridView, string $template = null)
     {
         return (string) $this->gridRenderer->render($gridView, $template);
     }
@@ -70,7 +70,7 @@ final class TwigGoogleRenderer implements GoogleRendererInterface
     /**
      * {@inheritdoc}
      */
-    public function renderField(GoogleViewInterface $gridView, Field $field, $data): string
+    public function renderField(GoogleViewInterface $gridView, Field $field, $data)
     {
         return (string) $this->gridRenderer->renderField($gridView, $field, $data);
     }
@@ -78,7 +78,7 @@ final class TwigGoogleRenderer implements GoogleRendererInterface
     /**
      * {@inheritdoc}
      */
-    public function renderAction(GoogleViewInterface $gridView, Action $action, $data = null): string
+    public function renderAction(GoogleViewInterface $gridView, Action $action, $data = null)
     {
         $type = $action->getType();
         if (!isset($this->actionTemplates[$type])) {
@@ -102,12 +102,12 @@ final class TwigGoogleRenderer implements GoogleRendererInterface
     /**
      * {@inheritdoc}
      */
-    public function renderFilter(GoogleViewInterface $gridView, Filter $filter): string
+    public function renderFilter(GoogleViewInterface $gridView, Filter $filter)
     {
         return (string) $this->gridRenderer->renderFilter($gridView, $filter);
     }
 
-    public function renderViewer(?string $fileId = null, ?string $template = null)
+    public function renderViewer(string $fileId = null, string $template = null)
     {
         return $this->twig->render($template, [
             'fileId' => $fileId,

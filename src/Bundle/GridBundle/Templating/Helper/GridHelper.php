@@ -29,19 +29,19 @@ class GridHelper extends Helper
     }
 
     //        JAFETH
-    public function renderFormJs($vars, $modal, $formMapper, DataTableMapper $dataTable, ?string $template = null)
+    public function renderFormJs($vars, $modal, $formMapper, DataTableMapper $dataTable, string $template = null)
     {
         return $this->gridRenderer->renderFormJs($vars, $modal, $formMapper, $dataTable, $template);
     }
 
     //        JAFETH
-    public function renderModalFooter(?string $template = null) // Button $button,
+    public function renderModalFooter(string $template = null)
     {
-        return $this->gridRenderer->renderModalFooter($template); // $button,
+        return $this->gridRenderer->renderModalFooter($template);
     }
 
     //        JAFETH
-    public function renderButton(Button $button, ?string $template = null)
+    public function renderButton(Button $button, string $template = null)
     {
         return $this->gridRenderer->renderButton($button, $template);
     }
@@ -52,7 +52,7 @@ class GridHelper extends Helper
      *
      * @return mixed
      */
-    public function renderGrid(GridView $gridView, ?string $template = null)
+    public function renderGrid(GridView $gridView, string $template = null)
     {
         //JAFETH
         return $this->gridRenderer->render($gridView, $template);

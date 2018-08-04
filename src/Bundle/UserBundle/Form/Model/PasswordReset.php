@@ -23,7 +23,7 @@ class PasswordReset
     /**
      * @return string|null
      */
-    public function getPassword(): ?string
+    public function getPassword()
     {
         return $this->password;
     }
@@ -31,7 +31,7 @@ class PasswordReset
     /**
      * @param string|null $password
      */
-    public function setPassword(?string $password): void
+    public function setPassword(string $password)
     {
         $this->password = $password;
     }

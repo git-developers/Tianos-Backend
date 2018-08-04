@@ -54,13 +54,13 @@ class OneToManyHelper extends Helper
     }
 
     //        JAFETH
-    public function renderModalFooter(?string $template = null) // Button $button,
+    public function renderModalFooter(string $template = null) // Button $button,
     {
         return $this->gridRenderer->renderModalFooter($template); // $button,
     }
 
     //        JAFETH
-    public function renderButton(Button $button, ?string $template = null)
+    public function renderButton(Button $button, string $template = null)
     {
         return $this->gridRenderer->renderButton($button, $template);
     }
@@ -71,7 +71,7 @@ class OneToManyHelper extends Helper
      *
      * @return mixed
      */
-    public function renderOneToMany(OneToManyView $gridView, ?string $template = null)
+    public function renderOneToMany(OneToManyView $gridView, string $template = null)
     {
         //JAFETH
         return $this->gridRenderer->render($gridView, $template);

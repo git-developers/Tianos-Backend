@@ -130,7 +130,7 @@ class User implements UserInterface
     /**
      * @return string
      */
-    public function __toString(): string
+    public function __toString()
     {
         return (string) $this->getUsername();
     }
@@ -146,7 +146,7 @@ class User implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function getEmail(): ?string
+    public function getEmail()
     {
         return $this->email;
     }
@@ -154,7 +154,7 @@ class User implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function setEmail(?string $email): void
+    public function setEmail(string $email)
     {
         $this->email = $email;
     }
@@ -162,7 +162,7 @@ class User implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function getEmailCanonical(): ?string
+    public function getEmailCanonical()
     {
         return $this->emailCanonical;
     }
@@ -170,7 +170,7 @@ class User implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function setEmailCanonical(?string $emailCanonical): void
+    public function setEmailCanonical(string $emailCanonical)
     {
         $this->emailCanonical = $emailCanonical;
     }
@@ -178,7 +178,7 @@ class User implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function getUsername(): ?string
+    public function getUsername()
     {
         return $this->username;
     }
@@ -186,7 +186,7 @@ class User implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function setUsername(?string $username): void
+    public function setUsername(string $username)
     {
         $this->username = $username;
     }
@@ -194,7 +194,7 @@ class User implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function getUsernameCanonical(): ?string
+    public function getUsernameCanonical()
     {
         return $this->usernameCanonical;
     }
@@ -202,7 +202,7 @@ class User implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function setUsernameCanonical(?string $usernameCanonical): void
+    public function setUsernameCanonical(string $usernameCanonical)
     {
         $this->usernameCanonical = $usernameCanonical;
     }
@@ -210,7 +210,7 @@ class User implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function getSalt(): string
+    public function getSalt()
     {
         return $this->salt;
     }
@@ -218,7 +218,7 @@ class User implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function getPlainPassword(): ?string
+    public function getPlainPassword()
     {
         return $this->plainPassword;
     }
@@ -226,7 +226,7 @@ class User implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function setPlainPassword(?string $password): void
+    public function setPlainPassword(string $password)
     {
         $this->plainPassword = $password;
     }
@@ -234,7 +234,7 @@ class User implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function getPassword(): ?string
+    public function getPassword()
     {
         return $this->password;
     }
@@ -242,7 +242,7 @@ class User implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function setPassword(?string $password): void
+    public function setPassword(string $password)
     {
         $this->password = $password;
     }
@@ -250,7 +250,7 @@ class User implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function getExpiresAt(): ?\DateTimeInterface
+    public function getExpiresAt()
     {
         return $this->expiresAt;
     }
@@ -258,7 +258,7 @@ class User implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function setExpiresAt(?\DateTimeInterface $date): void
+    public function setExpiresAt(\DateTimeInterface $date)
     {
         $this->expiresAt = $date;
     }
@@ -266,7 +266,7 @@ class User implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function getCredentialsExpireAt(): ?\DateTimeInterface
+    public function getCredentialsExpireAt()
     {
         return $this->credentialsExpireAt;
     }
@@ -274,7 +274,7 @@ class User implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function setCredentialsExpireAt(?\DateTimeInterface $date): void
+    public function setCredentialsExpireAt(\DateTimeInterface $date)
     {
         $this->credentialsExpireAt = $date;
     }
@@ -282,7 +282,7 @@ class User implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function getLastLogin(): ?\DateTimeInterface
+    public function getLastLogin()
     {
         return $this->lastLogin;
     }
@@ -290,7 +290,7 @@ class User implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function setLastLogin(?\DateTimeInterface $time): void
+    public function setLastLogin(\DateTimeInterface $time)
     {
         $this->lastLogin = $time;
     }
@@ -298,7 +298,7 @@ class User implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function getEmailVerificationToken(): ?string
+    public function getEmailVerificationToken()
     {
         return $this->emailVerificationToken;
     }
@@ -306,7 +306,7 @@ class User implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function setEmailVerificationToken(?string $verificationToken): void
+    public function setEmailVerificationToken(string $verificationToken)
     {
         $this->emailVerificationToken = $verificationToken;
     }
@@ -314,7 +314,7 @@ class User implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function getPasswordResetToken(): ?string
+    public function getPasswordResetToken()
     {
         return $this->passwordResetToken;
     }
@@ -322,7 +322,7 @@ class User implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function setPasswordResetToken(?string $passwordResetToken): void
+    public function setPasswordResetToken(string $passwordResetToken)
     {
         $this->passwordResetToken = $passwordResetToken;
     }
@@ -330,7 +330,7 @@ class User implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function isCredentialsNonExpired(): bool
+    public function isCredentialsNonExpired()
     {
         return !$this->hasExpired($this->credentialsExpireAt);
     }
@@ -338,7 +338,7 @@ class User implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function isAccountNonExpired(): bool
+    public function isAccountNonExpired()
     {
         return !$this->hasExpired($this->expiresAt);
     }
@@ -346,7 +346,7 @@ class User implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function setLocked(bool $locked): void
+    public function setLocked(bool $locked)
     {
         $this->locked = $locked;
     }
@@ -354,7 +354,7 @@ class User implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function isAccountNonLocked(): bool
+    public function isAccountNonLocked()
     {
         return !$this->locked;
     }
@@ -362,7 +362,7 @@ class User implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function hasRole(string $role): bool
+    public function hasRole(string $role)
     {
         return in_array(strtoupper($role), $this->getRoles(), true);
     }
@@ -370,7 +370,7 @@ class User implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function addRole(string $role): void
+    public function addRole(string $role)
     {
         $role = strtoupper($role);
         if (!in_array($role, $this->roles, true)) {
@@ -381,7 +381,7 @@ class User implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function removeRole(string $role): void
+    public function removeRole(string $role)
     {
         if (false !== $key = array_search(strtoupper($role), $this->roles, true)) {
             unset($this->roles[$key]);
@@ -400,7 +400,7 @@ class User implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function isPasswordRequestNonExpired(\DateInterval $ttl): bool
+    public function isPasswordRequestNonExpired(\DateInterval $ttl)
     {
         if (null === $this->passwordRequestedAt) {
             return false;
@@ -415,7 +415,7 @@ class User implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function getPasswordRequestedAt(): ?\DateTimeInterface
+    public function getPasswordRequestedAt()
     {
         return $this->passwordRequestedAt;
     }
@@ -423,7 +423,7 @@ class User implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function setPasswordRequestedAt(?\DateTimeInterface $date): void
+    public function setPasswordRequestedAt(\DateTimeInterface $date)
     {
         $this->passwordRequestedAt = $date;
     }
@@ -439,7 +439,7 @@ class User implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function getVerifiedAt(): ?\DateTimeInterface
+    public function getVerifiedAt()
     {
         return $this->verifiedAt;
     }
@@ -447,7 +447,7 @@ class User implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function setVerifiedAt(?\DateTimeInterface $verifiedAt): void
+    public function setVerifiedAt(\DateTimeInterface $verifiedAt)
     {
         $this->verifiedAt = $verifiedAt;
     }
@@ -455,7 +455,7 @@ class User implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function eraseCredentials(): void
+    public function eraseCredentials()
     {
         $this->plainPassword = null;
     }
@@ -463,7 +463,7 @@ class User implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function getOAuthAccounts(): Collection
+    public function getOAuthAccounts()
     {
         return $this->oauthAccounts;
     }
@@ -471,7 +471,7 @@ class User implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function getOAuthAccount(string $provider): ?UserOAuthInterface
+    public function getOAuthAccount(string $provider)
     {
         if ($this->oauthAccounts->isEmpty()) {
             return null;
@@ -491,7 +491,7 @@ class User implements UserInterface
     /**
      * {@inheritdoc}
      */
-    public function addOAuthAccount(UserOAuthInterface $oauth): void
+    public function addOAuthAccount(UserOAuthInterface $oauth)
     {
         if (!$this->oauthAccounts->contains($oauth)) {
             $this->oauthAccounts->add($oauth);
@@ -504,7 +504,7 @@ class User implements UserInterface
      *
      * @return string
      */
-    public function serialize(): string
+    public function serialize()
     {
         return serialize([
             $this->password,
@@ -520,22 +520,22 @@ class User implements UserInterface
     /**
      * @param string $serialized
      */
-    public function unserialize($serialized): void
+    public function unserialize($serialized)
     {
         $data = unserialize($serialized);
         // add a few extra elements in the array to ensure that we have enough keys when unserializing
         // older data which does not include all properties.
         $data = array_merge($data, array_fill(0, 2, null));
 
-        [
-            $this->password,
-            $this->salt,
-            $this->usernameCanonical,
-            $this->username,
-            $this->locked,
-            $this->enabled,
-            $this->id
-        ] = $data;
+//        [
+//            $this->password,
+//            $this->salt,
+//            $this->usernameCanonical,
+//            $this->username,
+//            $this->locked,
+//            $this->enabled,
+//            $this->id
+//        ] = $data;
     }
 
     /**
@@ -543,7 +543,7 @@ class User implements UserInterface
      *
      * @return bool
      */
-    protected function hasExpired(?\DateTimeInterface $date): bool
+    protected function hasExpired(\DateTimeInterface $date)
     {
         return null !== $date && new \DateTime() >= $date;
     }
