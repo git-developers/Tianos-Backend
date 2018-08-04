@@ -70,7 +70,7 @@ final class Configuration implements ConfigurationInterface
     /**
      * @param ArrayNodeDefinition $node
      */
-    private function addResourcesSection(ArrayNodeDefinition $node): void
+    private function addResourcesSection(ArrayNodeDefinition $node)
     {
         $node
             ->children()

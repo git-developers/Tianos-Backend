@@ -39,7 +39,7 @@ interface MetadataInterface
     /**
      * @return ?string
      */
-    public function getTemplatesNamespace(): ?string;
+    public function getTemplatesNamespace();
 
     /**
      * @param string $name

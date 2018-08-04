@@ -56,11 +56,10 @@ final class Metadata implements MetadataInterface
      *
      * @return self
      */
-    public static function fromAliasAndConfiguration(string $alias, array $parameters): self
+    public static function fromAliasAndConfiguration(string $alias, array $parameters)
     {
-        [$applicationName, $name] = self::parseAlias($alias);
-
-        return new self($name, $applicationName, $parameters);
+//        [$applicationName, $name] = self::parseAlias($alias);
+//        return new self($name, $applicationName, $parameters);
     }
 
     /**
@@ -114,7 +113,7 @@ final class Metadata implements MetadataInterface
     /**
      * {@inheritdoc}
      */
-    public function getTemplatesNamespace(): ?string
+    public function getTemplatesNamespace()
     {
         return $this->templatesNamespace;
     }

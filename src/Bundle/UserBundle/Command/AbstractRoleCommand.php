@@ -27,7 +27,7 @@ abstract class AbstractRoleCommand extends ContainerAwareCommand
     /**
      * {@inheritdoc}
      */
-    protected function interact(InputInterface $input, OutputInterface $output): void
+    protected function interact(InputInterface $input, OutputInterface $output)
     {
         // User types configured in the Bundle
         $availableUserTypes = $this->getAvailableUserTypes();

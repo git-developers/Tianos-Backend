@@ -26,7 +26,7 @@ final class RoleExtension extends AbstractResourceExtension implements PrependEx
     /**
      * {@inheritdoc}
      */
-    public function load(array $config, ContainerBuilder $container): void
+    public function load(array $config, ContainerBuilder $container)
     {
         $config = $this->processConfiguration($this->getConfiguration([], $container), $config);
         $loader = new XmlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
@@ -41,7 +41,7 @@ final class RoleExtension extends AbstractResourceExtension implements PrependEx
     /**
      * {@inheritdoc}
      */
-    public function prepend(ContainerBuilder $container): void
+    public function prepend(ContainerBuilder $container)
     {
         $config = $this->processConfiguration(new Configuration(), $container->getExtensionConfig($this->getAlias()));
 
@@ -52,7 +52,7 @@ final class RoleExtension extends AbstractResourceExtension implements PrependEx
      * @param ContainerBuilder $container
      * @param array $config
      */
-    private function prependAttribute(ContainerBuilder $container, array $config): void
+    private function prependAttribute(ContainerBuilder $container, array $config)
     {
         if (!$container->hasExtension('sylius_attribute')) {
             return;

@@ -34,7 +34,7 @@ final class DriverProvider
      *
      * @throws UnknownDriverException
      */
-    public static function get(MetadataInterface $metadata): DriverInterface
+    public static function get(MetadataInterface $metadata)
     {
         $type = $metadata->getDriver();
 

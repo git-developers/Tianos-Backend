@@ -15,7 +15,7 @@ final class ListCommand extends ContainerAwareCommand
     /**
      * {@inheritdoc}
      */
-    protected function configure(): void
+    protected function configure()
     {
         $this
             ->setName('sylius:theme:list')

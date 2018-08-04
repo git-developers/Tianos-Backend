@@ -117,7 +117,7 @@ class Kernel extends HttpKernel
     /**
      * {@inheritdoc}
      */
-    public function registerContainerConfiguration(LoaderInterface $loader): void
+    public function registerContainerConfiguration(LoaderInterface $loader)
     {
 //        $loader->load($this->getRootDir().'/config/config_'.$this->getEnvironment().'.yml');
         $loader->load($this->getRootDir() . '/config/config_' . $this->getEnvironment() . '.yml');

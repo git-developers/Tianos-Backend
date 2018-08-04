@@ -24,7 +24,7 @@ class PromoteUserCommand extends AbstractRoleCommand
     /**
      * {@inheritdoc}
      */
-    protected function configure(): void
+    protected function configure()
     {
         $this
             ->setName('sylius:user:promote')

@@ -11,23 +11,23 @@ use Bundle\ThemeBundle\Translation\DependencyInjection\Compiler\TranslatorFallba
 use Bundle\ThemeBundle\Translation\DependencyInjection\Compiler\TranslatorLoaderProviderPass;
 use Bundle\ThemeBundle\Translation\DependencyInjection\Compiler\TranslatorResourceProviderPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\HttpKernel\Bundle\Bundle;
+//use Symfony\Component\HttpKernel\Bundle\Bundle;
+use Symfony\Component\HttpKernel\Bundle\Bundle;     //Component/HttpKernel/Bundle/Bundle.php
 
 final class ThemeBundle extends Bundle
 {
-    
     /**
      * {@inheritdoc}
      */
-    public function build(ContainerBuilder $container): void
-    {
-        /** @var SyliusThemeExtension $themeExtension */
-//        $themeExtension = $container->getExtension('sylius_theme');
-//        $themeExtension->addConfigurationSourceFactory(new FilesystemConfigurationSourceFactory());
-//        $themeExtension->addConfigurationSourceFactory(new TestConfigurationSourceFactory());
-
-        $container->addCompilerPass(new TranslatorFallbackLocalesPass());
-        $container->addCompilerPass(new TranslatorLoaderProviderPass());
-        $container->addCompilerPass(new TranslatorResourceProviderPass());
-    }
+//    public function build(ContainerBuilder $container)
+//    {
+//        /** @var SyliusThemeExtension $themeExtension */
+////        $themeExtension = $container->getExtension('sylius_theme');
+////        $themeExtension->addConfigurationSourceFactory(new FilesystemConfigurationSourceFactory());
+////        $themeExtension->addConfigurationSourceFactory(new TestConfigurationSourceFactory());
+//
+//        $container->addCompilerPass(new TranslatorFallbackLocalesPass());
+//        $container->addCompilerPass(new TranslatorLoaderProviderPass());
+//        $container->addCompilerPass(new TranslatorResourceProviderPass());
+//    }
 }

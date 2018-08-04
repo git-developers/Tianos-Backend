@@ -20,15 +20,15 @@ final class ResourceBundle extends Bundle
     /**
      * {@inheritdoc}
      */
-    public function build(ContainerBuilder $container): void
-    {
-        parent::build($container);
-
-        $container->addCompilerPass(new RegisterResourcesPass());
-        $container->addCompilerPass(new DoctrineTargetEntitiesResolverPass());
-        $container->addCompilerPass(new RegisterResourceRepositoryPass());
-        $container->addCompilerPass(new RegisterFormBuilderPass());
-    }
+//    public function build(ContainerBuilder $container): void
+//    {
+//        parent::build($container);
+//
+//        $container->addCompilerPass(new RegisterResourcesPass());
+//        $container->addCompilerPass(new DoctrineTargetEntitiesResolverPass());
+//        $container->addCompilerPass(new RegisterResourceRepositoryPass());
+//        $container->addCompilerPass(new RegisterFormBuilderPass());
+//    }
 
     /**
      * @return string[]

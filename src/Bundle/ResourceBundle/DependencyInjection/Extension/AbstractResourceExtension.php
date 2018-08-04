@@ -31,7 +31,7 @@ abstract class AbstractResourceExtension extends Extension
         string $driver,
         array $resources,
         ContainerBuilder $container
-    ): void {
+    ) {
         $container->setParameter(sprintf('%s.driver.%s', $this->getAlias(), $driver), true);
         $container->setParameter(sprintf('%s.driver', $this->getAlias()), $driver);
 
@@ -45,6 +45,8 @@ abstract class AbstractResourceExtension extends Extension
 
             $metadata = Metadata::fromAliasAndConfiguration($alias, $resourceConfig);
 
+
+            /*
             DriverProvider::get($metadata)->load($container, $metadata);
 
             if ($metadata->hasParameter('translation')) {
@@ -59,6 +61,7 @@ abstract class AbstractResourceExtension extends Extension
 
                 DriverProvider::get($metadata)->load($container, $metadata);
             }
+            */
         }
     }
 }
