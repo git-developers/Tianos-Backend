@@ -13,3 +13,7 @@ frontend_user:
 frontend_generate_thumbnail:
     resource: '@FrontendBundle/Resources/config/routing/generate-thumbnail.yml'
     prefix: /generate-thumbnail
+
+frontend_count_google_files:
+    resource: '@FrontendBundle/Resources/config/routing/count-google-files.yml'
+    prefix: /count-google-files

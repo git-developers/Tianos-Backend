@@ -45,6 +45,11 @@ services:
         factory: ['@doctrine.orm.entity_manager', getRepository]
         arguments: [ Bundle\GoogleBundle\Entity\GoogleDriveFile ]
 
+    tianos.repository.google.drive.count:
+        class: Dummy
+        factory: ['@doctrine.orm.entity_manager', getRepository]
+        arguments: [ Bundle\GoogleBundle\Entity\GoogleDriveFileCount ]
+
     tianos.repository.google.drive.vote:
         class: Dummy
         factory: ['@doctrine.orm.entity_manager', getRepository]

@@ -52,7 +52,7 @@ backend_google_drive_grid_index:
                           obj: " '<img class=\" img-thumbnail img-responsive \" src=\" ' + obj.file_image + ' \" >' "
                           options:
                               icon: image
-                              property: " return (obj.file_image == null) ? '<i class=\"fa fa-fw fa-2x fa-image\"></i>' : '<img class=\" img-thumbnail img-responsive \" src=\" ' + obj.file_image + ' \" >' "
+                              property: " return (obj.has_thumbnail == '1') ? '<img style=\" max-height:120px \" class=\" img-thumbnail img-responsive \" src=\" ../../../google-drive-images/' + obj.file_id + '-w400.jpg \" >' : '<i class=\"fa fa-fw fa-2x fa-image\"></i>' "
                         - name: Icon
                           obj: " '<img class=\" img-thumbnail img-responsive \" src=\" ' + obj.file_icon_link + ' \" >' "
 #                        - name: Icon 2

@@ -91,14 +91,26 @@ input[type=search]::-webkit-search-cancel-button {
 
 
 
-/*#search-box-header input[type="text"]{*/
-    /*border-radius: 3px 0 0 3px;*/
-/*}*/
-/*#search-box-header .btn{*/
-    /*background: rgba(255,255,255,0.2);*/
-    /*margin-left: 0;*/
-    /*border-radius: 0 3px 3px 0;*/
-/*}*/
+/*Headers*/
+div.slimScrollDiv {
+    position: relative;
+    overflow: hidden;
+    width: auto;
+    height: 40px !important;
+}
+ul.menu {
+    overflow: hidden;
+    width: 100%;
+    height: 40px !important;
+}
+ul.dropdown-menu {
+    -webkit-box-shadow: 2px 3px 31px 0px rgba(130,117,130,0.8);
+    -moz-box-shadow: 2px 3px 31px 0px rgba(130,117,130,0.8);
+    box-shadow: 2px 3px 31px 0px rgba(130,117,130,0.8);
+}
+/*Headers*/
+
+
 
 @media only screen and (min-width:350px) and (max-width: 400px){
     /*#search-box-header{*/

@@ -28,13 +28,13 @@
     </div>
     <div class="col-md-2 border-right">
         <div class="description-block">
-            <h5 class="description-header">3,200</h5>
+            <h5 class="description-header">{{ entity.countShare|default(0) }}</h5>
             <span class="description-text">compartido</span>
         </div>
     </div>
     <div class="col-md-2">
         <div class="description-block">
-            <h5 class="description-header">13,000</h5>
+            <h5 class="description-header">{{ entity.countView|default(0) }}</h5>
             <span class="description-text">vistas</span>
         </div>
     </div>

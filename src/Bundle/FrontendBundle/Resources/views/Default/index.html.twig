@@ -33,7 +33,7 @@
 
             {% for gdFile in googleDriveFiles %}
 
-                <div class="col-md-4 x-hand" >
+                <div class="col-md-4">
                     <div class="box box-widget">
 
                         <div class="box-header with-border">
@@ -64,7 +64,7 @@
                             </div>
                         </div>
 
-                        <div class="box-body" onclick="location.href='{{ path('backend_google_drive_grid_watch', { slug:gdFile.slug }) }}';">
+                        <div class="box-body x-hand" onclick="location.href='{{ path('backend_google_drive_grid_watch', { slug:gdFile.slug }) }}';">
 
                             {% if gdFile.has_thumbnail %}
 

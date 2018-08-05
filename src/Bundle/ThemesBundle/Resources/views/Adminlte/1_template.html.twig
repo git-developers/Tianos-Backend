@@ -72,9 +72,6 @@
 
     {% block stylesheets %}
 
-        {#'@ThemesBundle/Resources/public/adminlte/dist/css/skins/_all-skins.min.css'#}
-        {#'@ThemesBundle/Resources/public/common/css/skin-tianos.css'#}
-
         {% stylesheets
             filter='cssrewrite'
             'bundles/themes/adminlte/thirdparty/font-awesome/css/font-awesome.min.css'
@@ -155,10 +152,8 @@
         '@ThemesBundle/Resources/public/adminlte/bower_components/PACE/pace.min.js'
 
     %}
-    <script src="{{ asset_url }}"></script>
-    {#'@ThemesBundle/Resources/public/adminlte/dist/js/pages/dashboard.js'#}
-    {#'@ThemesBundle/Resources/public/adminlte/dist/js/demo.js'#}
-    {#'@ThemesBundle/Resources/public/adminlte/plugins/morris/morris.js'#}
+        <script src="{{ asset_url }}"></script>
+
     {% endjavascripts %}
 
     {#HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries#}

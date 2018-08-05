@@ -166,6 +166,9 @@ class GoogleDriveFileGridController extends GridController
             throw $this->createNotFoundException('el archivo que busca no existe');
         }
 
+        //INSERT VIEW
+        $this->get('tianos.repository.google.drive.count')->insertView($entity->getId());
+
         return $this->render(
             $template,
             [

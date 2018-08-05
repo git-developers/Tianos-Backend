@@ -1,4 +1,4 @@
-{% for object in objects %}
+{% for gdFile in objects %}
     <div class="box "> {#box-widget#}
         <div class="box-header with-border">
             <div class="user-block">
@@ -9,8 +9,8 @@
                     data-toggle="tooltip"
                     title="Jonathan Burke Jr">
                 <span class="username">
-                    <a href="{{ path('frontend_user_profile', {slug: object.user_slug}) }}">
-                        {{ object.user_name|slice(0, 15) }}
+                    <a href="{{ path('frontend_user_profile', {slug: gdFile.user_slug}) }}">
+                        {{ gdFile.user_name|slice(0, 15) }}
                     </a>
                 </span>
                 {#<span class="description">Shared publicly - 7:30 PM Today</span>#}
@@ -22,18 +22,34 @@
             </div>
         </div>
 
-        <div class="box-body" onclick="location.href='{{ path('backend_google_drive_grid_watch', { slug: object.slug }) }}';">
-            <img
-                data-toggle="tooltip"
-                title="{{ object.file_name }}"
-                class="img-responsive pad x-hand"
-                src="{{ asset('bundles/themes/adminlte/images/empty-image-300x200.png') }}"
-                alt="Photo">
+        <div class="box-body" onclick="location.href='{{ path('backend_google_drive_grid_watch', { slug: gdFile.slug }) }}';">
+
+            {% if gdFile.has_thumbnail %}
+
+                <div class="image-container">
+                    <img
+                        class="img-responsive pad"
+                        src="{{ asset('google-drive-images/' ~ gdFile.file_id ~ '-w400.jpg') }}"
+                        alt="{{ gdFile.file_name }}"
+                        title="{{ gdFile.file_name }}"
+                    >
+                </div>
+
+            {% else %}
+                <img
+                    data-toggle="tooltip"
+                    title="{{ gdFile.file_name }}"
+                    alt="{{ gdFile.file_name }}"
+                    class="img-responsive pad x-hand"
+                    src="{{ asset('bundles/themes/adminlte/images/empty-image-300x200.png') }}"
+                >
+            {% endif %}
+
             <p
                 class="x-hand"
                 data-toggle="tooltip"
-                title="{{ object.file_name }}">
-                {{ object.file_name|slice(0, 20) }}
+                title="{{ gdFile.file_name }}">
+                {{ gdFile.file_name|slice(0, 20) }}
             </p>
             <button
                 type="button"

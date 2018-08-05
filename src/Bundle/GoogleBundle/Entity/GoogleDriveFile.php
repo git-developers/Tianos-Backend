@@ -165,6 +165,7 @@ class GoogleDriveFile
     /**
      * @var boolean
      *
+     * @JMSS\Groups({"google-drive-file"})
      */
     private $hasThumbnail = '0';
 
