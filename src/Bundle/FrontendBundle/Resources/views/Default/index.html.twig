@@ -1,7 +1,24 @@
 {% extends "ThemesBundle:Adminlte:1_template.html.twig" %}
 
+{% block bodyclass %}{% spaceless %}
+    {{ vars.body_css }}
+{% endspaceless %}{% endblock %}
+
 {% block stylesheets %}
     {{ parent() }}
+
+    <style>
+        .box-body > .image-container {
+            min-height:300px;
+            max-height:300px;
+            overflow:hidden;
+        }
+        .box-body > .image-container > img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
 
 {% endblock %}
 
@@ -16,7 +33,7 @@
 
             {% for gdFile in googleDriveFiles %}
 
-                <div class="col-md-4 x-hand" onclick="location.href='{{ path('backend_google_drive_grid_watch', { slug:gdFile.slug }) }}';">
+                <div class="col-md-4 x-hand" >
                     <div class="box box-widget">
 
                         <div class="box-header with-border">
@@ -35,9 +52,9 @@
                                 </span>
                             </div>
                             <div class="box-tools">
-                                <button type="button" class="btn btn-box-tool" data-toggle="tooltip" title="Mark as read">
-                                    <i class="fa fa-circle-o"></i>
-                                </button>
+                                {#<button type="button" class="btn btn-box-tool" data-toggle="tooltip" title="Mark as read">#}
+                                    {#<i class="fa fa-circle-o"></i>#}
+                                {#</button>#}
                                 <button type="button" class="btn btn-box-tool" data-widget="collapse">
                                     <i class="fa fa-minus"></i>
                                 </button>
@@ -47,27 +64,16 @@
                             </div>
                         </div>
 
-                        <div class="box-body">
-
-                            {#<img class="img-responsive pad" src="{{ asset('bundles/themes/adminlte/images/empty-image-600x400.png') }}" alt="">#}
+                        <div class="box-body" onclick="location.href='{{ path('backend_google_drive_grid_watch', { slug:gdFile.slug }) }}';">
 
                             {% if gdFile.has_thumbnail %}
 
-                                <div style="
-                                    min-height:300px;
-                                    max-height:300px;
-                                    overflow:hidden;
-                                    ">
+                                <div class="image-container">
                                     <img
                                         class="img-responsive pad"
-                                        src="/google-drive-images/{{ gdFile.file_id }}-w400.jpg"
+                                        src="{{ asset('google-drive-images/' ~ gdFile.file_id ~ '-w400.jpg') }}"
                                         alt="{{ gdFile.file_name }}"
                                         title="{{ gdFile.file_name }}"
-                                        style="
-                                            display: block;
-                                            margin-left: auto;
-                                            margin-right: auto;
-                                        "
                                     >
                                 </div>
 

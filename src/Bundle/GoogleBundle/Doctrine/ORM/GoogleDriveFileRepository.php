@@ -151,12 +151,17 @@ class GoogleDriveFileRepository extends TianosEntityRepository implements Google
             FROM GoogleBundle:GoogleDriveFile google
             WHERE
             google.isActive = :active AND
-            google.hasThumbnail = :hasThumbnail
+            google.hasThumbnail = :hasThumbnail AND
+            ( SUBSTRING(google.updatedAt, 1, 10) = :yesterday OR google.updatedAt IS NULL )
             ";
+
+        $date = new \DateTime('yesterday');
+        $yesterday = $date->format('Y-m-d');
 
         $query = $em->createQuery($dql);
         $query->setParameter('active', 1);
         $query->setParameter('hasThumbnail', 0);
+        $query->setParameter('yesterday', $yesterday);
         $query->setMaxResults($maxResults);
 
         return $query->getResult();

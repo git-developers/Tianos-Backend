@@ -4,10 +4,6 @@ frontend_default_index:
     defaults:
         _controller: tianos.frontend.controller.default:indexAction
         _tianos:
-#            action: create
             template: FrontendBundle:Default:index.html.twig
-#            entity: Bundle\ProductBundle\Entity\Product
-#            form:
-#                type: Bundle\ProductBundle\Form\Type\ProductType
-#            vars:
-#                serialize_group_name: crud
+            vars:
+                body_css: frontend-default

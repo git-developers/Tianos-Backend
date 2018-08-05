@@ -22,12 +22,14 @@ class DefaultController extends Controller
         $options = $request->attributes->get('_tianos');
 
         $template = $options['template'] ?? null;
+        $vars = $options['vars'] ?? null;
         Assert::notNull($template, 'Template is not configured.');
 
         $googleDriveFiles = $this->get('tianos.repository.google.drive')->findAllHasThumbnail();
 
         return $this->render($template, [
-            'googleDriveFiles' => $googleDriveFiles
+            'googleDriveFiles' => $googleDriveFiles,
+            'vars' => $vars,
         ]);
 
 //        return $this->render('default/index.html.twig', [

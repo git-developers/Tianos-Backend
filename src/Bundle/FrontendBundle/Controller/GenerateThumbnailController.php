@@ -19,8 +19,7 @@ class GenerateThumbnailController extends BaseController
      */
     public function indexAction(Request $request): Response
     {
-
-        $googleDriveFiles = $this->get('tianos.repository.google.drive')->findAllNotHasThumbnail(15);
+        $googleDriveFiles = $this->get('tianos.repository.google.drive')->findAllNotHasThumbnail(5);
 
         foreach ($googleDriveFiles as $key => $gdFile) {
 
@@ -30,18 +29,24 @@ class GenerateThumbnailController extends BaseController
 
                 $content = file_get_contents($url);
                 $savePath = getcwd() . '/google-drive-images/' . $gdFile->getFileId() . '-w400.jpg';
-                file_put_contents($savePath, $content);
+                $isSaved = file_put_contents($savePath, $content);
 
-                $gdFile->setHasThumbnail(true);
-                $this->persist($gdFile);
+                if ($isSaved) {
+                    $gdFile->setHasThumbnail(true);
 
-                echo 'Se guardo: ' . $gdFile->getFileId() . '<br>';
+                    echo 'Se guardo: ' . $gdFile->getFileId() . '<br>';
+                } else {
+                    echo 'NO se guardo:: file_put_contents:: ' . $gdFile->getFileId() . '<br>';
+                }
 
             } catch (\Exception $e) {
 
                 echo 'NO se guardo: ' . $gdFile->getFileId() . '<br>';
 
             }
+
+            $gdFile->setUpdatedAt(new \Datetime());
+            $this->persist($gdFile);
         }
 
         return new Response('1');
