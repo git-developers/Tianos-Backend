@@ -24,14 +24,14 @@
                                 <img class="img-circle" src="{{ asset('bundles/user/images/no_avatar.jpg') }}" alt="">
                                 <span class="username">
                                     <a
-                                        href="{{ path('frontend_user_profile', {slug: gdFile.user.slug}) }}"
-                                        title="{{ gdFile.user.name ~' '~ gdFile.user.lastName }}"
+                                        href="{{ path('frontend_user_profile', {slug: gdFile.user_slug}) }}"
+                                        title="{{ gdFile.user_name }}"
                                     >
-                                        {{ gdFile.user.name|slice(0, 25)  ~' '~ gdFile.user.lastName|slice(0, 25) }}
+                                        {{ gdFile.user_name|slice(0, 35) }}
                                     </a>
                                 </span>
                                 <span class="description">
-                                    Compartido {{ gdFile.createdAt|date("Y-m-d H:i")  }}
+                                    Compartido {{ gdFile.created_at|date("Y-m-d H:i")  }}
                                 </span>
                             </div>
                             <div class="box-tools">
@@ -48,8 +48,34 @@
                         </div>
 
                         <div class="box-body">
-                            <img class="img-responsive pad" src="{{ asset('bundles/themes/adminlte/images/empty-image-600x400.png') }}" alt="">
-                            <p title="{{ gdFile.fileName }}">{{ gdFile.fileName|slice(0, 27) }}</p>
+
+                            {#<img class="img-responsive pad" src="{{ asset('bundles/themes/adminlte/images/empty-image-600x400.png') }}" alt="">#}
+
+                            {% if gdFile.has_thumbnail %}
+
+                                <div style="
+                                    min-height:300px;
+                                    max-height:300px;
+                                    overflow:hidden;
+                                    ">
+                                    <img
+                                        class="img-responsive pad"
+                                        src="/google-drive-images/{{ gdFile.file_id }}-w400.jpg"
+                                        alt="{{ gdFile.file_name }}"
+                                        title="{{ gdFile.file_name }}"
+                                        style="
+                                            display: block;
+                                            margin-left: auto;
+                                            margin-right: auto;
+                                        "
+                                    >
+                                </div>
+
+                            {% else %}
+                                <img class="img-responsive pad" src="{{ asset('bundles/themes/adminlte/images/empty-image-600x400.png') }}" alt="">
+                            {% endif %}
+
+                            <p title="{{ gdFile.file_name }}">{{ gdFile.file_name|slice(0, 27) }}</p>
                             <button type="button" class="btn btn-default btn-xs"><i class="fa fa-share"></i> Share</button>
                             <button type="button" class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-up"></i> Like</button>
                             <span class="pull-right text-muted">127 likes - 3 comments</span>

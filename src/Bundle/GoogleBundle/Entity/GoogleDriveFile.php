@@ -163,6 +163,12 @@ class GoogleDriveFile
     private $fileImage;
 
     /**
+     * @var boolean
+     *
+     */
+    private $hasThumbnail = '0';
+
+    /**
      * @var integer
      *
      * @JMSS\Groups({"google-drive-file"})
@@ -445,6 +451,22 @@ class GoogleDriveFile
     public function setFileImage(string $fileImage)
     {
         $this->fileImage = $fileImage;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isHasThumbnail(): bool
+    {
+        return $this->hasThumbnail;
+    }
+
+    /**
+     * @param bool $hasThumbnail
+     */
+    public function setHasThumbnail(bool $hasThumbnail)
+    {
+        $this->hasThumbnail = $hasThumbnail;
     }
 
     /**

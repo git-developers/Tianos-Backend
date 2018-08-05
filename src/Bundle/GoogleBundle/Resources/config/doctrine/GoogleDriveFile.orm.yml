@@ -85,6 +85,12 @@ Bundle\GoogleBundle\Entity\GoogleDriveFile:
             options:
                 fixed: false
             column: file_image
+        hasThumbnail:
+            type: boolean
+            nullable: false
+            options:
+                default: '0'
+            column: has_thumbnail
         countShare:
             type: integer
             nullable: true

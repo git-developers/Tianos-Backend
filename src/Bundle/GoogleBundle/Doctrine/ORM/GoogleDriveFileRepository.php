@@ -143,6 +143,64 @@ class GoogleDriveFileRepository extends TianosEntityRepository implements Google
     /**
      * {@inheritdoc}
      */
+    public function findAllNotHasThumbnail($maxResults = 10): array
+    {
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT google
+            FROM GoogleBundle:GoogleDriveFile google
+            WHERE
+            google.isActive = :active AND
+            google.hasThumbnail = :hasThumbnail
+            ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+        $query->setParameter('hasThumbnail', 0);
+        $query->setMaxResults($maxResults);
+
+        return $query->getResult();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function findAllHasThumbnail($maxResults = 30)
+    {
+        $em = $this->getEntityManager();
+        $sql = "SELECT 
+                    CONCAT(t2.name, ' ', t2.last_name) AS user_name,
+                    t2.slug AS user_slug,
+                    t1.slug,
+                    t1.file_id,
+                    t1.file_name,
+                    t1.created_at,
+                    t1.has_thumbnail
+                FROM google_drive_file AS t1
+                INNER JOIN user AS t2 on t2.id = t1.user_id
+                WHERE 
+                    t1.has_thumbnail = :hasThumbnail AND
+                    t1.is_active = :active
+                ORDER BY RAND()
+                LIMIT 30
+                ;
+                ";
+
+        $params = [
+            'hasThumbnail' => 1,
+            'active' => 1,
+//            'maxResults' => $maxResults,
+        ];
+
+        $stmt = $em->getConnection()->prepare($sql);
+        $stmt->execute($params);
+
+        return $stmt->fetchAll();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function findByName(string $name, string $locale): array
     {
         return $this->createQueryBuilder('o')
