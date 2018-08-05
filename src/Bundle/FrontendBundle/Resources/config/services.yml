@@ -5,3 +5,9 @@ services:
         arguments: [ Bundle\ResourceBundle\Factory\RequestConfigurationFactoryInterface ]
         tags:
             - { name: tianos.frontend.controller.default, alias: tianos.frontend.controller.default }
+
+    tianos.frontend.controller.generate.thumbnail:
+        class: Bundle\FrontendBundle\Controller\GenerateThumbnailController
+        arguments: [ Bundle\ResourceBundle\Factory\RequestConfigurationFactoryInterface ]
+        tags:
+            - { name: tianos.frontend.controller.generate.thumbnail, alias: tianos.frontend.controller.generate.thumbnail }

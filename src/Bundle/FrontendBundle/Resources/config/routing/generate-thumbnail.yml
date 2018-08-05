@@ -1,0 +1,13 @@
+frontend_generate_thumbnail_index:
+    path: /
+    methods: [GET]
+    defaults:
+        _controller: tianos.frontend.controller.generate.thumbnail:indexAction
+        _tianos:
+#            action: create
+            template: FrontendBundle:Default:index.html.twig
+#            entity: Bundle\ProductBundle\Entity\Product
+#            form:
+#                type: Bundle\ProductBundle\Form\Type\ProductType
+#            vars:
+#                serialize_group_name: crud
