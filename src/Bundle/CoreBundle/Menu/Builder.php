@@ -290,14 +290,14 @@ class Builder implements ContainerAwareInterface
                 'class' => 'treeview-menu',
             ],
         ])
-            ->setAttribute('class', 'treeview')
-            ->setAttribute('class', $this->activeRoute([
-                'frontend_user_profile',
-                'backend_anonymous_user_index',
-                'backend_friends_user_index',
-            ]))
-            ->setAttribute('icon', 'fa-fw fa-user')
-            ->setDisplay($isGranted)
+        ->setAttribute('class', 'treeview')
+        ->setAttribute('class', $this->activeRoute([
+            'frontend_user_profile',
+            'backend_anonymous_user_index',
+            'backend_friends_user_index',
+        ]))
+        ->setAttribute('icon', 'fa-fw fa-user')
+        ->setDisplay(true)
         ;
 
         $menu['Usuarios']->addChild('Ver todos', [
@@ -305,7 +305,7 @@ class Builder implements ContainerAwareInterface
         ])
             ->setAttribute('icon', self::CIRCLE_1)
             ->setAttribute('class', $this->activeRoute('backend_anonymous_user_index'))
-            ->setDisplay($isGranted)
+            ->setDisplay(true)
         ;
 
         $menu['Usuarios']->addChild('Mis amigos', [
@@ -459,8 +459,8 @@ class Builder implements ContainerAwareInterface
         ->setAttribute('class', 'treeview')
         ->setAttribute('class', $this->activeRoute([
             'backend_google_drive_grid_watch',
+            'backend_google_drive_grid_index_admin',
             'backend_google_drive_index',
-            'backend_google_drive_grid_index',
             'backend_google_drive_account_permissions',
         ]))
         ->setAttribute('icon', 'fa-fw fa-google')
@@ -478,7 +478,7 @@ class Builder implements ContainerAwareInterface
         ->setAttribute('class', $this->activeRoute([
             'backend_google_drive_grid_watch',
             'backend_google_drive_index',
-            'backend_google_drive_grid_index',
+            'backend_google_drive_grid_index_admin',
             'backend_google_drive_account_permissions',
         ]))
         ->setDisplay($isGranted)
@@ -503,11 +503,11 @@ class Builder implements ContainerAwareInterface
         ;
 
         $menu['Google']['Drive']->addChild('Gestionar en Tianos', [
-            'route' => 'backend_google_drive_grid_index'
+            'route' => 'backend_google_drive_grid_index_admin'
         ])
         ->setAttribute('icon', self::CIRCLE_2)
         ->setAttribute('class', $this->activeRoute([
-            'backend_google_drive_grid_index',
+            'backend_google_drive_grid_index_admin',
             'backend_google_drive_grid_watch'
         ]))
         ->setDisplay($isGranted)
@@ -575,7 +575,7 @@ class Builder implements ContainerAwareInterface
             'backend_google_drive_grid_mis_archivos',
         ]))
         ->setAttribute('icon', 'fa-fw fa-file-text-o')
-        ->setDisplay($isGranted)
+        ->setDisplay(true)
         ;
 
         $menu['Archivos']->addChild('Ver todos', [
@@ -583,7 +583,7 @@ class Builder implements ContainerAwareInterface
         ])
         ->setAttribute('icon', self::CIRCLE_1)
         ->setAttribute('class', $this->activeRoute('backend_google_drive_grid_index'))
-        ->setDisplay($isGranted)
+        ->setDisplay(true)
         ;
 
         $menu['Archivos']->addChild('Mis archivos', [
