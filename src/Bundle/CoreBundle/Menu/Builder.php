@@ -644,6 +644,46 @@ class Builder implements ContainerAwareInterface
          */
 
 
+
+        /**
+         * GOOGLE DRIVE FILES - REGULAR_USER
+         */
+        $isGranted = true;
+        $menu->addChild('Contáctanos', [
+            'route' => 'frontend_default_index',
+            'extras' => ['safe_label' => true],
+            'childrenAttributes' => [
+                'class' => 'treeview-menu',
+            ],
+        ])
+        ->setAttribute('class', 'treeview')
+        ->setAttribute('class', $this->activeRoute([
+            'frontend_default_contact_us_facebook',
+            'frontend_default_contact_us_twitter',
+        ]))
+        ->setAttribute('icon', 'fa-fw fa-phone')
+        ->setDisplay(true)
+        ;
+
+        $menu['Contáctanos']->addChild('Facebook', [
+            'route' => 'frontend_default_contact_us_facebook'
+        ])
+        ->setAttribute('icon', 'fa-fw fa-facebook-official')
+        ->setAttribute('class', $this->activeRoute('frontend_default_contact_us_facebook'))
+        ->setDisplay(true)
+        ;
+
+        $menu['Contáctanos']->addChild('Twitter', [
+            'route' => 'frontend_default_contact_us_twitter'
+        ])
+        ->setAttribute('icon', 'fa-fw fa-twitter')
+        ->setAttribute('class', $this->activeRoute('frontend_default_contact_us_twitter'))
+        ->setDisplay($isGranted)
+        ;
+        /**
+         * GOOGLE DRIVE FILES - REGULAR_USER
+         */
+
         return $menu;
     }
 

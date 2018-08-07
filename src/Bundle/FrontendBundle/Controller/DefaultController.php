@@ -36,4 +36,24 @@ class DefaultController extends Controller
 //            'base_dir' => realpath($this->getParameter('kernel.project_dir')).DIRECTORY_SEPARATOR,
 //        ]);
     }
+
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function contactUsFacebookAction(Request $request): Response
+    {
+        header('Location: https://www.facebook.com/Apptianos');
+        die();
+    }
+
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function contactUsTwitterAction(Request $request): Response
+    {
+        header('Location: https://twitter.com/tianosApp');
+        die();
+    }
 }
