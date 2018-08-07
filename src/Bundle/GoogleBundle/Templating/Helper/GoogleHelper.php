@@ -32,6 +32,12 @@ class GoogleHelper extends Helper
         $this->router = $router;
     }
 
+    //        JAFETH
+    public function googleDescription(string $description = null)
+    {
+        return is_null($description) ? '-' : nl2br($description);
+    }
+
     //    JAFETH
     public function googleWatchViewer($fileId, $fileMimeType)
     {

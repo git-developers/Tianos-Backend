@@ -25,6 +25,10 @@
             height: 20px;
             width: 20px;
         }
+        .dataTables_filter input[type="search"] {
+            width: 350px;
+            height: 35px;
+        }
     </style>
 
 {% endblock %}
@@ -63,6 +67,7 @@
                     '{{ key }}': {{ value|raw }},
                 {% endfor %}
                 'data': {{ dataTable.data|raw }},
+                'oSearch': {'sSearch': '{{ q|default() }}'},
                 'language': {
                     'url': '{{ asset('bundles/grid/plugins/datatables/extensions/Language/spanish.json') }}'
                 },

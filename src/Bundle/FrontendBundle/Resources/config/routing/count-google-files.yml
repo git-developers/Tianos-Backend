@@ -1,7 +1,0 @@
-frontend_count_google_files_index:
-    path: /
-    methods: [GET]
-    defaults:
-        _controller: tianos.frontend.controller.count.google.files:indexAction
-        _tianos:
-            template: FrontendBundle:Default:index.html.twig

@@ -60,10 +60,11 @@ class DoctrineListenerService extends BaseDoctrineListenerService implements Eve
         if ($entity instanceof User) {
 
             $uniqid = uniqid();
-            $name = $entity->getName();
-            $name = $this->slugify($name);
+            $nameRaw = $entity->getName();
+            $name = $this->slugify($nameRaw);
             $name = substr($name, 0, 35);
 
+            $entity->setLastName(is_null($entity->getLastName()) ? '' : $entity->getLastName());
             $entity->setSlug($uniqid . '-' . $name);
             $entity->setCreatedAt($this->setupCreatedAt($entity));
             $entity->setUsername($uniqid);

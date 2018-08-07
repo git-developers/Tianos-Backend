@@ -9,7 +9,7 @@
 </div>
 
 <div class="box-footer clearfix">
-    <div class="col-md-6">
+    <div class="col-md-4">
         <div class="user-block">
             <img class="img-circle" src="{{ asset('bundles/user/images/no_avatar.jpg') }}" alt="User Image">
             <span class="username">
@@ -17,7 +17,7 @@
                     {{ entity.user.name|slice(0, 30) ~' '~ entity.user.lastName|slice(0, 30) }}
                 </a>
             </span>
-            <span class="description">Compartido el {{ entity.createdAt|date("Y-m-d H:i:s")  }}</span>
+            <span class="description">Compartido el {{ entity.createdAt|date("Y-m-d H:i:s") }}</span>
         </div>
     </div>
     <div class="col-md-2 border-right">
@@ -38,11 +38,22 @@
             <span class="description-text">vistas</span>
         </div>
     </div>
+    <div class="col-md-2">
+        <div class="description-block">
+            <button
+                class="btn btn-info modal-info"
+                alt="Info"
+                title="Info"
+                data-toggle="modal"
+                data-target="#modal-info"
+                >
+                <i class="fa fa-fw fa-question-circle"></i> Ayuda
+            </button>
+        </div>
+    </div>
 </div>
 
-<div class="box-footer clearfix">
-
-    <div class="col-md-6" >
+{#
         <button type="button" class="tag btn btn-default btn-xs">
             <i class="fa fa-fw fa-tag"></i> Ingenieria
         </button>
@@ -52,6 +63,19 @@
         <button type="button" class="tag btn btn-default btn-xs">
             <i class="fa fa-fw fa-tag"></i> Gallinazo
         </button>
+#}
+
+<div class="box-footer clearfix">
+
+    <div class="col-md-6">
+        <div class="description description-height">
+            {{ tianos_google_description(entity.description) }}
+        </div>
+        <div>
+            <button type="button" class="btn btn-default btn-xs show-more">
+                <i class="fa fa-chevron-circle-down"></i> LEER
+            </button>
+        </div>
     </div>
 
     <div class="col-md-2 border-right">

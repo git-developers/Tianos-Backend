@@ -22,48 +22,48 @@
             </div>
         </div>
 
-        <div class="box-body" onclick="location.href='{{ path('backend_google_drive_grid_watch', { slug: gdFile.slug }) }}';">
+        <div class="box-body x-hand">
 
-            {% if gdFile.has_thumbnail %}
-
-                <div class="image-container">
+            <a href="{{ path('backend_google_drive_grid_watch', { slug:gdFile.slug }) }}">
+                {% if gdFile.has_thumbnail %}
+                    <div class="image-container-relevance">
+                        <img
+                            class="img-responsive pad"
+                            src="{{ asset('google-drive-images/' ~ gdFile.file_id ~ '-w400.jpg') }}"
+                            alt="{{ gdFile.file_name }}"
+                            title="{{ gdFile.file_name }}"
+                        >
+                    </div>
+                {% else %}
                     <img
-                        class="img-responsive pad"
-                        src="{{ asset('google-drive-images/' ~ gdFile.file_id ~ '-w400.jpg') }}"
-                        alt="{{ gdFile.file_name }}"
+                        data-toggle="tooltip"
                         title="{{ gdFile.file_name }}"
+                        alt="{{ gdFile.file_name }}"
+                        class="img-responsive pad x-hand"
+                        src="{{ asset('bundles/themes/adminlte/images/empty-image-300x200.png') }}"
                     >
-                </div>
+                {% endif %}
 
-            {% else %}
-                <img
+                <p
                     data-toggle="tooltip"
-                    title="{{ gdFile.file_name }}"
-                    alt="{{ gdFile.file_name }}"
-                    class="img-responsive pad x-hand"
-                    src="{{ asset('bundles/themes/adminlte/images/empty-image-300x200.png') }}"
-                >
-            {% endif %}
+                    title="{{ gdFile.file_name }}">
+                    {{ gdFile.file_name|slice(0, 20) }}
+                </p>
+            </a>
 
-            <p
-                class="x-hand"
-                data-toggle="tooltip"
-                title="{{ gdFile.file_name }}">
-                {{ gdFile.file_name|slice(0, 20) }}
-            </p>
             <button
                 type="button"
                 class="btn btn-default btn-xs"
                 data-toggle="tooltip"
-                title="likes 5079">
-                <i class="fa fa-thumbs-o-up"></i> {{ random(5000) }}
+                title="compartido {{ gdFile.count_share|default(0) }}">
+                <i class="fa fa-share-alt"></i> {{ gdFile.count_share|default(0) }}
             </button>
             <button
                 type="button"
                 class="btn btn-default btn-xs"
                 data-toggle="tooltip"
-                title="vistas 4635">
-                <i class="fa fa-eye"></i> {{ random(20000) }}
+                title="vistas {{ gdFile.count_view|default(0) }}">
+                <i class="fa fa-eye"></i> {{ gdFile.count_view|default(0) }}
             </button>
         </div>
     </div>

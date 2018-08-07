@@ -30,6 +30,16 @@ class GoogleType extends AbstractType
                     'placeholder' => 'nombre',
                 ],
             ])
+            ->add('description', TextareaType::class, [
+                'label' =>' Descripción',
+                'label_attr' => [
+                    'class' => ''
+                ],
+                'attr' => [
+                    'class' => 'form-control',
+                    'placeholder' => 'descripción',
+                ],
+            ])
         ;
     }
     

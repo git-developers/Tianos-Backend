@@ -18,6 +18,7 @@ backend_google_drive_grid_index:
                 title: Todos los archivos Google Drive gestionados en Tianos
                 modal:
                     title: Crear cliente
+                    view_size: modal-lg
                 data_table:
                     route:
                         info: backend_google_drive_grid_info
@@ -48,19 +49,17 @@ backend_google_drive_grid_index:
                     columns:
                         - name: '#'
                           obj: " '<span class=\"badge bg-blue\">' + obj.id + '</span>' "
-                        - name: Thumbnail
-                          obj: " '<img class=\" img-thumbnail img-responsive \" src=\" ' + obj.file_image + ' \" >' "
-                          options:
-                              icon: image
-                              property: " return (obj.has_thumbnail == '1') ? '<img style=\" max-height:120px \" class=\" img-thumbnail img-responsive \" src=\" ../../../google-drive-images/' + obj.file_id + '-w400.jpg \" >' : '<i class=\"fa fa-fw fa-2x fa-image\"></i>' "
+#                        - name: Thumbnail
+#                          obj: " '<img class=\" img-thumbnail img-responsive \" src=\" ' + obj.file_image + ' \" >' "
+#                          options:
+#                              icon: image
+#                              property: " return (obj.has_thumbnail == '1') ? '<img style=\" max-height:120px \" class=\" img-thumbnail img-responsive \" src=\" ../../../web/google-drive-images/' + obj.file_id + '-w400.jpg \" >' : '<i class=\"fa fa-fw fa-2x fa-image\"></i>' "
                         - name: Icon
                           obj: " '<img class=\" img-thumbnail img-responsive \" src=\" ' + obj.file_icon_link + ' \" >' "
 #                        - name: Icon 2
 #                          obj: " '<i class=\" fa fa-fw fa-2x fa-' + obj.file_mime_type_short + ' \"></i> ' "
                         - name: Nombre
                           obj: obj.file_name
-                        - name: Tamaño
-                          obj: obj.file_size
             form:
                 type: Bundle\UniversityBundle\Form\Type\UniversityType
             repository:
@@ -323,6 +322,25 @@ backend_google_drive_grid_qr:
             repository:
                 service: tianos.repository.google.drive
                 method: findOneBySlug
+                arguments: [$googleId]
+                vars:
+                    serialize_group_name: google-drive
+
+backend_google_drive_grid_share_count:
+    path: /share-count
+    methods: [POST]
+    defaults:
+        _controller: tianos.google.drive.grid.controller.google:shareCountAction
+        _tianos:
+#            action: xxx
+#            template: GoogleBundle:GoogleDriveFileGrid/Watch/Box:qr.html.twig
+#            vars:
+#                body_css: tianos-file-watch
+#            form:
+#                type: Bundle\GoogleBundle\Form\Type\GoogleType
+            repository:
+                service: tianos.repository.google.drive.count
+                method: insertShare
                 arguments: [$googleId]
                 vars:
                     serialize_group_name: google-drive

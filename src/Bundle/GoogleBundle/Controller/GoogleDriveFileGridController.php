@@ -36,6 +36,73 @@ class GoogleDriveFileGridController extends GridController
      *
      * @return Response
      */
+    public function indexAction(Request $request): Response
+    {
+
+        $q = $request->get('q', null);
+
+//        $configuration = $this->requestConfigurationFactory->create($this->metadata, $request);
+
+        $parameters = [
+            'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
+        ];
+        $applicationName = $this->container->getParameter('application_name');
+        $this->metadata = new Metadata('tianos', $applicationName, $parameters);
+
+        //CONFIGURATION
+        $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
+        $repository = $configuration->getRepositoryService();
+        $method = $configuration->getRepositoryMethod();
+        $template = $configuration->getTemplate('');
+        $grid = $configuration->getGrid();
+        $vars = $configuration->getVars();
+        $modal = $configuration->getModal();
+
+        //REPOSITORY
+//        $objects = $this->get($repository)->$method();
+//        $varsRepository = $configuration->getRepositoryVars();
+//        $objects = $this->getSerialize($objects, $varsRepository->serialize_group_name);
+
+        $objects = getcwd() . '/google-drive-files/google-drive-files.json';
+        $objects = file_get_contents($objects);
+
+        //GRID
+        $gridService = $this->get('tianos.grid');
+        $modal = $gridService->getModalMapper()->getDefaults($modal);
+        $formMapper = $gridService->getFormMapper()->getDefaults();
+
+        //DATATABLE
+        $dataTable = $gridService->getDataTableMapper($grid)
+            ->setRoute()
+            ->setColumns()
+            ->setOptions()
+            ->setRowCallBack()
+            ->setData($objects)
+            ->setTableOptions()
+            ->setTableButton()
+            ->setTableHeaderButton()
+            ->setColumnsTargets()
+            ->resetGridVariable()
+        ;
+
+        return $this->render(
+            $template,
+            [
+                'q' => $q,
+                'vars' => $vars,
+                'grid' => $grid,
+                'modal' => $modal,
+                'dataTable' => $dataTable,
+                'form_mapper' => $formMapper,
+            ]
+        );
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return Response
+     */
     public function misArchivosAction(Request $request): Response
     {
 //        $configuration = $this->requestConfigurationFactory->create($this->metadata, $request);
@@ -205,6 +272,37 @@ class GoogleDriveFileGridController extends GridController
             $template,
             [
                 'qr' => $qr,
+            ]
+        );
+    }
+
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function shareCountAction(Request $request): Response
+    {
+        $parameters = [
+            'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
+        ];
+        $applicationName = $this->container->getParameter('application_name');
+        $this->metadata = new Metadata('tianos', $applicationName, $parameters);
+
+        //CONFIGURATION
+        $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
+
+        $repository = $configuration->getRepositoryService();
+        $method = $configuration->getRepositoryMethod();
+//        $template = $configuration->getTemplate('');
+//        $vars = $configuration->getVars();
+
+        $fileId = $request->get('fileId', null);
+
+        $this->get($repository)->$method($fileId);
+
+        return $this->json(
+            [
+                'status' => true,
             ]
         );
     }

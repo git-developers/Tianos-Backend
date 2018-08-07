@@ -21,8 +21,11 @@ class GoogleDriveFileRepository extends TianosEntityRepository implements Google
                     CONCAT(t2.name, ' ', t2.last_name) AS user_name,
                     t2.slug AS user_slug,
                     t1.slug,
+                    t1.file_id,
                     t1.file_name,
-                    t1.has_thumbnail
+                    t1.has_thumbnail,
+                    t1.count_share,
+                    t1.count_view
                 FROM google_drive_file AS t1
                 INNER JOIN user AS t2 on t2.id = t1.user_id
                 WHERE 
@@ -54,11 +57,8 @@ class GoogleDriveFileRepository extends TianosEntityRepository implements Google
         $sql = "SELECT 
                     id, 
                     slug, 
-                    file_id,
                     file_name,
-                    file_size,
-                    file_icon_link,
-                    has_thumbnail
+                    file_icon_link
                 FROM google_drive_file 
                 WHERE is_active = :active
                 ORDER BY id DESC
@@ -182,8 +182,11 @@ class GoogleDriveFileRepository extends TianosEntityRepository implements Google
                     t1.slug,
                     t1.file_id,
                     t1.file_name,
+                    t1.file_icon_link,
                     t1.created_at,
-                    t1.has_thumbnail
+                    t1.has_thumbnail,
+                    t1.count_share,
+                    t1.count_view
                 FROM google_drive_file AS t1
                 INNER JOIN user AS t2 on t2.id = t1.user_id
                 WHERE 

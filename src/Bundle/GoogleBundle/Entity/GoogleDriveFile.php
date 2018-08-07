@@ -111,6 +111,13 @@ class GoogleDriveFile
      *
      * @JMSS\Groups({"google-drive-file"})
      */
+    private $description;
+
+    /**
+     * @var string
+     *
+     * @JMSS\Groups({"google-drive-file"})
+     */
     private $fileId;
 
     /**
@@ -284,6 +291,22 @@ class GoogleDriveFile
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription(string $description)
+    {
+        $this->description = $description;
     }
 
     /**

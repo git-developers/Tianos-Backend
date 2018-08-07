@@ -8,12 +8,12 @@
     {{ parent() }}
 
     <style>
-        .box-body > .image-container {
+        .box-body > a > .image-container {
             min-height:300px;
             max-height:300px;
             overflow:hidden;
         }
-        .box-body > .image-container > img {
+        .box-body > a > .image-container > img {
             display: block;
             margin-left: auto;
             margin-right: auto;
@@ -64,27 +64,35 @@
                             </div>
                         </div>
 
-                        <div class="box-body x-hand" onclick="location.href='{{ path('backend_google_drive_grid_watch', { slug:gdFile.slug }) }}';">
+                        {#onclick="location.href='{{ path('backend_google_drive_grid_watch', { slug:gdFile.slug }) }}';"#}
+                        <div class="box-body x-hand">
 
-                            {% if gdFile.has_thumbnail %}
+                            <a href="{{ path('backend_google_drive_grid_watch', { slug:gdFile.slug }) }}">
+                                {% if gdFile.has_thumbnail %}
+                                    <div class="image-container">
+                                        <img
+                                            class="img-responsive pad"
+                                            src="{{ asset('google-drive-images/' ~ gdFile.file_id ~ '-w400.jpg') }}"
+                                            alt="{{ gdFile.file_name }}"
+                                            title="{{ gdFile.file_name }}"
+                                        >
+                                    </div>
+                                {% else %}
+                                    <img class="img-responsive pad" src="{{ asset('bundles/themes/adminlte/images/empty-image-600x400.png') }}" alt="">
+                                {% endif %}
 
-                                <div class="image-container">
-                                    <img
-                                        class="img-responsive pad"
-                                        src="{{ asset('google-drive-images/' ~ gdFile.file_id ~ '-w400.jpg') }}"
-                                        alt="{{ gdFile.file_name }}"
-                                        title="{{ gdFile.file_name }}"
-                                    >
-                                </div>
+                                <p title="{{ gdFile.file_name }}">
+                                    <img src="{{ gdFile.file_icon_link }}" class="img-thumbnail"> {{ gdFile.file_name|slice(0, 27) }}
+                                </p>
+                            </a>
 
-                            {% else %}
-                                <img class="img-responsive pad" src="{{ asset('bundles/themes/adminlte/images/empty-image-600x400.png') }}" alt="">
-                            {% endif %}
-
-                            <p title="{{ gdFile.file_name }}">{{ gdFile.file_name|slice(0, 27) }}</p>
-                            <button type="button" class="btn btn-default btn-xs"><i class="fa fa-share"></i> Share</button>
-                            <button type="button" class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-up"></i> Like</button>
-                            <span class="pull-right text-muted">127 likes - 3 comments</span>
+                            <button type="button" class="btn btn-default btn-xs margin-right-5">
+                                <i class="fa fa-share-alt"></i> {{ gdFile.count_share|default(0) }} compartido
+                            </button>
+                            <button type="button" class="btn btn-default btn-xs">
+                                <i class="fa fa-eye"></i> {{ gdFile.count_view|default(0) }} vistas
+                            </button>
+                            {#<span class="pull-right text-muted">127 likes - 3 comments</span>#}
                         </div>
 
                     </div>

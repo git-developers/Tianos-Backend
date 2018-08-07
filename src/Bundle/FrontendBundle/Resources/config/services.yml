@@ -12,8 +12,8 @@ services:
         tags:
             - { name: tianos.frontend.controller.generate.thumbnail, alias: tianos.frontend.controller.generate.thumbnail }
 
-    tianos.frontend.controller.count.google.files:
-        class: Bundle\FrontendBundle\Controller\CountGoogleFilesController
+    tianos.frontend.controller.google.files:
+        class: Bundle\FrontendBundle\Controller\GoogleFilesController
         arguments: [ Bundle\ResourceBundle\Factory\RequestConfigurationFactoryInterface ]
         tags:
-            - { name: tianos.frontend.controller.count.google.files, alias: tianos.frontend.controller.count.google.files }
+            - { name: tianos.frontend.controller.google.files, alias: tianos.frontend.controller.google.files }

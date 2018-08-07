@@ -29,6 +29,7 @@ final class GoogleExtension extends \Twig_Extension
     {
         return [
             new \Twig_SimpleFunction('tianos_google_watch_viewer', [$this->googleHelper, 'googleWatchViewer'], ['is_safe' => ['html']]),
+            new \Twig_SimpleFunction('tianos_google_description', [$this->googleHelper, 'googleDescription'], ['is_safe' => ['html']]),
         ];
     }
 

@@ -57,11 +57,17 @@ div.tools i.fa-trash-o, div.input-group i.fa-trash-o {
 .margin-left-5{
     margin-left: 5px;
 }
+.margin-right-5{
+    margin-right: 5px;
+}
 .margin-bottom-10{
     margin-bottom: 10px;
 }
 .margin-bottom-5{
     margin-bottom: 5px;
+}
+.word-wrap{
+    word-wrap: break-word;
 }
 /*.hidden{
     display: none;
@@ -110,6 +116,16 @@ ul.dropdown-menu {
 }
 /*Headers*/
 
+
+/*search box*/
+.skin-yellow .sidebar-form input[type="search"] {
+    color: white;
+    box-shadow: none;
+    background-color: #374850;
+    border: 1px solid transparent;
+    height: 35px;
+}
+/*search box*/
 
 
 @media only screen and (min-width:350px) and (max-width: 400px){

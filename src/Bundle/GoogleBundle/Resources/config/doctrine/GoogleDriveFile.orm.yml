@@ -29,6 +29,13 @@ Bundle\GoogleBundle\Entity\GoogleDriveFile:
             length: 150
             options:
                 fixed: false
+        description:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+            column: description
         fileId:
             type: string
             nullable: false

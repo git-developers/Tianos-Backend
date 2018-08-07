@@ -29,11 +29,11 @@
         {% endif %}
 
         {#search form#}
-        <form id="search-box-sidebar" action="#" method="get" class="sidebar-form" >
+        <form id="search-box-sidebar" action="{{ path('backend_google_drive_grid_index') }}" method="get" class="sidebar-form" >
             <div class="input-group">
-                <input type="text" name="q" class="form-control" placeholder="Buscar...">
+                <input type="search" name="q" class="form-control" placeholder="Buscar..." value="{{ q|default() }}">
                 <span class="input-group-btn">
-                <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                <button type="submit" id="search-btn" class="btn btn-flat">
                     <i class="fa fa-search"></i>
                 </button>
               </span>
