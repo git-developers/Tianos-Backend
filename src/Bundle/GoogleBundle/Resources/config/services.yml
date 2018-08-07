@@ -57,7 +57,7 @@ services:
 
     tianos.service.google.drive.service:
         class: Bundle\GoogleBundle\Services\Google\GoogleService
-        arguments: [ "@doctrine.orm.entity_manager", "@service_container", "@twig" ]
+        arguments: [ "@doctrine.orm.entity_manager", "@service_container", "@twig", "%kernel.environment%", "@security.token_storage" ]
 
 
 

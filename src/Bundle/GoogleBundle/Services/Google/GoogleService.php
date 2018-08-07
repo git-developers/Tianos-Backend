@@ -8,6 +8,7 @@ use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\Container;
 use Bundle\GoogleBundle\Services\Google\BaseGoogle;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 
 class GoogleService extends BaseGoogle
 {
@@ -16,14 +17,18 @@ class GoogleService extends BaseGoogle
     private $manager;
     private $container;
     private $twig;
+    private $env;
+    const DEV = 'dev';
+    const PROD = 'prod';
 
-    public function __construct(ObjectManager $manager, Container $container, \Twig_Environment $twig)
+    public function __construct(ObjectManager $manager, Container $container, \Twig_Environment $twig, $env, TokenStorage $tokenStorage)
     {
         $this->manager = $manager;
         $this->container = $container;
         $this->twig = $twig;
+        $this->env = $env;
 
-        parent::__construct($container);
+        parent::__construct($container, $tokenStorage);
 
     }
 
@@ -73,16 +78,11 @@ class GoogleService extends BaseGoogle
             ]
         );
 
-        $authConfig = $this->clientSecretPath . 'client_secret.json.twig';
-
-
-//        $authConfig = $this->clientSecret();
-//        $json = file_get_contents($authConfig);
-//        echo '<pre> POLLO 333:: ';
-//        print_r($json);
-//        exit;
-
-
+        if ($this->env == self::DEV) {
+            $authConfig = $this->clientSecretPath . 'client_secret_DEV.json.twig';
+        } elseif ($this->env == self::PROD) {
+            $authConfig = $this->clientSecretPath . 'client_secret_PROD.json.twig';
+        }
 
         $client = new \Google_Client();
         $client->setApplicationName('Tianos Drive');

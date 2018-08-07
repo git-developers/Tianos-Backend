@@ -9,6 +9,7 @@ use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\Cache\CacheItem;
 use Symfony\Component\Cache\Adapter\RedisAdapter;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Twig_Environment;
 
 class BaseGoogle extends \Twig_Extension
@@ -23,11 +24,31 @@ class BaseGoogle extends \Twig_Extension
     private $container;
     protected $clientSecretPath;
 
-    public function __construct(Container $container)
+    public function __construct(Container $container, TokenStorage $tokenStorage)
     {
         $this->container = $container;
-        $this->user = $this->container->get('security.token_storage')->getToken()->getUser();
+//        $this->user = $this->container->get('security.token_storage')->getToken()->getUser();
+//        $this->user = $tokenStorage->getToken()->getUser();
+        $this->user = $this->getUser();
         $this->clientSecretPath = $this->container->get('kernel')->getRootDir() . '/../src/Bundle/GoogleBundle/ClientSecret/';
+    }
+
+    protected function getUser()
+    {
+        if (!$this->container->has('security.token_storage')) {
+            throw new \LogicException('The SecurityBundle is not registered in your application.');
+        }
+
+        if (null === $token = $this->container->get('security.token_storage')->getToken()) {
+            return;
+        }
+
+        if (!is_object($user = $token->getUser())) {
+            // e.g. anonymous authentication
+            return;
+        }
+
+        return $user;
     }
 
     /**
