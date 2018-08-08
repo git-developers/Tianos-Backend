@@ -53,6 +53,7 @@ class FrontendController extends BaseController
         $entity = $this->get($repository)->$method($slug);
 
         $isFriend = $this->get('tianos.repository.friends')->isFriend($entity->getUsername(), $this->getUser()->getId());
+        $lastGoogleDriveFiles = $this->get('tianos.repository.google.drive')->lastFiles($this->getUser()->getId());
 
         if (!$entity) {
             throw $this->createNotFoundException('El usuario que busca no existe');
@@ -65,6 +66,7 @@ class FrontendController extends BaseController
                 'small_text' => '',
                 'entity' => $entity,
                 'isFriend' => $isFriend,
+                'lastGoogleDriveFiles' => $lastGoogleDriveFiles,
             ]
         );
     }

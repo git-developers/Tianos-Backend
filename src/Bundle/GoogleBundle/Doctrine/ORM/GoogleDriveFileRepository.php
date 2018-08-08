@@ -212,6 +212,42 @@ class GoogleDriveFileRepository extends TianosEntityRepository implements Google
     /**
      * {@inheritdoc}
      */
+    public function lastFiles($userId = null)
+    {
+        $em = $this->getEntityManager();
+        $sql = "SELECT 
+                    t1.slug,
+                    t1.file_id,
+                    t1.file_name,
+                    t1.file_icon_link,
+                    t1.created_at,
+                    t1.has_thumbnail,
+                    t1.description,
+                    t1.count_share,
+                    t1.count_view
+                FROM google_drive_file AS t1
+                WHERE 
+                    t1.user_id = :userId AND
+                    t1.is_active = :active
+                ORDER BY t1.id DESC
+                LIMIT 7
+                ;
+                ";
+
+        $params = [
+            'active' => 1,
+            'userId' => $userId,
+        ];
+
+        $stmt = $em->getConnection()->prepare($sql);
+        $stmt->execute($params);
+
+        return $stmt->fetchAll();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function findByName(string $name, string $locale): array
     {
         return $this->createQueryBuilder('o')
