@@ -52,6 +52,9 @@ class Friends
      *   @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      * })
      *
+     * @JMSS\Groups({
+     *     "friends"
+     * })
      */
     private $user;
 
@@ -63,9 +66,6 @@ class Friends
      *   @ORM\JoinColumn(name="friend_id", referencedColumnName="id")
      * })
      *
-     * @JMSS\Groups({
-     *     "friends"
-     * })
      */
     private $friend;
 

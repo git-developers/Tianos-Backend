@@ -46,13 +46,21 @@ class FriendsRepository extends EntityRepository implements UserRepositoryInterf
     {
         $em = $this->getEntityManager();
         $dql = "
-            SELECT friends, user_
+            SELECT friends, friend
             FROM UserBundle:Friends friends
-            INNER JOIN friends.user user_
+            INNER JOIN friends.friend friend
             WHERE
-            user_.id = :userId AND
-            user_.enabled = :active
+            friend.id = :userId AND
+            friend.enabled = :active
             ";
+//        $dql = "
+//            SELECT friends, friend
+//            FROM UserBundle:Friends friends
+//            INNER JOIN friends.friend friend
+//            WHERE
+//            friend.id = :userId AND
+//            friend.enabled = :active
+//            ";
 
         $query = $em->createQuery($dql);
         $query->setParameter('active', 1);

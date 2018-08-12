@@ -47,6 +47,8 @@
                 return;
             }
 
+            var saved = $('#saved');
+
             $.ajax({
                 url: '{{ path('backend_google_drive_save') }}',
                 type: 'POST',
@@ -55,22 +57,24 @@
                 },
                 dataType: 'json',
                 beforeSend: function(jqXHR, settings) {
-                    jqXHR.error = function(){
-//                        alert("failed");
-                    }
+
                 },
                 success: function(data, textStatus, jqXHR) {
                     console.log('SUCCESS:: ' + data);
 
+                    saved.show();
+
+                    setTimeout(function(){
+                        saved.hide();
+                    }, 1500);
+
                 },
                 error: function(jqXHR, exception) {
-                    if (jqXHR.status === 0) {
-                        msg = 'Not connect.\n Verify Network.';
-                    }
+
                 }
             });
 
-            subscribeWebSocket();
+            // subscribeWebSocket();
 
         });
 
@@ -102,18 +106,20 @@
                     }
                 },
                 success: function(data, textStatus, jqXHR) {
-                    console.log('SUCCESS:: ' + data);
+                    console.log('DELETE SUCCESS:: ' + data);
 
                 },
                 error: function(jqXHR, exception) {
-                    if (jqXHR.status === 0) {
-                        msg = 'Not connect.\n Verify Network.';
-                    }
+
                 }
             });
 
-            subscribeWebSocket();
+            // subscribeWebSocket();
 
+        });
+
+        $(':checkbox[name=select-all]').click (function () {
+            $(':checkbox[name=gd-file]').prop('checked', this.checked);
         });
 
 
@@ -226,18 +232,22 @@
                     </small>
                 </a>
             {% endif %}
+
         </h1>
 
         <ol class="breadcrumb">
             <li>
+                <a href="{{ path('frontend_default_index') }}">
+                    <i class="fa fa-dashboard"></i> Inicio
+                </a>
+            </li>
+            <li>
                 <a href="{{ path('backend_google_drive_index') }}">
-                    <i class="fa fa-dashboard"></i> Google drive
+                    <i class="fa fa-google"></i> Google drive
                 </a>
             </li>
         </ol>
 
-        {#<li class="active"><a href="{{ path('backend_googledrive_index', {id:id}) }}">{{ name }}</a></li>#}
-        {#{{ render(controller('BackendBundle:GoogleDrive:breadcrumb', {'files': files})) }}#}
     </section>
 
     <section class="content">
@@ -257,25 +267,31 @@
                             <div class="col-xs-12 col-md-12 margin-bottom-5">
                                 <div class="col-xs-4 col-md-1">
                                     <div class="input-group input-group-sm" style="margin-left: -3px">
-                                        <input id="check-all" type="checkbox">
+                                        <input id="check-all" name="select-all" type="checkbox">
                                     </div>
                                 </div>
                                 <div class="col-xs-4 col-md-1 margin-bottom-5">
-                                    <button id="save-files" class="btn bg-olive" data-toggle="tooltip" title="subir archivo">
+                                    <button class="btn btn-success" id="saved" style="display: none">
+                                        <i class="fa fa-fw fa-check"></i> Guardado
+                                    </button>
+                                </div>
+                                <div class="col-xs-4 col-md-1 margin-bottom-5">
+                                    <button id="save-files" class="btn bg-olive btn-flat" data-toggle="tooltip" title="subir archivo">
                                         Subir <i class="fa fa-fw fa-upload"></i>
                                     </button>
                                 </div>
                                 <div class="col-xs-4 col-md-1 margin-bottom-5">
-                                    <button id="delete-files" class="btn bg-red" data-toggle="tooltip" title="borrar">
+                                    <button id="delete-files" class="btn bg-red btn-flat" data-toggle="tooltip" title="borrar">
                                         Eliminar <i class="fa fa-fw fa-trash"></i>
                                     </button>
                                 </div>
                                 <div class="col-xs-4 col-md-1 margin-bottom-5">
-                                    <a href="{{ path('backend_google_drive_revoke_token') }}" class="btn bg-purple" data-toggle="tooltip" title="salir de google drive">
+                                    <a href="{{ path('backend_google_drive_revoke_token') }}"
+                                       class="btn bg-purple btn-flat" data-toggle="tooltip" title="salir de google drive">
                                         Salir <i class="fa fa-fw fa-sign-out"></i>
                                     </a>
                                 </div>
-                                <div class="col-xs-12 col-md-8 margin-bottom-5">
+                                <div class="col-xs-12 col-md-7 margin-bottom-5">
                                     <form action="{{ path('backend_google_drive_index') }}" method="get" role="form">
                                         <div class="input-group input-group">
                                             <input type="text" name="search" class="form-control" value="{{ search }}">
@@ -320,6 +336,7 @@
                                                                 <div class="input-group input-group-sm">
                                                                     <input
                                                                         id="{{ file.id }}"
+                                                                        name="gd-file"
                                                                         class="file"
                                                                         type="checkbox"
                                                                         value="{{ file|tianos_google_file_values }}"

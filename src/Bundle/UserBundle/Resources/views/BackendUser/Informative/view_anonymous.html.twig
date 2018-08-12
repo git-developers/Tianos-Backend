@@ -49,31 +49,15 @@
                 </div>
             </div>
 
-
-            {#
-            <hr>
-
-            <strong>
-                <i class="fa fa-pencil margin-r-5"></i> Skills
-            </strong>
-
-            <p>
-                <span class="label label-danger">UI Design</span>
-                <span class="label label-success">Coding</span>
-                <span class="label label-info">Javascript</span>
-                <span class="label label-warning">PHP</span>
-                <span class="label label-primary">Node.js</span>
-            </p>
-
-            <hr>
-
-            <strong>
-                <i class="fa fa-file-text-o margin-r-5"></i> Notes
-            </strong>
-
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
-            #}
-
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <a href="{{ path('frontend_user_profile', {slug: entity.slug}) }}" class="btn btn-info">
+                <i class="fa fa-fw fa-eye"></i> ver usuario
+            </a>
+        </div>
+    </div>
+
 {% endblock %}

@@ -29,7 +29,7 @@ backend_google_drive_grid_index:
 #                        create: backend_client_create
                     table_option:
                         pageLength: 50
-                        dom: "'<\"top\"flp><\"clear\">rt<\"bottom\"flp>'"
+                        dom: "'<\"top\"iflp><\"clear\">rt<\"bottom\"iflp>'"
                     table_button:
 #                        - edit
 #                        - delete
