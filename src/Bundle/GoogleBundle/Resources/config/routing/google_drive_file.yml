@@ -15,6 +15,23 @@ backend_google_drive_index:
                 body_css: grid-body-css
                 serialize_group_name: crud
                 form_name: google-drive-files
+                box_one:
+                    icon: building
+                    class: primary
+                    id: box-one-id
+                    title: Universidades
+                    li_class: box-one-li
+                    li_badge_class: bg-green
+                    li_input_radio_name: box-one-selected-value
+                    search_input_name: search-input-name-one
+                    route_search: backend_associativeacademic_one_search
+                    route_select_item: backend_associativeacademic_one_select_item
+                    repository:
+                        service: tianos.repository.university
+                        method: findAll
+                        arguments: [$googleId]
+                        vars:
+                            serialize_group_name: google-drive
             grid:
                 icon: cube
                 box_class: primary

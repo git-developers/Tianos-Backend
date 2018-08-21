@@ -19,7 +19,8 @@ class University
      *
      * @JMSS\Groups({
      *     "crud",
-     *     "associative-academic"
+     *     "associative-academic",
+     *     "google-drive"
      * })
      */
     private $id;
@@ -81,7 +82,8 @@ class University
      *
      * @JMSS\Accessor(getter="getNameBox", setter="setNameBox")
      * @JMSS\Groups({
-     *     "associative-academic"
+     *     "associative-academic",
+     *     "google-drive"
      * })
      */
     private $nameBox;

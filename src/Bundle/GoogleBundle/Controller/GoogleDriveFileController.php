@@ -24,7 +24,6 @@ class GoogleDriveFileController extends BaseController
 
     public function indexAction(Request $request): Response
     {
-
         $parameters = [
             'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
         ];
@@ -38,6 +37,21 @@ class GoogleDriveFileController extends BaseController
         $method = $configuration->getRepositoryMethod();
         $template = $configuration->getTemplate('');
         $vars = $configuration->getVars();
+
+//        $box = $vars->box;
+        $boxOne = $vars->box_one;
+
+        //REPOSITORY ONE
+        $varsRepo = $configuration->getRepositoryVars();
+        $objectsOne = $this->get($boxOne->repository->service)->{$boxOne->repository->method}();
+        $objectsOne = $this->getSerializeDecode($objectsOne, $boxOne->repository->vars->serialize_group_name);
+
+
+
+//        echo "POLLO:: <pre>";
+//        print_r($objectsOne);
+//        exit;
+
 
 
         /**
@@ -66,7 +80,6 @@ class GoogleDriveFileController extends BaseController
 
 
 
-
         /*
         //**************************
         $google->redisDelete('pollo');
@@ -89,6 +102,7 @@ class GoogleDriveFileController extends BaseController
                 'search' => $search,
                 'small_text' => $smallText,
                 'next_page_token' => $results->nextPageToken,
+                'objectsOne' => $objectsOne,
             ]
         );
     }

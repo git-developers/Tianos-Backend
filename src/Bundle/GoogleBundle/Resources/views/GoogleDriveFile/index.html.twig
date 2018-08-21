@@ -122,6 +122,34 @@
             $(':checkbox[name=gd-file]').prop('checked', this.checked);
         });
 
+        jQuery(function($) {
+
+            var areaAcademica = {
+                '1': ['Duesseldorf', 'Leinfelden-Echterdingen', 'Eschborn'],
+                '2': ['Barcelona'],
+                '3': ['Pecs'],
+                '3': ['Downers Grove'],
+                '4': ['Puebla'],
+                '5': ['Midrand'],
+                '6': ['Beijing'],
+                '7': ['St. Petersburg'],
+            };
+
+            var $areaAcademica = $('#area-academica');
+
+            $('#universidad').change(function () {
+                var universidad = $(this).val(), lcns = areaAcademica[universidad] || [];
+
+                console.log("universidad:: " + universidad);
+
+                var html = $.map(lcns, function(lcn){
+                    return '<option value="' + lcn + '">' + lcn + '</option>'
+                }).join('');
+
+                $areaAcademica.html(html)
+            });
+        });
+
 
         {##}
         {#function subscribeWebSocket() {#}
@@ -251,6 +279,7 @@
     </section>
 
     <section class="content">
+
         <div class="row">
             <div class="col-md-12">
                 <div class="box box-widget"> {#box-solid box-widget#}
@@ -262,6 +291,76 @@
                     #}
 
                     <div class="box-body">
+
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <h4>Seleccionar bloque academico de los archivos a subir:</h4>
+
+                                <div class="info-box bg-yellow">
+                                    <span class="info-box-icon">
+                                        <i class="fa fa fa-bookmark-o"></i>
+                                    </span>
+
+                                    <div class="info-box-content">
+
+                                        <form role="form">
+
+                                            {#<div class="col-xs-4 col-md-1"></div>#}
+
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>Universidad</label>
+                                                    <select id="universidad" class="form-control">
+                                                        {% for object in objectsOne %}
+                                                            <option value="{{ object.id }}">{{ object.name_box }}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>Área académica</label>
+                                                    <select id="area-academica" class="form-control">
+                                                        <option value=""></option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>Facultad</label>
+                                                    <select id="facultad" class="form-control">
+                                                        <option value=""></option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label>Escuela</label>
+                                                    <select id="escuela" class="form-control">
+                                                        <option value=""></option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                        </form>
+
+                                        {#<span class="info-box-text">Events</span>#}
+                                        {#<span class="info-box-number">41,410</span>#}
+
+                                        {#<div class="progress">#}
+                                            {#<div class="progress-bar" style="width: 70%"></div>#}
+                                        {#</div>#}
+                                        {#<span class="progress-description">#}
+                                            {#70% Increase in 30 Days#}
+                                        {#</span>#}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="row ">
                             <div class="col-xs-12 col-md-12 margin-bottom-5">
