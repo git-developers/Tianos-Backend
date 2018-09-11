@@ -75,7 +75,7 @@ class Builder implements ContainerAwareInterface
             'ROLE_' . Profile::ADMIN,
         ]);
 
-        $menu->addChild('Bloque académico', [
+        $menu->addChild('Agenda', [
             'route' => 'frontend_default_index',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
@@ -88,14 +88,12 @@ class Builder implements ContainerAwareInterface
             'backend_university_index',
             'backend_areaacademica_index',
             'backend_facultad_index',
-            'backend_escuela_index',
-            'backend_associativeacademic_index',
         ]))
-        ->setAttribute('icon', 'fa-fw fa-code-fork')
+        ->setAttribute('icon', 'fa-fw fa-calendar')
         ->setDisplay($isGranted)
         ;
 
-        $menu['Bloque académico']->addChild('Universidades', [
+        $menu['Agenda']->addChild('Universidades', [
             'route' => 'backend_university_index',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
@@ -109,7 +107,7 @@ class Builder implements ContainerAwareInterface
         ->setDisplay($isGranted)
         ;
 
-        $menu['Bloque académico']->addChild('Áreas académicas', [
+        $menu['Agenda']->addChild('Áreas académicas', [
             'route' => 'backend_areaacademica_index',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
@@ -122,49 +120,6 @@ class Builder implements ContainerAwareInterface
         ]))
         ->setDisplay($isGranted)
         ;
-
-        $menu['Bloque académico']->addChild('Facultades', [
-            'route' => 'backend_facultad_index',
-            'extras' => ['safe_label' => true],
-            'childrenAttributes' => [
-                'class' => 'treeview-menu',
-            ],
-        ])
-        ->setAttribute('icon', 'fa-fw fa-building-o')
-        ->setAttribute('class', $this->activeRoute([
-            'backend_facultad_index',
-        ]))
-        ->setDisplay($isGranted)
-        ;
-
-        $menu['Bloque académico']->addChild('Escuelas', [
-            'route' => 'backend_escuela_index',
-            'extras' => ['safe_label' => true],
-            'childrenAttributes' => [
-                'class' => 'treeview-menu',
-            ],
-        ])
-        ->setAttribute('icon', 'fa-fw fa-bell-o')
-        ->setAttribute('class', $this->activeRoute([
-            'backend_escuela_index',
-        ]))
-        ->setDisplay($isGranted)
-        ;
-
-        $menu['Bloque académico']->addChild('Asociación académico', [
-            'route' => 'backend_associativeacademic_index',
-            'extras' => ['safe_label' => true],
-            'childrenAttributes' => [
-                'class' => 'treeview-menu',
-            ],
-        ])
-        ->setAttribute('icon', 'fa-fw fa-exchange')
-        ->setAttribute('class', $this->activeRoute([
-            'backend_associativeacademic_index',
-        ]))
-        ->setDisplay($isGranted)
-        ;
-
         /**
          * CRUD
          */
