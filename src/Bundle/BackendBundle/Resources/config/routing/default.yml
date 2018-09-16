@@ -4,4 +4,4 @@ backend_default_index:
     defaults:
         _controller: tianos.backend.controller.default:indexAction
         _tianos:
-            template: BackendBundle:Default:index.html.twig
+            template: BackendBundle:Default:dashboard.html.twig

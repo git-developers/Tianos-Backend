@@ -19,7 +19,16 @@ class DefaultController extends BaseController
      */
     public function indexAction(Request $request): Response
     {
-        return $this->redirectUrl('frontend_default_index');
+//        return $this->redirectUrl('frontend_default_index');
+
+        $options = $request->attributes->get('_tianos');
+
+        $template = $options['template'] ?? null;
+        Assert::notNull($template, 'Template is not configured.');
+
+        return $this->render($template, [
+            'form' => null
+        ]);
     }
 
 }

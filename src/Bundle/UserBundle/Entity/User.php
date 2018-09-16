@@ -249,16 +249,6 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     private $profile;
 
     /**
-     * @var \Bundle\UniversityBundle\Entity\University
-     *
-     * @ORM\ManyToOne(targetEntity="Bundle\UniversityBundle\Entity\University")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="university_id", referencedColumnName="id")
-     * })
-     */
-    private $university;
-
-    /**
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="Bundle\GroupofusersBundle\Entity\Groupofusers", mappedBy="user")
@@ -727,30 +717,6 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     public function getProfile()
     {
         return $this->profile;
-    }
-
-    /**
-     * Set university
-     *
-     * @param \Bundle\UniversityBundle\Entity\University $university
-     *
-     * @return User
-     */
-    public function setUniversity(\Bundle\UniversityBundle\Entity\University $university = null)
-    {
-        $this->university = $university;
-
-        return $this;
-    }
-
-    /**
-     * Get university
-     *
-     * @return \Bundle\UniversityBundle\Entity\University
-     */
-    public function getUniversity()
-    {
-        return $this->university;
     }
 
     /**

@@ -1,0 +1,85 @@
+
+{#<p>{{ application_name }}  &copy {{ "now"|date("d, F Y - H:i") }} - All rights reserved.</p>#}
+
+<footer class="section footer-1">
+    <div class="container">
+        <div class="row row-40 wow fadeIn">
+
+            <div class="col-md-6 col-lg-4">
+                <h5 class="title">About Us</h5>
+                <p>Banque is the leading finaclients worldwide.</p>
+                <a class="footer-logo" href="index.html">
+                    <img src="{{ asset('bundles/themes/18540/images/logo-inverse-big-150x58.png') }}" alt="" width="150" height="58"/>
+                </a>
+            </div>
+
+            <div class="col-md-6 col-lg-4">
+                <h5 class="title">Twitter Feed</h5>
+                <div class="twitter" data-twitter-username="templatemonster" data-twitter-date-hours=" hours ago" data-twitter-date-minutes=" minutes ago">
+                    <div class="tweet" data-twitter-type="tweet">
+                        <div class="tweet-left">
+                            <div class="icon fa-twitter"></div>
+                        </div>
+                        <div class="tweet-right">
+                            <div class="twitter-text text-dark" data-tweet="text"></div>
+                            <div class="twitter-meta">
+                                <div class="twitter-name" data-screen_name="text"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tweet" data-twitter-type="tweet">
+                        <div class="tweet-left">
+                            <div class="icon fa-twitter"></div>
+                        </div>
+                        <div class="tweet-right">
+                            <div class="twitter-text text-dark" data-tweet="text"></div>
+                            <div class="twitter-meta">
+                                <div class="twitter-name" data-screen_name="text"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tweet" data-twitter-type="tweet">
+                        <div class="tweet-left">
+                            <div class="icon fa-twitter"></div>
+                        </div>
+                        <div class="tweet-right">
+                            <div class="twitter-text text-dark" data-tweet="text"></div>
+                            <div class="twitter-meta">
+                                <div class="twitter-name" data-screen_name="text"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-10 col-lg-4">
+                <h5 class="title">Get in Touch</h5>
+                <form class="rd-form rd-mailform" data-form-output="form-output-global" data-form-type="contact" method="post" action="bat/rd-mailform.php">
+                    <div class="form-wrap">
+                        <input class="form-input" id="contact-name-footer" type="text" name="name" data-constraints="@Required">
+                        <label class="form-label" for="contact-name-footer">Name</label>
+                    </div>
+                    <div class="form-wrap">
+                        <input class="form-input" id="contact-email-footer" type="email" name="email" data-constraints="@Email @Required">
+                        <label class="form-label" for="contact-email-footer">E-mail</label>
+                    </div>
+                    <div class="form-wrap">
+                        <label class="form-label" for="contact-message-footer">Message</label>
+                        <textarea class="form-input" id="contact-message-footer" name="message" data-constraints="@Required"></textarea>
+                    </div>
+                    <button class="button button-primary" type="submit">Send</button>
+                </form>
+            </div>
+        </div>
+
+        <p class="rights">
+            <span>&copy;&nbsp; </span>
+            <span class="copyright-year"></span>
+            <span>&nbsp;</span>
+            <span>All rights reserved</span>
+            <span>.&nbsp;</span>
+
+            <a href="privacy-policy.html">Privacy Policy</a>
+        </p>
+    </div>
+</footer>

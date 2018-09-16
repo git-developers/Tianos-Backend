@@ -49,18 +49,3 @@ backend_friends_user:
 backend_setting_user:
     resource: '@UserBundle/Resources/config/routing/backend_setting.yml'
     prefix: /user-setting
-backend_university:
-    resource: '@UniversityBundle/Resources/config/routing/backend.yml'
-    prefix: /university
-backend_areaacademica:
-    resource: '@AreaacademicaBundle/Resources/config/routing/backend.yml'
-    prefix: /areaacademica
-backend_facultad:
-    resource: '@FacultadBundle/Resources/config/routing/backend.yml'
-    prefix: /facultad
-backend_escuela:
-    resource: '@EscuelaBundle/Resources/config/routing/backend.yml'
-    prefix: /escuela
-backend_associativeacademic:
-    resource: '@AssociativeacademicBundle/Resources/config/routing/backend.yml'
-    prefix: /associativeacademic

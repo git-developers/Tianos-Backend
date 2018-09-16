@@ -8,9 +8,6 @@ Bundle\UserBundle\Entity\User:
         FK_8D93D649CCFA12B8:
             columns:
                 - profile_id
-        fk_user_university1_idx:
-            columns:
-                - university_id
     uniqueConstraints:
         email_UNIQUE:
             columns:
@@ -172,16 +169,6 @@ Bundle\UserBundle\Entity\User:
             inversedBy: null
             joinColumns:
                 profile_id:
-                    referencedColumnName: id
-            orphanRemoval: false
-        university:
-            targetEntity: Bundle\UniversityBundle\Entity\University
-            cascade: {  }
-            fetch: LAZY
-            mappedBy: null
-            inversedBy: null
-            joinColumns:
-                university_id:
                     referencedColumnName: id
             orphanRemoval: false
     manyToMany:

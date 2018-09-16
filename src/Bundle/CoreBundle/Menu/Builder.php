@@ -72,6 +72,7 @@ class Builder implements ContainerAwareInterface
          * CRUD
          */
         $isGranted = $this->isGranted([
+            'ROLE_' . Profile::REGULAR_USER,
             'ROLE_' . Profile::ADMIN,
         ]);
 
@@ -93,33 +94,33 @@ class Builder implements ContainerAwareInterface
         ->setDisplay($isGranted)
         ;
 
-        $menu['Agenda']->addChild('Universidades', [
-            'route' => 'backend_university_index',
-            'extras' => ['safe_label' => true],
-            'childrenAttributes' => [
-                'class' => 'treeview-menu',
-            ],
-        ])
-        ->setAttribute('icon', 'fa-fw fa-building')
-        ->setAttribute('class', $this->activeRoute([
-            'backend_university_index',
-        ]))
-        ->setDisplay($isGranted)
-        ;
+//        $menu['Agenda']->addChild('Universidades', [
+//            'route' => 'backend_university_index',
+//            'extras' => ['safe_label' => true],
+//            'childrenAttributes' => [
+//                'class' => 'treeview-menu',
+//            ],
+//        ])
+//        ->setAttribute('icon', 'fa-fw fa-building')
+//        ->setAttribute('class', $this->activeRoute([
+//            'backend_university_index',
+//        ]))
+//        ->setDisplay($isGranted)
+//        ;
 
-        $menu['Agenda']->addChild('Áreas académicas', [
-            'route' => 'backend_areaacademica_index',
-            'extras' => ['safe_label' => true],
-            'childrenAttributes' => [
-                'class' => 'treeview-menu',
-            ],
-        ])
-        ->setAttribute('icon', 'fa-fw fa-bookmark')
-        ->setAttribute('class', $this->activeRoute([
-            'backend_areaacademica_index',
-        ]))
-        ->setDisplay($isGranted)
-        ;
+//        $menu['Agenda']->addChild('Áreas académicas', [
+//            'route' => 'backend_areaacademica_index',
+//            'extras' => ['safe_label' => true],
+//            'childrenAttributes' => [
+//                'class' => 'treeview-menu',
+//            ],
+//        ])
+//        ->setAttribute('icon', 'fa-fw fa-bookmark')
+//        ->setAttribute('class', $this->activeRoute([
+//            'backend_areaacademica_index',
+//        ]))
+//        ->setDisplay($isGranted)
+//        ;
         /**
          * CRUD
          */

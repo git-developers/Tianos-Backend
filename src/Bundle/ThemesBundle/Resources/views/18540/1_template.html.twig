@@ -1,0 +1,141 @@
+{# https://livedemo00.template-help.com/wt_prod-18540 #}
+
+{% import "ThemesBundle::18540/Macro/html.html.twig" as html %}
+{% import "ThemesBundle::18540/Macro/head.html.twig" as head %}
+{% import "ThemesBundle::18540/Macro/meta.html.twig" as meta %}
+{% import "ThemesBundle::18540/Macro/bi3d.html.twig" as bi3d %}
+{% import "ThemesBundle::18540/Macro/twitter.html.twig" as twitter %}
+{% import "ThemesBundle::18540/Macro/open_graph.html.twig" as og %}
+
+{% spaceless %}
+<!DOCTYPE html>
+<html class="wide wow-animation" lang="en">
+<head>
+
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:100,300,300i,400,700,900">
+
+    {#<link rel="stylesheet" href="css/bootstrap.css">#}
+    {#<link rel="stylesheet" href="css/fonts.css">#}
+    {#<link rel="stylesheet" href="css/style.css" id="main-styles-link">#}
+
+    {#
+    <!--[if lt IE 10]>
+    <div style="background: #212121; padding: 10px 0; box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3); clear: both; text-align:center; position: relative; z-index:1;">
+        <a href="https://windows.microsoft.com/en-US/internet-explorer/">
+            <img src="images/ie8-panel/warning_bar_0000_us.jpg" border="0" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today.">
+        </a>
+    </div>
+    <script src="js/html5shiv.min.js"></script>
+    <![endif]-->
+    #}
+
+
+    {% block stylesheets %}
+
+        {% stylesheets
+            filter='cssrewrite'
+            'bundles/themes/18540/css/fonts.css'
+            '@ThemesBundle/Resources/public/18540/css/bootstrap.css'
+            '@ThemesBundle/Resources/public/18540/css/style.css'
+        %}
+            <link rel='stylesheet' type='text/css' media='all' href="{{ asset_url }}" />
+
+        {% endstylesheets %}
+
+    {% endblock %}
+
+
+
+
+    {{ head.meta_default() }}
+    {{ head.favicon() }}
+    {{ head.canonical() }}
+
+    {% block seo %}
+        {% block head %}
+
+            {#para copiar en otras paginas#}
+            {{ head.title() }}
+        {% endblock %}
+
+        {% block twitter %}
+            {{ twitter.card() }}
+
+            {#para copiar en otras paginas#}
+            {#{{ twitter.title() }}#}
+            {#{{ twitter.description() }}#}
+            {#{{ twitter.image() }}#}
+        {% endblock %}
+
+        {% block open_graph %}
+            {{ og.default() }}
+            {{ og.url() }}
+
+            {#para copiar en otras paginas#}
+            {#{{ og.title() }}#}
+            {#{{ og.description() }}#}
+            {#{{ og.image() }}#}
+        {% endblock %}
+
+        {% block bi3d %}
+            {#para copiar en otras paginas#}
+            {#{{ bi3d.art_id() }}#}
+            {#{{ bi3d.section() }}#}
+            {#{{ bi3d.art_title() }}#}
+            {#{{ bi3d.pub_date() }}#}
+        {% endblock %}
+    {% endblock %}
+
+    {{ head.dns_prefetch() }}
+    {{ head.apple_touch_icon() }}
+
+</head>
+
+<body>
+
+<div class="preloader">
+    <div class="preloader-body">
+        <div class="cssload-container">
+            <div class="cssload-speeding-wheel"></div>
+        </div>
+        <p>Cargando...</p>
+    </div>
+</div>
+
+<div class="page">
+
+    {{ include("ThemesBundle::18540/2_header.html.twig") }}
+
+    {% block content %}
+
+    {% endblock %}
+
+    {{ include("ThemesBundle::18540/3_footer.html.twig") }}
+
+</div>
+
+<div class="snackbars" id="form-output-global"></div>
+
+</body>
+
+{#<script src="js/core.min.js"></script>#}
+{#<script src="js/script.js"></script>#}
+
+{% block javascripts %}
+
+    {% javascripts
+        '@ThemesBundle/Resources/public/18540/js/core.min.js'
+        '@ThemesBundle/Resources/public/18540/js/script.js'
+    %}
+    <script type='text/javascript' src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    <script type='text/javascript'>
+
+
+    </script>
+
+{% endblock %}
+
+</html>
+{% endspaceless %}
