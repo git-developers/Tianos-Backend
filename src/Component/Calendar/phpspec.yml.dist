@@ -1,5 +1,0 @@
-suites:
-    main:
-        namespace: Component\Product
-        psr4_prefix: Component\Product
-        src_path: .
