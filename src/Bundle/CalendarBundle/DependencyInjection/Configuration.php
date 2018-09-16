@@ -2,43 +2,43 @@
 
 declare(strict_types=1);
 
-namespace Bundle\DUMMY_UPPERBundle\DependencyInjection;
+namespace Bundle\CalendarBundle\DependencyInjection;
 
-use Bundle\DUMMY_UPPERBundle\Form\Type\DUMMY_UPPERAssociationType;
-use Bundle\DUMMY_UPPERBundle\Form\Type\DUMMY_UPPERAssociationTypeTranslationType;
-use Bundle\DUMMY_UPPERBundle\Form\Type\DUMMY_UPPERAssociationTypeType;
-use Bundle\DUMMY_UPPERBundle\Form\Type\DUMMY_UPPEROptionTranslationType;
-use Bundle\DUMMY_UPPERBundle\Form\Type\DUMMY_UPPEROptionType;
-use Bundle\DUMMY_UPPERBundle\Form\Type\DUMMY_UPPEROptionValueTranslationType;
-use Bundle\DUMMY_UPPERBundle\Form\Type\DUMMY_UPPEROptionValueType;
-use Bundle\DUMMY_UPPERBundle\Form\Type\DUMMY_UPPERTranslationType;
-use Bundle\DUMMY_UPPERBundle\Form\Type\DUMMY_UPPER2Type;
-use Bundle\DUMMY_UPPERBundle\Form\Type\DUMMY_UPPERVariantTranslationType;
-use Bundle\DUMMY_UPPERBundle\Form\Type\DUMMY_UPPERVariantType;
+use Bundle\CalendarBundle\Form\Type\CalendarAssociationType;
+use Bundle\CalendarBundle\Form\Type\CalendarAssociationTypeTranslationType;
+use Bundle\CalendarBundle\Form\Type\CalendarAssociationTypeType;
+use Bundle\CalendarBundle\Form\Type\CalendarOptionTranslationType;
+use Bundle\CalendarBundle\Form\Type\CalendarOptionType;
+use Bundle\CalendarBundle\Form\Type\CalendarOptionValueTranslationType;
+use Bundle\CalendarBundle\Form\Type\CalendarOptionValueType;
+use Bundle\CalendarBundle\Form\Type\CalendarTranslationType;
+use Bundle\CalendarBundle\Form\Type\Calendar2Type;
+use Bundle\CalendarBundle\Form\Type\CalendarVariantTranslationType;
+use Bundle\CalendarBundle\Form\Type\CalendarVariantType;
 use Bundle\ResourceBundle\Controller\ResourceController;
 use Bundle\ResourceBundle\ResourceBundle;
-use Component\DUMMY_UPPER\Model\DUMMY_UPPER;
-use Component\DUMMY_UPPER\Model\DUMMY_UPPERAssociation;
-use Component\DUMMY_UPPER\Model\DUMMY_UPPERAssociationInterface;
-use Component\DUMMY_UPPER\Model\DUMMY_UPPERAssociationType as DUMMY_UPPERAssociationTypeModel;
-use Component\DUMMY_UPPER\Model\DUMMY_UPPERAssociationTypeInterface as DUMMY_UPPERAssociationTypeModelInterface;
-use Component\DUMMY_UPPER\Model\DUMMY_UPPERAssociationTypeTranslation;
-use Component\DUMMY_UPPER\Model\DUMMY_UPPERAssociationTypeTranslationInterface;
-use Component\DUMMY_UPPER\Model\DUMMY_UPPERInterface;
-use Component\DUMMY_UPPER\Model\DUMMY_UPPEROption;
-use Component\DUMMY_UPPER\Model\DUMMY_UPPEROptionInterface;
-use Component\DUMMY_UPPER\Model\DUMMY_UPPEROptionTranslation;
-use Component\DUMMY_UPPER\Model\DUMMY_UPPEROptionTranslationInterface;
-use Component\DUMMY_UPPER\Model\DUMMY_UPPEROptionValue;
-use Component\DUMMY_UPPER\Model\DUMMY_UPPEROptionValueInterface;
-use Component\DUMMY_UPPER\Model\DUMMY_UPPEROptionValueTranslation;
-use Component\DUMMY_UPPER\Model\DUMMY_UPPEROptionValueTranslationInterface;
-use Component\DUMMY_UPPER\Model\DUMMY_UPPERTranslation;
-use Component\DUMMY_UPPER\Model\DUMMY_UPPERTranslationInterface;
-use Component\DUMMY_UPPER\Model\DUMMY_UPPERVariant;
-use Component\DUMMY_UPPER\Model\DUMMY_UPPERVariantInterface;
-use Component\DUMMY_UPPER\Model\DUMMY_UPPERVariantTranslation;
-use Component\DUMMY_UPPER\Model\DUMMY_UPPERVariantTranslationInterface;
+use Component\Calendar\Model\Calendar;
+use Component\Calendar\Model\CalendarAssociation;
+use Component\Calendar\Model\CalendarAssociationInterface;
+use Component\Calendar\Model\CalendarAssociationType as CalendarAssociationTypeModel;
+use Component\Calendar\Model\CalendarAssociationTypeInterface as CalendarAssociationTypeModelInterface;
+use Component\Calendar\Model\CalendarAssociationTypeTranslation;
+use Component\Calendar\Model\CalendarAssociationTypeTranslationInterface;
+use Component\Calendar\Model\CalendarInterface;
+use Component\Calendar\Model\CalendarOption;
+use Component\Calendar\Model\CalendarOptionInterface;
+use Component\Calendar\Model\CalendarOptionTranslation;
+use Component\Calendar\Model\CalendarOptionTranslationInterface;
+use Component\Calendar\Model\CalendarOptionValue;
+use Component\Calendar\Model\CalendarOptionValueInterface;
+use Component\Calendar\Model\CalendarOptionValueTranslation;
+use Component\Calendar\Model\CalendarOptionValueTranslationInterface;
+use Component\Calendar\Model\CalendarTranslation;
+use Component\Calendar\Model\CalendarTranslationInterface;
+use Component\Calendar\Model\CalendarVariant;
+use Component\Calendar\Model\CalendarVariantInterface;
+use Component\Calendar\Model\CalendarVariantTranslation;
+use Component\Calendar\Model\CalendarVariantTranslationInterface;
 use Component\Resource\Factory\Factory;
 use Component\Resource\Factory\TranslatableFactory;
 use Symfony\Component\Config\Definition\Builder\ArrayNodeDefinition;
@@ -84,12 +84,12 @@ final class Configuration implements ConfigurationInterface
                                 ->arrayNode('classes')
                                     ->addDefaultsIfNotSet()
                                     ->children()
-                                        ->scalarNode('model')->defaultValue(DUMMY_UPPER::class)->cannotBeEmpty()->end()
-                                        ->scalarNode('interface')->defaultValue(DUMMY_UPPERInterface::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('model')->defaultValue(Calendar::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('interface')->defaultValue(CalendarInterface::class)->cannotBeEmpty()->end()
                                         ->scalarNode('controller')->defaultValue(ResourceController::class)->cannotBeEmpty()->end()
                                         ->scalarNode('repository')->cannotBeEmpty()->end()
                                         ->scalarNode('factory')->defaultValue(TranslatableFactory::class)->end()
-                                        ->scalarNode('form')->defaultValue(DUMMY_UPPER2Type::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('form')->defaultValue(Calendar2Type::class)->cannotBeEmpty()->end()
                                     ->end()
                                 ->end()
                                 ->arrayNode('translation')
@@ -99,12 +99,12 @@ final class Configuration implements ConfigurationInterface
                                         ->arrayNode('classes')
                                             ->addDefaultsIfNotSet()
                                             ->children()
-                                                ->scalarNode('model')->defaultValue(DUMMY_UPPERTranslation::class)->cannotBeEmpty()->end()
-                                                ->scalarNode('interface')->defaultValue(DUMMY_UPPERTranslationInterface::class)->cannotBeEmpty()->end()
+                                                ->scalarNode('model')->defaultValue(CalendarTranslation::class)->cannotBeEmpty()->end()
+                                                ->scalarNode('interface')->defaultValue(CalendarTranslationInterface::class)->cannotBeEmpty()->end()
                                                 ->scalarNode('controller')->defaultValue(ResourceController::class)->cannotBeEmpty()->end()
                                                 ->scalarNode('repository')->cannotBeEmpty()->end()
                                                 ->scalarNode('factory')->defaultValue(Factory::class)->end()
-                                                ->scalarNode('form')->defaultValue(DUMMY_UPPERTranslationType::class)->cannotBeEmpty()->end()
+                                                ->scalarNode('form')->defaultValue(CalendarTranslationType::class)->cannotBeEmpty()->end()
                                             ->end()
                                         ->end()
                                     ->end()
@@ -118,12 +118,12 @@ final class Configuration implements ConfigurationInterface
                                 ->arrayNode('classes')
                                     ->addDefaultsIfNotSet()
                                     ->children()
-                                        ->scalarNode('model')->defaultValue(DUMMY_UPPERVariant::class)->cannotBeEmpty()->end()
-                                        ->scalarNode('interface')->defaultValue(DUMMY_UPPERVariantInterface::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('model')->defaultValue(CalendarVariant::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('interface')->defaultValue(CalendarVariantInterface::class)->cannotBeEmpty()->end()
                                         ->scalarNode('controller')->defaultValue(ResourceController::class)->cannotBeEmpty()->end()
                                         ->scalarNode('repository')->cannotBeEmpty()->end()
                                         ->scalarNode('factory')->defaultValue(TranslatableFactory::class)->end()
-                                        ->scalarNode('form')->defaultValue(DUMMY_UPPERVariantType::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('form')->defaultValue(CalendarVariantType::class)->cannotBeEmpty()->end()
                                     ->end()
                                 ->end()
                                 ->arrayNode('translation')
@@ -133,12 +133,12 @@ final class Configuration implements ConfigurationInterface
                                         ->arrayNode('classes')
                                             ->addDefaultsIfNotSet()
                                             ->children()
-                                                ->scalarNode('model')->defaultValue(DUMMY_UPPERVariantTranslation::class)->cannotBeEmpty()->end()
-                                                ->scalarNode('interface')->defaultValue(DUMMY_UPPERVariantTranslationInterface::class)->cannotBeEmpty()->end()
+                                                ->scalarNode('model')->defaultValue(CalendarVariantTranslation::class)->cannotBeEmpty()->end()
+                                                ->scalarNode('interface')->defaultValue(CalendarVariantTranslationInterface::class)->cannotBeEmpty()->end()
                                                 ->scalarNode('controller')->defaultValue(ResourceController::class)->cannotBeEmpty()->end()
                                                 ->scalarNode('repository')->cannotBeEmpty()->end()
                                                 ->scalarNode('factory')->defaultValue(Factory::class)->end()
-                                                ->scalarNode('form')->defaultValue(DUMMY_UPPERVariantTranslationType::class)->cannotBeEmpty()->end()
+                                                ->scalarNode('form')->defaultValue(CalendarVariantTranslationType::class)->cannotBeEmpty()->end()
                                             ->end()
                                         ->end()
                                     ->end()
@@ -152,12 +152,12 @@ final class Configuration implements ConfigurationInterface
                                 ->arrayNode('classes')
                                     ->addDefaultsIfNotSet()
                                     ->children()
-                                        ->scalarNode('model')->defaultValue(DUMMY_UPPEROption::class)->cannotBeEmpty()->end()
-                                        ->scalarNode('interface')->defaultValue(DUMMY_UPPEROptionInterface::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('model')->defaultValue(CalendarOption::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('interface')->defaultValue(CalendarOptionInterface::class)->cannotBeEmpty()->end()
                                         ->scalarNode('controller')->defaultValue(ResourceController::class)->cannotBeEmpty()->end()
                                         ->scalarNode('repository')->cannotBeEmpty()->end()
                                         ->scalarNode('factory')->defaultValue(TranslatableFactory::class)->end()
-                                        ->scalarNode('form')->defaultValue(DUMMY_UPPEROptionType::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('form')->defaultValue(CalendarOptionType::class)->cannotBeEmpty()->end()
                                     ->end()
                                 ->end()
                                 ->arrayNode('translation')
@@ -167,12 +167,12 @@ final class Configuration implements ConfigurationInterface
                                         ->arrayNode('classes')
                                             ->addDefaultsIfNotSet()
                                             ->children()
-                                                ->scalarNode('model')->defaultValue(DUMMY_UPPEROptionTranslation::class)->cannotBeEmpty()->end()
-                                                ->scalarNode('interface')->defaultValue(DUMMY_UPPEROptionTranslationInterface::class)->cannotBeEmpty()->end()
+                                                ->scalarNode('model')->defaultValue(CalendarOptionTranslation::class)->cannotBeEmpty()->end()
+                                                ->scalarNode('interface')->defaultValue(CalendarOptionTranslationInterface::class)->cannotBeEmpty()->end()
                                                 ->scalarNode('controller')->defaultValue(ResourceController::class)->cannotBeEmpty()->end()
                                                 ->scalarNode('repository')->cannotBeEmpty()->end()
                                                 ->scalarNode('factory')->defaultValue(Factory::class)->end()
-                                                ->scalarNode('form')->defaultValue(DUMMY_UPPEROptionTranslationType::class)->cannotBeEmpty()->end()
+                                                ->scalarNode('form')->defaultValue(CalendarOptionTranslationType::class)->cannotBeEmpty()->end()
                                             ->end()
                                         ->end()
                                     ->end()
@@ -186,12 +186,12 @@ final class Configuration implements ConfigurationInterface
                                 ->arrayNode('classes')
                                     ->addDefaultsIfNotSet()
                                     ->children()
-                                        ->scalarNode('model')->defaultValue(DUMMY_UPPEROptionValue::class)->cannotBeEmpty()->end()
-                                        ->scalarNode('interface')->defaultValue(DUMMY_UPPEROptionValueInterface::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('model')->defaultValue(CalendarOptionValue::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('interface')->defaultValue(CalendarOptionValueInterface::class)->cannotBeEmpty()->end()
                                         ->scalarNode('controller')->defaultValue(ResourceController::class)->cannotBeEmpty()->end()
                                         ->scalarNode('repository')->cannotBeEmpty()->cannotBeEmpty()->end()
                                         ->scalarNode('factory')->defaultValue(TranslatableFactory::class)->cannotBeEmpty()->end()
-                                        ->scalarNode('form')->defaultValue(DUMMY_UPPEROptionValueType::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('form')->defaultValue(CalendarOptionValueType::class)->cannotBeEmpty()->end()
                                     ->end()
                                 ->end()
                                 ->arrayNode('translation')
@@ -203,12 +203,12 @@ final class Configuration implements ConfigurationInterface
                                             ->isRequired()
                                             ->addDefaultsIfNotSet()
                                             ->children()
-                                                ->scalarNode('model')->defaultValue(DUMMY_UPPEROptionValueTranslation::class)->cannotBeEmpty()->end()
-                                                ->scalarNode('interface')->defaultValue(DUMMY_UPPEROptionValueTranslationInterface::class)->cannotBeEmpty()->end()
+                                                ->scalarNode('model')->defaultValue(CalendarOptionValueTranslation::class)->cannotBeEmpty()->end()
+                                                ->scalarNode('interface')->defaultValue(CalendarOptionValueTranslationInterface::class)->cannotBeEmpty()->end()
                                                 ->scalarNode('controller')->defaultValue(ResourceController::class)->cannotBeEmpty()->end()
                                                 ->scalarNode('repository')->cannotBeEmpty()->end()
                                                 ->scalarNode('factory')->defaultValue(Factory::class)->cannotBeEmpty()->end()
-                                                ->scalarNode('form')->defaultValue(DUMMY_UPPEROptionValueTranslationType::class)->cannotBeEmpty()->end()
+                                                ->scalarNode('form')->defaultValue(CalendarOptionValueTranslationType::class)->cannotBeEmpty()->end()
                                             ->end()
                                         ->end()
                                     ->end()
@@ -222,12 +222,12 @@ final class Configuration implements ConfigurationInterface
                                 ->arrayNode('classes')
                                     ->addDefaultsIfNotSet()
                                     ->children()
-                                        ->scalarNode('model')->defaultValue(DUMMY_UPPERAssociation::class)->cannotBeEmpty()->end()
-                                        ->scalarNode('interface')->defaultValue(DUMMY_UPPERAssociationInterface::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('model')->defaultValue(CalendarAssociation::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('interface')->defaultValue(CalendarAssociationInterface::class)->cannotBeEmpty()->end()
                                         ->scalarNode('controller')->defaultValue(ResourceController::class)->cannotBeEmpty()->end()
                                         ->scalarNode('factory')->defaultValue(Factory::class)->cannotBeEmpty()->end()
                                         ->scalarNode('repository')->cannotBeEmpty()->end()
-                                        ->scalarNode('form')->defaultValue(DUMMY_UPPERAssociationType::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('form')->defaultValue(CalendarAssociationType::class)->cannotBeEmpty()->end()
                                     ->end()
                                 ->end()
                             ->end()
@@ -239,12 +239,12 @@ final class Configuration implements ConfigurationInterface
                                 ->arrayNode('classes')
                                     ->addDefaultsIfNotSet()
                                     ->children()
-                                        ->scalarNode('model')->defaultValue(DUMMY_UPPERAssociationTypeModel::class)->cannotBeEmpty()->end()
-                                        ->scalarNode('interface')->defaultValue(DUMMY_UPPERAssociationTypeModelInterface::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('model')->defaultValue(CalendarAssociationTypeModel::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('interface')->defaultValue(CalendarAssociationTypeModelInterface::class)->cannotBeEmpty()->end()
                                         ->scalarNode('controller')->defaultValue(ResourceController::class)->cannotBeEmpty()->end()
                                         ->scalarNode('factory')->defaultValue(TranslatableFactory::class)->cannotBeEmpty()->end()
                                         ->scalarNode('repository')->cannotBeEmpty()->end()
-                                        ->scalarNode('form')->defaultValue(DUMMY_UPPERAssociationTypeType::class)->cannotBeEmpty()->end()
+                                        ->scalarNode('form')->defaultValue(CalendarAssociationTypeType::class)->cannotBeEmpty()->end()
                                     ->end()
                                 ->end()
                                 ->arrayNode('translation')
@@ -254,12 +254,12 @@ final class Configuration implements ConfigurationInterface
                                         ->arrayNode('classes')
                                             ->addDefaultsIfNotSet()
                                             ->children()
-                                                ->scalarNode('model')->defaultValue(DUMMY_UPPERAssociationTypeTranslation::class)->cannotBeEmpty()->end()
-                                                ->scalarNode('interface')->defaultValue(DUMMY_UPPERAssociationTypeTranslationInterface::class)->cannotBeEmpty()->end()
+                                                ->scalarNode('model')->defaultValue(CalendarAssociationTypeTranslation::class)->cannotBeEmpty()->end()
+                                                ->scalarNode('interface')->defaultValue(CalendarAssociationTypeTranslationInterface::class)->cannotBeEmpty()->end()
                                                 ->scalarNode('controller')->defaultValue(ResourceController::class)->cannotBeEmpty()->end()
                                                 ->scalarNode('repository')->cannotBeEmpty()->end()
                                                 ->scalarNode('factory')->defaultValue(Factory::class)->end()
-                                                ->scalarNode('form')->defaultValue(DUMMY_UPPERAssociationTypeTranslationType::class)->cannotBeEmpty()->end()
+                                                ->scalarNode('form')->defaultValue(CalendarAssociationTypeTranslationType::class)->cannotBeEmpty()->end()
                                             ->end()
                                         ->end()
                                     ->end()

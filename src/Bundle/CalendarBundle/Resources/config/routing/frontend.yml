@@ -1,0 +1,19 @@
+frontend_calendar_index:
+    path: /
+    methods: [GET]
+    defaults:
+        _controller: tianos.frontend.controller.calendar:indexAction
+        _tianos:
+            section: admin
+            permission: true
+            grid: sylius_admin_calendar
+            template: CalendarBundle:Calendar:index.html.twig
+            vars:
+                subheader: sylius.ui.manage_your_calendar_catalog
+                icon: cube
+            form:
+                type: Bundle\CalendarBundle\Form\Type\CalendarType
+            repository:
+                service: tianos.repository.calendar
+                method: findAll
+                arguments: [$calendarId]

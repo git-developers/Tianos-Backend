@@ -49,3 +49,6 @@ backend_friends_user:
 backend_setting_user:
     resource: '@UserBundle/Resources/config/routing/backend_setting.yml'
     prefix: /user-setting
+backend_calendar:
+    resource: '@CalendarBundle/Resources/config/routing/backend.yml'
+    prefix: /calendar

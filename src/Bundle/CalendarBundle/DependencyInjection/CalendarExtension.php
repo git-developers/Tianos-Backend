@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace Bundle\DUMMY_UPPERBundle\DependencyInjection;
+namespace Bundle\CalendarBundle\DependencyInjection;
 
-use Bundle\DUMMY_UPPERBundle\Controller\ProductAttributeController;
-use Bundle\DUMMY_UPPERBundle\Doctrine\ORM\ProductAttributeValueRepository;
-use Bundle\DUMMY_UPPERBundle\Form\Type\ProductAttributeTranslationType;
-use Bundle\DUMMY_UPPERBundle\Form\Type\ProductAttributeType;
-use Bundle\DUMMY_UPPERBundle\Form\Type\ProductAttributeValueType;
+use Bundle\CalendarBundle\Controller\ProductAttributeController;
+use Bundle\CalendarBundle\Doctrine\ORM\ProductAttributeValueRepository;
+use Bundle\CalendarBundle\Form\Type\ProductAttributeTranslationType;
+use Bundle\CalendarBundle\Form\Type\ProductAttributeType;
+use Bundle\CalendarBundle\Form\Type\ProductAttributeValueType;
 use Bundle\ResourceBundle\DependencyInjection\Extension\AbstractResourceExtension;
 use Component\Product\Model\ProductAttribute;
 use Component\Product\Model\ProductAttributeInterface;
@@ -21,7 +21,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 use Symfony\Component\DependencyInjection\Loader\XmlFileLoader;
 
-final class DUMMY_UPPERExtension extends AbstractResourceExtension implements PrependExtensionInterface
+final class CalendarExtension extends AbstractResourceExtension implements PrependExtensionInterface
 {
     /**
      * {@inheritdoc}

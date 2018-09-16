@@ -21,3 +21,4 @@ imports:
     - { resource: '@ReportBundle/Resources/config/services.yml' }
     - { resource: '@GoogleBundle/Resources/config/services.yml' }
     - { resource: '@PointofsaleBundle/Resources/config/services.yml' }
+    - { resource: '@CalendarBundle/Resources/config/services.yml' }
