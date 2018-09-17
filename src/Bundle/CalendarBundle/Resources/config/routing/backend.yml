@@ -4,6 +4,14 @@ backend_calendar_index:
     defaults:
         _controller: tianos.backend.controller.calendar:indexAction
         _tianos:
+            template: CalendarBundle:BackendCalendar:index.html.twig
+
+backend_calendar_index_xxx:
+    path: /
+    methods: [GET]
+    defaults:
+        _controller: tianos.backend.controller.calendar:indexAction
+        _tianos:
             action: index
             section: admin
             permission: true

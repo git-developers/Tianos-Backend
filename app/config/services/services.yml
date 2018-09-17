@@ -22,3 +22,4 @@ imports:
     - { resource: '@GoogleBundle/Resources/config/services.yml' }
     - { resource: '@PointofsaleBundle/Resources/config/services.yml' }
     - { resource: '@CalendarBundle/Resources/config/services.yml' }
+    - { resource: '@ProductBundle/Resources/config/services.yml' }

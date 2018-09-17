@@ -52,3 +52,6 @@ backend_setting_user:
 backend_calendar:
     resource: '@CalendarBundle/Resources/config/routing/backend.yml'
     prefix: /calendar
+backend_product:
+    resource: '@ProductBundle/Resources/config/routing/backend.yml'
+    prefix: /product

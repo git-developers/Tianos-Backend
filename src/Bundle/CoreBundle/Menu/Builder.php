@@ -69,15 +69,17 @@ class Builder implements ContainerAwareInterface
 
 
         /**
-         * CRUD
+         * CALENDAR
          */
         $isGranted = $this->isGranted([
             'ROLE_' . Profile::REGULAR_USER,
             'ROLE_' . Profile::ADMIN,
         ]);
 
-        $menu->addChild('Agenda', [
-            'route' => 'frontend_default_index',
+        $isGranted = true;
+
+            $menu->addChild('Agenda', [
+            'route' => 'backend_calendar_index',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
                 'class' => 'treeview-menu',
@@ -86,148 +88,17 @@ class Builder implements ContainerAwareInterface
         ->setAttribute('allow_angle', true)
         ->setAttribute('class', 'treeview')
         ->setAttribute('class', $this->activeRoute([
-            'backend_university_index',
-            'backend_areaacademica_index',
-            'backend_facultad_index',
+            'backend_calendar_index',
         ]))
         ->setAttribute('icon', 'fa-fw fa-calendar')
         ->setDisplay($isGranted)
         ;
-
-//        $menu['Agenda']->addChild('Universidades', [
-//            'route' => 'backend_university_index',
-//            'extras' => ['safe_label' => true],
-//            'childrenAttributes' => [
-//                'class' => 'treeview-menu',
-//            ],
-//        ])
-//        ->setAttribute('icon', 'fa-fw fa-building')
-//        ->setAttribute('class', $this->activeRoute([
-//            'backend_university_index',
-//        ]))
-//        ->setDisplay($isGranted)
-//        ;
-
-//        $menu['Agenda']->addChild('Áreas académicas', [
-//            'route' => 'backend_areaacademica_index',
-//            'extras' => ['safe_label' => true],
-//            'childrenAttributes' => [
-//                'class' => 'treeview-menu',
-//            ],
-//        ])
-//        ->setAttribute('icon', 'fa-fw fa-bookmark')
-//        ->setAttribute('class', $this->activeRoute([
-//            'backend_areaacademica_index',
-//        ]))
-//        ->setDisplay($isGranted)
-//        ;
         /**
-         * CRUD
+         * CALENDAR
          */
 
 
 
-
-
-        /**
-         * ACCOUNTS
-         */
-        $isGranted = $this->isGranted([
-            'ROLE_' . Profile::ADMIN,
-        ]);
-
-        $menu->addChild('Cuentas back-end', [
-            'route' => 'frontend_default_index',
-            'extras' => ['safe_label' => true],
-            'childrenAttributes' => [
-                'class' => 'treeview-menu',
-            ],
-        ])
-        ->setAttribute('allow_angle', true)
-        ->setAttribute('class', 'treeview')
-        ->setAttribute('class', $this->activeRoute([
-            'backend_user_index',
-            'backend_role_index',
-            'backend_session_index',
-            'backend_profile_index',
-            'backend_groupofusers_index',
-        ]))
-        ->setAttribute('icon', 'fa-fw fa-users')
-        ->setDisplay($isGranted)
-        ;
-
-        $menu['Cuentas back-end']->addChild('Usuario', [
-            'route' => 'backend_user_index',
-            'extras' => ['safe_label' => true],
-            'childrenAttributes' => [
-                'class' => 'treeview-menu',
-            ],
-        ])
-        ->setAttribute('icon', 'fa-fw fa-user')
-        ->setAttribute('class', $this->activeRoute([
-            'backend_user_index',
-        ]))
-        ->setDisplay($isGranted)
-        ;
-
-        $menu['Cuentas back-end']->addChild('Grupo de usuarios', [
-            'route' => 'backend_groupofusers_index',
-            'extras' => ['safe_label' => true],
-            'childrenAttributes' => [
-                'class' => 'treeview-menu',
-            ],
-        ])
-            ->setAttribute('icon', 'fa-fw fa-users')
-            ->setAttribute('class', $this->activeRoute([
-                'backend_groupofusers_index',
-            ]))
-            ->setDisplay($isGranted)
-        ;
-
-        $menu['Cuentas back-end']->addChild('Perfil', [
-            'route' => 'backend_profile_index',
-            'extras' => ['safe_label' => true],
-            'childrenAttributes' => [
-                'class' => 'treeview-menu',
-            ],
-        ])
-        ->setAttribute('icon', 'fa-fw fa-user-secret')
-        ->setAttribute('class', $this->activeRoute([
-            'backend_profile_index',
-        ]))
-        ->setDisplay($isGranted)
-        ;
-
-        $menu['Cuentas back-end']->addChild('Rol', [
-            'route' => 'backend_role_index',
-            'extras' => ['safe_label' => true],
-            'childrenAttributes' => [
-                'class' => 'treeview-menu',
-            ],
-        ])
-        ->setAttribute('icon', 'fa-fw fa-expeditedssl')
-        ->setAttribute('class', $this->activeRoute([
-            'backend_role_index',
-        ]))
-        ->setDisplay($isGranted)
-        ;
-
-        $menu['Cuentas back-end']->addChild('Sesión', [
-            'route' => 'backend_session_index',
-            'extras' => ['safe_label' => true],
-            'childrenAttributes' => [
-                'class' => 'treeview-menu',
-            ],
-        ])
-        ->setAttribute('icon', 'fa-fw fa-history')
-        ->setAttribute('class', $this->activeRoute([
-            'backend_session_index',
-        ]))
-        ->setDisplay($isGranted)
-        ;
-        /**
-         * ACCOUNTS
-         */
 
 
 
@@ -239,6 +110,9 @@ class Builder implements ContainerAwareInterface
             'ROLE_' . Profile::REGULAR_USER,
             'ROLE_' . Profile::ADMIN,
         ]);
+
+        $isGranted = true;
+
         $menu->addChild('Usuarios', [
             'route' => 'frontend_default_index',
             'extras' => ['safe_label' => true],
@@ -256,7 +130,7 @@ class Builder implements ContainerAwareInterface
         ->setDisplay(true)
         ;
 
-        $menu['Usuarios']->addChild('Ver todos', [
+        $menu['Usuarios']->addChild('Clientes', [
             'route' => 'backend_anonymous_user_index'
         ])
             ->setAttribute('icon', self::CIRCLE_1)
@@ -264,29 +138,13 @@ class Builder implements ContainerAwareInterface
             ->setDisplay(true)
         ;
 
-        $menu['Usuarios']->addChild('Mis amigos', [
+        $menu['Usuarios']->addChild('Empleados', [
             'route' => 'backend_friends_user_index'
         ])
             ->setAttribute('icon', self::CIRCLE_2)
             ->setAttribute('class', $this->activeRoute('backend_friends_user_index'))
             ->setDisplay($isGranted)
         ;
-
-//        $menu['Usuarios']->addChild('Seguidores', [
-//            'route' => 'backend_anonymous_user_index'
-//        ])
-//            ->setAttribute('icon', self::CIRCLE_3)
-//            ->setAttribute('class', $this->activeRoute('backend_anonymous_user_index'))
-//            ->setDisplay($isGranted)
-//        ;
-//
-//        $menu['Usuarios']->addChild('Siguiendo', [
-//            'route' => 'backend_anonymous_user_index'
-//        ])
-//            ->setAttribute('icon', self::CIRCLE_4)
-//            ->setAttribute('class', $this->activeRoute('backend_anonymous_user_index'))
-//            ->setDisplay($isGranted)
-//        ;
         /**
          * ACCOUNTS - REGULAR_USER
          */
@@ -295,11 +153,103 @@ class Builder implements ContainerAwareInterface
 
 
         /**
-         * ASSOCIATION
+         * STOCK
+         */
+        $isGranted = $this->isGranted([
+            'ROLE_' . Profile::REGULAR_USER,
+            'ROLE_' . Profile::ADMIN,
+        ]);
+
+        $isGranted = true;
+
+        $menu->addChild('Inventario', [
+            'route' => 'backend_product_index',
+            'extras' => ['safe_label' => true],
+            'childrenAttributes' => [
+                'class' => 'treeview-menu',
+            ],
+        ])
+            ->setAttribute('allow_angle', true)
+            ->setAttribute('class', 'treeview')
+            ->setAttribute('class', $this->activeRoute([
+                'backend_product_index',
+            ]))
+            ->setAttribute('icon', 'fa-fw fa-cube')
+            ->setDisplay($isGranted)
+        ;
+        /**
+         * STOCK
+         */
+
+
+
+
+        /**
+         * SETTINGS
          */
         $isGranted = $this->isGranted([
             'ROLE_' . Profile::ADMIN,
         ]);
+
+        $isGranted = true;
+
+        $menu->addChild('Ajustes', [
+            'route' => 'frontend_default_index',
+            'extras' => ['safe_label' => true],
+            'childrenAttributes' => [
+                'class' => 'treeview-menu',
+            ],
+        ])
+            ->setAttribute('class', 'treeview')
+            ->setAttribute('class', $this->activeRoute([
+                'backend_core_loadfixtures',
+            ]))
+            ->setAttribute('icon', 'fa-fw fa-cog')
+            ->setDisplay($isGranted)
+        ;
+
+        $menu['Ajustes']->addChild('Load Fixtures', [
+            'route' => 'backend_core_loadfixtures'
+        ])
+            ->setAttribute('icon', self::CIRCLE_1)
+            ->setAttribute('class', $this->activeRoute('backend_core_loadfixtures'))
+            ->setDisplay($isGranted)
+        ;
+        /**
+         * SETTINGS
+         */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//        *************************************************************************
+//        *************************************************************************
+//        *************************************************************************
+
+        /**
+         * ASSOCIATION
+         */
+
+        /*
+        $isGranted = $this->isGranted([
+            'ROLE_' . Profile::ADMIN,
+        ]);
+
+        $isGranted = true;
 
         $menu->addChild('Asociación', [
             'route' => 'frontend_default_index',
@@ -335,310 +285,6 @@ class Builder implements ContainerAwareInterface
          */
 
 
-
-
-
-
-        /**
-         * REPORTS
-         */
-        $isGranted = $this->isGranted([
-            'ROLE_' . Profile::ADMIN,
-        ]);
-
-        $menu->addChild('Reportes', [
-            'route' => 'frontend_default_index',
-            'extras' => ['safe_label' => true],
-            'childrenAttributes' => [
-                'class' => 'treeview-menu',
-            ],
-        ])
-            ->setAttribute('allow_angle', true)
-            ->setAttribute('class', 'treeview')
-            ->setAttribute('class', $this->activeRoute([
-                'backend_visit_index',
-                'backend_report_pedido_vs_devolucion',
-            ]))
-            ->setAttribute('icon', 'fa-fw fa-line-chart')
-            ->setDisplay($isGranted)
-        ;
-
-        $menu['Reportes']->addChild('Pedido vs Devolución (Chart)', [
-            'route' => 'backend_report_pedido_vs_devolucion',
-            'extras' => ['safe_label' => true],
-            'childrenAttributes' => [
-                'backend_report_roturastock_area_chart',
-                'backend_report_roturastock_line_chart',
-                'backend_report_productos_entregados_a_pdv',
-                'class' => 'treeview-menu',
-            ],
-        ])
-            ->setAttribute('icon', self::CIRCLE_4)
-            ->setAttribute('class', $this->activeRoute('backend_report_pedido_vs_devolucion'))
-            ->setDisplay($isGranted)
-        ;
-
-        $menu['Reportes']->addChild('Visitas (Grid)', [
-            'route' => 'backend_visit_index',
-            'extras' => ['safe_label' => true],
-            'childrenAttributes' => [
-                'class' => 'treeview-menu',
-            ],
-        ])
-            ->setAttribute('icon', self::CIRCLE_7)
-            ->setAttribute('class', $this->activeRoute('backend_visit_index'))
-            ->setDisplay($isGranted)
-        ;
-        /**
-         * REPORTS
-         */
-
-
-
-
-
-
-        /**
-         * GOOGLE DRIVE
-         */
-        $isGranted = $this->isGranted([
-            'ROLE_' . Profile::ADMIN,
-        ]);
-        $menu->addChild('Google', [
-            'route' => 'frontend_default_index',
-            'extras' => ['safe_label' => true],
-            'childrenAttributes' => [
-                'class' => 'treeview-menu',
-            ],
-        ])
-        ->setAttribute('allow_angle', true)
-        ->setAttribute('class', 'treeview')
-        ->setAttribute('class', $this->activeRoute([
-            'backend_google_drive_grid_watch',
-            'backend_google_drive_grid_index_admin',
-            'backend_google_drive_index',
-            'backend_google_drive_account_permissions',
-        ]))
-        ->setAttribute('icon', 'fa-fw fa-google')
-        ->setDisplay($isGranted)
-        ;
-
-        $menu['Google']->addChild('Drive', [
-            'route' => 'backend_google_drive_index',
-            'extras' => ['safe_label' => true],
-            'childrenAttributes' => [
-                'class' => 'treeview-menu',
-            ],
-        ])
-        ->setAttribute('icon', 'fa-fw fa-plus-circle')
-        ->setAttribute('class', $this->activeRoute([
-            'backend_google_drive_grid_watch',
-            'backend_google_drive_index',
-            'backend_google_drive_grid_index_admin',
-            'backend_google_drive_account_permissions',
-        ]))
-        ->setDisplay($isGranted)
-        ;
-
-        $menu['Google']['Drive']->addChild('My drive', [
-            'route' => 'backend_google_drive_index',
-            'routeParameters' => ['field' => 'my-drive']
-        ])
-        ->setAttribute('icon', self::CIRCLE_1)
-        ->setAttribute('class', $this->activeRoute('backend_google_drive_index'))
-        ->setDisplay($isGranted)
-        ;
-
-        $menu['Google']['Drive']->addChild('Shared with me', [
-            'route' => 'backend_google_drive_index',
-            'routeParameters' => ['field' => 'shared-with-me']
-        ])
-        ->setAttribute('icon', self::CIRCLE_1)
-        ->setAttribute('class', $this->activeRoute('backend_google_drive_index'))
-        ->setDisplay($isGranted)
-        ;
-
-        $menu['Google']['Drive']->addChild('Gestionar en Tianos', [
-            'route' => 'backend_google_drive_grid_index_admin'
-        ])
-        ->setAttribute('icon', self::CIRCLE_2)
-        ->setAttribute('class', $this->activeRoute([
-            'backend_google_drive_grid_index_admin',
-            'backend_google_drive_grid_watch'
-        ]))
-        ->setDisplay($isGranted)
-        ;
-        /**
-         * GOOGLE DRIVE
-         */
-
-
-
-
-
-        /**
-         * SETTINGS
-         */
-//        $isGranted = $this->isGranted([
-//            'ROLE_' . Profile::ADMIN,
-//        ]);
-//        $menu->addChild('Settings', [
-//            'route' => 'frontend_default_index',
-//            'extras' => ['safe_label' => true],
-//            'childrenAttributes' => [
-//                'class' => 'treeview-menu',
-//            ],
-//        ])
-//            ->setAttribute('class', 'treeview')
-//            ->setAttribute('class', $this->activeRoute([
-//                'backend_core_loadfixtures',
-//            ]))
-//            ->setAttribute('icon', 'fa-fw fa-cog')
-//            ->setDisplay($isGranted)
-//        ;
-//
-//        $menu['Settings']->addChild('Load Fixtures', [
-//            'route' => 'backend_core_loadfixtures'
-//        ])
-//            ->setAttribute('icon', self::CIRCLE_1)
-//            ->setAttribute('class', $this->activeRoute('backend_core_loadfixtures'))
-//            ->setDisplay($isGranted)
-//        ;
-        /**
-         * SETTINGS
-         */
-
-
-
-
-        /**
-         * GOOGLE DRIVE FILES - REGULAR_USER
-         */
-        $isGranted = $this->isGranted([
-            'ROLE_' . Profile::REGULAR_USER,
-            'ROLE_' . Profile::ADMIN,
-        ]);
-        $menu->addChild('Archivos', [
-            'route' => 'frontend_default_index',
-            'extras' => ['safe_label' => true],
-            'childrenAttributes' => [
-                'class' => 'treeview-menu',
-            ],
-        ])
-        ->setAttribute('class', 'treeview')
-        ->setAttribute('class', $this->activeRoute([
-            'backend_google_drive_grid_index',
-            'backend_google_drive_grid_mis_archivos',
-        ]))
-        ->setAttribute('icon', 'fa-fw fa-file-text-o')
-        ->setDisplay(true)
-        ;
-
-        $menu['Archivos']->addChild('Ver todos', [
-            'route' => 'backend_google_drive_grid_index'
-        ])
-        ->setAttribute('icon', self::CIRCLE_1)
-        ->setAttribute('class', $this->activeRoute('backend_google_drive_grid_index'))
-        ->setDisplay(true)
-        ;
-
-        $menu['Archivos']->addChild('Mis archivos', [
-            'route' => 'backend_google_drive_grid_mis_archivos'
-        ])
-        ->setAttribute('icon', self::CIRCLE_2)
-        ->setAttribute('class', $this->activeRoute('backend_google_drive_grid_mis_archivos'))
-        ->setDisplay($isGranted)
-        ;
-        /**
-         * GOOGLE DRIVE FILES - REGULAR_USER
-         */
-
-
-
-        /**
-         * GOOGLE DRIVE - REGULAR_USER
-         */
-        $isGranted = $this->isGranted([
-            'ROLE_' . Profile::REGULAR_USER,
-        ]);
-        $menu->addChild('Google Drive', [
-            'route' => 'frontend_default_index',
-            'extras' => ['safe_label' => true],
-            'childrenAttributes' => [
-                'class' => 'treeview-menu',
-            ],
-        ])
-            ->setAttribute('class', 'treeview')
-            ->setAttribute('icon', 'fa-fw fa-google')
-            ->setAttribute('class', $this->activeRoute([
-                'backend_google_drive_grid_watch',
-                'backend_google_drive_index',
-                'backend_google_drive_account_permissions',
-            ]))
-            ->setDisplay($isGranted)
-        ;
-
-        $menu['Google Drive']->addChild('My drive', [
-            'route' => 'backend_google_drive_index',
-            'routeParameters' => ['field' => 'my-drive']
-        ])
-            ->setAttribute('icon', self::CIRCLE_1)
-            ->setAttribute('class', $this->activeRoute('backend_google_drive_index'))
-            ->setDisplay($isGranted)
-        ;
-
-        $menu['Google Drive']->addChild('Shared with me', [
-            'route' => 'backend_google_drive_index',
-            'routeParameters' => ['field' => 'shared-with-me']
-        ])
-            ->setAttribute('icon', self::CIRCLE_2)
-            ->setAttribute('class', $this->activeRoute('backend_google_drive_index'))
-            ->setDisplay($isGranted)
-        ;
-        /**
-         * GOOGLE DRIVE - REGULAR_USER
-         */
-
-
-
-        /**
-         * GOOGLE DRIVE FILES - REGULAR_USER
-         */
-        $isGranted = true;
-        $menu->addChild('Contáctanos', [
-            'route' => 'frontend_default_index',
-            'extras' => ['safe_label' => true],
-            'childrenAttributes' => [
-                'class' => 'treeview-menu',
-            ],
-        ])
-        ->setAttribute('class', 'treeview')
-        ->setAttribute('class', $this->activeRoute([
-            'frontend_default_contact_us_facebook',
-            'frontend_default_contact_us_twitter',
-        ]))
-        ->setAttribute('icon', 'fa-fw fa-phone')
-        ->setDisplay(true)
-        ;
-
-        $menu['Contáctanos']->addChild('Facebook', [
-            'route' => 'frontend_default_contact_us_facebook'
-        ])
-        ->setAttribute('icon', 'fa-fw fa-facebook-official')
-        ->setAttribute('class', $this->activeRoute('frontend_default_contact_us_facebook'))
-        ->setDisplay(true)
-        ;
-
-        $menu['Contáctanos']->addChild('Twitter', [
-            'route' => 'frontend_default_contact_us_twitter'
-        ])
-        ->setAttribute('icon', 'fa-fw fa-twitter')
-        ->setAttribute('class', $this->activeRoute('frontend_default_contact_us_twitter'))
-        ->setDisplay($isGranted)
-        ;
-        /**
-         * GOOGLE DRIVE FILES - REGULAR_USER
-         */
 
         return $menu;
     }
