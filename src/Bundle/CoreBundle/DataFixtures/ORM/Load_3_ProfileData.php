@@ -13,10 +13,6 @@ class Load_3_ProfileData extends AbstractFixture implements OrderedFixtureInterf
 {
     public function load(ObjectManager $manager)
     {
-        $roleAdmin = $this->getReference('role-admin');
-        $roleRegularUser = $this->getReference('role-regular-user');
-        $roleGuest = $this->getReference('role-guest');
-
         $roleUserCreate = $this->getReference('role-user-create');
         $roleUserEdit = $this->getReference('role-user-edit');
         $roleUserView = $this->getReference('role-user-view');
@@ -24,26 +20,35 @@ class Load_3_ProfileData extends AbstractFixture implements OrderedFixtureInterf
 
 
         $entity = new Profile();
-        $entity->setName(Profile::ADMIN);
-        $entity->addRole($roleAdmin);
+        $entity->setName(Profile::SUPER_ADMIN);
         $entity->addRole($roleUserCreate);
         $entity->addRole($roleUserEdit);
         $entity->addRole($roleUserView);
         $entity->addRole($roleUserDelete);
         $manager->persist($entity);
+        $this->addReference('profile-super-admin', $entity);
+
+
+        $entity = new Profile();
+        $entity->setName(Profile::ADMIN);
+        $manager->persist($entity);
         $this->addReference('profile-admin', $entity);
 
 
         $entity = new Profile();
-        $entity->setName(Profile::REGULAR_USER);
-        $entity->addRole($roleRegularUser);
+        $entity->setName(Profile::EMPLOYEE);
         $manager->persist($entity);
-        $this->addReference('profile-regular-user', $entity);
+        $this->addReference('profile-employee', $entity);
+
+
+        $entity = new Profile();
+        $entity->setName(Profile::CLIENT);
+        $manager->persist($entity);
+        $this->addReference('profile-client', $entity);
 
 
         $entity = new Profile();
         $entity->setName(Profile::GUEST);
-        $entity->addRole($roleGuest);
         $manager->persist($entity);
         $this->addReference('profile-guest', $entity);
 

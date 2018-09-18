@@ -1,4 +1,4 @@
-backend_anonymous_user_index:
+backend_user_client_index:
     path: /
     methods: [GET]
     defaults:
@@ -15,16 +15,16 @@ backend_anonymous_user_index:
             grid:
                 icon: user
                 box_class: primary
-                title: Ver todos los usuarios
+                title: Listado de clientes
                 modal:
                     title: Crear usuario
                 data_table:
                     route:
-                        info: backend_anonymous_user_info
-                        view: backend_anonymous_user_view
+                        info: backend_user_client_info
+                        view: backend_user_client_view
                         view_profile: frontend_user_profile
-#                        create: backend_anonymous_user_create
-#                        delete: backend_anonymous_user_delete
+#                        create: backend_user_client_create
+#                        delete: backend_user_client_delete
                     table_button:
                         - view_profile
                     table_option:
@@ -57,19 +57,19 @@ backend_anonymous_user_index:
                 type: Bundle\UserBundle\Form\Type\UserType
             repository:
                 service: tianos.repository.user
-                method: findAll
+                method: findAllClient
                 arguments: [$userId]
                 vars:
-                    serialize_group_name: anonymous_user
+                    serialize_group_name: user_client
 
-backend_anonymous_user_view:
+backend_user_client_view:
     path: /view
     methods: [POST]
     defaults:
         _controller: tianos.backend.controller.user:viewAction
         _tianos:
             action: view
-            template: UserBundle:BackendUser/Informative:view_anonymous.html.twig
+            template: UserBundle:BackendUser/Informative:view_client.html.twig
             repository:
                 service: tianos.repository.user
                 method: find
@@ -77,7 +77,7 @@ backend_anonymous_user_view:
                 vars:
                     serialize_group_name: crud
 
-backend_anonymous_user_info:
+backend_user_client_info:
     path: /info
     methods: [POST]
     defaults:

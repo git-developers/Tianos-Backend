@@ -12,10 +12,11 @@ use JMS\Serializer\Annotation\Type as TypeJMS;
 class Profile
 {
 
+    const SUPER_ADMIN = 'Super Administrator';
     const ADMIN = 'Administrator';
+    const EMPLOYEE = 'Empleado';
+    const CLIENT = 'Cliente';
     const GUEST = 'Guest (invitado)';
-    const REGULAR_USER = 'Regular User';
-    const REGULAR_USER_SLUG = 'regular-user';
 
     /**
      * @var integer

@@ -22,23 +22,19 @@ class Load_5_CategoryData extends AbstractFixture implements OrderedFixtureInter
     public function load(ObjectManager $manager)
     {
 
-        $dateCreatedAt = "2018-05-11";
+        $entity = new Category();
+        $entity->setCode('cat-111');
+        $entity->setName('Categoria 111');
+//        $entity->setSlug('marca-prensmart');
+        $manager->persist($entity);
+        $this->addReference('category-1', $entity);
 
         $entity = new Category();
-        $entity->setCode('prensmart-1112');
-        $entity->setName('Marca PrenSmart');
-        $entity->setSlug('marca-prensmart');
-        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
+        $entity->setCode('cat-222');
+        $entity->setName('Categoria 222');
+//        $entity->setSlug('marca-el-comercio');
         $manager->persist($entity);
-        $this->addReference('category-prensmart', $entity);
-
-        $entity = new Category();
-        $entity->setCode('elcomercio-1113');
-        $entity->setName('Marca El Comercio');
-        $entity->setSlug('marca-el-comercio');
-        $entity->setCreatedAt(new \DateTime($dateCreatedAt));
-        $manager->persist($entity);
-        $this->addReference('category-elcomercio', $entity);
+        $this->addReference('category-2', $entity);
 
 
         /*

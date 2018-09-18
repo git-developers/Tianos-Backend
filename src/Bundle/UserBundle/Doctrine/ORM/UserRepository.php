@@ -109,6 +109,26 @@ class UserRepository extends EntityRepository implements UserRepositoryInterface
     /**
      * {@inheritdoc}
      */
+    public function findAllClient(): array
+    {
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT user_, profile
+            FROM UserBundle:User user_
+            INNER JOIN user_.profile profile
+            WHERE
+            user_.enabled = :active
+            ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+
+        return $query->getResult();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function findOneByEmail(string $email)
     {
         return $this->createQueryBuilder('o')

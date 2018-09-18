@@ -9,7 +9,7 @@ use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Bundle\PointofsaleBundle\Entity\Pointofsale;
 
-class Load_9_PointofsaleData extends AbstractFixture implements OrderedFixtureInterface
+class Load_1_PointofsaleData extends AbstractFixture implements OrderedFixtureInterface
 {
 
     protected $applicationUrl;
@@ -144,6 +144,6 @@ class Load_9_PointofsaleData extends AbstractFixture implements OrderedFixtureIn
     {
         // the order in which fixtures will be loaded
         // the lower the number, the sooner that this fixture is loaded
-        return 9;
+        return 1;
     }
 }

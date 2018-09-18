@@ -21,12 +21,25 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
 
     public function load(ObjectManager $manager)
     {
-        $universityUni = $this->getReference('university-uni');
+//        $universityUni = $this->getReference('university-uni');
 
+        $profileSuperAdmin = $this->getReference('profile-super-admin');
         $profileAdmin = $this->getReference('profile-admin');
+        $profileEmployee = $this->getReference('profile-employee');
+        $profileClient = $this->getReference('profile-client');
         $profileGuest = $this->getReference('profile-guest');
-        $profileRegularUser = $this->getReference('profile-regular-user');
 
+
+        $entity = new User();
+        $entity->setDni('12345688');
+        $entity->setPassword('123');
+        $entity->setName('Alfredo');
+        $entity->setLastName('Bringas');
+        $entity->setEmail('abringas@' . $this->applicationUrl);
+//        $entity->setUniversity($universityUni);
+        $entity->setProfile($profileSuperAdmin);
+        $manager->persist($entity);
+        $this->addReference('user-1', $entity);
 
         $entity = new User();
         $entity->setDni('87654321');
@@ -34,8 +47,8 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setName('Albert');
         $entity->setLastName('Einstein');
         $entity->setEmail('aeinstein-' . uniqid() . '@' . $this->applicationUrl);
-        $entity->setUniversity($universityUni);
-        $entity->setProfile($profileRegularUser);
+//        $entity->setUniversity($universityUni);
+        $entity->setProfile($profileAdmin);
         $manager->persist($entity);
         $this->addReference('user-2', $entity);
 
@@ -45,8 +58,8 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setName('Bill');
         $entity->setLastName('Gates');
         $entity->setEmail('bgates-' . uniqid() . '@' . $this->applicationUrl);
-        $entity->setUniversity($universityUni);
-        $entity->setProfile($profileRegularUser);
+//        $entity->setUniversity($universityUni);
+        $entity->setProfile($profileEmployee);
         $manager->persist($entity);
         $this->addReference('user-4', $entity);
 
@@ -56,21 +69,10 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setName('Isaac');
         $entity->setLastName('Newton');
         $entity->setEmail('inewton-' . uniqid() . '@' . $this->applicationUrl);
-        $entity->setUniversity($universityUni);
-        $entity->setProfile($profileRegularUser);
+//        $entity->setUniversity($universityUni);
+        $entity->setProfile($profileEmployee);
         $manager->persist($entity);
         $this->addReference('user-5', $entity);
-
-        $entity = new User();
-        $entity->setDni('12345688');
-        $entity->setPassword('123');
-        $entity->setName('Alfredo');
-        $entity->setLastName('Bringas');
-        $entity->setEmail('abringas@' . $this->applicationUrl);
-        $entity->setUniversity($universityUni);
-        $entity->setProfile($profileAdmin);
-        $manager->persist($entity);
-        $this->addReference('user-1', $entity);
 
         $entity = new User();
         $entity->setDni('88889999');
@@ -78,8 +80,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setName('Steve');
         $entity->setLastName('Jobs');
         $entity->setEmail('sjobs@' . $this->applicationUrl);
-        $entity->setUniversity($universityUni);
-        $entity->setProfile($profileRegularUser);
+        $entity->setProfile($profileClient);
         $manager->persist($entity);
         $this->addReference('user-3', $entity);
 
