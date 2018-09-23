@@ -69,6 +69,71 @@ class Builder implements ContainerAwareInterface
 
 
         /**
+         * MODULES
+         */
+        $isGranted = $this->isGranted([
+            'ROLE_' . Profile::ADMIN,
+        ]);
+
+        $isGranted = true;
+
+        $menu->addChild('Modulos', [
+            'route' => 'backend_module_index',
+            'extras' => ['safe_label' => true],
+            'childrenAttributes' => [
+                'class' => 'treeview-menu',
+            ],
+        ])
+            ->setAttribute('allow_angle', true)
+            ->setAttribute('class', 'treeview')
+            ->setAttribute('class', $this->activeRoute([
+                'backend_module_index',
+            ]))
+            ->setAttribute('icon', 'fa-fw fa-cubes')
+            ->setDisplay($isGranted)
+        ;
+        /**
+         * MODULES
+         */
+
+
+
+
+        /**
+         * POINTS OF SALES
+         */
+        $isGranted = $this->isGranted([
+            'ROLE_' . Profile::ADMIN,
+            'ROLE_' . Profile::ADMIN,
+        ]);
+
+        $isGranted = true;
+
+        $menu->addChild('Puntos de venta', [
+            'route' => 'backend_pointofsale_index',
+            'extras' => ['safe_label' => true],
+            'childrenAttributes' => [
+                'class' => 'treeview-menu',
+            ],
+        ])
+            ->setAttribute('allow_angle', true)
+            ->setAttribute('class', 'treeview')
+            ->setAttribute('class', $this->activeRoute([
+                'backend_pointofsale_index',
+            ]))
+            ->setAttribute('icon', 'fa-fw fa-map-marker')
+            ->setDisplay($isGranted)
+        ;
+        /**
+         * POINTS OF SALES
+         */
+
+
+
+
+
+
+        /**
          * CALENDAR
          */
         $isGranted = $this->isGranted([
@@ -100,37 +165,6 @@ class Builder implements ContainerAwareInterface
 
 
 
-        /**
-         * CALENDAR
-         */
-        $isGranted = $this->isGranted([
-            'ROLE_' . Profile::ADMIN,
-            'ROLE_' . Profile::ADMIN,
-        ]);
-
-        $isGranted = true;
-
-        $menu->addChild('Puntos de venta', [
-            'route' => 'backend_pointofsale_index',
-            'extras' => ['safe_label' => true],
-            'childrenAttributes' => [
-                'class' => 'treeview-menu',
-            ],
-        ])
-            ->setAttribute('allow_angle', true)
-            ->setAttribute('class', 'treeview')
-            ->setAttribute('class', $this->activeRoute([
-                'backend_pointofsale_index',
-            ]))
-            ->setAttribute('icon', 'fa-fw fa-map-marker')
-            ->setDisplay($isGranted)
-        ;
-        /**
-         * CALENDAR
-         */
-
-
-
 
 
 
@@ -155,7 +189,7 @@ class Builder implements ContainerAwareInterface
         ->setAttribute('class', $this->activeRoute([
             'frontend_user_profile',
             'backend_user_client_index',
-            'backend_friends_user_index',
+            'backend_user_employee_index',
         ]))
         ->setAttribute('icon', 'fa-fw fa-user')
         ->setDisplay(true)
@@ -165,20 +199,22 @@ class Builder implements ContainerAwareInterface
             'route' => 'backend_user_client_index'
         ])
             ->setAttribute('icon', self::CIRCLE_1)
-            ->setAttribute('class', $this->activeRoute('backend_anonymous_user_index'))
+            ->setAttribute('class', $this->activeRoute('backend_user_client_index'))
             ->setDisplay(true)
         ;
 
         $menu['Usuarios']->addChild('Empleados', [
-            'route' => 'backend_friends_user_index'
+            'route' => 'backend_user_employee_index'
         ])
             ->setAttribute('icon', self::CIRCLE_2)
-            ->setAttribute('class', $this->activeRoute('backend_friends_user_index'))
+            ->setAttribute('class', $this->activeRoute('backend_user_employee_index'))
             ->setDisplay($isGranted)
         ;
         /**
          * ACCOUNTS - ADMIN
          */
+
+
 
 
 
@@ -204,13 +240,16 @@ class Builder implements ContainerAwareInterface
             ->setAttribute('class', 'treeview')
             ->setAttribute('class', $this->activeRoute([
                 'backend_product_index',
+                'backend_category_tree_index',
             ]))
-            ->setAttribute('icon', 'fa-fw fa-cube')
+            ->setAttribute('icon', 'fa-fw fa-dropbox')
             ->setDisplay($isGranted)
         ;
         /**
          * STOCK
          */
+
+
 
 
 

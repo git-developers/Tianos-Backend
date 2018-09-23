@@ -27,7 +27,7 @@ class Load_1_PointofsaleData extends AbstractFixture implements OrderedFixtureIn
 
         $entity = new Pointofsale();
         $entity->setCode('111');
-        $entity->setName('Aeropuerto');
+        $entity->setName('Salon Belleza Aeropuerto');
         $entity->setAddress('Av. Tomas Valle Mz.g 37 Lt.31 Aa.hh Bocanegra Callao');
         $entity->setPhone('994826014');
         $entity->setSlug('point-of-sale-1');
@@ -38,7 +38,7 @@ class Load_1_PointofsaleData extends AbstractFixture implements OrderedFixtureIn
 
         $entity = new Pointofsale();
         $entity->setCode('222');
-        $entity->setName('Barranco');
+        $entity->setName('Salon Belleza Barranco');
         $entity->setAddress('Calle Union 208, Barranco');
         $entity->setPhone('2484434');
         $entity->setSlug('point-of-sale-2');
@@ -49,7 +49,7 @@ class Load_1_PointofsaleData extends AbstractFixture implements OrderedFixtureIn
 
         $entity = new Pointofsale();
         $entity->setCode('333');
-        $entity->setName('Chorrillos');
+        $entity->setName('Salon Belleza Chorrillos');
         $entity->setAddress('Jr. Delfín Puccio Mz.a Lt.8 Urb.san Juan, Chorrillos');
         $entity->setPhone('998461653');
         $entity->setSlug('point-of-sale-3');
@@ -60,7 +60,7 @@ class Load_1_PointofsaleData extends AbstractFixture implements OrderedFixtureIn
 
         $entity = new Pointofsale();
         $entity->setCode('444');
-        $entity->setName('El Porvenir');
+        $entity->setName('Salon Belleza El Porvenir');
         $entity->setAddress('Jr. Garibaldi 367, La Victoria');
         $entity->setPhone('5731246');
         $entity->setSlug('point-of-sale-4');
@@ -71,7 +71,7 @@ class Load_1_PointofsaleData extends AbstractFixture implements OrderedFixtureIn
 
         $entity = new Pointofsale();
         $entity->setCode('555');
-        $entity->setName('La Molina');
+        $entity->setName('Salon Belleza La Molina');
         $entity->setAddress('Av. La Molina 740');
         $entity->setPhone('999040550');
         $entity->setSlug('point-of-sale-5');
@@ -82,7 +82,7 @@ class Load_1_PointofsaleData extends AbstractFixture implements OrderedFixtureIn
 
         $entity = new Pointofsale();
         $entity->setCode('666');
-        $entity->setName('Lurigancho');
+        $entity->setName('Salon Belleza Lurigancho');
         $entity->setAddress('Av. Gran Chimu 1era Crda Zarate, Lurigancho (Porton Plomo)');
         $entity->setPhone('999339483');
         $entity->setSlug('point-of-sale-6');
@@ -93,7 +93,7 @@ class Load_1_PointofsaleData extends AbstractFixture implements OrderedFixtureIn
 
         $entity = new Pointofsale();
         $entity->setCode('777');
-        $entity->setName('Magdalena');
+        $entity->setName('Salon Belleza Magdalena');
         $entity->setAddress('Jr. Sn. Martin Cdra. 833 Mz.e Lt.9 Los Tulipanes, Magdalena');
         $entity->setPhone('2636376');
         $entity->setSlug('point-of-sale-7');
@@ -104,7 +104,7 @@ class Load_1_PointofsaleData extends AbstractFixture implements OrderedFixtureIn
 
         $entity = new Pointofsale();
         $entity->setCode('888');
-        $entity->setName('Miraflores');
+        $entity->setName('Salon Belleza Miraflores');
         $entity->setAddress('Av. Paseo De República 5260 Miraflores');
         $entity->setPhone('975286372');
         $entity->setSlug('point-of-sale-8');
@@ -115,7 +115,7 @@ class Load_1_PointofsaleData extends AbstractFixture implements OrderedFixtureIn
 
         $entity = new Pointofsale();
         $entity->setCode('999');
-        $entity->setName('Plaza Grau');
+        $entity->setName('Salon Belleza Plaza Grau');
         $entity->setAddress('Pueblo Joven Cerro El Pino');
         $entity->setPhone('');
         $entity->setSlug('point-of-sale-9');
@@ -126,7 +126,7 @@ class Load_1_PointofsaleData extends AbstractFixture implements OrderedFixtureIn
 
         $entity = new Pointofsale();
         $entity->setCode('1010');
-        $entity->setName('Puente Piedra II');
+        $entity->setName('Salon Belleza Puente Piedra');
         $entity->setAddress('Av. Panam. norte 680 pasando byPass Puente Piedra');
         $entity->setPhone('997013686');
         $entity->setSlug('point-of-sale-10');

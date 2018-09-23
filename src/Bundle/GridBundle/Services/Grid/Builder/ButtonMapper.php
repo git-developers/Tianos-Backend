@@ -129,6 +129,16 @@ class ButtonMapper
         ]);
     }
 
+    private function add_user()
+    {
+        return new Button([
+            'alt' => 'Agregar usuario',
+            'title' => 'Agregar usuario',
+            'icon' => '<i class="fa fa-fw fa-plus"></i>',
+            'class' => 'btn-info ' . ModalMapper::POINT_OF_SALE_ADD_USER,
+        ]);
+    }
+
 }
 
 

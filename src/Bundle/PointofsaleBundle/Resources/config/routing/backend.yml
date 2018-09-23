@@ -25,12 +25,17 @@ backend_pointofsale_index:
                         edit: backend_pointofsale_edit
                         create: backend_pointofsale_create
                         delete: backend_pointofsale_delete
+                        add_user: backend_pointofsale_add_user
                     table_button:
                         - edit
                         - delete
+                        - add_user
                     table_button_header:
                         - create
                         - info
+                    table_option:
+                        pageLength: 50
+                        dom: "'<\"top\"iflp><\"clear\">rt<\"bottom\"iflp>'"
                     row_call_back:
                         - key: id
                           value: aData.id
@@ -67,7 +72,7 @@ backend_pointofsale_create:
         _controller: tianos.backend.controller.pointofsale:createAction
         _tianos:
             action: create
-            template: PointofsaleBundle:PointofsaleBackend/Form:form.html.twig
+            template: PointofsaleBundle:BackendPointofsale/Form:form.html.twig
             entity: Bundle\PointofsaleBundle\Entity\Pointofsale
             form:
                 type: Bundle\PointofsaleBundle\Form\Type\PointofsaleType
@@ -82,7 +87,7 @@ backend_pointofsale_edit:
         _controller: tianos.backend.controller.pointofsale:editAction
         _tianos:
             action: edit
-            template: PointofsaleBundle:PointofsaleBackend/Form:form.html.twig
+            template: PointofsaleBundle:BackendPointofsale/Form:form.html.twig
             form:
                 type: Bundle\PointofsaleBundle\Form\Type\PointofsaleType
             repository:
@@ -114,7 +119,7 @@ backend_pointofsale_view:
         _controller: tianos.backend.controller.pointofsale:viewAction
         _tianos:
             action: view
-            template: PointofsaleBundle:PointofsaleBackend/Informative:view.html.twig
+            template: PointofsaleBundle:BackendPointofsale/Informative:view.html.twig
             repository:
                 service: tianos.repository.pointofsale
                 method: find
@@ -129,4 +134,29 @@ backend_pointofsale_info:
         _controller: tianos.backend.controller.pointofsale:infoAction
         _tianos:
             action: info
-            template: PointofsaleBundle:PointofsaleBackend/Informative:info.html.twig
+            template: PointofsaleBundle:BackendPointofsale/Informative:info.html.twig
+
+backend_pointofsale_add_user:
+    path: /add-user/{id}
+    methods: [GET, POST]
+    defaults:
+        _controller: tianos.backend.controller.pointofsale:addUserAction
+        _tianos:
+            action: edit
+            template: PointofsaleBundle:BackendPointofsale:add_user.html.twig
+            vars:
+                icon: map-marker
+                box_class: primary
+                title: 'Punto de venta: agregar usuarios'
+                body_css: grid-body-css
+            form:
+                type: Bundle\PointofsaleBundle\Form\Type\PointofsaleType
+            repository:
+                service: tianos.repository.pointofsale
+                method: find
+                arguments: [$pointofsaleId]
+                vars:
+                    serialize_group_name: crud
+
+
+

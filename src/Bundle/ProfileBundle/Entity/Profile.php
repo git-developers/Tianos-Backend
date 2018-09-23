@@ -15,7 +15,9 @@ class Profile
     const SUPER_ADMIN = 'Super Administrator';
     const ADMIN = 'Administrator';
     const EMPLOYEE = 'Empleado';
+    const EMPLOYEE_SLUG = 'employee';
     const CLIENT = 'Cliente';
+    const CLIENT_SLUG = 'client';
     const GUEST = 'Guest (invitado)';
 
     /**

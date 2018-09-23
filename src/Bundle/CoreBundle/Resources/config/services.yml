@@ -6,13 +6,16 @@ services:
         tags:
             - { name: sylius.form.type.admin_user, alias: sylius.form.type.admin_user }
 
-    Bundle\CoreBundle\DataFixtures\ORM\Load_1_UniversityData:
+    Bundle\CoreBundle\DataFixtures\ORM\Load_1_PointofsaleData:
+        arguments: [ '%application_url%' ]
         tags: [doctrine.fixture.orm]
 
     Bundle\CoreBundle\DataFixtures\ORM\Load_2_RoleData:
+        arguments: [ '%application_url%' ]
         tags: [doctrine.fixture.orm]
 
     Bundle\CoreBundle\DataFixtures\ORM\Load_3_ProfileData:
+        arguments: [ '%application_url%' ]
         tags: [doctrine.fixture.orm]
 
     Bundle\CoreBundle\DataFixtures\ORM\Load_4_UserData:
@@ -27,23 +30,11 @@ services:
         arguments: [ '%application_url%' ]
         tags: [doctrine.fixture.orm]
 
-    Bundle\CoreBundle\DataFixtures\ORM\Load_9_PointofsaleData:
-        arguments: [ '%application_url%' ]
-        tags: [doctrine.fixture.orm]
-
     Bundle\CoreBundle\DataFixtures\ORM\Load_12_UserHasPointOfSaleData:
         arguments: [ '%application_url%' ]
         tags: [doctrine.fixture.orm]
 
-    Bundle\CoreBundle\DataFixtures\ORM\Load_13_AreaacademicaData:
-        arguments: [ '%application_url%' ]
-        tags: [doctrine.fixture.orm]
-
-    Bundle\CoreBundle\DataFixtures\ORM\Load_14_FacultadData:
-        arguments: [ '%application_url%' ]
-        tags: [doctrine.fixture.orm]
-
-    Bundle\CoreBundle\DataFixtures\ORM\Load_15_EscuelaData:
+    Bundle\CoreBundle\DataFixtures\ORM\Load_13_ModuleData:
         arguments: [ '%application_url%' ]
         tags: [doctrine.fixture.orm]
 

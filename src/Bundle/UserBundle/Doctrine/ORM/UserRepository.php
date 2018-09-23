@@ -117,11 +117,35 @@ class UserRepository extends EntityRepository implements UserRepositoryInterface
             FROM UserBundle:User user_
             INNER JOIN user_.profile profile
             WHERE
-            user_.enabled = :active
+            user_.enabled = :active AND
+            profile.slug = :slug
             ";
 
         $query = $em->createQuery($dql);
         $query->setParameter('active', 1);
+        $query->setParameter('slug', Profile::CLIENT_SLUG);
+
+        return $query->getResult();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function findAllEmployee(): array
+    {
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT user_, profile
+            FROM UserBundle:User user_
+            INNER JOIN user_.profile profile
+            WHERE
+            user_.enabled = :active AND
+            profile.slug = :slug
+            ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+        $query->setParameter('slug', Profile::EMPLOYEE_SLUG);
 
         return $query->getResult();
     }

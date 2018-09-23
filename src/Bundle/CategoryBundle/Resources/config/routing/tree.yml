@@ -7,15 +7,15 @@ backend_category_tree_index:
             action: index
             section: admin
             permission: true
-            template: TreeBundle::index.html.twig
+            template: TreeBundle::index_inventory.html.twig
             vars:
                 subheader: sylius.ui.manage_your_category_catalog
-                icon: cube
+                icon: dropbox
                 body_css: grid-body-css
             tree:
-                icon: cube
+                icon: dropbox
                 box_class: primary
-                title: Gestionar categoría - tree
+                title: Gestionar inventario
                 main_div: box-main-div
                 main_ul: box-main-ul
                 child_ul: box-child-ul
@@ -43,7 +43,7 @@ backend_category_tree_create:
         _controller: tianos.tree.controller.category:createAction
         _tianos:
             action: create
-            template: CategoryBundle:CategoryBackend/Form:form.html.twig
+            template: CategoryBundle:BackendCategory/Form:form.html.twig
             entity: Bundle\CategoryBundle\Entity\Category
             form:
                 type: Bundle\CategoryBundle\Form\Type\CategoryType
@@ -58,7 +58,7 @@ backend_category_tree_create_child:
         _controller: tianos.tree.controller.category:createChildAction
         _tianos:
             action: create
-            template: CategoryBundle:CategoryBackend/Form:form.html.twig
+            template: CategoryBundle:BackendCategory/Form:form.html.twig
             entity: Bundle\CategoryBundle\Entity\Category
             form:
                 type: Bundle\CategoryBundle\Form\Type\CategoryType
@@ -73,7 +73,7 @@ backend_category_tree_edit:
         _controller: tianos.tree.controller.category:editAction
         _tianos:
             action: edit
-            template: CategoryBundle:CategoryBackend/Form:form.html.twig
+            template: CategoryBundle:BackendCategory/Form:form.html.twig
             form:
                 type: Bundle\CategoryBundle\Form\Type\CategoryType
             repository:
@@ -105,7 +105,7 @@ backend_category_tree_view:
         _controller: tianos.tree.controller.category:viewAction
         _tianos:
             action: view
-            template: CategoryBundle:CategoryBackend/Informative:view.html.twig
+            template: CategoryBundle:BackendCategory/Informative:view.html.twig
             repository:
                 service: tianos.repository.category
                 method: find
@@ -120,4 +120,4 @@ backend_category_tree_info:
         _controller: tianos.tree.controller.category:infoAction
         _tianos:
             action: info
-            template: CategoryBundle:CategoryBackend/Informative:info.html.twig
+            template: CategoryBundle:BackendCategory/Informative:info.html.twig

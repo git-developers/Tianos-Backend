@@ -43,6 +43,9 @@ backend_user:
 backend_user_client:
     resource: '@UserBundle/Resources/config/routing/backend_client.yml'
     prefix: /user-client
+backend_user_employee:
+    resource: '@UserBundle/Resources/config/routing/backend_employee.yml'
+    prefix: /user-employee
 backend_friends_user:
     resource: '@UserBundle/Resources/config/routing/backend_friends.yml'
     prefix: /user-friends
@@ -55,6 +58,12 @@ backend_calendar:
 backend_product:
     resource: '@ProductBundle/Resources/config/routing/backend.yml'
     prefix: /product
+backend_category:
+    resource: '@CategoryBundle/Resources/config/routing/tree.yml'
+    prefix: /category
 backend_pointofsale:
     resource: '@PointofsaleBundle/Resources/config/routing/backend.yml'
     prefix: /point-of-sale
+backend_module:
+    resource: '@ModuleBundle/Resources/config/routing/backend.yml'
+    prefix: /module

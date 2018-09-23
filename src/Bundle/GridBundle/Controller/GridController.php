@@ -365,7 +365,6 @@ class GridController extends BaseController
         );
     }
 
-
     public function infoAction(Request $request): Response
     {
         if (!$this->isXmlHttpRequest()) {

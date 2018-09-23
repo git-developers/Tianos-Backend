@@ -7,7 +7,7 @@ backend_product_index:
             action: index
             section: admin
             permission: true
-            template: GridBundle::index.html.twig
+            template: GridBundle::index_inventory.html.twig
             vars:
                 subheader: sylius.ui.manage_your_product_catalog
                 icon: cube
@@ -15,9 +15,9 @@ backend_product_index:
                 serialize_group_name: crud
 #            grid: sylius_admin_product
             grid:
-                icon: cube
+                icon: dropbox
                 box_class: primary
-                title: Gestionar product
+                title: Gestionar inventario
                 data_table:
                     route:
                         info: backend_product_info

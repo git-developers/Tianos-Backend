@@ -54,7 +54,8 @@ class DoctrineListenerService extends BaseDoctrineListenerService implements Eve
 
         if ($entity instanceof Profile){
             $name = $entity->getName();
-            $entity->setSlug($this->slugify($name));
+            $name = $this->slugify($name);
+            $entity->setSlug(empty($entity->getSlug()) ? $name : $entity->getSlug());
             $entity->setCreatedAt($this->setupCreatedAt($entity));
 
             return;

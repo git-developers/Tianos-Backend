@@ -40,7 +40,7 @@ class UserType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function buildForm(FormBuilderInterface $builder, array $options): void
+    public function buildForm(FormBuilderInterface $builder, array $options)
     {
 
         $builder
@@ -192,18 +192,18 @@ class UserType extends AbstractType
                     'placeholder' => 'apellidos',
                 ],
             ])
-            ->add('headline', TextType::class, [
-                'label' => 'Introducción',
-                'label_attr' => [
-                    'class' => ''
-                ],
-                'attr' => [
-                    'class' => 'form-control',
-                    'placeholder' => 'Introducción',
-                ],
-            ])
+//            ->add('headline', TextType::class, [
+//                'label' => 'Introducción',
+//                'label_attr' => [
+//                    'class' => ''
+//                ],
+//                'attr' => [
+//                    'class' => 'form-control',
+//                    'placeholder' => 'Introducción',
+//                ],
+//            ])
             ->add('aboutMe', TextareaType::class, [
-                'label' => 'Sobre mi',
+                'label' => 'Descripcion',
                 'label_attr' => [
                     'class' => ''
                 ],

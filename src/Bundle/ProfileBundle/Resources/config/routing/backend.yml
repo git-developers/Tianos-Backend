@@ -29,7 +29,7 @@ backend_profile_index:
                         delete: backend_profile_delete
                     table_button:
                         - edit
-                        - delete
+#                        - delete
                     table_button_header:
                         - create
                         - info

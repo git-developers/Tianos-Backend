@@ -1,0 +1,19 @@
+api_module_index:
+    path: /
+    methods: [GET]
+    defaults:
+        _controller: tianos.api.controller.module:indexAction
+        _tianos:
+            section: admin
+            permission: true
+            grid: sylius_admin_module
+            template: ModuleBundle:Module:index.html.twig
+            vars:
+                subheader: sylius.ui.manage_your_product_catalog
+                icon: cube
+            form:
+                type: Bundle\ModuleBundle\Form\Type\ModuleType
+            repository:
+                service: tianos.repository.module
+                method: findAll
+                arguments: [$moduleId]

@@ -13,16 +13,16 @@
     <div class="row">
         <div class="col-md-6">
             <div class="form-group">
-                <i class="fa fa-fw fa-building"></i>
-                {{ form_label(form.university) }}
-                {{ form_widget(form.university) }}
+                <i class="fa fa-fw fa-user-secret"></i>
+                {{ form_label(form.profile) }}
+                {{ form_widget(form.profile) }}
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
-                <i class="fa fa-fw fa-user-secret"></i>
-                {{ form_label(form.profile) }}
-                {{ form_widget(form.profile) }}
+                <i class="fa fa-fw fa-envelope-o"></i>
+                {{ form_label(form.email) }}
+                {{ form_widget(form.email) }}
             </div>
         </div>
     </div>
@@ -61,25 +61,18 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-md-6">
-            <div class="form-group">
-                <i class="fa fa-fw fa-align-left"></i>
-                {{ form_label(form.headline) }}
-                {{ form_widget(form.headline) }}
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="form-group">
-                <i class="fa fa-fw fa-envelope-o"></i>
-                {{ form_label(form.email) }}
-                {{ form_widget(form.email) }}
-            </div>
-        </div>
-    </div>
+    {#<div class="row">#}
+        {#<div class="col-md-6">#}
+            {#<div class="form-group">#}
+                {#<i class="fa fa-fw fa-align-left"></i>#}
+                {#{{ form_label(form.headline) }}#}
+                {#{{ form_widget(form.headline) }}#}
+            {#</div>#}
+        {#</div>#}
+    {#</div>#}
 
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="form-group">
                 <i class="fa fa-fw fa-align-justify"></i>
                 {{ form_label(form.aboutMe) }}

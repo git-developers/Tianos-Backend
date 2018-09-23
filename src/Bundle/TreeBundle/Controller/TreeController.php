@@ -56,7 +56,8 @@ class TreeController extends BaseController
 
         //REPOSITORY
         $objects = $this->get($repository)->$method();
-        $objects = $this->getTreeEntities($objects, $configuration, $vars->serialize_group_name);
+        $varsRepository = $configuration->getRepositoryVars();
+        $objects = $this->getTreeEntities($objects, $configuration, $varsRepository->serialize_group_name);
 
         //CRUD
         $crud = $this->get('tianos.tree');
@@ -153,7 +154,7 @@ class TreeController extends BaseController
             $entityJson = null;
             $status = self::STATUS_ERROR;
 
-            try{
+            try {
 
                 if ($form->isValid()) {
                     $this->persist($entity);
@@ -212,6 +213,8 @@ class TreeController extends BaseController
         $action = $configuration->getAction();
         $formType = $configuration->getFormType();
         $vars = $configuration->getVars();
+        $varsRepository = $configuration->getRepositoryVars();
+
         $entity = $configuration->getEntity();
         $entity = new $entity();
 
@@ -225,13 +228,13 @@ class TreeController extends BaseController
             $entityJson = null;
             $status = self::STATUS_ERROR;
 
-            try{
+//            try {
 
                 if ($form->isValid()) {
                     $this->persist($entity);
-                    $entity = $this->getSerializeDecode($entity, $vars->serialize_group_name);
+                    $entity = $this->getSerializeDecode($entity, $varsRepository->serialize_group_name);
                     $status = self::STATUS_SUCCESS;
-                }else{
+                } else {
                     foreach ($form->getErrors(true) as $key => $error) {
                         if ($form->isRoot()) {
                             $errors[] = $error->getMessage();
@@ -241,9 +244,9 @@ class TreeController extends BaseController
                     }
                 }
 
-            }catch (\Exception $e){
-                $errors[] = $e->getMessage();
-            }
+//            } catch (\Exception $e){
+//                $errors[] = $e->getMessage();
+//            }
 
             return $this->json([
                 'id' => $id,

@@ -1,0 +1,42 @@
+services:
+
+    tianos.listener.doctrine.module:
+        class: Bundle\ModuleBundle\EventListener\DoctrineListenerService
+        arguments: ["@security.token_storage"]
+        tags:
+          - { name: doctrine.event_listener, event: postUpdate }
+          - { name: doctrine.event_listener, event: preUpdate }
+          - { name: doctrine.event_listener, event: prePersist }
+          - { name: doctrine.event_listener, event: postLoad }
+          - { name: doctrine.event_listener, event: postRemove }
+
+    tianos.api.controller.module:
+        class: Bundle\ModuleBundle\Controller\ApiController
+        arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
+        tags:
+            - { name: tianos.api.controller.module, alias: tianos.api.controller.module }
+
+    tianos.backend.controller.module:
+        class: Bundle\ModuleBundle\Controller\BackendController
+        arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
+        tags:
+            - { name: tianos.backend.controller.module, alias: tianos.backend.controller.module }
+
+    tianos.frontend.controller.module:
+        class: Bundle\ModuleBundle\Controller\FrontendController
+        arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
+        tags:
+            - { name: tianos.frontend.controller.module, alias: tianos.frontend.controller.module }
+
+    tianos.repository.module:
+        class: Dummy
+        factory: ['@doctrine.orm.entity_manager', getRepository]
+        arguments: [ Bundle\ModuleBundle\Entity\Module ]
+
+
+
+#    tianos.controller.grid:
+#        class: Bundle\GridBundle\Controller\GridController
+#        arguments: [ Bundle\GridBundle\Controller\RequestConfigurationFactoryInterface ]
+#        tags:
+#            - { name: tianos.controller.grid, alias: tianos.controller.grid }

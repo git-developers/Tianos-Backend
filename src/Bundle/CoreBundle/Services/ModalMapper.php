@@ -22,6 +22,7 @@ class ModalMapper
     const INFO_ID = 'modal-info';
     const WATCH_ID = 'watch-button-id';
     const PROFILE_ID = 'profile-button-id';
+    const POINT_OF_SALE_ADD_USER = 'pointofsale-add-user';
 
     public function __construct(Router $router)
     {
@@ -49,6 +50,7 @@ class ModalMapper
 
             'watch_id' => self::WATCH_ID,
             'profile_id' => self::PROFILE_ID,
+            'point_of_sale_add_user' => self::POINT_OF_SALE_ADD_USER,
         ];
     }
 

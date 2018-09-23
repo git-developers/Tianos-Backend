@@ -6,6 +6,10 @@ Bundle\ProductBundle\Entity\Product:
 #    mappedSuperclass: Component\CRUDDUMMY\Model\CRUDDUMMY
     table: product
     repositoryClass: Bundle\ProductBundle\Doctrine\ORM\ProductRepository
+    indexes:
+        fk_product_category1_idx:
+            columns:
+                - category_id
     id:
         id:
             type: integer
@@ -28,6 +32,13 @@ Bundle\ProductBundle\Entity\Product:
             length: 150
             options:
                 fixed: false
+        stock:
+            type: integer
+            nullable: true
+            length: 11
+            options:
+                unsigned: false
+            column: stock
         slug:
             type: string
             nullable: true
@@ -69,6 +80,17 @@ Bundle\ProductBundle\Entity\Product:
             options:
                 default: '1'
             column: is_active
+    manyToOne:
+        category:
+            targetEntity: Bundle\CategoryBundle\Entity\Category
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                category_id:
+                    referencedColumnName: id
+            orphanRemoval: false
     lifecycleCallbacks: {  }
 #    lifecycleCallbacks:
 #        prePersist: [ doStuffOnPrePersist, doOtherStuffOnPrePersistToo ]
