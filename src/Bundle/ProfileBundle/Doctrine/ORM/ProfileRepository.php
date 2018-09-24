@@ -83,6 +83,27 @@ class ProfileRepository extends TianosEntityRepository
     /**
      * {@inheritdoc}
      */
+    public function findProfilesBySlugs(array $slugs)
+    {
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT profile
+            FROM ProfileBundle:Profile profile
+            WHERE
+            profile.slug IN (:slugs) AND
+            profile.isActive = :active
+            ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+        $query->setParameter('slugs', $slugs);
+
+        return $query->getResult();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function findAll(): array
     {
         $em = $this->getEntityManager();

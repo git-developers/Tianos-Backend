@@ -144,13 +144,14 @@ backend_pointofsale_add_user:
         _tianos:
             action: edit
             template: PointofsaleBundle:BackendPointofsale:add_user.html.twig
+            entity: Bundle\PointofsaleBundle\Entity\PointofsaleAddUser
             vars:
                 icon: map-marker
                 box_class: primary
                 title: 'Punto de venta: agregar usuarios'
                 body_css: grid-body-css
             form:
-                type: Bundle\PointofsaleBundle\Form\Type\PointofsaleType
+                type: Bundle\PointofsaleBundle\Form\Type\PointofsaleAddUserType
             repository:
                 service: tianos.repository.pointofsale
                 method: find

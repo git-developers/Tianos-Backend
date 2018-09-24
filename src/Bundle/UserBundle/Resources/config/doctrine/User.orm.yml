@@ -184,17 +184,8 @@ Bundle\UserBundle\Entity\User:
             targetEntity: Bundle\PointofsaleBundle\Entity\Pointofsale
             cascade: {  }
             fetch: LAZY
-            mappedBy: null
-            inversedBy: user
-            joinTable:
-                name: user_has_point_of_sale
-                joinColumns:
-                    -
-                        name: user_id
-                        referencedColumnName: id
-                inverseJoinColumns:
-                    -
-                        name: point_of_sale_id
-                        referencedColumnName: id
+            mappedBy: user
+            inversedBy: null
+            joinTable: null
             orderBy: null
     lifecycleCallbacks: {  }

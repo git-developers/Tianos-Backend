@@ -24,7 +24,7 @@
 
             var id = $(context).parent().parent().data('id');
 
-            window.location.href = options.route + "/" + id;
+            window.location.href = options.route.replace("/-1", "") + "/" + id;
 
         };
 

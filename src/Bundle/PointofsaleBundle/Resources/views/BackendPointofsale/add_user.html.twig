@@ -18,6 +18,25 @@
 
     </style>
 
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <style>
+        #project-label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 1em;
+        }
+        #project-icon {
+            float: left;
+            height: 32px;
+            width: 32px;
+        }
+        #project-description {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+
 {% endblock %}
 
 {% block javascripts %}
@@ -33,9 +52,58 @@
 
         $(document).ready(function() {
 
-
         });
 
+    </script>
+
+    <script type="text/javascript">
+
+        $(function() {
+
+            // https://www.tutorialspoint.com/jqueryui/jqueryui_autocomplete.htm
+            $( "#{{ form.userTag.vars.id }}" ).autocomplete({
+                minLength: 0,
+                source: {{ userTags|raw }},
+                focus: function( event, ui ) {
+                    $( "#{{ form.userTag.vars.id }}" ).val( ui.item.label );
+                    return false;
+                },
+                select: function( event, ui ) {
+                    $( "#{{ form.userTag.vars.id }}" ).val( ui.item.label );
+                    $( "#{{ form.userTagUsername.vars.id }}" ).val( ui.item.value );
+                    // $( "#project-description" ).html( ui.item.desc );
+                    return false;
+                }
+            })
+            .data( "ui-autocomplete" )._renderItem = function( ul, item ) {
+                return $( "<li>" )
+                    .append( "<a>" + item.label + "</a>" )
+                    // .append( "<a>" + item.label + "<br>" + item.desc + "</a>" )
+                    .appendTo( ul );
+            };
+
+
+            $("form[name='{{ form.vars.id }}']").submit(function( event ) {
+                event.preventDefault();
+
+                $.ajax({
+                    url: '{{ path('backend_pointofsale_add_user', {id: entity.id}) }}',
+                    type: 'POST',
+                    data: $(this).serialize(),
+                    dataType: 'json',
+                    cache: true,
+                    beforeSend: function(jqXHR, settings) {
+
+                    },
+                    success: function(data, textStatus, jqXHR) {
+
+                    },
+                    error: function(jqXHR, exception) {
+
+                    }
+                });
+            });
+        });
     </script>
 
 {% endblock %}
@@ -101,7 +169,53 @@
 
 
             <div class="col-md-9">
+
+
                 <div class="box box-{{ vars.box_class }}">
+
+                    {#
+                    <div class="box-header">
+                        <h3 class="box-title">Data Table With Full Features</h3>
+                    </div>
+                    #}
+
+                    <div class="box-body">
+
+                        {{ form_start(form) }}
+
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>usuario</th>
+                                    <th>nivel de acceso</th>
+                                    <th>accion</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="col-md-8">
+                                        {{ form_widget(form.userTag) }}
+                                        {{ form_widget(form.userTagUsername) }}
+                                    </td>
+                                    <td class="col-md-3">
+                                        {{ form_widget(form.profile) }}
+                                    </td>
+                                    <td class="col-md-1 text-right">
+                                        {{ form_widget(form.submit) }}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        {{ form_widget(form) }}
+                        {{ form_end(form) }}
+
+                    </div>
+
+                </div>
+
+
+                <div class="box box-solid" style="margin-top: -10px;">
 
                     {#
                     <div class="box-header">
@@ -112,68 +226,40 @@
                     <div class="box-body">
                         <div class="row">
 
-
-                            <div class="col-sm-12 table-responsive">
+                            <div class="col-md-12 table-responsive">
 
                                 <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>usuario</th>
-                                            <th>nivel de acceso</th>
-                                            <th>accion</th>
-                                        </tr>
-                                    </thead>
                                     <tbody>
                                     <tr>
                                         <td class="col-md-8">
-                                            <input type="text" class="form-control" id="" placeholder="Nombre de usuario">
+                                            Alexander Pierce
                                         </td>
                                         <td class="col-md-3">
                                             <select class="form-control">
                                                 <option>xxxx</option>
                                             </select>
                                         </td>
-                                        <td class="col-md-1 text-right"></td>
+                                        <td class="col-md-1 text-right">
+                                            <button class="btn btn-xs btn-danger" alt="Eliminar" title="Eliminar">
+                                                <i class="fa fa-fw fa-trash"></i>
+                                            </button>
+                                        </td>
                                     </tr>
-                                    </tbody>
-                                </table>
-
-                            </div>
-
-                            <div class="col-md-12 table-responsive">
-
-                                <table class="table table-striped">
-                                    <tbody>
-                                        <tr>
-                                            <td class="col-md-8">
-                                                Alexander Pierce
-                                            </td>
-                                            <td class="col-md-3">
-                                                <select class="form-control">
-                                                    <option>xxxx</option>
-                                                </select>
-                                            </td>
-                                            <td class="col-md-1 text-right">
-                                                <button class="btn btn-xs btn-danger" alt="Eliminar" title="Eliminar">
-                                                    <i class="fa fa-fw fa-trash"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="col-md-8">
-                                                Alexander Pierce
-                                            </td>
-                                            <td class="col-md-3">
-                                                <select class="form-control">
-                                                    <option>xxxx</option>
-                                                </select>
-                                            </td>
-                                            <td class="col-md-1 text-right">
-                                                <button class="btn btn-xs btn-danger" alt="Eliminar" title="Eliminar">
-                                                    <i class="fa fa-fw fa-trash"></i>
-                                                </button>
-                                            </td>
-                                        </tr>
+                                    <tr>
+                                        <td class="col-md-8">
+                                            Alexander Pierce
+                                        </td>
+                                        <td class="col-md-3">
+                                            <select class="form-control">
+                                                <option>xxxx</option>
+                                            </select>
+                                        </td>
+                                        <td class="col-md-1 text-right">
+                                            <button class="btn btn-xs btn-danger" alt="Eliminar" title="Eliminar">
+                                                <i class="fa fa-fw fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
                                     </tbody>
                                 </table>
 
@@ -183,6 +269,9 @@
                     </div>
 
                 </div>
+
+
+
             </div>
         </div>
     </section>

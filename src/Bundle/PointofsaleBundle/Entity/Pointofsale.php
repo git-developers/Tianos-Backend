@@ -127,14 +127,6 @@ class Pointofsale
     private $pointOfSale;
 
     /**
-     * @var \Doctrine\Common\Collections\Collection
-     *
-     * @ORM\ManyToMany(targetEntity="Bundle\UserBundle\Entity\User", mappedBy="pointOfSale")
-     *
-     */
-    private $user;
-
-    /**
      * @var string
      *
      * @JMSS\Accessor(getter="getNameBox", setter="setNameBox")
@@ -147,6 +139,21 @@ class Pointofsale
      * })
      */
     private $nameBox;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Bundle\UserBundle\Entity\User", inversedBy="pointOfSale")
+     * @ORM\JoinTable(name="point_of_sale_has_user",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="point_of_sale_id", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     *   }
+     * )
+     */
+    private $user;
 
     /**
      * Constructor

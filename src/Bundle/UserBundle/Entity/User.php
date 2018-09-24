@@ -256,24 +256,9 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     private $groupOfUsers;
 
     /**
-     * Distribuidor -> tiene -> Punto de venta
-     *
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="Bundle\PointofsaleBundle\Entity\Pointofsale", inversedBy="user")
-     * @ORM\JoinTable(name="user_has_point_of_sale",
-     *   joinColumns={
-     *     @ORM\JoinColumn(name="user_id", referencedColumnName="id")
-     *   },
-     *   inverseJoinColumns={
-     *     @ORM\JoinColumn(name="point_of_sale_id", referencedColumnName="id")
-     *   }
-     * )
-     *
-     * @JMSS\Groups({
-     *     "one-to-many-search-userhaspointofsale",
-     *     "one-to-many-left-userhaspointofsale"
-     * })
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\PointOfSale", mappedBy="user")
      */
     private $pointOfSale;
 
@@ -293,7 +278,8 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
      *     "one-to-many-right",
      *     "order-in-center",
      *     "order-in-left-select-item",
-     *     "order-report"
+     *     "order-report",
+     *     "user-tags"
      * })
      */
     private $nameBox;

@@ -57,6 +57,6 @@
 {% if dataTable.route.add_user is defined %}
     $('body.{{ vars.body_css }}').formAddUser({
         buttonId: '{{ modal.point_of_sale_add_user }}',
-        route: '{{ path(dataTable.route.add_user) }}'
+        route: '{{ path(dataTable.route.add_user, {id:"-1"}) }}'
     });
 {% endif %}

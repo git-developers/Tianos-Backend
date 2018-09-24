@@ -120,6 +120,7 @@ class Builder implements ContainerAwareInterface
             ->setAttribute('class', 'treeview')
             ->setAttribute('class', $this->activeRoute([
                 'backend_pointofsale_index',
+                'backend_pointofsale_add_user',
             ]))
             ->setAttribute('icon', 'fa-fw fa-map-marker')
             ->setDisplay($isGranted)
