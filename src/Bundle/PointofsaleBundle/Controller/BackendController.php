@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Component\Resource\Metadata\Metadata;
 use Bundle\ResourceBundle\ResourceBundle;
 use JMS\Serializer\SerializationContext;
+use Bundle\ProfileBundle\Entity\Profile;
 
 class BackendController extends GridController
 {
@@ -37,7 +38,7 @@ class BackendController extends GridController
         $id = $request->get('id');
         $repository = $configuration->getRepositoryService();
         $method = $configuration->getRepositoryMethod();
-        $entityObj = $this->get($repository)->$method($id);
+        $pdvEntity = $this->get($repository)->$method($id);
 
         //FORM
         $form = $this->createForm($formType, $entity, [
@@ -46,19 +47,8 @@ class BackendController extends GridController
         ]);
         $form->handleRequest($request);
 
-        if (!$entityObj) {
+        if (!$pdvEntity) {
             throw $this->createNotFoundException('CRUD: Unable to find  entity.');
-        }
-
-        $userTags = [];
-        $userTagsObj = $this->get('tianos.repository.user')->findAll();
-
-        foreach ($userTagsObj as $key => $value) {
-            $userTags[] = [
-                'label' => $value->getNameBox(),
-                'value' => $value->getUsername(),
-//                'desc' => 'creado: ' . $value->getCreatedAt()->format("Y-m-d H:i:s"),
-            ];
         }
 
         if ($form->isSubmitted()) {
@@ -71,7 +61,10 @@ class BackendController extends GridController
 
                 if ($form->isValid()) {
 
-                    $this->persist($entity);
+                    $user = $this->get('tianos.repository.user')->findOneByUsername($entity->getUserTagUsername());
+
+                    $pdvEntity->addUser($user);
+                    $this->persist($pdvEntity);
 
                     $varsRepository = $configuration->getRepositoryVars();
                     $entity = $this->getSerializeDecode($entity, $varsRepository->serialize_group_name);
@@ -101,12 +94,83 @@ class BackendController extends GridController
             $template,
             [
                 'action' => $action,
-                'entity' => $entityObj,
+                'entity' => $pdvEntity,
                 'vars' => $vars,
-                'userTags' => json_encode($userTags),
+                'userTags' => $this->getUserTags(),
+                'profiles' => $this->findProfilesBySlugs(),
                 'form' => $form->createView(),
             ]
         );
+    }
+
+    private function getUserTags()
+    {
+
+        $userTags = [];
+        $userTagsObj = $this->get('tianos.repository.user')->findAll();
+
+        foreach ($userTagsObj as $key => $value) {
+            $userTags[] = [
+                'label' => $value->getNameBox(),
+                'value' => $value->getUsername(),
+            ];
+        }
+
+        return json_encode($userTags);
+    }
+
+    private function findProfilesBySlugs()
+    {
+        $objects = $this->get('tianos.repository.profile')->findProfilesBySlugs([
+            Profile::EMPLOYEE_SLUG,
+            Profile::ADMIN_SLUG,
+        ]);
+
+        $array = [];
+        foreach ($objects as $object) {
+            $array[$object->getId()] = '(' . $object->getId() . ') ' . $object->getName();
+        }
+
+        return $array;
+    }
+
+    public function removeUserAction(Request $request): Response
+    {
+
+        $parameters = [
+            'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
+        ];
+        $applicationName = $this->container->getParameter('application_name');
+        $this->metadata = new Metadata('tianos', $applicationName, $parameters);
+
+        //CONFIGURATION
+        $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
+        $template = $configuration->getTemplate('');
+        $action = $configuration->getAction();
+        $vars = $configuration->getVars();
+        $formType = $configuration->getFormType();
+
+        //REPOSITORY
+        $pdvId = $request->get('pdvId');
+        $userId = $request->get('userId');
+        $repository = $configuration->getRepositoryService();
+        $method = $configuration->getRepositoryMethod();
+        $entity = $this->get($repository)->$method($pdvId);
+
+        if (!$entity) {
+            throw $this->createNotFoundException('CRUD: Unable to find  entity.');
+        }
+
+        $user = $this->get('tianos.repository.user')->find($userId);
+
+        $entity->removeUser($user);
+        $this->persist($entity);
+
+        return $this->json([
+            'status' => self::STATUS_SUCCESS,
+            'errors' => [],
+            'entity' => $entity,
+        ]);
     }
 
 }

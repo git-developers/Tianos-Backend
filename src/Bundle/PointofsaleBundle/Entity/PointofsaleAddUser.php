@@ -16,10 +16,12 @@ class PointofsaleAddUser
 
     private $userTagUsername;
 
-    /**
-     * @var \Bundle\ProfileBundle\Entity\Profile
-     *
-     */
+//    /**
+//     * @var \Bundle\ProfileBundle\Entity\Profile
+//     *
+//     */
+//    private $profile;
+
     private $profile;
 
     /**
@@ -55,7 +57,7 @@ class PointofsaleAddUser
     }
 
     /**
-     * @return \Bundle\ProfileBundle\Entity\Profile
+     * @return mixed
      */
     public function getProfile()
     {
@@ -63,12 +65,30 @@ class PointofsaleAddUser
     }
 
     /**
-     * @param \Bundle\ProfileBundle\Entity\Profile $profile
+     * @param mixed $profile
      */
-    public function setProfile(\Bundle\ProfileBundle\Entity\Profile $profile)
+    public function setProfile($profile)
     {
         $this->profile = $profile;
     }
+
+
+
+//    /**
+//     * @return \Bundle\ProfileBundle\Entity\Profile
+//     */
+//    public function getProfile()
+//    {
+//        return $this->profile;
+//    }
+//
+//    /**
+//     * @param \Bundle\ProfileBundle\Entity\Profile $profile
+//     */
+//    public function setProfile(\Bundle\ProfileBundle\Entity\Profile $profile)
+//    {
+//        $this->profile = $profile;
+//    }
 
 }
 

@@ -159,5 +159,24 @@ backend_pointofsale_add_user:
                 vars:
                     serialize_group_name: crud
 
+backend_pointofsale_remove_user:
+    path: /remove-user
+    methods: [PUT]
+    defaults:
+        _controller: tianos.backend.controller.pointofsale:removeUserAction
+        _tianos:
+            action: edit
+            template: PointofsaleBundle:BackendPointofsale:add_user.html.twig
+            entity: Bundle\PointofsaleBundle\Entity\PointofsaleAddUser
+            vars:
+                icon: map-marker
+            form:
+                type: Bundle\PointofsaleBundle\Form\Type\PointofsaleAddUserType
+            repository:
+                service: tianos.repository.pointofsale
+                method: find
+                arguments: [$pointofsaleId]
+                vars:
+                    serialize_group_name: crud
 
 

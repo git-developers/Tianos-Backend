@@ -103,6 +103,31 @@
                     }
                 });
             });
+
+            $('.remove-user').click(function( event ) {
+
+                var id = $(this).data('id');
+
+                $.ajax({
+                    url: '{{ path('backend_pointofsale_remove_user') }}',
+                    type: 'PUT',
+                    data: {
+                        pdvId: '{{ entity.id }}',
+                        userId: id
+                    },
+                    dataType: 'json',
+                    cache: true,
+                    beforeSend: function(jqXHR, settings) {
+                        $('#user-' + id).hide();
+                    },
+                    success: function(data, textStatus, jqXHR) {
+
+                    },
+                    error: function(jqXHR, exception) {
+
+                    }
+                });
+            });
         });
     </script>
 
@@ -230,36 +255,29 @@
 
                                 <table class="table table-striped">
                                     <tbody>
-                                    <tr>
-                                        <td class="col-md-8">
-                                            Alexander Pierce
-                                        </td>
-                                        <td class="col-md-3">
-                                            <select class="form-control">
-                                                <option>xxxx</option>
-                                            </select>
-                                        </td>
-                                        <td class="col-md-1 text-right">
-                                            <button class="btn btn-xs btn-danger" alt="Eliminar" title="Eliminar">
-                                                <i class="fa fa-fw fa-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="col-md-8">
-                                            Alexander Pierce
-                                        </td>
-                                        <td class="col-md-3">
-                                            <select class="form-control">
-                                                <option>xxxx</option>
-                                            </select>
-                                        </td>
-                                        <td class="col-md-1 text-right">
-                                            <button class="btn btn-xs btn-danger" alt="Eliminar" title="Eliminar">
-                                                <i class="fa fa-fw fa-trash"></i>
-                                            </button>
-                                        </td>
-                                    </tr>
+                                        {% for user in entity.user %}
+                                            <tr id="user-{{ user.id }}">
+                                                <td class="col-md-8">
+                                                    {{ user.name ~ ' ' ~ user.lastName }}
+                                                </td>
+                                                <td class="col-md-3">
+                                                    <select class="form-control">
+                                                        {% for key, profile in profiles %}
+                                                            <option value="{{ key }}" {{ key == user.profile.id ? 'selected' : '' }}>{{ profile }}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                </td>
+                                                <td class="col-md-1 text-right">
+                                                    <button
+                                                        class="btn btn-xs btn-danger remove-user"
+                                                        data-id="{{ user.id }}"
+                                                        alt="Eliminar"
+                                                        title="Eliminar">
+                                                        <i class="fa fa-fw fa-trash"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
                                     </tbody>
                                 </table>
 
