@@ -1,0 +1,200 @@
+{% extends "ThemesBundle:Adminlte:1_template.html.twig" %}
+
+{% block bodyclass %}{% spaceless %}
+    {{ vars.body_css }}
+{% endspaceless %}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    {#{% stylesheets#}
+        {#filter='cssrewrite'#}
+        {#'@GridBundle/Resources/public/common/css/switch.css'#}
+    {#%}#}
+    {#<link rel="stylesheet" href="{{ asset_url }}" />#}
+    {#{% endstylesheets %}#}
+
+    <style>
+
+    </style>
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <style>
+        input[type=checkbox] {
+            height: 20px;
+            width: 20px;
+        }
+    </style>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    {#{% javascripts#}
+        {#'@GridBundle/Resources/public/common/js/formEdit.js'#}
+    {#%}#}
+    {#<script type="text/javascript" src="{{ asset_url }}"></script>#}
+    {#{% endjavascripts %}#}
+
+    {#<script type="text/javascript">#}
+
+        {#$(document).ready(function() {#}
+
+        {#});#}
+
+    {#</script>#}
+
+    <script type="text/javascript">
+
+        $(function() {
+
+            {#$("form[name='{{ form.vars.id }}']").submit(function( event ) {#}
+                {#event.preventDefault();#}
+
+                {#$.ajax({#}
+                    {#url: '{{ path('backend_pointofsale_add_user', {id: entity.id}) }}',#}
+                    {#type: 'POST',#}
+                    {#data: $(this).serialize(),#}
+                    {#dataType: 'html',#}
+                    {#cache: true,#}
+                    {#beforeSend: function(jqXHR, settings) {#}
+
+                    {#},#}
+                    {#success: function(data, textStatus, jqXHR) {#}
+                        {#$('#tabla-user tbody').prepend(data);#}
+                    {#},#}
+                    {#error: function(jqXHR, exception) {#}
+
+                    {#}#}
+                {#});#}
+            {#});#}
+
+        });
+    </script>
+
+{% endblock %}
+
+{% block content %}
+
+    <section class="content-header">
+        <h1>
+            <i class="fa fa-fw fa-{{ vars.icon }}"></i> {{ vars.title|raw }}
+            <small>grid</small>
+        </h1>
+        <ol class="breadcrumb">
+            {#<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>#}
+            {#<li class="active">Dashboard</li>#}
+
+            {#{% for key, button in dataTable.tableHeaderButton %}#}
+                {#<li>#}
+                    {#{{ tianos_grid_render_button(button, '@Ui/Grid/Button/Header/_table_header_button.html.twig') }}#}
+                {#</li>#}
+            {#{% endfor %}#}
+        </ol>
+    </section>
+
+    <section class="content">
+
+        <div class="row">
+
+            <div class="col-md-3">
+                <div class="box box-{{ vars.box_class }} box-solid">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Informaci&oacute;n de PDV</h3>
+
+                        <div class="box-tools pull-right">
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="box-body">
+
+                        <ul class="nav nav-pills nav-stacked">
+                            <li class="">
+                                <a href="#">
+                                    <strong>ID:</strong>
+                                    <span class="badge bg-blue">{{ entity.id }}</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <strong>Nombre:</strong> {{ entity.name }}
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <strong>Creado:</strong> {{ entity.createdAt|date("Y-m-d H:i") }}
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-9">
+
+
+                <div class="box box-{{ vars.box_class }}">
+
+                    <div class="box-body">
+                        <div class="row">
+
+                            {{ form_start(form) }}
+
+                            <div class="col-md-12 text-right" style="margin-bottom: 10px">
+                                {{ form_widget(form.submit) }}
+                            </div>
+
+                            {% block choice_widget %}
+
+                                {% for child in form.module.children %}
+                                    <div class="col-md-6">
+                                        <div class="info-box bg-green">
+                                            <span class="info-box-icon">
+                                                <i class="fa fa-cubes"></i>
+                                            </span>
+
+                                            <div class="info-box-content">
+                                                <span class="info-box-text">
+                                                    {% if child.vars.value in moduleIds %}
+                                                        {{ form_widget(child, { 'attr': {'checked': 'checked'}}) }}
+                                                    {% else %}
+                                                        {{ form_widget(child, { 'attr': {'class': ''}}) }}
+                                                    {% endif %}
+                                                </span>
+                                                <span class="info-box-number">
+                                                    {{ form_label(child, null, { 'label_attr': {'class':'control-label'} }) }}
+                                                </span>
+                                                <div class="progress">
+                                                    <div class="progress-bar" style="width: 70%"></div>
+                                                </div>
+                                                <span class="progress-description"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+
+                            {% endblock choice_widget %}
+
+                            {{ form_widget(form) }}
+                            {{ form_end(form) }}
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+        </div>
+    </section>
+
+    {#{{ include('GridBundle:Modal:create.html.twig') }}#}
+
+{% endblock %}
