@@ -25,6 +25,7 @@ class ModalMapper
     const POINT_OF_SALE_ADD_USER = 'pointofsale-add-user';
     const POINT_OF_SALE_ADD_MODULE = 'pointofsale-add-module';
     const POINT_OF_SALE_ADD_PDV_CHILD = 'pointofsale-add-pdv-child';
+    const CHANGE_PASSWORD = 'change_password';
 
     public function __construct(Router $router)
     {
@@ -56,6 +57,8 @@ class ModalMapper
             'point_of_sale_add_user' => self::POINT_OF_SALE_ADD_USER,
             'point_of_sale_add_module' => self::POINT_OF_SALE_ADD_MODULE,
             'point_of_sale_add_pdv_child' => self::POINT_OF_SALE_ADD_PDV_CHILD,
+
+            'change_password' => self::CHANGE_PASSWORD,
         ];
     }
 

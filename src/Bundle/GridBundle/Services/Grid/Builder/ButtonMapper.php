@@ -137,7 +137,7 @@ class ButtonMapper
             'alt' => 'Ver perfil',
             'title' => 'Ver perfil',
             'icon' => '<i class="fa fa-fw fa-eye"></i>',
-            'class' => 'btn-sm btn-info ' . ModalMapper::PROFILE_ID,
+            'class' => 'btn-xs btn-info ' . ModalMapper::PROFILE_ID,
         ]);
     }
 
@@ -168,6 +168,18 @@ class ButtonMapper
             'title' => 'Agregar PDV sucursal',
             'icon' => '<i class="fa fa-fw fa-plus"></i>',
             'class' => 'btn-xs btn-info btn-padding-5 ' . ModalMapper::POINT_OF_SALE_ADD_PDV_CHILD,
+        ]);
+    }
+
+    private function change_password()
+    {
+        return new Button([
+            'alt' => 'Cambiar password',
+            'title' => 'Cambiar password',
+            'icon' => '<i class="fa fa-fw fa-lock"></i>',
+            'data-toggle' => 'modal',
+            'data-target' => ModalMapper::CHANGE_PASSWORD,
+            'class' => 'btn-xs bg-olive btn-padding-5 ' . ModalMapper::CHANGE_PASSWORD,
         ]);
     }
 

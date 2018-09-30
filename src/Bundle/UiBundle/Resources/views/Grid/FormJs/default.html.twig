@@ -83,3 +83,12 @@
         tableJson: tableJson
     });
 {% endif %}
+
+{% if dataTable.route.change_password is defined %}
+    $('body.{{ vars.body_css }}').formChangePassword({
+        modalId: '{{ modal.create_id }}',
+        route: '{{ path(dataTable.route.change_password) }}',
+        formName: '{{ form_mapper.create_name }}',
+        tableJson: tableJson
+    });
+{% endif %}

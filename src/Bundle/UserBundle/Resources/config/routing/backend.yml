@@ -26,10 +26,12 @@ backend_user_index:
                         create: backend_user_create
                         delete: backend_user_delete
                         view_profile: frontend_user_profile
+                        change_password: frontend_user_profile
                     table_button:
                         - edit
                         - delete
                         - view_profile
+                        - change_password
                     table_button_header:
                         - create
                         - info
