@@ -24,6 +24,7 @@ class ModalMapper
     const PROFILE_ID = 'profile-button-id';
     const POINT_OF_SALE_ADD_USER = 'pointofsale-add-user';
     const POINT_OF_SALE_ADD_MODULE = 'pointofsale-add-module';
+    const POINT_OF_SALE_ADD_PDV_CHILD = 'pointofsale-add-pdv-child';
 
     public function __construct(Router $router)
     {
@@ -51,8 +52,10 @@ class ModalMapper
 
             'watch_id' => self::WATCH_ID,
             'profile_id' => self::PROFILE_ID,
+
             'point_of_sale_add_user' => self::POINT_OF_SALE_ADD_USER,
             'point_of_sale_add_module' => self::POINT_OF_SALE_ADD_MODULE,
+            'point_of_sale_add_pdv_child' => self::POINT_OF_SALE_ADD_PDV_CHILD,
         ];
     }
 

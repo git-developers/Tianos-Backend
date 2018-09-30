@@ -21,6 +21,8 @@ class PointofsaleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
 
+        $pdvParent = $options['pdv_parent'];
+
         $builder
             ->add('pointOfSale', EntityType::class, [
                 'class' => Pointofsale::class,
@@ -28,6 +30,7 @@ class PointofsaleType extends AbstractType
                     return $er->findAllObjects();
                 },
                 'placeholder' => '[ Escoge una opción ]',
+                'data' => $pdvParent,
                 'empty_data' => null,
                 'required' => false,
                 'label' => 'Punto de venta padre',
@@ -101,7 +104,10 @@ class PointofsaleType extends AbstractType
 //            'data_class' => Pointofsale::class,
         ]);
 
-        $resolver->setRequired(['form_data']);
+        $resolver->setRequired([
+            'form_data',
+            'pdv_parent',
+        ]);
     }
 
 }

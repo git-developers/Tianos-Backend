@@ -40,6 +40,11 @@ backend_pointofsale_per_user_index:
                     columns:
                         - name: '#'
                           obj: " '<span class=\"badge bg-blue\">' + obj.id + '</span>' "
+                        - name: Es principal?
+                          obj: obj.point_of_sale
+                          options:
+                              icon: image
+                              property: " return (obj.point_of_sale != null) ? '<span class=\"badge bg-blue\">Principal</span>' : '' "
                         - name: Nombre
                           obj: obj.name
                         - name: Coordenadas

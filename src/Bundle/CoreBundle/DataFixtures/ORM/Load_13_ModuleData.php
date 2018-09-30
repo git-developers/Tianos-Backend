@@ -42,7 +42,7 @@ class Load_13_ModuleData extends AbstractFixture implements OrderedFixtureInterf
 
         $entity = new Module();
         $entity->setCode('006');
-        $entity->setName(Module::SECURITY);
+        $entity->setName(Module::SERVICE);
         $manager->persist($entity);
         $this->addReference('module-6', $entity);
 

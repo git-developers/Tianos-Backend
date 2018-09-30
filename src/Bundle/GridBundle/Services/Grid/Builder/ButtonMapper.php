@@ -73,6 +73,18 @@ class ButtonMapper
         ]);
     }
 
+    private function create_pdv_child()
+    {
+        return new Button([
+            'alt' => 'Crear item',
+            'title' => 'Crear item',
+            'icon' => '<i class="fa fa-fw fa-plus"></i>',
+            'data-toggle' => 'modal',
+            'data-target' => ModalMapper::CREATE_ID,
+            'class' => 'btn-sm btn-success ' . ModalMapper::CREATE_ID,
+        ]);
+    }
+
     private function edit()
     {
         return new Button([
@@ -81,7 +93,7 @@ class ButtonMapper
             'icon' => '<i class="fa fa-fw fa-pencil"></i>',
             'data-toggle' => 'modal',
             'data-target' => ModalMapper::EDIT_ID,
-            'class' => 'btn-sm btn-warning ' . ModalMapper::EDIT_ID,
+            'class' => 'btn-xs btn-warning btn-padding-5 ' . ModalMapper::EDIT_ID,
         ]);
     }
 
@@ -93,7 +105,7 @@ class ButtonMapper
             'icon' => '<i class="fa fa-fw fa-trash"></i>',
             'data-toggle' => 'modal',
             'data-target' => ModalMapper::DELETE_ID,
-            'class' => 'btn-sm btn-danger ' . ModalMapper::DELETE_ID,
+            'class' => 'btn-xs btn-danger btn-padding-5 ' . ModalMapper::DELETE_ID,
         ]);
     }
 
@@ -134,8 +146,8 @@ class ButtonMapper
         return new Button([
             'alt' => 'Agregar usuario',
             'title' => 'Agregar usuario',
-            'icon' => '<i class="fa fa-fw fa-plus"></i>',
-            'class' => 'btn-sm btn-info ' . ModalMapper::POINT_OF_SALE_ADD_USER,
+            'icon' => '<i class="fa fa-fw fa-user"></i>',
+            'class' => 'btn-xs btn-info btn-padding-5 ' . ModalMapper::POINT_OF_SALE_ADD_USER,
         ]);
     }
 
@@ -145,7 +157,17 @@ class ButtonMapper
             'alt' => 'Modulos',
             'title' => 'Modulos',
             'icon' => '<i class="fa fa-fw fa-cubes"></i>',
-            'class' => 'btn-sm btn-success ' . ModalMapper::POINT_OF_SALE_ADD_MODULE,
+            'class' => 'btn-xs btn-success btn-padding-5 ' . ModalMapper::POINT_OF_SALE_ADD_MODULE,
+        ]);
+    }
+
+    private function add_pdv_child()
+    {
+        return new Button([
+            'alt' => 'Agregar PDV sucursal',
+            'title' => 'Agregar PDV sucursal',
+            'icon' => '<i class="fa fa-fw fa-plus"></i>',
+            'class' => 'btn-xs btn-info btn-padding-5 ' . ModalMapper::POINT_OF_SALE_ADD_PDV_CHILD,
         ]);
     }
 

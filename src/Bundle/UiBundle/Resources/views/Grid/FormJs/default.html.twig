@@ -67,3 +67,19 @@
         route: '{{ path(dataTable.route.module, {id:"-1"}) }}'
     });
 {% endif %}
+
+{% if dataTable.route.pdv_child is defined %}
+    $('body.{{ vars.body_css }}').formAddPdvChild({
+        buttonId: '{{ modal.point_of_sale_add_pdv_child }}',
+        route: '{{ path(dataTable.route.pdv_child, {id:"-1"}) }}'
+    });
+{% endif %}
+
+{% if dataTable.route.create_pdv_child is defined %}
+    $('body.{{ vars.body_css }}').formCreatePdvChild({
+        modalId: '{{ modal.create_id }}',
+        route: '{{ path(dataTable.route.create_pdv_child) }}',
+        formName: '{{ form_mapper.create_name }}',
+        tableJson: tableJson
+    });
+{% endif %}

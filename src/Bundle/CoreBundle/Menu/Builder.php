@@ -118,6 +118,7 @@ class Builder implements ContainerAwareInterface
                 'backend_pointofsale_index',
                 'backend_pointofsale_add_user',
                 'backend_pointofsale_module',
+                'backend_pointofsale_pdv_child_index',
             ]))
             ->setAttribute('icon', 'fa-fw fa-map-marker')
             ->setDisplay($isGranted)

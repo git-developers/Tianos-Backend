@@ -12,7 +12,7 @@ use Component\Resource\Metadata\Metadata;
 use Bundle\ResourceBundle\ResourceBundle;
 use JMS\Serializer\SerializationContext;
 
-class BackendPerUserController extends GridController
+class BackendPdvChildController extends GridController
 {
 
 
@@ -57,7 +57,7 @@ class BackendPerUserController extends GridController
         $modal = $configuration->getModal();
 
         //REPOSITORY
-        $objects = $this->get($repository)->$method($this->getUser());
+        $objects = $this->get($repository)->$method($request->get('id'));
         $varsRepository = $configuration->getRepositoryVars();
         $objects = $this->getSerialize($objects, $varsRepository->serialize_group_name);
 
@@ -80,14 +80,12 @@ class BackendPerUserController extends GridController
             ->resetGridVariable()
         ;
 
-
-//        echo "POLLO:: <pre>";
-//        print_r($objects);
-//        exit;
+        $entity = $this->get('tianos.repository.pointofsale')->find($request->get('id'));
 
         return $this->render(
             $template,
             [
+                'entity' => $entity,
                 'vars' => $vars,
                 'grid' => $grid,
                 'modal' => $modal,
@@ -96,4 +94,82 @@ class BackendPerUserController extends GridController
             ]
         );
     }
+
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function createAction(Request $request): Response
+    {
+
+        if (!$this->isXmlHttpRequest()) {
+            throw $this->createAccessDeniedException(self::ACCESS_DENIED_MSG);
+        }
+
+        $parameters = [
+            'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
+        ];
+        $applicationName = $this->container->getParameter('application_name');
+        $this->metadata = new Metadata('tianos', $applicationName, $parameters);
+
+        //CONFIGURATION
+        $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
+        $template = $configuration->getTemplate('');
+        $action = $configuration->getAction();
+        $formType = $configuration->getFormType();
+        $vars = $configuration->getVars();
+        $entity = $configuration->getEntity();
+        $entity = new $entity();
+
+        $form = $this->createForm($formType, $entity, [
+            'form_data' => [],
+            'pdv_parent' => $this->get('tianos.repository.pointofsale')->find($request->get('idParent')),
+        ]);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted()) {
+
+            $errors = [];
+            $entityJson = null;
+            $status = self::STATUS_ERROR;
+
+            try{
+
+                if ($form->isValid()) {
+
+                    $this->persist($entity);
+
+                    $varsRepository = $configuration->getRepositoryVars();
+                    $entity = $this->getSerializeDecode($entity, $varsRepository->serialize_group_name);
+                    $status = self::STATUS_SUCCESS;
+                }else{
+                    foreach ($form->getErrors(true) as $key => $error) {
+                        if ($form->isRoot()) {
+                            $errors[] = $error->getMessage();
+                        } else {
+                            $errors[] = $error->getMessage();
+                        }
+                    }
+                }
+
+            }catch (\Exception $e){
+                $errors[] = $e->getMessage();
+            }
+
+            return $this->json([
+                'status' => $status,
+                'errors' => $errors,
+                'entity' => $entity,
+            ]);
+        }
+
+        return $this->render(
+            $template,
+            [
+                'action' => $action,
+                'form' => $form->createView(),
+            ]
+        );
+    }
+
 }

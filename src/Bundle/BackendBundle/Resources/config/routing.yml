@@ -64,6 +64,9 @@ backend_category:
 backend_pointofsale:
     resource: '@PointofsaleBundle/Resources/config/routing/backend.yml'
     prefix: /point-of-sale
+backend_pointofsale_pdv_child:
+    resource: '@PointofsaleBundle/Resources/config/routing/backend_pdv_child.yml'
+    prefix: /point-of-sale-child
 backend_pointofsale_per_user:
     resource: '@PointofsaleBundle/Resources/config/routing/backend_per_user.yml'
     prefix: /point-of-sale-per-user

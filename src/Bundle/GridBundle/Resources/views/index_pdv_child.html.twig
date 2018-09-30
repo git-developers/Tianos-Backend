@@ -41,13 +41,12 @@
         '@GridBundle/Resources/public/common/js/formEdit.js'
         '@GridBundle/Resources/public/common/js/formView.js'
         '@GridBundle/Resources/public/common/js/formInfo.js'
-        '@GridBundle/Resources/public/common/js/formCreate.js'
+        '@GridBundle/Resources/public/common/js/formCreatePdvChild.js'
         '@GridBundle/Resources/public/common/js/formDelete.js'
         '@GridBundle/Resources/public/common/js/formWatch.js'
         '@GridBundle/Resources/public/common/js/formViewProfile.js'
         '@GridBundle/Resources/public/common/js/formAddUser.js'
         '@GridBundle/Resources/public/common/js/formModule.js'
-        '@GridBundle/Resources/public/common/js/formAddPdvChild.js'
         '@GridBundle/Resources/public/plugins/datatables/jquery.dataTables.min.js'
         '@GridBundle/Resources/public/plugins/datatables/dataTables.bootstrap.min.js'
     %}
@@ -162,63 +161,98 @@
 
     <section class="content">
 
-        <div class="row">
-            <div class="col-md-12">
-                <div class="box box-{{ grid.box_class }}">
+        {#<div class="box box-{{ grid.box_class }}">#}
+        <div class="box box-solid">
 
-                    {#
-                    <div class="box-header">
-                        <h3 class="box-title">Data Table With Full Features</h3>
-                    </div>
-                    #}
+            {#
+            <div class="box-header">
+                <h3 class="box-title">Data Table With Full Features</h3>
+            </div>
+            #}
 
-                    <div class="box-body">
-                        <div class="row">
-                            <div class="col-sm-12 table-responsive">
-                                <table id="{{ dataTable.tableOptions.table_name }}"
-                                       class="table table-bordered table-striped dataTable"
-                                       role="grid"
-                                       aria-describedby="example1_info">
-                                    <thead>
-                                    <tr>
-                                        {% for key, value in dataTable.columns|default([]) %}
-                                            <th>
-                                                {% if value.options.icon is defined %}
-                                                    <i class="fa fa-fw fa-{{ value.options.icon|raw }}"></i>
-                                                {% endif %}
-                                                {{ value.name|raw }}
-                                            </th>
-                                        {% endfor %}
+            <div class="box-body">
+                <div class="row">
 
-                                        {% if dataTable.tableButton is not empty %}
-                                            <th>&nbsp</th>
-                                        {% endif %}
-                                    </tr>
-                                    </thead>
+                    <div class="col-md-3">
+                        <div class="box box-{{ vars.box_class }} box-solid">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Informaci&oacute;n de PDV</h3>
 
-                                    <tfoot>
-                                    <tr>
-                                        {% for key, value in dataTable.columns|default([]) %}
-                                            <th>
-                                                {% if value.options.icon is defined %}
-                                                    <i class="fa fa-fw fa-{{ value.options.icon|raw }}"></i>
-                                                {% endif %}
-                                                {{ value.name|raw }}
-                                            </th>
-                                        {% endfor %}
+                                <div class="box-tools pull-right">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                        <i class="fa fa-minus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="box-body">
 
-                                        {% if dataTable.tableButton is not empty %}
-                                            <th>&nbsp</th>
-                                        {% endif %}
-                                    </tr>
-                                    </tfoot>
-                                </table>
+                                <ul class="nav nav-pills nav-stacked">
+                                    <li class="">
+                                        <a href="#">
+                                            <strong>ID:</strong>
+                                            <span class="badge bg-blue">{{ entity.id }}</span>
+                                            <input id="id-parent" value="{{ entity.id }}" type="hidden">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <strong>Nombre:</strong> {{ entity.name }}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <strong>Creado:</strong> {{ entity.createdAt|date("Y-m-d H:i") }}
+                                        </a>
+                                    </li>
+                                </ul>
+
                             </div>
                         </div>
                     </div>
 
+                    <div class="col-md-9 table-responsive">
+                        <table id="{{ dataTable.tableOptions.table_name }}"
+                               class="table table-bordered table-striped dataTable"
+                               role="grid"
+                               aria-describedby="example1_info">
+                            <thead>
+                            <tr>
+                                {% for key, value in dataTable.columns|default([]) %}
+                                    <th>
+                                        {% if value.options.icon is defined %}
+                                            <i class="fa fa-fw fa-{{ value.options.icon|raw }}"></i>
+                                        {% endif %}
+                                        {{ value.name|raw }}
+                                    </th>
+                                {% endfor %}
+
+                                {% if dataTable.tableButton is not empty %}
+                                    <th>&nbsp</th>
+                                {% endif %}
+                            </tr>
+                            </thead>
+
+                            <tfoot>
+                            <tr>
+                                {% for key, value in dataTable.columns|default([]) %}
+                                    <th>
+                                        {% if value.options.icon is defined %}
+                                            <i class="fa fa-fw fa-{{ value.options.icon|raw }}"></i>
+                                        {% endif %}
+                                        {{ value.name|raw }}
+                                    </th>
+                                {% endfor %}
+
+                                {% if dataTable.tableButton is not empty %}
+                                    <th>&nbsp</th>
+                                {% endif %}
+                            </tr>
+                            </tfoot>
+                        </table>
+                    </div>
                 </div>
             </div>
+
         </div>
     </section>
 

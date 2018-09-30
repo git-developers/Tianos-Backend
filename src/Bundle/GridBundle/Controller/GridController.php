@@ -129,20 +129,6 @@ class GridController extends BaseController
         $form = $this->createForm($formType, $entity, ['form_data' => []]);
         $form->handleRequest($request);
 
-
-//        $errors = [];
-//        foreach ($form->getErrors(true) as $key => $error) {
-//            if ($form->isRoot()) {
-//                $errors[] = $error->getMessage();
-//            } else {
-//                $errors[] = $error->getMessage();
-//            }
-//        }
-
-//        echo "POLLO:: <pre>";
-//        print_r($request);
-//        exit;
-
         if ($form->isSubmitted()) {
 
             $errors = [];

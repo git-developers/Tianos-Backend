@@ -18,7 +18,7 @@ class Module
     const INVENTORY = 'Inventario';
     const USERS_MANAGEMENT = 'Gestión de usuarios';
     const REPORTS = 'Informes';
-    const SECURITY = 'Seguridad';
+    const SERVICE = 'Servicios';
 
     /**
      * @var integer

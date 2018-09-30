@@ -182,6 +182,47 @@ class PointofsaleRepository extends TianosEntityRepository
     /**
      * {@inheritdoc}
      */
+    public function findAllParents(): array
+    {
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT pointofsale
+            FROM PointofsaleBundle:Pointofsale pointofsale
+            WHERE
+            pointofsale.isActive = :active AND
+            pointofsale.pointOfSale IS NULL
+            ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+
+        return $query->getResult();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function findAllChildrenByParent($idParent): array
+    {
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT pointofsale
+            FROM PointofsaleBundle:Pointofsale pointofsale
+            WHERE
+            pointofsale.isActive = :active AND
+            pointofsale.pointOfSale = :idParent
+            ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+        $query->setParameter('idParent', $idParent);
+
+        return $query->getResult();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function findByName(string $name, string $locale): array
     {
         return $this->createQueryBuilder('o')

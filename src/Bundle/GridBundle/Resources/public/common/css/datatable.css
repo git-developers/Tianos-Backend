@@ -3,3 +3,7 @@
     float: left;
     margin-bottom: 5px;
 }
+
+button.btn-padding-5 {
+    margin: 0 5px 5px 0;
+}

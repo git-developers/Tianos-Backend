@@ -123,6 +123,8 @@ class Pointofsale
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="point_of_sale_id", referencedColumnName="id")
      * })
+     *
+     * @JMSS\Groups({"crud"})
      */
     private $pointOfSale;
 

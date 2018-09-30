@@ -1,41 +1,38 @@
-backend_pointofsale_index:
-    path: /
+backend_pointofsale_pdv_child_index:
+    path: /{id}
     methods: [GET]
     defaults:
-        _controller: tianos.backend.controller.pointofsale:indexAction
+        _controller: tianos.backend.controller.pointofsale.pdv.child:indexAction
         _tianos:
             action: index
             section: admin
             permission: true
-            template: GridBundle::index.html.twig
+            template: GridBundle::index_pdv_child.html.twig
             vars:
                 subheader: sylius.ui.manage_your_pointofsale_catalog
                 icon: cube
                 body_css: grid-body-css
+                box_class: primary
             grid:
                 icon: map-marker
                 box_class: primary
-                title: 'Gestionar puntos de ventas'
+                title: 'Gestionar puntos de ventas: hijos (Sucursales)'
                 modal:
                     title: Crear punto de venta
                 data_table:
                     route:
-                        info: backend_pointofsale_info
-                        view: backend_pointofsale_view
-                        edit: backend_pointofsale_edit
-                        create: backend_pointofsale_create
-                        delete: backend_pointofsale_delete
+                        info: backend_pointofsale_pdv_child_info
+                        view: backend_pointofsale_pdv_child_view
+                        edit: backend_pointofsale_pdv_child_edit
+                        create_pdv_child: backend_pointofsale_pdv_child_create
+                        delete: backend_pointofsale_pdv_child_delete
                         add_user: backend_pointofsale_add_user
-                        module: backend_pointofsale_module
-                        pdv_child: backend_pointofsale_pdv_child_index
                     table_button:
                         - edit
                         - delete
                         - add_user
-                        - module
-                        - add_pdv_child
                     table_button_header:
-                        - create
+                        - create_pdv_child
                         - info
                     table_option:
                         pageLength: 50
@@ -50,17 +47,8 @@ backend_pointofsale_index:
                     columns:
                         - name: '#'
                           obj: " '<span class=\"badge bg-blue\">' + obj.id + '</span>' "
-#                        - name: Es principal?
-#                          obj: obj.point_of_sale
-#                          options:
-#                              icon: image
-#                              property: " return (obj.point_of_sale != null) ? '<span class=\"badge bg-blue\">Principal</span>' : '' "
                         - name: Nombre
                           obj: obj.name
-                        - name: Coordenadas
-                          obj: " '<span class=\"badge bg-green\">' + obj.latitude + ' :: ' + obj.longitude + '</span>' "
-                          options:
-                              icon: map-marker
                         - name: Creado
                           obj: obj.created_at
                           options:
@@ -69,16 +57,16 @@ backend_pointofsale_index:
                 type: Bundle\PointofsaleBundle\Form\Type\PointofsaleType
             repository:
                 service: tianos.repository.pointofsale
-                method: findAllParents
+                method: findAllChildrenByParent
                 arguments: [$pointofsaleId]
                 vars:
                     serialize_group_name: crud
 
-backend_pointofsale_create:
+backend_pointofsale_pdv_child_create:
     path: /create
     methods: [POST]
     defaults:
-        _controller: tianos.backend.controller.pointofsale:createAction
+        _controller: tianos.backend.controller.pointofsale.pdv.child:createAction
         _tianos:
             action: create
             template: PointofsaleBundle:BackendPointofsale/Form:form.html.twig
@@ -89,7 +77,7 @@ backend_pointofsale_create:
                 vars:
                     serialize_group_name: crud
 
-backend_pointofsale_edit:
+backend_pointofsale_pdv_child_edit:
     path: /edit
     methods: [PUT, POST]
     defaults:
@@ -106,7 +94,7 @@ backend_pointofsale_edit:
                 vars:
                     serialize_group_name: crud
 
-backend_pointofsale_delete:
+backend_pointofsale_pdv_child_delete:
     path: /delete
     methods: [POST, DELETE]
     defaults:
@@ -121,7 +109,7 @@ backend_pointofsale_delete:
             vars:
 #                body_css: grid-body-css
 
-backend_pointofsale_view:
+backend_pointofsale_pdv_child_view:
     path: /view
     methods: [POST]
     defaults:
@@ -136,7 +124,7 @@ backend_pointofsale_view:
                 vars:
                     serialize_group_name: crud
 
-backend_pointofsale_info:
+backend_pointofsale_pdv_child_info:
     path: /info
     methods: [POST]
     defaults:
@@ -144,69 +132,3 @@ backend_pointofsale_info:
         _tianos:
             action: info
             template: PointofsaleBundle:BackendPointofsale/Informative:info.html.twig
-
-backend_pointofsale_add_user:
-    path: /add-user/{id}
-    methods: [GET, POST]
-    defaults:
-        _controller: tianos.backend.controller.pointofsale:addUserAction
-        _tianos:
-            action: edit
-            template: PointofsaleBundle:BackendPointofsale/addUser:index.html.twig
-            entity: Bundle\PointofsaleBundle\Entity\PointofsaleAddUser
-            vars:
-                icon: map-marker
-                box_class: primary
-                title: 'Punto de venta: agregar usuarios'
-                body_css: grid-body-css
-            form:
-                type: Bundle\PointofsaleBundle\Form\Type\PointofsaleAddUserType
-            repository:
-                service: tianos.repository.pointofsale
-                method: find
-                arguments: [$pointofsaleId]
-                vars:
-                    serialize_group_name: crud
-
-backend_pointofsale_remove_user:
-    path: /remove-user
-    methods: [PUT]
-    defaults:
-        _controller: tianos.backend.controller.pointofsale:removeUserAction
-        _tianos:
-            action: edit
-            template: PointofsaleBundle:BackendPointofsale/addUser:index.html.twig
-            entity: Bundle\PointofsaleBundle\Entity\PointofsaleAddUser
-            vars:
-                icon: map-marker
-            form:
-                type: Bundle\PointofsaleBundle\Form\Type\PointofsaleAddUserType
-            repository:
-                service: tianos.repository.pointofsale
-                method: find
-                arguments: [$pointofsaleId]
-                vars:
-                    serialize_group_name: crud
-
-backend_pointofsale_module:
-    path: /module/{id}
-    methods: [GET, POST]
-    defaults:
-        _controller: tianos.backend.controller.pointofsale:moduleAction
-        _tianos:
-            action: edit
-            template: PointofsaleBundle:BackendPointofsale:module.html.twig
-            entity: Bundle\PointofsaleBundle\Entity\PointofsaleModule
-            vars:
-                icon: map-marker
-                box_class: primary
-                title: 'Punto de venta: agregar modulos'
-                body_css: grid-body-css
-            form:
-                type: Bundle\PointofsaleBundle\Form\Type\PointofsaleModuleType
-            repository:
-                service: tianos.repository.pointofsale
-                method: find
-                arguments: [$pointofsaleId]
-                vars:
-                    serialize_group_name: crud
