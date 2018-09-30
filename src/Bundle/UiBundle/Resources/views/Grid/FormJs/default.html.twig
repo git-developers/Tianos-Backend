@@ -77,7 +77,7 @@
 
 {% if dataTable.route.create_pdv_child is defined %}
     $('body.{{ vars.body_css }}').formCreatePdvChild({
-        modalId: '{{ modal.create_id }}',
+        modalId: '{{ modal.point_of_sale_add_pdv_child }}',
         route: '{{ path(dataTable.route.create_pdv_child) }}',
         formName: '{{ form_mapper.create_name }}',
         tableJson: tableJson
@@ -86,9 +86,9 @@
 
 {% if dataTable.route.change_password is defined %}
     $('body.{{ vars.body_css }}').formChangePassword({
-        modalId: '{{ modal.create_id }}',
+        modalId: '{{ modal.change_password }}',
         route: '{{ path(dataTable.route.change_password) }}',
-        formName: '{{ form_mapper.create_name }}',
+        formName: '{{ form_mapper.edit_name }}',
         tableJson: tableJson
     });
 {% endif %}

@@ -26,7 +26,7 @@ backend_user_index:
                         create: backend_user_create
                         delete: backend_user_delete
                         view_profile: frontend_user_profile
-                        change_password: frontend_user_profile
+                        change_password: backend_user_change_password
                     table_button:
                         - edit
                         - delete
@@ -120,6 +120,23 @@ backend_user_delete:
                 arguments: [$userId]
             vars:
 #                body_css: grid-body-css
+
+backend_user_change_password:
+    path: /change-password
+    methods: [PUT, POST]
+    defaults:
+        _controller: tianos.backend.controller.user:changePasswordAction
+        _tianos:
+            action: edit
+            template: UserBundle:BackendUser/Security:reset-password-step-two.html.twig
+            form:
+                type: Bundle\UserBundle\Form\Type\UserChangePasswordType2
+            repository:
+                service: tianos.repository.user
+                method: find
+                arguments: [$userId]
+                vars:
+                    serialize_group_name: crud
 
 backend_user_view:
     path: /view
