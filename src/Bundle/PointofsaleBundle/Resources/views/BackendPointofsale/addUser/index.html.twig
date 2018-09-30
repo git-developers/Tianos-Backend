@@ -96,6 +96,7 @@
 
                     },
                     success: function(data, textStatus, jqXHR) {
+                        $('#no-users').hide();
                         $('#tabla-user tbody').prepend(data);
                     },
                     error: function(jqXHR, exception) {
@@ -286,7 +287,7 @@
                                                 </td>
                                             </tr>
                                         {% else %}
-                                            <tr>
+                                            <tr id="no-users">
                                                 <td>
                                                     No hay usuarios asignados.
                                                 </td>

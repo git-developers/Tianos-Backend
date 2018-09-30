@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Bundle\PointofsaleBundle\Doctrine\ORM;
 
 use Bundle\CoreBundle\Doctrine\ORM\EntityRepository as TianosEntityRepository;
+use Bundle\UserBundle\Entity\User;
 use Component\Pointofsale\Repository\PointofsaleRepositoryInterface;
 use Component\OneToMany\Repository\OneToManyLeftRepositoryInterface;
 use Component\OneToMany\Repository\OneToManyRightRepositoryInterface;
@@ -129,6 +130,34 @@ class PointofsaleRepository extends TianosEntityRepository
         $query->setParameter('id', $id);
 
         return $query->getOneOrNullResult();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function findAllPerUser(User $user): array
+    {
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT pointofsale
+            FROM PointofsaleBundle:Pointofsale pointofsale
+            WHERE
+            pointofsale.isActive = :active AND
+            pointofsale.id IN (:ids)
+            ";
+
+        $ids = [];
+        $pointOfSales = $user->getPointOfSale();
+
+        foreach ($pointOfSales as $key => $pointOfSale) {
+            $ids[] = $pointOfSale->getId();
+        }
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+        $query->setParameter('ids', $ids);
+
+        return $query->getResult();
     }
 
     /**

@@ -22,6 +22,12 @@ services:
         tags:
             - { name: tianos.backend.controller.pointofsale, alias: tianos.backend.controller.pointofsale }
 
+    tianos.backend.controller.pointofsale.per.user:
+        class: Bundle\PointofsaleBundle\Controller\BackendPerUserController
+        arguments: [ Bundle\ResourceBundle\Factory\RequestConfigurationFactoryInterface ]
+        tags:
+            - { name: tianos.backend.controller.pointofsale.per.user, alias: tianos.backend.controller.pointofsale.per.user }
+
     tianos.frontend.controller.pointofsale:
         class: Bundle\PointofsaleBundle\Controller\FrontendController
         arguments: [ Bundle\ResourceBundle\Factory\RequestConfigurationFactoryInterface ]

@@ -350,11 +350,11 @@ class Builder implements ContainerAwareInterface
             ->setDisplay($isGranted)
         ;
 
-        $menu['Ajustes']->addChild('Load Fixtures', [
-            'route' => 'backend_core_loadfixtures'
+        $menu['Ajustes']->addChild('Datos del salón', [
+            'route' => 'backend_pointofsale_per_user_index'
         ])
             ->setAttribute('icon', self::CIRCLE_1)
-            ->setAttribute('class', $this->activeRoute('backend_core_loadfixtures'))
+            ->setAttribute('class', $this->activeRoute('backend_pointofsale_per_user_index'))
             ->setDisplay($isGranted)
         ;
         /**
