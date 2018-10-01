@@ -93,7 +93,7 @@ class ButtonMapper
             'icon' => '<i class="fa fa-fw fa-pencil"></i>',
             'data-toggle' => 'modal',
             'data-target' => ModalMapper::EDIT_ID,
-            'class' => 'btn-xs btn-warning btn-padding-5 ' . ModalMapper::EDIT_ID,
+            'class' => 'btn-xs btn-warning btn-margin-5 ' . ModalMapper::EDIT_ID,
         ]);
     }
 
@@ -105,7 +105,7 @@ class ButtonMapper
             'icon' => '<i class="fa fa-fw fa-trash"></i>',
             'data-toggle' => 'modal',
             'data-target' => ModalMapper::DELETE_ID,
-            'class' => 'btn-xs btn-danger btn-padding-5 ' . ModalMapper::DELETE_ID,
+            'class' => 'btn-xs btn-danger btn-margin-5 ' . ModalMapper::DELETE_ID,
         ]);
     }
 
@@ -137,7 +137,7 @@ class ButtonMapper
             'alt' => 'Ver perfil',
             'title' => 'Ver perfil',
             'icon' => '<i class="fa fa-fw fa-eye"></i>',
-            'class' => 'btn-xs btn-info ' . ModalMapper::PROFILE_ID,
+            'class' => 'btn-xs bg-olive ' . ModalMapper::PROFILE_ID,
         ]);
     }
 
@@ -147,7 +147,7 @@ class ButtonMapper
             'alt' => 'Agregar usuario',
             'title' => 'Agregar usuario',
             'icon' => '<i class="fa fa-fw fa-user"></i>',
-            'class' => 'btn-xs btn-info btn-padding-5 ' . ModalMapper::POINT_OF_SALE_ADD_USER,
+            'class' => 'btn-xs btn-info btn-margin-5 ' . ModalMapper::POINT_OF_SALE_ADD_USER,
         ]);
     }
 
@@ -157,7 +157,7 @@ class ButtonMapper
             'alt' => 'Modulos',
             'title' => 'Modulos',
             'icon' => '<i class="fa fa-fw fa-cubes"></i>',
-            'class' => 'btn-xs btn-success btn-padding-5 ' . ModalMapper::POINT_OF_SALE_ADD_MODULE,
+            'class' => 'btn-xs btn-success btn-margin-5 ' . ModalMapper::POINT_OF_SALE_ADD_MODULE,
         ]);
     }
 
@@ -167,7 +167,7 @@ class ButtonMapper
             'alt' => 'Agregar PDV sucursal',
             'title' => 'Agregar PDV sucursal',
             'icon' => '<i class="fa fa-fw fa-plus"></i>',
-            'class' => 'btn-xs btn-info btn-padding-5 ' . ModalMapper::POINT_OF_SALE_ADD_PDV_CHILD,
+            'class' => 'btn-xs btn-info btn-margin-5 ' . ModalMapper::POINT_OF_SALE_ADD_PDV_CHILD_ID,
         ]);
     }
 
@@ -178,8 +178,8 @@ class ButtonMapper
             'title' => 'Cambiar password',
             'icon' => '<i class="fa fa-fw fa-lock"></i>',
             'data-toggle' => 'modal',
-            'data-target' => ModalMapper::CHANGE_PASSWORD,
-            'class' => 'btn-xs bg-olive btn-padding-5 ' . ModalMapper::CHANGE_PASSWORD,
+            'data-target' => ModalMapper::CHANGE_PASSWORD_ID,
+            'class' => 'btn-xs btn-info btn-margin-5 ' . ModalMapper::CHANGE_PASSWORD_ID,
         ]);
     }
 

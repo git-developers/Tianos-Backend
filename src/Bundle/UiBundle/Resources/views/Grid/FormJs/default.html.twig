@@ -70,14 +70,14 @@
 
 {% if dataTable.route.pdv_child is defined %}
     $('body.{{ vars.body_css }}').formAddPdvChild({
-        buttonId: '{{ modal.point_of_sale_add_pdv_child }}',
+        buttonId: '{{ modal.point_of_sale_add_pdv_child_id }}',
         route: '{{ path(dataTable.route.pdv_child, {id:"-1"}) }}'
     });
 {% endif %}
 
 {% if dataTable.route.create_pdv_child is defined %}
     $('body.{{ vars.body_css }}').formCreatePdvChild({
-        modalId: '{{ modal.point_of_sale_add_pdv_child }}',
+        modalId: '{{ modal.create_id }}',
         route: '{{ path(dataTable.route.create_pdv_child) }}',
         formName: '{{ form_mapper.create_name }}',
         tableJson: tableJson
@@ -86,9 +86,14 @@
 
 {% if dataTable.route.change_password is defined %}
     $('body.{{ vars.body_css }}').formChangePassword({
-        modalId: '{{ modal.change_password }}',
+        modalId: '{{ modal.change_password_id }}',
         route: '{{ path(dataTable.route.change_password) }}',
-        formName: '{{ form_mapper.edit_name }}',
+        formName: '{{ form_mapper.change_password_name }}',
         tableJson: tableJson
+    });
+
+    $('body.{{ vars.body_css }}').togglePassword({
+        password_input_class: 'password-field',
+        checkbox_id: 'sylius_user_change_password_togglePassword'
     });
 {% endif %}

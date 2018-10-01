@@ -21,7 +21,7 @@ class PointofsaleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
 
-        $pdvParent = $options['pdv_parent'];
+        $pdvParent = isset($options['form_data']['pdv_parent']) ? $options['form_data']['pdv_parent'] : null;
 
         $builder
             ->add('pointOfSale', EntityType::class, [
@@ -106,7 +106,6 @@ class PointofsaleType extends AbstractType
 
         $resolver->setRequired([
             'form_data',
-            'pdv_parent',
         ]);
     }
 

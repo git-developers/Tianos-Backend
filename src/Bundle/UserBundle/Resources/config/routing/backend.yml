@@ -17,7 +17,10 @@ backend_user_index:
                 box_class: primary
                 title: Gestionar usuarios
                 modal:
-                    title: Crear usuario
+                    create:
+                        title: Crear usuario
+                    change_password:
+                        title: Cambiar password
                 data_table:
                     route:
                         info: backend_user_info
@@ -128,7 +131,8 @@ backend_user_change_password:
         _controller: tianos.backend.controller.user:changePasswordAction
         _tianos:
             action: edit
-            template: UserBundle:BackendUser/Security:reset-password-step-two.html.twig
+            template: UserBundle:BackendUser/Form:change_password.html.twig
+            entity: Bundle\UserBundle\Entity\ChangePassword2
             form:
                 type: Bundle\UserBundle\Form\Type\UserChangePasswordType2
             repository:

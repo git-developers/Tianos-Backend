@@ -47,7 +47,7 @@
                 type: 'PUT',
                 dataType: 'html',
                 data: {
-                    id:id,
+                    id: id,
                     form_data:options.form_data
                 },
                 beforeSend: function(jqXHR, settings) {
@@ -94,8 +94,6 @@
                     modalRefresh.hide();
 
                     if(data.status){
-                        var row = options.tableJson.row('[data-id="' + data.id + '"]');
-                        row.data(data.entity).draw();
                         modal.modal('hide');
                     }else{
 

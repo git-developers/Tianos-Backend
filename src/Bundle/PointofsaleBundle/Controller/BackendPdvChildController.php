@@ -122,8 +122,9 @@ class BackendPdvChildController extends GridController
         $entity = new $entity();
 
         $form = $this->createForm($formType, $entity, [
-            'form_data' => [],
-            'pdv_parent' => $this->get('tianos.repository.pointofsale')->find($request->get('idParent')),
+            'form_data' => [
+                'pdv_parent' => $this->get('tianos.repository.pointofsale')->find($request->get('idParent')),
+            ],
         ]);
         $form->handleRequest($request);
 

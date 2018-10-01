@@ -14,18 +14,22 @@ class ModalMapper
 
     const TITLE = 'Crear item';
     const SIZE_LARGE = 'modal-lg';
+
     const CREATE_ID = 'modal-create';
     const CREATE_CHILD_ID = 'modal-create-child';
+
     const EDIT_ID = 'modal-edit';
     const DELETE_ID = 'modal-delete';
     const VIEW_ID = 'modal-view';
     const INFO_ID = 'modal-info';
     const WATCH_ID = 'watch-button-id';
     const PROFILE_ID = 'profile-button-id';
+
     const POINT_OF_SALE_ADD_USER = 'pointofsale-add-user';
     const POINT_OF_SALE_ADD_MODULE = 'pointofsale-add-module';
-    const POINT_OF_SALE_ADD_PDV_CHILD = 'pointofsale-add-pdv-child';
-    const CHANGE_PASSWORD = 'change_password';
+    const POINT_OF_SALE_ADD_PDV_CHILD_ID = 'pointofsale-add-pdv-child-id';
+
+    const CHANGE_PASSWORD_ID = 'change-password-id';
 
     public function __construct(Router $router)
     {
@@ -56,9 +60,10 @@ class ModalMapper
 
             'point_of_sale_add_user' => self::POINT_OF_SALE_ADD_USER,
             'point_of_sale_add_module' => self::POINT_OF_SALE_ADD_MODULE,
-            'point_of_sale_add_pdv_child' => self::POINT_OF_SALE_ADD_PDV_CHILD,
+            'point_of_sale_add_pdv_child_id' => self::POINT_OF_SALE_ADD_PDV_CHILD_ID,
 
-            'change_password' => self::CHANGE_PASSWORD,
+            'change_password_id' => self::CHANGE_PASSWORD_ID,
+            'change_password_size' => null,
         ];
     }
 

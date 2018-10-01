@@ -49,6 +49,7 @@
         '@GridBundle/Resources/public/common/js/formModule.js'
         '@GridBundle/Resources/public/common/js/formAddPdvChild.js'
         '@GridBundle/Resources/public/common/js/formChangePassword.js'
+        '@UserBundle/Resources/public/js/togglePassword.js'
         '@GridBundle/Resources/public/plugins/datatables/jquery.dataTables.min.js'
         '@GridBundle/Resources/public/plugins/datatables/dataTables.bootstrap.min.js'
     %}
@@ -228,5 +229,6 @@
     {{ include('GridBundle:Modal:delete.html.twig') }}
     {{ include('GridBundle:Modal:view.html.twig') }}
     {{ include('GridBundle:Modal:info.html.twig') }}
+    {{ include('GridBundle:Modal:change_password.html.twig') }}
 
 {% endblock %}
