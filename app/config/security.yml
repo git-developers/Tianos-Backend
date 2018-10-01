@@ -50,6 +50,7 @@ security:
             anonymous:    true
 
     access_control:
+        - { path: ^/backend/pdv/, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/backend/security/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/backend/security/login-facebook-callback$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/backend/security/reset-password-step-one$, role: IS_AUTHENTICATED_ANONYMOUSLY }

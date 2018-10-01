@@ -10,21 +10,26 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Doctrine\ORM\EntityRepository;
+use Bundle\PointofsaleBundle\Entity\Pointofsale;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 
-final class UserLoginType extends AbstractType
+final class PdvLoginType extends AbstractType
 {
 
     protected $router;
+    protected $pdv;
 
     public function __construct(Router $router)
     {
         $this->router = $router;
     }
+
 
     /**
      * {@inheritdoc}
@@ -32,8 +37,27 @@ final class UserLoginType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
 
+        $this->pdv = $options['pdv'];
+
         $builder
             ->setAction($this->router->generate('fos_user_security_check'))
+            ->add('pointOfSale', EntityType::class, [
+                'class' => Pointofsale::class,
+                'query_builder' => function(EntityRepository $er) {
+                    return $er->findAllObjectsByPdv($this->pdv);
+                },
+                'placeholder' => '[ Escoge una sucursal ]',
+                'empty_data' => null,
+                'required' => false,
+                'label' => 'Punto de venta',
+                'label_attr' => [
+                    'class' => ''
+                ],
+                'attr' => [
+                    'class' => 'form-control',
+                    'placeholder' => '',
+                ],
+            ])
             ->add('_username', EmailType::class, [
                 'required' => true,
                 'label_attr' => [
@@ -78,13 +102,24 @@ final class UserLoginType extends AbstractType
     }
 
     /**
-     * This will remove formTypeName from the form
-     * @return null
+     * {@inheritdoc}
      */
     public function getBlockPrefix()
     {
-//        return 'sylius_user_security_login';
-        return null;
+        return 'sylius_user_security_login';
     }
 
+    /**
+     * @param OptionsResolver $resolver
+     */
+    public function configureOptions(OptionsResolver $resolver)
+    {
+        $resolver->setDefaults([
+//            'data_class' => Pointofsale::class,
+        ]);
+
+        $resolver->setRequired([
+            'pdv',
+        ]);
+    }
 }

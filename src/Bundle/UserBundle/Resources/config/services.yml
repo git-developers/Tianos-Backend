@@ -54,6 +54,13 @@ services:
         tags:
             - { name: tianos.security.controller.user, alias: tianos.security.controller.user }
 
+    tianos.security.controller.pdv:
+        class: Bundle\UserBundle\Controller\SecurityPdvController
+        arguments: [ Bundle\ResourceBundle\Factory\RequestConfigurationFactoryInterface ]
+        public: true
+        tags:
+            - { name: tianos.security.controller.pdv, alias: tianos.security.controller.pdv }
+
     tianos.repository.user:
         class: Dummy
         factory: ['@doctrine.orm.entity_manager', getRepository]
@@ -63,6 +70,18 @@ services:
         class: Dummy
         factory: ['@doctrine.orm.entity_manager', getRepository]
         arguments: [ Bundle\UserBundle\Entity\Friends ]
+
+    tianos.login.user:
+        class: Bundle\UserBundle\Form\Type\UserLoginType
+        arguments: [ "@router" ]
+        tags:
+            - { name: form.type }
+
+    tianos.login.pdv:
+        class: Bundle\UserBundle\Form\Type\PdvLoginType
+        arguments: [ "@router" ]
+        tags:
+            - { name: form.type }
 
 
 

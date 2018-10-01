@@ -32,12 +32,6 @@ class SecurityController extends BaseController
      */
     public function loginAction(Request $request): Response
     {
-
-//        FACEBOOK LOGIN
-//        https://developers.facebook.com/docs/reference/php/
-//        https://developers.facebook.com/docs/php/howto/example_facebook_login
-
-
         $authenticationUtils = $this->get('security.authentication_utils');
         $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();
@@ -47,32 +41,35 @@ class SecurityController extends BaseController
         $template = $options['template'] ?? null;
         Assert::notNull($template, 'Template is not configured.');
 
-        $formType = $options['form'] ?? UserLoginType::class;
-        $form = $this->get('form.factory')->createNamed('', $formType);
+        $form = $this->createForm(UserLoginType::class);
+        $form->handleRequest($request);
 
 
         /**
          * Facebook
          */
-        $fb = new Facebook([
-            'app_id' => $this->container->getParameter('application_fb_app_id'),
-            'app_secret' => $this->container->getParameter('application_fb_app_secret'),
-            'default_graph_version' => 'v2.2', // v3.0
-        ]);
-
-        $helper = $fb->getRedirectLoginHelper();
-
-        $permissions = ['email']; // Optional permissions
-        $redirectUrl = $this->generateUrl('backend_security_login_facebook_callback');
-        $redirectUrl = 'https://tianos.com/backend/security/login-facebook-callback';
-        $loginUrl = $helper->getLoginUrl($redirectUrl, $permissions);
+//        FACEBOOK LOGIN
+//        https://developers.facebook.com/docs/reference/php/
+//        https://developers.facebook.com/docs/php/howto/example_facebook_login
+//        $fb = new Facebook([
+//            'app_id' => $this->container->getParameter('application_fb_app_id'),
+//            'app_secret' => $this->container->getParameter('application_fb_app_secret'),
+//            'default_graph_version' => 'v2.2', // v3.0
+//        ]);
+//
+//        $helper = $fb->getRedirectLoginHelper();
+//
+//        $permissions = ['email']; // Optional permissions
+//        $redirectUrl = $this->generateUrl('backend_security_login_facebook_callback');
+//        $redirectUrl = 'https://tianos.com/backend/security/login-facebook-callback';
+//        $loginUrl = $helper->getLoginUrl($redirectUrl, $permissions);
         /**
          * Facebook
          */
 
         return $this->render($template,
             [
-                'loginUrl' => htmlspecialchars($loginUrl),
+//                'loginUrl' => htmlspecialchars($loginUrl),
                 'form' => $form->createView(),
                 'last_username' => $lastUsername,
                 'error' => $error,

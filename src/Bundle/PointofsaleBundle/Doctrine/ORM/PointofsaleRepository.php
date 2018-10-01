@@ -90,6 +90,17 @@ class PointofsaleRepository extends TianosEntityRepository
             ;
     }
 
+    public function findAllObjectsByPdv($pdv)
+    {
+        return $this->createQueryBuilder('a')
+            ->where('a.isActive = :active')
+            ->andWhere('a.pointOfSale = :pointOfSale')
+            ->orderBy('a.id', 'ASC')
+            ->setParameter('active', true)
+            ->setParameter('pointOfSale', $pdv->getId())
+            ;
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -107,6 +118,28 @@ class PointofsaleRepository extends TianosEntityRepository
         $query = $em->createQuery($dql);
         $query->setParameter('active', 1);
         $query->setParameter('id', $leftValue);
+
+        return $query->getOneOrNullResult();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function findBySlug($slug)
+    {
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT pointofsale
+            FROM PointofsaleBundle:Pointofsale pointofsale
+            WHERE
+            pointofsale.slug = :slug AND
+            pointofsale.pointOfSale IS NULL AND
+            pointofsale.isActive = :active
+            ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+        $query->setParameter('slug', $slug);
 
         return $query->getOneOrNullResult();
     }

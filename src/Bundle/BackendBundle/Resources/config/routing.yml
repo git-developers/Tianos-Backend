@@ -16,6 +16,9 @@ backend_profile:
 backend_security:
     resource: '@UserBundle/Resources/config/routing/security.yml'
     prefix: /security
+backend_security_pdv:
+    resource: '@UserBundle/Resources/config/routing/security_pdv.yml'
+    prefix: /pdv
 backend_core:
     resource: '@CoreBundle/Resources/config/routing/backend.yml'
     prefix: /core
