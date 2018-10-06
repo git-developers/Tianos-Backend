@@ -226,7 +226,7 @@ class Builder implements ContainerAwareInterface
 
 
         /**
-         * STOCK
+         * STOCK - INVENTORY
          */
         $isGranted = $this->isGranted([
             Role::ROLE_PDV_ADMIN,
@@ -248,8 +248,24 @@ class Builder implements ContainerAwareInterface
             ->setAttribute('icon', 'fa-fw fa-dropbox')
             ->setDisplay($isGranted)
         ;
+
+        $menu['Inventario']->addChild('Categoria', [
+            'route' => 'backend_category_tree_index'
+        ])
+            ->setAttribute('icon', self::CIRCLE_1)
+            ->setAttribute('class', $this->activeRoute('backend_category_tree_index'))
+            ->setDisplay($isGranted)
+        ;
+
+        $menu['Inventario']->addChild('Producto', [
+            'route' => 'backend_product_index'
+        ])
+            ->setAttribute('icon', self::CIRCLE_2)
+            ->setAttribute('class', $this->activeRoute('backend_product_index'))
+            ->setDisplay($isGranted)
+        ;
         /**
-         * STOCK
+         * STOCK - INVENTORY
          */
 
 

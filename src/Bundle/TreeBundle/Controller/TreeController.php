@@ -158,7 +158,8 @@ class TreeController extends BaseController
 
                 if ($form->isValid()) {
                     $this->persist($entity);
-                    $entity = $this->getSerializeDecode($entity, $vars->serialize_group_name);
+                    $varsRepository = $configuration->getRepositoryVars();
+                    $entity = $this->getSerializeDecode($entity, $varsRepository->serialize_group_name);
                     $status = self::STATUS_SUCCESS;
                 }else{
                     foreach ($form->getErrors(true) as $key => $error) {

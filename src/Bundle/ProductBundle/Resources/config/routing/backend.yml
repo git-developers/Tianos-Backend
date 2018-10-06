@@ -45,10 +45,10 @@ backend_product_index:
                           obj: " '<span class=\"badge bg-blue\">' + obj.id + '</span>' "
                         - name: Name
                           obj: obj.name
-                        - name: Creado
-                          obj: obj.created_at
-                          options:
-                              icon: calendar
+#                        - name: Creado
+#                          obj: obj.created_at
+#                          options:
+#                              icon: calendar
             form:
                 type: Bundle\ProductBundle\Form\Type\ProductType
             repository:

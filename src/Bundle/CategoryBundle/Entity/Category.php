@@ -7,9 +7,16 @@ namespace Bundle\CategoryBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as JMSS;
 use JMS\Serializer\Annotation\Type as TypeJMS;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 
 /**
  * Category
+ *
+ * @UniqueEntity(
+ *     fields={"code"},
+ *     message="El codigo fue registrado anteriormente"
+ * )
  */
 class Category
 {
