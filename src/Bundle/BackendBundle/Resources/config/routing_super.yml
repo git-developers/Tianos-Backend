@@ -61,15 +61,15 @@ backend_super_user:
 #backend_super_category:
 #    resource: '@CategoryBundle/Resources/config/routing/tree.yml'
 #    prefix: /category
-#backend_super_pointofsale:
-#    resource: '@PointofsaleBundle/Resources/config/routing/backend.yml'
-#    prefix: /point-of-sale
-#backend_super_pointofsale_pdv_child:
-#    resource: '@PointofsaleBundle/Resources/config/routing/backend_super_pdv_child.yml'
-#    prefix: /point-of-sale-child
-#backend_super_pointofsale_per_user:
-#    resource: '@PointofsaleBundle/Resources/config/routing/backend_per_user.yml'
-#    prefix: /point-of-sale-per-user
+backend_super_pointofsale:
+    resource: '@PointofsaleBundle/Resources/config/routing/backend.yml'
+    prefix: /point-of-sale
+backend_super_pointofsale_pdv_child:
+    resource: '@PointofsaleBundle/Resources/config/routing/backend_pdv_child.yml'
+    prefix: /point-of-sale-child
+backend_super_pointofsale_per_user:
+    resource: '@PointofsaleBundle/Resources/config/routing/backend_per_user.yml'
+    prefix: /point-of-sale-per-user
 backend_super_module:
     resource: '@ModuleBundle/Resources/config/routing/backend.yml'
     prefix: /module

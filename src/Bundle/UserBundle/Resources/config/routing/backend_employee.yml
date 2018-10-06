@@ -32,7 +32,7 @@ backend_user_employee_index:
                         - delete
                     table_option:
                         pageLength: 50
-                        dom: "'<\"top\"flp><\"clear\">rt<\"bottom\"flp>'"
+                        dom: "'<\"top\"iflp><\"clear\">rt<\"bottom\"iflp>'"
                     table_button_header:
                         - create
                         - info

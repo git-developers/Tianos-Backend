@@ -1,4 +1,4 @@
-{% extends "ThemesBundle:Adminlte:1_template.html.twig" %}
+{% extends "ThemesBundle:Adminlte/TemplateSuper:1_template.html.twig" %}
 
 {% block bodyclass %}{% spaceless %}
     {{ vars.body_css }}
@@ -14,28 +14,24 @@
     {#<link rel="stylesheet" href="{{ asset_url }}" />#}
     {#{% endstylesheets %}#}
 
-    <style>
-
-    </style>
-
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
-    <style>
-        #project-label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 1em;
-        }
-        #project-icon {
-            float: left;
-            height: 32px;
-            width: 32px;
-        }
-        #project-description {
-            margin: 0;
-            padding: 0;
-        }
-    </style>
+    {#<style>#}
+        {##project-label {#}
+            {#display: block;#}
+            {#font-weight: bold;#}
+            {#margin-bottom: 1em;#}
+        {#}#}
+        {##project-icon {#}
+            {#float: left;#}
+            {#height: 32px;#}
+            {#width: 32px;#}
+        {#}#}
+        {##project-description {#}
+            {#margin: 0;#}
+            {#padding: 0;#}
+        {#}#}
+    {#</style>#}
 
 {% endblock %}
 

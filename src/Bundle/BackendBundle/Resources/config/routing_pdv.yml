@@ -40,12 +40,12 @@ backend_report:
 backend_user:
     resource: '@UserBundle/Resources/config/routing/backend.yml'
     prefix: /user
-#backend_user_client:
-#    resource: '@UserBundle/Resources/config/routing/backend_client.yml'
-#    prefix: /user-client
-#backend_user_employee:
-#    resource: '@UserBundle/Resources/config/routing/backend_employee.yml'
-#    prefix: /user-employee
+backend_user_client:
+    resource: '@UserBundle/Resources/config/routing/backend_client.yml'
+    prefix: /user-client
+backend_user_employee:
+    resource: '@UserBundle/Resources/config/routing/backend_employee.yml'
+    prefix: /user-employee
 #backend_friends_user:
 #    resource: '@UserBundle/Resources/config/routing/backend_friends.yml'
 #    prefix: /user-friends

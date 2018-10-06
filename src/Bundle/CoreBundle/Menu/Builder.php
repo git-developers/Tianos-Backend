@@ -101,28 +101,28 @@ class Builder implements ContainerAwareInterface
         /**
          * POINTS OF SALES
          */
-//        $isGranted = $this->isGranted([
-//            Role::ROLE_SUPER_ADMIN,
-//        ]);
-//
-//        $menu->addChild('Puntos de venta', [
-//            'route' => 'backend_pointofsale_index',
-//            'extras' => ['safe_label' => true],
-//            'childrenAttributes' => [
-//                'class' => 'treeview-menu',
-//            ],
-//        ])
-//            ->setAttribute('allow_angle', true)
-//            ->setAttribute('class', 'treeview')
-//            ->setAttribute('class', $this->activeRoute([
-//                'backend_pointofsale_index',
-//                'backend_pointofsale_add_user',
-//                'backend_pointofsale_module',
-//                'backend_pointofsale_pdv_child_index',
-//            ]))
-//            ->setAttribute('icon', 'fa-fw fa-map-marker')
-//            ->setDisplay($isGranted)
-//        ;
+        $isGranted = $this->isGranted([
+            Role::ROLE_SUPER_ADMIN,
+        ]);
+
+        $menu->addChild('Puntos de venta', [
+            'route' => 'backend_pointofsale_index',
+            'extras' => ['safe_label' => true],
+            'childrenAttributes' => [
+                'class' => 'treeview-menu',
+            ],
+        ])
+            ->setAttribute('allow_angle', true)
+            ->setAttribute('class', 'treeview')
+            ->setAttribute('class', $this->activeRoute([
+                'backend_pointofsale_index',
+                'backend_pointofsale_add_user',
+                'backend_pointofsale_module',
+                'backend_pointofsale_pdv_child_index',
+            ]))
+            ->setAttribute('icon', 'fa-fw fa-map-marker')
+            ->setDisplay($isGranted)
+        ;
         /**
          * POINTS OF SALES
          */
@@ -167,7 +167,6 @@ class Builder implements ContainerAwareInterface
         /**
          * ACCOUNTS - ADMIN
          */
-        /*
         $isGranted = $this->isGranted([
             Role::ROLE_SUPER_ADMIN,
             Role::ROLE_PDV_ADMIN,
@@ -217,7 +216,6 @@ class Builder implements ContainerAwareInterface
             ->setAttribute('class', $this->activeRoute('backend_user_employee_index'))
             ->setDisplay($isGrantedAdmin)
         ;
-        */
         /**
          * ACCOUNTS - ADMIN
          */
@@ -334,8 +332,6 @@ class Builder implements ContainerAwareInterface
         /**
          * SETTINGS
          */
-
-        /*
         $isGranted = $this->isGranted([
             Role::ROLE_PDV_ADMIN,
         ]);
@@ -362,7 +358,6 @@ class Builder implements ContainerAwareInterface
             ->setAttribute('class', $this->activeRoute('backend_pointofsale_per_user_index'))
             ->setDisplay($isGranted)
         ;
-        */
         /**
          * SETTINGS
          */
