@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Component\Resource\Metadata\Metadata;
 use Bundle\ResourceBundle\ResourceBundle;
 use JMS\Serializer\SerializationContext;
+use Bundle\CategoryBundle\Entity\Category;
 
 class TreeController extends BaseController
 {
@@ -54,8 +55,15 @@ class TreeController extends BaseController
         $tree = $configuration->getTree();
         $vars = $configuration->getVars();
 
+        //CATEGORY TYPE
+        $entityType = $request->get('entity_type');
+
+        if (!Category::isEntityType($entityType)) {
+            throw $this->createNotFoundException('TREE TYPE: Unable to find category type.');
+        }
+
         //REPOSITORY
-        $objects = $this->get($repository)->$method();
+        $objects = $this->get($repository)->$method($entityType);
         $varsRepository = $configuration->getRepositoryVars();
         $objects = $this->getTreeEntities($objects, $configuration, $varsRepository->serialize_group_name);
 
@@ -91,7 +99,7 @@ class TreeController extends BaseController
                 'tree' => $tree,
                 'modal' => $modal,
                 'objects' => $objects,
-//                'dataTable' => $dataTable,
+                'entityType' => $entityType,
                 'form_mapper' => $formMapper,
             ]
         );
@@ -145,7 +153,25 @@ class TreeController extends BaseController
         $entity = $configuration->getEntity();
         $entity = new $entity();
 
-        $form = $this->createForm($formType, $entity, []);
+
+        //CATEGORY TYPE
+        $entityType = $request->get('entity_type');
+
+        if ($request->isMethod('POST')) {
+            $entityType = $request->get('category');
+            $entityType = $entityType['type'];
+        }
+
+        if (!Category::isEntityType($entityType)) {
+            throw $this->createNotFoundException('TREE TYPE: Unable to find category type.');
+        }
+
+        //FORM
+        $form = $this->createForm($formType, $entity, [
+            'form_data' => [
+                'entity_type' => $entityType
+            ]
+        ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted()) {
@@ -161,7 +187,7 @@ class TreeController extends BaseController
                     $varsRepository = $configuration->getRepositoryVars();
                     $entity = $this->getSerializeDecode($entity, $varsRepository->serialize_group_name);
                     $status = self::STATUS_SUCCESS;
-                }else{
+                } else {
                     foreach ($form->getErrors(true) as $key => $error) {
                         if ($form->isRoot()) {
                             $errors[] = $error->getMessage();
@@ -216,11 +242,32 @@ class TreeController extends BaseController
         $vars = $configuration->getVars();
         $varsRepository = $configuration->getRepositoryVars();
 
+        //ENTITY
         $entity = $configuration->getEntity();
         $entity = new $entity();
 
+
+        //CATEGORY TYPE
+        $entityType = $request->get('entity_type');
+
+        if ($request->isMethod('POST')) {
+            $entityType = $request->get('category');
+            $entityType = $entityType['type'];
+        }
+
+        if (!Category::isEntityType($entityType)) {
+            throw $this->createNotFoundException('TREE TYPE: Unable to find category type.');
+        }
+
+
+        //FORM
         $id = $request->get('id');
-        $form = $this->createForm($formType, $entity, ['form_data' => ['parent_id' => $id]]);
+        $form = $this->createForm($formType, $entity, [
+            'form_data' => [
+                'entity_type' => $entityType,
+                'parent_id' => $id
+            ]
+        ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted()) {
@@ -291,6 +338,7 @@ class TreeController extends BaseController
         $action = $configuration->getAction();
         $formType = $configuration->getFormType();
         $vars = $configuration->getVars();
+        $varsRepository = $configuration->getRepositoryVars();
 
         //REPOSITORY
         $id = $request->get('id');
@@ -312,7 +360,7 @@ class TreeController extends BaseController
 
                 if ($form->isValid()) {
                     $this->persist($entity);
-                    $entity = $this->getSerializeDecode($entity, $vars->serialize_group_name);
+                    $entity = $this->getSerializeDecode($entity, $varsRepository->serialize_group_name);
                     $status = self::STATUS_SUCCESS;
                 }else{
                     foreach ($form->getErrors(true) as $key => $error) {

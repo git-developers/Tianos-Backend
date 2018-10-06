@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Bundle\CoreBundle\Menu;
 
+use Bundle\CategoryBundle\Entity\Category;
 use Knp\Menu\FactoryInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerAwareTrait;
@@ -250,7 +251,10 @@ class Builder implements ContainerAwareInterface
         ;
 
         $menu['Inventario']->addChild('Categoria', [
-            'route' => 'backend_category_tree_index'
+            'route' => 'backend_category_tree_index',
+            'routeParameters' => [
+                'entity_type' => Category::TYPE_PRODUCT
+            ]
         ])
             ->setAttribute('icon', self::CIRCLE_1)
             ->setAttribute('class', $this->activeRoute('backend_category_tree_index'))

@@ -48,14 +48,27 @@ class ProductRepository extends TianosEntityRepository implements ProductReposit
         $query->setParameter('active', 1);
 
         return $query->getResult();
+    }
 
-//        return $this->createQueryBuilder('o')
-//            ->select('o.id, o.code, o.name, o.createdAt')
-//            ->andWhere('o.isActive = :active')
-//            ->setParameter('active', 1)
-//            ->getQuery()
-//            ->getResult()
-//            ;
+    /**
+     * {@inheritdoc}
+     */
+    public function findAllByCategory($categoryId): array
+    {
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT product
+            FROM ProductBundle:Product product
+            WHERE
+            product.isActive = :active AND
+            product.category = :categoryId
+            ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+        $query->setParameter('categoryId', $categoryId);
+
+        return $query->getResult();
     }
 
     /**

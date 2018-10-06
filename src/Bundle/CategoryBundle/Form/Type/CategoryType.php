@@ -6,6 +6,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Doctrine\ORM\EntityManager;
@@ -32,6 +33,25 @@ class CategoryType extends AbstractType
         return isset($object->parent_id) ? $object->parent_id : null;
     }
 
+    public function getEntityType($options) {
+        $object = (object) $options['form_data'];
+        return isset($object->entity_type) ? strtoupper($object->entity_type) : null;
+    }
+
+    public function getDataType($options): array {
+
+        $data = [];
+        $type = $this->getEntityType($options);
+
+        if (!is_null($type)) {
+            $data = [
+                'data' => $this->getEntityType($options)
+            ];
+        }
+
+        return $data;
+    }
+
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
@@ -42,6 +62,19 @@ class CategoryType extends AbstractType
         $this->parentId = $this->getParentId($options);
 
         $builder
+            ->add('type', HiddenType::class, array_merge(
+                [
+                    'label' =>'type',
+                    'label_attr' => [
+                        'class' => ''
+                    ],
+                    'attr' => [
+                        'class' => 'form-control',
+                        'placeholder' => 'type',
+                    ],
+                ],
+                $this->getDataType($options)
+            ))
             ->add('code', TextType::class, [
                 'label' =>' code',
                 'label_attr' => [

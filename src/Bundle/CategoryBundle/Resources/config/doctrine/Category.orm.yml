@@ -42,6 +42,12 @@ Bundle\CategoryBundle\Entity\Category:
             length: 150
             options:
                 fixed: false
+        type:
+            type: string
+            nullable: true
+            length: 45
+            options:
+                fixed: false
         createdAt:
             type: datetime
             nullable: true

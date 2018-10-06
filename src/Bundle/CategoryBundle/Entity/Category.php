@@ -21,6 +21,23 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 class Category
 {
 
+
+    const TYPE_PRODUCT_ID = 1;
+    const TYPE_PRODUCT = 'PRODUCT';
+
+    const TYPE_SERVICE_ID = 2;
+    const TYPE_SERVICE = 'SERVICE';
+
+//    const TYPES = [
+//        self::TYPE_PRODUCT_ID => self::TYPE_PRODUCT,
+//        self::TYPE_SERVICE_ID => self::TYPE_SERVICE,
+//    ];
+
+    const TYPES = [
+        self::TYPE_PRODUCT,
+        self::TYPE_SERVICE,
+    ];
+
     /**
      * @var integer
      *
@@ -46,6 +63,13 @@ class Category
      * @var string
      */
     private $slug;
+
+    /**
+     * @var string
+     *
+     * @JMSS\Groups({"crud", "tree", "api"})
+     */
+    private $type;
 
     /**
      * @var \DateTime
@@ -178,6 +202,22 @@ class Category
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * @return string
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param string $type
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
     }
 
     /**
@@ -339,6 +379,12 @@ class Category
     public function setNameBox($nameBox)
     {
         $this->nameBox = $nameBox;
+    }
+
+    static public function isEntityType($type)
+    {
+        $type = strtoupper($type);
+        return in_array($type,self::TYPES);
     }
 }
 

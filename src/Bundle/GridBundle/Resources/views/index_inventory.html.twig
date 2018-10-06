@@ -1,5 +1,7 @@
 {% extends "ThemesBundle:Adminlte/TemplatePdv:1_template.html.twig" %}
 
+{% import "TreeBundle::Macro/tree_inventory.html.twig" as macro %}
+
 {% block bodyclass %}{% spaceless %}
     {{ vars.body_css }}
 {% endspaceless %}{% endblock %}
@@ -15,6 +17,13 @@
         '@GridBundle/Resources/public/plugins/datatables/extensions/Editor/css/editor.dataTables.min.css'
     %}
     <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+
+    {% stylesheets
+        '@TreeBundle/Resources/public/css/tree.css'
+        '@CoreBundle/Resources/public/css/tree.css'
+    %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}
 
     <style>
@@ -167,56 +176,99 @@
                         <h4 class="box-title">
                             <i class="fa fa-fw fa-sitemap"></i> Categorias
                         </h4>
+                        <div class="box-tools pull-right">
+                            <a href="{{ path('backend_category_tree_index', {entity_type: constant('Bundle\\CategoryBundle\\Entity\\Category::TYPE_PRODUCT_ID')}) }}">
+                                <span data-toggle="tooltip" title="" class="badge bg-light-blue" data-original-title="Editar categorias">
+                                    <i class="fa fa-edit"></i></button> Editar
+                                </span>
+                            </a>
+                        </div>
                     </div>
                     <div class="box-body">
 
-                        vvvvvvvvvvvvvvvv
+                        <div class="{{ tree.main_div }} box-body">
+
+                            <ul id="{{ tree.main_ul }}">
+                                {% if objectsTree is not empty %}
+                                    {{ macro.tree(objectsTree, tree, modal, -1) }}
+                                {% else %}
+                                    <p>No hay items que mostrar</p>
+                                {% endif %}
+                            </ul>
+
+                        </div>
 
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-8" style="margin-left: -20px;">
+            <div class="col-md-8">
                 <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h4 class="box-title">
+                            <i class="fa fa-fw fa-cube"></i> Productos
+                        </h4>
+                        <div class="box-tools pull-right">
+                            <button
+                                class="btn btn-xs btn-sm btn-success modal-create"
+                                alt="Crear item"
+                                title="Crear item"
+                                data-toggle="modal"
+                                data-target="#modal-create"
+                                style="margin-right: 5px">
+                                <i class="fa fa-fw fa-plus"></i> Crear item
+                            </button>
+                        </div>
+                    </div>
                     <div class="box-body table-responsive"> {#no-padding#}
-                        <table id="{{ dataTable.tableOptions.table_name }}"
-                               class="table table-bordered table-striped dataTable"
-                               role="grid"
-                               aria-describedby="example1_info">
-                            <thead>
-                            <tr>
-                                {% for key, value in dataTable.columns|default([]) %}
-                                    <th>
-                                        {% if value.options.icon is defined %}
-                                            <i class="fa fa-fw fa-{{ value.options.icon|raw }}"></i>
-                                        {% endif %}
-                                        {{ value.name|raw }}
-                                    </th>
-                                {% endfor %}
 
-                                {% if dataTable.tableButton is not empty %}
-                                    <th>&nbsp</th>
-                                {% endif %}
-                            </tr>
-                            </thead>
+                        {% if categoryId is null %}
+                            <div class="alert alert-warning alert-dismissible">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                {#<h4><i class="icon fa fa-warning"></i> Alert!</h4>#}
+                                <i class="icon fa fa-warning"></i> Seleccione una categoria.
+                            </div>
+                        {% else %}
+                            <table id="{{ dataTable.tableOptions.table_name }}"
+                                   class="table table-bordered table-striped dataTable"
+                                   role="grid"
+                                   aria-describedby="example1_info">
+                                <thead>
+                                <tr>
+                                    {% for key, value in dataTable.columns|default([]) %}
+                                        <th>
+                                            {% if value.options.icon is defined %}
+                                                <i class="fa fa-fw fa-{{ value.options.icon|raw }}"></i>
+                                            {% endif %}
+                                            {{ value.name|raw }}
+                                        </th>
+                                    {% endfor %}
 
-                            <tfoot>
-                            <tr>
-                                {% for key, value in dataTable.columns|default([]) %}
-                                    <th>
-                                        {% if value.options.icon is defined %}
-                                            <i class="fa fa-fw fa-{{ value.options.icon|raw }}"></i>
-                                        {% endif %}
-                                        {{ value.name|raw }}
-                                    </th>
-                                {% endfor %}
+                                    {% if dataTable.tableButton is not empty %}
+                                        <th>&nbsp</th>
+                                    {% endif %}
+                                </tr>
+                                </thead>
 
-                                {% if dataTable.tableButton is not empty %}
-                                    <th>&nbsp</th>
-                                {% endif %}
-                            </tr>
-                            </tfoot>
-                        </table>
+                                <tfoot>
+                                <tr>
+                                    {% for key, value in dataTable.columns|default([]) %}
+                                        <th>
+                                            {% if value.options.icon is defined %}
+                                                <i class="fa fa-fw fa-{{ value.options.icon|raw }}"></i>
+                                            {% endif %}
+                                            {{ value.name|raw }}
+                                        </th>
+                                    {% endfor %}
+
+                                    {% if dataTable.tableButton is not empty %}
+                                        <th>&nbsp</th>
+                                    {% endif %}
+                                </tr>
+                                </tfoot>
+                            </table>
+                        {% endif %}
+
                     </div>
                 </div>
             </div>

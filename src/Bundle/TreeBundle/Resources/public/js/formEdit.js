@@ -42,7 +42,9 @@
                 url: options.route,
                 type: 'POST',
                 dataType: 'html',
-                data: {id:id},
+                data: {
+                    id:id
+                },
                 cache: true,
                 beforeSend: function(jqXHR, settings) {
                     $('button[type="submit"]').prop('disabled', true);

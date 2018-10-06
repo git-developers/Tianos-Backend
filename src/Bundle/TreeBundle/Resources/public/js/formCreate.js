@@ -37,8 +37,11 @@
 
             $.ajax({
                 url: options.route,
-                type: 'POST',
+                type: 'PUT',
                 dataType: 'html',
+                data: {
+                    entity_type: options.entity_type
+                },
                 cache: true,
                 beforeSend: function(jqXHR, settings) {
                     $('button[type="submit"]').prop('disabled', true);

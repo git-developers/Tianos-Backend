@@ -42,6 +42,26 @@ class CategoryRepository extends TianosEntityRepository
         return $qb->getResult();
     }
 
+    public function findAllParentsByType($type): array
+    {
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT parent
+            FROM CategoryBundle:Category parent
+            WHERE
+            parent.isActive = :active AND
+            parent.type = :type_ AND
+            parent.category IS NULL
+            ORDER BY parent.id DESC
+            ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+        $query->setParameter('type_', $type);
+
+        return $query->getResult();
+    }
+
     public function findAllParents(): array
     {
         $em = $this->getEntityManager();

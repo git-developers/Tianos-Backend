@@ -63,6 +63,7 @@
         });
 
         $('body.{{ vars.body_css }}').formCreate({
+            entity_type: '{{ entityType }}',
             mainDiv: '{{ tree.main_div }}',
             mainUl: '{{ tree.main_ul }}',
             modalId: '{{ modal.create_id }}',
@@ -77,6 +78,7 @@
         });
 
         $('body.{{ vars.body_css }}').formCreateChild({
+            entity_type: '{{ entityType }}',
             mainDiv: '{{ tree.main_div }}',
             childUl: '{{ tree.child_ul }}',
             formName: '{{ form_mapper.create_child_name }}',
@@ -129,11 +131,16 @@
                     <div class="col-md-12">
                         <div class="nav-tabs-custom">
                             <ul class="nav nav-tabs">
-                                <li class="{{ app.request.get('_route') == 'backend_category_tree_index' ? 'active' }}">
-                                    <a href="{{ path('backend_category_tree_index') }}">
+                                <li class="active">
+                                    <a href="javascript:void()">
                                         <i class="fa fa-fw fa-sitemap"></i> Categoría
                                     </a>
                                 </li>
+                                {#<li class="{{ app.request.get('_route') == 'backend_category_tree_index' ? 'active' }}">#}
+                                    {#<a href="{{ path('backend_category_tree_index') }}">#}
+                                        {#<i class="fa fa-fw fa-sitemap"></i> Categoría#}
+                                    {#</a>#}
+                                {#</li>#}
                                 {#<li class="{{ app.request.get('_route') == 'backend_product_index' ? 'active' }}">#}
                                     {#<a href="{{ path('backend_product_index') }}">#}
                                         {#<i class="fa fa-fw fa-cube"></i> Producto#}

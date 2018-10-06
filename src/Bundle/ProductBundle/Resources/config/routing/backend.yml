@@ -1,7 +1,8 @@
 backend_product_index:
-    path: /
+    path: /{categoryId}
     methods: [GET]
     defaults:
+        categoryId: null
         _controller: tianos.backend.controller.product:indexAction
         _tianos:
             action: index
@@ -14,10 +15,28 @@ backend_product_index:
                 body_css: grid-body-css
                 serialize_group_name: crud
 #            grid: sylius_admin_product
+            tree:
+                icon: dropbox
+                box_class: primary
+                title: Gestionar inventario
+                main_div: box-main-div
+                main_ul: box-main-ul
+                child_ul: box-child-ul
+                li_span: li-span
+                route:
+                    info: backend_category_tree_info
+                    view: backend_category_tree_view
+                    edit: backend_category_tree_edit
+                    create: backend_category_tree_create
+                    create_child: backend_category_tree_create_child
+                    delete: backend_category_tree_delete
             grid:
                 icon: dropbox
                 box_class: primary
                 title: Gestionar inventario
+                modal:
+                    create:
+                        title: Crear producto
                 data_table:
                     route:
                         info: backend_product_info
@@ -29,7 +48,7 @@ backend_product_index:
                         - edit
                         - delete
                     table_button_header:
-                        - create
+#                        - create
                         - info
                     table_option:
                         pageLength: 10
@@ -53,10 +72,11 @@ backend_product_index:
                 type: Bundle\ProductBundle\Form\Type\ProductType
             repository:
                 service: tianos.repository.product
-                method: findAll
+                method: findAllByCategory
                 arguments: [$productId]
                 vars:
                     serialize_group_name: crud
+                    entity_type: product
 
 backend_product_create:
     path: /create

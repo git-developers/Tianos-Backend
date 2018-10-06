@@ -54,6 +54,11 @@ class DoctrineListenerService extends BaseDoctrineListenerService implements Eve
 //        $className = $entityManager->getClassMetadata(get_class($entity))->getName();
 
         if ($entity instanceof Category) {
+
+            $entityType = $entity->getType();
+//            $entityType = Category::isEntityType($entityTypeId);
+            $entity->setType($entityType);
+
             $name = $entity->getName();
             $entity->setSlug($this->slugify($name));
             $entity->setCreatedAt($this->setupCreatedAt($entity));
@@ -74,6 +79,11 @@ class DoctrineListenerService extends BaseDoctrineListenerService implements Eve
         $entity = $args->getEntity();
 
         if ($entity instanceof Category) {
+
+            $entityType = $entity->getType();
+//            $entityType = Category::getEntityTypeById($entityTypeId);
+            $entity->setType($entityType);
+
             $entity->setUpdatedAt($this->dateTime);
 
             return;
