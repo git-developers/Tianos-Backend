@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Webmozart\Assert\Assert;
 
-class DefaultController extends BaseController
+class DefaultSuperController extends BaseController
 {
 
     /**
@@ -23,7 +23,7 @@ class DefaultController extends BaseController
 
 
 //        $user = $this->getUser();
-//        echo 'GATO:::<pre>';
+//        echo 'SUPER DefaultController --- GATO:::<pre>';
 //        print_r($user->getRoles());
 //        exit;
 

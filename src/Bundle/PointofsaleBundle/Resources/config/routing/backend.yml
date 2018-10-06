@@ -131,7 +131,7 @@ backend_pointofsale_view:
             template: PointofsaleBundle:BackendPointofsale/Informative:view.html.twig
             repository:
                 service: tianos.repository.pointofsale
-                method: find
+                method: findParentAndChildren
                 arguments: [$pointofsaleId]
                 vars:
                     serialize_group_name: crud

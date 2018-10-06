@@ -13,6 +13,8 @@ use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Bundle\RoleBundle\Entity\Role;
+
 
 class AuthenticationSuccessHandler implements AuthenticationSuccessHandlerInterface
 {
@@ -35,13 +37,34 @@ class AuthenticationSuccessHandler implements AuthenticationSuccessHandlerInterf
 
 //        $pointOfSales = $token->getUser()->getPointOfSale();
 
+//        $user = $token->getUser();
+//        echo 'AuthenticationSuccessHandler:::<pre>';
+//        print_r($user->getRoles());
+//        exit;
+
+
         $this->onAuthenticationSuccess($request, $token);
     }
+
     public function onAuthenticationSuccess(Request $request, TokenInterface $token)
     {
-        $referer = $this->router->generate('backend_default_index');
+        $referer = $this->router->generate('backend_default_pdv_index');
+
+        if ($this->isGranted(Role::ROLE_SUPER_ADMIN)) {
+            $referer = $this->router->generate('backend_default_super_index');
+        }
 
         return new RedirectResponse($referer);
     }
+
+    private function isGranted($attributes, $object = null)
+    {
+        if (!$this->container->has('security.authorization_checker')) {
+            throw new \LogicException('The SecurityBundle is not registered in your application.');
+        }
+
+        return $this->container->get('security.authorization_checker')->isGranted($attributes, $object);
+    }
+
 }
 

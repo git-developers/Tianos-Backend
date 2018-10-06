@@ -19,6 +19,15 @@ class SecurityPdvController extends BaseController
     public function loginAction(Request $request, $slug): Response
     {
 
+
+//        echo "POLLO:: <pre>";
+//        print_r(2222);
+//        exit;
+
+
+
+
+
         $authenticationUtils = $this->get('security.authentication_utils');
         $error = $authenticationUtils->getLastAuthenticationError();
         $lastUsername = $authenticationUtils->getLastUsername();
@@ -31,8 +40,22 @@ class SecurityPdvController extends BaseController
         $slug = $request->get('slug');
         $pdv = $this->get('tianos.repository.pointofsale')->findBySlug($slug);
 
+
+//        $pdv = $this->get('tianos.repository.pointofsale')->findParentAndChildren(9);
+//
+//        echo "POLLO:: <pre>";
+//        print_r($pdv);
+//        exit;
+
+
         if (!$pdv) {
             $this->flashError('Info: punto de venta no existe.');
+
+            return $this->render("UserBundle:BackendPdv/Security:no_pdv.html.twig",
+                [
+                    'pdv' => null,
+                ]
+            );
         }
 
         $form = $this->createForm(PdvLoginType::class, null, [

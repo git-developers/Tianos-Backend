@@ -21,29 +21,34 @@ class PointofsaleType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
 
-        $pdvParent = isset($options['form_data']['pdv_parent']) ? $options['form_data']['pdv_parent'] : null;
+        $data = [];
+        if (isset($options['form_data']['pdv_parent'])) {
+            $data = ['data' => $options['form_data']['pdv_parent']];
+        }
 
         $builder
-            ->add('pointOfSale', EntityType::class, [
-                'class' => Pointofsale::class,
-                'query_builder' => function(EntityRepository $er) {
-                    return $er->findAllObjects();
-                },
-                'placeholder' => '[ Escoge una opción ]',
-                'data' => $pdvParent,
-                'empty_data' => null,
-                'required' => false,
-                'label' => 'Punto de venta padre',
-                'label_attr' => [
-                    'class' => ''
+            ->add('pointOfSale', EntityType::class, array_merge(
+                [
+                    'class' => Pointofsale::class,
+                    'query_builder' => function(EntityRepository $er) {
+                        return $er->findAllObjects();
+                    },
+                    'placeholder' => '[ Escoja una opción ]',
+                    'empty_data' => null,
+                    'required' => false,
+                    'label' => 'Punto de venta padre',
+                    'label_attr' => [
+                        'class' => ''
+                    ],
+                    'attr' => [
+                        'class' => 'form-control',
+                        'placeholder' => '',
+                    ],
                 ],
-                'attr' => [
-                    'class' => 'form-control',
-                    'placeholder' => '',
-                ],
-            ])
+                $data
+            ))
             ->add('code', TextType::class, [
-                'label' => 'code',
+                'label' => 'Codigo',
                 'label_attr' => [
                     'class' => ''
                 ],
@@ -90,6 +95,17 @@ class PointofsaleType extends AbstractType
                 'attr' => [
                     'class' => 'form-control',
                     'placeholder' => 'nombre',
+                ],
+            ])
+            ->add('slug', TextType::class, [
+                'label' => 'slug',
+                'required' => false,
+                'label_attr' => [
+                    'class' => ''
+                ],
+                'attr' => [
+                    'class' => 'form-control',
+                    'placeholder' => 'slug',
                 ],
             ])
         ;

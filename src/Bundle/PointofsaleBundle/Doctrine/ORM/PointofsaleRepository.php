@@ -92,9 +92,12 @@ class PointofsaleRepository extends TianosEntityRepository
 
     public function findAllObjectsByPdv($pdv)
     {
+        return;
+
         return $this->createQueryBuilder('a')
             ->where('a.isActive = :active')
             ->andWhere('a.pointOfSale = :pointOfSale')
+            ->orWhere('a.id = :pointOfSale')
             ->orderBy('a.id', 'ASC')
             ->setParameter('active', true)
             ->setParameter('pointOfSale', $pdv->getId())
@@ -151,11 +154,11 @@ class PointofsaleRepository extends TianosEntityRepository
     {
         $em = $this->getEntityManager();
         $dql = "
-            SELECT pointofsale
-            FROM PointofsaleBundle:Pointofsale pointofsale
+            SELECT pdv
+            FROM PointofsaleBundle:Pointofsale pdv
             WHERE
-            pointofsale.id = :id AND
-            pointofsale.isActive = :active
+            pdv.id = :id AND
+            pdv.isActive = :active
             ";
 
         $query = $em->createQuery($dql);
@@ -163,6 +166,35 @@ class PointofsaleRepository extends TianosEntityRepository
         $query->setParameter('id', $id);
 
         return $query->getOneOrNullResult();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function findParentAndChildren($id)
+    {
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT pdv
+            FROM PointofsaleBundle:Pointofsale pdv
+            WHERE
+            pdv.id = :id AND
+            pdv.isActive = :active
+            ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+        $query->setParameter('id', $id);
+
+        $pdv = $query->getOneOrNullResult();
+
+        if (!is_null($pdv)) {
+            $pdvs = $this->findAllChildrenByParent($pdv->getId());
+            $pdv->setPointOfSaleChildren($pdvs);
+        }
+
+        return $pdv;
+
     }
 
     /**

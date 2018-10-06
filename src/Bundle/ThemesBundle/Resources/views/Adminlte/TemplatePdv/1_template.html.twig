@@ -106,8 +106,8 @@
 
 <div class="wrapper">
 
-    {{ include("ThemesBundle::Adminlte/2_header.html.twig") }}
-    {{ include("ThemesBundle::Adminlte/3_left_main_sidebar.html.twig") }}
+    {{ include("ThemesBundle:Adminlte/TemplatePdv:2_header.html.twig") }}
+    {{ include("ThemesBundle:Adminlte/TemplatePdv:3_left_main_sidebar.html.twig") }}
 
     <div class="content-wrapper">
         {{ html.flash_message_success }}
@@ -125,7 +125,7 @@
         <strong>{{ application_name }} &copy {{ "now"|date("d, F Y - H:i") }}</strong> All rights reserved.
     </footer>
 
-    {{ include("ThemesBundle::Adminlte/4_right_control_sidebar.html.twig") }}
+    {{ include("ThemesBundle:Adminlte/TemplatePdv:4_right_control_sidebar.html.twig") }}
 
 </div>
 

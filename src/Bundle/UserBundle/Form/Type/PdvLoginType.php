@@ -40,13 +40,13 @@ final class PdvLoginType extends AbstractType
         $this->pdv = $options['pdv'];
 
         $builder
-            ->setAction($this->router->generate('fos_user_security_check'))
+            ->setAction($this->router->generate('backend_security_pdv_login_check'))
             ->add('pointOfSale', EntityType::class, [
                 'class' => Pointofsale::class,
                 'query_builder' => function(EntityRepository $er) {
                     return $er->findAllObjectsByPdv($this->pdv);
                 },
-                'placeholder' => '[ Escoge una sucursal ]',
+                'placeholder' => '[ Escoja una sucursal ]',
                 'empty_data' => null,
                 'required' => false,
                 'label' => 'Punto de venta',
@@ -106,7 +106,8 @@ final class PdvLoginType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'sylius_user_security_login';
+        return null;
+//        return 'sylius_user_security_login';
     }
 
     /**

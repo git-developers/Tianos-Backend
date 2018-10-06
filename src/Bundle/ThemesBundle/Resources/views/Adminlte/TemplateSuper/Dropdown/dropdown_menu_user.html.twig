@@ -1,3 +1,5 @@
+{% set image_avatar = asset('bundles/themes/common/images/no_avatar.jpg') %}
+
 <li class="dropdown user user-menu">
 
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" alt="{{ app.user.name }} {{ app.user.lastName }}" title="{{ app.user.name }} {{ app.user.lastName }}">
@@ -47,7 +49,7 @@
                 </a>
             </div>
             <div class="pull-right">
-                <a href="{{ path('fos_user_security_logout') }}" class="btn btn-default btn-flat">Cerrar sesión</a>
+                <a href="{{ path('backend_security_super_logout') }}" class="btn btn-default btn-flat">Cerrar sesión</a>
             </div>
         </li>
     </ul>

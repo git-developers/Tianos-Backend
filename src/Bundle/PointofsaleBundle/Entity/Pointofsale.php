@@ -7,9 +7,21 @@ namespace Bundle\PointofsaleBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as JMSS;
 use JMS\Serializer\Annotation\Type as TypeJMS;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 
 /**
  * Pointofsale
+ *
+ * @UniqueEntity(
+ *     fields={"slug"},
+ *     message="El slug fue registrado anteriormente"
+ * )
+ *
+ * @UniqueEntity(
+ *     fields={"code"},
+ *     message="El codigo fue registrado anteriormente"
+ * )
  */
 class Pointofsale
 {
@@ -128,6 +140,8 @@ class Pointofsale
      */
     private $pointOfSale;
 
+    private $pointOfSaleChildren;
+
     /**
      * @var string
      *
@@ -178,11 +192,12 @@ class Pointofsale
     public function __construct()
     {
         $this->user = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->pointOfSaleChildren = new \Doctrine\Common\Collections\ArrayCollection();
         $this->module = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     public function __toString() {
-        return sprintf('%s - %s', $this->id, $this->name);
+        return sprintf('%s', $this->name);
     }
 
     /**
@@ -599,5 +614,22 @@ class Pointofsale
     {
         $this->nameBox = $nameBox;
     }
+
+    /**
+     * @return \Doctrine\Common\Collections\ArrayCollection
+     */
+    public function getPointOfSaleChildren(): array
+    {
+        return $this->pointOfSaleChildren;
+    }
+
+    /**
+     * @param \Doctrine\Common\Collections\ArrayCollection $pointOfSaleChildren
+     */
+    public function setPointOfSaleChildren(array $pointOfSaleChildren)
+    {
+        $this->pointOfSaleChildren = $pointOfSaleChildren;
+    }
+
 }
 

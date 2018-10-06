@@ -1,4 +1,4 @@
-{% extends "ThemesBundle:Adminlte:1_template_security.html.twig" %}
+{% extends "ThemesBundle:Adminlte/TemplatePdv:1_template_security.html.twig" %}
 
 {% block stylesheets %}
     {{ parent() }}
@@ -80,7 +80,8 @@
                 #}
             </div>
 
-            <a href="{{ path('backend_security_reset_password_step_one') }}">
+            {#<a href="{{ path('backend_security_reset_password_step_one') }}">#}
+            <a href="">
                 Olvidaste tu password?
             </a>
             <br>

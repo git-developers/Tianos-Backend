@@ -1,7 +1,13 @@
 services:
 
-    tianos.backend.controller.default:
-        class: Bundle\BackendBundle\Controller\DefaultController
+    tianos.backend.controller.default.super:
+        class: Bundle\BackendBundle\Controller\DefaultSuperController
         arguments: [ Bundle\ResourceBundle\Factory\RequestConfigurationFactoryInterface ]
         tags:
-            - { name: tianos.backend.controller.default, alias: tianos.backend.controller.default }
+            - { name: tianos.backend.controller.default.super, alias: tianos.backend.controller.default.super }
+
+    tianos.backend.controller.default.pdv:
+        class: Bundle\BackendBundle\Controller\DefaultPdvController
+        arguments: [ Bundle\ResourceBundle\Factory\RequestConfigurationFactoryInterface ]
+        tags:
+            - { name: tianos.backend.controller.default.pdv, alias: tianos.backend.controller.default.pdv }
