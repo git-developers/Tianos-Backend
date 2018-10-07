@@ -24,3 +24,4 @@ imports:
     - { resource: '@CalendarBundle/Resources/config/services.yml' }
     - { resource: '@ProductBundle/Resources/config/services.yml' }
     - { resource: '@ModuleBundle/Resources/config/services.yml' }
+    - { resource: '@ServicesBundle/Resources/config/services.yml' }

@@ -1,42 +1,15 @@
 backend_default:
     resource: '@BackendBundle/Resources/config/routing/default_pdv.yml'
     prefix: /
-#backend_associative:
-#    resource: '@AssociativeBundle/Resources/config/routing.yml'
-#    prefix: /associative
-#backend_groupofusers:
-#    resource: '@GroupofusersBundle/Resources/config/routing/backend.yml'
-#    prefix: /group-of-users
-#backend_role:
-#    resource: '@RoleBundle/Resources/config/routing/backend.yml'
-#    prefix: /role
-#backend_profile:
-#    resource: '@ProfileBundle/Resources/config/routing/backend.yml'
-#    prefix: /profile
 backend_security_pdv:
     resource: '@UserBundle/Resources/config/routing/security_pdv.yml'
     prefix: /login
-#backend_core:
-#    resource: '@CoreBundle/Resources/config/routing/backend.yml'
-#    prefix: /core
 backend_session:
     resource: '@SessionBundle/Resources/config/routing/backend.yml'
     prefix: /session
-#backend_visit:
-#    resource: '@VisitBundle/Resources/config/routing/backend.yml'
-#    prefix: /visit
 backend_report:
     resource: '@ReportBundle/Resources/config/routing/backend.yml'
     prefix: /report
-#backend_google_drive:
-#    resource: '@GoogleBundle/Resources/config/routing/google_drive_file.yml'
-#    prefix: /google-drive
-#backend_google_drive_grid:
-#    resource: '@GoogleBundle/Resources/config/routing/google_drive_file_grid.yml'
-#    prefix: /google-drive-grid
-#backend_google_drive_vote:
-#    resource: '@GoogleBundle/Resources/config/routing/google_drive_file_vote.yml'
-#    prefix: /google-drive-vote
 backend_user:
     resource: '@UserBundle/Resources/config/routing/backend.yml'
     prefix: /user
@@ -46,12 +19,6 @@ backend_user_client:
 backend_user_employee:
     resource: '@UserBundle/Resources/config/routing/backend_employee.yml'
     prefix: /user-employee
-#backend_friends_user:
-#    resource: '@UserBundle/Resources/config/routing/backend_friends.yml'
-#    prefix: /user-friends
-#backend_setting_user:
-#    resource: '@UserBundle/Resources/config/routing/backend_setting.yml'
-#    prefix: /user-setting
 backend_calendar:
     resource: '@CalendarBundle/Resources/config/routing/backend.yml'
     prefix: /calendar
@@ -61,6 +28,10 @@ backend_product:
 backend_category:
     resource: '@CategoryBundle/Resources/config/routing/tree.yml'
     prefix: /category
+backend_services:
+    resource: '@ServicesBundle/Resources/config/routing/backend.yml'
+    prefix: /services
+
 #backend_pointofsale:
 #    resource: '@PointofsaleBundle/Resources/config/routing/backend.yml'
 #    prefix: /point-of-sale
@@ -73,3 +44,36 @@ backend_category:
 #backend_module:
 #    resource: '@ModuleBundle/Resources/config/routing/backend.yml'
 #    prefix: /module
+#backend_friends_user:
+#    resource: '@UserBundle/Resources/config/routing/backend_friends.yml'
+#    prefix: /user-friends
+#backend_setting_user:
+#    resource: '@UserBundle/Resources/config/routing/backend_setting.yml'
+#    prefix: /user-setting
+#backend_google_drive:
+#    resource: '@GoogleBundle/Resources/config/routing/google_drive_file.yml'
+#    prefix: /google-drive
+#backend_google_drive_grid:
+#    resource: '@GoogleBundle/Resources/config/routing/google_drive_file_grid.yml'
+#    prefix: /google-drive-grid
+#backend_google_drive_vote:
+#    resource: '@GoogleBundle/Resources/config/routing/google_drive_file_vote.yml'
+#    prefix: /google-drive-vote
+#backend_visit:
+#    resource: '@VisitBundle/Resources/config/routing/backend.yml'
+#    prefix: /visit
+#backend_associative:
+#    resource: '@AssociativeBundle/Resources/config/routing.yml'
+#    prefix: /associative
+#backend_groupofusers:
+#    resource: '@GroupofusersBundle/Resources/config/routing/backend.yml'
+#    prefix: /group-of-users
+#backend_role:
+#    resource: '@RoleBundle/Resources/config/routing/backend.yml'
+#    prefix: /role
+#backend_profile:
+#    resource: '@ProfileBundle/Resources/config/routing/backend.yml'
+#    prefix: /profile
+#backend_core:
+#    resource: '@CoreBundle/Resources/config/routing/backend.yml'
+#    prefix: /core

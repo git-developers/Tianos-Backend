@@ -158,7 +158,7 @@
     <section class="content-header">
         <h1>
             <i class="fa fa-fw fa-{{ grid.icon }}"></i> {{ grid.title|raw }}
-            <small>control de stock</small>
+            <small>one-to-many</small>
         </h1>
         <ol class="breadcrumb">
             {#<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>#}
@@ -180,7 +180,7 @@
                 <div class="box box-solid">
                     <div class="box-header with-border">
                         <h4 class="box-title">
-                            <i class="fa fa-fw fa-sitemap"></i> Categorias
+                            <i class="fa fa-fw fa-sitemap"></i> Categorías
                         </h4>
                         <div class="box-tools pull-right">
                             <a href="{{ path('backend_category_tree_index', {entity_type: constant('Bundle\\CategoryBundle\\Entity\\Category::TYPE_PRODUCT')}) }}">
@@ -196,7 +196,14 @@
 
                             <ul id="{{ tree.main_ul }}">
                                 {% if objectsTree is not empty %}
-                                    {{ macro.tree(objectsTree, tree, modal, -1, categoryId) }}
+                                    {{ macro.tree(
+                                        objectsTree,
+                                        tree,
+                                        modal,
+                                        -1,
+                                        'TreeBundle::Template/li_inventory.html.twig',
+                                        'backend_product_index',
+                                        categoryId) }}
                                 {% else %}
                                     <p>No hay items que mostrar</p>
                                 {% endif %}

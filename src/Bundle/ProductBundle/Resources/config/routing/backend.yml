@@ -18,7 +18,7 @@ backend_product_index:
             tree:
                 icon: dropbox
                 box_class: primary
-                title: Gestionar inventario
+                title: Gestionar servicios
                 main_div: box-main-div
                 main_ul: box-main-ul
                 child_ul: box-child-ul

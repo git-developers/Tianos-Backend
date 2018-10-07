@@ -275,6 +275,55 @@ class Builder implements ContainerAwareInterface
 
 
 
+        /**
+         * SERVICES
+         */
+        $isGranted = $this->isGranted([
+            Role::ROLE_PDV_ADMIN,
+        ]);
+
+        $menu->addChild('Services', [
+            'route' => 'backend_services_index',
+            'extras' => ['safe_label' => true],
+            'childrenAttributes' => [
+                'class' => 'treeview-menu',
+            ],
+        ])
+            ->setAttribute('allow_angle', true)
+            ->setAttribute('class', 'treeview')
+            ->setAttribute('class', $this->activeRoute([
+                'backend_services_index',
+                'backend_category_services_tree_index',
+            ]))
+            ->setAttribute('icon', 'fa-fw fa-file-text-o')
+            ->setDisplay($isGranted)
+        ;
+
+        $menu['Services']->addChild('Categoria', [
+            'route' => 'backend_category_services_tree_index',
+            'routeParameters' => [
+                'entity_type' => Category::TYPE_SERVICE
+            ]
+        ])
+            ->setAttribute('icon', self::CIRCLE_1)
+            ->setAttribute('class', $this->activeRoute('backend_category_services_tree_index'))
+            ->setDisplay($isGranted)
+        ;
+
+        $menu['Services']->addChild('Services', [
+            'route' => 'backend_services_index'
+        ])
+            ->setAttribute('icon', self::CIRCLE_2)
+            ->setAttribute('class', $this->activeRoute('backend_services_index'))
+            ->setDisplay($isGranted)
+        ;
+        /**
+         * SERVICES
+         */
+
+
+
+
 
 
 

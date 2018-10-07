@@ -1,14 +1,12 @@
 {% spaceless %}
     <span
         class="{{ tree.li_span }} {{ category_id == entity.id ? 'bg-teal' : '' }}"
-        onclick="location.href='{{ path('backend_product_index', {categoryId: entity.id}) }}'"
+        onclick="location.href='{{ path(route_path, {categoryId: entity.id}) }}'"
         style="height: 30px;"
     >
         <span class="badge {{ badge_color }}">
             {{ entity.id }}
         </span>
-
-        {#<input type="radio" name="item-left" value="{{ entity.id }}">#}
 
         <span id="li-span-{{ entity.id }}">
             <span class="label label-default">
