@@ -16,6 +16,36 @@ use Doctrine\ORM\EntityRepository;
 class ProductType extends AbstractType
 {
 
+    protected $em;
+    protected $parentId;
+
+    public function __construct(EntityManager $em) {
+        $this->em = $em;
+    }
+
+    public function getCategory($id) {
+        return $this->em->getRepository(Category::class)->find($id);
+    }
+
+    public function getCategoryId($options) {
+        $object = (object) $options['form_data'];
+        return isset($object->category_id) ? $object->category_id : null;
+    }
+
+    public function getDataType($options): array {
+
+        $data = [];
+        $categoryId = $this->getCategoryId($options);
+
+        if (!is_null($categoryId)) {
+            $data = [
+                'data' => $this->getCategory($categoryId)
+            ];
+        }
+
+        return $data;
+    }
+
     /**
      * @param FormBuilderInterface $builder
      * @param array $options
@@ -23,51 +53,27 @@ class ProductType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
 
-        $category_choices = array(
-            array('Category 1' => array(
-                '1' => 'Option 1...',
-                '2' => 'Option 2...',
-                '3' => 'Option 3...'
-            )),
-            array('Category 2' => array(
-                '4' => 'Option 4...',
-                '5' => 'Option 5...'
-            ))
-        );
-
         $builder
-//            ->add('category', ChoiceType::class, array(
-//                'label' => 'Category',
-//                'choices' => $category_choices,
-//                'placeholder' => '[ Escoge una opción ]',
-//                'empty_data' => null,
-//                'required' => false,
-//                'label' => 'Categoría',
-//                'label_attr' => [
-//                    'class' => ''
-//                ],
-//                'attr' => [
-//                    'class' => 'form-control',
-//                    'placeholder' => '',
-//                ],
-//            ))
-            ->add('category', EntityType::class, [
-                'class' => Category::class,
-                'query_builder' => function(EntityRepository $er) {
-                    return $er->findAllObjects();
-                },
-                'placeholder' => '[ Escoge una opción ]',
-                'empty_data' => null,
-                'required' => false,
-                'label' => 'Categoría',
-                'label_attr' => [
-                    'class' => ''
+            ->add('category', EntityType::class, array_merge(
+                [
+                    'class' => Category::class,
+                    'query_builder' => function(EntityRepository $er) {
+                        return $er->findAllObjects();
+                    },
+                    'placeholder' => '[ Escoge una opción ]',
+                    'empty_data' => null,
+                    'required' => false,
+                    'label' => 'Categoría',
+                    'label_attr' => [
+                        'class' => ''
+                    ],
+                    'attr' => [
+                        'class' => 'form-control',
+                        'placeholder' => '',
+                    ],
                 ],
-                'attr' => [
-                    'class' => 'form-control',
-                    'placeholder' => '',
-                ],
-            ])
+                $this->getDataType($options)
+            ))
             ->add('code', TextType::class, [
                 'label' =>' code',
                 'label_attr' => [

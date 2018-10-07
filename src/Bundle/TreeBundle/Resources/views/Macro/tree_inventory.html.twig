@@ -1,4 +1,4 @@
-{% macro tree(objects, tree, modal, index) %}
+{% macro tree(objects, tree, modal, index, categoryId) %}
 
     {% for key, value in objects %}
 
@@ -14,11 +14,17 @@
                 data-id="{{ entityParent.id }}"
                 id="li-{{ entityParent.id }}">
 
-                {{ include('TreeBundle::Template/li_inventory.html.twig', {entity:entityParent, modal:modal, badge_color:index|badge_colors()}) }}
+                {{ include('TreeBundle::Template/li_inventory.html.twig', {
+                        entity: entityParent,
+                        modal: modal,
+                        badge_color: index|badge_colors(),
+                        category_id: categoryId
+                    })
+                }}
 
                 <ul class="{{ tree.child_ul ~ entityParent.id }}">
                     {% import _self as macro %}
-                    {{ macro.tree(value.children, tree, modal, index) }}
+                    {{ macro.tree(value.children, tree, modal, index, categoryId) }}
                 </ul>
 
             </li>

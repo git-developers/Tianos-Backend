@@ -33,6 +33,11 @@ services:
         factory: ['@doctrine.orm.entity_manager', getRepository]
         arguments: [ Bundle\ProductBundle\Entity\Product ]
 
+    tianos.type.product:
+        class: Bundle\ProductBundle\Form\Type\ProductType
+        arguments: ['@doctrine.orm.entity_manager']
+        tags:
+            - { name: form.type, alias: tianos.type.product }
 
 
 #    tianos.controller.grid:

@@ -10,6 +10,7 @@ class AppKernel extends Kernel
         $bundles = [
 
             //own bundles
+//            new \Bundle\ServiceBundle\ServiceBundle(),
             new \Bundle\RoleBundle\RoleBundle(),
             new \Bundle\ProductBundle\ProductBundle(),
             new \Bundle\CalendarBundle\CalendarBundle(),
