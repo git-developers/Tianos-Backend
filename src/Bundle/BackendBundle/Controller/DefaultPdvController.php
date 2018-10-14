@@ -22,14 +22,28 @@ class DefaultPdvController extends BaseController
 //        return $this->redirectUrl('frontend_default_index');
 
 
-//        $user = $this->getUser();
+        $user = $this->getUser();
+	
+//	    echo "POLLO:::USERNAME:::: <pre>";
+//	    print_r( $user->getPointOfSaleActive()->getName() );
+//	    exit;
+
+
+//	    $token = $this->container->get('security.token_storage')->getToken();
+//	    $user = $token->getUser();
+        
+//	    echo "POLLO:: <pre>";
+//	    print_r($user->getPointOfSaleActive()->getName());
+//	    exit;
+
+
+
 //        echo 'PDV DefaultController --- GATO:::<pre>';
 //        print_r($user->getRoles());
 //        exit;
 
 
 //        $pointOfSales = $this->getUser()->getPointOfSale();
-//
 //
 //        foreach ($pointOfSales as $key => $pointOfSale) {
 //

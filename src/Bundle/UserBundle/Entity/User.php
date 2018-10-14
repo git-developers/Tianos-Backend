@@ -258,9 +258,19 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     /**
      * @var \Doctrine\Common\Collections\Collection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\PointOfSale", mappedBy="user")
+     * @ORM\ManyToMany(targetEntity="Bundle\PointofsaleBundle\Entity\Pointofsale", mappedBy="user")
      */
     private $pointOfSale;
+	
+	/**
+	 * @var \Bundle\PointofsaleBundle\Entity\Pointofsale
+	 *
+	 * @ORM\ManyToOne(targetEntity="Bundle\PointofsaleBundle\Entity\Pointofsale")
+	 * @ORM\JoinColumns({
+	 *   @ORM\JoinColumn(name="point_of_sale_id_active", referencedColumnName="id")
+	 * })
+	 */
+	private $pointOfSaleActive;
 
     /**
      * @var boolean
@@ -893,8 +903,26 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     {
         $this->nameBox = $nameBox;
     }
+	
+	/**
+	 * @return \Bundle\PointofsaleBundle\Entity\Pointofsale
+	 */
+	public function getPointOfSaleActive(): \Bundle\PointofsaleBundle\Entity\Pointofsale
+	{
+		return $this->pointOfSaleActive;
+	}
+	
+	/**
+	 * @param \Bundle\PointofsaleBundle\Entity\Pointofsale $pointOfSaleActive
+	 */
+	public function setPointOfSaleActive(\Bundle\PointofsaleBundle\Entity\Pointofsale $pointOfSaleActive)
+	{
+		$this->pointOfSaleActive = $pointOfSaleActive;
+	}
 
-    /** @see \Serializable::serialize() */
+    
+
+//    /** @see \Serializable::serialize() */
 //    public function serialize()
 //    {
 //        return serialize(array(

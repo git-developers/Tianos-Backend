@@ -31,6 +31,11 @@ backend_category:
 backend_services:
     resource: '@ServicesBundle/Resources/config/routing/backend.yml'
     prefix: /services
+backend_pointofsale_per_user:
+    resource: '@PointofsaleBundle/Resources/config/routing/backend_per_user.yml'
+    prefix: /point-of-sale-per-user
+
+
 
 #backend_pointofsale:
 #    resource: '@PointofsaleBundle/Resources/config/routing/backend.yml'

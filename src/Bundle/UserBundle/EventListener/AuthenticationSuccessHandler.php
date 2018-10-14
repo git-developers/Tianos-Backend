@@ -34,16 +34,17 @@ class AuthenticationSuccessHandler implements AuthenticationSuccessHandlerInterf
     {
         $token = $event->getAuthenticationToken();
         $request = $event->getRequest();
+	
+	    $user = $token->getUser();
+	    
+	    $pointOfSale = $this->container->get('tianos.repository.pointofsale')->find($request->get('pointOfSale'));
 
-//        $pointOfSales = $token->getUser()->getPointOfSale();
-
-//        $user = $token->getUser();
-//        echo 'AuthenticationSuccessHandler:::<pre>';
-//        print_r($user->getRoles());
-//        exit;
-
-
-        $this->onAuthenticationSuccess($request, $token);
+	    if ($pointOfSale) {
+	        $user->setPointOfSaleActive($pointOfSale);
+		    $token->setUser($user);
+        }
+	
+	    $this->onAuthenticationSuccess($request, $token);
     }
 
     public function onAuthenticationSuccess(Request $request, TokenInterface $token)

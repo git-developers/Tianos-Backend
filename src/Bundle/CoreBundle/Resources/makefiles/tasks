@@ -1,9 +1,9 @@
-
 NOW := $(shell /bin/date "+%Y-%m-%d . %H:%M:%S")
 AUTHOR_EMAIL := "jafeth.bendezu@avantica.net"
 AUTHOR_NAME := "Jafeth"
 HOST_PROJECT := tianos.com
 DATABASE_NAME := tianos_beauty
+BRANCH_NAME := tianos-beauty-php-7.0
 
 delete:
 	@echo ---;
@@ -45,9 +45,9 @@ save:
 	git config --global user.name $(AUTHOR_NAME) --replace-all
 	git commit -m "Tianos said -> modifications made on: $(NOW)"
 ifeq ($(http), 1)
-	git push origin_http master
+	git push github_http $(BRANCH_NAME)
 else
-	git push github master
+	git push github $(BRANCH_NAME)
 endif
 
 #READ: https://eole-io.github.io/sandstone/install-zmq-php-linux.html

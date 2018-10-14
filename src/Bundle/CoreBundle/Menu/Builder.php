@@ -414,7 +414,7 @@ class Builder implements ContainerAwareInterface
         ])
             ->setAttribute('class', 'treeview')
             ->setAttribute('class', $this->activeRoute([
-                'backend_core_loadfixtures',
+                'backend_pointofsale_per_user_index',
             ]))
             ->setAttribute('icon', 'fa-fw fa-cog')
             ->setDisplay($isGranted)
