@@ -35,7 +35,6 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setName('Alfredo');
         $entity->setLastName('Bringas');
         $entity->setEmail('abringas@' . $this->applicationUrl);
-//        $entity->setUniversity($universityUni);
         $entity->setProfile($profileSuperAdmin);
         $manager->persist($entity);
         $this->addReference('user-1', $entity);
@@ -46,7 +45,6 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setName('Albert');
         $entity->setLastName('Einstein');
         $entity->setEmail('aeinstein@' . $this->applicationUrl);
-//        $entity->setUniversity($universityUni);
         $entity->setProfile($profilePdvAdmin);
         $manager->persist($entity);
         $this->addReference('user-2', $entity);
@@ -57,7 +55,6 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setName('Bill');
         $entity->setLastName('Gates');
         $entity->setEmail('bgates@' . $this->applicationUrl);
-//        $entity->setUniversity($universityUni);
         $entity->setProfile($profileEmployee);
         $manager->persist($entity);
         $this->addReference('user-4', $entity);
@@ -68,7 +65,6 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setName('Isaac');
         $entity->setLastName('Newton');
         $entity->setEmail('inewton@' . $this->applicationUrl);
-//        $entity->setUniversity($universityUni);
         $entity->setProfile($profileEmployee);
         $manager->persist($entity);
         $this->addReference('user-5', $entity);

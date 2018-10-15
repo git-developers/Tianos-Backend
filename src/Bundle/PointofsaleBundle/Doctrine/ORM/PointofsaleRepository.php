@@ -92,8 +92,6 @@ class PointofsaleRepository extends TianosEntityRepository
 
     public function findAllObjectsByPdv($pdv)
     {
-        return;
-
         return $this->createQueryBuilder('a')
             ->where('a.isActive = :active')
             ->andWhere('a.pointOfSale = :pointOfSale')

@@ -29,8 +29,7 @@ final class PdvLoginType extends AbstractType
     {
         $this->router = $router;
     }
-
-
+    
     /**
      * {@inheritdoc}
      */
@@ -38,8 +37,8 @@ final class PdvLoginType extends AbstractType
     {
 
         $this->pdv = $options['pdv'];
-
-        $builder
+	
+	    $builder
             ->setAction($this->router->generate('backend_security_pdv_login_check'))
             ->add('pointOfSale', EntityType::class, [
                 'class' => Pointofsale::class,

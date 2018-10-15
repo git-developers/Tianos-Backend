@@ -139,6 +139,7 @@ class Pointofsale
      * @JMSS\Groups({"crud"})
      */
     private $pointOfSale;
+    
 
     private $pointOfSaleChildren;
 

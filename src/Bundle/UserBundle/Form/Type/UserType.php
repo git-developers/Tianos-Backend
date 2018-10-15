@@ -75,15 +75,8 @@ class UserType extends AbstractType
 
             ->add('profile', EntityType::class, array(
                 'class' => Profile::class,
-                'query_builder' => function(EntityRepository $a) {
-                    return $a->createQueryBuilder('a')
-                        ->where('a.isActive = :active')
-                        ->orderBy('a.id', 'DESC')
-                        ->setParameter('active', true)
-                        ;
-//                        ->add('orderBy', 's.sort_order ASC')
-//                        ->innerJoin('a.languages', 'b')
-//                        ->addSelect('b')
+                'query_builder' => function(EntityRepository $er) {
+	                return $er->findAllObjects();
                 },
                 'placeholder' => '[ Escoge una opción ]',
                 'empty_data' => null,

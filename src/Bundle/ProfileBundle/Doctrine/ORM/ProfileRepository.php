@@ -7,9 +7,9 @@ namespace Bundle\ProfileBundle\Doctrine\ORM;
 use Bundle\CoreBundle\Doctrine\ORM\EntityRepository as TianosEntityRepository;
 use Component\Profile\Repository\ProfileRepositoryInterface;
 use Component\OneToMany\Repository\OneToManyLeftRepositoryInterface;
+use Bundle\ProfileBundle\Entity\Profile;
 
-class ProfileRepository extends TianosEntityRepository
-    implements ProfileRepositoryInterface, OneToManyLeftRepositoryInterface
+class ProfileRepository extends TianosEntityRepository implements ProfileRepositoryInterface, OneToManyLeftRepositoryInterface
 {
 
     /**
@@ -118,14 +118,6 @@ class ProfileRepository extends TianosEntityRepository
         $query->setParameter('active', 1);
 
         return $query->getResult();
-
-//        return $this->createQueryBuilder('o')
-//            ->select('o.id, o.code, o.name, o.createdAt')
-//            ->andWhere('o.isActive = :active')
-//            ->setParameter('active', 1)
-//            ->getQuery()
-//            ->getResult()
-//            ;
     }
 
     /**
@@ -201,10 +193,28 @@ class ProfileRepository extends TianosEntityRepository
             ->getResult()
         ;
     }
+ 
+	/**
+	 * {@inheritdoc}
+	 */
+	public function findAllObjects()
+	{
+		return $this->createQueryBuilder('a')
+			->where('a.isActive = :active')
+			->andWhere('a.slug IN (:slugs)')
+			->orderBy('a.id', 'ASC')
+			->setParameter('active', true)
+			->setParameter('slugs', [
+				Profile::PDV_ADMIN_SLUG,
+				Profile::EMPLOYEE_SLUG,
+				Profile::CLIENT_SLUG
+			])
+			;
+	}
 
-    /**
-     * {@inheritdoc}
-     */
+//    /**
+//     * {@inheritdoc}
+//     */
 //    public function find($id)
 //    {
 //        return $this->createQueryBuilder('o')

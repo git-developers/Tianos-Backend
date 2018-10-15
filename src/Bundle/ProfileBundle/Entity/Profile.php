@@ -16,7 +16,7 @@ class Profile
     const GUEST = 'Guest (invitado)';
 
     const PDV_ADMIN = 'PDV Administrator';
-    const PDV_ADMIN_SLUG = 'administrator';
+    const PDV_ADMIN_SLUG = 'pdv-administrator';
 
     const EMPLOYEE = 'Empleado';
     const EMPLOYEE_SLUG = 'employee';

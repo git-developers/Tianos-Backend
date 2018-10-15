@@ -38,6 +38,14 @@ services:
         arguments: [ '%application_url%' ]
         tags: [doctrine.fixture.orm]
 
+    Bundle\CoreBundle\DataFixtures\ORM\Load_14_PointofsaleBranchOfficeData:
+        arguments: [ '%application_url%' ]
+        tags: [doctrine.fixture.orm]
+
+    Bundle\CoreBundle\DataFixtures\ORM\Load_15_PointofsaleHasUserData:
+        arguments: [ '%application_url%' ]
+        tags: [doctrine.fixture.orm]
+
     tianos.core.controller.default:
         class: Bundle\CoreBundle\Controller\DefaultController
         tags:
