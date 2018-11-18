@@ -134,9 +134,11 @@ class PointofsaleRepository extends TianosEntityRepository
             FROM PointofsaleBundle:Pointofsale pointofsale
             WHERE
             pointofsale.slug = :slug AND
-            pointofsale.pointOfSale IS NULL AND
+
             pointofsale.isActive = :active
             ";
+        
+        // pointofsale.pointOfSale IS NULL AND
 
         $query = $em->createQuery($dql);
         $query->setParameter('active', 1);

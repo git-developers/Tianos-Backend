@@ -31,27 +31,20 @@ class SecurityPdvController extends BaseController
         $slug = $request->get('slug');
         $pdv = $this->get('tianos.repository.pointofsale')->findBySlug($slug);
 
+        if (!$pdv) {
+            $this->flashError('Info: punto de venta no existe.');
 
-//        $pdv = $this->get('tianos.repository.pointofsale')->findParentAndChildren(9);
-//
-//        echo "POLLO:: <pre>";
-//        print_r($pdv);
-//        exit;
-
-
-//        if (!$pdv) {
-//            $this->flashError('Info: punto de venta no existe.');
-//
-//            return $this->render("UserBundle:BackendPdv/Security:no_pdv.html.twig",
-//                [
-//                    'pdv' => null,
-//                ]
-//            );
-//        }
+            return $this->render("UserBundle:BackendPdv/Security:no_pdv.html.twig",
+                [
+                    'pdv' => null,
+                ]
+            );
+        }
 
         $form = $this->createForm(PdvLoginType::class, null, [
             'pdv' => $pdv,
         ]);
+        
         $form->handleRequest($request);
 
         return $this->render($template,

@@ -397,52 +397,15 @@ class Builder implements ContainerAwareInterface
 
 
 
-
-
-        /**
-         * SETTINGS
-         */
-        $isGranted = $this->isGranted([
-            Role::ROLE_PDV_ADMIN,
-        ]);
-
-        $menu->addChild('Ajustes', [
-            'route' => 'frontend_default_index',
-            'extras' => ['safe_label' => true],
-            'childrenAttributes' => [
-                'class' => 'treeview-menu',
-            ],
-        ])
-            ->setAttribute('class', 'treeview')
-            ->setAttribute('class', $this->activeRoute([
-                'backend_pointofsale_per_user_index',
-            ]))
-            ->setAttribute('icon', 'fa-fw fa-cog')
-            ->setDisplay($isGranted)
-        ;
-
-        $menu['Ajustes']->addChild('Datos del salón', [
-            'route' => 'backend_pointofsale_per_user_index'
-        ])
-            ->setAttribute('icon', self::CIRCLE_1)
-            ->setAttribute('class', $this->activeRoute('backend_pointofsale_per_user_index'))
-            ->setDisplay($isGranted)
-        ;
-        /**
-         * SETTINGS
-         */
-
-
-
-
-
-
+        
+        
 
         /**
          * TICKET
          */
         $isGranted = $this->isGranted([
             Role::ROLE_EMPLOYEE,
+	        Role::ROLE_PDV_ADMIN,
         ]);
 
         $menu->addChild('Ticket', [
@@ -460,21 +423,62 @@ class Builder implements ContainerAwareInterface
             ->setDisplay($isGranted)
         ;
 
-//        $menu['Ajustes']->addChild('Datos del salón', [
-//            'route' => 'backend_ticket_index'
-//        ])
-//            ->setAttribute('icon', self::CIRCLE_1)
-//            ->setAttribute('class', $this->activeRoute('backend_ticket_index'))
-//            ->setDisplay($isGranted)
-//        ;
+        $menu['Ticket']->addChild('Gestionar', [
+            'route' => 'backend_ticket_index'
+        ])
+            ->setAttribute('icon', self::CIRCLE_1)
+            ->setAttribute('class', $this->activeRoute('backend_ticket_index'))
+            ->setDisplay($isGranted)
+        ;
+
+        $menu['Ticket']->addChild('Crear ticket', [
+            'route' => 'backend_ticket_create'
+        ])
+            ->setAttribute('icon', self::CIRCLE_2)
+            ->setAttribute('class', $this->activeRoute('backend_ticket_create'))
+            ->setDisplay($isGranted)
+        ;
         /**
          * TICKET
          */
-
-
-
-
-
+	
+	
+	
+	
+	
+	
+	    /**
+	     * SETTINGS
+	     */
+	    $isGranted = $this->isGranted([
+		    Role::ROLE_PDV_ADMIN,
+	    ]);
+	
+	    $menu->addChild('Ajustes', [
+		    'route' => 'frontend_default_index',
+		    'extras' => ['safe_label' => true],
+		    'childrenAttributes' => [
+			    'class' => 'treeview-menu',
+		    ],
+	    ])
+		    ->setAttribute('class', 'treeview')
+		    ->setAttribute('class', $this->activeRoute([
+			    'backend_pointofsale_per_user_index',
+		    ]))
+		    ->setAttribute('icon', 'fa-fw fa-cog')
+		    ->setDisplay($isGranted)
+	    ;
+	
+	    $menu['Ajustes']->addChild('Datos del salón', [
+		    'route' => 'backend_pointofsale_per_user_index'
+	    ])
+		    ->setAttribute('icon', self::CIRCLE_1)
+		    ->setAttribute('class', $this->activeRoute('backend_pointofsale_per_user_index'))
+		    ->setDisplay($isGranted)
+	    ;
+	    /**
+	     * SETTINGS
+	     */
 
 
 

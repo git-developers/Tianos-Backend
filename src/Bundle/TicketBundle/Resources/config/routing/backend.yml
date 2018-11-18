@@ -29,7 +29,7 @@ backend_ticket_index:
                         - edit
                         - delete
                     table_button_header:
-                        - create
+#                        - create
                         - info
                     table_option:
                         pageLength: 10

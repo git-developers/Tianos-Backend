@@ -89,6 +89,7 @@ security:
             logout:
                 path: backend_security_pdv_logout
                 target: backend_security_pdv_login
+                success_handler: tianos.logout_success_handler
             remember_me:
 #                token_provider: name
                 secret: "%secret%"

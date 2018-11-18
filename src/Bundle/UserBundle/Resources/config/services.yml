@@ -10,6 +10,12 @@ services:
           - { name: doctrine.event_listener, event: postLoad }
           - { name: doctrine.event_listener, event: postRemove }
 
+    tianos.logout_success_handler:
+        class: Bundle\UserBundle\EventListener\LogoutSuccessHandler
+        arguments: ['@security.http_utils', "backend_security_pdv_login", "@security.token_storage", "@router"]
+        tags:
+            - { name: kernel.event_listener, event: request, method: onLogoutSuccess }
+
     tianos.authentication_success_handler:
         class: Bundle\UserBundle\EventListener\AuthenticationSuccessHandler
         arguments: ['@service_container', "@router"]
