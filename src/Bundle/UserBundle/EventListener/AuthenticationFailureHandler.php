@@ -31,6 +31,15 @@ class AuthenticationFailureHandler implements AuthenticationFailureHandlerInterf
 	 */
 	public function onAuthenticationFailure(Request $request, AuthenticationException $exception): Response
 	{
+		
+		
+		echo "POLLO:: <pre>";
+		print_r(3333);
+		exit;
+		
+		
+		
+		
 		if ($request->isXmlHttpRequest()) {
 			return new JsonResponse(['success' => false, 'message' => $exception->getMessageKey()], 401);
 		}

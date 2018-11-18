@@ -57,7 +57,7 @@ backend_user_client_index:
                           options:
                               icon: calendar
             form:
-                type: Bundle\UserBundle\Form\Type\UserType
+                type: Bundle\UserBundle\Form\Type\UserClientType
             repository:
                 service: tianos.repository.user
                 method: findAllClient
@@ -75,7 +75,7 @@ backend_user_client_create:
             template: UserBundle:BackendUser/Form:form.html.twig
             entity: Bundle\UserBundle\Entity\User
             form:
-                type: Bundle\UserBundle\Form\Type\UserType
+                type: Bundle\UserBundle\Form\Type\UserClientType
             repository:
                 vars:
                     serialize_group_name: crud
@@ -89,7 +89,7 @@ backend_user_client_edit:
             action: edit
             template: UserBundle:BackendUser/Form:form.html.twig
             form:
-                type: Bundle\UserBundle\Form\Type\UserType
+                type: Bundle\UserBundle\Form\Type\UserClientType
             repository:
                 service: tianos.repository.user
                 method: find

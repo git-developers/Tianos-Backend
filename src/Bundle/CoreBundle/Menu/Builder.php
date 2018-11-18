@@ -175,6 +175,7 @@ class Builder implements ContainerAwareInterface
 
         $isGrantedSuperAdmin = $this->isGranted(Role::ROLE_SUPER_ADMIN);
         $isGrantedAdmin = $this->isGranted(Role::ROLE_PDV_ADMIN);
+        $isGrantedEmployee = $this->isGranted(Role::ROLE_EMPLOYEE);
 
         $menu->addChild('Usuarios', [
             'route' => 'frontend_default_index',
@@ -207,7 +208,7 @@ class Builder implements ContainerAwareInterface
         ])
             ->setAttribute('icon', self::CIRCLE_2)
             ->setAttribute('class', $this->activeRoute('backend_user_client_index'))
-            ->setDisplay($isGrantedAdmin)
+            ->setDisplay($isGrantedAdmin || $isGrantedEmployee)
         ;
 
         $menu['Usuarios']->addChild('Empleados', [
@@ -429,6 +430,45 @@ class Builder implements ContainerAwareInterface
         ;
         /**
          * SETTINGS
+         */
+
+
+
+
+
+
+
+        /**
+         * TICKET
+         */
+        $isGranted = $this->isGranted([
+            Role::ROLE_EMPLOYEE,
+        ]);
+
+        $menu->addChild('Ticket', [
+            'route' => 'backend_ticket_index',
+            'extras' => ['safe_label' => true],
+            'childrenAttributes' => [
+                'class' => 'treeview-menu',
+            ],
+        ])
+            ->setAttribute('class', 'treeview')
+            ->setAttribute('class', $this->activeRoute([
+                'backend_ticket_index',
+            ]))
+            ->setAttribute('icon', 'fa-fw fa-ticket')
+            ->setDisplay($isGranted)
+        ;
+
+//        $menu['Ajustes']->addChild('Datos del salón', [
+//            'route' => 'backend_ticket_index'
+//        ])
+//            ->setAttribute('icon', self::CIRCLE_1)
+//            ->setAttribute('class', $this->activeRoute('backend_ticket_index'))
+//            ->setDisplay($isGranted)
+//        ;
+        /**
+         * TICKET
          */
 
 

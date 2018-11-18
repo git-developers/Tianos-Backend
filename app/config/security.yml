@@ -58,7 +58,7 @@ security:
                 check_path: backend_security_super_login_check
                 default_target_path: backend_default_super_index
                 success_handler: tianos.authentication_success_handler
-#                failure_handler: tianos.authentication_failure_handler
+                failure_handler: tianos.authentication_failure_handler
                 # if you are using Symfony < 2.8, use the following config instead:
                 # csrf_provider: form.csrf_provider
             logout:
@@ -83,6 +83,7 @@ security:
                 check_path: backend_security_pdv_login_check
                 default_target_path: backend_default_pdv_index
                 success_handler: tianos.authentication_success_handler
+                failure_handler: tianos.authentication_failure_handler
                 # if you are using Symfony < 2.8, use the following config instead:
                 # csrf_provider: form.csrf_provider
             logout:
@@ -135,7 +136,7 @@ security:
 #        - { path: ^/backend/security/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
 #        - { path: ^/user/, role: ROLE_USER }
-        - { path: ^/backend/, role: ROLE_PDV_ADMIN }
+        - { path: ^/backend/, role: [ROLE_PDV_ADMIN, ROLE_EMPLOYEE] }
         - { path: ^/backend-super/, role: ROLE_SUPER_ADMIN }
 
 

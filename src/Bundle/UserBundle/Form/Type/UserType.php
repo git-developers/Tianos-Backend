@@ -237,29 +237,6 @@ class UserType extends AbstractType
             $form = $event->getForm();
         });
         */
-
-
-
-
-
-
-
-
-
-/*        $builder
-            ->add('username', TextType::class, [
-                'label' => 'sylius.form.user.username',
-            ])
-            ->add('email', EmailType::class, [
-                'label' => 'sylius.form.user.email',
-            ])
-            ->add('plainPassword', PasswordType::class, [
-                'label' => 'sylius.form.user.password.label',
-            ])
-            ->add('enabled', CheckboxType::class, [
-                'label' => 'sylius.form.user.enabled',
-            ])
-        ;*/
     }
 
     /**
@@ -273,9 +250,6 @@ class UserType extends AbstractType
 
         $resolver->setRequired(['form_data']);
     }
-
-
-
 
     /*
     public function configureOptions(OptionsResolver $resolver): void

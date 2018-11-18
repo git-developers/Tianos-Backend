@@ -34,7 +34,9 @@ backend_services:
 backend_pointofsale_per_user:
     resource: '@PointofsaleBundle/Resources/config/routing/backend_per_user.yml'
     prefix: /point-of-sale-per-user
-
+backend_ticket:
+    resource: '@TicketBundle/Resources/config/routing/backend.yml'
+    prefix: /ticket
 
 
 #backend_pointofsale:

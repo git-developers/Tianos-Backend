@@ -26,7 +26,6 @@ class ProfileRepository extends TianosEntityRepository implements ProfileReposit
 //            ->execute()
 //            ;
 
-
         $sql = "DELETE FROM profile_has_role WHERE profile_id = :id;";
         $params = array('id' => $id);
 
@@ -208,6 +207,38 @@ class ProfileRepository extends TianosEntityRepository implements ProfileReposit
 				Profile::PDV_ADMIN_SLUG,
 				Profile::EMPLOYEE_SLUG,
 				Profile::CLIENT_SLUG
+			])
+			;
+	}
+ 
+	/**
+	 * {@inheritdoc}
+	 */
+	public function findAllObjectsClient()
+	{
+		return $this->createQueryBuilder('a')
+			->where('a.isActive = :active')
+			->andWhere('a.slug IN (:slugs)')
+			->orderBy('a.id', 'ASC')
+			->setParameter('active', true)
+			->setParameter('slugs', [
+				Profile::CLIENT_SLUG
+			])
+			;
+	}
+ 
+	/**
+	 * {@inheritdoc}
+	 */
+	public function findAllObjectsEmployee()
+	{
+		return $this->createQueryBuilder('a')
+			->where('a.isActive = :active')
+			->andWhere('a.slug IN (:slugs)')
+			->orderBy('a.id', 'ASC')
+			->setParameter('active', true)
+			->setParameter('slugs', [
+				Profile::EMPLOYEE_SLUG
 			])
 			;
 	}

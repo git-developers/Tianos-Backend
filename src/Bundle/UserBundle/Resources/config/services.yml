@@ -16,11 +16,11 @@ services:
         tags:
             - { name: kernel.event_listener, event: security.interactive_login, method: onSecurityInteractiveLogin }
 
-#    tianos.authentication_failure_handler:
-#        class: Bundle\UserBundle\EventListener\AuthenticationSuccessHandler
-#        arguments: ['@service_container']
-#        tags:
-#            - { name: kernel.event_listener, event: security.interactive_login, method: onSecurityInteractiveLogin }
+    tianos.authentication_failure_handler:
+        class: Bundle\UserBundle\EventListener\AuthenticationFailureHandler
+        arguments: ['@service_container']
+        tags:
+            - { name: 'monolog.logger', channel: 'security', method: onAuthenticationFailure }
 
     tianos.api.controller.user:
         class: Bundle\UserBundle\Controller\ApiController

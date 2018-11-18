@@ -12,6 +12,7 @@ class AppKernel extends Kernel
             //own bundles
             new \Bundle\ServicesBundle\ServicesBundle(),
             new \Bundle\RoleBundle\RoleBundle(),
+            new \Bundle\TicketBundle\TicketBundle(),
             new \Bundle\ProductBundle\ProductBundle(),
             new \Bundle\CalendarBundle\CalendarBundle(),
             new \Bundle\VisitBundle\VisitBundle(),

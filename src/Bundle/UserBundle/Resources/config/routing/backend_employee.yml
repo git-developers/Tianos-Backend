@@ -57,7 +57,7 @@ backend_user_employee_index:
                           options:
                               icon: calendar
             form:
-                type: Bundle\UserBundle\Form\Type\UserType
+                type: Bundle\UserBundle\Form\Type\UserEmployeeType
             repository:
                 service: tianos.repository.user
                 method: findAllEmployee
@@ -75,7 +75,7 @@ backend_user_employee_create:
             template: UserBundle:BackendUser/Form:form.html.twig
             entity: Bundle\UserBundle\Entity\User
             form:
-                type: Bundle\UserBundle\Form\Type\UserType
+                type: Bundle\UserBundle\Form\Type\UserEmployeeType
             repository:
                 vars:
                     serialize_group_name: crud
@@ -89,7 +89,7 @@ backend_user_employee_edit:
             action: edit
             template: UserBundle:BackendUser/Form:form.html.twig
             form:
-                type: Bundle\UserBundle\Form\Type\UserType
+                type: Bundle\UserBundle\Form\Type\UserEmployeeType
             repository:
                 service: tianos.repository.user
                 method: find
@@ -119,7 +119,7 @@ backend_user_employee_view:
         _controller: tianos.backend.controller.user:viewAction
         _tianos:
             action: view
-            template: UserBundle:BackendUser/Informative:view_client.html.twig
+            template: UserBundle:BackendUser/Informative:view_employee.html.twig
             repository:
                 service: tianos.repository.user
                 method: find

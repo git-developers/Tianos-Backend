@@ -17,6 +17,8 @@ use Doctrine\ORM\EntityRepository;
 use Bundle\PointofsaleBundle\Entity\Pointofsale;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\NotBlank;
+use Symfony\Component\Validator\Constraints\Length;
 
 
 final class PdvLoginType extends AbstractType
@@ -47,7 +49,7 @@ final class PdvLoginType extends AbstractType
                 },
                 'placeholder' => '[ Escoja una sucursal ]',
                 'empty_data' => null,
-                'required' => false,
+                'required' => true,
                 'label' => 'Punto de venta',
                 'label_attr' => [
                     'class' => ''
@@ -56,6 +58,9 @@ final class PdvLoginType extends AbstractType
                     'class' => 'form-control',
                     'placeholder' => '',
                 ],
+	            'constraints' => [
+		            new NotBlank(),
+	            ],
             ])
             ->add('_username', EmailType::class, [
                 'required' => true,
@@ -66,6 +71,12 @@ final class PdvLoginType extends AbstractType
                     'class' => 'form-control',
                     'placeholder' => 'email',
                 ],
+	            'constraints' => [
+		            new NotBlank(),
+		            new Length([
+			            'min' => 1
+		            ]),
+	            ],
             ])
             ->add('_password', PasswordType::class, [
                 'required' => true,
