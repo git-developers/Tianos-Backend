@@ -12,6 +12,49 @@ use Bundle\ProfileBundle\Entity\Profile;
 
 class UserRepository extends EntityRepository implements UserRepositoryInterface
 {
+	
+	
+	/**
+	 * {@inheritdoc}
+	 */
+	public function findAllByIds(array $ids): array
+	{
+		$em = $this->getEntityManager();
+		$dql = "
+            SELECT user_
+            FROM UserBundle:User user_
+            WHERE
+            user_.enabled = :active AND
+            user_.id IN (:ids)
+            ";
+		
+		$query = $em->createQuery($dql);
+		$query->setParameter('active', 1);
+		$query->setParameter('ids', $ids);
+		
+		return $query->getResult();
+	}
+
+    /**
+     * {@inheritdoc}
+     */
+    public function findOneById(int $id)
+    {
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT user_
+            FROM UserBundle:User user_
+            WHERE
+            user_.enabled = :active AND
+            user_.id = :id
+            ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+        $query->setParameter('id', $id);
+
+        return $query->getOneOrNullResult();
+    }
 
     /**
      * {@inheritdoc}
@@ -119,6 +162,7 @@ class UserRepository extends EntityRepository implements UserRepositoryInterface
             WHERE
             user_.enabled = :active AND
             profile.slug = :slug
+            ORDER BY user_.id DESC
             ";
 
         $query = $em->createQuery($dql);
@@ -141,6 +185,7 @@ class UserRepository extends EntityRepository implements UserRepositoryInterface
             WHERE
             user_.enabled = :active AND
             profile.slug = :slug
+            ORDER BY user_.id DESC
             ";
 
         $query = $em->createQuery($dql);

@@ -57,7 +57,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('bgates@' . $this->applicationUrl);
         $entity->setProfile($profileEmployee);
         $manager->persist($entity);
-        $this->addReference('user-4', $entity);
+        $this->addReference('user-3', $entity);
 
         $entity = new User();
         $entity->setDni('99887766');
@@ -67,7 +67,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('inewton@' . $this->applicationUrl);
         $entity->setProfile($profileEmployee);
         $manager->persist($entity);
-        $this->addReference('user-5', $entity);
+        $this->addReference('user-4', $entity);
 
         $entity = new User();
         $entity->setDni('88889999');
@@ -77,7 +77,157 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('sjobs@' . $this->applicationUrl);
         $entity->setProfile($profileClient);
         $manager->persist($entity);
-        $this->addReference('user-3', $entity);
+        $this->addReference('user-5', $entity);
+
+        $entity = new User();
+        $entity->setDni('657657567');
+        $entity->setPassword('123');
+        $entity->setName('Roger');
+        $entity->setLastName('Federer');
+        $entity->setEmail('rfederer@' . $this->applicationUrl);
+        $entity->setProfile($profileClient);
+        $manager->persist($entity);
+        $this->addReference('user-6', $entity);
+
+        $entity = new User();
+        $entity->setDni('657657567');
+        $entity->setPassword('123');
+        $entity->setName('Neymar');
+        $entity->setLastName('Junior');
+        $entity->setEmail('njunior@' . $this->applicationUrl);
+        $entity->setProfile($profileClient);
+        $manager->persist($entity);
+        $this->addReference('user-7', $entity);
+
+        $entity = new User();
+        $entity->setDni('35462333');
+        $entity->setPassword('123');
+        $entity->setName('Keiko');
+        $entity->setLastName('Garcia');
+        $entity->setEmail('kgarcia@' . $this->applicationUrl);
+        $entity->setProfile($profileClient);
+        $manager->persist($entity);
+        $this->addReference('user-8', $entity);
+
+        $entity = new User();
+        $entity->setDni('55566644');
+        $entity->setPassword('123');
+        $entity->setName('Juan');
+        $entity->setLastName('Lopez');
+        $entity->setEmail('jlopez@' . $this->applicationUrl);
+        $entity->setProfile($profileClient);
+        $manager->persist($entity);
+        $this->addReference('user-9', $entity);
+
+        $entity = new User();
+        $entity->setDni('35462333');
+        $entity->setPassword('123');
+        $entity->setName('Renee');
+        $entity->setLastName('Medina');
+        $entity->setEmail('rmedina@' . $this->applicationUrl);
+        $entity->setProfile($profileClient);
+        $manager->persist($entity);
+        $this->addReference('user-10', $entity);
+
+        $entity = new User();
+        $entity->setDni('5464656456456');
+        $entity->setPassword('123');
+        $entity->setName('Katherine');
+        $entity->setLastName('Johnson');
+        $entity->setEmail('kjohnson@' . $this->applicationUrl);
+        $entity->setProfile($profileClient);
+        $manager->persist($entity);
+        $this->addReference('user-11', $entity);
+
+        $entity = new User();
+        $entity->setDni('2131233454');
+        $entity->setPassword('123');
+        $entity->setName('Margaret');
+        $entity->setLastName('Hamilton');
+        $entity->setEmail('mhamilton@' . $this->applicationUrl);
+        $entity->setProfile($profileClient);
+        $manager->persist($entity);
+        $this->addReference('user-12', $entity);
+
+        $entity = new User();
+        $entity->setDni('7897978956');
+        $entity->setPassword('123');
+        $entity->setName('Katharine');
+        $entity->setLastName('Hepburn');
+        $entity->setEmail('khepburn@' . $this->applicationUrl);
+        $entity->setProfile($profileClient);
+        $manager->persist($entity);
+        $this->addReference('user-13', $entity);
+
+        $entity = new User();
+        $entity->setDni('7897654321');
+        $entity->setPassword('123');
+        $entity->setName('Dorothy');
+        $entity->setLastName('Parker');
+        $entity->setEmail('dparker@' . $this->applicationUrl);
+        $entity->setProfile($profileClient);
+        $manager->persist($entity);
+        $this->addReference('user-14', $entity);
+
+        $entity = new User();
+        $entity->setDni('123123214');
+        $entity->setPassword('123');
+        $entity->setName('Abraham');
+        $entity->setLastName('Lincoln');
+        $entity->setEmail('alincoln@' . $this->applicationUrl);
+        $entity->setProfile($profileClient);
+        $manager->persist($entity);
+        $this->addReference('user-15', $entity);
+
+        $entity = new User();
+        $entity->setDni('890787564');
+        $entity->setPassword('123');
+        $entity->setName('Walt');
+        $entity->setLastName('Disney');
+        $entity->setEmail('wdisney@' . $this->applicationUrl);
+        $entity->setProfile($profileClient);
+        $manager->persist($entity);
+        $this->addReference('user-16', $entity);
+
+        $entity = new User();
+        $entity->setDni('78907890890');
+        $entity->setPassword('123');
+        $entity->setName('Napoleon');
+        $entity->setLastName('Bonaparte');
+        $entity->setEmail('nbonaparte@' . $this->applicationUrl);
+        $entity->setProfile($profileClient);
+        $manager->persist($entity);
+        $this->addReference('user-17', $entity);
+
+        $entity = new User();
+        $entity->setDni('78907890890');
+        $entity->setPassword('123');
+        $entity->setName('Abraham');
+        $entity->setLastName('Elizabeth');
+        $entity->setEmail('aelizabeth@' . $this->applicationUrl);
+        $entity->setProfile($profileClient);
+        $manager->persist($entity);
+        $this->addReference('user-18', $entity);
+
+        $entity = new User();
+        $entity->setDni('3245353452');
+        $entity->setPassword('123');
+        $entity->setName('Benjamin');
+        $entity->setLastName('Franklin');
+        $entity->setEmail('bfranklin@' . $this->applicationUrl);
+        $entity->setProfile($profileClient);
+        $manager->persist($entity);
+        $this->addReference('user-19', $entity);
+
+        $entity = new User();
+        $entity->setDni('764355456');
+        $entity->setPassword('123');
+        $entity->setName('Wright');
+        $entity->setLastName('Brothers');
+        $entity->setEmail('wbrothers@' . $this->applicationUrl);
+        $entity->setProfile($profileClient);
+        $manager->persist($entity);
+        $this->addReference('user-20', $entity);
 
 
         $manager->flush();

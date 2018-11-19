@@ -418,6 +418,7 @@ class Builder implements ContainerAwareInterface
             ->setAttribute('class', 'treeview')
             ->setAttribute('class', $this->activeRoute([
                 'backend_ticket_index',
+                'backend_ticket_create',
             ]))
             ->setAttribute('icon', 'fa-fw fa-ticket')
             ->setDisplay($isGranted)

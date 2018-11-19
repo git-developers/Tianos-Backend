@@ -1,0 +1,301 @@
+{% extends "ThemesBundle:Adminlte/TemplatePdv:1_template.html.twig" %}
+
+{#{% import "TreeBundle::Macro/tree_inventory.html.twig" as macro %}#}
+
+{% block bodyclass %}{% spaceless %}
+    {{ vars.body_css }}
+{% endspaceless %}{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+
+    {% stylesheets
+        filter='cssrewrite'
+        '@TicketBundle/Resources/public/css/default.css'
+    %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+
+    {% stylesheets
+        '@TreeBundle/Resources/public/css/tree.css'
+        '@CoreBundle/Resources/public/css/tree.css'
+    %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+
+    <style>
+
+    </style>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+    {% javascripts
+        '@TicketBundle/Resources/public/js/formClient.js'
+        '@TicketBundle/Resources/public/js/formEmployee.js'
+        '@TicketBundle/Resources/public/js/formService.js'
+    %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+
+            $('body.{{ vars.body_css }}').formClient({
+                modalId: 'modal-create-client',
+                formName: 'form-create-client',
+                route: '{{ path('backend_ticket_add_client') }}'
+            });
+
+            $('body.{{ vars.body_css }}').formEmployee({
+                modalId: 'modal-create-employee',
+                formName: 'form-create-employee',
+                route: '{{ path('backend_ticket_add_employee') }}'
+            });
+
+            $('body.{{ vars.body_css }}').formService({
+                modalId: 'modal-create-service',
+                formName: 'form-create-service',
+                route: '{{ path('backend_ticket_add_service') }}'
+            });
+
+        });
+
+    </script>
+
+{% endblock %}
+
+{% block content %}
+
+    <section class="content-header">
+        <h1>
+            <i class="fa fa-fw fa-ticket"></i> Crear Ticket
+            <small>grid</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li>
+                <a href="#">
+                    <i class="fa fa-dashboard"></i> Home
+                </a>
+            </li>
+            <li class="active">
+                Dashboard
+            </li>
+        </ol>
+    </section>
+
+    <section class="content">
+
+        <div class="row">
+
+            <div class="col-md-5" style="padding-right: 0px">
+
+                <div class="box box-primary">
+
+                    <form>
+
+                        <div class="box-header with-border">
+                            <h4 class="box-title">
+                                <i class="fa fa-fw fa-file-o"></i> Comprobante
+                            </h4>
+                        </div>
+                        <div class="box-body">
+
+                            <table class="table table-bordered table-striped">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 10px">Unid.</th>
+                                        <th class="text-center">Descripci&oacute;n</th>
+                                        <th class="text-center">Precio unit.</th>
+                                        <th class="text-center">Sub total</th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr>
+                                        <td class="text-center">1</td>
+                                        <td>software</td>
+                                        <td class="text-right">
+                                            55
+                                        </td>
+                                        <td class="text-right">
+                                            77
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-center">1</td>
+                                        <td>software</td>
+                                        <td class="text-right">
+                                            55
+                                        </td>
+                                        <td class="text-right">
+                                            77
+                                        </td>
+                                    </tr>
+                                </tbody>
+
+                                <tfoot>
+                                    <tr class="bg-gray">
+                                        <td colspan="3" class="text-right" style="padding: 3px 3px;">Total S/</td>
+                                        <td colspan="1" class="text-right" style="padding: 3px 3px;">
+                                            <span class="badge bg-gray-active">55</span>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+
+                        </div>
+
+                        <div class="box-footer text-center">
+                            <button type="submit" class="btn btn-primary">
+                                Guardar
+                            </button>
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+            <div class="col-md-7">
+
+
+                {#CLIENT#}
+                <div class="box box-success" style="margin-bottom: 15px">
+                    <div class="box-header with-border">
+                        <h4 class="box-title">
+                            <i class="fa fa-fw fa-user"></i> Cliente
+                        </h4>
+                        <div class="box-tools pull-right">
+                            <span
+                                class="badge bg-green x-hand add-client"
+                                data-toggle="modal"
+                                data-target="#modal-create-client">
+                                <i class="fa fa-plus"></i> Agregar
+                            </span>
+                        </div>
+                    </div>
+                    <div class="box-body table-responsive"> {#no-padding#}
+
+                        <table class="table table-condensed table-striped box-table-client">
+                            <thead>
+                                <tr>
+                                    <th style="width: 30px"></th>
+                                    <th style="width: 30px"></th>
+                                    <th class="text-left">Nombre</th>
+                                    <th class="text-center">miembro</th>
+                                    <th class="text-right"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="5">
+                                        Seleccione un cliente.
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+                {#CLIENT#}
+
+
+
+                {#EMPLOYEE#}
+                <div class="box box-success" style="margin-bottom: 15px">
+                    <div class="box-header with-border">
+                        <h4 class="box-title">
+                            <i class="fa fa-fw fa-user"></i> Empleado
+                        </h4>
+                        <div class="box-tools pull-right">
+                            <span
+                                class="badge bg-green x-hand add-employee"
+                                data-toggle="modal"
+                                data-target="#modal-create-employee">
+                                <i class="fa fa-plus"></i> Agregar
+                            </span>
+                        </div>
+                    </div>
+                    <div class="box-body table-responsive"> {#no-padding#}
+
+                        <table class="table table-condensed table-striped box-table-employee">
+                            <thead>
+                            <tr>
+                                <th style="width: 30px"></th>
+                                <th style="width: 30px"></th>
+                                <th class="text-left">Nombre</th>
+                                <th class="text-center">miembro</th>
+                                <th class="text-right"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td colspan="5">
+                                    Seleccione un empleado.
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+                {#EMPLOYEE#}
+
+
+
+                {#SERVICES#}
+                <div class="box box-success" style="margin-bottom: 15px">
+                    <div class="box-header with-border">
+                        <h4 class="box-title">
+                            <i class="fa fa-fw fa-file-text-o"></i> Servicios
+                        </h4>
+                        <div class="box-tools pull-right">
+                            <span
+                                class="badge bg-green x-hand add-service"
+                                data-toggle="modal"
+                                data-target="#modal-create-service">
+                                <i class="fa fa-plus"></i> Agregar
+                            </span>
+                        </div>
+                    </div>
+                    <div class="box-body table-responsive"> {#no-padding#}
+
+                        <table class="table table-condensed table-striped box-table-employee">
+                            <thead>
+                            <tr>
+                                <th style="width: 30px"></th>
+                                <th style="width: 30px"></th>
+                                <th class="text-left">Nombre</th>
+                                <th class="text-right"></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td colspan="4">
+                                    Seleccione un empleado.
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+                {#SERVICES#}
+
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+    {{ include('TicketBundle:BackendTicket/Modal/Client:create.html.twig') }}
+    {{ include('TicketBundle:BackendTicket/Modal/Employee:create.html.twig') }}
+    {{ include('TicketBundle:BackendTicket/Modal/Service:create.html.twig') }}
+
+{% endblock %}

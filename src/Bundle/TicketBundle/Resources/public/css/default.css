@@ -1,0 +1,55 @@
+input[type=radio]{
+    height: 17px;
+    width: 17px;
+}
+input[type=checkbox]{
+    height: 17px;
+    width: 17px;
+}
+
+
+/**
+    CLIENT
+ */
+.table-client tbody {
+    display: inline-block;
+    height: 300px;
+    overflow-y:scroll;
+}
+
+.table-client thead, .table-client tbody tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+}
+
+.table-client tbody tr td:nth-child(1),
+.table-client thead tr th:nth-child(1)
+{
+    width: 30px;
+}
+
+.table-client tbody tr td:nth-child(2),
+.table-client thead tr th:nth-child(2),
+.table-client tbody tr td:nth-child(3),
+.table-client thead tr th:nth-child(3)
+{
+    width: 60px;
+}
+
+.table-client tbody tr td:nth-child(5),
+.table-client thead tr th:nth-child(5)
+{
+    width: 120px;
+}
+
+.table-client thead {
+    width: calc( 100% - 12px )
+}
+/**
+    CLIENT
+ */
+
+
+
+

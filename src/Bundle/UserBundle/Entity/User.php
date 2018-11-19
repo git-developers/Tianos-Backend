@@ -39,7 +39,8 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
      *     "one-to-many-search-pointofsalehasuser",
      *     "order-in-left-select-item",
      *     "order-report",
-     *     "friends"
+     *     "friends",
+     *     "ticket"
      * })
      */
     protected $id;
@@ -106,7 +107,8 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
      * @JMSS\Groups({
      *     "login",
      *     "crud",
-     *     "one-to-many-right"
+     *     "one-to-many-right",
+     *     "ticket"
      * })
      *
      * @Assert\Email(
@@ -182,7 +184,8 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
      * @JMSS\Groups({
      *     "crud",
      *     "anonymous_user",
-     *     "friends"
+     *     "friends",
+     *     "ticket"
      * })
      * @JMSS\Type("DateTime<'Y-m-d H:i'>")
      *
@@ -289,7 +292,8 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
      *     "order-in-center",
      *     "order-in-left-select-item",
      *     "order-report",
-     *     "user-tags"
+     *     "user-tags",
+     *     "ticket"
      * })
      */
     private $nameBox;
@@ -907,7 +911,8 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
 	/**
 	 * @return \Bundle\PointofsaleBundle\Entity\Pointofsale
 	 */
-	public function getPointOfSaleActive(): \Bundle\PointofsaleBundle\Entity\Pointofsale
+//	public function getPointOfSaleActive(): \Bundle\PointofsaleBundle\Entity\Pointofsale
+	public function getPointOfSaleActive()
 	{
 		return $this->pointOfSaleActive;
 	}

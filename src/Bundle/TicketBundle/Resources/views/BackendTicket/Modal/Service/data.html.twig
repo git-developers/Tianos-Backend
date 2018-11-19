@@ -1,0 +1,70 @@
+{% spaceless %}
+
+    {% import "TreeBundle::Macro/tree_ticket.html.twig" as macro %}
+
+    {{ form_start(form, {name: 'form-create-employee'}) }}
+
+        <div style="display: block">
+            {{ form_widget(form.code, {'value' : '-1'}) }}
+        </div>
+
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+            </button>
+            <h4 class="modal-title">
+                <i class="fa fa-plus"></i> Agregar servicio
+            </h4>
+        </div>
+        <div class="modal-body">
+
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="{{ tree.main_div }} box-body">
+
+                        <ul id="{{ tree.main_ul }}">
+                            {% if objectsTree is not empty %}
+                                {{ macro.tree(
+                                    objectsTree,
+                                    tree,
+                                    -1,
+                                    'TreeBundle::Template/li_ticket.html.twig',
+                                    'backend_services_index'
+                                    ) }}
+                            {% else %}
+                                <p>No hay items que mostrar</p>
+                            {% endif %}
+                        </ul>
+
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <table class="table table-condensed">
+                        <thead>
+                            <tr>
+                                <th style="width: 30px">xxx</th>
+                                <th style="width: 30px">xxx</th>
+                                <th class="text-left">Nombre</th>
+                                <th class="text-right">xxx</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td colspan="4">
+                                    Seleccione un empleado.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Cerrar</button>
+            <button type="submit" class="btn btn-outline">Agregar</button>
+        </div>
+
+    {{ form_end(form) }}
+
+{% endspaceless %}
