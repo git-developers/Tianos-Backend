@@ -35,7 +35,7 @@
     {% javascripts
         '@TicketBundle/Resources/public/js/formClient.js'
         '@TicketBundle/Resources/public/js/formEmployee.js'
-        '@TicketBundle/Resources/public/js/formService.js'
+        '@TicketBundle/Resources/public/js/formServices.js'
     %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
@@ -56,10 +56,10 @@
                 route: '{{ path('backend_ticket_add_employee') }}'
             });
 
-            $('body.{{ vars.body_css }}').formService({
-                modalId: 'modal-create-service',
-                formName: 'form-create-service',
-                route: '{{ path('backend_ticket_add_service') }}'
+            $('body.{{ vars.body_css }}').formServices({
+                modalId: 'modal-create-services',
+                formName: 'form-create-services',
+                route: '{{ path('backend_ticket_add_services') }}'
             });
 
         });
@@ -101,6 +101,14 @@
                             <h4 class="box-title">
                                 <i class="fa fa-fw fa-file-o"></i> Comprobante
                             </h4>
+                            <div class="box-tools pull-right">
+                                <span
+                                    class="badge bg-light-blue x-hand add-services"
+                                    data-toggle="modal"
+                                    data-target="#modal-create-services">
+                                    <i class="fa fa-plus"></i> Agregar servicio
+                                </span>
+                            </div>
                         </div>
                         <div class="box-body">
 
@@ -246,48 +254,6 @@
                 {#EMPLOYEE#}
 
 
-
-                {#SERVICES#}
-                <div class="box box-success" style="margin-bottom: 15px">
-                    <div class="box-header with-border">
-                        <h4 class="box-title">
-                            <i class="fa fa-fw fa-file-text-o"></i> Servicios
-                        </h4>
-                        <div class="box-tools pull-right">
-                            <span
-                                class="badge bg-green x-hand add-service"
-                                data-toggle="modal"
-                                data-target="#modal-create-service">
-                                <i class="fa fa-plus"></i> Agregar
-                            </span>
-                        </div>
-                    </div>
-                    <div class="box-body table-responsive"> {#no-padding#}
-
-                        <table class="table table-condensed table-striped box-table-employee">
-                            <thead>
-                            <tr>
-                                <th style="width: 30px"></th>
-                                <th style="width: 30px"></th>
-                                <th class="text-left">Nombre</th>
-                                <th class="text-right"></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td colspan="4">
-                                    Seleccione un empleado.
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-
-                    </div>
-                </div>
-                {#SERVICES#}
-
-
-
             </div>
 
         </div>
@@ -296,6 +262,6 @@
 
     {{ include('TicketBundle:BackendTicket/Modal/Client:create.html.twig') }}
     {{ include('TicketBundle:BackendTicket/Modal/Employee:create.html.twig') }}
-    {{ include('TicketBundle:BackendTicket/Modal/Service:create.html.twig') }}
+    {{ include('TicketBundle:BackendTicket/Modal/Services:create.html.twig') }}
 
 {% endblock %}

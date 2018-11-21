@@ -48,7 +48,11 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setProfile($profilePdvAdmin);
         $manager->persist($entity);
         $this->addReference('user-2', $entity);
-
+	
+	
+	    /**
+	     * EMPLOYEE
+	     */
         $entity = new User();
         $entity->setDni('22334455');
         $entity->setPassword('1q2w3e4r');
@@ -69,6 +73,60 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $manager->persist($entity);
         $this->addReference('user-4', $entity);
 
+        $entity = new User();
+        $entity->setDni('6757234535');
+        $entity->setPassword('123');
+        $entity->setName('Marco');
+        $entity->setLastName('Polo');
+        $entity->setEmail('mpolo@' . $this->applicationUrl);
+        $entity->setProfile($profileEmployee);
+        $manager->persist($entity);
+        $this->addReference('user-41', $entity);
+
+        $entity = new User();
+        $entity->setDni('99887766');
+        $entity->setPassword('123');
+        $entity->setName('Theodore');
+        $entity->setLastName('Roosevelt');
+        $entity->setEmail('troosevelt@' . $this->applicationUrl);
+        $entity->setProfile($profileEmployee);
+        $manager->persist($entity);
+        $this->addReference('user-42', $entity);
+
+        $entity = new User();
+        $entity->setDni('99887766');
+        $entity->setPassword('123');
+        $entity->setName('Karl');
+        $entity->setLastName('Marx');
+        $entity->setEmail('kmarx@' . $this->applicationUrl);
+        $entity->setProfile($profileEmployee);
+        $manager->persist($entity);
+        $this->addReference('user-43', $entity);
+
+        $entity = new User();
+        $entity->setDni('99887766');
+        $entity->setPassword('123');
+        $entity->setName('Frederick');
+        $entity->setLastName('Douglass');
+        $entity->setEmail('fdouglass@' . $this->applicationUrl);
+        $entity->setProfile($profileEmployee);
+        $manager->persist($entity);
+        $this->addReference('user-44', $entity);
+
+        $entity = new User();
+        $entity->setDni('99887766');
+        $entity->setPassword('123');
+        $entity->setName('John');
+        $entity->setLastName('Lennon');
+        $entity->setEmail('jlennon@' . $this->applicationUrl);
+        $entity->setProfile($profileEmployee);
+        $manager->persist($entity);
+        $this->addReference('user-45', $entity);
+	
+	
+	    /**
+	     * CLIENT
+	     */
         $entity = new User();
         $entity->setDni('88889999');
         $entity->setPassword('123');

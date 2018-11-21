@@ -17,7 +17,10 @@ class Services
     /**
      * @var integer
      *
-     * @JMSS\Groups({"crud"})
+     * @JMSS\Groups({
+     *     "crud",
+     *     "ticket"
+     * })
      */
     private $id;
 
@@ -29,7 +32,10 @@ class Services
     /**
      * @var string
      *
-     * @JMSS\Groups({"crud"})
+     * @JMSS\Groups({
+     *     "crud",
+     *     "ticket"
+     * })
      */
     private $name;
 
@@ -41,7 +47,9 @@ class Services
     /**
      * @var \DateTime
      *
-     * @JMSS\Groups({"crud"})
+     * @JMSS\Groups({
+     *     "crud"
+     * })
      * @JMSS\Type("DateTime<'Y-m-d H:i'>")
      */
     private $createdAt;
@@ -72,6 +80,10 @@ class Services
      * @ORM\ManyToOne(targetEntity="Bundle\CategoryBundle\Entity\Category")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+     * })
+     *
+     * @JMSS\Groups({
+     *     "ticket"
      * })
      */
     private $category;

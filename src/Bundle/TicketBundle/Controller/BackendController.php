@@ -221,7 +221,7 @@ class BackendController extends GridController
 	 * @param Request $request
 	 * @return Response
 	 */
-	public function addServiceAction(Request $request): Response
+	public function addServicesAction(Request $request): Response
 	{
 		
 		if (!$this->isXmlHttpRequest()) {
@@ -248,16 +248,20 @@ class BackendController extends GridController
 		$form = $this->createForm($formType, $entity, ['form_data' => []]);
 		$form->handleRequest($request);
 		
-//		$employees = $this->get('tianos.repository.user')->findAllEmployee();
-//		$employees = $this->getSerializeDecode($employees, 'ticket');
-		
 		//REPOSITORY TREE
-		$objectsTree = $this->get('tianos.repository.category')->findAllParentsByType(Category::TYPE_SERVICE);
-		$objectsTree = $this->getTreeEntities($objectsTree, $configuration, 'tree');
+		$objectsTreeParent = $this->get('tianos.repository.category')->findAllParentsByType(Category::TYPE_SERVICE);
+		$objectsTree = $this->getTreeEntities($objectsTreeParent, $configuration, 'tree');
+		
+		$entity = [];
+		$services = $this->getServices($objectsTreeParent, $configuration, 'ticket', $entity);
 		
 		if ($form->isSubmitted()) {
 			
-			$employees = $request->get('employee');
+			$services = $request->get('services');
+			
+			echo "POLLO:: <pre>";
+			print_r($services);
+			exit;
 			
 			$idEmployees = [];
 			foreach ($employees as $key => $employee) {
@@ -286,6 +290,7 @@ class BackendController extends GridController
 			[
 				'tree' => $tree,
 				'action' => $action,
+				'services' => $services,
 				'objectsTree' => $objectsTree,
 				'form' => $form->createView(),
 			]
@@ -299,12 +304,33 @@ class BackendController extends GridController
 		}
 		
 		$entity = [];
-		foreach ($parents as $key => $parent){
+		foreach ($parents as $key => $parent) {
 			$entity[$key]['parent'] = $this->getSerializeDecode($parent, $serializeGroupName);
 			$children = $this->get('tianos.repository.category')->findAllByParent($parent);
 			$entity[$key]['children'] = $this->getTreeEntities($children, $configuration, $serializeGroupName);
 		}
 		
+		return $entity;
+	}
+	
+	private function getServices($parents, $configuration, $serializeGroupName, &$entity)
+	{
+		if(is_null($parents)){
+			$parents = [];
+		}
+		
+		foreach ($parents as $key => $parent) {
+			
+			$services = $this->get('tianos.repository.services')->findAllByCategory($parent);
+			$result_1 = $this->getSerializeDecode($services, $serializeGroupName);
+			
+			$children = $this->get('tianos.repository.category')->findAllByParent($parent);
+			$result_2 = $this->getServices($children, $configuration, $serializeGroupName, $entity);
+			
+			$entity = array_merge($result_1, $result_2);
+		
+		}
+
 		return $entity;
 	}
 }

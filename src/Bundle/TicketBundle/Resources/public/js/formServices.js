@@ -4,7 +4,7 @@
     // Global Variables
     var MAX_HEIGHT = 100;
 
-    $.formService = function(el, options) {
+    $.formServices = function(el, options) {
 
         // Global Private Variables
         var MAX_WIDTH = 200;
@@ -21,7 +21,7 @@
 
         base.$el = $(el);
         base.el = el;
-        base.$el.data('formService', base);
+        base.$el.data('formServices', base);
 
         base.init = function(){
             var totalButtons = 0;
@@ -84,23 +84,12 @@
             return false;
         };
 
-        base.searchService = function(context) {
+        base.selectCategoryTicket = function(context) {
 
-            var index = 0;
-            var filter = $(context).val().toUpperCase();
+            var idCategory = $(context).data('category');
 
-            $('table.table-service tbody tr').each(function (i, row) {
-
-                $(row).hide();
-                var td = $(row).find('td:eq(3)').html().trim().toUpperCase();
-
-                if (td != '' && (td.indexOf(filter) > -1)) {
-                    $(row).show();
-                    index++;
-                }
-            });
-
-            $('span.total-service').html(index);
+            $('table.service > tbody > .tr-service').hide();
+            $('table.service > tbody > .tr-service-' + idCategory).show();
         };
 
         // Private Functions
@@ -111,27 +100,29 @@
         base.init();
     };
 
-    // $.formService.defaultOptions = {
+    // $.formServices.defaultOptions = {
     //     buttonStyle: "border: 1px solid #fff; background-color:#000; color:#fff; padding:20px 50px",
     //     buttonPress: function () {}
     // };
 
-    $.fn.formService = function(options){
+    $.fn.formServices = function(options){
 
         return this.each(function(){
 
-            var bp = new $.formService(this, options);
+            var bp = new $.formServices(this, options);
 
-            $(document).on('click', 'span.add-service', function(event) {
+            $(document).on('click', 'span.add-services', function(event) {
                 bp.openModal(event, this);
             });
 
-            $(document).on('click', 'button.btn-remove-service', function() {
+            $(document).on('click', 'button.btn-remove-services', function(event) {
                 bp.removeService(this);
             });
 
-            $(document).on('keyup', 'input:text.search-service', function() {
-                bp.searchService(this);
+            $(document).on('click', 'li.category-ticket', function(event) {
+                event.stopPropagation();
+
+                bp.selectCategoryTicket(this);
             });
 
             $(document).on('submit', "form[name='" + options.formName + "']" , function(event) {

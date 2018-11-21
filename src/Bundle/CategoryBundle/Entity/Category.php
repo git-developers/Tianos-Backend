@@ -41,7 +41,13 @@ class Category
     /**
      * @var integer
      *
-     * @JMSS\Groups({"crud", "tree", "tree-one-to-many-left", "api"})
+     * @JMSS\Groups({
+     *     "crud",
+     *     "tree",
+     *     "tree-one-to-many-left",
+     *     "api",
+     *     "ticket"
+     * })
      */
     private $id;
 

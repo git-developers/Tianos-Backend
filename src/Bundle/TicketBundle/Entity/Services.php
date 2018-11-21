@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace Bundle\TicketBundle\Entity;
 
 /**
- * Service.
+ * Services.
  */
-class Service
+class Services
 {
 
     /**
@@ -20,7 +20,7 @@ class Service
      *
      * @param int $code
      *
-     * @return Service
+     * @return Services
      */
     public function setCode($code)
     {

@@ -2,9 +2,9 @@
 
     {% import "TreeBundle::Macro/tree_ticket.html.twig" as macro %}
 
-    {{ form_start(form, {name: 'form-create-employee'}) }}
+    {{ form_start(form, {name: 'form-create-services'}) }}
 
-        <div style="display: block">
+        <div style="display: none">
             {{ form_widget(form.code, {'value' : '-1'}) }}
         </div>
 
@@ -20,6 +20,11 @@
 
             <div class="row">
                 <div class="col-md-5">
+
+                    <h4 class="box-title">
+                        <i class="fa fa-fw fa-sitemap"></i> Categorías
+                    </h4>
+
                     <div class="{{ tree.main_div }} box-body">
 
                         <ul id="{{ tree.main_ul }}">
@@ -39,21 +44,41 @@
                     </div>
                 </div>
                 <div class="col-md-7">
-                    <table class="table table-condensed">
+
+                    <h4 class="box-title">
+                        <i class="fa fa-fw fa-file-text-o"></i> Servicios
+                    </h4>
+
+
+                    <table class="table table-bordered service">
                         <thead>
                             <tr>
-                                <th style="width: 30px">xxx</th>
-                                <th style="width: 30px">xxx</th>
+                                <th style="width: 20px"></th>
+                                <th class="text-center">#</th>
                                 <th class="text-left">Nombre</th>
-                                <th class="text-right">xxx</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td colspan="4">
-                                    Seleccione un empleado.
+                            <tr class="tr-service">
+                                <td colspan="3">
+                                    Seleccione una categoría.
                                 </td>
                             </tr>
+                            {% for service in services %}
+                                <tr class="tr-service tr-service-{{ service.category.id }}" style="display: none">
+                                    <td>
+                                        <input type="checkbox"
+                                               name="services[code][]"
+                                               value="{{ service.id }}">
+                                    </td>
+                                    <td class="text-center">
+                                        {{ service.id }}
+                                    </td>
+                                    <td class="text-left">
+                                        {{ service.name }}
+                                    </td>
+                                </tr>
+                            {% endfor %}
                         </tbody>
                     </table>
                 </div>

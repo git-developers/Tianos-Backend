@@ -9,10 +9,10 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\RadioType;
 use Doctrine\ORM\EntityManager;
-use Bundle\TicketBundle\Entity\Service;
+use Bundle\TicketBundle\Entity\Services;
 
 
-class ServiceType extends AbstractType
+class ServicesType extends AbstractType
 {
 
     /**
@@ -41,7 +41,7 @@ class ServiceType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Service::class,
+            'data_class' => Services::class,
         ]);
 
         $resolver->setRequired(['form_data']);

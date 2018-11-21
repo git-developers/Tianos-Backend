@@ -10,8 +10,8 @@
 
         {% if entityParent is not empty %}
             <li
-                class="x-hand"
-                data-id="{{ entityParent.id }}"
+                class="x-hand category-ticket"
+                data-category="{{ entityParent.id }}"
                 id="li-{{ entityParent.id }}">
 
                 {{ include(template, {
@@ -21,7 +21,7 @@
                     })
                 }}
 
-                <ul class="{{ tree.child_ul ~ entityParent.id }}">
+                <ul class="{{ tree.child_ul ~ '-' ~ entityParent.id }}">
                     {% import _self as macro %}
                     {{ macro.tree(value.children, tree, index, template, routePath) }}
                 </ul>

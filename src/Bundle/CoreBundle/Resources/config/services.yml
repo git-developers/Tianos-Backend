@@ -46,6 +46,10 @@ services:
         arguments: [ '%application_url%' ]
         tags: [doctrine.fixture.orm]
 
+    Bundle\CoreBundle\DataFixtures\ORM\Load_16_ServicesData:
+        arguments: [ '%application_url%' ]
+        tags: [doctrine.fixture.orm]
+
     tianos.core.controller.default:
         class: Bundle\CoreBundle\Controller\DefaultController
         tags:

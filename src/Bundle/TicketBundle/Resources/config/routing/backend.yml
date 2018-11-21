@@ -112,14 +112,14 @@ backend_ticket_add_employee:
                 vars:
                     serialize_group_name: crud
 
-backend_ticket_add_service:
-    path: /add-service
+backend_ticket_add_services:
+    path: /add-services
     methods: [PUT, POST]
     defaults:
-        _controller: tianos.backend.controller.ticket:addServiceAction
+        _controller: tianos.backend.controller.ticket:addServicesAction
         _tianos:
             action: create
-            template: TicketBundle:BackendTicket/Modal/Service:data.html.twig
+            template: TicketBundle:BackendTicket/Modal/Services:data.html.twig
             vars:
                 body_css: grid-body-css
                 serialize_group_name: crud
@@ -134,9 +134,9 @@ backend_ticket_add_service:
 #                route:
 #                    info: backend_category_tree_info
 #                    view: backend_category_tree_view
-            entity: Bundle\TicketBundle\Entity\Service
+            entity: Bundle\TicketBundle\Entity\Services
             form:
-                type: Bundle\TicketBundle\Form\Type\ServiceType
+                type: Bundle\TicketBundle\Form\Type\ServicesType
             repository:
                 vars:
                     serialize_group_name: crud
