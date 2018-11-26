@@ -1,6 +1,6 @@
 {% extends "ThemesBundle:Adminlte/TemplatePdv:1_template.html.twig" %}
 
-{#{% import "TreeBundle::Macro/tree_inventory.html.twig" as macro %}#}
+{% import "TreeBundle::Macro/tree_ticket.html.twig" as macro %}
 
 {% block bodyclass %}{% spaceless %}
     {{ vars.body_css }}
@@ -36,6 +36,7 @@
         '@TicketBundle/Resources/public/js/formClient.js'
         '@TicketBundle/Resources/public/js/formEmployee.js'
         '@TicketBundle/Resources/public/js/formServices.js'
+        '@TicketBundle/Resources/public/js/formTicket.js'
     %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
@@ -58,8 +59,14 @@
 
             $('body.{{ vars.body_css }}').formServices({
                 modalId: 'modal-create-services',
-                formName: 'form-create-services',
-                route: '{{ path('backend_ticket_add_services') }}'
+                routeIncrement: '{{ path('backend_ticket_increment_services') }}',
+                routeDecrement: '{{ path('backend_ticket_decrement_services') }}',
+                routeRemoveAll: '{{ path('backend_ticket_remove_all_services') }}'
+            });
+
+            $('body.{{ vars.body_css }}').formTicket({
+                formName: 'form-ticket',
+                route: '{{ path('backend_ticket_create') }}'
             });
 
         });
@@ -73,7 +80,7 @@
     <section class="content-header">
         <h1>
             <i class="fa fa-fw fa-ticket"></i> Crear Ticket
-            <small>grid</small>
+            <small>service</small>
         </h1>
         <ol class="breadcrumb">
             <li>
@@ -91,11 +98,103 @@
 
         <div class="row">
 
-            <div class="col-md-5" style="padding-right: 0px">
+            <div class="col-md-7" style="padding-right: 0px">
+
+                <div class="box box-success" style="margin-bottom: 15px">
+
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="box-header with-border">
+                                <h4 class="box-title">
+                                    <i class="fa fa-fw fa-sitemap"></i> Categorías
+                                </h4>
+                            </div>
+                        </div>
+                        <div class="col-md-7">
+                            <div class="box-header with-border">
+                                <h4 class="box-title">
+                                    <i class="fa fa-fw fa-file-text-o"></i> Servicios
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="box-body"> {#no-padding#}
+
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="{{ tree.main_div }} box-body">
+                                    <ul id="{{ tree.main_ul }}">
+                                        {% if objectsTree is not empty %}
+                                            {{ macro.tree(
+                                                objectsTree,
+                                                tree,
+                                                -1,
+                                                'TreeBundle::Template/li_ticket.html.twig',
+                                                'backend_services_index'
+                                            ) }}
+                                        {% else %}
+                                            <p>No hay items que mostrar</p>
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+
+                                <table class="table table-bordered service table-services table-scroll">
+                                    <thead>
+                                    <tr>
+                                        <th class="text-center">#</th>
+                                        <th class="text-center">nombre</th>
+                                        <th class="text-center">
+                                            <i class="fa fa-fw fa-money"></i> precio
+                                        </th>
+                                        <th class="text-center">accion</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr class="tr-service">
+                                        <td colspan="3">
+                                            Seleccione una categoría.
+                                        </td>
+                                    </tr>
+                                    {% for service in servicesObjs %}
+                                        <tr class="tr-service tr-service-{{ service.category.id }}" style="display: none">
+                                            <td class="text-center">
+                                                {{ service.id }}
+                                            </td>
+                                            <td class="text-center">
+                                                {{ service.name }}
+                                            </td>
+                                            <td class="text-center">
+                                                {{ service.price }}
+                                            </td>
+                                            <td>
+                                                <button
+                                                    type="button"
+                                                    class="btn btn-success btn-xs increment-services"
+                                                    data-id-service="{{ service.id }}">
+                                                    <i class="fa fa-fw fa-plus-circle"></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-5">
 
                 <div class="box box-primary">
 
-                    <form>
+                    {# COMPROBANTE #}
+                    <form name="form-ticket">
 
                         <div class="box-header with-border">
                             <h4 class="box-title">
@@ -103,58 +202,19 @@
                             </h4>
                             <div class="box-tools pull-right">
                                 <span
-                                    class="badge bg-light-blue x-hand add-services"
-                                    data-toggle="modal"
-                                    data-target="#modal-create-services">
-                                    <i class="fa fa-plus"></i> Agregar servicio
+                                    class="badge bg-red x-hand remove-all-services"
+                                    data-toggle="tooltip"
+                                    data-original-title="Eliminar todo">
+                                    <i class="fa fa-minus-circle"></i> Eliminar
                                 </span>
                             </div>
                         </div>
-                        <div class="box-body">
+                        <div class="box-body box-table-services">
+                            <p>
+                                <i class="fa fa-fw fa-info-circle"></i> Agregue servicios.
+                            </p>
 
-                            <table class="table table-bordered table-striped">
-                                <thead>
-                                    <tr>
-                                        <th style="width: 10px">Unid.</th>
-                                        <th class="text-center">Descripci&oacute;n</th>
-                                        <th class="text-center">Precio unit.</th>
-                                        <th class="text-center">Sub total</th>
-                                    </tr>
-                                </thead>
-
-                                <tbody>
-                                    <tr>
-                                        <td class="text-center">1</td>
-                                        <td>software</td>
-                                        <td class="text-right">
-                                            55
-                                        </td>
-                                        <td class="text-right">
-                                            77
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-center">1</td>
-                                        <td>software</td>
-                                        <td class="text-right">
-                                            55
-                                        </td>
-                                        <td class="text-right">
-                                            77
-                                        </td>
-                                    </tr>
-                                </tbody>
-
-                                <tfoot>
-                                    <tr class="bg-gray">
-                                        <td colspan="3" class="text-right" style="padding: 3px 3px;">Total S/</td>
-                                        <td colspan="1" class="text-right" style="padding: 3px 3px;">
-                                            <span class="badge bg-gray-active">55</span>
-                                        </td>
-                                    </tr>
-                                </tfoot>
-                            </table>
-
+                            {{ include('TicketBundle:BackendTicket/Grid/Box:table_service.html.twig') }}
                         </div>
 
                         <div class="box-footer text-center">
@@ -164,24 +224,22 @@
                         </div>
 
                     </form>
+                    {# COMPROBANTE #}
 
                 </div>
-            </div>
-
-            <div class="col-md-7">
 
 
                 {#CLIENT#}
-                <div class="box box-success" style="margin-bottom: 15px">
+                <div class="box box-primary" style="margin-bottom: 15px">
                     <div class="box-header with-border">
                         <h4 class="box-title">
                             <i class="fa fa-fw fa-user"></i> Cliente
                         </h4>
                         <div class="box-tools pull-right">
                             <span
-                                class="badge bg-green x-hand add-client"
-                                data-toggle="modal"
-                                data-target="#modal-create-client">
+                                    class="badge bg-green x-hand add-client"
+                                    data-toggle="modal"
+                                    data-target="#modal-create-client">
                                 <i class="fa fa-plus"></i> Agregar
                             </span>
                         </div>
@@ -190,20 +248,20 @@
 
                         <table class="table table-condensed table-striped box-table-client">
                             <thead>
-                                <tr>
-                                    <th style="width: 30px"></th>
-                                    <th style="width: 30px"></th>
-                                    <th class="text-left">Nombre</th>
-                                    <th class="text-center">miembro</th>
-                                    <th class="text-right"></th>
-                                </tr>
+                            <tr>
+                                <th style="width: 30px"></th>
+                                <th style="width: 30px"></th>
+                                <th class="text-left">Nombre</th>
+                                <th class="text-center">miembro</th>
+                                <th class="text-right"></th>
+                            </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td colspan="5">
-                                        Seleccione un cliente.
-                                    </td>
-                                </tr>
+                            <tr>
+                                <td colspan="5">
+                                    Seleccione un cliente.
+                                </td>
+                            </tr>
                             </tbody>
                         </table>
 
@@ -212,18 +270,17 @@
                 {#CLIENT#}
 
 
-
                 {#EMPLOYEE#}
-                <div class="box box-success" style="margin-bottom: 15px">
+                <div class="box box-primary" style="margin-bottom: 15px">
                     <div class="box-header with-border">
                         <h4 class="box-title">
                             <i class="fa fa-fw fa-user"></i> Empleado
                         </h4>
                         <div class="box-tools pull-right">
                             <span
-                                class="badge bg-green x-hand add-employee"
-                                data-toggle="modal"
-                                data-target="#modal-create-employee">
+                                    class="badge bg-green x-hand add-employee"
+                                    data-toggle="modal"
+                                    data-target="#modal-create-employee">
                                 <i class="fa fa-plus"></i> Agregar
                             </span>
                         </div>
@@ -262,6 +319,5 @@
 
     {{ include('TicketBundle:BackendTicket/Modal/Client:create.html.twig') }}
     {{ include('TicketBundle:BackendTicket/Modal/Employee:create.html.twig') }}
-    {{ include('TicketBundle:BackendTicket/Modal/Services:create.html.twig') }}
 
 {% endblock %}

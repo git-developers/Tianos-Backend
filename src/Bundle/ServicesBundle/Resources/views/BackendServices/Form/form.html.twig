@@ -13,18 +13,25 @@
     </div>
 
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
             <div class="form-group">
                 <i class="fa fa-fw fa-qrcode"></i>
                 {{ form_label(form.code) }}
                 {{ form_widget(form.code) }}
             </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
             <div class="form-group">
                 <i class="fa fa-fw fa-align-left"></i>
                 {{ form_label(form.name) }}
                 {{ form_widget(form.name) }}
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <i class="fa fa-fw fa-money"></i>
+                {{ form_label(form.price) }}
+                {{ form_widget(form.price) }}
             </div>
         </div>
     </div>

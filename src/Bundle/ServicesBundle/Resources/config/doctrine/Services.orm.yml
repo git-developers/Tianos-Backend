@@ -26,6 +26,13 @@ Bundle\ServicesBundle\Entity\Services:
             length: 45
             options:
                 fixed: false
+        price:
+            type: float
+            nullable: true
+            precision: 8
+            scale: 2
+            options:
+                fixed: false
         name:
             type: string
             nullable: false

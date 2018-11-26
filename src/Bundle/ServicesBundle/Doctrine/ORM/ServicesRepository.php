@@ -53,6 +53,27 @@ class ServicesRepository extends TianosEntityRepository implements ServicesRepos
     /**
      * {@inheritdoc}
      */
+    public function findAllByIds(array $ids): array
+    {
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT services
+            FROM ServicesBundle:Services services
+            WHERE
+            services.isActive = :active AND
+            services.id IN (:ids)
+            ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+	    $query->setParameter('ids', $ids);
+
+        return $query->getResult();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function findAllByCategory($categoryId): array
     {
         $em = $this->getEntityManager();

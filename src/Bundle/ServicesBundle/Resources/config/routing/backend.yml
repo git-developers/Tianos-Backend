@@ -60,6 +60,10 @@ backend_services_index:
                           obj: " '<span class=\"badge bg-blue\">' + obj.id + '</span>' "
                         - name: Name
                           obj: obj.name
+                        - name: Precio
+                          obj: obj.price
+                          options:
+                              icon: money
                         - name: Creado
                           obj: obj.created_at
                           options:

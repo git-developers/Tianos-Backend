@@ -9,6 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Doctrine\ORM\EntityManager;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Doctrine\ORM\EntityRepository;
@@ -82,6 +83,16 @@ class ServicesType extends AbstractType
                 'attr' => [
                     'class' => 'form-control',
                     'placeholder' => 'code',
+                ],
+            ])
+            ->add('price', MoneyType::class, [
+                'label' => 'precio',
+                'label_attr' => [
+                    'class' => ''
+                ],
+                'attr' => [
+                    'class' => 'form-control',
+                    'placeholder' => '00.00',
                 ],
             ])
             ->add('name', TextType::class, [

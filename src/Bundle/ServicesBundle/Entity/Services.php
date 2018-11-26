@@ -30,6 +30,16 @@ class Services
     private $code;
 
     /**
+     * @var float
+     *
+     * @JMSS\Groups({
+     *     "crud",
+     *     "ticket"
+     * })
+     */
+    private $price;
+
+    /**
      * @var string
      *
      * @JMSS\Groups({
@@ -87,7 +97,16 @@ class Services
      * })
      */
     private $category;
-
+	
+	/**
+	 * @var integer
+	 *
+	 * @JMSS\Groups({
+	 *     "ticket"
+	 * })
+	 */
+	private $quantity;
+	
     /**
      * Get id
      *
@@ -121,7 +140,23 @@ class Services
     {
         return $this->code;
     }
-
+	
+	/**
+	 * @return float
+	 */
+	public function getPrice(): float
+	{
+		return $this->price;
+	}
+	
+	/**
+	 * @param float $price
+	 */
+	public function setPrice(float $price)
+	{
+		$this->price = $price;
+	}
+    
     /**
      * Set name
      *
@@ -313,5 +348,23 @@ class Services
     {
         return $this->category;
     }
+	
+	/**
+	 * @return int
+	 */
+	public function getQuantity(): int
+	{
+		return $this->quantity;
+	}
+	
+	/**
+	 * @param int $quantity
+	 */
+	public function setQuantity(int $quantity)
+	{
+		$this->quantity = $quantity;
+	}
+ 
+ 
 }
 
