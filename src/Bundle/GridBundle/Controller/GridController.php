@@ -124,6 +124,16 @@ class GridController extends BaseController
         $vars = $configuration->getVars();
         $entity = $configuration->getEntity();
         $entity = new $entity();
+	
+	
+//	    return $this->render(
+//		    $template,
+//		    [
+//			    'action' => $action,
+//		    ]
+//	    );
+        
+        
 
         $form = $this->createForm($formType, $entity, ['form_data' => []]);
         $form->handleRequest($request);
@@ -197,6 +207,16 @@ class GridController extends BaseController
         $action = $configuration->getAction();
         $formType = $configuration->getFormType();
         $vars = $configuration->getVars();
+	
+
+//	    return $this->render(
+//		    $template,
+//		    [
+//			    'action' => $action,
+//		    ]
+//	    );
+        
+        
 
         //REPOSITORY
         $id = $request->get('id');

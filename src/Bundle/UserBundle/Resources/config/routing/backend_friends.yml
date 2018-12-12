@@ -22,7 +22,7 @@ backend_friends_user_index:
                     route:
                         info: backend_friends_user_info
                         view: backend_friends_user_view
-                        view_profile: frontend_user_profile
+                        view_profile: backend_user_profile
 #                        create: backend_friends_user_create
 #                        delete: backend_friends_user_delete
                     table_button:

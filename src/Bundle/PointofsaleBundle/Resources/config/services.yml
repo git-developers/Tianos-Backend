@@ -34,6 +34,12 @@ services:
         tags:
             - { name: tianos.backend.controller.pointofsale.pdv.child, alias: tianos.backend.controller.pointofsale.pdv.child }
 
+    tianos.backend.controller.pointofsale.add.user:
+        class: Bundle\PointofsaleBundle\Controller\BackendAddUserController
+        arguments: [ Bundle\ResourceBundle\Factory\RequestConfigurationFactoryInterface ]
+        tags:
+            - { name: tianos.backend.controller.pointofsale.pdv.child, alias: tianos.backend.controller.pointofsale.pdv.child }
+
     tianos.frontend.controller.pointofsale:
         class: Bundle\PointofsaleBundle\Controller\FrontendController
         arguments: [ Bundle\ResourceBundle\Factory\RequestConfigurationFactoryInterface ]

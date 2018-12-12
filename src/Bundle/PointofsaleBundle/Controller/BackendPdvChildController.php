@@ -80,12 +80,12 @@ class BackendPdvChildController extends GridController
             ->resetGridVariable()
         ;
 
-        $entity = $this->get('tianos.repository.pointofsale')->find($request->get('id'));
+        $pdv = $this->get('tianos.repository.pointofsale')->find($request->get('id'));
 
         return $this->render(
             $template,
             [
-                'entity' => $entity,
+                'pdv' => $pdv,
                 'vars' => $vars,
                 'grid' => $grid,
                 'modal' => $modal,

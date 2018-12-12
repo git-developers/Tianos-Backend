@@ -16,23 +16,6 @@
 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
-    {#<style>#}
-        {##project-label {#}
-            {#display: block;#}
-            {#font-weight: bold;#}
-            {#margin-bottom: 1em;#}
-        {#}#}
-        {##project-icon {#}
-            {#float: left;#}
-            {#height: 32px;#}
-            {#width: 32px;#}
-        {#}#}
-        {##project-description {#}
-            {#margin: 0;#}
-            {#padding: 0;#}
-        {#}#}
-    {#</style>#}
-
 {% endblock %}
 
 {% block javascripts %}
@@ -154,44 +137,10 @@
         <div class="row">
 
             <div class="col-md-3">
-                <div class="box box-{{ vars.box_class }} box-solid">
-                    <div class="box-header with-border">
-                        <h3 class="box-title">Informaci&oacute;n de PDV</h3>
-
-                        <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                                <i class="fa fa-minus"></i>
-                            </button>
-                        </div>
-                    </div>
-                    <div class="box-body">
-
-                        <ul class="nav nav-pills nav-stacked">
-                            <li class="">
-                                <a href="#">
-                                    <strong>ID:</strong>
-                                    <span class="badge bg-blue">{{ entity.id }}</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <strong>Nombre:</strong> {{ entity.name }}
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <strong>Creado:</strong> {{ entity.createdAt|date("Y-m-d H:i") }}
-                                </a>
-                            </li>
-                        </ul>
-
-                    </div>
-                </div>
+                {{ include('PointofsaleBundle:BackendPointofsale:sidebar-left.html.twig') }}
             </div>
 
-
             <div class="col-md-9">
-
 
                 <div class="box box-{{ vars.box_class }}">
 

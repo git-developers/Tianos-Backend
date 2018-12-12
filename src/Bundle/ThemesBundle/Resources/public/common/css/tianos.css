@@ -153,9 +153,13 @@ ul.dropdown-menu {
 
 div.tianos-alert-success .alert,
 div.tianos-alert-warning .alert,
-div.tianos-alert-error .alert {
+div.tianos-alert-error .alert,
+div.tianos-alert-success-2 .alert,
+div.tianos-alert-warning-2 .alert,
+div.tianos-alert-error-2 .alert
+{
     position: absolute;
-    top: 1px;
+    top: 0px;
     left: 20%;
     z-index: 100;
     width: 60%

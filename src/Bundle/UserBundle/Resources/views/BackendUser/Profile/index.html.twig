@@ -1,4 +1,14 @@
-{% extends "ThemesBundle:Adminlte:1_template.html.twig" %}
+{% set extends_path = '' %}
+
+{% if is_granted('ROLE_SUPER_ADMIN') %}
+    {% set extends_path = 'ThemesBundle:Adminlte/TemplateSuper:1_template.html.twig' %}
+{% elseif is_granted('ROLE_PDV_ADMIN') %}
+    {% set extends_path = 'ThemesBundle:Adminlte/TemplatePdv:1_template.html.twig' %}
+{% elseif is_granted('ROLE_EMPLOYEE') %}
+    {% set extends_path = 'ThemesBundle:Adminlte/TemplatePdv:1_template.html.twig' %}
+{% endif %}
+
+{% extends extends_path %}
 
 
 {#IMAGEN AVATAR#}
@@ -52,7 +62,7 @@
 {% block content %}
 
     <section class="content-header">
-        <h1>{{ entity.name }} {{ entity.lastName }}</h1>
+        <h1>{{ entity.name ~ ' ' ~ entity.lastName }}</h1>
         <ol class="breadcrumb">
             <li>
                 <a href="{{ path('frontend_default_index') }}">
@@ -68,16 +78,16 @@
         <div class="row">
 
             <div class="col-md-3">
-                {{ include("UserBundle:FrontendUser:Profile/Box/left.html.twig") }}
+                {{ include("UserBundle:BackendUser:Profile/Box/left.html.twig") }}
             </div>
 
             <div class="col-md-9">
-                {{ include("UserBundle:FrontendUser:Profile/Box/right.html.twig") }}
+                {{ include("UserBundle:BackendUser:Profile/Box/right.html.twig") }}
             </div>
 
         </div>
     </section>
 
-    {{ include("UserBundle:FrontendUser:Profile/Modal/modal_avatar.html.twig") }}
+    {{ include("UserBundle:BackendUser:Profile/Modal/modal_avatar.html.twig") }}
 
 {% endblock %}

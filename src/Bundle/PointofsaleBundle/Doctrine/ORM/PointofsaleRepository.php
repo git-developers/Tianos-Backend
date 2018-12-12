@@ -337,4 +337,5 @@ class PointofsaleRepository extends TianosEntityRepository
 
         return $query->getResult();
     }
+
 }

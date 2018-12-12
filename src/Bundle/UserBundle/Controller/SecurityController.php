@@ -84,12 +84,6 @@ class SecurityController extends BaseController
     public function loginFacebookCallbackAction(Request $request): Response
     {
 
-        echo "POLLO:: <pre>";
-        print_r(3333);
-        exit;
-
-
-
 //        if (!$this->get('security.authorization_checker')->isGranted('ROLE_EDIT_USER')) {
 //            return $this->redirectToRoute('frontend_default_access_denied');
 //        }

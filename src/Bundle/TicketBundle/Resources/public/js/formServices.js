@@ -30,7 +30,7 @@
 
         base.incrementServices = function(context) {
 
-            var div = $('div.box-table-services');
+            var div = $('div.box-table-services div.services');
             var idService = $(context).data('id-service');
 
             $.ajax({
@@ -55,7 +55,7 @@
 
         base.decrementServices = function(context) {
 
-            var div = $('div.box-table-services');
+            var div = $('div.box-table-services div.services');
             var idService = $(context).data('id-service');
 
             $.ajax({
@@ -84,7 +84,7 @@
                 return false;
             }
 
-            var div = $('div.box-table-services');
+            var div = $('div.box-table-services div.services');
 
             $.ajax({
                 url: options.routeRemoveAll,

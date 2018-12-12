@@ -117,9 +117,9 @@ class Builder implements ContainerAwareInterface
             ->setAttribute('class', 'treeview')
             ->setAttribute('class', $this->activeRoute([
                 'backend_pointofsale_index',
-                'backend_pointofsale_add_user',
                 'backend_pointofsale_module',
-                'backend_pointofsale_pdv_child_index',
+	            'backend_super_pointofsale_add_user_index',
+	            'backend_super_pointofsale_pdv_child_index',
             ]))
             ->setAttribute('icon', 'fa-fw fa-map-marker')
             ->setDisplay($isGranted)
@@ -129,41 +129,7 @@ class Builder implements ContainerAwareInterface
          */
 
 
-
-
-
-
-        /**
-         * CALENDAR
-         */
-        $isGranted = $this->isGranted([
-            Role::ROLE_PDV_ADMIN,
-        ]);
-
-        $menu->addChild('Agenda', [
-            'route' => 'backend_calendar_index',
-            'extras' => ['safe_label' => true],
-            'childrenAttributes' => [
-                'class' => 'treeview-menu',
-            ],
-        ])
-        ->setAttribute('allow_angle', true)
-        ->setAttribute('class', 'treeview')
-        ->setAttribute('class', $this->activeRoute([
-            'backend_calendar_index',
-        ]))
-        ->setAttribute('icon', 'fa-fw fa-calendar')
-        ->setDisplay($isGranted)
-        ;
-        /**
-         * CALENDAR
-         */
-
-
-
-
-
-
+        
 
         /**
          * ACCOUNTS - ADMIN
@@ -186,20 +152,20 @@ class Builder implements ContainerAwareInterface
         ])
         ->setAttribute('class', 'treeview')
         ->setAttribute('class', $this->activeRoute([
-            'backend_user_index',
-            'frontend_user_profile',
-            'backend_user_client_index',
-            'backend_user_employee_index',
+	        'backend_user_profile',
+	        'backend_super_user_index',
+	        'backend_user_client_index',
+	        'backend_user_employee_index',
         ]))
         ->setAttribute('icon', 'fa-fw fa-user')
         ->setDisplay(true)
         ;
 
         $menu['Usuarios']->addChild('Gestionar', [
-            'route' => 'backend_user_index'
+            'route' => 'backend_super_user_index'
         ])
             ->setAttribute('icon', self::CIRCLE_1)
-            ->setAttribute('class', $this->activeRoute('backend_user_index'))
+            ->setAttribute('class', $this->activeRoute('backend_super_user_index'))
             ->setDisplay($isGrantedSuperAdmin)
         ;
 
@@ -419,32 +385,40 @@ class Builder implements ContainerAwareInterface
             ->setAttribute('class', $this->activeRoute([
                 'backend_ticket_index',
                 'backend_ticket_create',
+                'backend_calendar_index',
             ]))
             ->setAttribute('icon', 'fa-fw fa-ticket')
             ->setDisplay($isGranted)
         ;
+        
+	    $menu['Ticket']->addChild('Crear ticket', [
+		    'route' => 'backend_ticket_create'
+	    ])
+		    ->setAttribute('icon', self::CIRCLE_1)
+		    ->setAttribute('class', $this->activeRoute('backend_ticket_create'))
+		    ->setDisplay($isGranted)
+	    ;
 
         $menu['Ticket']->addChild('Gestionar', [
             'route' => 'backend_ticket_index'
         ])
-            ->setAttribute('icon', self::CIRCLE_1)
+            ->setAttribute('icon', self::CIRCLE_2)
             ->setAttribute('class', $this->activeRoute('backend_ticket_index'))
             ->setDisplay($isGranted)
         ;
-
-        $menu['Ticket']->addChild('Crear ticket', [
-            'route' => 'backend_ticket_create'
-        ])
-            ->setAttribute('icon', self::CIRCLE_2)
-            ->setAttribute('class', $this->activeRoute('backend_ticket_create'))
-            ->setDisplay($isGranted)
-        ;
+        
+	    $menu['Ticket']->addChild('Agenda', [
+		    'route' => 'backend_calendar_index'
+	    ])
+		    ->setAttribute('icon', 'fa-fw fa-calendar')
+		    ->setAttribute('class', $this->activeRoute('backend_calendar_index'))
+		    ->setDisplay($isGranted)
+	    ;
         /**
          * TICKET
          */
-	
-	
-	
+        
+      
 	
 	
 	

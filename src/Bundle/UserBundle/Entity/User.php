@@ -40,7 +40,8 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
      *     "order-in-left-select-item",
      *     "order-report",
      *     "friends",
-     *     "ticket"
+     *     "ticket",
+     *     "pointofsale-has-user"
      * })
      */
     protected $id;
@@ -185,7 +186,8 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
      *     "crud",
      *     "anonymous_user",
      *     "friends",
-     *     "ticket"
+     *     "ticket",
+     *     "pointofsale-has-user"
      * })
      * @JMSS\Type("DateTime<'Y-m-d H:i'>")
      *
@@ -293,7 +295,8 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
      *     "order-in-left-select-item",
      *     "order-report",
      *     "user-tags",
-     *     "ticket"
+     *     "ticket",
+     *     "pointofsale-has-user"
      * })
      */
     private $nameBox;

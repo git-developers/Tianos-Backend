@@ -4,7 +4,7 @@
     // Global Variables
     var MAX_HEIGHT = 100;
 
-    $.formAddUser = function(el, options) {
+    $.formTicketEdit = function(el, options) {
 
         // Global Private Variables
         var MAX_WIDTH = 200;
@@ -12,7 +12,7 @@
 
         base.$el = $(el);
         base.el = el;
-        base.$el.data('formAddUser', base);
+        base.$el.data('formTicketEdit', base);
 
         base.init = function(){
             var totalButtons = 0;
@@ -24,7 +24,7 @@
 
             var id = $(context).parent().parent().data('id');
 
-            window.location.href = options.route.replace("/-1", "") + "/" + id;
+            window.location.href = options.route + "/" + id;
 
         };
 
@@ -36,11 +36,11 @@
         base.init();
     };
 
-    $.fn.formAddUser = function(options){
+    $.fn.formTicketEdit = function(options){
 
         return this.each(function(){
 
-            var bp = new $.formAddUser(this, options);
+            var bp = new $.formTicketEdit(this, options);
 
             $(document).on('click', 'button.' + options.buttonId, function() {
                 bp.redirect(event, this);

@@ -103,6 +103,21 @@ abstract class BaseController extends Controller
         return $redirect;
     }
 
+    protected function flashAlertSuccess($message)
+    {
+        $this->addFlash('alert_success', $message);
+    }
+
+    protected function flashAlertWarning($message)
+    {
+        $this->addFlash('alert_warning', $message);
+    }
+
+    protected function flashAlertError($message)
+    {
+        $this->addFlash('alert_error', $message);
+    }
+
     protected function flashSuccess($message)
     {
         $this->addFlash('success', $message);

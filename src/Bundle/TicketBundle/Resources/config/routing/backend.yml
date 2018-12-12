@@ -14,17 +14,19 @@ backend_ticket_index:
                 body_css: grid-body-css
                 serialize_group_name: crud
             grid:
-                icon: cube
+                icon: ticket
                 box_class: primary
                 title: Gestionar ticket
                 data_table:
                     route:
                         info: backend_ticket_info
                         view: backend_ticket_view
-#                        edit: backend_ticket_edit
                         create: backend_ticket_create
+                        ticket_edit: backend_ticket_edit
+#                        edit: backend_ticket_edit
 #                        delete: backend_ticket_delete
                     table_button:
+                        - ticket_edit
 #                        - edit
 #                        - delete
                     table_button_header:
@@ -42,8 +44,14 @@ backend_ticket_index:
                     columns:
                         - name: '#'
                           obj: " '<span class=\"badge bg-blue\">' + obj.id + '</span>' "
-                        - name: Name
+                        - name: Nombre servicio
                           obj: obj.name
+                        - name: Cliente
+                          obj: obj.client.name + ' ' + obj.client.last_name
+                        - name: Total price
+                          obj: obj.total_price
+                          options:
+                              icon: money
                         - name: Creado
                           obj: obj.created_at
                           options:
@@ -64,7 +72,6 @@ backend_ticket_create:
         _controller: tianos.backend.controller.ticket:createAction
         _tianos:
             action: create
-            template: TicketBundle:BackendTicket/Grid:create.html.twig
             vars:
                 body_css: grid-body-css
                 serialize_group_name: crud
@@ -77,9 +84,40 @@ backend_ticket_create:
                 child_ul: box-child-ul
                 li_span: li-span
             entity: Bundle\TicketBundle\Entity\Ticket
+            template: TicketBundle:BackendTicket/Grid:create.html.twig
             form:
                 type: Bundle\TicketBundle\Form\Type\TicketType
             repository:
+                vars:
+                    serialize_group_name: crud
+
+backend_ticket_edit:
+    path: /edit/{id}
+    methods: [GET, POST]
+    defaults:
+        id: null
+        _controller: tianos.backend.controller.ticket:editAction
+        _tianos:
+            action: edit
+            vars:
+               body_css: grid-body-css
+               serialize_group_name: crud
+            tree:
+               icon: file-text-o
+               box_class: primary
+               title: Gestionar servicios
+               main_div: box-main-div
+               main_ul: box-main-ul
+               child_ul: box-child-ul
+               li_span: li-span
+            entity: Bundle\TicketBundle\Entity\Ticket
+            template: TicketBundle:BackendTicket/Grid:edit.html.twig
+            form:
+                type: Bundle\TicketBundle\Form\Type\TicketType
+            repository:
+                service: tianos.repository.ticket
+                method: find
+                arguments: [$ticketId]
                 vars:
                     serialize_group_name: crud
 
@@ -189,40 +227,6 @@ backend_ticket_remove_all_services:
                 vars:
                     serialize_group_name: crud
 
-
-
-backend_ticket_edit:
-    path: /edit
-    methods: [PUT, POST]
-    defaults:
-        _controller: tianos.backend.controller.ticket:editAction
-        _tianos:
-            action: edit
-            template: TicketBundle:BackendTicket/Form:form.html.twig
-            form:
-                type: Bundle\TicketBundle\Form\Type\TicketType
-            repository:
-                service: tianos.repository.ticket
-                method: find
-                arguments: [$ticketId]
-                vars:
-                    serialize_group_name: crud
-
-#backend_ticket_delete:
-#    path: /delete
-#    methods: [POST, DELETE]
-#    defaults:
-#        _controller: tianos.backend.controller.ticket:deleteAction
-#        _tianos:
-#            action: delete
-#            template: GridBundle:Template:delete.html.twig
-#            repository:
-#                service: tianos.repository.ticket
-#                method: find
-#                arguments: [$ticketId]
-#            vars:
-##                body_css: grid-body-css
-
 backend_ticket_view:
     path: /view
     methods: [POST]
@@ -247,9 +251,20 @@ backend_ticket_info:
             action: info
             template: TicketBundle:BackendTicket/Informative:info.html.twig
 
-
-
-
+#backend_ticket_delete:
+#    path: /delete
+#    methods: [POST, DELETE]
+#    defaults:
+#        _controller: tianos.backend.controller.ticket:deleteAction
+#        _tianos:
+#            action: delete
+#            template: GridBundle:Template:delete.html.twig
+#            repository:
+#                service: tianos.repository.ticket
+#                method: find
+#                arguments: [$ticketId]
+#            vars:
+##                body_css: grid-body-css
 
 #/var/www/html/Sylius/sylius/vendor/sylius/sylius/docs/customization/factory.rst
 #

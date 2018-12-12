@@ -66,7 +66,8 @@
 
             $('body.{{ vars.body_css }}').formTicket({
                 formName: 'form-ticket',
-                route: '{{ path('backend_ticket_create') }}'
+                route: '{{ path('backend_ticket_create') }}',
+                routeRedirect: '{{ path('backend_ticket_index') }}'
             });
 
         });
@@ -103,7 +104,7 @@
                 <div class="box box-success" style="margin-bottom: 15px">
 
                     <div class="row">
-                        <div class="col-md-5">
+                        <div class="col-md-5" style="padding-right: 0px">
                             <div class="box-header with-border">
                                 <h4 class="box-title">
                                     <i class="fa fa-fw fa-sitemap"></i> Categorías
@@ -115,14 +116,23 @@
                                 <h4 class="box-title">
                                     <i class="fa fa-fw fa-file-text-o"></i> Servicios
                                 </h4>
+
+                                <div class="box-tools pull-right" data-toggle="tooltip" data-original-title="Agregar nuevos servicios">
+                                    <a href="{{ path('backend_services_index') }}">
+                                        <span class="badge bg-green x-hand">
+                                            <i class="fa fa-plus"></i>
+                                        </span>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="box-body"> {#no-padding#}
 
+                        {#SERVICIOS#}
                         <div class="row">
-                            <div class="col-md-5">
+                            <div class="col-md-5" style="padding-right: 0px">
                                 <div class="{{ tree.main_div }} box-body">
                                     <ul id="{{ tree.main_ul }}">
                                         {% if objectsTree is not empty %}
@@ -183,63 +193,22 @@
                                 </table>
                             </div>
                         </div>
+                        {#SERVICIOS#}
 
                     </div>
                 </div>
 
-            </div>
-
-            <div class="col-md-5">
-
-                <div class="box box-primary">
-
-                    {# COMPROBANTE #}
-                    <form name="form-ticket">
-
-                        <div class="box-header with-border">
-                            <h4 class="box-title">
-                                <i class="fa fa-fw fa-file-o"></i> Comprobante
-                            </h4>
-                            <div class="box-tools pull-right">
-                                <span
-                                    class="badge bg-red x-hand remove-all-services"
-                                    data-toggle="tooltip"
-                                    data-original-title="Eliminar todo">
-                                    <i class="fa fa-minus-circle"></i> Eliminar
-                                </span>
-                            </div>
-                        </div>
-                        <div class="box-body box-table-services">
-                            <p>
-                                <i class="fa fa-fw fa-info-circle"></i> Agregue servicios.
-                            </p>
-
-                            {{ include('TicketBundle:BackendTicket/Grid/Box:table_service.html.twig') }}
-                        </div>
-
-                        <div class="box-footer text-center">
-                            <button type="submit" class="btn btn-primary">
-                                Guardar
-                            </button>
-                        </div>
-
-                    </form>
-                    {# COMPROBANTE #}
-
-                </div>
-
-
                 {#CLIENT#}
-                <div class="box box-primary" style="margin-bottom: 15px">
+                <div class="box box-success" style="margin-bottom: 15px">
                     <div class="box-header with-border">
                         <h4 class="box-title">
                             <i class="fa fa-fw fa-user"></i> Cliente
                         </h4>
                         <div class="box-tools pull-right">
                             <span
-                                    class="badge bg-green x-hand add-client"
-                                    data-toggle="modal"
-                                    data-target="#modal-create-client">
+                                class="badge bg-green x-hand add-client"
+                                data-toggle="modal"
+                                data-target="#modal-create-client">
                                 <i class="fa fa-plus"></i> Agregar
                             </span>
                         </div>
@@ -257,11 +226,11 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td colspan="5">
-                                    Seleccione un cliente.
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td colspan="5">
+                                        Seleccione un cliente.
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
 
@@ -271,7 +240,7 @@
 
 
                 {#EMPLOYEE#}
-                <div class="box box-primary" style="margin-bottom: 15px">
+                <div class="box box-success" style="margin-bottom: 15px">
                     <div class="box-header with-border">
                         <h4 class="box-title">
                             <i class="fa fa-fw fa-user"></i> Empleado
@@ -298,17 +267,73 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td colspan="5">
-                                    Seleccione un empleado.
-                                </td>
-                            </tr>
+                                <tr>
+                                    <td colspan="5">
+                                        Seleccione un empleado.
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
 
                     </div>
                 </div>
                 {#EMPLOYEE#}
+
+            </div>
+
+            <div class="col-md-5">
+
+                <div class="box box-primary">
+
+                    {# COMPROBANTE #}
+                    <form name="form-ticket">
+
+                        <div class="box-header with-border">
+                            <h4 class="box-title">
+                                <i class="fa fa-fw fa-file-o"></i> Comprobante
+                            </h4>
+                            <div class="box-tools pull-right">
+                                <span
+                                    class="badge bg-red x-hand remove-all-services"
+                                    data-toggle="tooltip"
+                                    data-original-title="Eliminar todos los servicios">
+                                    <i class="fa fa-minus-circle"></i> Eliminar
+                                </span>
+                            </div>
+                        </div>
+                        <div class="box-body box-table-services">
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="">Fecha</label>
+                                        <input type="date" class="form-control" name="ticket[dateTicket]">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="">Nombre</label>
+                                        <input type="text" class="form-control" name="ticket[name]" placeholder="Nombre del ticket">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="services">
+                                {{ include('TicketBundle:BackendTicket/Grid/Box:table_service.html.twig') }}
+                            </div>
+
+                        </div>
+
+                        <div class="box-footer text-center">
+                            <button type="submit" class="btn btn-primary">
+                                Generar comprobante
+                            </button>
+                        </div>
+
+                    </form>
+                    {# COMPROBANTE #}
+
+                </div>
 
 
             </div>

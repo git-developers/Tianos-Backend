@@ -1,8 +1,9 @@
 
 /*JAFETH COMENTADO*/
-/*@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic);*/
+@import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic);
 
-@import url(../../../common/css/google-apis/pacifico.css);
+/*Trate de importarlo con esto, pero no sale en prod*/
+/*@import url(../../../common/css/google-apis/pacifico.css);*/
 
 
 /*!

@@ -1,2 +1,2 @@
-RewriteEngine On
-RewriteRule ^$ /web [L]
+RewriteEngine on
+RewriteRule ^(.*)$ /web/$1 [L,QSA]

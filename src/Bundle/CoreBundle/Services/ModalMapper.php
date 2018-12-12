@@ -24,10 +24,12 @@ class ModalMapper
     const INFO_ID = 'modal-info';
     const WATCH_ID = 'watch-button-id';
     const PROFILE_ID = 'profile-button-id';
+    const TICKET_EDIT_ID = 'ticket-edit-id';
 
-    const POINT_OF_SALE_ADD_USER = 'pointofsale-add-user';
-    const POINT_OF_SALE_ADD_MODULE = 'pointofsale-add-module';
-    const POINT_OF_SALE_ADD_PDV_CHILD_ID = 'pointofsale-add-pdv-child-id';
+    const POINT_OF_SALE_COG = 'pointofsale-cog';
+//    const POINT_OF_SALE_ADD_USER = 'pointofsale-add-user';
+//    const POINT_OF_SALE_ADD_MODULE = 'pointofsale-add-module';
+//    const POINT_OF_SALE_ADD_PDV_CHILD_ID = 'pointofsale-add-pdv-child-id';
 
     const CHANGE_PASSWORD_ID = 'change-password-id';
 
@@ -56,11 +58,13 @@ class ModalMapper
             'info_size' => self::SIZE_LARGE,
 
             'watch_id' => self::WATCH_ID,
+            'ticket_edit_id' => self::TICKET_EDIT_ID,
             'profile_id' => self::PROFILE_ID,
 
-            'point_of_sale_add_user' => self::POINT_OF_SALE_ADD_USER,
-            'point_of_sale_add_module' => self::POINT_OF_SALE_ADD_MODULE,
-            'point_of_sale_add_pdv_child_id' => self::POINT_OF_SALE_ADD_PDV_CHILD_ID,
+            'point_of_sale_cog' => self::POINT_OF_SALE_COG,
+//            'point_of_sale_add_user' => self::POINT_OF_SALE_ADD_USER,
+//            'point_of_sale_add_module' => self::POINT_OF_SALE_ADD_MODULE,
+//            'point_of_sale_add_pdv_child_id' => self::POINT_OF_SALE_ADD_PDV_CHILD_ID,
 
             'change_password_id' => self::CHANGE_PASSWORD_ID,
             'change_password_size' => null,

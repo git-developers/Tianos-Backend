@@ -33,7 +33,6 @@
 
         base.openModal = function(event) {
             // debug(e);
-            // base.options.buttonPress.call( this );
 
             modalMsgDiv = modal.find('div#message');
             modalMsgText = modal.find('div#message p');

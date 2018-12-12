@@ -110,6 +110,10 @@
     {{ include("ThemesBundle:Adminlte/TemplatePdv:3_left_main_sidebar.html.twig") }}
 
     <div class="content-wrapper">
+        {{ html.tianos_alert_success_2 }}
+        {{ html.tianos_alert_warning_2 }}
+        {{ html.tianos_alert_error_2 }}
+
         {{ html.tianos_alert_success }}
         {{ html.tianos_alert_warning }}
         {{ html.tianos_alert_error }}
@@ -153,6 +157,7 @@
         '@ThemesBundle/Resources/public/adminlte/dist/js/app.min.js'
         '@ThemesBundle/Resources/public/adminlte/plugins/iCheck/icheck.min.js'
         '@ThemesBundle/Resources/public/adminlte/bower_components/PACE/pace.min.js'
+        '@ThemesBundle/Resources/public/adminlte/js/tianos.js'
 
     %}
         <script src="{{ asset_url }}"></script>

@@ -17,7 +17,11 @@ backend_pointofsale_index:
                 box_class: primary
                 title: 'Gestionar puntos de ventas'
                 modal:
-                    title: Crear punto de venta
+                    create:
+                        title: Crear punto de venta
+                        size: modal-lg
+                    edit:
+                        size: modal-lg
                 data_table:
                     route:
                         info: backend_pointofsale_info
@@ -25,15 +29,17 @@ backend_pointofsale_index:
                         edit: backend_pointofsale_edit
                         create: backend_pointofsale_create
                         delete: backend_pointofsale_delete
-                        add_user: backend_pointofsale_add_user
-                        module: backend_pointofsale_module
-                        pdv_child: backend_pointofsale_pdv_child_index
+                        cog: backend_super_pointofsale_add_user_index
+#                        add_user: backend_pointofsale_add_user
+#                        module: backend_pointofsale_module
+#                        pdv_child: backend_pointofsale_pdv_child_index
                     table_button:
                         - edit
                         - delete
-                        - add_user
-                        - module
-                        - add_pdv_child
+                        - cog
+#                        - add_user
+#                        - module
+#                        - add_pdv_child
                     table_button_header:
                         - create
                         - info
@@ -81,7 +87,7 @@ backend_pointofsale_create:
         _controller: tianos.backend.controller.pointofsale:createAction
         _tianos:
             action: create
-            template: PointofsaleBundle:BackendPointofsale/Form:form.html.twig
+            template: PointofsaleBundle:BackendPointofsale/Form:form_create.html.twig
             entity: Bundle\PointofsaleBundle\Entity\Pointofsale
             form:
                 type: Bundle\PointofsaleBundle\Form\Type\PointofsaleType
@@ -96,7 +102,8 @@ backend_pointofsale_edit:
         _controller: tianos.backend.controller.pointofsale:editAction
         _tianos:
             action: edit
-            template: PointofsaleBundle:BackendPointofsale/Form:form.html.twig
+            template: PointofsaleBundle:BackendPointofsale/Form:form_edit.html.twig
+            entity: Bundle\PointofsaleBundle\Entity\Pointofsale
             form:
                 type: Bundle\PointofsaleBundle\Form\Type\PointofsaleType
             repository:
@@ -145,48 +152,49 @@ backend_pointofsale_info:
             action: info
             template: PointofsaleBundle:BackendPointofsale/Informative:info.html.twig
 
-backend_pointofsale_add_user:
-    path: /add-user/{id}
-    methods: [GET, POST]
-    defaults:
-        _controller: tianos.backend.controller.pointofsale:addUserAction
-        _tianos:
-            action: edit
-            template: PointofsaleBundle:BackendPointofsale/addUser:index.html.twig
-            entity: Bundle\PointofsaleBundle\Entity\PointofsaleAddUser
-            vars:
-                icon: map-marker
-                box_class: primary
-                title: 'Punto de venta: agregar usuarios'
-                body_css: grid-body-css
-            form:
-                type: Bundle\PointofsaleBundle\Form\Type\PointofsaleAddUserType
-            repository:
-                service: tianos.repository.pointofsale
-                method: find
-                arguments: [$pointofsaleId]
-                vars:
-                    serialize_group_name: crud
+#backend_pointofsale_add_user:
+#    path: /add-user/{id}
+#    methods: [GET, POST]
+#    defaults:
+#        _controller: tianos.backend.controller.pointofsale:addUserAction
+#        _tianos:
+#            action: edit
+##            template: PointofsaleBundle:BackendPointofsale/addUser:index.html.twig
+#            template: GridBundle::index_add_user.html.twig
+#            entity: Bundle\PointofsaleBundle\Entity\PointofsaleAddUser
+#            vars:
+#                icon: map-marker
+#                box_class: primary
+#                title: 'Punto de venta: agregar usuarios'
+#                body_css: grid-body-css
+#            form:
+#                type: Bundle\PointofsaleBundle\Form\Type\PointofsaleAddUserType
+#            repository:
+#                service: tianos.repository.pointofsale
+#                method: find
+#                arguments: [$pointofsaleId]
+#                vars:
+#                    serialize_group_name: crud
 
-backend_pointofsale_remove_user:
-    path: /remove-user
-    methods: [PUT]
-    defaults:
-        _controller: tianos.backend.controller.pointofsale:removeUserAction
-        _tianos:
-            action: edit
-            template: PointofsaleBundle:BackendPointofsale/addUser:index.html.twig
-            entity: Bundle\PointofsaleBundle\Entity\PointofsaleAddUser
-            vars:
-                icon: map-marker
-            form:
-                type: Bundle\PointofsaleBundle\Form\Type\PointofsaleAddUserType
-            repository:
-                service: tianos.repository.pointofsale
-                method: find
-                arguments: [$pointofsaleId]
-                vars:
-                    serialize_group_name: crud
+#backend_pointofsale_remove_user:
+#    path: /remove-user
+#    methods: [PUT]
+#    defaults:
+#        _controller: tianos.backend.controller.pointofsale:removeUserAction
+#        _tianos:
+#            action: edit
+#            template: PointofsaleBundle:BackendPointofsale/addUser:index.html.twig
+#            entity: Bundle\PointofsaleBundle\Entity\PointofsaleAddUser
+#            vars:
+#                icon: map-marker
+#            form:
+#                type: Bundle\PointofsaleBundle\Form\Type\PointofsaleAddUserType
+#            repository:
+#                service: tianos.repository.pointofsale
+#                method: find
+#                arguments: [$pointofsaleId]
+#                vars:
+#                    serialize_group_name: crud
 
 backend_pointofsale_module:
     path: /module/{id}

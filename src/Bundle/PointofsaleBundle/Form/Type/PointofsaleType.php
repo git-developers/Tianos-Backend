@@ -84,7 +84,8 @@ class PointofsaleType extends AbstractType
                 ],
                 'attr' => [
                     'class' => 'form-control',
-                    'placeholder' => 'nombre',
+                    'placeholder' => '00.00',
+	                'readonly' => 'readonly',
                 ],
             ])
             ->add('longitude', TextType::class, [
@@ -94,7 +95,8 @@ class PointofsaleType extends AbstractType
                 ],
                 'attr' => [
                     'class' => 'form-control',
-                    'placeholder' => 'nombre',
+                    'placeholder' => '00.00',
+                    'readonly' => 'readonly',
                 ],
             ])
             ->add('slug', TextType::class, [

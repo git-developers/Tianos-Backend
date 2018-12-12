@@ -54,6 +54,7 @@
             event.preventDefault();
 
             var table = $('table.box-table-client tbody');
+            var idClientInput = $('input[name="id_client"]');
             var fields = $("form[name='" + options.formName + "']").serialize();
 
             $.ajax({

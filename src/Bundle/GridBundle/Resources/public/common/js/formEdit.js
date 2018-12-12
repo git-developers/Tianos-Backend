@@ -46,6 +46,7 @@
                 url: options.route,
                 type: 'PUT',
                 dataType: 'html',
+                cache: true,
                 data: {
                     id:id,
                     form_data:options.form_data

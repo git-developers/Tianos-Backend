@@ -6,28 +6,6 @@ frontend_user_index:
         _controller: tianos.frontend.controller.user:indexAction
         _tianos:
 
-frontend_user_profile:
-    path: /{slug}
-    methods: [GET]
-    defaults:
-        slug: null
-        _controller: tianos.frontend.controller.user:profileAction
-        _tianos:
-            action: edit
-            template: UserBundle:FrontendUser/Profile:index.html.twig
-            vars:
-                body_css: tianos-profile-user
-                button_add_friend: add-friend
-                button_remove_friend: remove-friend
-            form:
-                type: Bundle\GoogleBundle\Form\Type\GoogleType
-            repository:
-                service: tianos.repository.user
-                method: findOneBySlug
-                arguments: [$userId]
-                vars:
-                    serialize_group_name: user
-
 frontend_user_add_friend:
     path: /add-friend/{username}
     methods: [PUT]

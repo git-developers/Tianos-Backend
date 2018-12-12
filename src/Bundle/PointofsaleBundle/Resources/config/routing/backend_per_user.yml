@@ -17,7 +17,11 @@ backend_pointofsale_per_user_index:
                 box_class: primary
                 title: Datos del salón
                 modal:
-                    title: Crear punto de venta
+                    create:
+                        title: Crear punto de venta
+                        size: modal-lg
+                    edit:
+                        size: modal-lg
                 data_table:
                     route:
                         info: backend_pointofsale_per_user_info
@@ -71,7 +75,7 @@ backend_pointofsale_per_user_edit:
         _controller: tianos.backend.controller.pointofsale:editAction
         _tianos:
             action: edit
-            template: PointofsaleBundle:BackendPointofsale/Form:form.html.twig
+            template: PointofsaleBundle:BackendPointofsale/Form:form_edit.html.twig
             form:
                 type: Bundle\PointofsaleBundle\Form\Type\PointofsaleType
             repository:

@@ -17,9 +17,11 @@ backend_profile_index:
                 box_class: primary
                 title: Gestionar perfiles
                 modal:
-                    title: Crear perfil
-                    create_size: modal-lg
-                    edit_size: modal-lg
+                    create:
+                        title: Crear perfil
+                        size: modal-lg
+                    edit:
+                        size: modal-lg
                 data_table:
                     route:
                         info: backend_profile_info

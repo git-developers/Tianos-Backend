@@ -44,7 +44,7 @@ Bundle\PointofsaleBundle\Entity\Pointofsale:
         latitude:
             type: decimal
             nullable: true
-            precision: 11
+            precision: 10
             scale: 8
         longitude:
             type: decimal

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Bundle\TicketBundle\Controller;
 
 use Bundle\GridBundle\Controller\GridController;
+use Mockery\Exception;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,6 +14,7 @@ use Bundle\ResourceBundle\ResourceBundle;
 use JMS\Serializer\SerializationContext;
 use Bundle\CategoryBundle\Entity\Category;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Bundle\TicketBundle\Entity\TicketHasServices;
 
 class BackendController extends GridController
 {
@@ -50,8 +52,8 @@ class BackendController extends GridController
 		$objectsTreeParent = $this->get('tianos.repository.category')->findAllParentsByType(Category::TYPE_SERVICE);
 		$objectsTree = $this->getTreeEntities($objectsTreeParent, $configuration, 'tree');
 		
-		$entity = [];
-		$servicesObjs = $this->getServices($objectsTreeParent, $configuration, 'ticket', $entity);
+		$servicesArray = [];
+		$servicesObjs = $this->getServices($objectsTreeParent, $configuration, 'ticket', $servicesArray);
 		//REPOSITORY TREE
 		
 		
@@ -60,47 +62,114 @@ class BackendController extends GridController
 		$session = $request->getSession();
 		$services = $session->get('services');
 		
-		foreach ($services as $key => $service) {
-			$serviceObj = $this->get('tianos.repository.services')->find($service['idService']);
-			$serviceObj->setQuantity($service['quantity']);
-			$serviceArray[] = $this->getSerializeDecode($serviceObj, 'ticket');
+		if (!empty($services)) {
+			foreach ($services as $key => $service) {
+				$serviceObj = $this->get('tianos.repository.services')->find($service['idService']);
+				$serviceObj->setQuantity($service['quantity']);
+				$serviceArray[] = $this->getSerializeDecode($serviceObj, 'ticket');
+			}
 		}
 		//SERVICES
 		
 		if ($form->isSubmitted()) {
 			
-			$errors = [];
-			$entityJson = null;
-			$status = self::STATUS_ERROR;
-			
-			try{
+			try {
 				
-				if ($form->isValid()) {
-					
-					$this->persist($entity);
-					
-					$varsRepository = $configuration->getRepositoryVars();
-					$entity = $this->getSerializeDecode($entity, $varsRepository->serialize_group_name);
-					$status = self::STATUS_SUCCESS;
-				}else{
-					foreach ($form->getErrors(true) as $key => $error) {
-						if ($form->isRoot()) {
-							$errors[] = $error->getMessage();
-						} else {
-							$errors[] = $error->getMessage();
-						}
-					}
+				$ticket = $request->get('ticket');
+				$ticket = json_decode(json_encode($ticket));
+				
+				$session = $request->getSession();
+				$idClient = $session->get('id_client');
+				$idEmployees = $session->get('id_employee');
+				$services = $session->get('services');
+				
+				if (empty($idClient)) {
+					return $this->json([
+						'status' => false,
+						'message' => 'Seleccione un cliente.'
+					]);
 				}
 				
-			}catch (\Exception $e){
-				$errors[] = $e->getMessage();
+				if (empty($idEmployees)) {
+					return $this->json([
+						'status' => false,
+						'message' => 'Seleccione al menos un empleado.'
+					]);
+				}
+				
+				if (empty($services)) {
+					return $this->json([
+						'status' => false,
+						'message' => 'Seleccione al menos un servicio.'
+					]);
+				}
+				
+				if (empty($ticket->name)) {
+					return $this->json([
+						'status' => false,
+						'message' => 'Ingrese un nombre.'
+					]);
+				}
+				
+				if (empty($ticket->dateTicket)) {
+					return $this->json([
+						'status' => false,
+						'message' => 'Ingrese la fecha.'
+					]);
+				}
+				
+				
+				$entity->setName($ticket->name);
+				$entity->setDateTicket(new \DateTime($ticket->dateTicket));
+				
+				$client = $this->get('tianos.repository.user')->find($idClient);
+				$entity->setClient($client);
+				
+				foreach ($idEmployees as $key => $idEmployee) {
+					$employee = $this->get('tianos.repository.user')->find($idEmployee);
+					$entity->addEmployee($employee);
+				}
+				
+				$this->persist($entity);
+				
+				
+				/**
+				 * SAVE TICKET
+				 */
+				foreach ($services as $key => $service) {
+					$service = $this->get('tianos.repository.services')->find($service['idService']);
+					
+					$ticketHasService = new TicketHasServices();
+					$ticketHasService->setServices($service);
+					$ticketHasService->setTicket($entity);
+					$ticketHasService->setQuantity($service->getQuantity());
+					$ticketHasService->setSubTotal($service->getPrice() * $service->getQuantity());
+					$this->persist($ticketHasService);
+				}
+				/**
+				 * SAVE TICKET
+				 */
+				
+				
+				$this->flashAlertSuccess('Se creo el ticket.');
+				
+				//Remove session
+				$session = $request->getSession();
+				$session->remove('id_client');
+				$session->remove('id_employee');
+				$session->remove('services');
+				
+				return $this->json([
+					'status' => true
+				]);
+				
+			} catch (\Exception $e) {
+				return $this->json([
+					'status' => false,
+					'message' => $e->getMessage()
+				]);
 			}
 			
-			return $this->json([
-				'status' => $status,
-				'errors' => $errors,
-				'entity' => $entity,
-			]);
 		}
 		
 		return $this->render(
@@ -115,6 +184,175 @@ class BackendController extends GridController
 //				'form' => $form->createView(),
 			]
 		);
+	}
+	
+	/**
+	 * @param Request $request
+	 * @return Response
+	 */
+	public function editAction(Request $request): Response
+	{
+		
+		$parameters = [
+			'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
+		];
+		$applicationName = $this->container->getParameter('application_name');
+		$this->metadata = new Metadata('tianos', $applicationName, $parameters);
+		
+		//CONFIGURATION
+		$configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
+		$repository = $configuration->getRepositoryService();
+		$method = $configuration->getRepositoryMethod();
+		$template = $configuration->getTemplate('');
+		$action = $configuration->getAction();
+		$formType = $configuration->getFormType();
+		$vars = $configuration->getVars();
+		$tree = $configuration->getTree();
+		$entity = $configuration->getEntity();
+		
+//		$entity = new $entity();
+		//REPOSITORY
+		$id = $request->get('id');
+		$entity = $this->get($repository)->$method($id);
+		
+		$form = $this->createForm($formType, $entity, ['form_data' => []]);
+		$form->handleRequest($request);
+		
+		//REPOSITORY TREE
+		$objectsTreeParent = $this->get('tianos.repository.category')->findAllParentsByType(Category::TYPE_SERVICE);
+		$objectsTree = $this->getTreeEntities($objectsTreeParent, $configuration, 'tree');
+		
+		$servicesArray = [];
+		$servicesObjs = $this->getServices($objectsTreeParent, $configuration, 'ticket', $servicesArray);
+		//REPOSITORY TREE
+		
+		
+		//SERVICES
+//		$serviceArray = [];
+//		$session = $request->getSession();
+//		$services = $session->get('services');
+//
+//		if (!empty($services)) {
+//			foreach ($services as $key => $service) {
+//				$serviceObj = $this->get('tianos.repository.services')->find($service['idService']);
+//				$serviceObj->setQuantity($service['quantity']);
+//				$serviceArray[] = $this->getSerializeDecode($serviceObj, 'ticket');
+//			}
+//		}
+		//SERVICES
+		
+		
+		$serviceArray = $this->getSerializeDecode($entity->getServices(), 'ticket');
+		
+//		echo "POLLO:: <pre>";
+//		print_r($serviceArray);
+//		exit;
+		
+		
+		
+		
+		
+		if ($form->isSubmitted()) {
+			
+			try {
+				
+				$ticket = $request->get('ticket');
+				$ticket = json_decode(json_encode($ticket));
+				
+				$session = $request->getSession();
+				$idClient = $session->get('id_client');
+				$idEmployees = $session->get('id_employee');
+				$services = $session->get('services');
+				
+				if (empty($idClient)) {
+					return $this->json([
+						'status' => false,
+						'message' => 'Seleccione un cliente.'
+					]);
+				}
+				
+				if (empty($idEmployees)) {
+					return $this->json([
+						'status' => false,
+						'message' => 'Seleccione al menos un empleado.'
+					]);
+				}
+				
+				if (empty($services)) {
+					return $this->json([
+						'status' => false,
+						'message' => 'Seleccione al menos un servicio.'
+					]);
+				}
+				
+				if (empty($ticket->name)) {
+					return $this->json([
+						'status' => false,
+						'message' => 'Ingrese un nombre.'
+					]);
+				}
+				
+				if (empty($ticket->dateTicket)) {
+					return $this->json([
+						'status' => false,
+						'message' => 'Ingrese la fecha.'
+					]);
+				}
+				
+				
+				$entity->setName($ticket->name);
+				$entity->setDateTicket(new \DateTime($ticket->dateTicket));
+				
+				$client = $this->get('tianos.repository.user')->find($idClient);
+				$entity->setClient($client);
+				
+				foreach ($idEmployees as $key => $idEmployee) {
+					$employee = $this->get('tianos.repository.user')->find($idEmployee);
+					$entity->addUser($employee);
+				}
+				
+				foreach ($services as $key => $service) {
+					$service = $this->get('tianos.repository.services')->find($service['idService']);
+					$entity->addServices($service);
+				}
+				
+				$this->persist($entity);
+				
+				$this->flashAlertSuccess('Se creo el ticket.');
+				
+				//Remove session
+				$session = $request->getSession();
+				$session->remove('id_client');
+				$session->remove('id_employee');
+				$session->remove('services');
+				
+				return $this->json([
+					'status' => true
+				]);
+				
+			} catch (\Exception $e) {
+				return $this->json([
+					'status' => false,
+					'message' => $e->getMessage()
+				]);
+			}
+			
+		}
+		
+		return $this->render(
+			$template,
+			[
+				'tree' => $tree,
+				'vars' => $vars,
+				'action' => $action,
+				'servicesObjs' => $servicesObjs,
+				'objectsTree' => $objectsTree,
+				'services' => $serviceArray,
+				'entity' => $entity
+//				'form' => $form->createView(),
+			]
+		);
+		
 	}
 	
 	/**
@@ -157,6 +395,27 @@ class BackendController extends GridController
 			
 			$client = $this->get('tianos.repository.user')->findOneById($client);
 			$client = $this->getSerializeDecode($client, 'ticket');
+			
+			
+
+			
+			/**
+			 * ID CLIENT SESSION
+			 */
+			$session = $request->getSession();
+			$idClient = $session->get('id_client');
+			
+			if (is_null($idClient))
+			{
+				$session->set('id_client', $client['id']);
+			}
+			/**
+			 * ID CLIENT SESSION
+			 */
+			
+			
+			
+			
 			
 			return $this->render(
 				'TicketBundle:BackendTicket/Grid/Box:table_client.html.twig',
@@ -226,6 +485,30 @@ class BackendController extends GridController
 			
 			$employees = $this->get('tianos.repository.user')->findAllByIds($idEmployees);
 			$employees = $this->getSerializeDecode($employees, 'ticket');
+			
+			
+			
+			/**
+			 * ID EMPLOYEE SESSION
+			 */
+			$session = $request->getSession();
+			$idEmployee = $session->get('id_employee');
+			
+			if (is_null($idEmployee))
+			{
+				$out = [];
+				foreach ($employees as $key => $employee) {
+					$out[] = $employee['id'];
+				}
+				
+				$session->set('id_employee', $out);
+			}
+			/**
+			 * ID EMPLOYEE SESSION
+			 */
+			
+			
+			
 			
 			return $this->render(
 				'TicketBundle:BackendTicket/Grid/Box:table_employee.html.twig',
@@ -311,6 +594,8 @@ class BackendController extends GridController
 		$template = $configuration->getTemplate('');
 		
 		$session = $request->getSession();
+//		$session->remove('id_client');
+//		$session->remove('id_employee');
 		$session->remove('services');
 		
 		return $this->render(

@@ -141,6 +141,27 @@ class ButtonMapper
         ]);
     }
 
+    private function ticket_edit()
+    {
+        return new Button([
+            'alt' => 'Editar ticket',
+            'title' => 'Editar ticket',
+            'icon' => '<i class="fa fa-fw fa-pencil"></i>',
+            'class' => 'btn btn-xs btn-warning ' . ModalMapper::TICKET_EDIT_ID,
+        ]);
+    }
+	
+	private function cog()
+	{
+		return new Button([
+			'alt' => 'Settings',
+			'title' => 'Settings',
+			'icon' => '<i class="fa fa-fw fa-cog"></i>',
+			'class' => 'btn-xs btn-primary btn-margin-5 ' . ModalMapper::POINT_OF_SALE_COG,
+		]);
+	}
+
+    /*
     private function add_user()
     {
         return new Button([
@@ -170,6 +191,7 @@ class ButtonMapper
             'class' => 'btn-xs btn-info btn-margin-5 ' . ModalMapper::POINT_OF_SALE_ADD_PDV_CHILD_ID,
         ]);
     }
+    */
 
     private function change_password()
     {

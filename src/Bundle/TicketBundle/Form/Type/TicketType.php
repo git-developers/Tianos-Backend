@@ -29,16 +29,16 @@ class TicketType extends AbstractType
                     'placeholder' => 'code',
                 ],
             ])
-            ->add('name', TextType::class, [
-                'label' =>' Nombre',
-                'label_attr' => [
-                    'class' => ''
-                ],
-                'attr' => [
-                    'class' => 'form-control',
-                    'placeholder' => 'nombre',
-                ],
-            ])
+//            ->add('name', TextType::class, [
+//                'label' =>' Nombre',
+//                'label_attr' => [
+//                    'class' => ''
+//                ],
+//                'attr' => [
+//                    'class' => 'form-control',
+//                    'placeholder' => 'nombre',
+//                ],
+//            ])
         ;
     }
     

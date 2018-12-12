@@ -18,15 +18,31 @@ class BackendController extends BaseController
      */
     public function indexAction(Request $request): Response
     {
-//        return $this->redirectUrl('frontend_default_index');
-
         $options = $request->attributes->get('_tianos');
 
         $template = $options['template'] ?? null;
         Assert::notNull($template, 'Template is not configured.');
-
-        return $this->render($template, [
-            'form' => null
+	
+        // SERVICES
+	    $tickets = $this->get('tianos.repository.ticket')->findAll();
+//	    $tickets = $this->getSerialize($tickets, 'crud');
+	
+	    $out = [];
+	    foreach ($tickets as $key => $ticket) {
+		
+		    $out[] = [
+		    	'title' => $ticket->getName(),
+		    	'start' => $ticket->getDateTicket(),
+		    	'backgroundColor' => '#449d44',
+		    	'borderColor' => '#398439'
+		    ];
+	    }
+	
+	    $tickets = json_encode($out);
+	
+	    return $this->render($template, [
+            'form' => null,
+            'tickets' => $tickets
         ]);
     }
 }

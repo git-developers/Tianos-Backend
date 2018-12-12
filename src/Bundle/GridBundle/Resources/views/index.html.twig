@@ -47,6 +47,10 @@
 {% block javascripts %}
     {{ parent() }}
 
+    {#'@GridBundle/Resources/public/common/js/formAddUser.js'#}
+    {#'@GridBundle/Resources/public/common/js/formModule.js'#}
+    {#'@GridBundle/Resources/public/common/js/formAddPdvChild.js'#}
+
     {% javascripts
         '@GridBundle/Resources/public/common/js/formEdit.js'
         '@GridBundle/Resources/public/common/js/formView.js'
@@ -54,10 +58,9 @@
         '@GridBundle/Resources/public/common/js/formCreate.js'
         '@GridBundle/Resources/public/common/js/formDelete.js'
         '@GridBundle/Resources/public/common/js/formWatch.js'
+        '@GridBundle/Resources/public/common/js/formTicketEdit.js'
         '@GridBundle/Resources/public/common/js/formViewProfile.js'
-        '@GridBundle/Resources/public/common/js/formAddUser.js'
-        '@GridBundle/Resources/public/common/js/formModule.js'
-        '@GridBundle/Resources/public/common/js/formAddPdvChild.js'
+        '@GridBundle/Resources/public/common/js/formCog.js'
         '@GridBundle/Resources/public/common/js/formChangePassword.js'
         '@UserBundle/Resources/public/js/togglePassword.js'
         '@GridBundle/Resources/public/plugins/datatables/jquery.dataTables.min.js'
@@ -147,9 +150,16 @@
 
             {{ tianos_grid_form_js(vars, modal, form_mapper, dataTable, '@Ui/Grid/FormJs/default.html.twig') }}
 
+            $(document).on('click', '.copy-to-clipboard', function() {
+                $('.copy-to-clipboard-text').select();
+                document.execCommand("copy");
+            });
+
         });
 
     </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ application_google_api_key }}"></script>
 
 {% endblock %}
 

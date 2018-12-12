@@ -4,7 +4,7 @@
     // Global Variables
     var MAX_HEIGHT = 100;
 
-    $.formModule = function(el, options) {
+    $.formCog = function(el, options) {
 
         // Global Private Variables
         var MAX_WIDTH = 200;
@@ -12,7 +12,7 @@
 
         base.$el = $(el);
         base.el = el;
-        base.$el.data('formModule', base);
+        base.$el.data('formCog', base);
 
         base.init = function(){
             var totalButtons = 0;
@@ -36,11 +36,11 @@
         base.init();
     };
 
-    $.fn.formModule = function(options){
+    $.fn.formCog = function(options){
 
         return this.each(function(){
 
-            var bp = new $.formModule(this, options);
+            var bp = new $.formCog(this, options);
 
             $(document).on('click', 'button.' + options.buttonId, function() {
                 bp.redirect(event, this);

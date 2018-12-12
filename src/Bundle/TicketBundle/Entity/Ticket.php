@@ -25,6 +25,14 @@ class Ticket
      * @var string
      */
     private $code;
+	
+	/**
+	 * @var \DateTime
+	 *
+	 * @JMSS\Groups({"crud"})
+	 * @JMSS\Type("DateTime<'Y-m-d H:i'>")
+	 */
+	private $dateTicket;
 
     /**
      * @var string
@@ -65,7 +73,42 @@ class Ticket
      * @var boolean
      */
     private $isActive = '1';
-
+	
+	
+	/**
+	 * @var \Bundle\UserBundle\Entity\User
+	 *
+	 * @ORM\ManyToOne(targetEntity="Bundle\UserBundle\Entity\User")
+	 * @ORM\JoinColumns({
+	 *   @ORM\JoinColumn(name="client_id", referencedColumnName="id")
+	 * })
+	 *
+	 * @JMSS\Groups({"crud"})
+	 */
+	private $client;
+	
+	/**
+	 * @var \Doctrine\Common\Collections\Collection
+	 *
+	 * @ORM\ManyToMany(targetEntity="Bundle\UserBundle\Entity\User", inversedBy="ticket")
+	 * @ORM\JoinTable(name="ticket_has_employee",
+	 *   joinColumns={
+	 *     @ORM\JoinColumn(name="ticket_id", referencedColumnName="id")
+	 *   },
+	 *   inverseJoinColumns={
+	 *     @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+	 *   }
+	 * )
+	 */
+	private $employee;
+	
+	/**
+	 * Constructor
+	 */
+	public function __construct()
+	{
+		$this->employee = new \Doctrine\Common\Collections\ArrayCollection();
+	}
 
     /**
      * Get id
@@ -172,6 +215,24 @@ class Ticket
     {
         return $this->createdAt;
     }
+	
+	/**
+	 * @return \DateTime
+	 */
+	public function getDateTicket() //: \DateTime
+	{
+		$date = $this->dateTicket;
+		return $date->format('Y-m-d');
+	}
+	
+	/**
+	 * @param \DateTime $dateTicket
+	 */
+	public function setDateTicket(\DateTime $dateTicket) //: void
+	{
+		$this->dateTicket = $dateTicket;
+	}
+	
 
     /**
      * Set userCreate
@@ -268,5 +329,65 @@ class Ticket
     {
         return $this->isActive;
     }
+	
+	
+	/**
+	 * Set client
+	 *
+	 * @param \Bundle\UserBundle\Entity\User $client
+	 *
+	 * @return Ticket
+	 */
+	public function setClient(\Bundle\UserBundle\Entity\User $client = null)
+	{
+		$this->client = $client;
+		
+		return $this;
+	}
+	
+	/**
+	 * Get client
+	 *
+	 * @return \Bundle\UserBundle\Entity\User
+	 */
+	public function getClient()
+	{
+		return $this->client;
+	}
+	
+	/**
+	 * Add employee
+	 *
+	 * @param \Bundle\UserBundle\Entity\User $employee
+	 *
+	 * @return Ticket
+	 */
+	public function addEmployee(\Bundle\UserBundle\Entity\User $employee)
+	{
+		$this->employee[] = $employee;
+		
+		return $this;
+	}
+	
+	/**
+	 * Remove employee
+	 *
+	 * @param \Bundle\UserBundle\Entity\User $user
+	 */
+	public function removeEmployee(\Bundle\UserBundle\Entity\User $employee)
+	{
+		$this->employee->removeElement($employee);
+	}
+	
+	/**
+	 * Get employee
+	 *
+	 * @return \Doctrine\Common\Collections\Collection
+	 */
+	public function getEmployee()
+	{
+		return $this->employee;
+	}
+	
 }
 

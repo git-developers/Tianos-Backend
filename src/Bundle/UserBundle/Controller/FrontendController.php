@@ -28,53 +28,6 @@ class FrontendController extends BaseController
      * @param Request $request
      * @return Response
      */
-    public function profileAction(Request $request): Response
-    {
-//        if (!$this->get('security.authorization_checker')->isGranted('ROLE_EDIT_USER')) {
-//            return $this->redirectToRoute('frontend_default_access_denied');
-//        }
-
-        $parameters = [
-            'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
-        ];
-        $applicationName = $this->container->getParameter('application_name');
-        $this->metadata = new Metadata('tianos', $applicationName, $parameters);
-
-        //CONFIGURATION
-        $configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
-
-        $repository = $configuration->getRepositoryService();
-        $method = $configuration->getRepositoryMethod();
-        $template = $configuration->getTemplate('');
-        $vars = $configuration->getVars();
-
-        $slug = $request->get('slug', null);
-
-        $entity = $this->get($repository)->$method($slug);
-
-        $isFriend = $this->get('tianos.repository.friends')->isFriend($entity->getUsername(), $this->getUser()->getId());
-        $lastGoogleDriveFiles = $this->get('tianos.repository.google.drive')->lastFiles($this->getUser()->getId());
-
-        if (!$entity) {
-            throw $this->createNotFoundException('El usuario que busca no existe');
-        }
-
-        return $this->render(
-            $template,
-            [
-                'vars' => $vars,
-                'small_text' => '',
-                'entity' => $entity,
-                'isFriend' => $isFriend,
-                'lastGoogleDriveFiles' => $lastGoogleDriveFiles,
-            ]
-        );
-    }
-
-    /**
-     * @param Request $request
-     * @return Response
-     */
     public function addFriendAction($username, Request $request): Response
     {
 //        if (!$this->get('security.authorization_checker')->isGranted('ROLE_EDIT_USER')) {

@@ -50,8 +50,8 @@ class AuthenticationSuccessHandler implements AuthenticationSuccessHandlerInterf
     public function onAuthenticationSuccess(Request $request, TokenInterface $token)
     {
         $referer = $this->router->generate('backend_default_pdv_index');
-
-        if ($this->isGranted(Role::ROLE_SUPER_ADMIN)) {
+	
+	    if ($this->isGranted(Role::ROLE_SUPER_ADMIN)) {
             $referer = $this->router->generate('backend_default_super_index');
         }
 

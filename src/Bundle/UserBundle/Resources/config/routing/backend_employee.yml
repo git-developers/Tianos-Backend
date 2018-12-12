@@ -22,7 +22,7 @@ backend_user_employee_index:
                     route:
                         info: backend_user_employee_info
                         view: backend_user_employee_view
-                        view_profile: frontend_user_profile
+                        view_profile: backend_user_profile
                         edit: backend_user_employee_edit
                         create: backend_user_employee_create
                         delete: backend_user_employee_delete

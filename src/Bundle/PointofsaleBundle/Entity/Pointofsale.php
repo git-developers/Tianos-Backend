@@ -46,14 +46,21 @@ class Pointofsale
     /**
      * @var string
      *
-     * @JMSS\Groups({"api", "crud", "one-to-many-right"})
+     * @JMSS\Groups({
+     *     "api",
+     *     "crud",
+     *     "one-to-many-right"
+     * })
      */
     private $code;
 
     /**
      * @var string
      *
-     * @JMSS\Groups({"api", "crud"})
+     * @JMSS\Groups({
+     *     "api",
+     *     "crud"
+     * })
      */
     private $name;
 
@@ -66,14 +73,20 @@ class Pointofsale
     /**
      * @var string
      *
-     * @JMSS\Groups({"api", "crud"})
+     * @JMSS\Groups({
+     *     "api",
+     *     "crud"
+     * })
      */
     private $latitude;
 
     /**
      * @var string
      *
-     * @JMSS\Groups({"api", "crud"})
+     * @JMSS\Groups({
+     *     "api",
+     *     "crud"
+     * })
      */
     private $longitude;
 
@@ -169,6 +182,8 @@ class Pointofsale
      *     @ORM\JoinColumn(name="user_id", referencedColumnName="id")
      *   }
      * )
+     *
+     * @JMSS\Groups({"crud"})
      */
     private $user;
 
@@ -619,7 +634,7 @@ class Pointofsale
     /**
      * @return \Doctrine\Common\Collections\ArrayCollection
      */
-    public function getPointOfSaleChildren(): array
+    public function getPointOfSaleChildren() //: array
     {
         return $this->pointOfSaleChildren;
     }

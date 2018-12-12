@@ -19,7 +19,6 @@
 
         base.init = function(){
             var totalButtons = 0;
-            // base.$el.append('<button name="public" style="'+base.options.buttonStyle+'">Private</button>');
 
         };
 
@@ -31,29 +30,30 @@
 
             console.dir("fields ::: " + fields);
 
-            $('div.tianos-alert-error .alert span').html('GATAZO');
-            $('div.tianos-alert-error').show();
-
-            setTimeout(function() {
-                $('div.tianos-alert-error').fadeOut('slow');
-            }, 2000);
-
-
-
-
             $.ajax({
                 url: options.route,
                 type: 'POST',
-                dataType: 'html',
+                dataType: 'json',
                 data: fields,
                 beforeSend: function(jqXHR, settings) {
-                    // table.html(msg_loading);
+
                 },
                 success: function(data, textStatus, jqXHR) {
-                    // table.html(data);
+
+                    if (data.status) {
+                        window.location.href = options.routeRedirect;
+                    } else {
+                        $('div.tianos-alert-warning-2 span').html(data.message);
+                        $('div.tianos-alert-warning-2').show();
+
+                        setTimeout(function() {
+                            $('div.tianos-alert-warning-2').fadeOut('slow');
+                        }, 2000);
+                    }
+
                 },
                 error: function(jqXHR, exception) {
-                    // table.html(msg_error);
+                    console.log('ERROR');
                 }
             });
         };

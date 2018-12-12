@@ -52,7 +52,8 @@ class BackendController extends GridController
         }
 
         if ($form->isSubmitted()) {
-
+	
+	        $user = null;
             $errors = [];
             $entityJson = null;
             $status = self::STATUS_ERROR;
@@ -60,8 +61,17 @@ class BackendController extends GridController
             try {
 
                 if ($form->isValid()) {
-
-                    $user = $this->get('tianos.repository.user')->findOneByUsername($entity->getUserTagUsername());
+	
+	                if (empty($entity->getUserTagUsername())) {
+		                return $this->render(
+			                'PointofsaleBundle:BackendPointofsale/addUser:tr.html.twig',
+			                [
+				                'errors' => ['Ingrese un usuario valido.'],
+			                ]
+		                );
+	                }
+	                
+	                $user = $this->get('tianos.repository.user')->findOneByUsername($entity->getUserTagUsername());
 
                     $pdvEntity->addUser($user);
                     $this->persist($pdvEntity);
@@ -87,6 +97,7 @@ class BackendController extends GridController
                 'PointofsaleBundle:BackendPointofsale/addUser:tr.html.twig',
                 [
                     'user' => $user,
+                    'errors' => $errors,
                     'profiles' => $this->findProfilesBySlugs(),
                 ]
             );
@@ -202,8 +213,7 @@ class BackendController extends GridController
         //FORM
         $form = $this->createForm($formType, $entity, [
             'form_data' => [],
-            'modules' => null,
-//            'modules' => $pdvEntity->getModule(),
+            'modules' => null
         ]);
         $form->handleRequest($request);
 
@@ -233,7 +243,7 @@ class BackendController extends GridController
             $template,
             [
                 'moduleIds' => $moduleIds,
-                'entity' => $pdvEntity,
+                'pdv' => $pdvEntity,
                 'vars' => $vars,
                 'form' => $form->createView(),
             ]

@@ -47,6 +47,14 @@
     });
 {% endif %}
 
+
+{% if dataTable.route.ticket_edit is defined %}
+    $('body.{{ vars.body_css }}').formTicketEdit({
+        buttonId: '{{ modal.ticket_edit_id }}',
+        route: '{{ path(dataTable.route.ticket_edit) }}'
+    });
+{% endif %}
+
 {% if dataTable.route.view_profile is defined %}
     $('body.{{ vars.body_css }}').formViewProfile({
         buttonId: '{{ modal.profile_id }}',
@@ -54,6 +62,14 @@
     });
 {% endif %}
 
+{% if dataTable.route.cog is defined %}
+    $('body.{{ vars.body_css }}').formCog({
+        buttonId: '{{ modal.point_of_sale_cog }}',
+        route: '{{ path(dataTable.route.cog, {id:"-1"}) }}'
+    });
+{% endif %}
+
+{#
 {% if dataTable.route.add_user is defined %}
     $('body.{{ vars.body_css }}').formAddUser({
         buttonId: '{{ modal.point_of_sale_add_user }}',
@@ -74,6 +90,7 @@
         route: '{{ path(dataTable.route.pdv_child, {id:"-1"}) }}'
     });
 {% endif %}
+#}
 
 {% if dataTable.route.create_pdv_child is defined %}
     $('body.{{ vars.body_css }}').formCreatePdvChild({
