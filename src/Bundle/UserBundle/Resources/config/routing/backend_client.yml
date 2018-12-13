@@ -46,6 +46,8 @@ backend_user_client_index:
                         - key: class
                           value: "'alert'"
                     columns:
+                        - name: '#'
+                          obj: " '<span class=\"badge bg-blue\">' + obj.id + '</span>' "
                         - name: Nombre
                           obj: " obj.name + ' ' + obj.last_name "
                         - name: Username

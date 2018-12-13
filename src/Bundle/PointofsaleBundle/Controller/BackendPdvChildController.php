@@ -120,10 +120,13 @@ class BackendPdvChildController extends GridController
         $vars = $configuration->getVars();
         $entity = $configuration->getEntity();
         $entity = new $entity();
-
+        
+	    $session = $request->getSession();
+	    $idParent = $session->get('id_pointofsale');
+        
         $form = $this->createForm($formType, $entity, [
             'form_data' => [
-                'pdv_parent' => $this->get('tianos.repository.pointofsale')->find($request->get('idParent')),
+                'pdv_parent' => $this->get('tianos.repository.pointofsale')->find($idParent),
             ],
         ]);
         $form->handleRequest($request);
@@ -137,8 +140,13 @@ class BackendPdvChildController extends GridController
             try{
 
                 if ($form->isValid()) {
-
+                	
                     $this->persist($entity);
+	
+
+//	                $pdv = $this->get('tianos.repository.pointofsale')->find($idPointofsale);
+//	                $pdv->addUser($entity);
+//	                $this->persist($pdv);
 
                     $varsRepository = $configuration->getRepositoryVars();
                     $entity = $this->getSerializeDecode($entity, $varsRepository->serialize_group_name);

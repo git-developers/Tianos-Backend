@@ -15,14 +15,20 @@ class TicketHasServices
     /**
      * @var integer
      *
-     * @JMSS\Groups({"crud"})
+     * @JMSS\Groups({
+     *     "crud",
+     *     "ticket"
+     * })
      */
     private $id;
 
     /**
      * @var integer
      *
-     * @JMSS\Groups({"crud"})
+     * @JMSS\Groups({
+     *     "crud",
+     *     "ticket"
+     * })
      */
     private $quantity;
 

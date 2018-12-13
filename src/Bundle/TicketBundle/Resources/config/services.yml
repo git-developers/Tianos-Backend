@@ -33,6 +33,11 @@ services:
         factory: ['@doctrine.orm.entity_manager', getRepository]
         arguments: [ Bundle\TicketBundle\Entity\Ticket ]
 
+    tianos.repository.ticket.services:
+        class: Dummy
+        factory: ['@doctrine.orm.entity_manager', getRepository]
+        arguments: [ Bundle\TicketBundle\Entity\TicketHasServices ]
+
 
 
 #    tianos.controller.grid:

@@ -94,6 +94,8 @@ class BackendAddUserController extends GridController
             ->resetGridVariable()
         ;
 	
+	    $session = $request->getSession();
+	    $session->set('id_pointofsale', $request->get('id'));
 	    $pdv = $this->get('tianos.repository.pointofsale')->find($request->get('id'));
 
         return $this->render(
@@ -115,8 +117,8 @@ class BackendAddUserController extends GridController
      */
     public function createAction(Request $request): Response
     {
-
-        if (!$this->isXmlHttpRequest()) {
+	
+	    if (!$this->isXmlHttpRequest()) {
             throw $this->createAccessDeniedException(self::ACCESS_DENIED_MSG);
         }
 
@@ -143,9 +145,10 @@ class BackendAddUserController extends GridController
                 'pdv_parent' => $pdvParent,
             ],
         ]);
+        
         $form->handleRequest($request);
-
-        if ($form->isSubmitted()) {
+	
+	    if ($form->isSubmitted()) {
 
             $errors = [];
             $entityJson = null;
@@ -156,12 +159,17 @@ class BackendAddUserController extends GridController
                 if ($form->isValid()) {
 	
 	                $this->persist($entity);
-//					$pdv->addUser($entity);
-//	                $this->persist($pdv);
+	
+	                $session = $request->getSession();
+	                $idPointofsale = $session->get('id_pointofsale');
+	                $pdv = $this->get('tianos.repository.pointofsale')->find($idPointofsale);
+					$pdv->addUser($entity);
+	                $this->persist($pdv);
 
                     $varsRepository = $configuration->getRepositoryVars();
                     $entity = $this->getSerializeDecode($entity, $varsRepository->serialize_group_name);
                     $status = self::STATUS_SUCCESS;
+	
                 }else{
                     foreach ($form->getErrors(true) as $key => $error) {
                         if ($form->isRoot()) {

@@ -197,6 +197,7 @@ class UserType extends AbstractType
 //            ])
             ->add('aboutMe', TextareaType::class, [
                 'label' => 'Descripcion',
+		        'required' => false,
                 'label_attr' => [
                     'class' => ''
                 ],

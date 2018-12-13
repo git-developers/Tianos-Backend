@@ -228,28 +228,15 @@ class BackendController extends GridController
 		
 		
 		//SERVICES
-//		$serviceArray = [];
-//		$session = $request->getSession();
-//		$services = $session->get('services');
-//
-//		if (!empty($services)) {
-//			foreach ($services as $key => $service) {
-//				$serviceObj = $this->get('tianos.repository.services')->find($service['idService']);
-//				$serviceObj->setQuantity($service['quantity']);
-//				$serviceArray[] = $this->getSerializeDecode($serviceObj, 'ticket');
-//			}
-//		}
+		$serviceArray = [];
+		$ticketHasServices = $this->get('tianos.repository.ticket.services')->findAllByService($id);
+		foreach ($ticketHasServices as $key => $ths) {
+
+			$services = $ths->getServices();
+			$services->setQuantity($ths->getQuantity());
+			$serviceArray[] = $this->getSerializeDecode($services, 'ticket');
+		}
 		//SERVICES
-		
-		
-		$serviceArray = $this->getSerializeDecode($entity->getServices(), 'ticket');
-		
-//		echo "POLLO:: <pre>";
-//		print_r($serviceArray);
-//		exit;
-		
-		
-		
 		
 		
 		if ($form->isSubmitted()) {

@@ -12,6 +12,7 @@ backend_pointofsale_index:
                 subheader: sylius.ui.manage_your_pointofsale_catalog
                 icon: cube
                 body_css: grid-body-css
+                google_maps: true
             grid:
                 icon: map-marker
                 box_class: primary
@@ -56,11 +57,6 @@ backend_pointofsale_index:
                     columns:
                         - name: '#'
                           obj: " '<span class=\"badge bg-blue\">' + obj.id + '</span>' "
-#                        - name: Es principal?
-#                          obj: obj.point_of_sale
-#                          options:
-#                              icon: image
-#                              property: " return (obj.point_of_sale != null) ? '<span class=\"badge bg-blue\">Principal</span>' : '' "
                         - name: Nombre
                           obj: obj.name
                         - name: Coordenadas

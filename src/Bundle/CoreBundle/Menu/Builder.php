@@ -385,6 +385,7 @@ class Builder implements ContainerAwareInterface
             ->setAttribute('class', $this->activeRoute([
                 'backend_ticket_index',
                 'backend_ticket_create',
+                'backend_ticket_edit',
                 'backend_calendar_index',
             ]))
             ->setAttribute('icon', 'fa-fw fa-ticket')
@@ -403,7 +404,10 @@ class Builder implements ContainerAwareInterface
             'route' => 'backend_ticket_index'
         ])
             ->setAttribute('icon', self::CIRCLE_2)
-            ->setAttribute('class', $this->activeRoute('backend_ticket_index'))
+            ->setAttribute('class', $this->activeRoute([
+            	'backend_ticket_index',
+	            'backend_ticket_edit'
+            ]))
             ->setDisplay($isGranted)
         ;
         

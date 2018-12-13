@@ -63,7 +63,7 @@ backend_super_pointofsale_add_user_index:
                 type: Bundle\UserBundle\Form\Type\UserType
             repository:
                 service: tianos.repository.pointofsale
-                method: find
+                method: findByPDV
                 arguments: [$userId]
                 vars:
                     serialize_group_name: pointofsale-has-user
@@ -81,7 +81,7 @@ backend_super_pointofsale_add_user_create:
                 type: Bundle\UserBundle\Form\Type\UserType
             repository:
                 vars:
-                    serialize_group_name: crud
+                    serialize_group_name: pointofsale-has-user
 
 backend_super_pointofsale_add_user_edit:
     path: /edit
@@ -98,7 +98,7 @@ backend_super_pointofsale_add_user_edit:
                 method: find
                 arguments: [$userId]
                 vars:
-                    serialize_group_name: crud
+                    serialize_group_name: pointofsale-has-user
 
 backend_super_pointofsale_add_user_delete:
     path: /delete

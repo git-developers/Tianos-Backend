@@ -69,6 +69,7 @@ class PointofsaleType extends AbstractType
             ])
             ->add('address', TextType::class, [
                 'label' => 'Direccion',
+	            'required' => false,
                 'label_attr' => [
                     'class' => ''
                 ],

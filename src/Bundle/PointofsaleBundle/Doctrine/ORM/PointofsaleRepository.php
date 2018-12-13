@@ -134,7 +134,6 @@ class PointofsaleRepository extends TianosEntityRepository
             FROM PointofsaleBundle:Pointofsale pointofsale
             WHERE
             pointofsale.slug = :slug AND
-
             pointofsale.isActive = :active
             ";
         
@@ -159,6 +158,29 @@ class PointofsaleRepository extends TianosEntityRepository
             WHERE
             pdv.id = :id AND
             pdv.isActive = :active
+            ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+        $query->setParameter('id', $id);
+
+        return $query->getOneOrNullResult();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function findByPDV($id)
+    {
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT pdv, user_
+            FROM PointofsaleBundle:Pointofsale pdv
+            LEFT JOIN pdv.user user_
+            WHERE
+            pdv.id = :id AND
+            pdv.isActive = :active AND
+            user_.isActive = :active
             ";
 
         $query = $em->createQuery($dql);
