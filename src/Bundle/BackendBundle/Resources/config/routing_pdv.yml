@@ -37,7 +37,9 @@ backend_ticket:
 backend_user:
     resource: '@UserBundle/Resources/config/routing/backend_pdv.yml'
     prefix: /user
-
+backend_report:
+    resource: '@ReportBundle/Resources/config/routing/backend.yml'
+    prefix: /report
 
 
 

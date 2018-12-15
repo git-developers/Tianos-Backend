@@ -13,9 +13,6 @@ backend_security_super:
 backend_super_session:
     resource: '@SessionBundle/Resources/config/routing/backend.yml'
     prefix: /session
-backend_super_report:
-    resource: '@ReportBundle/Resources/config/routing/backend.yml'
-    prefix: /report
 backend_super_pointofsale:
     resource: '@PointofsaleBundle/Resources/config/routing/backend.yml'
     prefix: /point-of-sale
@@ -34,7 +31,9 @@ backend_super_pointofsale_add_user:
 
 
 
-
+#backend_super_report:
+#    resource: '@ReportBundle/Resources/config/routing/backend.yml'
+#    prefix: /report
 #backend_super_pointofsale_per_user:
 #    resource: '@PointofsaleBundle/Resources/config/routing/backend_per_user.yml'
 #    prefix: /point-of-sale-per-user

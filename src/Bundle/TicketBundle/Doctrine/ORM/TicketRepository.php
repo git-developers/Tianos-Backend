@@ -48,14 +48,6 @@ class TicketRepository extends TianosEntityRepository implements TicketRepositor
         $query->setParameter('active', 1);
 
         return $query->getResult();
-
-//        return $this->createQueryBuilder('o')
-//            ->select('o.id, o.code, o.name, o.createdAt')
-//            ->andWhere('o.isActive = :active')
-//            ->setParameter('active', 1)
-//            ->getQuery()
-//            ->getResult()
-//            ;
     }
 
     /**

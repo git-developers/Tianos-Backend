@@ -421,8 +421,53 @@ class Builder implements ContainerAwareInterface
         /**
          * TICKET
          */
+	
         
-      
+        
+
+        /**
+         * REPORTS
+         */
+        $isGranted = $this->isGranted([
+	        Role::ROLE_PDV_ADMIN,
+        ]);
+
+        $menu->addChild('Reportes', [
+            'route' => 'backend_report_combo_chart',
+            'extras' => ['safe_label' => true],
+            'childrenAttributes' => [
+                'class' => 'treeview-menu',
+            ],
+        ])
+            ->setAttribute('class', 'treeview')
+            ->setAttribute('class', $this->activeRoute([
+	            'backend_report_pie_chart',
+	            'backend_report_combo_chart',
+            ]))
+            ->setAttribute('icon', 'fa-fw fa-bar-chart')
+            ->setDisplay($isGranted)
+        ;
+        
+	    $menu['Reportes']->addChild('Combo chart', [
+		    'route' => 'backend_report_combo_chart'
+	    ])
+		    ->setAttribute('icon', self::CIRCLE_1)
+		    ->setAttribute('class', $this->activeRoute('backend_report_combo_chart'))
+		    ->setDisplay($isGranted)
+	    ;
+     
+	    $menu['Reportes']->addChild('Pie chart', [
+		    'route' => 'backend_report_pie_chart'
+	    ])
+		    ->setAttribute('icon', self::CIRCLE_2)
+		    ->setAttribute('class', $this->activeRoute('backend_report_pie_chart'))
+		    ->setDisplay($isGranted)
+	    ;
+        /**
+         * REPORTS
+         */
+	
+	    
 	
 	
 	
