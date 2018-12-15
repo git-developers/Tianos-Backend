@@ -153,7 +153,6 @@ class Pointofsale
      */
     private $pointOfSale;
     
-
     private $pointOfSaleChildren;
 
     /**

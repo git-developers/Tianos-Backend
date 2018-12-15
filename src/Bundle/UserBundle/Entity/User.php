@@ -25,6 +25,10 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  */
 class User extends BaseUser // implements UserInterface, DomainObjectInterface, \Serializable
 {
+	
+	const USER_BELONGS_TO_PDV = 'USER_BELONGS_TO_PDV';
+	
+	
     /**
      * @var int
      *

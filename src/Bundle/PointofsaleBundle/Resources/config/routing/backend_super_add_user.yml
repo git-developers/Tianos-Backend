@@ -23,19 +23,22 @@ backend_super_pointofsale_add_user_index:
                         size: modal-lg
                     edit:
                         size: modal-lg
+                    change_password:
+                        title: Cambiar password
                 data_table:
                     route:
                         info: backend_super_pointofsale_add_user_info
                         view: backend_super_pointofsale_add_user_view
                         edit: backend_super_pointofsale_add_user_edit
-#                        create_user: backend_super_pointofsale_add_user_create
                         create: backend_super_pointofsale_add_user_create
                         delete: backend_super_pointofsale_add_user_delete
                         add_user: backend_super_pointofsale_add_user
+                        change_password: backend_super_user_change_password
                     table_button:
                         - edit
                         - delete
                         - add_user
+                        - change_password
                     table_button_header:
 #                        - create_pdv_child
                         - create
@@ -67,6 +70,25 @@ backend_super_pointofsale_add_user_index:
                 arguments: [$userId]
                 vars:
                     serialize_group_name: pointofsale-has-user
+
+
+backend_super_user_change_password:
+    path: /change-password
+    methods: [PUT, POST]
+    defaults:
+        _controller: tianos.backend.controller.pointofsale.add.user:changePasswordAction
+        _tianos:
+            action: edit
+            template: UserBundle:BackendUser/Form:change_password.html.twig
+            entity: Bundle\UserBundle\Entity\ChangePassword2
+            form:
+                type: Bundle\UserBundle\Form\Type\UserChangePasswordType2
+            repository:
+                service: tianos.repository.user
+                method: find
+                arguments: [$userId]
+                vars:
+                    serialize_group_name: crud
 
 backend_super_pointofsale_add_user_create:
     path: /create

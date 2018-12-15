@@ -61,19 +61,14 @@ class BackendAddUserController extends GridController
         $objectsPDV = $this->get($repository)->$method($request->get('id'));
 	
 	    $objects = [];
-	    foreach ($objectsPDV->getUser() as $key => $user) {
+	    $users = is_object($objectsPDV) ? $objectsPDV->getUser() : [];
+	    foreach ($users as $key => $user) {
 		    $objects[] = $this->getSerializeDecode($user, $varsRepository->serialize_group_name);
 	    }
 	
 	    $objects = json_encode($objects);
 		//REPOSITORY
-	
-	
-//	    echo "POLLO:: <pre>";
-//	    print_r($objects);
-//	    exit;
 
-	    
 	
 	    //GRID
         $gridService = $this->get('tianos.grid');
