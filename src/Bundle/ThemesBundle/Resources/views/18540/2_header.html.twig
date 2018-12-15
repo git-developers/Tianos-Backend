@@ -1,5 +1,5 @@
 <header class="section page-header">
-    <!-- RD Navbar-->
+
     <div class="rd-navbar-wrap rd-navbar-absolute">
         <nav
             class="rd-navbar rd-navbar-transparent"
@@ -20,78 +20,75 @@
 
             <div class="rd-navbar-main-outer">
                 <div class="rd-navbar-main">
-                    <!-- RD Navbar Panel-->
+
                     <div class="rd-navbar-panel">
-                        <!-- RD Navbar Toggle-->
+
                         <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap">
                             <span></span>
                         </button>
-                        <!-- RD Navbar Brand-->
+
                         <div class="rd-navbar-brand">
-                            <a class="brand" href="index.html">
-                                <img class="brand-logo-dark" src="{{ asset('bundles/themes/18540/images/logo-inverse-151x56.png') }}" alt="" width="151" height="56"/>
-                                <img class="brand-logo-light" src="{{ asset('bundles/themes/18540/images/logo-inverse-151x56.png') }}" alt="" width="151" height="56"/>
+                            <a class="brand" href="{{ path('frontend_default_index') }}">
+                                <img class="brand-logo-dark" src="{{ asset('bundles/themes/18540/images/logo-inverse-151x56.png') }}" />
+                                <img class="brand-logo-light" src="{{ asset('bundles/themes/18540/images/logo-inverse-151x56.png') }}" />
                             </a>
                         </div>
                     </div>
 
                     <div class="rd-navbar-main-element">
                         <div class="rd-navbar-nav-wrap">
-                            <!-- RD Navbar Nav-->
+
                             <ul class="rd-navbar-nav">
                                 <li class="rd-nav-item active">
                                     <a class="rd-nav-link" href="{{ path('frontend_default_index') }}">Inicio</a>
                                 </li>
                                 <li class="rd-nav-item">
-                                    {#<a class="rd-nav-link" href="{{ path('backend_default_index') }}">#}
-                                    <a class="rd-nav-link" href="">
-                                        Back-end
+                                    <a class="rd-nav-link" href="#advantages">
+                                        Ventajas
                                     </a>
                                 </li>
                                 <li class="rd-nav-item">
-                                    <a class="rd-nav-link" href="about.html">About</a>
-                                    <!-- RD Navbar Dropdown-->
+                                    <a class="rd-nav-link" href="#responsive">Responsive</a>
+
                                     <ul class="rd-menu rd-navbar-dropdown">
                                         <li class="rd-dropdown-item">
-                                            <a class="rd-dropdown-link" href="pricing.html">Pricing</a>
+                                            <a class="rd-dropdown-link" href="#">Pricing</a>
                                         </li>
                                         <li class="rd-dropdown-item">
-                                            <a class="rd-dropdown-link" href="our-team.html">Our team</a>
+                                            <a class="rd-dropdown-link" href="#">Our team</a>
                                         </li>
                                         <li class="rd-dropdown-item">
-                                            <a class="rd-dropdown-link" href="single-job.html">Single job</a>
+                                            <a class="rd-dropdown-link" href="#">Single job</a>
                                         </li>
                                     </ul>
                                 </li>
-                                <li class="rd-nav-item"><a class="rd-nav-link" href="services.html">Services</a>
-                                    <!-- RD Navbar Dropdown-->
+                                <li class="rd-nav-item"><a class="rd-nav-link" href="#">Services</a>
                                     <ul class="rd-menu rd-navbar-dropdown">
                                         <li class="rd-dropdown-item">
-                                            <a class="rd-dropdown-link" href="single-service.html">Single service</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="rd-nav-item">
-                                    <a class="rd-nav-link" href="classic-blog.html">Blog</a>
-                                    <!-- RD Navbar Dropdown-->
-                                    <ul class="rd-menu rd-navbar-dropdown">
-                                        <li class="rd-dropdown-item">
-                                            <a class="rd-dropdown-link" href="single-post.html">Blog Post</a>
+                                            <a class="rd-dropdown-link" href="#">Single service</a>
                                         </li>
                                     </ul>
                                 </li>
                                 <li class="rd-nav-item">
-                                    <a class="rd-nav-link" href="contacts.html">Contacts</a>
+                                    <a class="rd-nav-link" href="#">Blog</a>
+
+                                    <ul class="rd-menu rd-navbar-dropdown">
+                                        <li class="rd-dropdown-item">
+                                            <a class="rd-dropdown-link" href="#">Blog Post</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li class="rd-nav-item">
+                                    <a class="rd-nav-link" href="#contact">Contactos</a>
                                 </li>
                             </ul>
                         </div>
 
-                        <!-- RD Navbar Search-->
                         <div class="rd-navbar-search">
                             <button class="rd-navbar-search-toggle rd-navbar-fixed-element-1" data-rd-navbar-toggle=".rd-navbar-search">
                                 <span></span>
                             </button>
-                            <form class="rd-search" action="search-results.html" data-search-live="rd-search-results-live" method="GET">
+                            <form class="rd-search" action="#" data-search-live="rd-search-results-live" method="GET">
                                 <div class="form-wrap">
                                     <label class="form-label" for="rd-navbar-search-form-input">Search</label>
                                     <input class="rd-navbar-search-form-input form-input" id="rd-navbar-search-form-input" type="text" name="s" autocomplete="off">
