@@ -24,12 +24,14 @@ class AuthenticationSuccessHandler implements AuthenticationSuccessHandlerInterf
 
     private $em;
     private $router;
+	protected $httpUtils;
 
 //    public function __construct(EntityManager $em, RouterInterface $router)
     public function __construct(ContainerInterface $container, RouterInterface $router)
     {
         $this->container = $container;
         $this->router = $router;
+	    $this->httpUtils = $this->container->get('security.http_utils');
     }
 
     public function onSecurityInteractiveLogin(InteractiveLoginEvent $event)
@@ -80,7 +82,8 @@ class AuthenticationSuccessHandler implements AuthenticationSuccessHandlerInterf
 		    $referer = $this->router->generate('backend_default_super_index');
 	    }
 
-        return new RedirectResponse($referer);
+//        return new RedirectResponse($referer);
+	    return $this->httpUtils->createRedirectResponse($request, $referer);
     }
 
     private function isGranted($attributes, $object = null)

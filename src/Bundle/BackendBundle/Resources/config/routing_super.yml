@@ -28,6 +28,9 @@ backend_super_pointofsale_pdv_child:
 backend_super_pointofsale_add_user:
     resource: '@PointofsaleBundle/Resources/config/routing/backend_super_add_user.yml'
     prefix: /point-of-sale-add-user
+backend_super_pointofsale_map:
+    resource: '@PointofsaleBundle/Resources/config/routing/backend_super_map.yml'
+    prefix: /point-of-sale/map
 
 
 

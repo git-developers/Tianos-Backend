@@ -1,11 +1,12 @@
-backend_pointofsale_map_index:
+backend_super_pointofsale_map_index:
     path: /
     methods: [GET]
     defaults:
-        _controller: tianos.map.controller.pointofsale:indexAction
+        _controller: tianos.backend.controller.pointofsale.map:indexAction
         _tianos:
-#            action: index
-            template: PointofsaleBundle:PointofsaleMap:index.html.twig
+            action: index
+            template: PointofsaleBundle:BackendPointofsale/Map:index.html.twig
+            entity: Bundle\PointofsaleBundle\Entity\Pointofsale
             vars:
                 subheader: sylius.ui.manage_your_pointofsale_catalog
                 icon: cube

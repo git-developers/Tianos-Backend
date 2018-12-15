@@ -7,7 +7,7 @@
         <script type="text/javascript">
 
             $( document ).ready(function() {
-                console.log( "ready 222!" );
+                console.log( "EDIT --" );
 
                 var map;
                 var marker;
@@ -20,16 +20,26 @@
 
                 map = new google.maps.Map(mapCanvas, mapOptions);
 
+                marker = new google.maps.Marker({
+                    position: {
+                        lat: {{ form.latitude.vars.value }},
+                        lng: {{ form.longitude.vars.value }}
+                    },
+                    map: map,
+                    title: 'Aqui estas tu',
+                    position: event.latLng
+                });
+
                 google.maps.event.addListener(map, 'click', function(event) {
                     $('#{{ form.latitude.vars.id }}').val(event.latLng.lat());
                     $('#{{ form.longitude.vars.id }}').val(event.latLng.lng());
 
                     if (marker == null) {
+
+                        console.log( "EDIT -- marker" );
+
+
                         marker = new google.maps.Marker({
-                            position: {
-                                lat: {{ form.latitude.vars.value }},
-                                lng: {{ form.longitude.vars.value }}
-                            },
                             map: map,
                             title: 'Aqui estas tu',
                             position: event.latLng

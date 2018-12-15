@@ -14,9 +14,11 @@ use Doctrine\ORM\EntityManager;
 use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
+use Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler;
+use Symfony\Component\Security\Core\Security;
 
-
-class AuthenticationFailureHandler implements AuthenticationFailureHandlerInterface
+final class AuthenticationFailureHandler extends DefaultAuthenticationFailureHandler
+//class AuthenticationFailureHandler implements AuthenticationFailureHandlerInterface
 {
 
     private $container;
@@ -36,9 +38,16 @@ class AuthenticationFailureHandler implements AuthenticationFailureHandlerInterf
 			return new JsonResponse(['success' => false, 'message' => $exception->getMessageKey()], 401);
 		}
 		
-		return;
+		$o = new \stdClass();
+		$o->messageKey = 'Usuario o contraseña incorrecto.';
+		$o->messageData = [];
+		
+		$request->getSession()->set(Security::AUTHENTICATION_ERROR, $o);
+		$this->options['failure_path'] = $request->headers->get('referer');
+		
+		return $this->httpUtils->createRedirectResponse($request, $this->options['failure_path']);
+		
 //		return parent::onAuthenticationFailure($request, $exception);
 	}
 
 }
-

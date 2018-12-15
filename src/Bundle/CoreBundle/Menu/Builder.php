@@ -102,28 +102,42 @@ class Builder implements ContainerAwareInterface
         /**
          * POINTS OF SALES
          */
-        $isGranted = $this->isGranted([
-            Role::ROLE_SUPER_ADMIN,
-        ]);
+	    $isGranted = $this->isGranted([
+		    Role::ROLE_SUPER_ADMIN,
+	    ]);
+	
+	    $menu->addChild('Puntos de venta', [
+		    'route' => 'backend_pointofsale_index',
+		    'extras' => ['safe_label' => true],
+		    'childrenAttributes' => [
+			    'class' => 'treeview-menu',
+		    ],
+	    ])
+		    ->setAttribute('allow_angle', true)
+		    ->setAttribute('class', 'treeview')
+		    ->setAttribute('class', $this->activeRoute([
+			    'backend_pointofsale_index',
+			    'backend_super_pointofsale_map_index',
+		    ]))
+		    ->setAttribute('icon', 'fa-fw fa-map-marker')
+		    ->setDisplay($isGranted)
+	    ;
 
-        $menu->addChild('Puntos de venta', [
-            'route' => 'backend_pointofsale_index',
-            'extras' => ['safe_label' => true],
-            'childrenAttributes' => [
-                'class' => 'treeview-menu',
-            ],
-        ])
-            ->setAttribute('allow_angle', true)
-            ->setAttribute('class', 'treeview')
-            ->setAttribute('class', $this->activeRoute([
-                'backend_pointofsale_index',
-                'backend_pointofsale_module',
-	            'backend_super_pointofsale_add_user_index',
-	            'backend_super_pointofsale_pdv_child_index',
-            ]))
-            ->setAttribute('icon', 'fa-fw fa-map-marker')
-            ->setDisplay($isGranted)
-        ;
+	    $menu['Puntos de venta']->addChild('Gestionar', [
+		    'route' => 'backend_pointofsale_index'
+	    ])
+		    ->setAttribute('icon', self::CIRCLE_1)
+		    ->setAttribute('class', $this->activeRoute('backend_pointofsale_index'))
+		    ->setDisplay($isGranted)
+	    ;
+	
+	    $menu['Puntos de venta']->addChild('Mapa', [
+		    'route' => 'backend_super_pointofsale_map_index'
+	    ])
+		    ->setAttribute('icon', self::CIRCLE_2)
+		    ->setAttribute('class', $this->activeRoute('backend_super_pointofsale_map_index'))
+		    ->setDisplay($isGranted)
+	    ;
         /**
          * POINTS OF SALES
          */
@@ -238,8 +252,10 @@ class Builder implements ContainerAwareInterface
         /**
          * STOCK - INVENTORY
          */
+		
 
-
+        
+        
 
 
         /**
