@@ -22,10 +22,12 @@ final class AuthenticationFailureHandler extends DefaultAuthenticationFailureHan
 {
 
     private $container;
+	protected $httpUtils;
 
     public function __construct(ContainerInterface $container)
     {
         $this->container = $container;
+	    $this->httpUtils = $this->container->get('security.http_utils');
     }
 	
 	/**

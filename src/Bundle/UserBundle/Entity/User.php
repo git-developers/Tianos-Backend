@@ -124,6 +124,7 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
      * @Assert\Email(
      *     message = "El email '{{ value }}' no es valido.",
      *     checkMX = true,
+     *     checkHost = true,
      *     strict = true,
      *     groups={"registration"}
      * )

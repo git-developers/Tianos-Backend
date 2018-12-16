@@ -19,6 +19,8 @@ backend_super_user_index:
                 modal:
                     create:
                         title: Crear usuario
+                    edit:
+                        title: Editar usuario
                     change_password:
                         title: Cambiar password
                 data_table:

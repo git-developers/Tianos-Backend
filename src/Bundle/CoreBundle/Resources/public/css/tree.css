@@ -1,9 +1,9 @@
 span.li-span {
     width:100%;
     display: block;
-    padding-bottom: 4px;
     overflow: hidden;
     border-radius: 5px;
+    padding: 5px 0 0 5px;
 }
 
 input[type=radio] {

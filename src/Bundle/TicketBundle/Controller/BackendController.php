@@ -372,7 +372,12 @@ class BackendController extends GridController
 		$form = $this->createForm($formType, $entity, ['form_data' => []]);
 		$form->handleRequest($request);
 		
-		$clients = $this->get('tianos.repository.user')->findAllClient();
+		
+		//USER
+		$user = $this->getUser();
+		
+		$clients = $this->get('tianos.repository.user')->findAllClient($user->getPointOfSaleActive()->getId());
+		$clients = is_object($clients) ? $clients->getUser() : [];
 		$clients = $this->getSerializeDecode($clients, 'ticket');
 		
 		if ($form->isSubmitted() && $form->isValid()) {
@@ -453,7 +458,11 @@ class BackendController extends GridController
 		$form = $this->createForm($formType, $entity, ['form_data' => []]);
 		$form->handleRequest($request);
 		
-		$employees = $this->get('tianos.repository.user')->findAllEmployee();
+		//USER
+		$user = $this->getUser();
+		
+		$employees = $this->get('tianos.repository.user')->findAllEmployee($user->getPointOfSaleActive()->getId());
+		$employees = is_object($employees) ? $employees->getUser() : [];
 		$employees = $this->getSerializeDecode($employees, 'ticket');
 		
 		if ($form->isSubmitted()) {

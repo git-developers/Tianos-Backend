@@ -10,9 +10,10 @@ use Component\Pointofsale\Repository\PointofsaleRepositoryInterface;
 use Component\OneToMany\Repository\OneToManyLeftRepositoryInterface;
 use Component\OneToMany\Repository\OneToManyRightRepositoryInterface;
 
-class PointofsaleRepository extends TianosEntityRepository
-    implements
-    PointofsaleRepositoryInterface, OneToManyLeftRepositoryInterface, OneToManyRightRepositoryInterface
+class PointofsaleRepository extends TianosEntityRepository implements
+    PointofsaleRepositoryInterface,
+	OneToManyLeftRepositoryInterface,
+	OneToManyRightRepositoryInterface
 {
 
     /**

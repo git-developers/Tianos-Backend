@@ -152,47 +152,51 @@ class UserRepository extends EntityRepository implements UserRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function findAllClient(): array
+    public function findAllClient($idPdv) //: array
     {
-        $em = $this->getEntityManager();
-        $dql = "
-            SELECT user_, profile
-            FROM UserBundle:User user_
+	    $em = $this->getEntityManager();
+	    $dql = "
+            SELECT pdv, user_, profile
+            FROM PointofsaleBundle:Pointofsale pdv
+            LEFT JOIN pdv.user user_
             INNER JOIN user_.profile profile
             WHERE
-            user_.enabled = :active AND
-            profile.slug = :slug
-            ORDER BY user_.id DESC
+            pdv.id = :id AND
+            profile.slug = :slug AND
+            pdv.isActive = :active
             ";
+	
+	    $query = $em->createQuery($dql);
+	    $query->setParameter('active', 1);
+	    $query->setParameter('id', $idPdv);
+	    $query->setParameter('slug', Profile::CLIENT_SLUG);
 
-        $query = $em->createQuery($dql);
-        $query->setParameter('active', 1);
-        $query->setParameter('slug', Profile::CLIENT_SLUG);
-
-        return $query->getResult();
+	    return $query->getOneOrNullResult();
     }
 
     /**
      * {@inheritdoc}
      */
-    public function findAllEmployee(): array
+    public function findAllEmployee($idPdv) //: array
     {
-        $em = $this->getEntityManager();
-        $dql = "
-            SELECT user_, profile
-            FROM UserBundle:User user_
+	    $em = $this->getEntityManager();
+	    $dql = "
+            SELECT pdv, user_, profile
+            FROM PointofsaleBundle:Pointofsale pdv
+            LEFT JOIN pdv.user user_
             INNER JOIN user_.profile profile
             WHERE
-            user_.enabled = :active AND
-            profile.slug = :slug
-            ORDER BY user_.id DESC
+            pdv.id = :id AND
+            profile.slug = :slug AND
+            pdv.isActive = :active
             ";
-
-        $query = $em->createQuery($dql);
-        $query->setParameter('active', 1);
-        $query->setParameter('slug', Profile::EMPLOYEE_SLUG);
-
-        return $query->getResult();
+	
+	    $query = $em->createQuery($dql);
+	    $query->setParameter('active', 1);
+	    $query->setParameter('id', $idPdv);
+	    $query->setParameter('slug', Profile::EMPLOYEE_SLUG);
+	
+	    return $query->getOneOrNullResult();
     }
 
     /**

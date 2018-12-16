@@ -17,7 +17,13 @@ backend_user_employee_index:
                 box_class: primary
                 title: Listado de empleados
                 modal:
-                    title: Crear usuario
+                    create:
+                        title: Crear usuario
+                        size:
+                    edit:
+                        size:
+                    change_password:
+                        title: Cambiar password
                 data_table:
                     route:
                         info: backend_user_employee_info
@@ -26,10 +32,12 @@ backend_user_employee_index:
                         edit: backend_user_employee_edit
                         create: backend_user_employee_create
                         delete: backend_user_employee_delete
+                        change_password: backend_user_change_password
                     table_button:
                         - view_profile
                         - edit
                         - delete
+                        - change_password
                     table_option:
                         pageLength: 50
                         dom: "'<\"top\"iflp><\"clear\">rt<\"bottom\"iflp>'"
