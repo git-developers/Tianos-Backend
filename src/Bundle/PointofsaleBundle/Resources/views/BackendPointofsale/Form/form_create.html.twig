@@ -14,7 +14,7 @@
                 var mapCanvas = document.getElementById('google-map-create');
                 var mapOptions = {
                     center: new google.maps.LatLng(-12.0672105, -77.0336597),
-                    zoom: 17,
+                    zoom: 16,
                     mapTypeId: google.maps.MapTypeId.ROADMAP
                 };
 
@@ -23,6 +23,12 @@
                 google.maps.event.addListener(map, 'click', function(event) {
                     $('#{{ form.latitude.vars.id }}').val(event.latLng.lat());
                     $('#{{ form.longitude.vars.id }}').val(event.latLng.lng());
+
+                    var zoom = map.getZoom();
+
+                    console.log("zoom ::: " + zoom);
+
+
 
                     if (marker == null) {
                         marker = new google.maps.Marker({

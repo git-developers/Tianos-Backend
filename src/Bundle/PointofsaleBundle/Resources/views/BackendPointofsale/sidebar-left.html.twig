@@ -21,6 +21,28 @@
                     <strong>Creado:</strong> {{ pdv.createdAt|date("Y-m-d H:i") }}
                 </a>
             </li>
+            <li>
+                <a href="#">
+                    <strong>Link:</strong>
+                </a>
+                <div class="row">
+                    <div class="col-md-10">
+                        <p class="text-muted">
+                            <input
+                                value="{{ url('backend_security_pdv_login', {slug: pdv.slug}) }}"
+                                class="form-control copy-to-clipboard-text"
+                                readonly>
+                        </p>
+                    </div>
+
+                    <div class="col-md-1">
+                        <i
+                            class="fa fa-lg fa-fw fa-copy x-hand copy-to-clipboard"
+                            data-toggle="tooltip"
+                            data-original-title="Click para copiar"></i>
+                    </div>
+                </div>
+            </li>
         </ul>
 
     </div>

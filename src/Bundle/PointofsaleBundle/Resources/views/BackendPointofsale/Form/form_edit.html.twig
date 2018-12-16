@@ -7,14 +7,13 @@
         <script type="text/javascript">
 
             $( document ).ready(function() {
-                console.log( "EDIT --" );
 
                 var map;
                 var marker;
                 var mapCanvas = document.getElementById('google-map-edit');
                 var mapOptions = {
                     center: new google.maps.LatLng({{ form.latitude.vars.value }}, {{ form.longitude.vars.value }}),
-                    zoom: 17,
+                    zoom: 16,
                     mapTypeId: google.maps.MapTypeId.ROADMAP
                 };
 
@@ -26,25 +25,31 @@
                         lng: {{ form.longitude.vars.value }}
                     },
                     map: map,
-                    title: 'Aqui estas tu',
-                    position: event.latLng
+                    title: '{{ form.name.vars.value }}'
                 });
 
                 google.maps.event.addListener(map, 'click', function(event) {
-                    $('#{{ form.latitude.vars.id }}').val(event.latLng.lat());
-                    $('#{{ form.longitude.vars.id }}').val(event.latLng.lng());
+                    $('.latitude').val(event.latLng.lat());
+                    $('.longitude').val(event.latLng.lng());
+
+                    console.log(event.latLng.lat() + ' -- ' + event.latLng.lng());
+
+
 
                     if (marker == null) {
 
-                        console.log( "EDIT -- marker" );
 
+                        console.log("ENTRE -- MARKER NULL -- IF");
 
                         marker = new google.maps.Marker({
                             map: map,
-                            title: 'Aqui estas tu',
+                            title: '{{ form.latitude.vars.value }}',
                             position: event.latLng
                         });
                     } else {
+
+                        console.log("ENTRE -- MARKER NULL -- ELSE");
+
                         marker.setPosition(event.latLng);
                     }
                 });

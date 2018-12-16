@@ -62,9 +62,9 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
      * @Assert\Regex(
      *     pattern="/[^a-zA-Z ]+/",
      *     match=false,
-     *     message="user.name.regex"
+     *     message="sylius.user.name.invalid"
      * )
-     * @Assert\NotBlank(message="user.name.not_blank", groups={"registration_admin", "registration"})
+     * @Assert\NotBlank(message="sylius.user.name.not_blank", groups={"registration_admin", "registration"})
      */
     private $name;
 
@@ -77,6 +77,11 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
      *     "anonymous_user",
      *     "friends"
      * })
+     * @Assert\Regex(
+     *     pattern="/[^a-zA-Z ]+/",
+     *     match=false,
+     *     message="sylius.user.last_name.invalid"
+     * )
      */
     private $lastName;
 
@@ -118,7 +123,8 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
      *
      * @Assert\Email(
      *     message = "El email '{{ value }}' no es valido.",
-     *     checkMX = false,
+     *     checkMX = true,
+     *     strict = true,
      *     groups={"registration"}
      * )
      */

@@ -13,6 +13,7 @@ backend_super_pointofsale_add_user_index:
                 icon: cube
                 body_css: grid-body-css
                 box_class: primary
+                copy_clipboard: true
             grid:
                 icon: user
                 box_class: primary

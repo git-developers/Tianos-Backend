@@ -1,14 +1,19 @@
 {% macro keywords(content) %}
 
-    {#{% if content is empty %}#}
-        {#{% set content = 'Internet, Tecnologia, Cultura, Blogs, Redes Sociales, Fotos, Videos, Facebook, YouTube' %}#}
-    {#{% endif %}#}
+    {% if content is empty %}
+        {% set content = 'Tianos, Beauty, Software' %}
+    {% endif %}
 
-    {#<meta name="keywords" content="{{ content }}"/>#}
+    <meta name="keywords" content="{{ content }}"/>
 {% endmacro %}
 
 {% macro description(content) %}
-    {#<meta name="description" content="{{ content }}"/>#}
+
+    {% if content is empty %}
+        {% set content = 'Tianos Beauty • Software para la gestión de recursos on-line' %}
+    {% endif %}
+
+    <meta name="description" content="{{ content }}"/>
 {% endmacro %}
 
 

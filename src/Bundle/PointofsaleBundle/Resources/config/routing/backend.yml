@@ -13,6 +13,7 @@ backend_pointofsale_index:
                 icon: cube
                 body_css: grid-body-css
                 google_maps: true
+                copy_clipboard: true
             grid:
                 icon: map-marker
                 box_class: primary
@@ -22,6 +23,7 @@ backend_pointofsale_index:
                         title: Crear punto de venta
                         size: modal-lg
                     edit:
+                        title: Editar punto de venta
                         size: modal-lg
                 data_table:
                     route:
@@ -31,16 +33,10 @@ backend_pointofsale_index:
                         create: backend_pointofsale_create
                         delete: backend_pointofsale_delete
                         cog: backend_super_pointofsale_add_user_index
-#                        add_user: backend_pointofsale_add_user
-#                        module: backend_pointofsale_module
-#                        pdv_child: backend_pointofsale_pdv_child_index
                     table_button:
                         - edit
                         - delete
                         - cog
-#                        - add_user
-#                        - module
-#                        - add_pdv_child
                     table_button_header:
                         - create
                         - info
@@ -162,6 +158,7 @@ backend_pointofsale_module:
                 box_class: primary
                 title: 'Punto de venta: agregar modulos'
                 body_css: grid-body-css
+                copy_clipboard: true
             form:
                 type: Bundle\PointofsaleBundle\Form\Type\PointofsaleModuleType
             repository:

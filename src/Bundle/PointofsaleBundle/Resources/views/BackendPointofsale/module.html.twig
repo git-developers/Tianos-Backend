@@ -38,14 +38,6 @@
     {#<script type="text/javascript" src="{{ asset_url }}"></script>#}
     {#{% endjavascripts %}#}
 
-    {#<script type="text/javascript">#}
-
-        {#$(document).ready(function() {#}
-
-        {#});#}
-
-    {#</script>#}
-
     <script type="text/javascript">
 
         $(function() {
@@ -80,7 +72,7 @@
                 {{ include('PointofsaleBundle:BackendPointofsale:sidebar-left.html.twig') }}
             </div>
 
-            <div class="col-md-9">
+            <div class="col-md-9" style="padding-left: 0">
 
                 <div class="box box-{{ vars.box_class }}">
 

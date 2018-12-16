@@ -47,22 +47,18 @@
 {% block javascripts %}
     {{ parent() }}
 
-    {#'@GridBundle/Resources/public/common/js/formAddUser.js'#}
-    {#'@GridBundle/Resources/public/common/js/formModule.js'#}
-    {#'@GridBundle/Resources/public/common/js/formAddPdvChild.js'#}
-
     {% javascripts
+        '@GridBundle/Resources/public/common/js/formCog.js'
+        '@UserBundle/Resources/public/js/togglePassword.js'
         '@GridBundle/Resources/public/common/js/formEdit.js'
         '@GridBundle/Resources/public/common/js/formView.js'
         '@GridBundle/Resources/public/common/js/formInfo.js'
+        '@GridBundle/Resources/public/common/js/formWatch.js'
         '@GridBundle/Resources/public/common/js/formCreate.js'
         '@GridBundle/Resources/public/common/js/formDelete.js'
-        '@GridBundle/Resources/public/common/js/formWatch.js'
         '@GridBundle/Resources/public/common/js/formTicketEdit.js'
         '@GridBundle/Resources/public/common/js/formViewProfile.js'
-        '@GridBundle/Resources/public/common/js/formCog.js'
         '@GridBundle/Resources/public/common/js/formChangePassword.js'
-        '@UserBundle/Resources/public/js/togglePassword.js'
         '@GridBundle/Resources/public/plugins/datatables/jquery.dataTables.min.js'
         '@GridBundle/Resources/public/plugins/datatables/dataTables.bootstrap.min.js'
     %}
@@ -149,11 +145,6 @@
             });
 
             {{ tianos_grid_form_js(vars, modal, form_mapper, dataTable, '@Ui/Grid/FormJs/default.html.twig') }}
-
-            $(document).on('click', '.copy-to-clipboard', function() {
-                $('.copy-to-clipboard-text').select();
-                document.execCommand("copy");
-            });
 
         });
 

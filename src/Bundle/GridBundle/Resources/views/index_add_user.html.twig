@@ -1,4 +1,4 @@
-{% extends "ThemesBundle:Adminlte/TemplateSuper:1_template.html.twig" %}
+{% extends 'ThemesBundle:Adminlte/TemplateSuper:1_template.html.twig' %}
 
 {% block bodyclass %}{% spaceless %}
     {{ vars.body_css }}
@@ -36,9 +36,6 @@
 
 {% block javascripts %}
     {{ parent() }}
-
-    {#'@GridBundle/Resources/public/common/js/formAddUser.js'#}
-    {#'@GridBundle/Resources/public/common/js/formModule.js'#}
 
     {% javascripts
         '@GridBundle/Resources/public/common/js/formEdit.js'
@@ -168,7 +165,7 @@
                 {{ include('PointofsaleBundle:BackendPointofsale:sidebar-left.html.twig') }}
             </div>
 
-            <div class="col-md-9 table-responsive">
+            <div class="col-md-9 table-responsive" style="padding-left: 0">
 
                 <div class="box box-{{ vars.box_class }}">
 

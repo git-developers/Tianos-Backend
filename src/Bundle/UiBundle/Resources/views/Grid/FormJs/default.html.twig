@@ -47,7 +47,6 @@
     });
 {% endif %}
 
-
 {% if dataTable.route.ticket_edit is defined %}
     $('body.{{ vars.body_css }}').formTicketEdit({
         buttonId: '{{ modal.ticket_edit_id }}',
@@ -112,5 +111,12 @@
     $('body.{{ vars.body_css }}').togglePassword({
         password_input_class: 'password-field',
         checkbox_id: 'sylius_user_change_password_togglePassword'
+    });
+{% endif %}
+
+{% if vars.copy_clipboard|default() %}
+    $(document).on('click', '.copy-to-clipboard', function() {
+        $('.copy-to-clipboard-text').select();
+        document.execCommand("copy");
     });
 {% endif %}

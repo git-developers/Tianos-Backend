@@ -84,7 +84,7 @@ class PointofsaleType extends AbstractType
                     'class' => ''
                 ],
                 'attr' => [
-                    'class' => 'form-control',
+                    'class' => 'form-control latitude',
                     'placeholder' => '00.00',
 	                'readonly' => 'readonly',
                 ],
@@ -95,7 +95,7 @@ class PointofsaleType extends AbstractType
                     'class' => ''
                 ],
                 'attr' => [
-                    'class' => 'form-control',
+                    'class' => 'form-control longitude',
                     'placeholder' => '00.00',
                     'readonly' => 'readonly',
                 ],
