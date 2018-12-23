@@ -25,12 +25,9 @@ class ModalMapper
     const WATCH_ID = 'watch-button-id';
     const PROFILE_ID = 'profile-button-id';
     const TICKET_EDIT_ID = 'ticket-edit-id';
+    const IMAGE_UPLOAD = 'image-upload';
 
     const POINT_OF_SALE_COG = 'pointofsale-cog';
-//    const POINT_OF_SALE_ADD_USER = 'pointofsale-add-user';
-//    const POINT_OF_SALE_ADD_MODULE = 'pointofsale-add-module';
-//    const POINT_OF_SALE_ADD_PDV_CHILD_ID = 'pointofsale-add-pdv-child-id';
-
     const CHANGE_PASSWORD_ID = 'change-password-id';
 
     public function __construct(Router $router)
@@ -68,6 +65,9 @@ class ModalMapper
 
             'change_password_id' => self::CHANGE_PASSWORD_ID,
             'change_password_size' => null,
+	        
+            'image_upload_id' => self::IMAGE_UPLOAD,
+            'image_upload_size' => null,
         ];
     }
 

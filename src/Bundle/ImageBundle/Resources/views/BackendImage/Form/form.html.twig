@@ -1,0 +1,53 @@
+{% extends 'GridBundle::Template/crud_modal_content.html.twig' %}
+
+{% block crud_modal_content %}
+
+    {{ form_start(form) }}
+
+    {% if id is defined %}
+        <input type="hidden" value="{{ id }}" name="id">
+    {% endif %}
+
+    {{ form_widget(form._token) }}
+
+
+    <div class="row">
+        <div class="col-md-10">
+            <div class="form-group">
+                <i class="fa fa-fw fa-align-justify"></i>
+                <input type='file' id="imgInp" />
+                <img id="blah" src="#" alt="your image" style="height: 300px" />
+
+
+                <script type="text/javascript" src="jquery.resizeImage.test.js"></script>
+                <script type="text/javascript" src="pilote.js?v2"></script>
+
+                <script type="text/javascript">
+
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('#blah').attr('src', e.target.result);
+                    }
+
+                    function readURL(input) {
+                        if (input.files && input.files[0]) {
+                            reader.readAsDataURL(input.files[0]);
+                        }
+                    }
+
+                    $("#imgInp").change(function(){
+                        readURL(this);
+                    });
+                </script>
+
+
+
+            </div>
+        </div>
+    </div>
+
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+
+{% endblock %}

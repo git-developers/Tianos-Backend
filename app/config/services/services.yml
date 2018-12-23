@@ -26,3 +26,4 @@ imports:
     - { resource: '@ModuleBundle/Resources/config/services.yml' }
     - { resource: '@ServicesBundle/Resources/config/services.yml' }
     - { resource: '@TicketBundle/Resources/config/services.yml' }
+    - { resource: '@ImageBundle/Resources/config/services.yml' }

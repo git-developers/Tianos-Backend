@@ -1,0 +1,19 @@
+api_image_index:
+    path: /
+    methods: [GET]
+    defaults:
+        _controller: tianos.api.controller.image:indexAction
+        _tianos:
+            section: admin
+            permission: true
+            grid: sylius_admin_image
+            template: ImageBundle:Image:index.html.twig
+            vars:
+                subheader: sylius.ui.manage_your_product_catalog
+                icon: cube
+            form:
+                type: Bundle\ImageBundle\Form\Type\ImageType
+            repository:
+                service: tianos.repository.image
+                method: findAll
+                arguments: [$imageId]

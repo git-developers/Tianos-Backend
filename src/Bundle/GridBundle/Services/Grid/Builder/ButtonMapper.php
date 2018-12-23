@@ -42,11 +42,6 @@ class ButtonMapper
         $out = [];
         $buttons = $this->grid[DataTableMapper::DATATABLE][DataTableMapper::TABLE_BUTTON];
 
-
-//        echo "POLLO:: <pre>";
-//        print_r($buttons);
-//        exit;
-
         foreach ($buttons as $key => $button) {
 
             try {
@@ -160,38 +155,18 @@ class ButtonMapper
 			'class' => 'btn-xs btn-primary btn-margin-5 ' . ModalMapper::POINT_OF_SALE_COG,
 		]);
 	}
-
-    /*
-    private function add_user()
-    {
-        return new Button([
-            'alt' => 'Agregar usuario',
-            'title' => 'Agregar usuario',
-            'icon' => '<i class="fa fa-fw fa-user"></i>',
-            'class' => 'btn-xs btn-info btn-margin-5 ' . ModalMapper::POINT_OF_SALE_ADD_USER,
-        ]);
-    }
-
-    private function module()
-    {
-        return new Button([
-            'alt' => 'Modulos',
-            'title' => 'Modulos',
-            'icon' => '<i class="fa fa-fw fa-cubes"></i>',
-            'class' => 'btn-xs btn-success btn-margin-5 ' . ModalMapper::POINT_OF_SALE_ADD_MODULE,
-        ]);
-    }
-
-    private function add_pdv_child()
-    {
-        return new Button([
-            'alt' => 'Agregar PDV sucursal',
-            'title' => 'Agregar PDV sucursal',
-            'icon' => '<i class="fa fa-fw fa-plus"></i>',
-            'class' => 'btn-xs btn-info btn-margin-5 ' . ModalMapper::POINT_OF_SALE_ADD_PDV_CHILD_ID,
-        ]);
-    }
-    */
+	
+	private function image_upload()
+	{
+		return new Button([
+			'alt' => 'Crear imagen',
+			'title' => 'Crear imagen',
+			'icon' => '<i class="fa fa-fw fa-image"></i>',
+			'data-toggle' => 'modal',
+			'data-target' => ModalMapper::IMAGE_UPLOAD,
+			'class' => 'btn-xs bg-purple ' . ModalMapper::IMAGE_UPLOAD,
+		]);
+	}
 
     private function change_password()
     {

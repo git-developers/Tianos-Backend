@@ -27,7 +27,73 @@ class BackendController extends GridController
      * @var RequestConfigurationFactoryInterface
      */
     protected $requestConfigurationFactory;
-    
+	
+	
+	/**
+	 * @param Request $request
+	 *
+	 * @return Response
+	 */
+	public function indexSuperAction(Request $request): Response
+	{
+//        $configuration = $this->requestConfigurationFactory->create($this->metadata, $request);
+		
+		$parameters = [
+			'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
+		];
+		$applicationName = $this->container->getParameter('application_name');
+		$this->metadata = new Metadata('tianos', $applicationName, $parameters);
+		
+		//CONFIGURATION
+		$configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
+		$repository = $configuration->getRepositoryService();
+		$method = $configuration->getRepositoryMethod();
+		$template = $configuration->getTemplate('');
+		$grid = $configuration->getGrid();
+		$vars = $configuration->getVars();
+		$modal = $configuration->getModal();
+		
+		
+		//REPOSITORY
+		$objects = $this->get($repository)->$method();
+		$varsRepository = $configuration->getRepositoryVars();
+		$objects = $this->getSerialize($objects, $varsRepository->serialize_group_name);
+		
+		//GRID
+		$gridService = $this->get('tianos.grid');
+		$modal = $gridService->getModalMapper()->getDefaults($modal);
+		$formMapper = $gridService->getFormMapper()->getDefaults();
+		
+		//DATATABLE
+		$dataTable = $gridService->getDataTableMapper($grid)
+			->setRoute()
+			->setColumns()
+			->setOptions()
+			->setRowCallBack()
+			->setData($objects)
+			->setTableOptions()
+			->setTableButton()
+			->setTableHeaderButton()
+			->setColumnsTargets()
+			->resetGridVariable()
+		;
+		
+		return $this->render(
+			$template,
+			[
+				'vars' => $vars,
+				'grid' => $grid,
+				'modal' => $modal,
+				'dataTable' => $dataTable,
+				'form_mapper' => $formMapper,
+			]
+		);
+
+//        return new JsonResponse([
+//            'slug' => $this->get('sylius.generator.slug')->generate($name),
+//        ]);
+	}
+ 
 	/**
 	 * @param Request $request
 	 *
@@ -82,11 +148,6 @@ class BackendController extends GridController
 			->setColumnsTargets()
 			->resetGridVariable()
 		;
-
-
-//        echo "POLLO:: <pre>";
-//        print_r($objects);
-//        exit;
 		
 		return $this->render(
 			$template,

@@ -91,6 +91,14 @@
 {% endif %}
 #}
 
+{% if dataTable.route.image_upload is defined %}
+    $('body.{{ vars.body_css }}').formImageCreate({
+        modalId: '{{ modal.image_upload_id }}',
+        route: '{{ path(dataTable.route.image_upload) }}',
+        formName: '{{ form_mapper.image_upload_name }}'
+    });
+{% endif %}
+
 {% if dataTable.route.create_pdv_child is defined %}
     $('body.{{ vars.body_css }}').formCreatePdvChild({
         modalId: '{{ modal.create_id }}',

@@ -19,6 +19,7 @@ class FormMapper
     const DELETE_NAME = 'form-delete';
     const DELETE_INPUT_ID = 'input-role-id';
     const CHANGE_PASSWORD_NAME = 'form-change-password';
+    const IMAGE_UPLOAD_NAME = 'form-image-upload';
 
     public function __construct(Router $router, RequestStack $requestStack)
     {
@@ -32,6 +33,7 @@ class FormMapper
             'edit_name' => self::EDIT_NAME,
             'delete_name' => self::DELETE_NAME,
             'change_password_name' => self::CHANGE_PASSWORD_NAME,
+            'image_upload_name' => self::IMAGE_UPLOAD_NAME,
             'data' => [],
 //            'type' => null,
         ];

@@ -2,7 +2,7 @@ backend_super_user_index:
     path: /
     methods: [GET]
     defaults:
-        _controller: tianos.backend.controller.user:indexAction
+        _controller: tianos.backend.controller.user:indexSuperAction
         _tianos:
             action: index
             section: admin
@@ -23,6 +23,8 @@ backend_super_user_index:
                         title: Editar usuario
                     change_password:
                         title: Cambiar password
+                    change_password:
+                        title: Cambiar password
                 data_table:
                     route:
                         info: backend_super_user_info
@@ -30,12 +32,14 @@ backend_super_user_index:
                         edit: backend_super_user_edit
                         create: backend_super_user_create
                         delete: backend_super_user_delete
+                        image_upload: backend_image_create
                         view_profile: backend_super_user_profile
                         change_password: backend_super_user_change_password
                     table_button:
                         - edit
                         - delete
                         - view_profile
+                        - image_upload
                         - change_password
                     table_button_header:
                         - create

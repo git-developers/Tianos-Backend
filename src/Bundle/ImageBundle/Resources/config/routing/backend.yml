@@ -1,0 +1,183 @@
+backend_image_index:
+    path: /
+    methods: [GET]
+    defaults:
+        _controller: tianos.backend.controller.image:indexAction
+        _tianos:
+            action: index
+            section: admin
+            permission: true
+            template: GridBundle::index.html.twig
+            vars:
+                subheader: sylius.ui.manage_your_image_catalog
+                icon: cube
+                body_css: grid-body-css
+                serialize_group_name: crud
+#            grid: sylius_admin_product
+            grid:
+                icon: cube
+                box_class: primary
+                title: Gestionar image
+                data_table:
+                    route:
+                        info: backend_image_info
+                        view: backend_image_view
+                        edit: backend_image_edit
+                        create: backend_image_create
+                        delete: backend_image_delete
+                    table_button:
+                        - edit
+                        - delete
+                    table_button_header:
+                        - create
+                        - info
+                    table_option:
+                        pageLength: 10
+                    row_call_back:
+                        - key: id
+                          value: aData.id
+                        - key: data-id
+                          value: aData.id
+                        - key: class
+                          value: "'alert'"
+                    columns:
+                        - name: '#'
+                          obj: " '<span class=\"badge bg-blue\">' + obj.id + '</span>' "
+                        - name: Name
+                          obj: obj.name
+                        - name: Creado
+                          obj: obj.created_at
+                          options:
+                              icon: calendar
+            form:
+                type: Bundle\ImageBundle\Form\Type\ImageType
+            repository:
+                service: tianos.repository.image
+                method: findAll
+                arguments: [$imageId]
+                vars:
+                    serialize_group_name: crud
+
+backend_image_create:
+    path: /create
+    methods: [PUT, POST]
+    defaults:
+        _controller: tianos.backend.controller.image:createAction
+        _tianos:
+            action: create
+            template: ImageBundle:BackendImage/Form:form.html.twig
+            entity: Bundle\ImageBundle\Entity\Image
+            form:
+                type: Bundle\ImageBundle\Form\Type\ImageType
+            repository:
+                vars:
+                    serialize_group_name: crud
+
+backend_image_edit:
+    path: /edit
+    methods: [PUT, POST]
+    defaults:
+        _controller: tianos.backend.controller.image:editAction
+        _tianos:
+            action: edit
+            template: ImageBundle:BackendImage/Form:form.html.twig
+            form:
+                type: Bundle\ImageBundle\Form\Type\ImageType
+            repository:
+                service: tianos.repository.image
+                method: find
+                arguments: [$imageId]
+                vars:
+                    serialize_group_name: crud
+
+backend_image_delete:
+    path: /delete
+    methods: [POST, DELETE]
+    defaults:
+        _controller: tianos.backend.controller.image:deleteAction
+        _tianos:
+            action: delete
+            template: GridBundle:Template:delete.html.twig
+            repository:
+                service: tianos.repository.image
+                method: find
+                arguments: [$imageId]
+            vars:
+#                body_css: grid-body-css
+
+backend_image_view:
+    path: /view
+    methods: [POST]
+    defaults:
+        _controller: tianos.backend.controller.image:viewAction
+        _tianos:
+            action: view
+            template: ImageBundle:BackendImage/Informative:view.html.twig
+            repository:
+                service: tianos.repository.image
+                method: find
+                arguments: [$imageId]
+                vars:
+                    serialize_group_name: crud
+
+backend_image_info:
+    path: /info
+    methods: [POST]
+    defaults:
+        _controller: tianos.backend.controller.image:infoAction
+        _tianos:
+            action: info
+            template: ImageBundle:BackendImage/Informative:info.html.twig
+
+
+
+
+
+#/var/www/html/Sylius/sylius/vendor/sylius/sylius/docs/customization/factory.rst
+#
+#    sylius_admin_product_create_simple:
+#        path: /products/new/simple
+#        methods: [GET, POST]
+#        defaults:
+#            _controller: sylius.controller.product:createAction
+#            _sylius:
+#                section: admin
+#                factory:
+#                    method: createDisabled # like here for example
+#                template: SyliusAdminBundle:Crud:create.html.twig
+#                redirect: sylius_admin_product_update
+#                vars:
+#                    subheader: sylius.ui.manage_your_product_catalog
+#                    templates:
+#                        form: SyliusAdminBundle:CRUDDUMMY:_form.html.twig
+#                    route:
+#                        name: sylius_admin_product_create_simple
+
+
+
+#            template: "@SyliusAdmin/ProductVariant/generate.html.twig"
+#            section: admin
+#            permission: true
+#            redirect:
+#                route: sylius_admin_product_variant_index
+#                parameters: { productId: $productId }
+#            form:
+#                type: Sylius\Bundle\ProductBundle\Form\Type\ProductGenerateVariantsType
+#            repository:
+#                method: find
+#                arguments: [$productId]
+#            flash: sylius.product_variant.generate
+
+#sylius_admin_product_index:
+#    path: /products/
+#    methods: [GET]
+#    defaults:
+#        _controller: sylius.controller.product:indexAction
+#        _sylius:
+#            section: admin
+#            permission: true
+#            grid: sylius_admin_product
+#            template: SyliusAdminBundle:CRUDDUMMY:index.html.twig
+#            vars:
+#                subheader: sylius.ui.manage_your_product_catalog
+#                icon: cube
