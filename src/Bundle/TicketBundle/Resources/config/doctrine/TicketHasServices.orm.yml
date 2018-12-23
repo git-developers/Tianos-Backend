@@ -24,6 +24,14 @@ Bundle\TicketBundle\Entity\TicketHasServices:
             nullable: false
             options:
                 unsigned: false
+        unitPrice:
+            type: float
+            nullable: true
+            precision: 8
+            scale: 2
+            options:
+                fixed: false
+            column: unit_price
         subTotal:
             type: float
             nullable: true

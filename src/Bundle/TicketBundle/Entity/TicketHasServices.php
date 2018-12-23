@@ -63,6 +63,15 @@ class TicketHasServices
 	 *     "crud"
 	 * })
 	 */
+	private $unitPrice;
+	
+	/**
+	 * @var float
+	 *
+	 * @JMSS\Groups({
+	 *     "crud"
+	 * })
+	 */
 	private $subTotal;
 
     /**
@@ -113,6 +122,22 @@ class TicketHasServices
 	public function setSubTotal(float $subTotal) //: void
 	{
 		$this->subTotal = $subTotal;
+	}
+	
+	/**
+	 * @return float
+	 */
+	public function getUnitPrice(): float
+	{
+		return $this->unitPrice;
+	}
+	
+	/**
+	 * @param float $unitPrice
+	 */
+	public function setUnitPrice(float $unitPrice) //: void
+	{
+		$this->unitPrice = $unitPrice;
 	}
 
     /**

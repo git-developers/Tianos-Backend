@@ -20,6 +20,7 @@
 
     <script src="{{ asset('bundles/themes/adminlte/bower_components/moment/moment.js')}}"></script>
     <script src="{{ asset('bundles/themes/adminlte/bower_components/fullcalendar/dist/fullcalendar.min.js')}}"></script>
+    <script src="{{ asset('bundles/themes/adminlte/bower_components/fullcalendar/dist/locale/es.js')}}"></script>
 
     <script type="text/javascript">
 
@@ -55,11 +56,12 @@
              -----------------------------------------------------------------*/
             //Date for the calendar events (dummy data)
             var date = new Date();
-            var d    = date.getDate(),
-                m    = date.getMonth(),
-                y    = date.getFullYear();
+            // var d    = date.getDate(),
+            //     m    = date.getMonth(),
+            //     y    = date.getFullYear();
 
             $('#calendar').fullCalendar({
+                lang: 'es',
                 header    : {
                     left  : 'prev,next today',
                     center: 'title',

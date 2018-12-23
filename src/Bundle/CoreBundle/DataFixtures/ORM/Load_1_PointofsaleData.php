@@ -27,8 +27,8 @@ class Load_1_PointofsaleData extends AbstractFixture implements OrderedFixtureIn
 
         $entity = new Pointofsale();
         $entity->setCode('111');
-        $entity->setName('Salon Belleza Aeropuerto');
-        $entity->setAddress('Av. Tomas Valle Mz.g 37 Lt.31 Aa.hh Bocanegra Callao');
+        $entity->setName('Salon Belleza Spa 1');
+        $entity->setAddress('Av. Petit Thouars 2161, San Isidro');
         $entity->setPhone('994826014');
         $entity->setSlug('point-of-sale-1');
         $entity->setLatitude('-12.0240716');
@@ -38,8 +38,8 @@ class Load_1_PointofsaleData extends AbstractFixture implements OrderedFixtureIn
 
         $entity = new Pointofsale();
         $entity->setCode('222');
-        $entity->setName('Salon Belleza Barranco');
-        $entity->setAddress('Calle Union 208, Barranco');
+        $entity->setName('Salon Belleza Barber 1');
+	    $entity->setAddress('Av. Petit Thouars 2161, San Isidro');
         $entity->setPhone('2484434');
         $entity->setSlug('point-of-sale-2');
         $entity->setLatitude('-12.1476123');
@@ -49,8 +49,8 @@ class Load_1_PointofsaleData extends AbstractFixture implements OrderedFixtureIn
 
         $entity = new Pointofsale();
         $entity->setCode('333');
-        $entity->setName('Salon Belleza Chorrillos');
-        $entity->setAddress('Jr. Delfín Puccio Mz.a Lt.8 Urb.san Juan, Chorrillos');
+        $entity->setName('Salon Belleza Spa 2');
+	    $entity->setAddress('Av. Petit Thouars 2161, San Isidro');
         $entity->setPhone('998461653');
         $entity->setSlug('point-of-sale-3');
         $entity->setLatitude('-12.0982821');
@@ -60,8 +60,8 @@ class Load_1_PointofsaleData extends AbstractFixture implements OrderedFixtureIn
 
         $entity = new Pointofsale();
         $entity->setCode('444');
-        $entity->setName('Salon Belleza El Porvenir');
-        $entity->setAddress('Jr. Garibaldi 367, La Victoria');
+        $entity->setName('Salon Belleza Barber 2');
+	    $entity->setAddress('Av. Petit Thouars 2161, San Isidro');
         $entity->setPhone('5731246');
         $entity->setSlug('point-of-sale-4');
         $entity->setLatitude('-12.0625411');
@@ -71,8 +71,8 @@ class Load_1_PointofsaleData extends AbstractFixture implements OrderedFixtureIn
 
         $entity = new Pointofsale();
         $entity->setCode('555');
-        $entity->setName('Salon Belleza La Molina');
-        $entity->setAddress('Av. La Molina 740');
+        $entity->setName('Salon Belleza Spa 3');
+	    $entity->setAddress('Av. Petit Thouars 2161, San Isidro');
         $entity->setPhone('999040550');
         $entity->setSlug('point-of-sale-5');
         $entity->setLatitude('-12.0660291');
@@ -82,8 +82,8 @@ class Load_1_PointofsaleData extends AbstractFixture implements OrderedFixtureIn
 
         $entity = new Pointofsale();
         $entity->setCode('666');
-        $entity->setName('Salon Belleza Lurigancho');
-        $entity->setAddress('Av. Gran Chimu 1era Crda Zarate, Lurigancho (Porton Plomo)');
+        $entity->setName('Salon Belleza Barber 3');
+	    $entity->setAddress('Av. Petit Thouars 2161, San Isidro');
         $entity->setPhone('999339483');
         $entity->setSlug('point-of-sale-6');
         $entity->setLatitude('-12.0301596');
@@ -93,8 +93,8 @@ class Load_1_PointofsaleData extends AbstractFixture implements OrderedFixtureIn
 
         $entity = new Pointofsale();
         $entity->setCode('777');
-        $entity->setName('Salon Belleza Magdalena');
-        $entity->setAddress('Jr. Sn. Martin Cdra. 833 Mz.e Lt.9 Los Tulipanes, Magdalena');
+        $entity->setName('Salon Belleza Spa Surco 4');
+	    $entity->setAddress('Av. Petit Thouars 2161, San Isidro');
         $entity->setPhone('2636376');
         $entity->setSlug('point-of-sale-7');
         $entity->setLatitude('-12.0923916');
@@ -104,8 +104,8 @@ class Load_1_PointofsaleData extends AbstractFixture implements OrderedFixtureIn
 
         $entity = new Pointofsale();
         $entity->setCode('888');
-        $entity->setName('Salon Belleza Miraflores');
-        $entity->setAddress('Av. Paseo De República 5260 Miraflores');
+        $entity->setName('Salon Belleza Barber Miraflores');
+	    $entity->setAddress('Av. Petit Thouars 2161, San Isidro');
         $entity->setPhone('975286372');
         $entity->setSlug('point-of-sale-8');
         $entity->setLatitude('-12.1358307');
@@ -115,8 +115,8 @@ class Load_1_PointofsaleData extends AbstractFixture implements OrderedFixtureIn
 
         $entity = new Pointofsale();
         $entity->setCode('999');
-        $entity->setName('Salon Belleza Plaza Grau');
-        $entity->setAddress('Pueblo Joven Cerro El Pino');
+        $entity->setName('Salon Belleza Barber 4');
+	    $entity->setAddress('Av. Petit Thouars 2161, San Isidro');
         $entity->setPhone('');
         $entity->setSlug('point-of-sale-9');
         $entity->setLatitude('-12.0706228');
@@ -126,8 +126,8 @@ class Load_1_PointofsaleData extends AbstractFixture implements OrderedFixtureIn
 
         $entity = new Pointofsale();
         $entity->setCode('1010');
-        $entity->setName('Salon Belleza Puente Piedra');
-        $entity->setAddress('Av. Panam. norte 680 pasando byPass Puente Piedra');
+        $entity->setName('Salon Belleza Spa San Isidro');
+	    $entity->setAddress('Av. Petit Thouars 2161, San Isidro');
         $entity->setPhone('997013686');
         $entity->setSlug('point-of-sale-10');
         $entity->setLatitude('-11.861255');

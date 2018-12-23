@@ -48,10 +48,10 @@ backend_ticket_index:
                           obj: obj.name
                         - name: Cliente
                           obj: obj.client.name + ' ' + obj.client.last_name
-                        - name: Total price
-                          obj: obj.total_price
-                          options:
-                              icon: money
+#                        - name: Total price
+#                          obj: obj.total_price
+#                          options:
+#                              icon: money
                         - name: Creado
                           obj: obj.created_at
                           options:

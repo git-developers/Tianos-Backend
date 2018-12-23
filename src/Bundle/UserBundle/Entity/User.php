@@ -6,6 +6,7 @@ namespace Bundle\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
+use Bundle\PointofsaleBundle\Entity\Pointofsale;
 use JMS\Serializer\Annotation as JMSS;
 use JMS\Serializer\Annotation\Type as TypeJMS;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -929,6 +930,15 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
 	public function getPointOfSaleActive()
 	{
 		return $this->pointOfSaleActive;
+	}
+	
+	public function getPointOfSaleActiveId()
+	{
+		if (!$this->pointOfSaleActive instanceof Pointofsale) {
+			return false;
+		}
+		
+		return $this->pointOfSaleActive->getId();
 	}
 	
 	/**

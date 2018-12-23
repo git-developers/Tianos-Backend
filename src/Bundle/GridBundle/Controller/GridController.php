@@ -323,7 +323,11 @@ class GridController extends BaseController
             ]
         );
     }
-
+	
+	/**
+	 * @param Request $request
+	 * @return Response
+	 */
     public function viewAction(Request $request): Response
     {
         if (!$this->isXmlHttpRequest()) {
@@ -384,7 +388,6 @@ class GridController extends BaseController
             ]
         );
     }
-	
 	
 	/**
 	 * @param Request $request

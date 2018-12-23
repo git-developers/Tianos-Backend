@@ -27,6 +27,8 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $profileEmployee = $this->getReference('profile-employee');
         $profileClient = $this->getReference('profile-client');
         $profileGuest = $this->getReference('profile-guest');
+	
+	    $pointOfSale_10 = $this->getReference('pointofsale-10');
 
 
         $entity = new User();
@@ -49,6 +51,7 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $manager->persist($entity);
         $this->addReference('user-2', $entity);
 	
+        
 	
 	    /**
 	     * EMPLOYEE
@@ -61,6 +64,10 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('bgates@' . $this->applicationUrl);
         $entity->setProfile($profileEmployee);
         $manager->persist($entity);
+	
+	    $pointOfSale_10->addUser($entity);
+	    $manager->persist($pointOfSale_10);
+        
         $this->addReference('user-3', $entity);
 
         $entity = new User();
@@ -71,6 +78,10 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('inewton@' . $this->applicationUrl);
         $entity->setProfile($profileEmployee);
         $manager->persist($entity);
+	
+	    $pointOfSale_10->addUser($entity);
+	    $manager->persist($pointOfSale_10);
+        
         $this->addReference('user-4', $entity);
 
         $entity = new User();
@@ -81,6 +92,10 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('mpolo@' . $this->applicationUrl);
         $entity->setProfile($profileEmployee);
         $manager->persist($entity);
+	
+	    $pointOfSale_10->addUser($entity);
+	    $manager->persist($pointOfSale_10);
+        
         $this->addReference('user-41', $entity);
 
         $entity = new User();
@@ -91,6 +106,10 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('troosevelt@' . $this->applicationUrl);
         $entity->setProfile($profileEmployee);
         $manager->persist($entity);
+	
+	    $pointOfSale_10->addUser($entity);
+	    $manager->persist($pointOfSale_10);
+        
         $this->addReference('user-42', $entity);
 
         $entity = new User();
@@ -101,6 +120,10 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('kmarx@' . $this->applicationUrl);
         $entity->setProfile($profileEmployee);
         $manager->persist($entity);
+	
+	    $pointOfSale_10->addUser($entity);
+	    $manager->persist($pointOfSale_10);
+        
         $this->addReference('user-43', $entity);
 
         $entity = new User();
@@ -111,6 +134,10 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('fdouglass@' . $this->applicationUrl);
         $entity->setProfile($profileEmployee);
         $manager->persist($entity);
+	
+	    $pointOfSale_10->addUser($entity);
+	    $manager->persist($pointOfSale_10);
+	    
         $this->addReference('user-44', $entity);
 
         $entity = new User();
@@ -121,8 +148,14 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('jlennon@' . $this->applicationUrl);
         $entity->setProfile($profileEmployee);
         $manager->persist($entity);
+	
+	    $pointOfSale_10->addUser($entity);
+	    $manager->persist($pointOfSale_10);
+	    
         $this->addReference('user-45', $entity);
 	
+        
+        
 	
 	    /**
 	     * CLIENT
@@ -135,6 +168,10 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('sjobs@' . $this->applicationUrl);
         $entity->setProfile($profileClient);
         $manager->persist($entity);
+	
+	    $pointOfSale_10->addUser($entity);
+        $manager->persist($pointOfSale_10);
+	    
         $this->addReference('user-5', $entity);
 
         $entity = new User();
@@ -145,6 +182,10 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('rfederer@' . $this->applicationUrl);
         $entity->setProfile($profileClient);
         $manager->persist($entity);
+	
+	    $pointOfSale_10->addUser($entity);
+	    $manager->persist($pointOfSale_10);
+        
         $this->addReference('user-6', $entity);
 
         $entity = new User();
@@ -155,6 +196,10 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('njunior@' . $this->applicationUrl);
         $entity->setProfile($profileClient);
         $manager->persist($entity);
+	
+	    $pointOfSale_10->addUser($entity);
+	    $manager->persist($pointOfSale_10);
+        
         $this->addReference('user-7', $entity);
 
         $entity = new User();
@@ -165,6 +210,10 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('kgarcia@' . $this->applicationUrl);
         $entity->setProfile($profileClient);
         $manager->persist($entity);
+	
+	    $pointOfSale_10->addUser($entity);
+	    $manager->persist($pointOfSale_10);
+        
         $this->addReference('user-8', $entity);
 
         $entity = new User();
@@ -175,6 +224,10 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('jlopez@' . $this->applicationUrl);
         $entity->setProfile($profileClient);
         $manager->persist($entity);
+	
+	    $pointOfSale_10->addUser($entity);
+	    $manager->persist($pointOfSale_10);
+        
         $this->addReference('user-9', $entity);
 
         $entity = new User();
@@ -185,6 +238,10 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('rmedina@' . $this->applicationUrl);
         $entity->setProfile($profileClient);
         $manager->persist($entity);
+	
+	    $pointOfSale_10->addUser($entity);
+	    $manager->persist($pointOfSale_10);
+        
         $this->addReference('user-10', $entity);
 
         $entity = new User();
@@ -205,6 +262,10 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('mhamilton@' . $this->applicationUrl);
         $entity->setProfile($profileClient);
         $manager->persist($entity);
+	
+	    $pointOfSale_10->addUser($entity);
+	    $manager->persist($pointOfSale_10);
+        
         $this->addReference('user-12', $entity);
 
         $entity = new User();
@@ -215,6 +276,10 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('khepburn@' . $this->applicationUrl);
         $entity->setProfile($profileClient);
         $manager->persist($entity);
+	
+	    $pointOfSale_10->addUser($entity);
+	    $manager->persist($pointOfSale_10);
+        
         $this->addReference('user-13', $entity);
 
         $entity = new User();
@@ -225,6 +290,10 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('dparker@' . $this->applicationUrl);
         $entity->setProfile($profileClient);
         $manager->persist($entity);
+	
+	    $pointOfSale_10->addUser($entity);
+	    $manager->persist($pointOfSale_10);
+        
         $this->addReference('user-14', $entity);
 
         $entity = new User();
@@ -235,6 +304,10 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('alincoln@' . $this->applicationUrl);
         $entity->setProfile($profileClient);
         $manager->persist($entity);
+	
+	    $pointOfSale_10->addUser($entity);
+	    $manager->persist($pointOfSale_10);
+        
         $this->addReference('user-15', $entity);
 
         $entity = new User();
@@ -245,6 +318,10 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('wdisney@' . $this->applicationUrl);
         $entity->setProfile($profileClient);
         $manager->persist($entity);
+	
+	    $pointOfSale_10->addUser($entity);
+	    $manager->persist($pointOfSale_10);
+        
         $this->addReference('user-16', $entity);
 
         $entity = new User();
@@ -255,6 +332,10 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('nbonaparte@' . $this->applicationUrl);
         $entity->setProfile($profileClient);
         $manager->persist($entity);
+	
+	    $pointOfSale_10->addUser($entity);
+	    $manager->persist($pointOfSale_10);
+        
         $this->addReference('user-17', $entity);
 
         $entity = new User();
@@ -265,6 +346,10 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('aelizabeth@' . $this->applicationUrl);
         $entity->setProfile($profileClient);
         $manager->persist($entity);
+	
+	    $pointOfSale_10->addUser($entity);
+	    $manager->persist($pointOfSale_10);
+        
         $this->addReference('user-18', $entity);
 
         $entity = new User();
@@ -275,6 +360,10 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('bfranklin@' . $this->applicationUrl);
         $entity->setProfile($profileClient);
         $manager->persist($entity);
+	
+	    $pointOfSale_10->addUser($entity);
+	    $manager->persist($pointOfSale_10);
+        
         $this->addReference('user-19', $entity);
 
         $entity = new User();
@@ -285,6 +374,10 @@ class Load_4_UserData extends AbstractFixture implements OrderedFixtureInterface
         $entity->setEmail('wbrothers@' . $this->applicationUrl);
         $entity->setProfile($profileClient);
         $manager->persist($entity);
+	
+	    $pointOfSale_10->addUser($entity);
+	    $manager->persist($pointOfSale_10);
+        
         $this->addReference('user-20', $entity);
 
 

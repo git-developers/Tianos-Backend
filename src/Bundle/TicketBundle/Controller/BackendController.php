@@ -143,6 +143,7 @@ class BackendController extends GridController
 					$ticketHasService->setServices($service);
 					$ticketHasService->setTicket($entity);
 					$ticketHasService->setQuantity($service->getQuantity());
+					$ticketHasService->setUnitPrice($service->getPrice());
 					$ticketHasService->setSubTotal($service->getPrice() * $service->getQuantity());
 					$this->persist($ticketHasService);
 				}
@@ -346,6 +347,49 @@ class BackendController extends GridController
 	 * @param Request $request
 	 * @return Response
 	 */
+	public function viewAction(Request $request): Response
+	{
+		if (!$this->isXmlHttpRequest()) {
+			throw $this->createAccessDeniedException(self::ACCESS_DENIED_MSG);
+		}
+		
+		$parameters = [
+			'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
+		];
+		$applicationName = $this->container->getParameter('application_name');
+		$this->metadata = new Metadata('tianos', $applicationName, $parameters);
+		
+		//CONFIGURATION
+		$configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
+		$template = $configuration->getTemplate('');
+		$action = $configuration->getAction();
+		
+		//REPOSITORY
+		$id = $request->get('id');
+		$repository = $configuration->getRepositoryService();
+		$method = $configuration->getRepositoryMethod();
+		$entity = $this->get($repository)->$method($id);
+		
+		if (!$entity) {
+			throw $this->createNotFoundException('CRUD: Unable to find  entity.');
+		}
+		
+		$ticketHasServices = $this->get('tianos.repository.ticket.services')->findAllByService($id);
+		
+		return $this->render(
+			$template,
+			[
+				'action' => $action,
+				'entity' => $entity,
+				'ticketHasServices' => $ticketHasServices,
+			]
+		);
+	}
+	
+	/**
+	 * @param Request $request
+	 * @return Response
+	 */
 	public function addClienteAction(Request $request): Response
 	{
 		
@@ -376,7 +420,7 @@ class BackendController extends GridController
 		//USER
 		$user = $this->getUser();
 		
-		$clients = $this->get('tianos.repository.user')->findAllClient($user->getPointOfSaleActive()->getId());
+		$clients = $this->get('tianos.repository.user')->findAllClient($user->getPointOfSaleActiveId());
 		$clients = is_object($clients) ? $clients->getUser() : [];
 		$clients = $this->getSerializeDecode($clients, 'ticket');
 		
@@ -389,23 +433,21 @@ class BackendController extends GridController
 			$client = $this->getSerializeDecode($client, 'ticket');
 			
 			
-
 			
 			/**
 			 * ID CLIENT SESSION
 			 */
 			$session = $request->getSession();
-			$idClient = $session->get('id_client');
+//			$idClient = $session->get('id_client');
+			$session->set('id_client', !is_null($client) ? $client['id'] : null);
 			
-			if (is_null($idClient))
-			{
-				$session->set('id_client', $client['id']);
-			}
+//			if (is_null($idClient))
+//			{
+//				$session->set('id_client', $client['id']);
+//			}
 			/**
 			 * ID CLIENT SESSION
 			 */
-			
-			
 			
 			
 			
@@ -461,7 +503,7 @@ class BackendController extends GridController
 		//USER
 		$user = $this->getUser();
 		
-		$employees = $this->get('tianos.repository.user')->findAllEmployee($user->getPointOfSaleActive()->getId());
+		$employees = $this->get('tianos.repository.user')->findAllEmployee($user->getPointOfSaleActiveId());
 		$employees = is_object($employees) ? $employees->getUser() : [];
 		$employees = $this->getSerializeDecode($employees, 'ticket');
 		
@@ -483,28 +525,33 @@ class BackendController extends GridController
 			$employees = $this->getSerializeDecode($employees, 'ticket');
 			
 			
-			
 			/**
 			 * ID EMPLOYEE SESSION
 			 */
 			$session = $request->getSession();
-			$idEmployee = $session->get('id_employee');
-			
-			if (is_null($idEmployee))
-			{
-				$out = [];
-				foreach ($employees as $key => $employee) {
+			$out = [];
+			$employees = is_array($employees) ? $employees : [];
+			foreach ($employees as $key => $employee) {
+				if (isset($employee['id'])) {
 					$out[] = $employee['id'];
 				}
-				
-				$session->set('id_employee', $out);
 			}
+			$session->set('id_employee', $out);
 			/**
 			 * ID EMPLOYEE SESSION
 			 */
-			
-			
-			
+
+//			$idEmployee = $session->get('id_employee');
+
+//			if (is_null($idEmployee))
+//			{
+//				$out = [];
+//				foreach ($employees as $key => $employee) {
+//					$out[] = $employee['id'];
+//				}
+//
+//				$session->set('id_employee', $out);
+//			}
 			
 			return $this->render(
 				'TicketBundle:BackendTicket/Grid/Box:table_employee.html.twig',

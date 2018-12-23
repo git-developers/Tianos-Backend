@@ -207,8 +207,8 @@ class Pointofsale
     public function __construct()
     {
         $this->user = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->pointOfSaleChildren = new \Doctrine\Common\Collections\ArrayCollection();
-        $this->module = new \Doctrine\Common\Collections\ArrayCollection();
+	    $this->module = new \Doctrine\Common\Collections\ArrayCollection();
+	    $this->pointOfSaleChildren = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     public function __toString() {

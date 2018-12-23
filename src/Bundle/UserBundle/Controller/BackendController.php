@@ -121,11 +121,10 @@ class BackendController extends GridController
 		
 		//USER
 		$user = $this->getUser();
-		$id = is_object($user->getPointOfSaleActive()) ? $user->getPointOfSaleActive()->getId() : null;
 		
 		
 		//REPOSITORY
-		$objects = $this->get($repository)->$method($id);
+		$objects = $this->get($repository)->$method($user->getPointOfSaleActiveId());
 		$objects = is_object($objects) ? $objects->getUser() : [];
 		$varsRepository = $configuration->getRepositoryVars();
 		$objects = $this->getSerialize($objects, $varsRepository->serialize_group_name);
@@ -212,8 +211,7 @@ class BackendController extends GridController
 					
 					//USER
 					$user = $this->getUser();
-					$idPointofsale = is_object($user->getPointOfSaleActive()) ? $user->getPointOfSaleActive()->getId() : null;
-					$pdv = $this->get('tianos.repository.pointofsale')->find($idPointofsale);
+					$pdv = $this->get('tianos.repository.pointofsale')->find($user->getPointOfSaleActiveId());
 					
 					if ($pdv) {
 						$pdv->addUser($entity);
