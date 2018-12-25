@@ -59,6 +59,12 @@ class GridController extends BaseController
         $varsRepository = $configuration->getRepositoryVars();
         $objects = $this->getSerialize($objects, $varsRepository->serialize_group_name);
 
+
+//        echo "POLLO:: <pre>";
+//        print_r($objects);
+//        exit;
+        
+        
         //GRID
         $gridService = $this->get('tianos.grid');
         $modal = $gridService->getModalMapper()->getDefaults($modal);
@@ -77,11 +83,6 @@ class GridController extends BaseController
             ->setColumnsTargets()
             ->resetGridVariable()
         ;
-
-
-//        echo "POLLO:: <pre>";
-//        print_r($objects);
-//        exit;
 
         return $this->render(
             $template,

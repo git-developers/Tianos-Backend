@@ -1,4 +1,4 @@
-{% extends "ThemesBundle:Adminlte/TemplateSuper:1_template.html.twig" %}
+{% extends "ThemesBundle:Adminlte/TemplatePdv:1_template.html.twig" %}
 
 {% block stylesheets %}
     {{ parent() }}
@@ -8,112 +8,83 @@
 {% block javascripts %}
     {{ parent() }}
 
-    {#AdminLTE dashboard demo (This is only for demo purposes)#}
-    <script src="{{ asset('bundles/themes/adminlte/dist/js/pages/jquery.sparkline.min.js')}}"></script>
-    <script src="{{ asset('bundles/themes/adminlte/dist/js/pages/dashboard2.js')}}"></script>
-    <script src="{{ asset('bundles/themes/adminlte/bower_components/chart.js/Chart.js')}}"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
     <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
 
-        $(document).ready(function() {
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Year', 'Sales', 'Expenses'],
+                ['2013',  1000,      400],
+                ['2014',  1170,      460],
+                ['2015',  660,       1120],
+                ['2016',  1030,      540]
+            ]);
 
-
-        });
-
-        // var CHART_DATA  = [28, 48, 40, 19, 86, 27, 90];
-        {#var CHART_DATA  = {{ pdvHasProductLastWeekCount|json_encode|raw }};#}
-
-        {#
-        $(function () {
-
-            'use strict';
-
-            /* ChartJS
-             * -------
-             * Here we will create a few charts using ChartJS
-             */
-
-            //-----------------------
-            //- MONTHLY SALES CHART -
-            //-----------------------
-
-            // Get context with jQuery - using jQuery's .get() method.
-            var salesChartCanvas = $("#salesChart").get(0).getContext("2d");
-            // This will get the first returned node in the jQuery collection.
-            var salesChart = new Chart(salesChartCanvas);
-
-            var salesChartData = {
-                labels: ["Semana 1", "Semana 2", "Semana 3"],
-                // labels: ["January", "February", "March", "April", "May", "June", "July"],
-                datasets: [
-                    {
-                        label: "Electronics",
-                        fillColor: "rgb(210, 214, 222)",
-                        strokeColor: "rgb(210, 214, 222)",
-                        pointColor: "rgb(210, 214, 222)",
-                        pointStrokeColor: "#c1c7d1",
-                        pointHighlightFill: "#fff",
-                        pointHighlightStroke: "rgb(220,220,220)",
-                        data: [65, 59, 80, 81, 56, 55, 40]
-                    },
-                    {
-                        label: "Digital Goods",
-                        fillColor: "rgba(60,141,188,0.9)",
-                        strokeColor: "rgba(60,141,188,0.8)",
-                        pointColor: "#3b8bba",
-                        pointStrokeColor: "rgba(60,141,188,1)",
-                        pointHighlightFill: "#fff",
-                        pointHighlightStroke: "rgba(60,141,188,1)",
-                        data: [28, 48, 40, 19, 86, 27, 90]
-                    }
-                ]
+            var options = {
+                title: 'Desempeño de la compañía',
+                hAxis: {title: 'Year',  titleTextStyle: {color: '#333'}},
+                vAxis: {minValue: 0}
             };
 
-            var salesChartOptions = {
-                //Boolean - If we should show the scale at all
-                showScale: true,
-                //Boolean - Whether grid lines are shown across the chart
-                scaleShowGridLines: false,
-                //String - Colour of the grid lines
-                scaleGridLineColor: "rgba(0,0,0,.05)",
-                //Number - Width of the grid lines
-                scaleGridLineWidth: 1,
-                //Boolean - Whether to show horizontal lines (except X axis)
-                scaleShowHorizontalLines: true,
-                //Boolean - Whether to show vertical lines (except Y axis)
-                scaleShowVerticalLines: true,
-                //Boolean - Whether the line is curved between points
-                bezierCurve: true,
-                //Number - Tension of the bezier curve between points
-                bezierCurveTension: 0.3,
-                //Boolean - Whether to show a dot for each point
-                pointDot: false,
-                //Number - Radius of each point dot in pixels
-                pointDotRadius: 4,
-                //Number - Pixel width of point dot stroke
-                pointDotStrokeWidth: 1,
-                //Number - amount extra to add to the radius to cater for hit detection outside the drawn point
-                pointHitDetectionRadius: 20,
-                //Boolean - Whether to show a stroke for datasets
-                datasetStroke: true,
-                //Number - Pixel width of dataset stroke
-                datasetStrokeWidth: 2,
-                //Boolean - Whether to fill the dataset with a color
-                datasetFill: true,
-                //String - A legend template
-                legendTemplate: "<ul class=\"<%=name.toLowerCase()%>-legend\"><% for (var i=0; i<datasets.length; i++){%><li><span style=\"background-color:<%=datasets[i].lineColor%>\"></span><%=datasets[i].label%></li><%}%></ul>",
-                //Boolean - whether to maintain the starting aspect ratio or not when responsive, if set to false, will take up entire container
-                maintainAspectRatio: true,
-                //Boolean - whether to make the chart responsive to window resizing
-                responsive: true
+            var chart = new google.visualization.AreaChart(document.getElementById('chartDiv1'));
+            chart.draw(data, options);
+        }
+    </script>
+
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawVisualization);
+
+        function drawVisualization() {
+            // Some raw data (not necessarily accurate)
+            var data = google.visualization.arrayToDataTable([
+                ['Month', '1 Salon', '2 Salon', '3 Salon', '4 Salon', '5 Salon', '6 Salon'],
+                ['2004/05',  165,      938,         522,             998,           450,      614.6],
+                ['2005/06',  135,      1120,        599,             1268,          288,      682],
+                ['2006/07',  157,      1167,        587,             807,           397,      623],
+                ['2007/08',  139,      1110,        615,             968,           215,      609.4],
+                ['2008/09',  136,      691,         629,             1026,          366,      569.6]
+            ]);
+
+            var options = {
+                title : 'Lista de clientes por periodo',
+                vAxis: {title: 'Clientes'},
+                hAxis: {title: 'Meses'},
+                seriesType: 'bars',
+                series: {5: {type: 'line'}}
             };
 
-            //Create the line chart
-            salesChart.Line(salesChartData, salesChartOptions);
+            var chart = new google.visualization.ComboChart(document.getElementById('chartDiv2'));
+            chart.draw(data, options);
+        }
+    </script>
 
-        });
-        #}
+    <script type="text/javascript">
+        google.charts.load('current', {'packages':['corechart']});
+        google.charts.setOnLoadCallback(drawChart);
 
+        function drawChart() {
+
+            var data = google.visualization.arrayToDataTable([
+                ['Task', 'Hours per Day'],
+                ['Work',     11],
+                ['Eat',      2],
+                ['Commute',  2],
+                ['Watch TV', 2],
+                ['Sleep',    7]
+            ]);
+
+            var options = {
+                title: 'My Daily Activities'
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('chartDiv3'));
+
+            chart.draw(data, options);
+        }
     </script>
 
 {% endblock %}
@@ -126,7 +97,11 @@
             <small>Version {{ application_version }}</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li>
+                <a href="#">
+                    <i class="fa fa-dashboard"></i> Home
+                </a>
+            </li>
             <li class="active">Dashboard</li>
         </ol>
     </section>
@@ -178,7 +153,7 @@
                 <div class="small-box bg-red">
                     <div class="inner">
                         <h3>67</h3>
-                        <p>Visitas con el End-user</p>
+                        <p>Nuevos clientes</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-pie-graph"></i>
@@ -193,26 +168,26 @@
                 <div class="box">
                     <div class="box-header with-border">
                         <h3 class="box-title">
-                            <i class="fa fa-fw fa-newspaper-o"></i> Cantidad de periódicos distribuidos la última semana
+                            <i class="fa fa-fw fa-money"></i>
+                            Ingresos del sal&oacute;n
                         </h3>
 
                         <div class="box-tools pull-right">
-                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse">
+                                <i class="fa fa-minus"></i>
                             </button>
                             <div class="btn-group">
                                 <button type="button" class="btn btn-box-tool dropdown-toggle" data-toggle="dropdown">
-                                    <i class="fa fa-wrench"></i></button>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li><a href="#">Action</a></li>
-                                        <li><a href="#">Another action</a></li>
-                                        <li><a href="#">Something else here</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="#">Separated link</a></li>
-                                    </ul>
+                                    <i class="fa fa-wrench"></i>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="#">Action</a></li>
+                                    <li><a href="#">Another action</a></li>
+                                    <li><a href="#">Something else here</a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Separated link</a></li>
+                                </ul>
                             </div>
-                            <button type="button" class="btn btn-box-tool" data-widget="remove">
-                                <i class="fa fa-times"></i>
-                            </button>
                         </div>
                     </div>
 
@@ -220,11 +195,9 @@
                         <div class="row">
                             <div class="col-md-8">
                                 <p class="text-center">
-                                    <strong>Distribución: 3333</strong>
+                                    {#<strong>Distribución: 3333</strong>#}
                                 </p>
-                                <div class="chart">
-                                    <canvas id="salesChart" style="height: 180px;"></canvas>
-                                </div>
+                                <div class="chart" id="chartDiv1"></div>
                             </div>
 
                             <div class="col-md-4">
@@ -234,7 +207,7 @@
 
                                 <div class="progress-group">
                                     <span class="progress-text">Total de Productos</span>
-                                    <span class="progress-number"><b>33333333</b> / 100</span>
+                                    <span class="progress-number"><b>33</b> / 100</span>
                                     <div class="progress sm">
                                         <div class="progress-bar progress-bar-aqua" style="width: 70%"></div>
                                     </div>
@@ -242,7 +215,7 @@
 
                                 <div class="progress-group">
                                     <span class="progress-text">Total de Usuarios</span>
-                                    <span class="progress-number"><b>66666</b> / 100</span>
+                                    <span class="progress-number"><b>44</b> / 100</span>
                                     <div class="progress sm">
                                         <div class="progress-bar progress-bar-red" style="width: 80%"></div>
                                     </div>
@@ -250,7 +223,7 @@
 
                                 <div class="progress-group">
                                     <span class="progress-text">Inicio de visitas</span>
-                                    <span class="progress-number"><b>4444</b> / 100</span>
+                                    <span class="progress-number"><b>55</b> / 100</span>
                                     <div class="progress sm">
                                         <div class="progress-bar progress-bar-green" style="width: 60%"></div>
                                     </div>
@@ -258,7 +231,7 @@
 
                                 <div class="progress-group">
                                     <span class="progress-text">Productos distribuidos Hoy</span>
-                                    <span class="progress-number"><b>5555</b> / 100</span>
+                                    <span class="progress-number"><b>66</b> / 100</span>
                                     <div class="progress sm">
                                         <div class="progress-bar progress-bar-yellow" style="width: 45%"></div>
                                     </div>
@@ -266,46 +239,6 @@
                             </div>
                         </div>
                     </div>
-
-                    {#
-                    <div class="box-footer">
-                        <div class="row">
-
-                            <div class="col-sm-3 col-xs-6">
-                                <div class="description-block border-right">
-                                    <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 17%</span>
-                                    <h5 class="description-header">$35,210.43</h5>
-                                    <span class="description-text">TOTAL REVENUE</span>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-3 col-xs-6">
-                                <div class="description-block border-right">
-                                    <span class="description-percentage text-yellow"><i class="fa fa-caret-left"></i> 0%</span>
-                                    <h5 class="description-header">$10,390.90</h5>
-                                    <span class="description-text">TOTAL COST</span>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-3 col-xs-6">
-                                <div class="description-block border-right">
-                                    <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 20%</span>
-                                    <h5 class="description-header">$24,813.53</h5>
-                                    <span class="description-text">TOTAL PROFIT</span>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-3 col-xs-6">
-                                <div class="description-block">
-                                    <span class="description-percentage text-red"><i class="fa fa-caret-down"></i> 18%</span>
-                                    <h5 class="description-header">1200</h5>
-                                    <span class="description-text">GOAL COMPLETIONS</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    #}
-
 
                 </div>
             </div>
@@ -317,385 +250,28 @@
                 <div class="box box-success">
                     <div class="box-header with-border">
                         <h3 class="box-title">
-                            <i class="fa fa-fw fa-map-marker"></i> Puntos de venta
+                            <i class="fa fa-fw fa-map-marker"></i> Nuevos clientes
                         </h3>
 
                         <div class="box-tools pull-right">
                             <button type="button" class="btn btn-box-tool" data-widget="collapse">
                                 <i class="fa fa-minus"></i>
                             </button>
-                            <button type="button" class="btn btn-box-tool" data-widget="remove">
-                                <i class="fa fa-times"></i>
-                            </button>
                         </div>
                     </div>
 
                     <div class="box-body no-padding">
                         <div class="row">
-
-                            <div class="col-md-9 col-sm-8">
-                                <div class="pad">
-                                    <div id="world-map-markers" style="height: 325px;"></div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-3 col-sm-4">
-                                <div class="pad box-pane-right bg-green" style="min-height: 280px">
-
-                                    <div class="description-block margin-bottom">
-                                        <div class="sparkbar pad" data-color="#fff">90,70,90,70,75,80,70</div>
-                                        <h5 class="description-header">3333</h5>
-                                        <span class="description-text">Inicio de Visitas</span>
-                                    </div>
-
-                                    <div class="description-block margin-bottom">
-                                        <div class="sparkbar pad" data-color="#fff">90,50,90,70,61,83,63</div>
-                                        <h5 class="description-header">15%</h5>
-                                        <span class="description-text">Rotura de Stock</span>
-                                    </div>
-
-                                    <div class="description-block">
-                                        <div class="sparkbar pad" data-color="#fff">90,50,90,70,61,83,63</div>
-                                        <h5 class="description-header">70%</h5>
-                                        <span class="description-text">Entregas</span>
-                                    </div>
-
-                                </div>
+                            <div class="col-md-11 col-sm-11">
+                                <div class="pad" id="chartDiv2"></div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                {#
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="box box-warning direct-chat direct-chat-warning">
-
-                            <div class="box-header with-border">
-                                <h3 class="box-title">Direct Chat</h3>
-
-                                <div class="box-tools pull-right">
-                                    <span data-toggle="tooltip" title="3 New Messages" class="badge bg-yellow">3</span>
-                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-box-tool" data-toggle="tooltip" title="Contacts"
-                                            data-widget="chat-pane-toggle">
-                                        <i class="fa fa-comments"></i></button>
-                                    <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div class="box-body">
-                                <div class="direct-chat-messages">
-                                    <div class="direct-chat-msg">
-                                        <div class="direct-chat-info clearfix">
-                                            <span class="direct-chat-name pull-left">Alexander Pierce</span>
-                                            <span class="direct-chat-timestamp pull-right">23 Jan 2:00 pm</span>
-                                        </div>
-                                        <img
-                                            class="direct-chat-img"
-                                            src="{{ asset('bundles/themes/adminlte/dist/img/user1-128x128.jpg') }}"
-                                            alt="message user image">
-                                        <div class="direct-chat-text">
-                                            Is this template really for free? That's unbelievable!
-                                        </div>
-                                    </div>
-
-                                    <div class="direct-chat-msg right">
-                                        <div class="direct-chat-info clearfix">
-                                            <span class="direct-chat-name pull-right">Sarah Bullock</span>
-                                            <span class="direct-chat-timestamp pull-left">23 Jan 2:05 pm</span>
-                                        </div>
-                                        <img
-                                            class="direct-chat-img"
-                                            src="{{ asset('bundles/themes/adminlte/dist/img/user3-128x128.jpg') }}"
-                                            alt="message user image">
-                                        <div class="direct-chat-text">
-                                            You better believe it!
-                                        </div>
-                                    </div>
-
-                                    <div class="direct-chat-msg">
-                                        <div class="direct-chat-info clearfix">
-                                            <span class="direct-chat-name pull-left">Alexander Pierce</span>
-                                            <span class="direct-chat-timestamp pull-right">23 Jan 5:37 pm</span>
-                                        </div>
-                                        <img
-                                            class="direct-chat-img"
-                                            src="{{ asset('bundles/themes/adminlte/dist/img/user1-128x128.jpg') }}"
-                                            alt="message user image">
-                                        <div class="direct-chat-text">
-                                            Working with AdminLTE on a great new app! Wanna join?
-                                        </div>
-                                    </div>
-
-                                    <div class="direct-chat-msg right">
-                                        <div class="direct-chat-info clearfix">
-                                            <span class="direct-chat-name pull-right">Sarah Bullock</span>
-                                            <span class="direct-chat-timestamp pull-left">23 Jan 6:10 pm</span>
-                                        </div>
-                                        <img
-                                            class="direct-chat-img"
-                                            src="{{ asset('bundles/themes/adminlte/dist/img/user3-128x128.jpg') }}"
-                                            alt="message user image">
-                                        <div class="direct-chat-text">
-                                            I would love to.
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                                <div class="direct-chat-contacts">
-                                    <ul class="contacts-list">
-                                        <li>
-                                            <a href="#">
-                                                <img
-                                                    class="contacts-list-img"
-                                                    src="{{ asset('bundles/themes/adminlte/dist/img/user1-128x128.jpg') }}"
-                                                    alt="User Image">
-                                                <div class="contacts-list-info">
-                                                    <span class="contacts-list-name">
-                                                      Count Dracula
-                                                      <small class="contacts-list-date pull-right">2/28/2015</small>
-                                                    </span>
-                                                    <span class="contacts-list-msg">How have you been? I was...</span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <img
-                                                    class="contacts-list-img"
-                                                    src="{{ asset('bundles/themes/adminlte/dist/img/user7-128x128.jpg') }}"
-                                                    alt="User Image">
-                                                <div class="contacts-list-info">
-                                                    <span class="contacts-list-name">
-                                                      Sarah Doe
-                                                      <small class="contacts-list-date pull-right">2/23/2015</small>
-                                                    </span>
-                                                    <span class="contacts-list-msg">I will be waiting for...</span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <img
-                                                    class="contacts-list-img"
-                                                    src="{{ asset('bundles/themes/adminlte/dist/img/user3-128x128.jpg') }}"
-                                                    alt="User Image">
-                                                <div class="contacts-list-info">
-                                                    <span class="contacts-list-name">
-                                                      Nadia Jolie
-                                                      <small class="contacts-list-date pull-right">2/20/2015</small>
-                                                    </span>
-                                                    <span class="contacts-list-msg">I'll call you back at...</span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <img
-                                                    class="contacts-list-img"
-                                                    src="{{ asset('bundles/themes/adminlte/dist/img/user5-128x128.jpg') }}"
-                                                    alt="User Image">
-                                                <div class="contacts-list-info">
-                                                    <span class="contacts-list-name">
-                                                      Nora S. Vans
-                                                      <small class="contacts-list-date pull-right">2/10/2015</small>
-                                                    </span>
-                                                    <span class="contacts-list-msg">Where is your new...</span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <img
-                                                    class="contacts-list-img"
-                                                    src="{{ asset('bundles/themes/adminlte/dist/img/user6-128x128.jpg') }}"
-                                                    alt="User Image">
-                                                <div class="contacts-list-info">
-                                                    <span class="contacts-list-name">
-                                                      John K.
-                                                      <small class="contacts-list-date pull-right">1/27/2015</small>
-                                                    </span>
-                                                    <span class="contacts-list-msg">Can I take a look at...</span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <img
-                                                    class="contacts-list-img"
-                                                    src="{{ asset('bundles/themes/adminlte/dist/img/user8-128x128.jpg') }}"
-                                                    alt="User Image">
-                                                <div class="contacts-list-info">
-                                                    <span class="contacts-list-name">
-                                                      Kenneth M.
-                                                      <small class="contacts-list-date pull-right">1/4/2015</small>
-                                                    </span>
-                                                    <span class="contacts-list-msg">Never mind I found...</span>
-                                                </div>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="box-footer">
-                                <form action="#" method="post">
-                                    <div class="input-group">
-                                        <input type="text" name="message" placeholder="Type Message ..." class="form-control">
-                                        <span class="input-group-btn">
-                                            <button type="button" class="btn btn-warning btn-flat">Send</button>
-                                        </span>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6">
-
-                        <div class="box box-danger">
-                            <div class="box-header with-border">
-                                <h3 class="box-title">Latest Members</h3>
-                                <div class="box-tools pull-right">
-                                    <span class="label label-danger">8 New Members</span>
-                                    <button type="button" class="btn btn-box-tool" data-widget="collapse">
-                                        <i class="fa fa-minus">
-
-                                        </i>
-                                    </button>
-                                    <button type="button" class="btn btn-box-tool" data-widget="remove">
-                                        <i class="fa fa-times"></i>
-                                    </button>
-                                </div>
-                            </div>
-
-                            <div class="box-body no-padding">
-                                <ul class="users-list clearfix">
-                                    <li>
-                                        <img src="{{ asset('bundles/themes/adminlte/dist/img/user3-128x128.jpg') }}" alt="User Image">
-                                        <a class="users-list-name" href="#">Alexander Pierce</a>
-                                        <span class="users-list-date">Today</span>
-                                    </li>
-                                    <li>
-                                        <img src="{{ asset('bundles/themes/adminlte/dist/img/user8-128x128.jpg') }}" alt="User Image">
-                                        <a class="users-list-name" href="#">Norman</a>
-                                        <span class="users-list-date">Yesterday</span>
-                                    </li>
-                                    <li>
-                                        <img src="{{ asset('bundles/themes/adminlte/dist/img/user7-128x128.jpg') }}" alt="User Image">
-                                        <a class="users-list-name" href="#">Jane</a>
-                                        <span class="users-list-date">12 Jan</span>
-                                    </li>
-                                    <li>
-                                        <img src="{{ asset('bundles/themes/adminlte/dist/img/user6-128x128.jpg') }}" alt="User Image">
-                                        <a class="users-list-name" href="#">John</a>
-                                        <span class="users-list-date">12 Jan</span>
-                                    </li>
-                                    <li>
-                                        <img src="{{ asset('bundles/themes/adminlte/dist/img/user2-160x160.jpg') }}" alt="User Image">
-                                        <a class="users-list-name" href="#">Alexander</a>
-                                        <span class="users-list-date">13 Jan</span>
-                                    </li>
-                                    <li>
-                                        <img src="{{ asset('bundles/themes/adminlte/dist/img/user5-128x128.jpg') }}" alt="User Image">
-                                        <a class="users-list-name" href="#">Sarah</a>
-                                        <span class="users-list-date">14 Jan</span>
-                                    </li>
-                                    <li>
-                                        <img src="{{ asset('bundles/themes/adminlte/dist/img/user4-128x128.jpg') }}" alt="User Image">
-                                        <a class="users-list-name" href="#">Nora</a>
-                                        <span class="users-list-date">15 Jan</span>
-                                    </li>
-                                    <li>
-                                        <img src="{{ asset('bundles/themes/adminlte/dist/img/user3-128x128.jpg') }}" alt="User Image">
-                                        <a class="users-list-name" href="#">Nadia</a>
-                                        <span class="users-list-date">15 Jan</span>
-                                    </li>
-                                </ul>
-                            </div>
-
-                            <div class="box-footer text-center">
-                                <a href="javascript:void(0)" class="uppercase">View All Users</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                #}
             </div>
 
             <div class="col-md-4">
-
-                {#
-                <div class="info-box bg-yellow">
-                    <span class="info-box-icon">
-                        <i class="ion ion-ios-pricetag-outline"></i>
-                    </span>
-                    <div class="info-box-content">
-                        <span class="info-box-text">Inventory</span>
-                        <span class="info-box-number">5,200</span>
-                        <div class="progress">
-                            <div class="progress-bar" style="width: 50%"></div>
-                        </div>
-                        <span class="progress-description">
-                            50% Increase in 30 Days
-                        </span>
-                    </div>
-                </div>
-
-                <div class="info-box bg-green">
-                    <span class="info-box-icon">
-                        <i class="ion ion-ios-heart-outline"></i>
-                    </span>
-                    <div class="info-box-content">
-                        <span class="info-box-text">Mentions</span>
-                        <span class="info-box-number">92,050</span>
-
-                        <div class="progress">
-                            <div class="progress-bar" style="width: 20%"></div>
-                        </div>
-                        <span class="progress-description">
-                            20% Increase in 30 Days
-                        </span>
-                    </div>
-                </div>
-
-                <div class="info-box bg-red">
-                    <span class="info-box-icon">
-                        <i class="ion ion-ios-cloud-download-outline"></i>
-                    </span>
-                    <div class="info-box-content">
-                        <span class="info-box-text">Downloads</span>
-                        <span class="info-box-number">114,381</span>
-                        <div class="progress">
-                            <div class="progress-bar" style="width: 70%"></div>
-                        </div>
-                        <span class="progress-description">
-                            70% Increase in 30 Days
-                        </span>
-                    </div>
-                </div>
-
-                <div class="info-box bg-aqua">
-                    <span class="info-box-icon">
-                        <i class="ion-ios-chatbubble-outline"></i>
-                    </span>
-                    <div class="info-box-content">
-                        <span class="info-box-text">Direct Messages</span>
-                        <span class="info-box-number">163,921</span>
-                        <div class="progress">
-                            <div class="progress-bar" style="width: 40%"></div>
-                        </div>
-                        <span class="progress-description">
-                            40% Increase in 30 Days
-                        </span>
-                    </div>
-                </div>
-                #}
-
                 <div class="box box-default">
                     <div class="box-header with-border">
                         <h3 class="box-title">
@@ -706,28 +282,13 @@
                             <button type="button" class="btn btn-box-tool" data-widget="collapse">
                                 <i class="fa fa-minus"></i>
                             </button>
-                            <button type="button" class="btn btn-box-tool" data-widget="remove">
-                                <i class="fa fa-times"></i></button>
                         </div>
                     </div>
 
                     <div class="box-body">
                         <div class="row">
-                            <div class="col-md-8">
-                                <div class="chart-responsive">
-                                    <canvas id="pieChart" height="150"></canvas>
-                                </div>
-                            </div>
-
-                            <div class="col-md-4">
-                                <ul class="chart-legend clearfix">
-                                    <li><i class="fa fa-circle-o text-red"></i> Chrome</li>
-                                    <li><i class="fa fa-circle-o text-green"></i> IE</li>
-                                    <li><i class="fa fa-circle-o text-yellow"></i> FireFox</li>
-                                    <li><i class="fa fa-circle-o text-aqua"></i> Safari</li>
-                                    <li><i class="fa fa-circle-o text-light-blue"></i> Opera</li>
-                                    <li><i class="fa fa-circle-o text-gray"></i> Navigator</li>
-                                </ul>
+                            <div class="col-md-12">
+                                <div class="chart-responsive" id="chartDiv3"></div>
                             </div>
                         </div>
                     </div>

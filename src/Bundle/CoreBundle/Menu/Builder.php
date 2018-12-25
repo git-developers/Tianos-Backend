@@ -44,27 +44,37 @@ class Builder implements ContainerAwareInterface
             ],
         ])
         ;
+	
+        
 
-
-
+        
+	    
         /**
-         * FRONTEND
+         * DASHBOARD
          */
-        $isGranted = true;
-        $menu->addChild('Inicio', [
-            'route' => 'frontend_default_index',
+	
+	    if ($this->isGranted(Role::ROLE_PDV_ADMIN)) {
+		    $route = 'backend_default_pdv_index';
+	    } elseif ($this->isGranted(Role::ROLE_EMPLOYEE)) {
+		    $route = 'backend_default_pdv_index';
+	    } elseif ($this->isGranted(Role::ROLE_SUPER_ADMIN)) {
+		    $route = 'backend_default_super_index';
+	    }
+	    
+        $menu->addChild('Dashboard', [
+            'route' => $route,
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
                 'class' => 'treeview-menu',
             ],
         ])
-            ->setAttribute('class', 'treeview')
-            ->setAttribute('icon', 'fa-fw fa-tv')
-            ->setAttribute('class', $this->activeRoute('frontend_default_index'))
-            ->setDisplay($isGranted)
+        ->setAttribute('class', 'treeview')
+        ->setAttribute('icon', 'fa-fw fa-tv')
+        ->setAttribute('class', $this->activeRoute($route))
+        ->setDisplay(true)
         ;
         /**
-         * FRONTEND
+         * DASHBOARD
          */
 
 
@@ -445,13 +455,13 @@ class Builder implements ContainerAwareInterface
         
 
         /**
-         * REPORTS
+         * STATISTICS
          */
         $isGranted = $this->isGranted([
 	        Role::ROLE_PDV_ADMIN,
         ]);
 
-        $menu->addChild('Reportes', [
+        $menu->addChild('Estadísticas', [
             'route' => 'backend_report_combo_chart',
             'extras' => ['safe_label' => true],
             'childrenAttributes' => [
@@ -467,7 +477,7 @@ class Builder implements ContainerAwareInterface
             ->setDisplay($isGranted)
         ;
         
-	    $menu['Reportes']->addChild('Combo chart', [
+	    $menu['Estadísticas']->addChild('Combo chart', [
 		    'route' => 'backend_report_combo_chart'
 	    ])
 		    ->setAttribute('icon', self::CIRCLE_1)
@@ -475,7 +485,7 @@ class Builder implements ContainerAwareInterface
 		    ->setDisplay($isGranted)
 	    ;
      
-	    $menu['Reportes']->addChild('Pie chart', [
+	    $menu['Estadísticas']->addChild('Pie chart', [
 		    'route' => 'backend_report_pie_chart'
 	    ])
 		    ->setAttribute('icon', self::CIRCLE_2)
@@ -483,7 +493,7 @@ class Builder implements ContainerAwareInterface
 		    ->setDisplay($isGranted)
 	    ;
         /**
-         * REPORTS
+         * STATISTICS
          */
 	
 	    

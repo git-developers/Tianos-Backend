@@ -2,16 +2,17 @@
 
 namespace Bundle\ProductBundle\Form\Type;
 
-use Bundle\CategoryBundle\Entity\Category;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
+use Bundle\CategoryBundle\Entity\Category;
+use Bundle\ProductBundle\Entity\Unit;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Doctrine\ORM\EntityManager;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-use Doctrine\ORM\EntityRepository;
 
 class ProductType extends AbstractType
 {
@@ -64,6 +65,26 @@ class ProductType extends AbstractType
                     'empty_data' => null,
                     'required' => false,
                     'label' => 'Categoría',
+                    'label_attr' => [
+                        'class' => ''
+                    ],
+                    'attr' => [
+                        'class' => 'form-control',
+                        'placeholder' => '',
+                    ],
+                ],
+                $this->getDataType($options)
+            ))
+            ->add('unit', EntityType::class, array_merge(
+                [
+                    'class' => Unit::class,
+                    'query_builder' => function(EntityRepository $er) {
+                        return $er->findAllObjects();
+                    },
+                    'placeholder' => '[ Escoge una opción ]',
+                    'empty_data' => null,
+                    'required' => true,
+                    'label' => 'Unidad de uso',
                     'label_attr' => [
                         'class' => ''
                     ],

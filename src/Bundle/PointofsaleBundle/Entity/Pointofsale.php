@@ -200,6 +200,30 @@ class Pointofsale
      * )
      */
     private $module;
+	
+	/**
+	 * @var \Doctrine\Common\Collections\Collection
+	 *
+	 * @ORM\ManyToMany(targetEntity="Bundle\CategoryBundle\Entity\Category", inversedBy="pointOfSale")
+	 * @ORM\JoinTable(name="point_of_sale_has_category",
+	 *   joinColumns={
+	 *     @ORM\JoinColumn(name="point_of_sale_id", referencedColumnName="id")
+	 *   },
+	 *   inverseJoinColumns={
+	 *     @ORM\JoinColumn(name="category_id", referencedColumnName="id")
+	 *   }
+	 * )
+	 */
+	private $category;
+	
+	/**
+	 * @var string
+	 *
+	 * @JMSS\Groups({
+	 *     "crud"
+	 * })
+	 */
+	private $createdAtDiff;
 
     /**
      * Constructor
@@ -208,6 +232,7 @@ class Pointofsale
     {
         $this->user = new \Doctrine\Common\Collections\ArrayCollection();
 	    $this->module = new \Doctrine\Common\Collections\ArrayCollection();
+	    $this->category = new \Doctrine\Common\Collections\ArrayCollection();
 	    $this->pointOfSaleChildren = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
@@ -645,6 +670,56 @@ class Pointofsale
     {
         $this->pointOfSaleChildren = $pointOfSaleChildren;
     }
-
+	
+	/**
+	 * @return string
+	 */
+	public function getCreatedAtDiff(): string
+	{
+		return $this->createdAtDiff;
+	}
+	
+	/**
+	 * @param string $createdAtDiff
+	 */
+	public function setCreatedAtDiff(string $createdAtDiff)//: void
+	{
+		$this->createdAtDiff = $createdAtDiff;
+	}
+	
+	
+	/**
+	 * Add category
+	 *
+	 * @param \Bundle\CategoryBundle\Entity\Category $category
+	 *
+	 * @return PointOfSale
+	 */
+	public function addCategory(\Bundle\CategoryBundle\Entity\Category $category)
+	{
+		$this->category[] = $category;
+		
+		return $this;
+	}
+	
+	/**
+	 * Remove category
+	 *
+	 * @param \Bundle\CategoryBundle\Entity\Category $category
+	 */
+	public function removeCategory(\Bundle\CategoryBundle\Entity\Category $category)
+	{
+		$this->category->removeElement($category);
+	}
+	
+	/**
+	 * Get category
+	 *
+	 * @return \Doctrine\Common\Collections\Collection
+	 */
+	public function getCategory()
+	{
+		return $this->category;
+	}
 }
 

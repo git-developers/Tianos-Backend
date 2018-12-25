@@ -81,8 +81,11 @@ class AuthenticationSuccessHandler implements AuthenticationSuccessHandlerInterf
 	    if ($this->isGranted(Role::ROLE_SUPER_ADMIN)) {
 		    $referer = $this->router->generate('backend_default_super_index');
 	    }
-
-//        return new RedirectResponse($referer);
+	
+	    if ($this->isGranted(Role::ROLE_EMPLOYEE)) {
+		    $referer = $this->router->generate('backend_default_pdv_index');
+	    }
+	    
 	    return $this->httpUtils->createRedirectResponse($request, $referer);
     }
 

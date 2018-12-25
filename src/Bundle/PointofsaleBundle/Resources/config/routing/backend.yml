@@ -17,7 +17,7 @@ backend_pointofsale_index:
             grid:
                 icon: map-marker
                 box_class: primary
-                title: 'Gestionar puntos de ventas'
+                title: Gestionar puntos de ventas
                 modal:
                     create:
                         title: Crear punto de venta
@@ -59,6 +59,10 @@ backend_pointofsale_index:
                           obj: " '<span class=\"badge bg-green\">' + obj.latitude + ' :: ' + obj.longitude + '</span>' "
                           options:
                               icon: map-marker
+                        - name: Dias creado
+                          obj: " '<span class=\"badge bg-blue\">' + obj.created_at_diff + '</span>' "
+                          options:
+                              icon: clock-o
                         - name: Creado
                           obj: obj.created_at
                           options:

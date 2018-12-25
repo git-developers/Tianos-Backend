@@ -85,4 +85,13 @@ Bundle\CategoryBundle\Entity\Category:
                 category_id:
                     referencedColumnName: id
             orphanRemoval: false
+    manyToMany:
+        pointOfSale:
+            targetEntity: Bundle\PointofsaleBundle\Entity\Pointofsale
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: category
+            inversedBy: null
+            joinTable: null
+            orderBy: null
     lifecycleCallbacks: {  }

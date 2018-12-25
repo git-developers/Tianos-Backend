@@ -107,6 +107,23 @@ Bundle\PointofsaleBundle\Entity\Pointofsale:
                     referencedColumnName: id
             orphanRemoval: false
     manyToMany:
+        category:
+            targetEntity: Bundle\CategoryBundle\Entity\Category
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: pointOfSale
+            joinTable:
+                name: point_of_sale_has_category
+                joinColumns:
+                    -
+                        name: point_of_sale_id
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    -
+                        name: category_id
+                        referencedColumnName: id
+            orderBy: null
         module:
             targetEntity: Bundle\ModuleBundle\Entity\Module
             cascade: {  }

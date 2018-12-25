@@ -124,8 +124,16 @@ class DoctrineListenerService extends BaseDoctrineListenerService implements Eve
         $entity = $args->getEntity();
 
         if ($entity instanceof Pointofsale){
-
-            return;
+	
+	        $timeStart = $entity->getCreatedAt();
+	        $timeEnd = new \DateTime();
+	
+	        $interval = $timeStart->diff($timeEnd);
+	        $interval = $interval->format('%m meses - %a dias - %h horas'); // %y years %m months %a days - %i minutos - %s segundos
+	
+	        $entity->setCreatedAtDiff($interval);
+	        
+	        return;
         }
     }
 }

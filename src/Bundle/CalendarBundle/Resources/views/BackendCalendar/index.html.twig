@@ -6,10 +6,11 @@
     {% stylesheets
         filter='cssrewrite'
         '@ThemesBundle/Resources/public/adminlte/bower_components/fullcalendar/dist/fullcalendar.min.css'
+        'bundles/themes/common/contextMenu/css/jquery.contextMenu.css'
     %}
         <link rel='stylesheet' type='text/css' media='all' href="{{ asset_url }}" />
 
-        <link rel="stylesheet" href="{{ asset('bundles/themes/adminlte/bower_components/fullcalendar/dist/fullcalendar.print.min.css')}}" media="print">
+        <link rel="stylesheet" href="{{ asset('bundles/themes/adminlte/bower_components/fullcalendar/dist/fullcalendar.print.min.css') }}" media="print">
 
     {% endstylesheets %}
 
@@ -18,9 +19,60 @@
 {% block javascripts %}
     {{ parent() }}
 
-    <script src="{{ asset('bundles/themes/adminlte/bower_components/moment/moment.js')}}"></script>
-    <script src="{{ asset('bundles/themes/adminlte/bower_components/fullcalendar/dist/fullcalendar.min.js')}}"></script>
-    <script src="{{ asset('bundles/themes/adminlte/bower_components/fullcalendar/dist/locale/es.js')}}"></script>
+    {% javascripts
+        '@ThemesBundle/Resources/public/adminlte/bower_components/moment/moment.js'
+        '@ThemesBundle/Resources/public/adminlte/bower_components/fullcalendar/dist/fullcalendar.min.js'
+        '@ThemesBundle/Resources/public/adminlte/bower_components/fullcalendar/dist/locale/es.js'
+        '@ThemesBundle/Resources/public/common/contextMenu/js/jquery.contextMenu.js'
+    %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+
+    {#<span class="context-menu-one btn btn-neutral">right click me</span>#}
+
+    <script type="text/javascript">
+        $(function() {
+            $.contextMenu({
+                selector: '.fc-widget-content',
+                callback: function(key, options) {
+                    var m = "clicked: " + key;
+                    window.console && console.log(m) || alert(m);
+                },
+                items: {
+                    "add": {
+                        name: "Agregar",
+                        icon: "add"
+                    },
+                    // "cut": {
+                    //     name: "Cut",
+                    //     icon: "cut"
+                    // },
+                    // copy: {
+                    //     name: "Copy",
+                    //     icon: "copy"
+                    // },
+                    // "paste": {
+                    //     name: "Paste",
+                    //     icon: "paste"
+                    // },
+                    // "delete": {
+                    //     name: "Delete",
+                    //     icon: "delete"
+                    // },
+                    // "sep1": "---------",
+                    // "quit": {
+                    //     name: "Quit", icon: function(){
+                    //         return 'context-menu-icon context-menu-icon-quit';
+                    //     }
+                    // }
+                }
+            });
+
+            $('.fc-widget-content').on('click', function(e){
+                console.log('clicked', this);
+            })
+        });
+    </script>
 
     <script type="text/javascript">
 
@@ -77,7 +129,7 @@
                 events    : {{ tickets|raw }},
                 editable  : true,
                 droppable : true, // this allows things to be dropped onto the calendar !!!
-                drop      : function (date, allDay) { // this function is called when something is dropped
+                drop      : function (date, allDay) {
 
                     // retrieve the dropped element's stored Event Object
                     var originalEventObject = $(this).data('eventObject');
@@ -167,7 +219,6 @@
 
 
             {#LEFT#}
-
             <div class="col-md-3">
                 <div class="box box-solid">
                     <div class="box-header with-border">

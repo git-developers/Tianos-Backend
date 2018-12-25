@@ -37,6 +37,10 @@ backend_product_index:
                 modal:
                     create:
                         title: Crear producto
+                        size: modal-
+                    edit:
+                        title: Editar producto
+                        size: modal-
                 data_table:
                     route:
                         info: backend_product_info
@@ -64,6 +68,8 @@ backend_product_index:
                           obj: " '<span class=\"badge bg-blue\">' + obj.id + '</span>' "
                         - name: Name
                           obj: obj.name
+                        - name: Stock
+                          obj: obj.stock
 #                        - name: Creado
 #                          obj: obj.created_at
 #                          options:

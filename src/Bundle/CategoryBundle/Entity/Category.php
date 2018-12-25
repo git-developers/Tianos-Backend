@@ -21,17 +21,11 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 class Category
 {
 
-
     const TYPE_PRODUCT_ID = 1;
     const TYPE_PRODUCT = 'PRODUCT';
 
     const TYPE_SERVICE_ID = 2;
     const TYPE_SERVICE = 'SERVICE';
-
-//    const TYPES = [
-//        self::TYPE_PRODUCT_ID => self::TYPE_PRODUCT,
-//        self::TYPE_SERVICE_ID => self::TYPE_SERVICE,
-//    ];
 
     const TYPES = [
         self::TYPE_PRODUCT,
@@ -123,6 +117,21 @@ class Category
      * @JMSS\Groups({"tree-one-to-many-left"})
      */
     private $nameBox;
+	
+	/**
+	 * @var \Doctrine\Common\Collections\Collection
+	 *
+	 * @ORM\ManyToMany(targetEntity="Bundle\PointofsaleBundle\Entity\Pointofsale", mappedBy="category")
+	 */
+	private $pointOfSale;
+	
+	/**
+	 * Constructor
+	 */
+	public function __construct()
+	{
+		$this->pointOfSale = new \Doctrine\Common\Collections\ArrayCollection();
+	}
 
     public function __toString() {
         return sprintf('%s - %s', $this->id, $this->name);
@@ -392,5 +401,39 @@ class Category
         $type = strtoupper($type);
         return in_array($type,self::TYPES);
     }
+	
+	/**
+	 * Add pointOfSale
+	 *
+	 * @param \Bundle\PointofsaleBundle\Entity\Pointofsale $pointOfSale
+	 *
+	 * @return Category
+	 */
+	public function addPointOfSale(\Bundle\PointofsaleBundle\Entity\Pointofsale $pointOfSale)
+	{
+		$this->pointOfSale[] = $pointOfSale;
+		
+		return $this;
+	}
+	
+	/**
+	 * Remove pointOfSale
+	 *
+	 * @param \Bundle\PointofsaleBundle\Entity\Pointofsale $pointOfSale
+	 */
+	public function removePointOfSale(\Bundle\PointofsaleBundle\Entity\Pointofsale $pointOfSale)
+	{
+		$this->pointOfSale->removeElement($pointOfSale);
+	}
+	
+	/**
+	 * Get pointOfSale
+	 *
+	 * @return \Doctrine\Common\Collections\Collection
+	 */
+	public function getPointOfSale()
+	{
+		return $this->pointOfSale;
+	}
 }
 

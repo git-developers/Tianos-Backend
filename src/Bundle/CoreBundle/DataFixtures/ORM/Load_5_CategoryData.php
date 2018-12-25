@@ -21,6 +21,8 @@ class Load_5_CategoryData extends AbstractFixture implements OrderedFixtureInter
 
     public function load(ObjectManager $manager)
     {
+	
+	    $pointofsale_10 = $this->getReference('pointofsale-10');
 
         /**
          * COSMETICOS
@@ -30,6 +32,8 @@ class Load_5_CategoryData extends AbstractFixture implements OrderedFixtureInter
         $entity2->setName('Cosmeticos');
         $entity2->setType(Category::TYPE_PRODUCT);
         $manager->persist($entity2);
+	    $pointofsale_10->addCategory($entity2);
+        $manager->persist($pointofsale_10);
         $this->addReference('category-1', $entity2);
 
         $entity = new Category();
@@ -38,6 +42,8 @@ class Load_5_CategoryData extends AbstractFixture implements OrderedFixtureInter
         $entity->setType(Category::TYPE_PRODUCT);
         $entity->setCategory($entity2);
         $manager->persist($entity);
+	    $pointofsale_10->addCategory($entity);
+	    $manager->persist($pointofsale_10);
         $this->addReference('category-2', $entity);
 
         $entity = new Category();
@@ -46,16 +52,17 @@ class Load_5_CategoryData extends AbstractFixture implements OrderedFixtureInter
         $entity->setType(Category::TYPE_PRODUCT);
         $entity->setCategory($entity2);
         $manager->persist($entity);
+	    $pointofsale_10->addCategory($entity);
+	    $manager->persist($pointofsale_10);
         $this->addReference('category-3', $entity);
-
-
-
-
+        
         $entity = new Category();
         $entity->setCode('004');
         $entity->setName('Shampoos');
         $entity->setType(Category::TYPE_PRODUCT);
         $manager->persist($entity);
+	    $pointofsale_10->addCategory($entity);
+	    $manager->persist($pointofsale_10);
         $this->addReference('category-4', $entity);
 
         $entity = new Category();
@@ -63,6 +70,8 @@ class Load_5_CategoryData extends AbstractFixture implements OrderedFixtureInter
         $entity->setName('Tintes');
         $entity->setType(Category::TYPE_PRODUCT);
         $manager->persist($entity);
+	    $pointofsale_10->addCategory($entity);
+	    $manager->persist($pointofsale_10);
         $this->addReference('category-5', $entity);
 
 
@@ -75,6 +84,8 @@ class Load_5_CategoryData extends AbstractFixture implements OrderedFixtureInter
         $entity1->setName('Cremas');
         $entity1->setType(Category::TYPE_PRODUCT);
         $manager->persist($entity1);
+	    $pointofsale_10->addCategory($entity1);
+	    $manager->persist($pointofsale_10);
         $this->addReference('category-6', $entity);
 
         $entity = new Category();
@@ -83,6 +94,8 @@ class Load_5_CategoryData extends AbstractFixture implements OrderedFixtureInter
         $entity->setType(Category::TYPE_PRODUCT);
         $entity->setCategory($entity1);
         $manager->persist($entity);
+	    $pointofsale_10->addCategory($entity);
+	    $manager->persist($pointofsale_10);
         $this->addReference('category-7', $entity);
 
         $entity = new Category();
@@ -91,6 +104,8 @@ class Load_5_CategoryData extends AbstractFixture implements OrderedFixtureInter
         $entity->setType(Category::TYPE_PRODUCT);
         $entity->setCategory($entity1);
         $manager->persist($entity);
+	    $pointofsale_10->addCategory($entity);
+	    $manager->persist($pointofsale_10);
         $this->addReference('category-8', $entity);
 
         $entity = new Category();
@@ -99,6 +114,8 @@ class Load_5_CategoryData extends AbstractFixture implements OrderedFixtureInter
         $entity->setType(Category::TYPE_PRODUCT);
         $entity->setCategory($entity1);
         $manager->persist($entity);
+	    $pointofsale_10->addCategory($entity);
+	    $manager->persist($pointofsale_10);
         $this->addReference('category-9', $entity);
 
 
@@ -111,6 +128,8 @@ class Load_5_CategoryData extends AbstractFixture implements OrderedFixtureInter
         $entity3->setName('Corte de cabello');
         $entity3->setType(Category::TYPE_SERVICE);
         $manager->persist($entity3);
+	    $pointofsale_10->addCategory($entity3);
+	    $manager->persist($pointofsale_10);
         $this->addReference('category-10', $entity3);
 
         $entity = new Category();
@@ -119,6 +138,8 @@ class Load_5_CategoryData extends AbstractFixture implements OrderedFixtureInter
         $entity->setType(Category::TYPE_SERVICE);
         $entity->setCategory($entity3);
         $manager->persist($entity);
+	    $pointofsale_10->addCategory($entity);
+	    $manager->persist($pointofsale_10);
         $this->addReference('category-11', $entity);
 
         $entity = new Category();
@@ -127,8 +148,11 @@ class Load_5_CategoryData extends AbstractFixture implements OrderedFixtureInter
         $entity->setType(Category::TYPE_SERVICE);
         $entity->setCategory($entity3);
         $manager->persist($entity);
+	    $pointofsale_10->addCategory($entity);
+	    $manager->persist($pointofsale_10);
         $this->addReference('category-12', $entity);
 
+        
 
         /**
          * SERVICE - MANOS - PIES
@@ -138,6 +162,8 @@ class Load_5_CategoryData extends AbstractFixture implements OrderedFixtureInter
         $entity3->setName('Pedicure');
         $entity3->setType(Category::TYPE_SERVICE);
         $manager->persist($entity3);
+	    $pointofsale_10->addCategory($entity3);
+	    $manager->persist($pointofsale_10);
         $this->addReference('category-13', $entity3);
 
         $entity3 = new Category();
@@ -145,6 +171,8 @@ class Load_5_CategoryData extends AbstractFixture implements OrderedFixtureInter
         $entity3->setName('Manicure');
         $entity3->setType(Category::TYPE_SERVICE);
         $manager->persist($entity3);
+	    $pointofsale_10->addCategory($entity3);
+	    $manager->persist($pointofsale_10);
         $this->addReference('category-14', $entity3);
 
 

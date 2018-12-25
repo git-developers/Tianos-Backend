@@ -1,5 +1,3 @@
-#http://docs.doctrine-project.org/projects/doctrine-orm/en/latest/reference/yaml-mapping.html
-
 Bundle\ProductBundle\Entity\Product:
     type: entity
 #    type: mappedSuperclass
@@ -89,6 +87,16 @@ Bundle\ProductBundle\Entity\Product:
             inversedBy: null
             joinColumns:
                 category_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        unit:
+            targetEntity: Bundle\ProductBundle\Entity\Unit
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                unit_id:
                     referencedColumnName: id
             orphanRemoval: false
     lifecycleCallbacks: {  }

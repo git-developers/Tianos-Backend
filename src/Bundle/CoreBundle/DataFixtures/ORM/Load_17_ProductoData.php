@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Bundle\CoreBundle\DataFixtures\ORM;
 
+use Bundle\ProductBundle\Entity\Product;
+use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\Common\DataFixtures\AbstractFixture;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
-use Doctrine\Common\Persistence\ObjectManager;
-use Bundle\ProductBundle\Entity\Product;
 
 class Load_17_ProductoData extends AbstractFixture implements OrderedFixtureInterface
 {
@@ -24,6 +24,7 @@ class Load_17_ProductoData extends AbstractFixture implements OrderedFixtureInte
 
         $category_1 = $this->getReference('category-1');
         $category_2 = $this->getReference('category-2');
+
 	
 	
 	    /**

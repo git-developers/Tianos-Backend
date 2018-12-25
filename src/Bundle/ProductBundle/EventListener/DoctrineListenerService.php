@@ -4,16 +4,15 @@ declare(strict_types=1);
 
 namespace Bundle\ProductBundle\EventListener;
 
+use Cocur\Slugify\Slugify;
 use Doctrine\Common\EventSubscriber;
+use Bundle\ProductBundle\Entity\Unit;
+use Bundle\ProductBundle\Entity\Product;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
-use Bundle\ProductBundle\Entity\Product;
-use Cocur\Slugify\Slugify;
 use Bundle\CoreBundle\EventListener\BaseDoctrineListenerService;
-
-// https://coderwall.com/p/es3zkw/symfony2-listen-doctrine-events
 
 class DoctrineListenerService extends BaseDoctrineListenerService implements EventSubscriber
 {
@@ -59,6 +58,8 @@ class DoctrineListenerService extends BaseDoctrineListenerService implements Eve
             $entity->setCreatedAt($this->setupCreatedAt($entity));
 
             return;
+        } elseif ($entity instanceof Unit) {
+	       
         }
     }
 

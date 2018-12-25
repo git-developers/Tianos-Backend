@@ -40,6 +40,8 @@ class Product
 
     /**
      * @var integer
+     *
+     * @JMSS\Groups({"crud"})
      */
     private $stock;
 
@@ -80,6 +82,16 @@ class Product
      * })
      */
     private $category;
+	
+	/**
+	 * @var \Bundle\ProductBundle\Entity\Unit
+	 *
+	 * @ORM\ManyToOne(targetEntity="Bundle\ProductBundle\Entity\Unit")
+	 * @ORM\JoinColumns({
+	 *   @ORM\JoinColumn(name="unit_id", referencedColumnName="id")
+	 * })
+	 */
+	private $unit;
 
     /**
      * Get id
@@ -322,5 +334,29 @@ class Product
     {
         return $this->category;
     }
+	
+	/**
+	 * Set unit
+	 *
+	 * @param \Bundle\ProductBundle\Entity\Unit $unit
+	 *
+	 * @return Product
+	 */
+	public function setUnit(\Bundle\ProductBundle\Entity\Unit $unit = null)
+	{
+		$this->unit = $unit;
+		
+		return $this;
+	}
+	
+	/**
+	 * Get unit
+	 *
+	 * @return \Bundle\ProductBundle\Entity\Unit
+	 */
+	public function getUnit()
+	{
+		return $this->unit;
+	}
 }
 

@@ -61,36 +61,21 @@ class TreeController extends BaseController
         if (!Category::isEntityType($entityType)) {
             throw $this->createNotFoundException('TREE TYPE: Unable to find category type.');
         }
+	
+	    //USER
+	    $user = $this->getUser();
 
+        
         //REPOSITORY
-        $objects = $this->get($repository)->$method($entityType);
+        $objects = $this->get($repository)->$method($user->getPointOfSaleActiveId(), $entityType);
         $varsRepository = $configuration->getRepositoryVars();
         $objects = $this->getTreeEntities($objects, $configuration, $varsRepository->serialize_group_name);
+        
 
         //CRUD
         $crud = $this->get('tianos.tree');
         $modal = $crud->getModalMapper()->getDefaults();
         $formMapper = $crud->getFormMapper()->getDefaults();
-
-
-//        echo "POLLO:: <pre>";
-//        print_r($modal);
-//        exit;
-
-
-//        //DATATABLE
-//        $dataTable = $crud->getDataTableMapper($grid)
-//            ->setRoute()
-//            ->setColumns()
-//            ->setOptions()
-//            ->setRowCallBack()
-//            ->setData($objects)
-//            ->setTableOptions()
-//            ->setTableButton()
-//            ->setTableHeaderButton()
-//            ->setColumnsTargets()
-//            ->resetTreeVariable()
-//        ;
 
         return $this->render(
             $template,
@@ -183,7 +168,18 @@ class TreeController extends BaseController
             try {
 
                 if ($form->isValid()) {
+                	
                     $this->persist($entity);
+	
+	                //USER
+	                $user = $this->getUser();
+	                $pdv = $this->get('tianos.repository.pointofsale')->find($user->getPointOfSaleActiveId());
+
+	                if ($pdv) {
+		                $pdv->addCategory($entity);
+		                $this->persist($pdv);
+	                }
+                    
                     $varsRepository = $configuration->getRepositoryVars();
                     $entity = $this->getSerializeDecode($entity, $varsRepository->serialize_group_name);
                     $status = self::STATUS_SUCCESS;

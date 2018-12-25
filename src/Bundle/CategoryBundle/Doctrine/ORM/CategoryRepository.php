@@ -8,8 +8,7 @@ use Component\Category\Repository\CategoryRepositoryInterface;
 use Component\TreeOneToMany\Repository\TreeOneToManyLeftRepositoryInterface;
 use Bundle\CoreBundle\Doctrine\ORM\EntityRepository as TianosEntityRepository;
 
-class CategoryRepository extends TianosEntityRepository
-    implements CategoryRepositoryInterface, TreeOneToManyLeftRepositoryInterface
+class CategoryRepository extends TianosEntityRepository implements CategoryRepositoryInterface, TreeOneToManyLeftRepositoryInterface
 {
 
     /**
@@ -42,24 +41,31 @@ class CategoryRepository extends TianosEntityRepository
         return $qb->getResult();
     }
 
-    public function findAllParentsByType($type): array
+    public function findAllParentsByType($pointOfSaleActiveId, $type): array
     {
-        $em = $this->getEntityManager();
-        $dql = "
-            SELECT parent
-            FROM CategoryBundle:Category parent
+	    $em = $this->getEntityManager();
+	    $dql = "
+            SELECT
+            parent.id,
+            parent.code,
+            parent.name
+            FROM PointofsaleBundle:Pointofsale pointOfSale
+            LEFT JOIN pointOfSale.category parent
             WHERE
-            parent.isActive = :active AND
+			pointOfSale.id = :pointOfSaleActiveId AND
+			pointOfSale.isActive = :active AND
+			parent.isActive = :active AND
             parent.type = :type_ AND
             parent.category IS NULL
             ORDER BY parent.id DESC
             ";
 
-        $query = $em->createQuery($dql);
-        $query->setParameter('active', 1);
-        $query->setParameter('type_', $type);
+	    $query = $em->createQuery($dql);
+	    $query->setParameter('active', 1);
+	    $query->setParameter('type_', $type);
+	    $query->setParameter('pointOfSaleActiveId', $pointOfSaleActiveId);
 
-        return $query->getResult();
+	    return $query->getResult();
     }
 
     public function findAllParents(): array
@@ -82,9 +88,15 @@ class CategoryRepository extends TianosEntityRepository
 
     public function findAllByParent($parent): array
     {
+    	
+    	$id = isset($parent['id']) ? $parent['id'] : null;
+    	
         $em = $this->getEntityManager();
         $dql = "
-            SELECT child
+            SELECT
+            child.id,
+            child.code,
+            child.name
             FROM CategoryBundle:Category child
             WHERE
             child.isActive = :active AND
@@ -94,7 +106,7 @@ class CategoryRepository extends TianosEntityRepository
 
         $query = $em->createQuery($dql);
         $query->setParameter('active', 1);
-        $query->setParameter('parent', $parent);
+        $query->setParameter('parent', $id);
 
         return $query->getResult();
     }
