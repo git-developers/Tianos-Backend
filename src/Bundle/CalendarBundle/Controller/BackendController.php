@@ -23,26 +23,26 @@ class BackendController extends BaseController
         $template = $options['template'] ?? null;
         Assert::notNull($template, 'Template is not configured.');
 	
-        // SERVICES
-	    $tickets = $this->get('tianos.repository.ticket')->findAll();
-//	    $tickets = $this->getSerialize($tickets, 'crud');
+        
+	    // TICKETS
+	    $events = $this->get('tianos.repository.ticket')->findAll();
 	
 	    $out = [];
-	    foreach ($tickets as $key => $ticket) {
+	    foreach ($events as $key => $event) {
 		
 		    $out[] = [
-		    	'title' => $ticket->getName(),
-		    	'start' => $ticket->getDateTicket(),
-		    	'backgroundColor' => '#449d44',
-		    	'borderColor' => '#398439'
+			    'title' => $event->getName(),
+			    'start' => $event->getDateTicket(),
+			    'backgroundColor' => '#449d44',
+			    'borderColor' => '#398439'
 		    ];
 	    }
-	
-	    $tickets = json_encode($out);
-	
+	    $events = json_encode($out);
+	    // TICKETS
+
 	    return $this->render($template, [
             'form' => null,
-            'tickets' => $tickets
+            'events' => $events
         ]);
     }
 }

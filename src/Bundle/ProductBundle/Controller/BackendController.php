@@ -4,17 +4,16 @@ declare(strict_types=1);
 
 namespace Bundle\ProductBundle\Controller;
 
-use Bundle\GridBundle\Controller\GridController;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
+use JMS\Serializer\SerializationContext;
 use Component\Resource\Metadata\Metadata;
 use Bundle\ResourceBundle\ResourceBundle;
-use JMS\Serializer\SerializationContext;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Bundle\GridBundle\Controller\GridController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class BackendController extends GridController
 {
-
 
     /**
      * @var MetadataInterface
@@ -80,9 +79,13 @@ class BackendController extends GridController
             ->setColumnsTargets()
             ->resetGridVariable()
         ;
+        
+        //USER
+	    $user = $this->getUser();
+	    
 
         //REPOSITORY TREE
-        $objectsTree = $this->get('tianos.repository.category')->findAllParentsByType($varsRepository->entity_type);
+        $objectsTree = $this->get('tianos.repository.category')->findAllParentsByType($user->getPointOfSaleActiveId(), $varsRepository->entity_type);
         $objectsTree = $this->getTreeEntities($objectsTree, $configuration, 'tree');
 
         return $this->render(

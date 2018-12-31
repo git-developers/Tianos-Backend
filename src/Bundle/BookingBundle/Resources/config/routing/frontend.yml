@@ -1,0 +1,19 @@
+frontend_booking_index:
+    path: /
+    methods: [GET]
+    defaults:
+        _controller: tianos.frontend.controller.booking:indexAction
+        _tianos:
+            section: admin
+            permission: true
+            grid: sylius_admin_booking
+            template: BookingBundle:Booking:index.html.twig
+            vars:
+                subheader: sylius.ui.manage_your_booking_catalog
+                icon: cube
+            form:
+                type: Bundle\BookingBundle\Form\Type\BookingType
+            repository:
+                service: tianos.repository.booking
+                method: findAll
+                arguments: [$bookingId]

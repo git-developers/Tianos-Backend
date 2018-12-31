@@ -48,8 +48,11 @@ class BackendController extends GridController
 		$form = $this->createForm($formType, $entity, ['form_data' => []]);
 		$form->handleRequest($request);
 		
+		//USER
+		$user = $this->getUser();
+		
 		//REPOSITORY TREE
-		$objectsTreeParent = $this->get('tianos.repository.category')->findAllParentsByType(Category::TYPE_SERVICE);
+		$objectsTreeParent = $this->get('tianos.repository.category')->findAllParentsByType($user->getPointOfSaleActiveId(), Category::TYPE_SERVICE);
 		$objectsTree = $this->getTreeEntities($objectsTreeParent, $configuration, 'tree');
 		
 		$servicesArray = [];
@@ -219,8 +222,12 @@ class BackendController extends GridController
 		$form = $this->createForm($formType, $entity, ['form_data' => []]);
 		$form->handleRequest($request);
 		
+		//USER
+		$user = $this->getUser();
+		
+		
 		//REPOSITORY TREE
-		$objectsTreeParent = $this->get('tianos.repository.category')->findAllParentsByType(Category::TYPE_SERVICE);
+		$objectsTreeParent = $this->get('tianos.repository.category')->findAllParentsByType($user->getPointOfSaleActiveId(), Category::TYPE_SERVICE);
 		$objectsTree = $this->getTreeEntities($objectsTreeParent, $configuration, 'tree');
 		
 		$servicesArray = [];

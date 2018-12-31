@@ -40,6 +40,9 @@ backend_user:
 backend_report:
     resource: '@ReportBundle/Resources/config/routing/backend.yml'
     prefix: /report
+backend_booking:
+    resource: '@BookingBundle/Resources/config/routing/backend.yml'
+    prefix: /booking
 
 
 

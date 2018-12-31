@@ -1,0 +1,58 @@
+{% extends 'GridBundle::Template/crud_modal_content.html.twig' %}
+
+{% block crud_modal_content %}
+
+    {{ form_start(form) }}
+
+    {% if id is defined %}
+        <input type="hidden" value="{{ id }}" name="id">
+    {% endif %}
+
+    {{ form_widget(form._token) }}
+
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <i class="fa fa-fw fa-calendar"></i>
+                {{ form_label(form.dateBook) }}
+                {{ form_widget(form.dateBook) }}
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <i class="fa fa-fw fa-clock-o"></i>
+                {{ form_label(form.timeInBook) }}
+                {{ form_widget(form.timeInBook) }}
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <i class="fa fa-fw fa-clock-o"></i>
+                {{ form_label(form.timeOutBook) }}
+                {{ form_widget(form.timeOutBook) }}
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <i class="fa fa-fw fa-align-left"></i>
+                {{ form_label(form.name) }}
+                {{ form_widget(form.name) }}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <i class="fa fa-fw fa-user"></i>
+                {{ form_label(form.client) }}
+                {{ form_widget(form.client) }}
+            </div>
+        </div>
+    </div>
+
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+
+{% endblock %}
+

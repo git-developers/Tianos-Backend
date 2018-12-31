@@ -17,6 +17,7 @@ class AppKernel extends Kernel
 	        new \Bundle\ModuleBundle\ModuleBundle(),
 	        new \Bundle\GoogleBundle\GoogleBundle(),
 	        new \Bundle\ReportBundle\ReportBundle(),
+	        new \Bundle\BookingBundle\BookingBundle(),
 	        new \Bundle\ProfileBundle\ProfileBundle(),
 	        new \Bundle\ProductBundle\ProductBundle(),
 	        new \Bundle\SessionBundle\SessionBundle(),

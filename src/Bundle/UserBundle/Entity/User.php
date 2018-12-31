@@ -321,7 +321,11 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
         $this->groupOfUsers = new \Doctrine\Common\Collections\ArrayCollection();
         $this->pointOfSale = new \Doctrine\Common\Collections\ArrayCollection();
     }
-
+	
+	public function __toString() {
+		return sprintf('(%s) %s %s', $this->id, $this->name, $this->lastName);
+	}
+    
     /**
      * Get id
      *

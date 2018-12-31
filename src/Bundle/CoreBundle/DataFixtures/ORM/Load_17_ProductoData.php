@@ -24,6 +24,7 @@ class Load_17_ProductoData extends AbstractFixture implements OrderedFixtureInte
 
         $category_1 = $this->getReference('category-1');
         $category_2 = $this->getReference('category-2');
+        $category_3 = $this->getReference('category-3');
 
 	
 	
@@ -106,6 +107,34 @@ class Load_17_ProductoData extends AbstractFixture implements OrderedFixtureInte
 	    $entity->setCategory($category_2);
         $manager->persist($entity);
         $this->addReference('product-9', $entity);
+	
+	
+	    /**
+	     * CATEGORY 3
+	     */
+        $entity = new Product();
+	    $entity->setStock(78);
+	    $entity->setCode('1010');
+	    $entity->setName('Producto 10');
+	    $entity->setCategory($category_3);
+        $manager->persist($entity);
+        $this->addReference('product-10', $entity);
+        
+        $entity = new Product();
+	    $entity->setStock(34);
+	    $entity->setCode('1111');
+	    $entity->setName('Producto 11');
+	    $entity->setCategory($category_3);
+        $manager->persist($entity);
+        $this->addReference('product-11', $entity);
+        
+        $entity = new Product();
+	    $entity->setStock(22);
+	    $entity->setCode('1212');
+	    $entity->setName('Producto 12');
+	    $entity->setCategory($category_3);
+        $manager->persist($entity);
+        $this->addReference('product-12', $entity);
 
         
         

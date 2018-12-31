@@ -329,8 +329,7 @@ class Ticket
     {
         return $this->isActive;
     }
-	
-	
+    
 	/**
 	 * Set client
 	 *

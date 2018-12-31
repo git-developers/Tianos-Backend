@@ -389,13 +389,59 @@ class Builder implements ContainerAwareInterface
         /**
          * SECURITY
          */
-
-
-
-        
-        
-
-        /**
+	
+	
+	
+	
+	
+	
+	    /**
+	     * BOOKING
+	     */
+	    $isGranted = $this->isGranted([
+		    Role::ROLE_EMPLOYEE,
+		    Role::ROLE_PDV_ADMIN,
+	    ]);
+	
+	    $menu->addChild('Booking', [
+		    'route' => 'backend_booking_index',
+		    'extras' => ['safe_label' => true],
+		    'childrenAttributes' => [
+			    'class' => 'treeview-menu',
+		    ],
+	    ])
+		    ->setAttribute('class', 'treeview')
+		    ->setAttribute('class', $this->activeRoute([
+			    'backend_booking_index',
+			    'backend_booking_calendar',
+		    ]))
+		    ->setAttribute('icon', 'fa-fw fa-calendar')
+		    ->setDisplay($isGranted)
+	    ;
+	
+	    $menu['Booking']->addChild('Gestionar', [
+		    'route' => 'backend_booking_index'
+	    ])
+		    ->setAttribute('icon', self::CIRCLE_1)
+		    ->setAttribute('class', $this->activeRoute('backend_booking_index'))
+		    ->setDisplay($isGranted)
+	    ;
+	
+	    $menu['Booking']->addChild('Calendario', [
+		    'route' => 'backend_booking_calendar'
+	    ])
+		    ->setAttribute('icon', self::CIRCLE_1)
+		    ->setAttribute('class', $this->activeRoute('backend_booking_calendar'))
+		    ->setDisplay($isGranted)
+	    ;
+	    /**
+	     * BOOKING
+	     */
+	
+	
+	
+	
+	    /**
          * TICKET
          */
         $isGranted = $this->isGranted([
@@ -440,10 +486,10 @@ class Builder implements ContainerAwareInterface
             ->setDisplay($isGranted)
         ;
         
-	    $menu['Ticket']->addChild('Agenda', [
+	    $menu['Ticket']->addChild('Calendario', [
 		    'route' => 'backend_calendar_index'
 	    ])
-		    ->setAttribute('icon', 'fa-fw fa-calendar')
+		    ->setAttribute('icon', self::CIRCLE_3)
 		    ->setAttribute('class', $this->activeRoute('backend_calendar_index'))
 		    ->setDisplay($isGranted)
 	    ;
@@ -451,7 +497,7 @@ class Builder implements ContainerAwareInterface
          * TICKET
          */
 	
-        
+
         
 
         /**

@@ -1,0 +1,42 @@
+services:
+
+    tianos.listener.doctrine.booking:
+        class: Bundle\BookingBundle\EventListener\DoctrineListenerService
+        arguments: ["@security.token_storage"]
+        tags:
+          - { name: doctrine.event_listener, event: postUpdate }
+          - { name: doctrine.event_listener, event: preUpdate }
+          - { name: doctrine.event_listener, event: prePersist }
+          - { name: doctrine.event_listener, event: postLoad }
+          - { name: doctrine.event_listener, event: postRemove }
+
+    tianos.api.controller.booking:
+        class: Bundle\BookingBundle\Controller\ApiController
+        arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
+        tags:
+            - { name: tianos.api.controller.booking, alias: tianos.api.controller.booking }
+
+    tianos.backend.controller.booking:
+        class: Bundle\BookingBundle\Controller\BackendController
+        arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
+        tags:
+            - { name: tianos.backend.controller.booking, alias: tianos.backend.controller.booking }
+
+    tianos.frontend.controller.booking:
+        class: Bundle\BookingBundle\Controller\FrontendController
+        arguments: [ Bundle\GridBundle\Factory\RequestConfigurationFactoryInterface ]
+        tags:
+            - { name: tianos.frontend.controller.booking, alias: tianos.frontend.controller.booking }
+
+    tianos.repository.booking:
+        class: Dummy
+        factory: ['@doctrine.orm.entity_manager', getRepository]
+        arguments: [ Bundle\BookingBundle\Entity\Booking ]
+
+
+
+#    tianos.controller.grid:
+#        class: Bundle\GridBundle\Controller\GridController
+#        arguments: [ Bundle\GridBundle\Controller\RequestConfigurationFactoryInterface ]
+#        tags:
+#            - { name: tianos.controller.grid, alias: tianos.controller.grid }

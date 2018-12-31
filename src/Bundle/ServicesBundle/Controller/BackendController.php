@@ -79,9 +79,12 @@ class BackendController extends GridController
             ->setColumnsTargets()
             ->resetGridVariable()
         ;
+        
+        //USER
+	    $user = $this->getUser();
 
         //REPOSITORY TREE
-        $objectsTree = $this->get('tianos.repository.category')->findAllParentsByType($varsRepository->entity_type);
+        $objectsTree = $this->get('tianos.repository.category')->findAllParentsByType($user->getPointOfSaleActiveId(), $varsRepository->entity_type);
         $objectsTree = $this->getTreeEntities($objectsTree, $configuration, 'tree');
 
         return $this->render(

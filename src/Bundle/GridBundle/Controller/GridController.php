@@ -61,7 +61,7 @@ class GridController extends BaseController
 
 
 //        echo "POLLO:: <pre>";
-//        print_r($objects);
+//        print_r($modal);
 //        exit;
         
         

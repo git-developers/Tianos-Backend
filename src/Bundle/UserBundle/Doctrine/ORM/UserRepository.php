@@ -13,7 +13,6 @@ use Bundle\ProfileBundle\Entity\Profile;
 class UserRepository extends EntityRepository implements UserRepositoryInterface
 {
 	
-	
 	/**
 	 * {@inheritdoc}
 	 */
@@ -128,7 +127,32 @@ class UserRepository extends EntityRepository implements UserRepositoryInterface
             ->setParameter('active', true)
             ;
     }
-
+	
+//	/**
+//	 * {@inheritdoc}
+//	 */
+//	public function findAllClient($idPdv) //: array
+//	{
+//		$em = $this->getEntityManager();
+//		$dql = "
+//            SELECT pdv, user_, profile
+//            FROM PointofsaleBundle:Pointofsale pdv
+//            LEFT JOIN pdv.user user_
+//            INNER JOIN user_.profile profile
+//            WHERE
+//            pdv.id = :id AND
+//            profile.slug = :slug AND
+//            pdv.isActive = :active
+//            ";
+//
+//		$query = $em->createQuery($dql);
+//		$query->setParameter('active', 1);
+//		$query->setParameter('id', $idPdv);
+//		$query->setParameter('slug', Profile::CLIENT_SLUG);
+//
+//		return $query->getOneOrNullResult();
+//	}
+    
     /**
      * {@inheritdoc}
      */

@@ -74,8 +74,11 @@ class ServicesRepository extends TianosEntityRepository implements ServicesRepos
     /**
      * {@inheritdoc}
      */
-    public function findAllByCategory($categoryId): array
+    public function findAllByCategory($category): array
     {
+	
+	    $categoryId = isset($category['id']) ? $category['id'] : null;
+    	
         $em = $this->getEntityManager();
         $dql = "
             SELECT services
@@ -88,7 +91,7 @@ class ServicesRepository extends TianosEntityRepository implements ServicesRepos
         $query = $em->createQuery($dql);
         $query->setParameter('active', 1);
         $query->setParameter('categoryId', $categoryId);
-
+        
         return $query->getResult();
     }
 
