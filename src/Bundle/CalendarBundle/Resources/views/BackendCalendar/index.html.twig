@@ -28,52 +28,6 @@
         <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
 
-    {#<span class="context-menu-one btn btn-neutral">right click me</span>#}
-
-    <script type="text/javascript">
-        $(function() {
-            $.contextMenu({
-                selector: '.fc-widget-content',
-                callback: function(key, options) {
-                    var m = "clicked: " + key;
-                    window.console && console.log(m) || alert(m);
-                },
-                items: {
-                    "add": {
-                        name: "Agregar",
-                        icon: "add"
-                    },
-                    // "cut": {
-                    //     name: "Cut",
-                    //     icon: "cut"
-                    // },
-                    // copy: {
-                    //     name: "Copy",
-                    //     icon: "copy"
-                    // },
-                    // "paste": {
-                    //     name: "Paste",
-                    //     icon: "paste"
-                    // },
-                    // "delete": {
-                    //     name: "Delete",
-                    //     icon: "delete"
-                    // },
-                    // "sep1": "---------",
-                    // "quit": {
-                    //     name: "Quit", icon: function(){
-                    //         return 'context-menu-icon context-menu-icon-quit';
-                    //     }
-                    // }
-                }
-            });
-
-            $('.fc-widget-content').on('click', function(e){
-                console.log('clicked', this);
-            })
-        });
-    </script>
-
     <script type="text/javascript">
 
         $(function () {
@@ -204,7 +158,7 @@
 
     <section class="content-header">
         <h1>
-            Calendario de tickets
+            <i class="fa fa-fw fa-ticket"></i> Calendario de tickets
             <small>Control panel</small>
         </h1>
         <ol class="breadcrumb">

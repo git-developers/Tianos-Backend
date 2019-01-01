@@ -63,7 +63,8 @@ backend_super_user_index:
                           options:
                               icon: feed
                         - name: Nombre
-                          obj: " obj.name + ' ' + obj.last_name "
+#                          obj: " obj.name + ' ' + obj.last_name "
+                          obj: obj.name_box
                         - name: Email
                           obj: obj.email
                           options:

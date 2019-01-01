@@ -37,7 +37,8 @@ backend_session_index:
                         - name: '#'
                           obj: " '<span class=\"badge bg-blue\">' + obj.id + '</span>' "
                         - name: Usuario
-                          obj: "obj.user.name +' '+ obj.user.last_name"
+#                          obj: "obj.user.name +' '+ obj.user.last_name"
+                          obj: obj.user.name_box
                           options:
                               icon: user
                         - name: Token

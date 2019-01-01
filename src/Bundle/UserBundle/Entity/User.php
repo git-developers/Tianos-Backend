@@ -301,13 +301,14 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
      *
      * @JMSS\Accessor(getter="getNameBox", setter="setNameBox")
      * @JMSS\Groups({
+     *     "crud",
+     *     "ticket",
+     *     "user-tags",
+     *     "order-report",
+     *     "order-in-center",
      *     "one-to-many-left",
      *     "one-to-many-right",
-     *     "order-in-center",
      *     "order-in-left-select-item",
-     *     "order-report",
-     *     "user-tags",
-     *     "ticket",
      *     "pointofsale-has-user"
      * })
      */

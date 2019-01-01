@@ -10,6 +10,7 @@
     {% stylesheets
         filter='cssrewrite'
         '@ThemesBundle/Resources/public/adminlte/bower_components/fullcalendar/dist/fullcalendar.min.css'
+        '@ThemesBundle/Resources/public/adminlte/thirdparty/select2/css/select2.min.css'
         'bundles/themes/common/contextMenu/css/jquery.contextMenu.css'
     %}
         <link rel='stylesheet' type='text/css' media='all' href="{{ asset_url }}" />
@@ -29,9 +30,13 @@
         '@ThemesBundle/Resources/public/common/contextMenu/js/jquery.contextMenu.js'
         '@ThemesBundle/Resources/public/adminlte/bower_components/fullcalendar/dist/fullcalendar.min.js'
         '@ThemesBundle/Resources/public/adminlte/bower_components/fullcalendar/dist/locale/es.js'
+        '@ThemesBundle/Resources/public/adminlte/thirdparty/select2/js/select2.min.js'
     %}
         <script type="text/javascript" src="{{ asset_url }}"></script>
     {% endjavascripts %}
+
+{#    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>#}
 
     <script type="text/javascript">
 
@@ -208,7 +213,7 @@
 
     <section class="content-header">
         <h1>
-            Booking
+            <i class="fa fa-fw fa-calendar"></i> Booking
             <small>Calendar</small>
         </h1>
         <ol class="breadcrumb">
@@ -218,6 +223,15 @@
     </section>
 
     <section class="content">
+
+        {#<select class="js-example-basic-single" name="state" id="xxxxxxxxxx">#}
+            {#<option value="AL">Alabama</option>#}
+            {#<option value="WY">Wyoming</option>#}
+            {#<option value="AAA">AAAA</option>#}
+            {#<option value="SSS">SSSSSSSS</option>#}
+            {#<option value="DDD">DDDDDDDD</option>#}
+            {#<option value="FFFF">FFFFFFF</option>#}
+        {#</select>#}
 
         <div class="row">
 

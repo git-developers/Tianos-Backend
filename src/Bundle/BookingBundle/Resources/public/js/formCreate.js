@@ -61,7 +61,15 @@
                 },
                 success: function(data, textStatus, jqXHR) {
                     $('button[type="submit"]').prop('disabled', false);
+
                     apiContent.html(data);
+
+                    $('#booking_client').select2({
+                        width: '100%',
+                        placeholder: '[ Seleccione un cliente ]',
+                        dropdownParent: $('div#' + options.modalId)
+                    });
+
                 },
                 error: function(jqXHR, exception) {
                     apiContent.html(msg_error);

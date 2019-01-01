@@ -14,7 +14,7 @@ backend_booking_index:
                 body_css: grid-body-css
                 serialize_group_name: crud
             grid:
-                icon: cube
+                icon: calendar
                 box_class: primary
                 title: Gestionar booking
                 modal:
@@ -51,6 +51,10 @@ backend_booking_index:
                           obj: " '<span class=\"badge bg-blue\">' + obj.id + '</span>' "
                         - name: Nombre
                           obj: obj.name
+                        - name: Cliente
+                          obj: obj.client.name_box
+                          options:
+                              icon: user
                         - name: Fecha book
                           obj: obj.date_book
                           options:

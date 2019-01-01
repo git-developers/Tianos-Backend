@@ -15,7 +15,7 @@
                     </strong>
 
                     <p class="text-muted">
-                        {{ entity.dateBook|date('Y-m-d') }}
+                        {{ entity.dateBook|date('Y-m-d', false) }}
                     </p>
                 </div>
                 <div class="col-md-4">
@@ -24,7 +24,7 @@
                     </strong>
 
                     <p class="text-muted">
-                        {{ entity.timeInBook|date('H:i') }}
+                        {{ entity.timeInBook|date('H:i', false) }}
                     </p>
                 </div>
                 <div class="col-md-4">
@@ -33,7 +33,7 @@
                     </strong>
 
                     <p class="text-muted">
-                        {{ entity.timeOutBook|date('H:i') }}
+                        {{ entity.timeOutBook|date('H:i', false) }}
                     </p>
                 </div>
             </div>
