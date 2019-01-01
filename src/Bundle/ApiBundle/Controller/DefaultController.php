@@ -18,5 +18,4 @@ class DefaultController extends BaseController
             'message' => 'access denied',
         ]);
     }
-    
 }
