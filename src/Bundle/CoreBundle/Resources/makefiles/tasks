@@ -44,11 +44,7 @@ save:
 	git config --global user.email $(AUTHOR_EMAIL)
 	git config --global user.name $(AUTHOR_NAME) --replace-all
 	git commit -m "Tianos said -> modifications made on: $(NOW)"
-ifeq ($(http), 1)
-	git push origin_http master
-else
 	git push github master
-endif
 
 #READ: https://eole-io.github.io/sandstone/install-zmq-php-linux.html
 websocket:
