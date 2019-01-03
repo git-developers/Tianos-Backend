@@ -44,7 +44,7 @@ save:
 	git config --global user.email $(AUTHOR_EMAIL)
 	git config --global user.name $(AUTHOR_NAME) --replace-all
 	git commit -m "Tianos said -> modifications made on: $(NOW)"
-	git push github master
+	git push github banco-examenes-php-7.0
 
 #READ: https://eole-io.github.io/sandstone/install-zmq-php-linux.html
 websocket:
