@@ -32,7 +32,7 @@ backend_super_user_index:
                         edit: backend_super_user_edit
                         create: backend_super_user_create
                         delete: backend_super_user_delete
-                        image_upload: backend_image_create
+                        image_upload: backend_files_create
                         view_profile: backend_super_user_profile
                         change_password: backend_super_user_change_password
                     table_button:

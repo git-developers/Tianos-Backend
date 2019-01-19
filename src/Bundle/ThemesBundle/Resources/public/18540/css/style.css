@@ -4397,7 +4397,8 @@ blockquote .position {
 }
 
 .footer-1 .rights {
-	color: rgba(174, 177, 190, 0.3);
+	color: white;
+	/*color: rgba(174, 177, 190, 0.3);*/
 }
 
 .footer-1 .rights a:hover {

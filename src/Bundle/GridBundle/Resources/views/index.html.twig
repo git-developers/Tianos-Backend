@@ -49,12 +49,12 @@
     {{ parent() }}
 
     {% javascripts
+        '@FilesBundle/Resources/public/js/formImageCreate.js'
         '@GridBundle/Resources/public/common/js/formCog.js'
         '@UserBundle/Resources/public/js/togglePassword.js'
         '@GridBundle/Resources/public/common/js/formEdit.js'
         '@GridBundle/Resources/public/common/js/formView.js'
         '@GridBundle/Resources/public/common/js/formInfo.js'
-        '@ImageBundle/Resources/public/js/formImageCreate.js'
         '@GridBundle/Resources/public/common/js/formWatch.js'
         '@GridBundle/Resources/public/common/js/formCreate.js'
         '@GridBundle/Resources/public/common/js/formDelete.js'
@@ -244,7 +244,7 @@
     {{ include('GridBundle:Modal:info.html.twig') }}
     {{ include('GridBundle:Modal:create.html.twig') }}
     {{ include('GridBundle:Modal:delete.html.twig') }}
-    {{ include('ImageBundle:BackendImage/Modal:image_upload.html.twig') }}
     {{ include('GridBundle:Modal:change_password.html.twig') }}
+    {{ include('FilesBundle:BackendFiles/Modal:image_upload.html.twig') }}
 
 {% endblock %}

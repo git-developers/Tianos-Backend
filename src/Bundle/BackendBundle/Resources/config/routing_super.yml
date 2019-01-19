@@ -31,10 +31,9 @@ backend_super_pointofsale_add_user:
 backend_super_pointofsale_map:
     resource: '@PointofsaleBundle/Resources/config/routing/backend_super_map.yml'
     prefix: /point-of-sale/map
-backend_super_image:
-    resource: '@ImageBundle/Resources/config/routing/backend.yml'
-    prefix: /image
-
+backend_super_files:
+    resource: '@FilesBundle/Resources/config/routing/backend.yml'
+    prefix: /files
 
 #backend_super_report:
 #    resource: '@ReportBundle/Resources/config/routing/backend.yml'

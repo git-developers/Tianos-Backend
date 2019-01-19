@@ -12,7 +12,7 @@ class AppKernel extends Kernel
             //own bundles
 	        new \Bundle\RoleBundle\RoleBundle(),
 	        new \Bundle\VisitBundle\VisitBundle(),
-	        new \Bundle\ImageBundle\ImageBundle(),
+	        new \Bundle\FilesBundle\FilesBundle(),
 	        new \Bundle\TicketBundle\TicketBundle(),
 	        new \Bundle\ModuleBundle\ModuleBundle(),
 	        new \Bundle\GoogleBundle\GoogleBundle(),
