@@ -1,7 +1,7 @@
 NOW := $(shell /bin/date "+%Y-%m-%d . %H:%M:%S")
-AUTHOR_EMAIL := "jafeth.bendezu@avantica.net"
-AUTHOR_NAME := "Jafeth"
-HOST_PROJECT := tianos.com
+AUTHOR_EMAIL := "tianos@pollo.net"
+AUTHOR_NAME := "Tianos"
+HOST_PROJECT := tianos.xyz
 DATABASE_NAME := tianos_beauty
 BRANCH_NAME := tianos-beauty-php-7.0
 
