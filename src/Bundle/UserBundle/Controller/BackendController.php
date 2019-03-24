@@ -46,6 +46,7 @@ class BackendController extends GridController
 		
 		//CONFIGURATION
 		$configuration = $this->get('tianos.resource.configuration.factory')->create($this->metadata, $request);
+		$filesUpload = $configuration->getFilesUploadService();
 		$repository = $configuration->getRepositoryService();
 		$method = $configuration->getRepositoryMethod();
 		$template = $configuration->getTemplate('');
@@ -53,11 +54,16 @@ class BackendController extends GridController
 		$vars = $configuration->getVars();
 		$modal = $configuration->getModal();
 		
-		
 		//REPOSITORY
 		$objects = $this->get($repository)->$method();
 		$varsRepository = $configuration->getRepositoryVars();
 		$objects = $this->getSerialize($objects, $varsRepository->serialize_group_name);
+		
+		
+		echo "POLLO:: <pre>";
+		print_r($objects);
+		exit;
+		
 		
 		//GRID
 		$gridService = $this->get('tianos.grid');
@@ -86,12 +92,9 @@ class BackendController extends GridController
 				'modal' => $modal,
 				'dataTable' => $dataTable,
 				'form_mapper' => $formMapper,
+				'filesUpload' => $filesUpload,
 			]
 		);
-
-//        return new JsonResponse([
-//            'slug' => $this->get('sylius.generator.slug')->generate($name),
-//        ]);
 	}
  
 	/**

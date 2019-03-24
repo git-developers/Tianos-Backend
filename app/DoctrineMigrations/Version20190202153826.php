@@ -8,7 +8,7 @@ use Doctrine\DBAL\Schema\Schema;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-class Version20181230091539 extends AbstractMigration
+class Version20190202153826 extends AbstractMigration
 {
     /**
      * @param Schema $schema
@@ -22,7 +22,7 @@ class Version20181230091539 extends AbstractMigration
         $this->addSql('CREATE TABLE friends (id INT AUTO_INCREMENT NOT NULL, user_id INT DEFAULT NULL, friend_id INT DEFAULT NULL, created_at DATETIME NOT NULL, updated_at DATETIME DEFAULT NULL, is_active TINYINT(1) DEFAULT \'1\', INDEX fk_friends_user1_idx (user_id), INDEX fk_friends_user2_idx (friend_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE role (id INT AUTO_INCREMENT NOT NULL, code VARCHAR(45) DEFAULT NULL, name VARCHAR(100) DEFAULT NULL, slug VARCHAR(100) NOT NULL, group_rol VARCHAR(100) DEFAULT NULL, group_rol_tag VARCHAR(100) DEFAULT NULL, created_at DATETIME NOT NULL, user_create INT DEFAULT NULL, updated_at DATETIME DEFAULT NULL, user_update INT DEFAULT NULL, is_active TINYINT(1) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE visit (id INT AUTO_INCREMENT NOT NULL, point_of_sale_id INT DEFAULT NULL, user_id INT DEFAULT NULL, visit_start DATETIME DEFAULT NULL, visit_end DATETIME DEFAULT NULL, created_at DATETIME NOT NULL, user_create INT DEFAULT NULL, updated_at DATETIME DEFAULT NULL, user_update INT DEFAULT NULL, is_active TINYINT(1) NOT NULL, uuid VARCHAR(50) NOT NULL, INDEX fk_visita_user1_idx (user_id), INDEX fk_visita_point_of_sale1_idx (point_of_sale_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
-        $this->addSql('CREATE TABLE image (id INT AUTO_INCREMENT NOT NULL, code VARCHAR(45) DEFAULT NULL, name VARCHAR(150) NOT NULL, slug VARCHAR(150) DEFAULT NULL, created_at DATETIME NOT NULL, user_create INT DEFAULT NULL, updated_at DATETIME DEFAULT NULL, user_update INT DEFAULT NULL, is_active TINYINT(1) DEFAULT \'1\', PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE files (id INT AUTO_INCREMENT NOT NULL, pk_file_item INT NOT NULL, mime_content_type VARCHAR(45) NOT NULL, file_type VARCHAR(45) NOT NULL, filter VARCHAR(100) NOT NULL, uniqid VARCHAR(45) DEFAULT NULL, name VARCHAR(150) NOT NULL, created_at DATETIME NOT NULL, user_create INT DEFAULT NULL, updated_at DATETIME DEFAULT NULL, user_update INT DEFAULT NULL, is_active TINYINT(1) DEFAULT \'1\', PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE ticket (id INT AUTO_INCREMENT NOT NULL, client_id INT DEFAULT NULL, code VARCHAR(45) DEFAULT NULL, name VARCHAR(150) NOT NULL, date_ticket DATETIME NOT NULL, slug VARCHAR(150) DEFAULT NULL, created_at DATETIME NOT NULL, user_create INT DEFAULT NULL, updated_at DATETIME DEFAULT NULL, user_update INT DEFAULT NULL, is_active TINYINT(1) DEFAULT \'1\', INDEX IDX_97A0ADA319EB6921 (client_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE ticket_has_employee (ticket_id INT NOT NULL, user_id INT NOT NULL, INDEX IDX_8C2F733E700047D2 (ticket_id), INDEX IDX_8C2F733EA76ED395 (user_id), PRIMARY KEY(ticket_id, user_id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE ticket_has_services (id INT AUTO_INCREMENT NOT NULL, service_id INT DEFAULT NULL, ticket_id INT DEFAULT NULL, quantity INT NOT NULL, unit_price DOUBLE PRECISION DEFAULT NULL, sub_total DOUBLE PRECISION DEFAULT NULL, INDEX fk_ticket_has_services_ticket1_idx (ticket_id), INDEX fk_ticket_has_services_services1_idx (service_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB');
@@ -116,7 +116,7 @@ class Version20181230091539 extends AbstractMigration
         $this->addSql('DROP TABLE friends');
         $this->addSql('DROP TABLE role');
         $this->addSql('DROP TABLE visit');
-        $this->addSql('DROP TABLE image');
+        $this->addSql('DROP TABLE files');
         $this->addSql('DROP TABLE ticket');
         $this->addSql('DROP TABLE ticket_has_employee');
         $this->addSql('DROP TABLE ticket_has_services');

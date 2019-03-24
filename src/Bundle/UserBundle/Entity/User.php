@@ -29,7 +29,6 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
 	
 	const USER_BELONGS_TO_PDV = 'USER_BELONGS_TO_PDV';
 	
-	
     /**
      * @var int
      *

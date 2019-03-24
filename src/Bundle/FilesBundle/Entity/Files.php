@@ -7,6 +7,7 @@ namespace Bundle\FilesBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as JMSS;
 use JMS\Serializer\Annotation\Type as TypeJMS;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Files
@@ -14,6 +15,9 @@ use JMS\Serializer\Annotation\Type as TypeJMS;
 class Files
 {
 
+	const IMAGE = 'IMAGE';
+	const FILE = 'FILE';
+	
     /**
      * @var integer
      *
@@ -23,20 +27,44 @@ class Files
 
     /**
      * @var string
-     */
-    private $code;
-
-    /**
-     * @var string
      *
      * @JMSS\Groups({"crud"})
      */
     private $name;
-
-    /**
-     * @var string
-     */
-    private $slug;
+	
+	/**
+	 * @var integer
+	 *
+	 * @JMSS\Groups({"crud"})
+	 */
+	private $pkFileItem;
+	
+	/**
+	 * @var string
+	 *
+	 */
+	private $filter;
+	
+	/**
+	 * @var string
+	 *
+	 * @JMSS\Groups({"crud"})
+	 */
+	private $fileType;
+	
+	/**
+	 * @var string
+	 *
+	 * @JMSS\Groups({"crud"})
+	 */
+	private $mimeContentType;
+	
+	/**
+	 * @var string
+	 *
+	 * @JMSS\Groups({"crud"})
+	 */
+	private $uniqid;
 
     /**
      * @var \DateTime
@@ -65,6 +93,14 @@ class Files
      * @var boolean
      */
     private $isActive = '1';
+	
+	/**
+	 * @var string
+	 *
+	 * @Assert\NotBlank(message="Please, upload the product brochure as a PDF file.")
+	 * @Assert\File(mimeTypes={ "application/pdf" })
+	 */
+    private $fileSelected;
 
 
     /**
@@ -75,30 +111,6 @@ class Files
     public function getId()
     {
         return $this->id;
-    }
-
-    /**
-     * Set code
-     *
-     * @param string $code
-     *
-     * @return Files
-     */
-    public function setCode($code)
-    {
-        $this->code = $code;
-
-        return $this;
-    }
-
-    /**
-     * Get code
-     *
-     * @return string
-     */
-    public function getCode()
-    {
-        return $this->code;
     }
 
     /**
@@ -123,30 +135,6 @@ class Files
     public function getName()
     {
         return $this->name;
-    }
-
-    /**
-     * Set slug
-     *
-     * @param string $slug
-     *
-     * @return Files
-     */
-    public function setSlug($slug)
-    {
-        $this->slug = $slug;
-
-        return $this;
-    }
-
-    /**
-     * Get slug
-     *
-     * @return string
-     */
-    public function getSlug()
-    {
-        return $this->slug;
     }
 
     /**
@@ -268,5 +256,102 @@ class Files
     {
         return $this->isActive;
     }
+	
+	/**
+	 * @return int
+	 */
+	public function getPkFileItem(): int
+	{
+		return $this->pkFileItem;
+	}
+	
+	/**
+	 * @param int $pkFileItem
+	 */
+	public function setPkFileItem(int $pkFileItem)
+	{
+		$this->pkFileItem = $pkFileItem;
+	}
+	
+	/**
+	 * @return string
+	 */
+	public function getFileType(): string
+	{
+		return $this->fileType;
+	}
+	
+	/**
+	 * @param string $fileType
+	 */
+	public function setFileType(string $fileType)
+	{
+		$this->fileType = $fileType;
+	}
+	
+	/**
+	 * @return string
+	 */
+	public function getUniqid(): string
+	{
+		return $this->uniqid;
+	}
+	
+	/**
+	 * @param string $uniqid
+	 */
+	public function setUniqid(string $uniqid)
+	{
+		$this->uniqid = $uniqid;
+	}
+	
+	/**
+	 * @return string
+	 */
+	public function getFileSelected()
+	{
+		return $this->fileSelected;
+	}
+	
+	/**
+	 * @param string $fileSelected
+	 */
+	public function setFileSelected(string $fileSelected)
+	{
+		$this->fileSelected = $fileSelected;
+	}
+	
+	/**
+	 * @return string
+	 */
+	public function getMimeContentType(): string
+	{
+		return $this->mimeContentType;
+	}
+	
+	/**
+	 * @param string $mimeContentType
+	 */
+	public function setMimeContentType(string $mimeContentType)
+	{
+		$this->mimeContentType = $mimeContentType;
+	}
+	
+	/**
+	 * @return string
+	 */
+	public function getFilter(): string
+	{
+		return $this->filter;
+	}
+	
+	/**
+	 * @param string $filter
+	 */
+	public function setFilter(string $filter)
+	{
+		$this->filter = $filter;
+	}
+
 }
 

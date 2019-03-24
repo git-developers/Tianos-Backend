@@ -13,7 +13,7 @@ class GroupofusersRepository extends TianosEntityRepository implements Groupofus
     /**
      * {@inheritdoc}
      */
-    public function find($id)
+    public function find($id, $lockMode = NULL, $lockVersion = NULL)
     {
         $em = $this->getEntityManager();
         $dql = "

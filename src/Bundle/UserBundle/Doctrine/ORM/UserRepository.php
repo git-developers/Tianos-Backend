@@ -160,6 +160,15 @@ class UserRepository extends EntityRepository implements UserRepositoryInterface
     {
         $em = $this->getEntityManager();
         $dql = "
+            SELECT user_, profile, files
+            FROM UserBundle:User user_
+            INNER JOIN user_.profile profile
+            LEFT JOIN FilesBundle:Files files WITH files.pkFileItem = user_.id
+            WHERE
+            user_.enabled = :active
+            ";
+	
+	    $dql = "
             SELECT user_, profile
             FROM UserBundle:User user_
             INNER JOIN user_.profile profile
@@ -169,6 +178,13 @@ class UserRepository extends EntityRepository implements UserRepositoryInterface
 
         $query = $em->createQuery($dql);
         $query->setParameter('active', 1);
+	
+	
+//	    echo "POLLO:: <pre>";
+//	    print_r($query->getSQL());
+//	    exit;
+//
+        
 
         return $query->getResult();
     }

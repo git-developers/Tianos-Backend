@@ -25,6 +25,7 @@ class ModalMapper
     const WATCH_ID = 'watch-button-id';
     const PROFILE_ID = 'profile-button-id';
     const TICKET_EDIT_ID = 'ticket-edit-id';
+    const FILES_UPLOAD = 'files-upload';
     const IMAGE_UPLOAD = 'image-upload';
 
     const POINT_OF_SALE_COG = 'pointofsale-cog';
@@ -59,12 +60,12 @@ class ModalMapper
             'profile_id' => self::PROFILE_ID,
 
             'point_of_sale_cog' => self::POINT_OF_SALE_COG,
-//            'point_of_sale_add_user' => self::POINT_OF_SALE_ADD_USER,
-//            'point_of_sale_add_module' => self::POINT_OF_SALE_ADD_MODULE,
-//            'point_of_sale_add_pdv_child_id' => self::POINT_OF_SALE_ADD_PDV_CHILD_ID,
 
             'change_password_id' => self::CHANGE_PASSWORD_ID,
             'change_password_size' => null,
+	        
+            'files_upload_id' => self::FILES_UPLOAD,
+            'files_upload_size' => null,
 	        
             'image_upload_id' => self::IMAGE_UPLOAD,
             'image_upload_size' => null,

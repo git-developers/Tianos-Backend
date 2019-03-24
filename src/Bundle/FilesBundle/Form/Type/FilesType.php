@@ -5,8 +5,8 @@ namespace Bundle\FilesBundle\Form\Type;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
-use Doctrine\ORM\EntityManager;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Bundle\FilesBundle\Entity\Files;
 
 
 class FilesType extends AbstractType
@@ -19,24 +19,10 @@ class FilesType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('code', TextType::class, [
-                'label' =>' code',
-                'label_attr' => [
-                    'class' => ''
-                ],
+            ->add('fileSelected', FileType::class, [
+                'label' => false,
                 'attr' => [
-                    'class' => 'form-control',
-                    'placeholder' => 'code',
-                ],
-            ])
-            ->add('name', TextType::class, [
-                'label' =>' Nombre',
-                'label_attr' => [
-                    'class' => ''
-                ],
-                'attr' => [
-                    'class' => 'form-control',
-                    'placeholder' => 'nombre',
+                    'class' => '',
                 ],
             ])
         ;
@@ -48,7 +34,7 @@ class FilesType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-//            'data_class' => Files::class,
+            'data_class' => Files::class,
         ]);
 
         $resolver->setRequired(['form_data']);

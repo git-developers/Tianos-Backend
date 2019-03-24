@@ -2,8 +2,6 @@
 
 Bundle\FilesBundle\Entity\Files:
     type: entity
-#    type: mappedSuperclass
-#    mappedSuperclass: Component\CRUDDUMMY\Model\CRUDDUMMY
     table: files
     repositoryClass: Bundle\FilesBundle\Doctrine\ORM\FilesRepository
     id:
@@ -16,7 +14,35 @@ Bundle\FilesBundle\Entity\Files:
             generator:
                 strategy: IDENTITY
     fields:
-        code:
+        pkFileItem:
+            type: integer
+            nullable: false
+            length: 150
+            options:
+                fixed: false
+            column: pk_file_item
+        mimeContentType:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+            column: mime_content_type
+        fileType:
+            type: string
+            nullable: false
+            length: 45
+            options:
+                fixed: false
+            column: file_type
+        filter:
+            type: string
+            nullable: false
+            length: 100
+            options:
+                fixed: false
+            column: filter
+        uniqid:
             type: string
             nullable: true
             length: 45
@@ -28,18 +54,6 @@ Bundle\FilesBundle\Entity\Files:
             length: 150
             options:
                 fixed: false
-        slug:
-            type: string
-            nullable: true
-            length: 150
-            options:
-                fixed: false
-#        image:
-#            type: string
-#            nullable: true
-#            length: 45
-#            options:
-#                fixed: false
         createdAt:
             type: datetime
             nullable: false

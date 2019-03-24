@@ -2,8 +2,8 @@
 #    resource: '@AppBundle/Controller/'
 #    type: annotation
 
-#_liip_imagine:
-#    resource: "@LiipImagineBundle/Resources/config/routing.xml"
+_liip_imagine:
+    resource: "@LiipImagineBundle/Resources/config/routing.xml"
 
 frontend:
     resource: "@FrontendBundle/Resources/config/routing.yml"

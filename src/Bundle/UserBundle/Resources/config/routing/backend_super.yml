@@ -12,6 +12,12 @@ backend_super_user_index:
                 subheader: sylius.ui.manage_your_user_catalog
                 icon: cube
                 body_css: grid-body-css
+                files_upload:
+                    file_type: images
+                    filter: file_thumb_500_417
+                    route:
+                        create: backend_files_create
+                        open_modal: backend_files_open_modal
             grid:
                 icon: user
                 box_class: primary
@@ -25,6 +31,9 @@ backend_super_user_index:
                         title: Cambiar password
                     change_password:
                         title: Cambiar password
+                    files_upload:
+                        icon: image
+                        title: Imagen de usuario
                 data_table:
                     route:
                         info: backend_super_user_info
@@ -32,7 +41,6 @@ backend_super_user_index:
                         edit: backend_super_user_edit
                         create: backend_super_user_create
                         delete: backend_super_user_delete
-                        image_upload: backend_files_create
                         view_profile: backend_super_user_profile
                         change_password: backend_super_user_change_password
                     table_button:
@@ -137,7 +145,7 @@ backend_super_user_change_password:
     defaults:
         _controller: tianos.backend.controller.user:changePasswordAction
         _tianos:
-            action: edit
+            action: change_password
             template: UserBundle:BackendUser/Form:change_password.html.twig
             entity: Bundle\UserBundle\Entity\ChangePassword2
             form:

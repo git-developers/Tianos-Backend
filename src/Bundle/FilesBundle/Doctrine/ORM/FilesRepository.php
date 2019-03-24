@@ -34,6 +34,31 @@ class FilesRepository extends TianosEntityRepository implements FilesRepositoryI
     /**
      * {@inheritdoc}
      */
+    public function findByPk($pkFileItem, $fileType)
+    {
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT files
+            FROM FilesBundle:Files files
+            WHERE
+            files.isActive = :active AND
+            files.fileType = :fileType AND
+            files.pkFileItem = :pkFileItem
+            ORDER BY files.id DESC
+            ";
+
+        $query = $em->createQuery($dql);
+        $query->setMaxResults(1);
+        $query->setParameter('active', 1);
+        $query->setParameter('fileType', $fileType);
+        $query->setParameter('pkFileItem', $pkFileItem);
+
+        return $query->getOneOrNullResult();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function findAll(): array
     {
         $em = $this->getEntityManager();
@@ -48,14 +73,6 @@ class FilesRepository extends TianosEntityRepository implements FilesRepositoryI
         $query->setParameter('active', 1);
 
         return $query->getResult();
-
-//        return $this->createQueryBuilder('o')
-//            ->select('o.id, o.code, o.name, o.createdAt')
-//            ->andWhere('o.isActive = :active')
-//            ->setParameter('active', 1)
-//            ->getQuery()
-//            ->getResult()
-//            ;
     }
 
     /**

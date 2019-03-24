@@ -15,8 +15,8 @@ class Action
     const VIEW = 'view';
     const DELETE = 'delete';
     const INFO = 'info';
-
-    const CHANGE_PASSWORD = 'changepassword';
+    const UPLOAD_FILE = 'upload_info';
+    const CHANGE_PASSWORD = 'change_password';
 //
 //    const ASSIGN = 'assign';
 //    const UNASSIGN = 'unassign';

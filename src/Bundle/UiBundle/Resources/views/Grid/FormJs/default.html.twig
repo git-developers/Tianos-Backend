@@ -68,37 +68,6 @@
     });
 {% endif %}
 
-{#
-{% if dataTable.route.add_user is defined %}
-    $('body.{{ vars.body_css }}').formAddUser({
-        buttonId: '{{ modal.point_of_sale_add_user }}',
-        route: '{{ path(dataTable.route.add_user, {id:"-1"}) }}'
-    });
-{% endif %}
-
-{% if dataTable.route.module is defined %}
-    $('body.{{ vars.body_css }}').formModule({
-        buttonId: '{{ modal.point_of_sale_add_module }}',
-        route: '{{ path(dataTable.route.module, {id:"-1"}) }}'
-    });
-{% endif %}
-
-{% if dataTable.route.pdv_child is defined %}
-    $('body.{{ vars.body_css }}').formAddPdvChild({
-        buttonId: '{{ modal.point_of_sale_add_pdv_child_id }}',
-        route: '{{ path(dataTable.route.pdv_child, {id:"-1"}) }}'
-    });
-{% endif %}
-#}
-
-{% if dataTable.route.image_upload is defined %}
-    $('body.{{ vars.body_css }}').formImageCreate({
-        modalId: '{{ modal.image_upload_id }}',
-        route: '{{ path(dataTable.route.image_upload) }}',
-        formName: '{{ form_mapper.image_upload_name }}'
-    });
-{% endif %}
-
 {% if dataTable.route.create_pdv_child is defined %}
     $('body.{{ vars.body_css }}').formCreatePdvChild({
         modalId: '{{ modal.create_id }}',
@@ -126,5 +95,16 @@
     $(document).on('click', '.copy-to-clipboard', function() {
         $('.copy-to-clipboard-text').select();
         document.execCommand("copy");
+    });
+{% endif %}
+
+{% if vars.files_upload.route.open_modal is defined and vars.files_upload.route.create is defined %}
+    $('body.{{ vars.body_css }}').formUploadFile({
+        modalId: '{{ modal.image_upload_id }}',
+        filter: '{{ vars.files_upload.filter }}',
+        fileType: '{{ vars.files_upload.file_type }}',
+        formName: '{{ form_mapper.image_upload_name }}',
+        routeModal: '{{ path(vars.files_upload.route.open_modal) }}',
+        routeCreate: '{{ path(vars.files_upload.route.create) }}'
     });
 {% endif %}

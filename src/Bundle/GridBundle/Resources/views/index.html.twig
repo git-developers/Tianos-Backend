@@ -49,7 +49,7 @@
     {{ parent() }}
 
     {% javascripts
-        '@FilesBundle/Resources/public/js/formImageCreate.js'
+        '@FilesBundle/Resources/public/js/formUploadFile.js'
         '@GridBundle/Resources/public/common/js/formCog.js'
         '@UserBundle/Resources/public/js/togglePassword.js'
         '@GridBundle/Resources/public/common/js/formEdit.js'
@@ -154,6 +154,10 @@
 
     {% if vars.google_maps|default() %}
         <script src="https://maps.googleapis.com/maps/api/js?key={{ application_google_api_key }}"></script>
+    {% endif %}
+
+    {% if vars.files_upload.route.open_modal is defined and vars.files_upload.route.create is defined %}
+        <script src='{{ asset('bundles/files/js/jqueryFormSubmit.js') }}'></script>
     {% endif %}
 
 {% endblock %}

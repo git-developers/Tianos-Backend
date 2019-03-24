@@ -451,39 +451,6 @@ class RequestConfiguration
         return is_array($repository) ? $repository['box_four']['method'] : $repository;
     }
 
-//    public function getAddEntityLeft()
-//    {
-//        if (!$this->parameters->has('repository')) {
-//            return null;
-//        }
-//
-//        $repository = $this->parameters->get('repository');
-//
-//        return is_array($repository) ? $repository['box_left']['add_entity'] : $repository;
-//    }
-//
-//    public function getRemoveEntityLeft()
-//    {
-//        if (!$this->parameters->has('repository')) {
-//            return null;
-//        }
-//
-//        $repository = $this->parameters->get('repository');
-//
-//        return is_array($repository) ? $repository['box_left']['remove_entity'] : $repository;
-//    }
-
-//    public function getRepositoryMethodDeleteAssociativeLeft()
-//    {
-//        if (!$this->parameters->has('repository')) {
-//            return null;
-//        }
-//
-//        $repository = $this->parameters->get('repository');
-//
-//        return is_array($repository) ? $repository['box_left']['method_delete_associative'] : $repository;
-//    }
-
     public function getRepositoryService()
     {
         if (!$this->parameters->has('repository')) {
@@ -975,4 +942,14 @@ class RequestConfiguration
     {
         return isset($redirect['parameters']) && is_array($redirect['parameters']) && empty($redirect['parameters']);
     }
+	
+	public function getFilesUploadService()
+	{
+		if (!$this->parameters->has('files_upload')) {
+			return null;
+		}
+		
+		$filesUpload = $this->parameters->get('files_upload');
+		return json_decode(json_encode($filesUpload));
+	}
 }

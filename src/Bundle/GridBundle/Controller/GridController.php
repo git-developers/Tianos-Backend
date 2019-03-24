@@ -198,23 +198,13 @@ class GridController extends BaseController
         $action = $configuration->getAction();
         $formType = $configuration->getFormType();
         $vars = $configuration->getVars();
-	
-
-//	    return $this->render(
-//		    $template,
-//		    [
-//			    'action' => $action,
-//		    ]
-//	    );
-        
-        
 
         //REPOSITORY
         $id = $request->get('id');
         $entity = $this->get($repository)->$method($id);
 
         if (!$entity) {
-            throw $this->createNotFoundException('CRUD: Unable to find  entity.');
+            throw $this->createNotFoundException('CRUD: Unable to find entity.');
         }
 
         $form = $this->createForm($formType, $entity, ['form_data' => []]);

@@ -74,23 +74,21 @@ final class TwigGridRenderer implements GridRendererInterface
             case Action::CREATE:
             case Action::CREATE_CHILD:
                 $template = '@Ui/Grid/Button/Footer/_modal_button_1.html.twig';
-//                return self::CLOSED_LEFT . self::SAVE;
                 break;
             case Action::CHANGE_PASSWORD:
                 $template = '@Ui/Grid/Button/Footer/_modal_button_2.html.twig';
-//                return self::CLOSED_LEFT . self::CHANGE_PASSWORD;
                 break;
             case Action::DELETE:
                 $template = '@Ui/Grid/Button/Footer/_modal_button_3.html.twig';
-//                return self::CLOSED_LEFT . self::DELETE;
                 break;
             case Action::VIEW:
                 $template = '@Ui/Grid/Button/Footer/_modal_button_4.html.twig';
-//                return self::CLOSED_RIGHT_DEFAULT;
                 break;
             case Action::INFO:
                 $template = '@Ui/Grid/Button/Footer/_modal_button_5.html.twig';
-//                return self::CLOSED_RIGHT_OUTLINE;
+                break;
+            case Action::UPLOAD_FILE:
+                $template = '@Ui/Grid/Button/Footer/_modal_button_6.html.twig';
                 break;
             default:
                 $template = '@Ui/Grid/Button/Footer/_modal_button_0.html.twig';

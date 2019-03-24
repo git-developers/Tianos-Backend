@@ -61,7 +61,7 @@ class ProfileRepository extends TianosEntityRepository implements ProfileReposit
     /**
      * {@inheritdoc}
      */
-    public function find($id)
+    public function find($id, $lockMode = NULL, $lockVersion = NULL)
     {
         $em = $this->getEntityManager();
         $dql = "

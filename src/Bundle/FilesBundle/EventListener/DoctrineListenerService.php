@@ -54,8 +54,7 @@ class DoctrineListenerService extends BaseDoctrineListenerService implements Eve
 //        $className = $entityManager->getClassMetadata(get_class($entity))->getName();
 
         if ($entity instanceof Files){
-            $name = $entity->getName();
-            $entity->setSlug($this->slugify($name));
+            $entity->setName(uniqid());
             $entity->setCreatedAt($this->setupCreatedAt($entity));
 
             return;

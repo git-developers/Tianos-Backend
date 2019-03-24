@@ -167,6 +167,18 @@ class ButtonMapper
 			'class' => 'btn-xs bg-purple ' . ModalMapper::IMAGE_UPLOAD,
 		]);
 	}
+	
+	private function files_upload()
+	{
+		return new Button([
+			'alt' => 'Subir archivo',
+			'title' => 'Subir archivo',
+			'icon' => '<i class="fa fa-fw fa-image"></i>',
+			'data-toggle' => 'modal',
+			'data-target' => ModalMapper::FILES_UPLOAD,
+			'class' => 'btn-xs bg-purple ' . ModalMapper::FILES_UPLOAD,
+		]);
+	}
 
     private function change_password()
     {

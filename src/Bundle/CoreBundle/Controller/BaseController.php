@@ -38,7 +38,10 @@ abstract class BaseController extends Controller
     const ACCESS_DENIED_MSG = 'Tianos: Access Denied';
 //    const ACCESS_DENIED_ROLE_MSG = 'Tianos: no tiene permisos, contacte a su administrador.';
 //    const NOT_FOUND_MSG = 'Tianos Base controller: no se encontro el entity';
-
+	
+	const GET = 'GET';
+	const POST = 'POST';
+    
     const STATUS_SUCCESS = true;
     const STATUS_ERROR = false;
 
@@ -164,6 +167,14 @@ abstract class BaseController extends Controller
         }
 
         return $randomString;
+    }
+
+    protected function isGet() {
+        return $_SERVER['REQUEST_METHOD'] === self::GET;
+    }
+
+    protected function isPost() {
+        return $_SERVER['REQUEST_METHOD'] === self::POST;
     }
 
 //    protected function getBundleName()

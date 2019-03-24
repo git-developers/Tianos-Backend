@@ -13,7 +13,7 @@ class SessionRepository extends TianosEntityRepository implements SessionReposit
     /**
      * {@inheritdoc}
      */
-    public function find($id)
+    public function find($id, $lockMode = NULL, $lockVersion = NULL)
     {
         $em = $this->getEntityManager();
         $dql = "
