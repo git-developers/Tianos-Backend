@@ -307,11 +307,20 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
      *     "order-in-center",
      *     "one-to-many-left",
      *     "one-to-many-right",
-     *     "order-in-left-select-item",
-     *     "pointofsale-has-user"
+     *     "pointofsale-has-user",
+     *     "order-in-left-select-item"
      * })
      */
     private $nameBox;
+	
+	/**
+	 * @var array
+	 *
+	 * @JMSS\Groups({
+	 *     "crud"
+	 * })
+	 */
+	private $files;
 
     /**
      * Constructor
@@ -952,6 +961,24 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
 	{
 		$this->pointOfSaleActive = $pointOfSaleActive;
 	}
+	
+	/**
+	 * @return array
+	 */
+	public function getFiles(): array
+	{
+		return $this->files;
+	}
+	
+	/**
+	 * @param array $files
+	 */
+	public function setFiles(array $files) //: void
+	{
+		$this->files = $files;
+	}
+	
+
 
     
 

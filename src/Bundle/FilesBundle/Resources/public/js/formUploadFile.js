@@ -151,6 +151,22 @@
                          * end
                          */
 
+
+                        /**
+                         * @table tr
+                         */
+                        $("tr#" + id + " td:nth-child(2)").empty();
+                        var img2 = new Image();
+                        $(img2).one('load', function() {
+                            //console.log(this.width + 'x' + this.height);
+                        });
+                        img2.src = response.imagePath;
+                        $(img2).addClass("img-thumbnail img-responsive");
+                        $(img2).appendTo("tr#" + id + " td:nth-child(2)");
+                        /**
+                         * end
+                         */
+
                         buttonSubmit.prop('disabled', true);
 
                     } else {

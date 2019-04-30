@@ -177,33 +177,31 @@ abstract class BaseController extends Controller
         return $_SERVER['REQUEST_METHOD'] === self::POST;
     }
 
-//    protected function getBundleName()
-//    {
-//        $request = $this->container->get('request_stack')->getCurrentRequest();
-//        $controller = $request->attributes->get('_controller');
-//        list($bundle) = explode('\\', $controller);
-//
-//        return $bundle;
-//    }
-//
-//    public function getControllerName()
-//    {
-//        $request = $this->container->get('request_stack')->getCurrentRequest();
-//        $controller = $request->attributes->get('_controller');
-//
-//        $pattern = "/Controller\\\\([a-zA-Z]*)Controller/";
-//        $matches = [];
-//        preg_match($pattern, $controller, $matches);
-//        return end($matches);
-//    }
-
-//    protected function templateExists($name)
-//    {
-//        if($this->get('templating')->exists($name)){
-//            return $name;
-//        }
-//
-////        return self::TEMPLATE_ERROR;
-//    }
-
+    protected function rowImages($objects): array
+    {
+    	
+	    $imagineCacheManager = $this->get('liip_imagine.cache.manager');
+	
+	    $out = [];
+	    foreach ($objects as $i => $object) {
+		
+		    $files = $this->get("tianos.repository.files")->findAllFilesByPk($object->getId());
+		
+		    $imagePath = [];
+		    foreach ($files as $j => $file) {
+			    $imagePath[] = $imagineCacheManager->getBrowserPath(
+			    	'/upload/' . $file->getFileType() . '/' . $file->getUniqid() . '.jpg',
+				    $file->getFilter()
+			    );
+		    }
+		    
+		    $object->setFiles($imagePath);
+		    
+		    $out[] = $object;
+	    }
+	
+	    return $out;
+	    
+    }
+    
 }

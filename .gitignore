@@ -19,3 +19,5 @@
 /web/js/
 /web/google-drive-images/
 /web/google-drive-files/
+/web/media/*
+/web/upload/*

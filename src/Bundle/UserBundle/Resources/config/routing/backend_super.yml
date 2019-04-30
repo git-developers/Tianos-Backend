@@ -66,6 +66,11 @@ backend_super_user_index:
                     columns:
                         - name: '#'
                           obj: " '<span class=\"badge bg-blue\">' + obj.id + '</span>' "
+                        - name: Imagen
+                          obj: obj.files
+                          options:
+                              icon: imagen
+                              property: " return (obj.files[0] == null) ? '<i class=\"fa fa-fw fa-2x fa-image\"></i>' : '<img class=\" img-thumbnail img-responsive \" src=\" ' + obj.files[0] + ' \" >' "
                         - name: Username
                           obj: " '<span class=\"badge bg-green\">' + obj.username + '</span>' "
                           options:

@@ -9,11 +9,32 @@ use Component\Files\Repository\FilesRepositoryInterface;
 
 class FilesRepository extends TianosEntityRepository implements FilesRepositoryInterface
 {
+	
+	/**
+	 * {@inheritdoc}
+	 */
+	public function findAllFilesByPk(int $pkFileItem)
+	{
+		$em = $this->getEntityManager();
+		$dql = "
+            SELECT files
+            FROM FilesBundle:Files files
+            WHERE
+            files.isActive = :active AND
+            files.pkFileItem = :pkFileItem
+            ";
+		
+		$query = $em->createQuery($dql);
+		$query->setParameter('active', 1);
+		$query->setParameter('pkFileItem', $pkFileItem);
+		
+		return $query->getResult();
+	}
 
     /**
      * {@inheritdoc}
      */
-    public function find($id)
+    public function find($id, $lockMode = NULL, $lockVersion = NULL)
     {
         $em = $this->getEntityManager();
         $dql = "

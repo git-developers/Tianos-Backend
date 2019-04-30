@@ -56,13 +56,15 @@ class BackendController extends GridController
 		
 		//REPOSITORY
 		$objects = $this->get($repository)->$method();
+		$objects = $this->rowImages($objects);
+		
 		$varsRepository = $configuration->getRepositoryVars();
 		$objects = $this->getSerialize($objects, $varsRepository->serialize_group_name);
 		
 		
-		echo "POLLO:: <pre>";
-		print_r($objects);
-		exit;
+//		echo "POLLO WWW:: <pre>";
+//		print_r($objects);
+//		exit;
 		
 		
 		//GRID
