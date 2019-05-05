@@ -1,2 +1,9 @@
+#RewriteEngine on
+#RewriteRule ^(.*)$ /web/$1 [L,QSA]
+
+
 RewriteEngine on
 RewriteRule ^(.*)$ /web/$1 [L,QSA]
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]]
