@@ -74,7 +74,7 @@ lift_up2:
 	sudo service httpd restart;
 	sudo setenforce 0
 
-lift_up:
+run:
 	@echo Domain: $(HOST_PROJECT)
 	make ssh
 	make nginx

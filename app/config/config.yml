@@ -62,6 +62,7 @@ twig:
         application_facebook: '%application_facebook%'
         application_twitter: '%application_twitter%'
         application_skin: '%application_skin%'
+        google_site_verification: '%google_site_verification%'
 #        app_id: '%app_id%'
 
 #        websocket_port: '8080'
