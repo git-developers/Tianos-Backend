@@ -126,7 +126,7 @@ class GoogleDriveFileRepository extends TianosEntityRepository implements Google
     /**
      * {@inheritdoc}
      */
-    public function findAll($maxResults = 30): array
+    public function findAll($maxResults = 30, $firstResult = 0): array
     {
         $em = $this->getEntityManager();
         $dql = "
@@ -139,6 +139,7 @@ class GoogleDriveFileRepository extends TianosEntityRepository implements Google
         $query = $em->createQuery($dql);
         $query->setParameter('active', 1);
         $query->setMaxResults($maxResults);
+        $query->setFirstResult($firstResult);
 
         return $query->getResult();
     }
@@ -155,16 +156,20 @@ class GoogleDriveFileRepository extends TianosEntityRepository implements Google
             WHERE
             google.isActive = :active AND
             google.hasThumbnail = :hasThumbnail AND
-            ( SUBSTRING(google.updatedAt, 1, 10) = :yesterday OR google.updatedAt IS NULL )
+            ( SUBSTRING(google.updatedAt, 1, 10) <> :now OR google.updatedAt IS NULL )
             ";
-
-        $date = new \DateTime('yesterday');
-        $yesterday = $date->format('Y-m-d');
+        
+	    $yesterday = new \DateTime('yesterday');
+        $yesterday = $yesterday->format('Y-m-d');
+	
+	    $now = new \DateTime();
+	    $now = $now->format('Y-m-d');
 
         $query = $em->createQuery($dql);
         $query->setParameter('active', 1);
         $query->setParameter('hasThumbnail', 0);
-        $query->setParameter('yesterday', $yesterday);
+        //$query->setParameter('yesterday', $yesterday);
+        $query->setParameter('now', $now);
         $query->setMaxResults($maxResults);
 
         return $query->getResult();

@@ -19,34 +19,44 @@ class GenerateThumbnailController extends BaseController
      */
     public function indexAction(Request $request): Response
     {
-        $googleDriveFiles = $this->get('tianos.repository.google.drive')->findAllNotHasThumbnail(5);
+        $objects = $this->get('tianos.repository.google.drive')->findAllNotHasThumbnail(5);
 
-        foreach ($googleDriveFiles as $key => $gdFile) {
-
+        //echo "COUNT :: " . count($objects) . "<br><br>";
+        
+        
+        foreach ($objects as $key => $object) {
+	
+	        echo "ID:: " . $object->getId() . " - SLUG:: " . $object->getSlug() . "<br>";
+        	
+	        
             try {
 
-                $url = 'https://drive.google.com/thumbnail?authuser=0&sz=w400&id=' . $gdFile->getFileId();
+                $url = 'https://drive.google.com/thumbnail?authuser=0&sz=w400&id=' . $object->getFileId();
 
                 $content = file_get_contents($url);
-                $savePath = getcwd() . '/google-drive-images/' . $gdFile->getFileId() . '-w400.jpg';
+                $savePath = getcwd() . '/google-drive-images/' . $object->getFileId() . '-w400.jpg';
                 $isSaved = file_put_contents($savePath, $content);
 
                 if ($isSaved) {
-                    $gdFile->setHasThumbnail(true);
+	                $object->setHasThumbnail(true);
 
-                    echo 'Se guardo: ' . $gdFile->getFileId() . '<br>';
+                    echo 'Se guardo: ' . $object->getFileId() . '<br>';
                 } else {
-                    echo 'NO se guardo:: file_put_contents:: ' . $gdFile->getFileId() . '<br>';
+                    echo 'NO se guardo:: file_put_contents:: ' . $object->getFileId() . '<br>';
                 }
 
             } catch (\Exception $e) {
 
-                echo 'NO se guardo: ' . $gdFile->getFileId() . '<br>';
+                echo 'NO se guardo: ' . $object->getFileId() . '<br>';
 
             }
-
-            $gdFile->setUpdatedAt(new \Datetime());
-            $this->persist($gdFile);
+	
+	        $object->setUpdatedAt(new \Datetime());
+            
+            $this->persist($object);
+            
+            sleep(1);
+        	
         }
 
         return new Response('1');

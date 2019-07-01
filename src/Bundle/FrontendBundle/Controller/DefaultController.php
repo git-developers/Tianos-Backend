@@ -9,6 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Webmozart\Assert\Assert;
+use Cocur\Slugify\Slugify;
 
 class DefaultController extends Controller
 {
@@ -19,6 +20,49 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request): Response
     {
+	
+	
+    	/*
+    	 *
+	protected function slugify($string, $separator = '-')
+	{
+		$slugify = new Slugify(['lowercase' => true, 'separator' => $separator, 'ruleset' => 'default']);
+		return $slugify->slugify($string);
+	}
+    	 *
+    	 *
+    	 *
+    	 *
+	    $em = $this->getDoctrine()->getManager();
+	    $objects = $this->get("tianos.repository.google.drive")->findAll(1000, 16000);
+	    
+	    echo "COUNT ::: " . count($objects) . "<br><br><br>";
+	    //exit;
+    	
+	    $i = 0;
+    	foreach ($objects as $key => $object) {
+		
+    		$name = $object->getFileName();
+    		$name = $this->slugify($name);
+    		$slug = $object->getUniqueId() .'-'. $name;
+    		
+		
+		    echo "ID:: " . $object->getId() . " - SLUG:: " . $slug . "<br>";
+		    
+		    $object->setSlug($slug);
+
+		    $em->persist($object);
+		    $em->flush();
+		
+		    //sleep(1);
+		    
+	    }
+    	
+    	exit;
+    	*/
+    	
+    	
+    	
         $options = $request->attributes->get('_tianos');
 
         $template = $options['template'] ?? null;

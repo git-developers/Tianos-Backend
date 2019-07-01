@@ -48,7 +48,7 @@ class GoogleService extends BaseGoogle
             'status' => self::STATUS_SUCCESS,
         ];
     }
-
+	
     public function createAuthUrl()
     {
 
@@ -72,10 +72,9 @@ class GoogleService extends BaseGoogle
     public function getClient()
     {
         $scopes = implode(' ', [
-                \Google_Service_Drive::DRIVE,
-                \Google_Service_Drive::DRIVE_FILE,
                 \Google_Service_Drive::DRIVE_PHOTOS_READONLY,
-            ]
+		        \Google_Service_Drive::DRIVE_READONLY
+	        ]
         );
 
         if ($this->env == self::DEV) {
