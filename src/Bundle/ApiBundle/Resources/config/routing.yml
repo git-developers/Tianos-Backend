@@ -17,3 +17,11 @@ api_product:
 api_user:
     resource: '@UserBundle/Resources/config/routing/api.yml'
     prefix: /user
+
+api_visit:
+    resource: '@VisitBundle/Resources/config/routing/api.yml'
+    prefix: /visit
+
+api_pdvhasproduct:
+    resource: '@PdvhasproductBundle/Resources/config/routing/api.yml'
+    prefix: /pdv-has-product

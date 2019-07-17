@@ -12,12 +12,12 @@ backend_category_index:
                 subheader: sylius.ui.manage_your_category_catalog
                 icon: cube
                 body_css: grid-body-css
-                serialize_group_name: crud
-#            grid: sylius_admin_product
             grid:
                 icon: sitemap
                 box_class: primary
-                title: Gestionar category
+                title: Gestionar categoría
+                modal:
+                    title: Crear categoría
                 data_table:
                     route:
                         info: backend_category_info
@@ -41,16 +41,14 @@ backend_category_index:
                     columns:
                         - name: '#'
                           obj: " '<span class=\"badge bg-blue\">' + obj.id + '</span>' "
-#                        - name: code
-#                          obj: obj.code
-#                          options:
-#                              icon: map-marker
+                        - name: code
+                          obj: obj.code
+                          options:
+                              icon: qrcode
                         - name: Name
                           obj: obj.name
-#                        - name: slug
-#                          obj: obj.slug
                         - name: Creado
-                          obj: obj.createdAt
+                          obj: obj.created_at
                           options:
                               icon: calendar
             form:
@@ -59,6 +57,8 @@ backend_category_index:
                 service: tianos.repository.category
                 method: findAll
                 arguments: [$categoryId]
+                vars:
+                    serialize_group_name: crud
 
 backend_category_create:
     path: /create
@@ -71,8 +71,9 @@ backend_category_create:
             entity: Bundle\CategoryBundle\Entity\Category
             form:
                 type: Bundle\CategoryBundle\Form\Type\CategoryType
-            vars:
-                serialize_group_name: crud
+            repository:
+                vars:
+                    serialize_group_name: crud
 
 backend_category_edit:
     path: /edit
@@ -82,14 +83,14 @@ backend_category_edit:
         _tianos:
             action: edit
             template: CategoryBundle:CategoryBackend/Form:form.html.twig
+            form:
+                type: Bundle\CategoryBundle\Form\Type\CategoryType
             repository:
                 service: tianos.repository.category
                 method: find
                 arguments: [$categoryId]
-            form:
-                type: Bundle\CategoryBundle\Form\Type\CategoryType
-            vars:
-                serialize_group_name: crud
+                vars:
+                    serialize_group_name: crud
 
 backend_category_delete:
     path: /delete
@@ -118,6 +119,8 @@ backend_category_view:
                 service: tianos.repository.category
                 method: find
                 arguments: [$categoryId]
+                vars:
+                    serialize_group_name: crud
 
 backend_category_info:
     path: /info
@@ -127,56 +130,3 @@ backend_category_info:
         _tianos:
             action: info
             template: CategoryBundle:CategoryBackend/Informative:info.html.twig
-
-
-
-
-
-#/var/www/html/Sylius/sylius/vendor/sylius/sylius/docs/customization/factory.rst
-#
-#    sylius_admin_product_create_simple:
-#        path: /products/new/simple
-#        methods: [GET, POST]
-#        defaults:
-#            _controller: sylius.controller.product:createAction
-#            _sylius:
-#                section: admin
-#                factory:
-#                    method: createDisabled # like here for example
-#                template: SyliusAdminBundle:Crud:create.html.twig
-#                redirect: sylius_admin_product_update
-#                vars:
-#                    subheader: sylius.ui.manage_your_product_catalog
-#                    templates:
-#                        form: SyliusAdminBundle:CRUDDUMMY:_form.html.twig
-#                    route:
-#                        name: sylius_admin_product_create_simple
-
-
-
-#            template: "@SyliusAdmin/ProductVariant/generate.html.twig"
-#            section: admin
-#            permission: true
-#            redirect:
-#                route: sylius_admin_product_variant_index
-#                parameters: { productId: $productId }
-#            form:
-#                type: Sylius\Bundle\ProductBundle\Form\Type\ProductGenerateVariantsType
-#            repository:
-#                method: find
-#                arguments: [$productId]
-#            flash: sylius.product_variant.generate
-
-#sylius_admin_product_index:
-#    path: /products/
-#    methods: [GET]
-#    defaults:
-#        _controller: sylius.controller.product:indexAction
-#        _sylius:
-#            section: admin
-#            permission: true
-#            grid: sylius_admin_product
-#            template: SyliusAdminBundle:CRUDDUMMY:index.html.twig
-#            vars:
-#                subheader: sylius.ui.manage_your_product_catalog
-#                icon: cube

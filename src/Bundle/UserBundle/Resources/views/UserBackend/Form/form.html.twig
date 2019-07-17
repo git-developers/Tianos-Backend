@@ -2,7 +2,7 @@
 
 {% block crud_modal_content %}
 
-    {{ form_start(form) }}
+    {#{{ form_start(form) }}#}
 
     {% if id is defined %}
         <input type="hidden" value="{{ id }}" name="id">
@@ -10,19 +10,89 @@
 
     {{ form_widget(form._token) }}
 
-    {#<div class="form-group">#}
-        {#<i class="fa fa-fw fa-industry"></i>#}
-        {#{{ form_label(form.code) }}#}
-        {#{{ form_widget(form.code) }}#}
-    {#</div>#}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <i class="fa fa-fw fa-odnoklassniki"></i>
+                {{ form_label(form.client) }}
+                {{ form_widget(form.client) }}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <i class="fa fa-fw fa-user-secret"></i>
+                {{ form_label(form.profile) }}
+                {{ form_widget(form.profile) }}
+            </div>
+        </div>
+    </div>
 
-    {#<div class="form-group">#}
-        {#<i class="fa fa-fw fa-industry"></i>#}
-        {#{{ form_label(form.name) }}#}
-        {#{{ form_widget(form.name) }}#}
-    {#</div>#}
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <i class="fa fa-fw fa-phone"></i>
+                {{ form_label(form.phone) }}
+                {{ form_widget(form.phone) }}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <i class="fa fa-fw fa-calendar"></i>
+                {{ form_label(form.dob) }}
+                {{ form_widget(form.dob) }}
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <i class="fa fa-fw fa-align-left"></i>
+                {{ form_label(form.name) }}
+                {{ form_widget(form.name) }}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <i class="fa fa-fw fa-align-left"></i>
+                {{ form_label(form.lastName) }}
+                {{ form_widget(form.lastName) }}
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="form-group">
+                <i class="fa fa-fw fa-envelope-o"></i>
+                {{ form_label(form.email) }}
+                {{ form_widget(form.email) }}
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+
+                <i class="fa fa-fw fa-check-square-o"></i>
+                {{ form_label(form.isActive) }}
+                {{ form_widget(form.isActive) }}
+
+                {#
+                <i class="fa fa-fw fa-check-square-o"></i>
+                {{ form_label(form.isActive) }}
+
+                <div class="clearfix"></div>
+
+                <label class="switch">
+                    {{ form_widget(form.isActive) }}
+                    <span class="slider round {{ sliderBgColor() }}"></span>
+                </label>
+                #}
+
+            </div>
+        </div>
+    </div>
 
     {{ form_widget(form) }}
-    {{ form_end(form) }}
+    {#{{ form_end(form) }}#}
 
 {% endblock %}

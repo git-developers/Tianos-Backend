@@ -14,6 +14,16 @@ use Component\Resource\Repository\RepositoryInterface;
 
 class EntityRepository extends BaseEntityRepository implements RepositoryInterface
 {
+
+    public function uuid(): string
+    {
+        $sql = "SELECT UUID() AS UUID;";
+        $stmt = $this->_em->getConnection()->prepare($sql);
+        $stmt->execute();
+
+        return $stmt->fetchColumn();
+    }
+
     /**
      * {@inheritdoc}
      */
@@ -125,4 +135,5 @@ class EntityRepository extends BaseEntityRepository implements RepositoryInterfa
 
         return $name;
     }
+
 }

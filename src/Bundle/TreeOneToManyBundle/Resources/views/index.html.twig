@@ -154,7 +154,7 @@
 
     <section class="content-header">
         <h1>
-            <i class="fa fa-fw fa-{{ box.icon }}"></i> Asociación: {{ box.title }}
+            <i class="fa fa-fw fa-{{ box.icon }}"></i> Asociación: {{ box.title|raw }}
             <small>lista</small>
         </h1>
         <ol class="breadcrumb">
@@ -267,7 +267,7 @@
                         </div>
                         <div class="box-body">
                             <ul class="todo-list ui-sortable">
-                                {{ include('TreeOneToManyBundle:Li:box_right.html.twig', { isAssigned:false, }) }}
+                                {{ include('TreeOneToManyBundle:Li:box_right.html.twig') }}
                                 {#{{ include('CoreBundle:BoxOneToMany:Li/boxRight.html.twig', {isAssigned:false,}) }}#}
                             </ul>
                         </div>

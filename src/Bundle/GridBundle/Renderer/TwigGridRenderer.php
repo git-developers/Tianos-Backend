@@ -16,6 +16,7 @@ use Component\Registry\ServiceRegistryInterface;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Bundle\GridBundle\Services\Grid\Builder\DataTableMapper;
 
 final class TwigGridRenderer implements GridRendererInterface
 {
@@ -81,9 +82,21 @@ final class TwigGridRenderer implements GridRendererInterface
         $this->filterTemplates = $filterTemplates;
     }
 
+    //        JAFETH
+    public function renderFormJs($vars, $modal, $formMapper, DataTableMapper $dataTable, ?string $template = null)
+    {
+        return $this->twig->render($template ?: $this->defaultTemplate, [
+            'vars' => $vars,
+            'modal' => $modal,
+            'form_mapper' => $formMapper,
+            'dataTable' => $dataTable,
+        ]);
+    }
+
+    //        JAFETH
     public function renderModalFooter(?string $template = null) // Button $button,
     {
-//        JAFETH
+
         return $this->twig->render($template ?: $this->defaultTemplate, ['template' => $template]);
     }
 

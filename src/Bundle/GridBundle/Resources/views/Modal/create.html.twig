@@ -9,13 +9,13 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                     <h4 class="modal-title">
-                        <i class="fa fa-fw fa-plus"></i> Crear item
+                        <i class="fa fa-fw fa-plus"></i> {{ modal.title }}
                         <i class="fa fa-refresh fa-spin" style="color: white; margin-left: 10px; display:none"></i>
                     </h4>
                 </div>
 
                 <form name="{{ form_mapper.create_name }}" method="post">
-                    <div class="crud-modal-content"></div>
+                    <div class="crud-modal-content" style="background-color: red"></div>
                 </form>
 
             </div>

@@ -47,7 +47,7 @@ save:
 ifeq ($(http), 1)
 	git push origin_http master
 else
-	git push origin master
+	git push github master
 endif
 
 #READ: https://eole-io.github.io/sandstone/install-zmq-php-linux.html
@@ -197,7 +197,6 @@ onetomany:
 	@echo =========== make onetomany bundle_left=profile bundle_right=role ===========;
 	php bin/console tianos:create:one-to-many $(bundle_left) $(bundle_right)
 	make perm
-	make perm
 
 tree_onetomany:
 	@echo =========== Tree OneToMany: replace dummy ===========;
@@ -209,4 +208,10 @@ migrate_delete:
 	@echo =========== Migrations: delete all ===========;
 	rm -rf $$PWD/app/DoctrineMigrations
 
+pointofsale-and-product:
+	@echo ======================;
+	php bin/console tianos:pointofsale:and:product $(date-start) $(date-end) $(delete)
 
+order-and-return:
+	@echo ======================;
+	php bin/console tianos:order-and-return $(date-start) $(date-end) $(delete)

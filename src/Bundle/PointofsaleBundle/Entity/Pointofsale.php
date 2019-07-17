@@ -17,21 +17,31 @@ class Pointofsale
     /**
      * @var integer
      *
-     * @JMSS\Groups({"api"})
+     * @JMSS\Groups({
+     *     "api",
+     *     "crud",
+     *     "one-to-many-left",
+     *     "one-to-many-right",
+     *     "one-to-many-search",
+     *     "order-in-left",
+     *     "one-to-many-search-userhaspointofsale",
+     *     "one-to-many-left-userhaspointofsale",
+     *     "order-report"
+     * })
      */
     private $id;
 
     /**
      * @var string
      *
-     * @JMSS\Groups({"api"})
+     * @JMSS\Groups({"api", "crud", "one-to-many-right"})
      */
     private $code;
 
     /**
      * @var string
      *
-     * @JMSS\Groups({"api"})
+     * @JMSS\Groups({"api", "crud"})
      */
     private $name;
 
@@ -44,14 +54,14 @@ class Pointofsale
     /**
      * @var string
      *
-     * @JMSS\Groups({"api"})
+     * @JMSS\Groups({"api", "crud"})
      */
     private $latitude;
 
     /**
      * @var string
      *
-     * @JMSS\Groups({"api"})
+     * @JMSS\Groups({"api", "crud"})
      */
     private $longitude;
 
@@ -62,8 +72,23 @@ class Pointofsale
     private $description;
 
     /**
+     * @var string
+     *
+     * @JMSS\Groups({"crud"})
+     */
+    private $address;
+
+    /**
+     * @var string
+     *
+     */
+    private $phone;
+
+    /**
      * @var \DateTime
      *
+     * @JMSS\Groups({"crud"})
+     * @JMSS\Type("DateTime<'Y-m-d H:i'>")
      */
     private $createdAt;
 
@@ -105,8 +130,53 @@ class Pointofsale
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="Bundle\UserBundle\Entity\User", mappedBy="pointOfSale")
+     *
      */
     private $user;
+
+    /**
+     * Punto de venta tiene canillita
+     *
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Bundle\UserBundle\Entity\User", inversedBy="pointOfSale2")
+     * @ORM\JoinTable(name="point_of_sale_has_user",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="point_of_sale_id", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     *   }
+     * )
+     *
+     * @JMSS\Groups({
+     *     "one-to-many-left",
+     *     "one-to-many-search-pointofsalehasuser",
+     *     "order-in-left-select-item"
+     * })
+     */
+    private $user2;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Bundle\RouteBundle\Entity\Route", mappedBy="pointOfSale")
+     */
+    private $route;
+
+    /**
+     * @var string
+     *
+     * @JMSS\Accessor(getter="getNameBox", setter="setNameBox")
+     * @JMSS\Groups({
+     *     "one-to-many-left",
+     *     "one-to-many-right",
+     *     "order-in-left",
+     *     "one-to-many-left-userhaspointofsale",
+     *     "order-report"
+     * })
+     */
+    private $nameBox;
 
     /**
      * Constructor
@@ -114,6 +184,8 @@ class Pointofsale
     public function __construct()
     {
         $this->user = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->user2 = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->route = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     public function __toString() {
@@ -135,7 +207,7 @@ class Pointofsale
      *
      * @param string $code
      *
-     * @return PointOfSale
+     * @return Pointofsale
      */
     public function setCode($code)
     {
@@ -272,6 +344,38 @@ class Pointofsale
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAddress()
+    {
+        return $this->address;
+    }
+
+    /**
+     * @param string $address
+     */
+    public function setAddress(string $address): void
+    {
+        $this->address = $address;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhone()
+    {
+        return $this->phone;
+    }
+
+    /**
+     * @param string $phone
+     */
+    public function setPhone(string $phone): void
+    {
+        $this->phone = $phone;
     }
 
     /**
@@ -418,6 +522,11 @@ class Pointofsale
         return $this->pointOfSale;
     }
 
+
+
+
+
+
     /**
      * Add user
      *
@@ -450,6 +559,102 @@ class Pointofsale
     public function getUser()
     {
         return $this->user;
+    }
+
+
+
+
+
+
+    /**
+     * Punto de venta tiene canillita
+     *
+     * Add user
+     *
+     * @param \Bundle\UserBundle\Entity\User $user
+     *
+     * @return PointOfSale
+     */
+    public function addUser2(\Bundle\UserBundle\Entity\User $user)
+    {
+        $this->user2[] = $user;
+
+        return $this;
+    }
+
+    /**
+     * Punto de venta tiene canillita
+     *
+     * Remove user
+     *
+     * @param \Bundle\UserBundle\Entity\User $user
+     */
+    public function removeUser2(\Bundle\UserBundle\Entity\User $user)
+    {
+        $this->user2->removeElement($user);
+    }
+
+    /**
+     * Punto de venta tiene canillita
+     *
+     * Get user
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUser2()
+    {
+        return $this->user2;
+    }
+
+    /**
+     * Add route
+     *
+     * @param \Bundle\RouteBundle\Entity\Route $route
+     *
+     * @return PointOfSale
+     */
+    public function addRoute(\Bundle\RouteBundle\Entity\Route $route)
+    {
+        $this->route[] = $route;
+
+        return $this;
+    }
+
+    /**
+     * Remove route
+     *
+     * @param \Bundle\RouteBundle\Entity\Route $route
+     */
+    public function removeRoute(\Bundle\RouteBundle\Entity\Route $route)
+    {
+        $this->route->removeElement($route);
+    }
+
+    /**
+     * Get route
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRoute()
+    {
+        return $this->route;
+    }
+
+    /**
+     *
+     * @return string
+     */
+    public function getNameBox()
+    {
+        return sprintf('%s', $this->name);
+    }
+
+    /**
+     * @param string $nameBox
+     */
+    public function setNameBox($nameBox)
+    {
+        $this->nameBox = $nameBox;
     }
 }
 

@@ -1,0 +1,97 @@
+{% spaceless %}
+
+    <div class="row">
+        <div class="col-md-3">
+            <div id="info-box" class="info-box">
+                <span class="info-box-icon bg-aqua">
+                    <i id="box-icon-default" class="fa fa-bolt"></i>
+                    <i id="box-icon-refresh" class="fa fa-refresh fa-spin" style="display: none"></i>
+                    <i id="box-icon-thumbs-up" class="fa fa-thumbs-o-up" style="display: none"></i>
+                </span>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="form-group">
+                <i class="fa fa-fw fa-calendar"></i>
+                <label class="required" for="orderin_quantity">Fecha</label>
+                <input
+                    type="date"
+                    name="order_date"
+                    required="required"
+                    class="form-control"
+                    placeholder="#"
+                    value="{{ "now"|date("Y-m-d") }}"
+                >
+            </div>
+        </div>
+        <div class="col-md-4">
+            <br>
+            <button type="submit" class="btn btn-block btn-success">
+                Guardar
+            </button>
+        </div>
+    </div>
+
+    <div class="row">
+
+    {% for key, entity in objectsRight %}
+
+        {% set id = entity.id|default('< missing ID >') %}
+        {% set quantity = tianos_order_quantity(orders|default([]), id) %}
+
+        <div class="col-md-8">
+            <div class="info-box bg-yellow" style="min-height: 50px;">
+                <span class="info-box-icon" style="height: 65px; line-height: unset">
+                    <img
+                        class="img-thumbnail"
+                        style="max-height: 55px"
+                        src="http://www.free-icons-download.net/images/product-icon-27962.png"
+                    >
+                </span>
+
+                <div class="info-box-content">
+                    <span class="info-box-text">
+                        {{ entity.name_box|default('< missing name_box >') }}
+                    </span>
+                    <span class="info-box-number">
+                        {{ id }}
+                    </span>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 70%"></div>
+                    </div>
+                    <span class="progress-description"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                <i class="fa fa-fw fa-history"></i>
+                <label class="required" for="orderin_quantity">Cantidad</label>
+                <input type="hidden" name="order[product][]" value="{{ id }}">
+                <input
+                    type="number"
+                    id="orderin_quantity"
+                    name="order[quantity][]"
+                    class="form-control"
+                    placeholder="#"
+                    value="{{ quantity }}"
+                >
+            </div>
+        </div>
+
+    {% else %}
+
+        <ul class="todo-list ui-sortable">
+            <li>
+                <span class="text">
+                    Seleccione un usuario.
+                </span>
+            </li>
+        </ul>
+
+    {% endfor %}
+
+    </div>
+
+{% endspaceless %}

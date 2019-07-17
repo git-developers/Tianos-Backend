@@ -12,12 +12,12 @@ backend_role_index:
                 subheader: sylius.ui.manage_your_role_catalog
                 icon: cube
                 body_css: grid-body-css
-                serialize_group_name: crud
-#            grid: sylius_admin_product
             grid:
                 icon: expeditedssl
                 box_class: primary
-                title: Gestionar role
+                title: Gestionar roles
+                modal:
+                    title: Crear rol
                 data_table:
                     route:
                         info: backend_role_info
@@ -41,16 +41,10 @@ backend_role_index:
                     columns:
                         - name: '#'
                           obj: " '<span class=\"badge bg-blue\">' + obj.id + '</span>' "
-#                        - name: code
-#                          obj: obj.code
-#                          options:
-#                              icon: map-marker
                         - name: Name
                           obj: obj.name
-#                        - name: slug
-#                          obj: obj.slug
                         - name: Creado
-                          obj: obj.createdAt
+                          obj: obj.created_at
                           options:
                               icon: calendar
             form:
@@ -59,6 +53,8 @@ backend_role_index:
                 service: tianos.repository.role
                 method: findAll
                 arguments: [$roleId]
+                vars:
+                    serialize_group_name: crud
 
 backend_role_create:
     path: /create
@@ -71,8 +67,9 @@ backend_role_create:
             entity: Bundle\RoleBundle\Entity\Role
             form:
                 type: Bundle\RoleBundle\Form\Type\RoleType
-            vars:
-                serialize_group_name: crud
+            repository:
+                vars:
+                    serialize_group_name: crud
 
 backend_role_edit:
     path: /edit
@@ -82,14 +79,14 @@ backend_role_edit:
         _tianos:
             action: edit
             template: RoleBundle:RoleBackend/Form:form.html.twig
+            form:
+                type: Bundle\RoleBundle\Form\Type\RoleType
             repository:
                 service: tianos.repository.role
                 method: find
                 arguments: [$roleId]
-            form:
-                type: Bundle\RoleBundle\Form\Type\RoleType
-            vars:
-                serialize_group_name: crud
+                vars:
+                    serialize_group_name: crud
 
 backend_role_delete:
     path: /delete
@@ -118,6 +115,8 @@ backend_role_view:
                 service: tianos.repository.role
                 method: find
                 arguments: [$roleId]
+                vars:
+                    serialize_group_name: crud
 
 backend_role_info:
     path: /info
@@ -127,56 +126,3 @@ backend_role_info:
         _tianos:
             action: info
             template: RoleBundle:RoleBackend/Informative:info.html.twig
-
-
-
-
-
-#/var/www/html/Sylius/sylius/vendor/sylius/sylius/docs/customization/factory.rst
-#
-#    sylius_admin_product_create_simple:
-#        path: /products/new/simple
-#        methods: [GET, POST]
-#        defaults:
-#            _controller: sylius.controller.product:createAction
-#            _sylius:
-#                section: admin
-#                factory:
-#                    method: createDisabled # like here for example
-#                template: SyliusAdminBundle:Crud:create.html.twig
-#                redirect: sylius_admin_product_update
-#                vars:
-#                    subheader: sylius.ui.manage_your_product_catalog
-#                    templates:
-#                        form: SyliusAdminBundle:CRUDDUMMY:_form.html.twig
-#                    route:
-#                        name: sylius_admin_product_create_simple
-
-
-
-#            template: "@SyliusAdmin/ProductVariant/generate.html.twig"
-#            section: admin
-#            permission: true
-#            redirect:
-#                route: sylius_admin_product_variant_index
-#                parameters: { productId: $productId }
-#            form:
-#                type: Sylius\Bundle\ProductBundle\Form\Type\ProductGenerateVariantsType
-#            repository:
-#                method: find
-#                arguments: [$productId]
-#            flash: sylius.product_variant.generate
-
-#sylius_admin_product_index:
-#    path: /products/
-#    methods: [GET]
-#    defaults:
-#        _controller: sylius.controller.product:indexAction
-#        _sylius:
-#            section: admin
-#            permission: true
-#            grid: sylius_admin_product
-#            template: SyliusAdminBundle:CRUDDUMMY:index.html.twig
-#            vars:
-#                subheader: sylius.ui.manage_your_product_catalog
-#                icon: cube

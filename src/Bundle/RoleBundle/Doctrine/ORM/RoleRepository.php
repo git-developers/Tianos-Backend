@@ -17,19 +17,22 @@ class RoleRepository extends TianosEntityRepository
      */
     public function searchBoxRight($q, $offset = 0, $limit = 50): array
     {
-        $qb = $this->createQueryBuilder('o')
-            ->select('o.id, o.code, o.name, o.createdAt')
-            ->andWhere('o.isActive = :active')
-            ->andWhere('o.name LIKE :q')
-            ->setParameter('active', 1)
-            ->setParameter('q', '%' . $q . '%')
-            ->getQuery()
-        ;
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT role
+            FROM RoleBundle:Role role
+            WHERE
+            role.name LIKE :q AND
+            role.isActive = :active
+            ";
 
-        $qb->setFirstResult($offset);
-        $qb->setMaxResults($limit);
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+        $query->setParameter('q', '%' . $q . '%');
+        $query->setFirstResult($offset);
+        $query->setMaxResults($limit);
 
-        return $qb->getResult();
+        return $query->getResult();
     }
 
     /**
@@ -93,17 +96,20 @@ class RoleRepository extends TianosEntityRepository
      */
     public function findAllOffsetLimit($offset = 0, $limit = 50): array
     {
-        $qb = $this->createQueryBuilder('o')
-            ->select('o.id, o.code, o.name, o.createdAt')
-            ->andWhere('o.isActive = :active')
-            ->setParameter('active', 1)
-            ->getQuery()
-        ;
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT role
+            FROM RoleBundle:Role role
+            WHERE
+            role.isActive = :active
+            ";
 
-        $qb->setFirstResult($offset);
-        $qb->setMaxResults($limit);
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+        $query->setFirstResult($offset);
+        $query->setMaxResults($limit);
 
-        return $qb->getResult();
+        return $query->getResult();
     }
 
     /**

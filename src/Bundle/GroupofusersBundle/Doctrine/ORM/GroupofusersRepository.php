@@ -20,8 +20,8 @@ class GroupofusersRepository extends TianosEntityRepository implements Groupofus
             SELECT groupofusers
             FROM GroupofusersBundle:Groupofusers groupofusers
             WHERE
-            product.id = :id AND
-            product.isActive = :active
+            groupofusers.id = :id AND
+            groupofusers.isActive = :active
             ";
 
         $query = $em->createQuery($dql);
@@ -52,13 +52,26 @@ class GroupofusersRepository extends TianosEntityRepository implements Groupofus
      */
     public function findAll(): array
     {
-        return $this->createQueryBuilder('o')
-            ->select('o.id, o.code, o.name, o.createdAt')
-            ->andWhere('o.isActive = :active')
-            ->setParameter('active', 1)
-            ->getQuery()
-            ->getResult()
-            ;
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT groupofusers
+            FROM GroupofusersBundle:Groupofusers groupofusers
+            WHERE
+            groupofusers.isActive = :active
+            ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+
+        return $query->getResult();
+
+//        return $this->createQueryBuilder('o')
+//            ->select('o.id, o.code, o.name, o.createdAt')
+//            ->andWhere('o.isActive = :active')
+//            ->setParameter('active', 1)
+//            ->getQuery()
+//            ->getResult()
+//            ;
     }
 
     /**

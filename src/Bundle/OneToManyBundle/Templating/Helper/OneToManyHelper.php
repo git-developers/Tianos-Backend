@@ -28,18 +28,22 @@ class OneToManyHelper extends Helper
     }
 
     //    JAFETH
-    public function boxRightIsAssigned(array $oneToManyLeft = [], $id)
+    public function boxRightIsAssigned(array $oneToManyLeftIds = [], $id)
     {
-        if(empty($oneToManyLeft)){
+
+//        echo "POLLO:: <pre>";
+//        print_r($oneToManyLeftIds);
+//        exit;
+
+
+
+
+        if(empty($oneToManyLeftIds)){
             return false;
         }
 
-//        echo "POLLO:: <pre>";
-//        print_r($oneToManyLeft);
-//        exit;
-
-        foreach (array_shift($oneToManyLeft) as $key => $value){
-            if(reset($value) === $id){
+        foreach (array_shift($oneToManyLeftIds) as $key => $value){
+            if(array_shift($value) === $id){
                 return true;
             }
         }

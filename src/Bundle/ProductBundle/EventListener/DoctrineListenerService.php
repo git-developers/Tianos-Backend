@@ -11,23 +11,15 @@ use Symfony\Component\DependencyInjection\ContainerInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Bundle\ProductBundle\Entity\Product;
 use Cocur\Slugify\Slugify;
-
+use Bundle\CoreBundle\EventListener\BaseDoctrineListenerService;
 // https://coderwall.com/p/es3zkw/symfony2-listen-doctrine-events
 
-class DoctrineListenerService implements EventSubscriber
+class DoctrineListenerService extends BaseDoctrineListenerService implements EventSubscriber
 {
-    protected $dateTime;
-    protected $tokenStorage;
 
     public function __construct(TokenStorage $tokenStorage)
     {
-        $this->dateTime = new \DateTime();
-        $this->tokenStorage = $tokenStorage;
-    }
-
-    public function getUser()
-    {
-        return $this->tokenStorage->getToken()->getUser();
+        parent::__construct($tokenStorage);
     }
 
     /**
@@ -63,7 +55,7 @@ class DoctrineListenerService implements EventSubscriber
         if ($entity instanceof Product){
             $name = $entity->getName();
             $entity->setSlug($this->slugify($name));
-            $entity->setCreatedAt($this->dateTime);
+            $entity->setCreatedAt($this->setupCreatedAt($entity));
 
             return;
         }

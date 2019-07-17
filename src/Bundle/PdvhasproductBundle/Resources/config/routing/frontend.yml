@@ -1,0 +1,19 @@
+frontend_pdvhasproduct_index:
+    path: /
+    methods: [GET]
+    defaults:
+        _controller: tianos.frontend.controller.pdvhasproduct:indexAction
+        _tianos:
+            section: admin
+            permission: true
+            grid: sylius_admin_pdvhasproduct
+            template: PdvhasproductBundle:Pdvhasproduct:index.html.twig
+            vars:
+                subheader: sylius.ui.manage_your_pdvhasproduct_catalog
+                icon: cube
+            form:
+                type: Bundle\PdvhasproductBundle\Form\Type\PdvhasproductType
+            repository:
+                service: tianos.repository.pdvhasproduct
+                method: findAll
+                arguments: [$pdvhasproductId]

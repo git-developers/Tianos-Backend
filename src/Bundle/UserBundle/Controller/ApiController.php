@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Component\Resource\Metadata\Metadata;
 use Bundle\ResourceBundle\ResourceBundle;
 use Bundle\CoreBundle\Controller\BaseController;
+use Bundle\SessionBundle\Entity\Session;
 
 class ApiController extends BaseController
 {
@@ -59,12 +60,23 @@ class ApiController extends BaseController
             ]);
         }
 
-        $object = $this->getSerializeDecode($object, $vars['serialize_group_name']);
+
+        /**
+         * SAVE SESSION - LOGIN END-USER
+         */
+//        $uuid = $this->get($repository)->uuid();
+        $session = new Session();
+        $session->setToken(uniqid("token-", true));
+        $session->setUser($object);
+        $this->persist($session);
+
+
+
 
         return $this->json([
             'status' => self::STATUS_SUCCESS_API,
             'message' => 'mensaje',
-            'user' => $object,
+            'user' => $this->getSerializeDecode($object, $vars->serialize_group_name),
         ]);
     }
 

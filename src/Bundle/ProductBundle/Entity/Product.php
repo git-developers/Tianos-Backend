@@ -15,7 +15,14 @@ class Product
     /**
      * @var integer
      *
-     * @JMSS\Groups({"crud", "tree-one-to-many"})
+     * @JMSS\Groups({
+     *     "api",
+     *     "crud",
+     *     "tree-one-to-many-right",
+     *     "tree-one-to-many-search-categoryhasproduct",
+     *     "order-in-right",
+     *     "order-report"
+     * })
      */
     private $id;
 
@@ -27,7 +34,7 @@ class Product
     /**
      * @var string
      *
-     * @JMSS\Groups({"crud", "tree-one-to-many"})
+     * @JMSS\Groups({"api", "crud"})
      */
     private $name;
 
@@ -37,9 +44,17 @@ class Product
     private $slug;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="image", type="text", length=65535, nullable=true)
+     * @JMSS\Groups({"crud"})
+     */
+    private $image;
+
+    /**
      * @var \DateTime
      *
-     * @JMSS\Groups({"crud", "tree-one-to-many"})
+     * @JMSS\Groups({"api", "crud"})
      * @JMSS\Type("DateTime<'Y-m-d H:i'>")
      */
     private $createdAt;
@@ -64,6 +79,17 @@ class Product
      */
     private $isActive = '1';
 
+    /**
+     * @var string
+     *
+     * @JMSS\Accessor(getter="getNameBox", setter="setNameBox")
+     * @JMSS\Groups({
+     *     "tree-one-to-many-right",
+     *     "order-in-right",
+     *     "order-report"
+     * })
+     */
+    private $nameBox;
 
     /**
      * Get id
@@ -145,6 +171,30 @@ class Product
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * Set image
+     *
+     * @param string $image
+     *
+     * @return Product
+     */
+    public function setImage($image)
+    {
+        $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * Get image
+     *
+     * @return string
+     */
+    public function getImage()
+    {
+        return $this->image;
     }
 
     /**
@@ -265,5 +315,22 @@ class Product
     public function getIsActive()
     {
         return $this->isActive;
+    }
+
+    /**
+     *
+     * @return string
+     */
+    public function getNameBox()
+    {
+        return sprintf('%s', $this->name);
+    }
+
+    /**
+     * @param string $nameBox
+     */
+    public function setNameBox($nameBox)
+    {
+        $this->nameBox = $nameBox;
     }
 }

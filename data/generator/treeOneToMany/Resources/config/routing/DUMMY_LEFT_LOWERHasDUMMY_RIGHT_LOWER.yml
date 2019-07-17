@@ -12,7 +12,6 @@ backend_associative_DUMMY_LEFT_LOWER_has_DUMMY_RIGHT_LOWER_index:
                 subheader: sylius.ui.manage_your_DUMMY_LEFT_LOWER_catalog
                 icon: cube
                 body_css: one-to-many-body-css
-                serialize_group_name: tree-one-to-many
             one_to_many:
                 box:
                     icon: exchange
@@ -57,11 +56,15 @@ backend_associative_DUMMY_LEFT_LOWER_has_DUMMY_RIGHT_LOWER_index:
                     method: findAllParents
                     arguments:
                         limit: 20
+                    vars:
+                        serialize_group_name: tree-one-to-many-left
                 box_right:
                     service: tianos.repository.DUMMY_RIGHT_LOWER
                     method: findAllOffsetLimit
                     arguments:
                         limit: 20
+                    vars:
+                        serialize_group_name: tree-one-to-many-right
 
 backend_associative_DUMMY_LEFT_LOWER_has_DUMMY_RIGHT_LOWER_boxleft_search:
     path: /boxleft-search
@@ -71,28 +74,20 @@ backend_associative_DUMMY_LEFT_LOWER_has_DUMMY_RIGHT_LOWER_boxleft_search:
         _tianos:
             action: left_search
             template: OneToManyBundle:Li:box_left.html.twig
-            vars:
-                serialize_group_name: one-to-many
             one_to_many:
                 box_left:
-#                    icon: user-secret
-#                    class: primary
-#                    id: box-left-id
-#                    title: DUMMY_LEFT_LOWER
                     li_class: box-left-li
                     li_badge_class: bg-blue
                     li_input_name: box-lefts-selected-value
                     search_input_name: search-input-name-left
-#                    route_search: backend_associative_DUMMY_LEFT_LOWER_has_role_boxleft_search
             repository:
                 box_left:
                     service: tianos.repository.DUMMY_LEFT_LOWER
                     method: searchBoxLeft
                     arguments:
                         limit: 20
-#            entity: Bundle\ProfileBundle\Entity\Profile
-#            form:
-#                type: Bundle\ProfileBundle\Form\Type\ProfileType
+                    vars:
+                        serialize_group_name: tree-one-to-many-left
 
 backend_associative_DUMMY_LEFT_LOWER_has_DUMMY_RIGHT_LOWER_boxright_search:
     path: /boxright-search
@@ -101,29 +96,28 @@ backend_associative_DUMMY_LEFT_LOWER_has_DUMMY_RIGHT_LOWER_boxright_search:
         _controller: tianos.DUMMY_LEFT_LOWERhasDUMMY_RIGHT_LOWER.controller.associative:boxRightSearchAction
         _tianos:
             action: right_search
-            template: OneToManyBundle:Li:box_right.html.twig
-            vars:
-                serialize_group_name: one-to-many
+            template: TreeOneToManyBundle:Li:box_right_search.html.twig
             one_to_many:
                 box_right:
-#                    icon: user-secret
-#                    class: primary
-#                    id: box-right-id
-#                    title: DUMMY_LEFT_LOWER
                     li_class: box-right-li
                     li_badge_class: bg-blue
                     li_input_name: box-lefts-selected-value
                     search_input_name: search-input-name-left
-#                    route_search: backend_associative_DUMMY_LEFT_LOWER_has_role_boxleft_search
             repository:
+                box_left:
+                    service: tianos.repository.DUMMY_LEFT_LOWER.has.DUMMY_RIGHT_LOWER
+                    method: treeOneToManyLeft
+                    arguments:
+                        limit: 20
+                    vars:
+                        serialize_group_name: tree-one-to-many-search-DUMMY_LEFT_LOWERhasDUMMY_RIGHT_LOWER
                 box_right:
                     service: tianos.repository.DUMMY_RIGHT_LOWER
                     method: searchBoxRight
                     arguments:
                         limit: 20
-#            entity: Bundle\ProfileBundle\Entity\Profile
-#            form:
-#                type: Bundle\ProfileBundle\Form\Type\ProfileType
+                    vars:
+                        serialize_group_name: tree-one-to-many-right
 
 backend_associative_DUMMY_LEFT_LOWER_has_DUMMY_RIGHT_LOWER_boxright_select_item:
     path: /boxright-select-item
@@ -139,10 +133,6 @@ backend_associative_DUMMY_LEFT_LOWER_has_DUMMY_RIGHT_LOWER_boxright_select_item:
                 box_right:
                     service: tianos.repository.DUMMY_RIGHT_LOWER
                     method: find
-#                    arguments:
-#                        limit: 20
-#            action: info
-#            template: ProfileBundle:ProfileBackend/Informative:infoProfileHasRole.html.twig
 
 backend_associative_DUMMY_LEFT_LOWER_has_DUMMY_RIGHT_LOWER_boxleft_select_item:
     path: /boxleft-select-item
@@ -151,8 +141,6 @@ backend_associative_DUMMY_LEFT_LOWER_has_DUMMY_RIGHT_LOWER_boxleft_select_item:
         _controller: tianos.DUMMY_LEFT_LOWERhasDUMMY_RIGHT_LOWER.controller.associative:boxLeftSelectItemAction
         _tianos:
             template: OneToManyBundle:Li:box_right.html.twig
-            vars:
-                serialize_group_name: one-to-many
             one_to_many:
                 box_right:
                     icon: expeditedssl
@@ -164,20 +152,17 @@ backend_associative_DUMMY_LEFT_LOWER_has_DUMMY_RIGHT_LOWER_boxleft_select_item:
                     li_badge_class: bg-orange-active
                     li_input_name: box-right-selected-value
                     search_input_name: search-input-name-right
-#                    route_search: backend_associative_profile_has_role_boxright_search
-#                    route_select_item: backend_associative_profile_has_role_boxright_select_item
             repository:
                 box_left:
                     service: tianos.repository.DUMMY_LEFT_LOWER
                     method: find
-#                    method_delete_associative: deleteAssociativeTableById
+                    vars:
+                        serialize_group_name: tree-one-to-many-left-DUMMY_LEFT_LOWERhasDUMMY_RIGHT_LOWER
                 box_right:
                     service: tianos.repository.DUMMY_RIGHT_LOWER
                     method: find
-#                    arguments:
-#                        limit: 20
-#            action: info
-#            template: ProfileBundle:ProfileBackend/Informative:infoProfileHasRole.html.twig
+                    vars:
+                        serialize_group_name: tree-one-to-many-right
 
 backend_associative_DUMMY_LEFT_LOWER_has_DUMMY_RIGHT_LOWER_info:
     path: /info

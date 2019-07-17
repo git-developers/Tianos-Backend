@@ -23,7 +23,7 @@ class PointofsaleType extends AbstractType
 
         $builder
             ->add('pointOfSale', EntityType::class, [
-                'class' => PointOfSale::class,
+                'class' => Pointofsale::class,
                 'query_builder' => function(EntityRepository $er) {
                     return $er->findAllObjects();
                 },
@@ -57,6 +57,16 @@ class PointofsaleType extends AbstractType
                 'attr' => [
                     'class' => 'form-control',
                     'placeholder' => 'nombre',
+                ],
+            ])
+            ->add('address', TextType::class, [
+                'label' => 'Direccion',
+                'label_attr' => [
+                    'class' => ''
+                ],
+                'attr' => [
+                    'class' => 'form-control',
+                    'placeholder' => 'direccion',
                 ],
             ])
             ->add('latitude', TextType::class, [

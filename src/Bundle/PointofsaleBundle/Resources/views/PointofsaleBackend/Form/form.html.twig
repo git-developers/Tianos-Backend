@@ -2,7 +2,7 @@
 
 {% block crud_modal_content %}
 
-    {{ form_start(form) }}
+    {#{{ form_start(form) }}#}
 
     {% if id is defined %}
         <input type="hidden" value="{{ id }}" name="id">
@@ -23,12 +23,14 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
+                    <i class="fa fa-fw fa-qrcode"></i>
                     {{ form_label(form.code) }}
                     {{ form_widget(form.code) }}
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="form-group">
+                    <i class="fa fa-fw fa-align-left"></i>
                     {{ form_label(form.name) }}
                     {{ form_widget(form.name) }}
                 </div>
@@ -53,7 +55,16 @@
             </div>
         </div>
 
-    {#{{ form_widget(form) }}#}
-    {{ form_end(form) }}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <i class="fa fa-fw fa-align-left"></i>
+                    {{ form_label(form.address) }}
+                    {{ form_widget(form.address) }}
+                </div>
+            </div>
+        </div>
+
+    {#{{ form_end(form) }}#}
 
 {% endblock %}

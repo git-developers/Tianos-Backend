@@ -12,25 +12,18 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorage;
 use Bundle\UserBundle\Entity\User;
 use Cocur\Slugify\Slugify;
+use Bundle\CoreBundle\EventListener\BaseDoctrineListenerService;
 
 // https://coderwall.com/p/es3zkw/symfony2-listen-doctrine-events
 
-class DoctrineListenerService implements EventSubscriber
+class DoctrineListenerService extends BaseDoctrineListenerService implements EventSubscriber
 {
-    protected $dateTime;
     protected $encoder;
-    protected $tokenStorage;
 
     public function __construct(TokenStorage $tokenStorage, UserPasswordEncoderInterface $encoder)
     {
+        parent::__construct($tokenStorage);
         $this->encoder = $encoder;
-        $this->dateTime = new \DateTime();
-        $this->tokenStorage = $tokenStorage;
-    }
-
-    public function getUser()
-    {
-        return $this->tokenStorage->getToken()->getUser();
     }
 
     /**
@@ -64,11 +57,13 @@ class DoctrineListenerService implements EventSubscriber
 //        $className = $entityManager->getClassMetadata(get_class($entity))->getName();
 
         if ($entity instanceof User){
+
             $uniqid = uniqid();
             $name = $entity->getName();
             $entity->setSlug($this->slugify($name));
-            $entity->setCreatedAt($this->dateTime);
+            $entity->setCreatedAt($this->setupCreatedAt($entity));
             $entity->setUsername($uniqid);
+            $entity->setEnabled(true);
             $entity->setUsernameCanonical($uniqid);
 
 

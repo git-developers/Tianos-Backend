@@ -12,14 +12,14 @@ backend_profile_index:
                 subheader: sylius.ui.manage_your_profile_catalog
                 icon: cube
                 body_css: grid-body-css
-                serialize_group_name: crud
-#            grid: sylius_admin_product
             grid:
                 icon: user-secret
                 box_class: primary
-                title: Gestionar profile
+                title: Gestionar perfiles
                 modal:
+                    title: Crear perfil
                     create_size: modal-lg
+                    edit_size: modal-lg
                 data_table:
                     route:
                         info: backend_profile_info
@@ -43,16 +43,10 @@ backend_profile_index:
                     columns:
                         - name: '#'
                           obj: " '<span class=\"badge bg-blue\">' + obj.id + '</span>' "
-#                        - name: code
-#                          obj: obj.code
-#                          options:
-#                              icon: map-marker
                         - name: Name
                           obj: obj.name
-#                        - name: slug
-#                          obj: obj.slug
                         - name: Creado
-                          obj: obj.createdAt
+                          obj: obj.created_at
                           options:
                               icon: calendar
             form:
@@ -61,6 +55,8 @@ backend_profile_index:
                 service: tianos.repository.profile
                 method: findAll
                 arguments: [$profileId]
+                vars:
+                    serialize_group_name: crud
 
 backend_profile_create:
     path: /create
@@ -73,8 +69,9 @@ backend_profile_create:
             entity: Bundle\ProfileBundle\Entity\Profile
             form:
                 type: Bundle\ProfileBundle\Form\Type\ProfileType
-            vars:
-                serialize_group_name: crud
+            repository:
+                vars:
+                    serialize_group_name: crud
 
 backend_profile_edit:
     path: /edit
@@ -84,14 +81,14 @@ backend_profile_edit:
         _tianos:
             action: edit
             template: ProfileBundle:ProfileBackend/Form:form.html.twig
+            form:
+                type: Bundle\ProfileBundle\Form\Type\ProfileType
             repository:
                 service: tianos.repository.profile
                 method: find
                 arguments: [$profileId]
-            form:
-                type: Bundle\ProfileBundle\Form\Type\ProfileType
-            vars:
-                serialize_group_name: crud
+                vars:
+                    serialize_group_name: crud
 
 backend_profile_delete:
     path: /delete
@@ -120,6 +117,8 @@ backend_profile_view:
                 service: tianos.repository.profile
                 method: find
                 arguments: [$profileId]
+                vars:
+                    serialize_group_name: crud
 
 backend_profile_info:
     path: /info
@@ -129,56 +128,3 @@ backend_profile_info:
         _tianos:
             action: info
             template: ProfileBundle:ProfileBackend/Informative:info.html.twig
-
-
-
-
-
-#/var/www/html/Sylius/sylius/vendor/sylius/sylius/docs/customization/factory.rst
-#
-#    sylius_admin_product_create_simple:
-#        path: /products/new/simple
-#        methods: [GET, POST]
-#        defaults:
-#            _controller: sylius.controller.product:createAction
-#            _sylius:
-#                section: admin
-#                factory:
-#                    method: createDisabled # like here for example
-#                template: SyliusAdminBundle:Crud:create.html.twig
-#                redirect: sylius_admin_product_update
-#                vars:
-#                    subheader: sylius.ui.manage_your_product_catalog
-#                    templates:
-#                        form: SyliusAdminBundle:CRUDDUMMY:_form.html.twig
-#                    route:
-#                        name: sylius_admin_product_create_simple
-
-
-
-#            template: "@SyliusAdmin/ProductVariant/generate.html.twig"
-#            section: admin
-#            permission: true
-#            redirect:
-#                route: sylius_admin_product_variant_index
-#                parameters: { productId: $productId }
-#            form:
-#                type: Sylius\Bundle\ProductBundle\Form\Type\ProductGenerateVariantsType
-#            repository:
-#                method: find
-#                arguments: [$productId]
-#            flash: sylius.product_variant.generate
-
-#sylius_admin_product_index:
-#    path: /products/
-#    methods: [GET]
-#    defaults:
-#        _controller: sylius.controller.product:indexAction
-#        _sylius:
-#            section: admin
-#            permission: true
-#            grid: sylius_admin_product
-#            template: SyliusAdminBundle:CRUDDUMMY:index.html.twig
-#            vars:
-#                subheader: sylius.ui.manage_your_product_catalog
-#                icon: cube

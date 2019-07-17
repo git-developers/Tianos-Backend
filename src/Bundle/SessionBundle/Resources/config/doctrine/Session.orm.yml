@@ -2,10 +2,10 @@ Bundle\SessionBundle\Entity\Session:
     type: entity
     table: session
     repositoryClass: Bundle\SessionBundle\Doctrine\ORM\SessionRepository
-    uniqueConstraints:
-        UNIQ_D044D5D4A76ED395:
-            columns:
-                - user_id
+#    uniqueConstraints:
+#        UNIQ_D044D5D4A76ED395:
+#            columns:
+#                - user_id
     id:
         id:
             type: integer

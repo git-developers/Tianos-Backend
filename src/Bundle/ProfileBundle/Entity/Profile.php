@@ -14,27 +14,43 @@ class Profile
 
     const ADMIN = 'administrator';
     const GUEST = 'guest';
+    const JEFE_DE_ADMINISTRACION_COMERCIAL = 'JEFE_DE_ADMINISTRACION_COMERCIAL';
+    const ASISTENTE_DE_DISTRIBUCION_TRANSPORTE = 'ASISTENTE_DE_DISTRIBUCION_TRANSPORTE';
+    const GERENTE_DE_VENTAS = 'GERENTE_DE_VENTAS';
+    const SUPERVISOR_DE_VENTA = 'SUPERVISOR_DE_VENTA';
+    const JEFE_DE_VENTA = 'JEFE_DE_VENTA';
+    const JEFE_DE_ALMACEN = 'JEFE_DE_ALMACEN';
+    const TRANSPORTISTA = 'TRANSPORTISTA';
+    const DISTRIBUIDOR = 'DISTRIBUIDOR';
+    const CANILLITA = 'CANILLITA';
 
     /**
      * @var integer
      *
-     * @JMSS\Groups({"crud", "one-to-many"})
+     * @JMSS\Groups({"crud", "login", "one-to-many-left"})
      */
     private $id;
 
     /**
      * @var string
      *
-     * @JMSS\Groups({"crud", "one-to-many"})
+     * @JMSS\Groups({"crud", "login", "one-to-many-left"})
      */
     private $code;
 
     /**
      * @var string
      *
-     * @JMSS\Groups({"crud", "one-to-many"})
+     * @JMSS\Groups({"crud", "login"})
      */
     private $name;
+
+    /**
+     * @var string
+     *
+     * @JMSS\Groups({"crud", "login"})
+     */
+    private $nameCanonical;
 
     /**
      * @var string
@@ -44,7 +60,7 @@ class Profile
     /**
      * @var \DateTime
      *
-     * @JMSS\Groups({"crud", "one-to-many"})
+     * @JMSS\Groups({"crud"})
      * @JMSS\Type("DateTime<'Y-m-d H:i'>")
      */
     private $createdAt;
@@ -82,7 +98,7 @@ class Profile
      *   }
      * )
      *
-     * @JMSS\Groups({"one-to-many", "one-to-many-left"})
+     * @JMSS\Groups({"one-to-many-left-profilehasrole", "one-to-many-search", "login"})
      */
     private $role;
 
@@ -97,6 +113,14 @@ class Profile
      *
      */
     private $collapsedBox;
+
+    /**
+     * @var string
+     *
+     * @JMSS\Accessor(getter="getNameBox", setter="setNameBox")
+     * @JMSS\Groups({"one-to-many-left"})
+     */
+    private $nameBox;
 
     /**
      * Constructor
@@ -166,6 +190,22 @@ class Profile
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNameCanonical()
+    {
+        return $this->nameCanonical;
+    }
+
+    /**
+     * @param string $nameCanonical
+     */
+    public function setNameCanonical($nameCanonical)
+    {
+        $this->nameCanonical = $nameCanonical;
     }
 
     /**
@@ -376,6 +416,23 @@ class Profile
     public function setCollapsedBox($collapsedBox)
     {
         $this->collapsedBox = $collapsedBox;
+    }
+
+    /**
+     *
+     * @return string
+     */
+    public function getNameBox()
+    {
+        return sprintf('%s', $this->name);
+    }
+
+    /**
+     * @param string $nameBox
+     */
+    public function setNameBox($nameBox)
+    {
+        $this->nameBox = $nameBox;
     }
 }
 

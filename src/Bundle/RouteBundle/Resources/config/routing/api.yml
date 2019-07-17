@@ -1,0 +1,19 @@
+api_route_index:
+    path: /
+    methods: [GET]
+    defaults:
+        _controller: tianos.api.controller.route:indexAction
+        _tianos:
+            section: admin
+            permission: true
+            grid: sylius_admin_route
+            template: RouteBundle:Route:index.html.twig
+            vars:
+                subheader: sylius.ui.manage_your_product_catalog
+                icon: cube
+            form:
+                type: Bundle\RouteBundle\Form\Type\RouteType
+            repository:
+                service: tianos.repository.route
+                method: findAll
+                arguments: [$routeId]

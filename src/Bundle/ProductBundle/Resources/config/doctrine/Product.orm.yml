@@ -34,12 +34,12 @@ Bundle\ProductBundle\Entity\Product:
             length: 150
             options:
                 fixed: false
-#        image:
-#            type: string
-#            nullable: true
-#            length: 45
-#            options:
-#                fixed: false
+        image:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
         createdAt:
             type: datetime
             nullable: false

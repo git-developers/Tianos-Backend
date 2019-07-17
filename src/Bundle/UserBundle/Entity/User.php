@@ -8,31 +8,58 @@ use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Model\User as BaseUser;
 use JMS\Serializer\Annotation as JMSS;
 use JMS\Serializer\Annotation\Type as TypeJMS;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * User
  *
+ * @UniqueEntity(
+ *     fields={"email"},
+ *     message="El email fue registrado por otro usuario"
+ * )
+ * @UniqueEntity(
+ *     fields={"username"},
+ *     message="El username fue registrado por otro usuario"
+ * )
  */
 class User extends BaseUser // implements UserInterface, DomainObjectInterface, \Serializable
 {
     /**
      * @var int
      *
-     * @JMSS\Groups({"login"})
+     * @JMSS\Groups({
+     *     "login",
+     *     "crud",
+     *     "order-in-center",
+     *     "one-to-many-left",
+     *     "one-to-many-right",
+     *     "one-to-many-search",
+     *     "one-to-many-search-pointofsalehasuser",
+     *     "order-in-left-select-item",
+     *     "order-report"
+     * })
      */
     protected $id;
 
     /**
      * @var string
      *
-     * @JMSS\Groups({"login"})
+     * @JMSS\Groups({
+     *     "login",
+     *     "crud",
+     *     "one-to-many-right"
+     * })
      */
     protected $username;
 
     /**
      * @var string
      *
-     * @JMSS\Groups({"login"})
+     * @JMSS\Groups({
+     *     "login",
+     *     "crud",
+     *     "one-to-many-right"
+     * })
      */
     protected $email;
 
@@ -57,14 +84,14 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     /**
      * @var string
      *
-     * @JMSS\Groups({"login"})
+     * @JMSS\Groups({"login", "crud"})
      */
     private $name;
 
     /**
      * @var string|null
      *
-     * @JMSS\Groups({"login"})
+     * @JMSS\Groups({"login", "crud"})
      */
     private $lastName;
 
@@ -95,6 +122,9 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     /**
      * @var \DateTime
      *
+     * @JMSS\Groups({"crud"})
+     * @JMSS\Type("DateTime<'Y-m-d H:i'>")
+     *
      */
     private $createdAt;
 
@@ -118,14 +148,13 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
 
     /**
      * @var bool
-     *
-     */
-    private $isActive = '1';
-
-    /**
-     * @var bool
      */
     protected $enabled = '1';
+
+    /**
+     * @var boolean
+     */
+    private $isActive = true;
 
     /**
      * @var \DateTime|null
@@ -140,6 +169,7 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="profile_id", referencedColumnName="id")
      * })
+     * @JMSS\Groups({"login", "crud"})
      */
     private $profile;
 
@@ -161,6 +191,8 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     private $groupOfUsers;
 
     /**
+     * Distribuidor -> tiene -> Punto de venta
+     *
      * @var \Doctrine\Common\Collections\Collection
      *
      * @ORM\ManyToMany(targetEntity="Bundle\PointofsaleBundle\Entity\Pointofsale", inversedBy="user")
@@ -172,8 +204,58 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
      *     @ORM\JoinColumn(name="point_of_sale_id", referencedColumnName="id")
      *   }
      * )
+     *
+     * @JMSS\Groups({
+     *     "one-to-many-search-userhaspointofsale",
+     *     "one-to-many-left-userhaspointofsale"
+     * })
      */
     private $pointOfSale;
+
+    /**
+     * Punto de venta tiene canillita
+     *
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Bundle\PointofsaleBundle\Entity\Pointofsale", mappedBy="user2")
+     */
+    private $pointOfSale2;
+
+    /**
+     * Distribuidor tiene Rutas
+     *
+     * @var \Doctrine\Common\Collections\Collection
+     *
+     * @ORM\ManyToMany(targetEntity="Bundle\RouteBundle\Entity\Route", inversedBy="user")
+     * @ORM\JoinTable(name="user_has_route",
+     *   joinColumns={
+     *     @ORM\JoinColumn(name="user_id", referencedColumnName="id")
+     *   },
+     *   inverseJoinColumns={
+     *     @ORM\JoinColumn(name="route_id", referencedColumnName="id")
+     *   }
+     * )
+     *
+     * @JMSS\Groups({
+     *     "one-to-many-left-userhasroute",
+     *     "one-to-many-search-userhasroute"
+     * })
+     */
+    private $route;
+
+    /**
+     * @var string
+     *
+     * @JMSS\Accessor(getter="getNameBox", setter="setNameBox")
+     * @JMSS\Groups({
+     *     "one-to-many-left",
+     *     "one-to-many-right",
+     *     "order-in-center",
+     *     "order-in-left-select-item",
+     *     "order-report"
+     * })
+     */
+    private $nameBox;
 
     /**
      * Constructor
@@ -182,6 +264,8 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     {
         $this->groupOfUsers = new \Doctrine\Common\Collections\ArrayCollection();
         $this->pointOfSale = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->pointOfSale2 = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->route = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
@@ -389,7 +473,6 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
         return $this->phone;
     }
 
-
     /**
      * Set createdAt
      *
@@ -484,30 +567,6 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     public function getUserUpdate()
     {
         return $this->userUpdate;
-    }
-
-    /**
-     * Set isActive
-     *
-     * @param boolean $isActive
-     *
-     * @return User
-     */
-    public function setIsActive($isActive)
-    {
-        $this->isActive = $isActive;
-
-        return $this;
-    }
-
-    /**
-     * Get isActive
-     *
-     * @return boolean
-     */
-    public function getIsActive()
-    {
-        return $this->isActive;
     }
 
     /**
@@ -616,7 +675,12 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
         return $this->groupOfUsers;
     }
 
+
+
+
     /**
+     * Distribuidor -> tiene -> Punto de venta
+     *
      * Add pointOfSale
      *
      * @param \Bundle\PointofsaleBundle\Entity\Pointofsale $pointOfSale
@@ -631,6 +695,8 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     }
 
     /**
+     * Distribuidor -> tiene -> Punto de venta
+     *
      * Remove pointOfSale
      *
      * @param \Bundle\PointofsaleBundle\Entity\Pointofsale $pointOfSale
@@ -641,6 +707,8 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     }
 
     /**
+     * Distribuidor -> tiene -> Punto de venta
+     *
      * Get pointOfSale
      *
      * @return \Doctrine\Common\Collections\Collection
@@ -648,6 +716,50 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     public function getPointOfSale()
     {
         return $this->pointOfSale;
+    }
+
+    
+    
+    
+    
+    /**
+     * Punto de venta tiene canillita
+     *
+     * Add pointOfSale
+     *
+     * @param \Bundle\PointofsaleBundle\Entity\Pointofsale $pointOfSale
+     *
+     * @return User
+     */
+    public function addPointOfSale2(\Bundle\PointofsaleBundle\Entity\Pointofsale $pointOfSale)
+    {
+        $this->pointOfSale2[] = $pointOfSale;
+
+        return $this;
+    }
+
+    /**
+     * Punto de venta tiene canillita
+     *
+     * Remove pointOfSale
+     *
+     * @param \Bundle\PointofsaleBundle\Entity\Pointofsale $pointOfSale
+     */
+    public function removePointOfSale2(\Bundle\PointofsaleBundle\Entity\Pointofsale $pointOfSale)
+    {
+        $this->pointOfSale2->removeElement($pointOfSale);
+    }
+
+    /**
+     * Punto de venta tiene canillita
+     *
+     * Get pointOfSale
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getPointOfSale2()
+    {
+        return $this->pointOfSale2;
     }
 
     /**
@@ -669,11 +781,11 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     public function getRoles() {
         $roles = [];
 
-//        if(is_object($this->getProfile())){
-//            foreach ($this->getProfile()->getRole() as $key => $role) {
-//                $roles[] = $role->getSlug();
-//            }
-//        }
+        if(is_object($this->getProfile())){
+            foreach ($this->getProfile()->getRole() as $key => $role) {
+                $roles[] = $role->getSlug();
+            }
+        }
 
         $roles[] = 'ROLE_USER';
 
@@ -703,6 +815,87 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
     public function getObjectIdentifier()
     {
         return 'usuario-210'; //$this->username;
+    }
+
+    /**
+     * Distribuidor tiene Rutas
+     *
+     * Add route
+     *
+     * @param \Bundle\RouteBundle\Entity\Route $route
+     *
+     * @return User
+     */
+    public function addRoute(\Bundle\RouteBundle\Entity\Route $route)
+    {
+        $this->route[] = $route;
+
+        return $this;
+    }
+
+    /**
+     * Distribuidor tiene Rutas
+     *
+     * Remove route
+     *
+     * @param \Bundle\RouteBundle\Entity\Route $route
+     */
+    public function removeRoute(\Bundle\RouteBundle\Entity\Route $route)
+    {
+        $this->route->removeElement($route);
+    }
+
+    /**
+     * Distribuidor tiene Rutas
+     *
+     * Get route
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getRoute()
+    {
+        return $this->route;
+    }
+
+    /**
+     * Set isActive
+     *
+     * @param boolean $isActive
+     *
+     * @return Client
+     */
+    public function setIsActive($isActive)
+    {
+        $this->isActive = $isActive;
+
+        return $this;
+    }
+
+    /**
+     * Get isActive
+     *
+     * @return boolean
+     */
+    public function getIsActive()
+    {
+        return $this->isActive;
+    }
+
+    /**
+     *
+     * @return string
+     */
+    public function getNameBox()
+    {
+        return sprintf('%s %s', $this->name, $this->lastName);
+    }
+
+    /**
+     * @param string $nameBox
+     */
+    public function setNameBox($nameBox)
+    {
+        $this->nameBox = $nameBox;
     }
 
     /** @see \Serializable::serialize() */

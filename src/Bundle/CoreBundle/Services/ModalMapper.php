@@ -13,6 +13,7 @@ class ModalMapper
 
     protected $defaults;
 
+    const TITLE = 'Crear item';
     const SIZE_LARGE = 'modal-lg';
     const CREATE_ID = 'modal-create';
     const CREATE_CHILD_ID = 'modal-create-child';
@@ -27,6 +28,8 @@ class ModalMapper
 //        parent::__construct($router, $requestStack);
 
         $this->defaults = [
+
+            'title' => self::TITLE,
 
             'edit_id' => self::EDIT_ID,
             'edit_size' => null,

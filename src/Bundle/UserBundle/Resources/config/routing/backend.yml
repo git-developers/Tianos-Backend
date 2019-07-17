@@ -12,12 +12,12 @@ backend_user_index:
                 subheader: sylius.ui.manage_your_user_catalog
                 icon: cube
                 body_css: grid-body-css
-                serialize_group_name: crud
-#            grid: sylius_admin_user
             grid:
                 icon: user
                 box_class: primary
-                title: Gestionar user
+                title: Gestionar usuarios
+                modal:
+                    title: Crear usuario
                 data_table:
                     route:
                         info: backend_user_info
@@ -41,16 +41,20 @@ backend_user_index:
                     columns:
                         - name: '#'
                           obj: " '<span class=\"badge bg-blue\">' + obj.id + '</span>' "
+                        - name: Perfil
+                          obj: obj.profile.name
+                        - name: Username
+                          obj: " '<span class=\"badge bg-green\">' + obj.username + '</span>' "
+                          options:
+                              icon: feed
                         - name: Email
                           obj: obj.email
-#                          options:
-#                              icon: map-marker
-                        - name: Name
-                          obj: " obj.name + ' ' + obj.lastName "
-#                        - name: slug
-#                          obj: obj.slug
+                          options:
+                              icon: envelope-o
+                        - name: Nombre
+                          obj: " obj.name + ' ' + obj.last_name "
                         - name: Creado
-                          obj: obj.createdAt
+                          obj: obj.created_at
                           options:
                               icon: calendar
             form:
@@ -59,6 +63,8 @@ backend_user_index:
                 service: tianos.repository.user
                 method: findAll
                 arguments: [$userId]
+                vars:
+                    serialize_group_name: crud
 
 backend_user_create:
     path: /create
@@ -71,8 +77,9 @@ backend_user_create:
             entity: Bundle\UserBundle\Entity\User
             form:
                 type: Bundle\UserBundle\Form\Type\UserType
-            vars:
-                serialize_group_name: crud
+            repository:
+                vars:
+                    serialize_group_name: crud
 
 backend_user_edit:
     path: /edit
@@ -82,14 +89,14 @@ backend_user_edit:
         _tianos:
             action: edit
             template: UserBundle:UserBackend/Form:form.html.twig
+            form:
+                type: Bundle\UserBundle\Form\Type\UserType
             repository:
                 service: tianos.repository.user
                 method: find
                 arguments: [$userId]
-            form:
-                type: Bundle\UserBundle\Form\Type\UserType
-            vars:
-                serialize_group_name: crud
+                vars:
+                    serialize_group_name: crud
 
 backend_user_delete:
     path: /delete
@@ -118,6 +125,8 @@ backend_user_view:
                 service: tianos.repository.user
                 method: find
                 arguments: [$userId]
+                vars:
+                    serialize_group_name: crud
 
 backend_user_info:
     path: /info

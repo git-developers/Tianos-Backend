@@ -12,12 +12,12 @@ backend_pointofsale_index:
                 subheader: sylius.ui.manage_your_pointofsale_catalog
                 icon: cube
                 body_css: grid-body-css
-                serialize_group_name: crud
-#            grid: sylius_admin_product
             grid:
                 icon: map-marker
                 box_class: primary
-                title: Gestionar pointofsale
+                title: Gestionar puntos de ventas
+                modal:
+                    title: Crear punto de venta
                 data_table:
                     route:
                         info: backend_pointofsale_info
@@ -41,20 +41,14 @@ backend_pointofsale_index:
                     columns:
                         - name: '#'
                           obj: " '<span class=\"badge bg-blue\">' + obj.id + '</span>' "
-#                        - name: code
-#                          obj: obj.code
-#                          options:
-#                              icon: map-marker
-                        - name: Name
+                        - name: Nombre
                           obj: obj.name
-                        - name: Latitude
-                          obj: obj.latitude
-                        - name: Longitude
-                          obj: obj.longitude
-#                        - name: slug
-#                          obj: obj.slug
+                        - name: Coordenadas
+                          obj: " '<span class=\"badge bg-green\">' + obj.latitude + ' :: ' + obj.longitude + '</span>' "
+                          options:
+                              icon: map-marker
                         - name: Creado
-                          obj: obj.createdAt
+                          obj: obj.created_at
                           options:
                               icon: calendar
             form:
@@ -63,6 +57,8 @@ backend_pointofsale_index:
                 service: tianos.repository.pointofsale
                 method: findAll
                 arguments: [$pointofsaleId]
+                vars:
+                    serialize_group_name: crud
 
 backend_pointofsale_create:
     path: /create
@@ -75,8 +71,9 @@ backend_pointofsale_create:
             entity: Bundle\PointofsaleBundle\Entity\Pointofsale
             form:
                 type: Bundle\PointofsaleBundle\Form\Type\PointofsaleType
-            vars:
-                serialize_group_name: crud
+            repository:
+                vars:
+                    serialize_group_name: crud
 
 backend_pointofsale_edit:
     path: /edit
@@ -86,14 +83,14 @@ backend_pointofsale_edit:
         _tianos:
             action: edit
             template: PointofsaleBundle:PointofsaleBackend/Form:form.html.twig
+            form:
+                type: Bundle\PointofsaleBundle\Form\Type\PointofsaleType
             repository:
                 service: tianos.repository.pointofsale
                 method: find
                 arguments: [$pointofsaleId]
-            form:
-                type: Bundle\PointofsaleBundle\Form\Type\PointofsaleType
-            vars:
-                serialize_group_name: crud
+                vars:
+                    serialize_group_name: crud
 
 backend_pointofsale_delete:
     path: /delete
@@ -122,6 +119,8 @@ backend_pointofsale_view:
                 service: tianos.repository.pointofsale
                 method: find
                 arguments: [$pointofsaleId]
+                vars:
+                    serialize_group_name: crud
 
 backend_pointofsale_info:
     path: /info
@@ -131,56 +130,3 @@ backend_pointofsale_info:
         _tianos:
             action: info
             template: PointofsaleBundle:PointofsaleBackend/Informative:info.html.twig
-
-
-
-
-
-#/var/www/html/Sylius/sylius/vendor/sylius/sylius/docs/customization/factory.rst
-#
-#    sylius_admin_product_create_simple:
-#        path: /products/new/simple
-#        methods: [GET, POST]
-#        defaults:
-#            _controller: sylius.controller.product:createAction
-#            _sylius:
-#                section: admin
-#                factory:
-#                    method: createDisabled # like here for example
-#                template: SyliusAdminBundle:Crud:create.html.twig
-#                redirect: sylius_admin_product_update
-#                vars:
-#                    subheader: sylius.ui.manage_your_product_catalog
-#                    templates:
-#                        form: SyliusAdminBundle:CRUDDUMMY:_form.html.twig
-#                    route:
-#                        name: sylius_admin_product_create_simple
-
-
-
-#            template: "@SyliusAdmin/ProductVariant/generate.html.twig"
-#            section: admin
-#            permission: true
-#            redirect:
-#                route: sylius_admin_product_variant_index
-#                parameters: { productId: $productId }
-#            form:
-#                type: Sylius\Bundle\ProductBundle\Form\Type\ProductGenerateVariantsType
-#            repository:
-#                method: find
-#                arguments: [$productId]
-#            flash: sylius.product_variant.generate
-
-#sylius_admin_product_index:
-#    path: /products/
-#    methods: [GET]
-#    defaults:
-#        _controller: sylius.controller.product:indexAction
-#        _sylius:
-#            section: admin
-#            permission: true
-#            grid: sylius_admin_product
-#            template: SyliusAdminBundle:CRUDDUMMY:index.html.twig
-#            vars:
-#                subheader: sylius.ui.manage_your_product_catalog
-#                icon: cube

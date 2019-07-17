@@ -9,9 +9,13 @@ use Component\Grid\Definition\Field;
 use Component\Grid\Definition\Filter;
 use Component\Grid\View\GridViewInterface;
 use Bundle\CoreBundle\Services\Button;
+use Bundle\GridBundle\Services\Grid\Builder\DataTableMapper;
 
 interface GridRendererInterface
 {
+
+    // JAFETH
+    public function renderFormJs($vars, $modal, $formMapper, DataTableMapper $dataTable, ?string $template = null);
 
     // JAFETH
     public function renderModalFooter(?string $template = null); // Button $button,

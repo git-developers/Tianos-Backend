@@ -12,24 +12,19 @@ backend_session_index:
                 subheader: sylius.ui.manage_your_session_catalog
                 icon: cube
                 body_css: grid-body-css
-                serialize_group_name: crud
-#            grid: sylius_admin_product
             grid:
                 icon: history
                 box_class: primary
-                title: Gestionar session
+                title: "Lista de sesión al End-user <i class=\"fa fa-fw fa-mobile-phone\"></i>"
                 data_table:
                     route:
                         info: backend_session_info
                         view: backend_session_view
-                        edit: backend_session_edit
-                        create: backend_session_create
-                        delete: backend_session_delete
                     table_button:
-                        - edit
-                        - delete
+#                        - edit
+#                        - delete
                     table_button_header:
-                        - create
+#                        - create
                         - info
                     row_call_back:
                         - key: id
@@ -41,16 +36,14 @@ backend_session_index:
                     columns:
                         - name: '#'
                           obj: " '<span class=\"badge bg-blue\">' + obj.id + '</span>' "
-#                        - name: code
-#                          obj: obj.code
-#                          options:
-#                              icon: map-marker
+                        - name: Usuario
+                          obj: "obj.user.name +' '+ obj.user.last_name"
+                          options:
+                              icon: user
                         - name: Token
-                          obj: obj.token
-#                        - name: slug
-#                          obj: obj.slug
+                          obj: " '<small class=\"label bg-green\">' + obj.token + '</small>' "
                         - name: Creado
-                          obj: obj.createdAt
+                          obj: obj.created_at
                           options:
                               icon: calendar
             form:
@@ -59,52 +52,8 @@ backend_session_index:
                 service: tianos.repository.session
                 method: findAll
                 arguments: [$sessionId]
-
-backend_session_create:
-    path: /create
-    methods: [POST]
-    defaults:
-        _controller: tianos.backend.controller.session:createAction
-        _tianos:
-            action: create
-            template: SessionBundle:SessionBackend/Form:form.html.twig
-            entity: Bundle\SessionBundle\Entity\Session
-            form:
-                type: Bundle\SessionBundle\Form\Type\SessionType
-            vars:
-                serialize_group_name: crud
-
-backend_session_edit:
-    path: /edit
-    methods: [PUT, POST]
-    defaults:
-        _controller: tianos.backend.controller.session:editAction
-        _tianos:
-            action: edit
-            template: SessionBundle:SessionBackend/Form:form.html.twig
-            repository:
-                service: tianos.repository.session
-                method: find
-                arguments: [$sessionId]
-            form:
-                type: Bundle\SessionBundle\Form\Type\SessionType
-            vars:
-                serialize_group_name: crud
-
-backend_session_delete:
-    path: /delete
-    methods: [POST, DELETE]
-    defaults:
-        _controller: tianos.backend.controller.session:deleteAction
-        _tianos:
-            action: delete
-            template: GridBundle:Template:delete.html.twig
-            repository:
-                service: tianos.repository.session
-                method: find
-                arguments: [$sessionId]
-            vars:
-#                body_css: grid-body-css
+                vars:
+                    serialize_group_name: crud
 
 backend_session_view:
     path: /view
@@ -127,56 +76,3 @@ backend_session_info:
         _tianos:
             action: info
             template: SessionBundle:SessionBackend/Informative:info.html.twig
-
-
-
-
-
-#/var/www/html/Sylius/sylius/vendor/sylius/sylius/docs/customization/factory.rst
-#
-#    sylius_admin_product_create_simple:
-#        path: /products/new/simple
-#        methods: [GET, POST]
-#        defaults:
-#            _controller: sylius.controller.product:createAction
-#            _sylius:
-#                section: admin
-#                factory:
-#                    method: createDisabled # like here for example
-#                template: SyliusAdminBundle:Crud:create.html.twig
-#                redirect: sylius_admin_product_update
-#                vars:
-#                    subheader: sylius.ui.manage_your_product_catalog
-#                    templates:
-#                        form: SyliusAdminBundle:CRUDDUMMY:_form.html.twig
-#                    route:
-#                        name: sylius_admin_product_create_simple
-
-
-
-#            template: "@SyliusAdmin/ProductVariant/generate.html.twig"
-#            section: admin
-#            permission: true
-#            redirect:
-#                route: sylius_admin_product_variant_index
-#                parameters: { productId: $productId }
-#            form:
-#                type: Sylius\Bundle\ProductBundle\Form\Type\ProductGenerateVariantsType
-#            repository:
-#                method: find
-#                arguments: [$productId]
-#            flash: sylius.product_variant.generate
-
-#sylius_admin_product_index:
-#    path: /products/
-#    methods: [GET]
-#    defaults:
-#        _controller: sylius.controller.product:indexAction
-#        _sylius:
-#            section: admin
-#            permission: true
-#            grid: sylius_admin_product
-#            template: SyliusAdminBundle:CRUDDUMMY:index.html.twig
-#            vars:
-#                subheader: sylius.ui.manage_your_product_catalog
-#                icon: cube

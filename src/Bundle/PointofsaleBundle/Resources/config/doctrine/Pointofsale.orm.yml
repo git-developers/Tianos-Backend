@@ -54,6 +54,18 @@ Bundle\PointofsaleBundle\Entity\Pointofsale:
             length: 65535
             options:
                 fixed: false
+        address:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+        phone:
+            type: text
+            nullable: true
+            length: 100
+            options:
+                fixed: false
         createdAt:
             type: datetime
             nullable: false
@@ -94,6 +106,31 @@ Bundle\PointofsaleBundle\Entity\Pointofsale:
     manyToMany:
         user:
             targetEntity: Bundle\UserBundle\Entity\User
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: pointOfSale
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+        user2:
+            targetEntity: Bundle\UserBundle\Entity\User
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: pointOfSale
+            joinTable:
+                name: point_of_sale_has_user
+                joinColumns:
+                    -
+                        name: point_of_sale_id
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    -
+                        name: user_id
+                        referencedColumnName: id
+            orderBy: null
+        route:
+            targetEntity: Bundle\RouteBundle\Entity\Route
             cascade: {  }
             fetch: LAZY
             mappedBy: pointOfSale

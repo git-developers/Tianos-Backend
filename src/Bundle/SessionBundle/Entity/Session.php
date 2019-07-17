@@ -16,18 +16,22 @@ class Session
     /**
      * @var integer
      *
+     * @JMSS\Groups({"crud"})
      */
     private $id;
 
     /**
      * @var string
      *
+     * @JMSS\Groups({"crud"})
      */
     private $token;
 
     /**
      * @var \DateTime
      *
+     * @JMSS\Groups({"crud"})
+     * @JMSS\Type("DateTime<'Y-m-d H:i'>")
      */
     private $createdAt;
 
@@ -50,6 +54,8 @@ class Session
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="user_id", referencedColumnName="id", nullable=true)
      * })
+     *
+     * @JMSS\Groups({"crud"})
      */
     private $user;
 

@@ -11,6 +11,7 @@ use Component\Grid\Definition\Field;
 use Component\Grid\Definition\Filter;
 use Component\Grid\Renderer\GridRendererInterface;
 use Component\Grid\View\GridViewInterface;
+use Bundle\GridBundle\Services\Grid\Builder\DataTableMapper;
 
 final class TwigGridRenderer implements GridRendererInterface
 {
@@ -61,6 +62,20 @@ final class TwigGridRenderer implements GridRendererInterface
     const CHANGE_PASSWORD = '<button type="submit" class="btn btn-outline">Cambiar password</button>';
     const DELETE = '<button type="submit" class="btn btn-outline">Eliminar</button>';
      */
+
+
+    //        JAFETH
+    public function renderFormJs($vars, $modal, $formMapper, DataTableMapper $dataTable, ?string $template = null)
+    {
+
+        return (string) $this->twig->render($template, [
+            'vars' => $vars,
+            'modal' => $modal,
+            'form_mapper' => $formMapper,
+            'dataTable' => $dataTable,
+        ]);
+    }
+
 
     //JAFETH
     public function renderModalFooter(?string $action = null)

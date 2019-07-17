@@ -17,12 +17,6 @@ class ApiController extends BaseController
     public function indexAction(Request $request): Response
     {
 
-//        try{
-//
-//        }catch (Exception $e){
-//
-//        }
-
         $parameters = [
             'driver' => ResourceBundle::DRIVER_DOCTRINE_ORM,
         ];
@@ -35,15 +29,29 @@ class ApiController extends BaseController
         $method = $configuration->getRepositoryMethod();
         $vars = $configuration->getVars();
 
-        //REPOSITORY
-        $objects = $this->get($repository)->$method();
-        $objects = $this->getSerializeDecode($objects, $vars['serialize_group_name']);
+        $data = json_decode($request->getContent());
 
+        //REPOSITORY
+        $object = $this->get($repository)->$method($data->username);
+
+        $pointOfSales = [];
+
+        if ($object) {
+            foreach ($object->getRoute() as $key => $route) {
+//                $pointOfSales[] = $route->getPointOfSale();
+
+                foreach ($route->getPointOfSale() as $key => $pointOfSale) {
+                    $pointOfSales[] = $pointOfSale;
+                }
+            }
+        }
+
+        $object = $this->getSerializeDecode($pointOfSales, $vars->serialize_group_name);
 
         return $this->json([
             'status' => self::STATUS_SUCCESS_API,
             'message' => 'mensaje',
-            'point_of_sale' => $objects,
+            'point_of_sale' => $object,
         ]);
     }
 

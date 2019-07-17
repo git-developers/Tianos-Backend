@@ -418,6 +418,28 @@ class RequestConfiguration
         return is_array($repository) ? $repository['box_left']['method'] : $repository;
     }
 
+    public function getAddEntityLeft()
+    {
+        if (!$this->parameters->has('repository')) {
+            return null;
+        }
+
+        $repository = $this->parameters->get('repository');
+
+        return is_array($repository) ? $repository['box_left']['add_entity'] : $repository;
+    }
+
+    public function getRemoveEntityLeft()
+    {
+        if (!$this->parameters->has('repository')) {
+            return null;
+        }
+
+        $repository = $this->parameters->get('repository');
+
+        return is_array($repository) ? $repository['box_left']['remove_entity'] : $repository;
+    }
+
     public function getRepositoryMethodDeleteAssociativeLeft()
     {
         if (!$this->parameters->has('repository')) {
@@ -427,6 +449,17 @@ class RequestConfiguration
         $repository = $this->parameters->get('repository');
 
         return is_array($repository) ? $repository['box_left']['method_delete_associative'] : $repository;
+    }
+
+    public function getRepositoryMethodCenter()
+    {
+        if (!$this->parameters->has('repository')) {
+            return null;
+        }
+
+        $repository = $this->parameters->get('repository');
+
+        return is_array($repository) ? $repository['box_center']['method'] : $repository;
     }
 
     public function getRepositoryMethodRight()
@@ -460,6 +493,17 @@ class RequestConfiguration
         $repository = $this->parameters->get('repository');
 
         return is_array($repository) ? $repository['box_left']['service'] : $repository;
+    }
+
+    public function getRepositoryServiceCenter()
+    {
+        if (!$this->parameters->has('repository')) {
+            return null;
+        }
+
+        $repository = $this->parameters->get('repository');
+
+        return is_array($repository) ? $repository['box_center']['service'] : $repository;
     }
 
     public function getRepositoryServiceRight()
@@ -632,7 +676,23 @@ class RequestConfiguration
 
     public function getVars()
     {
-        return $this->parameters->get('vars', []);
+        $vars = $this->parameters->get('vars', []);
+        return json_decode(json_encode($vars));
+    }
+
+    public function getRepositoryVars()
+    {
+        if (!$this->parameters->has('repository')) {
+            return null;
+        }
+
+        $repository = array_replace([
+            'vars' => null
+        ], $this->parameters->get('repository'));
+
+        $repository = json_decode(json_encode($repository));
+
+        return $repository->vars;
     }
 
     public function getRepositoryVarsLeft()
@@ -642,8 +702,21 @@ class RequestConfiguration
         }
 
         $repository = $this->parameters->get('repository');
+        $repository = json_decode(json_encode($repository));
 
-        return is_array($repository) ? $repository['box_left']['vars'] : $repository;
+        return is_object($repository) ? $repository->box_left->vars : $repository;
+    }
+
+    public function getRepositoryVarsCenter()
+    {
+        if (!$this->parameters->has('repository')) {
+            return null;
+        }
+
+        $repository = $this->parameters->get('repository');
+        $repository = json_decode(json_encode($repository));
+
+        return is_object($repository) ? $repository->box_center->vars : $repository;
     }
 
     public function getRepositoryVarsRight()
@@ -653,8 +726,9 @@ class RequestConfiguration
         }
 
         $repository = $this->parameters->get('repository');
+        $repository = json_decode(json_encode($repository));
 
-        return is_array($repository) ? $repository['box_right']['vars'] : $repository;
+        return is_object($repository) ? $repository->box_right->vars : $repository;
     }
 
     /**

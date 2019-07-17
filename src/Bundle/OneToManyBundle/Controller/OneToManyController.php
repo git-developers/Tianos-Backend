@@ -63,18 +63,31 @@ class OneToManyController extends BaseController
         $boxRight = $configuration->oneToManyBoxRight();
         $vars = $configuration->getVars();
 
-
-        //REPOSITORY
+        //REPOSITORY LEFT
         $objectsLeft = $this->get($repositoryLeft)->$methodLeft();
-        $objectsLeft = $this->getSerializeDecode($objectsLeft, $vars['serialize_group_name']);
-        $objectsRight = $this->get($repositoryRight)->$methodRight();
-        $objectsRight = $this->getSerializeDecode($objectsRight, $vars['serialize_group_name']);
+        $varsLeft = $configuration->getRepositoryVarsLeft();
+        $objectsLeft = $this->getSerializeDecode($objectsLeft, $varsLeft->serialize_group_name);
 
+        //REPOSITORY RIGHT
+        $objectsRight = $this->get($repositoryRight)->$methodRight();
+        $varsRight = $configuration->getRepositoryVarsRight();
+        $objectsRight = $this->getSerializeDecode($objectsRight, $varsRight->serialize_group_name);
 
         //CRUD
         $crud = $this->get('tianos.one_to_many');
         $modal = $crud->getModalMapper()->getDefaults();
         $formMapper = $crud->getFormMapper()->getDefaults();
+
+
+
+//        echo "POLLO:: <pre>";
+//        print_r($objectsLeft);
+//        exit;
+
+
+
+
+
 
         return $this->render(
             $template,
@@ -123,7 +136,8 @@ class OneToManyController extends BaseController
 
         //REPOSITORY
         $objectsLeft = $this->get($repositoryLeft)->$methodLeft($request->get('q'));
-        $objectsLeft = $this->getSerializeDecode($objectsLeft, $vars['serialize_group_name']);
+        $varsLeft = $configuration->getRepositoryVarsLeft();
+        $objectsLeft = $this->getSerializeDecode($objectsLeft, $varsLeft->serialize_group_name);
 
         return $this->render(
             $template,
@@ -160,20 +174,26 @@ class OneToManyController extends BaseController
         $varsRight = $configuration->getRepositoryVarsRight();
 
         //OneToMany Value
-        $oneToManyLeft = $this->get($repositoryLeft)->$methodLeft($request->get('radioLeftValue'));
-        $oneToManyLeft = $this->getSerializeDecode($oneToManyLeft, $varsLeft['serialize_group_name']);
+        $oneToManyLeftIds = $this->get($repositoryLeft)->$methodLeft($request->get('radioLeftValue'));
+        $oneToManyLeftIds = $this->getSerializeDecode($oneToManyLeftIds, $varsLeft->serialize_group_name);
 
         //REPOSITORY
         $objectsRight = $this->get($repositoryRight)->$methodRight($request->get('q'));
-        $objectsRight = $this->getSerializeDecode($objectsRight, $varsRight['serialize_group_name']);
+        $objectsRight = $this->getSerializeDecode($objectsRight, $varsRight->serialize_group_name);
+
+
+//        echo "POLLO:xxxxxx: <pre>";
+//        print_r($oneToManyLeftIds);
+//        exit;
+
+
 
         return $this->render(
             $template,
             [
                 'boxRight' => $boxRight,
                 'objectsRight' => $objectsRight,
-                'oneToManyLeft' => $oneToManyLeft,
-//                'isAssigned' => false,
+                'oneToManyLeftIds' => $oneToManyLeftIds,
             ]
         );
     }
@@ -207,7 +227,7 @@ class OneToManyController extends BaseController
         //DELETE
         $result = $this->get($repositoryLeft)->$methodDeleteAssociativeLeft($boxLeftValue);
 
-        if(!$result){
+        if ( !$result || empty($boxRightValues) ) {
             return $this->json([
                 'status' => false,
                 'response' => [
@@ -217,12 +237,16 @@ class OneToManyController extends BaseController
         }
 
         //SAVE
+        $addEntity = $configuration->getAddEntityLeft();
+        $removeEntity = $configuration->getRemoveEntityLeft();
         $objectsLeft = $this->get($repositoryLeft)->$methodLeft($boxLeftValue);
+
         foreach ($boxRightValues as $key => $boxRightValue){
             $objectsRight = $this->get($repositoryRight)->$methodRight($boxRightValue);
-            $objectsLeft->addRole($objectsRight);
+            $objectsLeft->$addEntity($objectsRight);
             $this->persist($objectsLeft);
         }
+        //SAVE
 
         return $this->json([
             'status' => true,
@@ -260,12 +284,21 @@ class OneToManyController extends BaseController
 
         //REPOSITORY
         $objectsLeft = $this->get($repositoryLeft)->$methodLeft($id);
-        $objectsLeft = $this->getSerializeDecode($objectsLeft, $vars['serialize_group_name']);
+        $varsLeft = $configuration->getRepositoryVarsLeft();
+        $objectsLeft = $this->getSerializeDecode($objectsLeft, $varsLeft->serialize_group_name);
+
+
+//        echo "POLLO:: <pre>";
+//        print_r($objectsLeft);
+//        exit;
+
+        if ( !isset($objectsLeft[$boxRight->entity]) ) {
+            throw $this->createNotFoundException('Tianos: validar el key "entity", este key se usa para enviar el array de objectos "objectsRight" ');
+        }
 
         return $this->render(
             $template,
             [
-                'isAssigned' => true,
                 'boxRight' => $boxRight,
                 'objectsRight' => $objectsLeft[$boxRight->entity],
             ]

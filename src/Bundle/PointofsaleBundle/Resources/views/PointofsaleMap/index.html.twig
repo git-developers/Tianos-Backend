@@ -17,75 +17,66 @@
 {% block javascripts %}
     {{ parent() }}
 
-    {#<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>#}
-    <script src="https://maps.googleapis.com/maps/api/js?key={{ application_google_api_key }}"></script>
+    <script type="text/javascript">
 
-    <script>
-        var geocoder;
-        var map;
-        var directionsDisplay;
-        var directionsService = new google.maps.DirectionsService();
-        var locations = [
-            ['Plaza San Martin', -12.0516854,-77.0345036, 2],
-            ['Jiron de la unio - Replay', -12.0489735,-77.0336614, 4],
-            ['Jiron de la Union - Mac Donalds', -12.0480705,-77.0326247, 5],
-            ['Jiron de la Union - Ucayali', -12.0470601,-77.0320176, 1],
-            ['Jiron de la Union - Plaza de Armas', -12.0460135,-77.0305169, 3]
-        ];
+        // https://developers.google.com/chart/image/docs/gallery/dynamic_icons
+        // https://developers.google.com/maps/documentation/javascript/examples/infowindow-simple
 
-        function initialize() {
-            directionsDisplay = new google.maps.DirectionsRenderer();
+        function initMap() {
+
+            var myLatLng = {lat: -12.0712431, lng: -77.0769525};
 
             var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 10,
-                center: new google.maps.LatLng(-12.054293,-77.0294639),
-                mapTypeId: google.maps.MapTypeId.ROADMAP
+                zoom: 17,
+                center: myLatLng
             });
-            directionsDisplay.setMap(map);
-            var infowindow = new google.maps.InfoWindow();
 
-            var marker, i;
-            var request = {
-                travelMode: google.maps.TravelMode.DRIVING
-            };
+            var marker = new google.maps.Marker({
+                position: myLatLng,
+                map: map,
+                icon: 'https://chart.googleapis.com/chart?chst=d_map_spin&chld=2.2|30|FFC6A5|11|b|Planta|Pando',
+                title: 'El Comercio - Planta Pando'
+            });
 
-            /*FOR - START*/
-            for (i = 0; i < locations.length; i++) {
+            {% for key, pdv in objects %}
 
-                console.dir(locations[i]);
+                var contentString{{ key }} = '<div id="content">'+
+                    '<div id="siteNotice">'+
+                    '</div>'+
+                    '<h1 id="firstHeading" class="firstHeading">{{ pdv.name }}</h1>'+
+                    '<div id="bodyContent">'+
+                    '<p>{{ pdv.address }}</p>'+
+                    '</div>'+
+                    '</div>';
 
-                marker = new google.maps.Marker({
-                    position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+                var infowindow{{ key }} = new google.maps.InfoWindow({
+                    content: contentString{{ key }}
                 });
 
-                google.maps.event.addListener(marker, 'click', (function(marker, i) {
-                    return function() {
-                        infowindow.setContent(locations[i][0]);
-                        infowindow.open(map, marker);
-                    }
-                })(marker, i));
+                var myLatLng{{ key }} = {lat: {{ pdv.latitude }}, lng: {{ pdv.longitude }}};
 
-                if (i == 0) request.origin = marker.getPosition();
-                else if (i == locations.length - 1) request.destination = marker.getPosition();
-                else {
-                    if (!request.waypoints) request.waypoints = [];
-                    request.waypoints.push({
-                        location: marker.getPosition(),
-                        stopover: true
-                    });
-                }
-            }
-            /*FOR - END*/
+                var marker{{ key }} = new google.maps.Marker({
+                    position: myLatLng{{ key }},
+                    map: map,
+                    {#title: '{{ pdv.name }}',#}
+                    icon: 'https://chart.googleapis.com/chart?chst=d_map_pin_letter_withshadow&chld=A|FF0000|000000'
+                    {#icon: '{{ asset('bundles/themes/adminlte/images/rangerstation.png') }}'#}
+                    {#url: '{{ path('app_map_detail', {pdvId:pdv.id_increment}) }}'#}
+                });
 
-            directionsService.route(request, function(result, status) {
-                if (status == google.maps.DirectionsStatus.OK) {
-                    directionsDisplay.setDirections(result);
-                }
-            });
+                marker{{ key }}.addListener('click', function() {
+                    infowindow{{ key }}.open(map, marker{{ key }});
+                });
+
+                {#google.maps.event.addListener(marker{{ key }}, 'click', function() {#}
+                    {#window.location.href = this.url;#}
+                {#});#}
+            {% endfor %}
         }
-
-        google.maps.event.addDomListener(window, "load", initialize);
     </script>
+
+
+    <script src="https://maps.googleapis.com/maps/api/js?key={{ application_google_api_key }}&callback=initMap"></script>
 
 
 {% endblock %}

@@ -22,8 +22,8 @@
             cursor: pointer;
         }
         input[type=checkbox] {
-            height: 16px;
-            width: 16px;
+            height: 20px;
+            width: 20px;
         }
     </style>
 
@@ -76,11 +76,12 @@
                                 {% set property = value.options.property|default() %}
 
                                 {% if property %}
-                                {% set obj = property %}
+                                    {{ property|raw }} {# ESTO SE USA PARA MOSTRAR CODIGO DIRECTAMENTE #}
+                                {% else %}
+                                    return {{ obj|raw }};
                                 {% endif %}
-
-                                return {{ obj|raw }};
                             }
+
                             return '';
                         },
                     },
@@ -121,37 +122,7 @@
                 }
             });
 
-            $('body.{{ vars.body_css }}').formCreate({
-                modalId: '{{ modal.create_id }}',
-                route: '{{ path(dataTable.route.create) }}',
-                formName: '{{ form_mapper.create_name }}',
-                tableJson: tableJson
-            });
-
-            $('body.{{ vars.body_css }}').formEdit({
-                modalId: '{{ modal.edit_id }}',
-                route: '{{ path(dataTable.route.edit) }}',
-                formName: '{{ form_mapper.edit_name }}',
-                tableJson: tableJson
-            });
-
-            $('body.{{ vars.body_css }}').formDelete({
-                modalId: '{{ modal.delete_id }}',
-                route: '{{ path(dataTable.route.delete) }}',
-                formName: '{{ form_mapper.delete_name }}',
-                tableJson: tableJson
-            });
-
-            $('body.{{ vars.body_css }}').formView({
-                modalId: '{{ modal.view_id }}',
-                route: '{{ path(dataTable.route.view) }}',
-                tableTdClass: '{{ dataTable.tableOptions.table_td_class }}'
-            });
-
-            $('body.{{ vars.body_css }}').formInfo({
-                modalId: '{{ modal.info_id }}',
-                route: '{{ path(dataTable.route.info) }}'
-            });
+            {{ tianos_grid_form_js(vars, modal, form_mapper, dataTable, '@Ui/Grid/FormJs/default.html.twig') }}
 
         });
 
@@ -165,8 +136,8 @@
 
     <section class="content-header">
         <h1>
-            <i class="fa fa-fw fa-{{ grid.icon }}"></i> {{ grid.title }}
-            <small>lista</small>
+            <i class="fa fa-fw fa-{{ grid.icon }}"></i> {{ grid.title|raw }}
+            <small>grid</small>
         </h1>
         <ol class="breadcrumb">
             {#<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>#}

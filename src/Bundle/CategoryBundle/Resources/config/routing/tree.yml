@@ -12,12 +12,10 @@ backend_category_tree_index:
                 subheader: sylius.ui.manage_your_category_catalog
                 icon: cube
                 body_css: grid-body-css
-                serialize_group_name: tree
-#            grid: sylius_admin_product
             tree:
                 icon: cube
                 box_class: primary
-                title: Gestionar category tree
+                title: Gestionar categoría - tree
                 main_div: box-main-div
                 main_ul: box-main-ul
                 child_ul: box-child-ul
@@ -29,40 +27,14 @@ backend_category_tree_index:
                     create: backend_category_tree_create
                     create_child: backend_category_tree_create_child
                     delete: backend_category_tree_delete
-#                    table_button:
-#                        - edit
-#                        - delete
-#                    table_button_header:
-#                        - create
-#                        - info
-#                    row_call_back:
-#                        - key: id
-#                          value: aData.id
-#                        - key: data-id
-#                          value: aData.id
-#                        - key: class
-#                          value: "'alert'"
-#                    columns:
-#                        - name: '#'
-#                          obj: " '<span class=\"badge bg-blue\">' + obj.id + '</span>' "
-##                        - name: code
-##                          obj: obj.code
-##                          options:
-##                              icon: map-marker
-#                        - name: Name
-#                          obj: obj.name
-##                        - name: slug
-##                          obj: obj.slug
-#                        - name: Creado
-#                          obj: obj.createdAt
-#                          options:
-#                              icon: calendar
             form:
                 type: Bundle\CategoryBundle\Form\Type\CategoryType
             repository:
                 service: tianos.repository.category
                 method: findAllParents
                 arguments: [$categoryId]
+                vars:
+                    serialize_group_name: tree
 
 backend_category_tree_create:
     path: /create
@@ -75,8 +47,9 @@ backend_category_tree_create:
             entity: Bundle\CategoryBundle\Entity\Category
             form:
                 type: Bundle\CategoryBundle\Form\Type\CategoryType
-            vars:
-                serialize_group_name: tree
+            repository:
+                vars:
+                    serialize_group_name: tree
 
 backend_category_tree_create_child:
     path: /create-child
@@ -89,8 +62,9 @@ backend_category_tree_create_child:
             entity: Bundle\CategoryBundle\Entity\Category
             form:
                 type: Bundle\CategoryBundle\Form\Type\CategoryType
-            vars:
-                serialize_group_name: tree
+            repository:
+                vars:
+                    serialize_group_name: tree
 
 backend_category_tree_edit:
     path: /edit
@@ -100,14 +74,14 @@ backend_category_tree_edit:
         _tianos:
             action: edit
             template: CategoryBundle:CategoryBackend/Form:form.html.twig
+            form:
+                type: Bundle\CategoryBundle\Form\Type\CategoryType
             repository:
                 service: tianos.repository.category
                 method: find
                 arguments: [$categoryId]
-            form:
-                type: Bundle\CategoryBundle\Form\Type\CategoryType
-            vars:
-                serialize_group_name: tree
+                vars:
+                    serialize_group_name: tree
 
 backend_category_tree_delete:
     path: /delete
@@ -136,6 +110,8 @@ backend_category_tree_view:
                 service: tianos.repository.category
                 method: find
                 arguments: [$categoryId]
+                vars:
+                    serialize_group_name: tree
 
 backend_category_tree_info:
     path: /info

@@ -34,31 +34,20 @@ class SessionRepository extends TianosEntityRepository implements SessionReposit
     /**
      * {@inheritdoc}
      */
-//    public function find($id)
-//    {
-//        return $this->createQueryBuilder('o')
-//            ->select('o.id, o.code, o.name, o.createdAt')
-//            ->andWhere('o.isActive = :active')
-//            ->andWhere('o.id = :id')
-//            ->setParameter('active', 1)
-//            ->setParameter('id', $id)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//            ;
-//    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function findAll(): array
     {
-        return $this->createQueryBuilder('o')
-            ->select('o.id, o.token, o.createdAt')
-            ->andWhere('o.isActive = :active')
-            ->setParameter('active', 1)
-            ->getQuery()
-            ->getResult()
-            ;
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT session_
+            FROM SessionBundle:Session session_
+            WHERE
+            session_.isActive = :active
+            ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+
+        return $query->getResult();
     }
 
     /**

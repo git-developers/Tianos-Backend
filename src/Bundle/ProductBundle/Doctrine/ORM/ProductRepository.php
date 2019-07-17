@@ -15,21 +15,43 @@ class ProductRepository extends TianosEntityRepository
     /**
      * {@inheritdoc}
      */
+    public function productCount()
+    {
+        $date = new \DateTime("now");
+        $date->sub(new \DateInterval('P1D'));
+        $todayDate = $date->format('Y-m-d');
+
+        $em = $this->getEntityManager();
+        $sql = "SELECT count(id) AS ID FROM product WHERE is_active = :isActive;";
+        $params = array('isActive' => 1);
+
+        $stmt = $em->getConnection()->prepare($sql);
+        $stmt->execute($params);
+
+        return $stmt->fetchColumn();
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function searchBoxRight($q, $offset = 0, $limit = 50): array
     {
-        $qb = $this->createQueryBuilder('o')
-            ->select('o.id, o.code, o.name, o.createdAt')
-            ->andWhere('o.isActive = :active')
-            ->andWhere('o.name LIKE :q')
-            ->setParameter('active', 1)
-            ->setParameter('q', '%' . $q . '%')
-            ->getQuery()
-        ;
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT product
+            FROM ProductBundle:Product product
+            WHERE
+            product.name LIKE :q AND
+            product.isActive = :active
+            ";
 
-        $qb->setFirstResult($offset);
-        $qb->setMaxResults($limit);
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+        $query->setParameter('q', '%' . $q . '%');
+        $query->setFirstResult($offset);
+        $query->setMaxResults($limit);
 
-        return $qb->getResult();
+        return $query->getResult();
     }
 
     /**
@@ -37,17 +59,20 @@ class ProductRepository extends TianosEntityRepository
      */
     public function findAllOffsetLimit($offset = 0, $limit = 50): array
     {
-        $qb = $this->createQueryBuilder('o')
-            ->select('o.id, o.code, o.name, o.createdAt')
-            ->andWhere('o.isActive = :active')
-            ->setParameter('active', 1)
-            ->getQuery()
-        ;
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT product
+            FROM ProductBundle:Product product
+            WHERE
+            product.isActive = :active
+            ";
 
-        $qb->setFirstResult($offset);
-        $qb->setMaxResults($limit);
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+        $query->setFirstResult($offset);
+        $query->setMaxResults($limit);
 
-        return $qb->getResult();
+        return $query->getResult();
     }
 
     /**
@@ -92,13 +117,26 @@ class ProductRepository extends TianosEntityRepository
      */
     public function findAll(): array
     {
-        return $this->createQueryBuilder('o')
-            ->select('o.id, o.code, o.name, o.createdAt')
-            ->andWhere('o.isActive = :active')
-            ->setParameter('active', 1)
-            ->getQuery()
-            ->getResult()
-            ;
+        $em = $this->getEntityManager();
+        $dql = "
+            SELECT product
+            FROM ProductBundle:Product product
+            WHERE
+            product.isActive = :active
+            ";
+
+        $query = $em->createQuery($dql);
+        $query->setParameter('active', 1);
+
+        return $query->getResult();
+
+//        return $this->createQueryBuilder('o')
+//            ->select('o.id, o.code, o.name, o.createdAt')
+//            ->andWhere('o.isActive = :active')
+//            ->setParameter('active', 1)
+//            ->getQuery()
+//            ->getResult()
+//            ;
     }
 
     /**

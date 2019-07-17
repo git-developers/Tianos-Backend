@@ -17,21 +17,21 @@ class Category
     /**
      * @var integer
      *
-     * @JMSS\Groups({"crud", "tree", "tree-one-to-many", "api"})
+     * @JMSS\Groups({"crud", "tree", "tree-one-to-many-left", "api"})
      */
     private $id;
 
     /**
      * @var string
      *
-     * @JMSS\Groups({"crud", "tree", "tree-one-to-many", "api"})
+     * @JMSS\Groups({"crud", "tree", "tree-one-to-many-left", "api"})
      */
     private $code;
 
     /**
      * @var string
      *
-     * @JMSS\Groups({"crud", "tree", "tree-one-to-many", "api"})
+     * @JMSS\Groups({"crud", "tree", "api"})
      */
     private $name;
 
@@ -78,6 +78,14 @@ class Category
      *
      */
     private $category;
+
+    /**
+     * @var string
+     *
+     * @JMSS\Accessor(getter="getNameBox", setter="setNameBox")
+     * @JMSS\Groups({"tree-one-to-many-left"})
+     */
+    private $nameBox;
 
     public function __toString() {
         return sprintf('%s - %s', $this->id, $this->name);
@@ -307,6 +315,23 @@ class Category
     public function getCategory()
     {
         return $this->category;
+    }
+
+    /**
+     *
+     * @return string
+     */
+    public function getNameBox()
+    {
+        return sprintf('%s', $this->name);
+    }
+
+    /**
+     * @param string $nameBox
+     */
+    public function setNameBox($nameBox)
+    {
+        $this->nameBox = $nameBox;
     }
 }
 

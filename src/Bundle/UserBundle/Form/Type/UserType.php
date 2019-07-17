@@ -58,7 +58,7 @@ class UserType extends AbstractType
                 },
                 'placeholder' => '[ Escoge una opción ]',
                 'empty_data' => null,
-                'required' => false,
+                'required' => true,
                 'label' => 'Cliente',
                 'label_attr' => [
                     'class' => ''
@@ -82,7 +82,7 @@ class UserType extends AbstractType
                 },
                 'placeholder' => '[ Escoge una opción ]',
                 'empty_data' => null,
-                'required' => false,
+                'required' => true,
                 'label' => 'Profile',
                 'label_attr' => [
                     'class' => ''
@@ -152,21 +152,21 @@ class UserType extends AbstractType
 //                'data_class' => null,
 //                'error_bubbling' => true
 //            ])
-            ->add('dni', TextType::class, [
-                'label' => 'Dni',
-                'label_attr' => [
-                    'class' => ''
-                ],
-                'attr' => [
-                    'class' => 'form-control',
-                    'placeholder' => 'dni (8 caracteres)',
-                    'pattern'=>'[0-9]{8}',
-                    'maxlength'=>'8',
-                    'minlength'=>'8',
-//                    'form'=>'user-form',
-                ],
-                'error_bubbling' => true
-            ])
+//            ->add('dni', TextType::class, [
+//                'label' => 'Dni',
+//                'label_attr' => [
+//                    'class' => ''
+//                ],
+//                'attr' => [
+//                    'class' => 'form-control',
+//                    'placeholder' => 'dni (8 caracteres)',
+//                    'pattern'=>'[0-9]{8}',
+//                    'maxlength'=>'8',
+//                    'minlength'=>'8',
+////                    'form'=>'user-form',
+//                ],
+//                'error_bubbling' => true
+//            ])
             ->add('name', TextType::class, [
                 'label' =>' Nombres',
                 'label_attr' => [
@@ -195,9 +195,20 @@ class UserType extends AbstractType
                 ],
                 'attr' => [
                     'class' => 'form-control required',
-                    'placeholder' => 'test@test.com',
+                    'placeholder' => 'test@example.com',
                 ],
                 //'error_bubbling' => true
+            ])
+            ->add('isActive', CheckboxType::class, [
+                'label' => 'Activo',
+                'required' => false,
+                'label_attr' => [
+                    'class' => ''
+                ],
+                'attr' => [
+                    'class' => '',
+                    'placeholder' => 'Activo',
+                ],
             ])
         ;
 
