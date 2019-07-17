@@ -17,3 +17,5 @@
 /web/bundles/
 /web/css/
 /web/js/
+/web/google-drive-images/
+/src/Bundle/GoogleBundle/ClientSecret/AcessToken/
