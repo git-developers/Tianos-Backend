@@ -22,11 +22,15 @@ GIT
 $ git config --global --unset-all user.name
 
 
-ANDROID: BACKGROUND IMAGE SIZE (IN PIXEL) WHICH SUPPORT ALL DEVICES
+ANDROID
 =========
-xxxhdpi: 1280x1920 px
-xxhdpi: 960x1600 px
-xhdpi: 640x960 px
-hdpi: 480x800 px
-mdpi: 320x480 px
-ldpi: 240x320 px
+
+background image size (in pixel) which support all devices
+
+
+* xxxhdpi: 1280x1920 px
+* xxhdpi: 960x1600 px
+* xhdpi: 640x960 px
+* hdpi: 480x800 px
+* mdpi: 320x480 px
+* ldpi: 240x320 px
