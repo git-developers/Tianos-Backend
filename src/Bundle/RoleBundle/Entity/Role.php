@@ -12,11 +12,13 @@ use JMS\Serializer\Annotation\Type as TypeJMS;
 class Role
 {
 
+	/*
     const ROLE_SUPER_ADMIN = 'ROLE_SUPER_ADMIN';
     const ROLE_GUEST = 'ROLE_GUEST';
     const ROLE_PDV_ADMIN = 'ROLE_PDV_ADMIN';
     const ROLE_EMPLOYEE = 'ROLE_EMPLOYEE';
     const ROLE_CLIENT = 'ROLE_CLIENT';
+	*/
 
     /**
      * @var integer
