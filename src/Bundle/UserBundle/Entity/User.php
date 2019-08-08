@@ -56,7 +56,7 @@ class User extends BaseUser // implements UserInterface, DomainObjectInterface, 
      * @Assert\Regex(
      *     pattern="/[^a-zA-Z ]+/",
      *     match=false,
-     *     message="user.name.regex"
+     *     message="El nombre solo permite letras"
      * )
      * @Assert\NotBlank(message="user.name.not_blank", groups={"registration_admin", "registration"})
      */
