@@ -143,7 +143,7 @@ class GoogleDriveFileController extends BaseController
 
             if(!$result){
                 $this->flashWarning('Oops! parece que no se termino el proceso, reintente.');
-                return $this->redirect($this->generateUrl('backend_google_drive_account_permissions'));
+                return $this->redirect($this->generateUrl('backend_security_login'));
             }
 
 //            return $this->redirect($this->generateUrl('backend_google_drive_index', ['id' => 'my-drive']));

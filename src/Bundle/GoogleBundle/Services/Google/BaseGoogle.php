@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Bundle\GoogleBundle\Services\Google;
 
 use CoreBundle\Entity\User;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\DependencyInjection\Container;
 use Symfony\Component\Cache\CacheItem;
 use Symfony\Component\Cache\Adapter\RedisAdapter;
@@ -69,6 +70,12 @@ class BaseGoogle extends \Twig_Extension
     }
 
     protected function getCredentialsJson() {
+    	
+    	if (is_null($this->user)) {
+			$url = $this->container->get('router')->generate('backend_security_login');
+		    return new RedirectResponse($url);
+	    }
+    	
         return $this->clientSecretPath . 'AcessToken/access-token-' . $this->user->getUsername() . '.json';
     }
 
